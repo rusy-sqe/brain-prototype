@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:200px minmax(0,1fr)">
+
+<div class="hz-sidebar" style="width:200px;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="width:28px;height:28px;border-radius:8px;background:var(--hz-horizon-primary);color:#fff;display:flex;align-items:center;justify-content:center"><i class="far fa-brain" style="font-size:15px"></i></span>
+        <span class="hz-h6" style="margin:0;letter-spacing:.02em">Investment Brain</span>
+      </div>
+      <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:10px;padding:6px 8px">
+      <span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-200)"><i class="far fa-building" style="font-size:12px"></i></span>
+      <span><span class="hz-account-trigger__name" style="display:block">Startech VCC</span></span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-message-plus"></i>New Chat</button>
+  </div>
+  <div style="padding:8px 6px;flex:1;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-grid-2" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-diagram-project" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Master Data</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-building-columns" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb-on" style="font-size:17px"></i><span class="hz-sidebar__label">Insight</span></a>
+        <a href="AI Agent.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-robot" style="font-size:17px"></i><span class="hz-sidebar__label">AI Agent</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-display" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-wand-magic-sparkles" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-nodes" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Chat History</div>
+      <div class="hz-sidebar__group-items">
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-message" style="font-size:16px"></i><span class="hz-sidebar__label">New Artefact Creation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-message" style="font-size:16px"></i><span class="hz-sidebar__label">Investment thesis artifact</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-message" style="font-size:16px"></i><span class="hz-sidebar__label">Refresh artifact</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%">
+      <span class="hz-avatar hz-avatar--sm">NK</span>
+      <span><span class="hz-account-trigger__name" style="display:block">Nur Khairusy</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div style="display:flex;flex-direction:column;min-width:0;height:100%">
+  <div style="padding:14px 20px;border-bottom:1px solid var(--hz-border-subtle);display:flex;align-items:center;justify-content:flex-end;gap:16px">
+    <span class="hz-body-s" style="font-weight:600;color:var(--hz-text-secondary)">Auto <i class="far fa-chevron-down" style="font-size:10px"></i></span>
+    <i class="far fa-pen" style="color:var(--hz-text-tertiary)"></i>
+    <a href="Insight List.dc.html" style="color:var(--hz-text-tertiary)"><i class="far fa-compress"></i></a>
+  </div>
+
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:20px">
+    <div style="width:100%;max-width:760px">
+      <div class="hz-h2" style="margin:0 0 20px;color:var(--hz-horizon-primary)">Ask away, Nur!</div>
+      <div style="display:flex;align-items:center;gap:10px;border:1px solid var(--hz-border-default);border-radius:14px;padding:14px 16px;background:var(--hz-surface-card)">
+        <i class="far fa-paperclip" style="color:var(--hz-text-tertiary)"></i>
+        <input placeholder="Ask anything…" style="flex:1;border:none;outline:none;background:none;font-family:inherit;font-size:15px;color:var(--hz-text-primary)">
+        <button style="width:32px;height:32px;border-radius:8px;border:none;background:var(--hz-horizon-primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer"><i class="far fa-arrow-up" style="font-size:13px"></i></button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px">
+        <button style="font-family:inherit;text-align:left;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;cursor:pointer;color:var(--hz-text-primary)">
+          <span style="width:32px;height:32px;border-radius:8px;background:var(--hz-blue-50);display:flex;align-items:center;justify-content:center"><i class="far fa-arrow-trend-up" style="color:var(--hz-horizon-primary)"></i></span>
+          <span style="font-size:14px;font-weight:600">Pipeline Suggestions</span>
+        </button>
+        <button style="font-family:inherit;text-align:left;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;cursor:pointer;color:var(--hz-text-primary)">
+          <span style="width:32px;height:32px;border-radius:8px;background:var(--hz-blue-50);display:flex;align-items:center;justify-content:center"><i class="far fa-briefcase" style="color:var(--hz-horizon-primary)"></i></span>
+          <span style="font-size:14px;font-weight:600">Active Deal Summary</span>
+        </button>
+        <button style="font-family:inherit;text-align:left;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;cursor:pointer;color:var(--hz-text-primary)">
+          <span style="width:32px;height:32px;border-radius:8px;background:var(--hz-blue-50);display:flex;align-items:center;justify-content:center"><i class="far fa-wave-pulse" style="color:var(--hz-horizon-primary)"></i></span>
+          <span style="font-size:14px;font-weight:600">Pipeline Performance</span>
+        </button>
+        <button style="font-family:inherit;text-align:left;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;cursor:pointer;color:var(--hz-text-primary)">
+          <span style="width:32px;height:32px;border-radius:8px;background:var(--hz-blue-50);display:flex;align-items:center;justify-content:center"><i class="far fa-stopwatch" style="color:var(--hz-horizon-primary)"></i></span>
+          <span style="font-size:14px;font-weight:600">Stalled Deals</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</x-dc>
+</body>
+</html>

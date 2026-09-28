@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:200px minmax(0,1fr) 280px">
+
+<div class="hz-sidebar" style="width:200px;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="width:28px;height:28px;border-radius:8px;background:var(--hz-horizon-primary);color:#fff;display:flex;align-items:center;justify-content:center"><i class="far fa-brain" style="font-size:15px"></i></span>
+        <span class="hz-h6" style="margin:0;letter-spacing:.02em">Investment Brain</span>
+      </div>
+      <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:10px;padding:6px 8px">
+      <span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-200)"><i class="far fa-building" style="font-size:12px"></i></span>
+      <span><span class="hz-account-trigger__name" style="display:block">Startech VCC</span></span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-message-plus"></i>New Chat</button>
+  </div>
+  <div style="padding:8px 6px;flex:1;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <div class="hz-sidebar__item is-active"><i class="hz-sidebar__icon far fa-grid-2" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></div>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-diagram-project" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Master Data</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-building-columns" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb-on" style="font-size:17px"></i><span class="hz-sidebar__label">Insight</span></a>
+        <a href="AI Agent.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-robot" style="font-size:17px"></i><span class="hz-sidebar__label">AI Agent</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-display" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-wand-magic-sparkles" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-nodes" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Chat History</div>
+      <div style="padding:10px 12px;color:var(--hz-text-tertiary);font-size:12.5px">No chats yet. Start a new conversation.</div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%">
+      <span class="hz-avatar hz-avatar--sm">NK</span>
+      <span><span class="hz-account-trigger__name" style="display:block">Nur Khairusy</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div class="hz-shell__main" style="min-width:0">
+  <div class="hz-topbar">
+    <nav class="hz-breadcrumb"><i class="far fa-layer-group hz-breadcrumb__sep" style="margin-right:4px"></i><span class="hz-breadcrumb__item is-current">Dashboard</span></nav>
+    <span style="flex:1"></span>
+    <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-expand"></i>Expand</button>
+  </div>
+  <div class="hz-shell__content" style="gap:16px;padding:20px">
+    <div class="hz-page-header" style="padding-bottom:0">
+      <div>
+        <div class="hz-page-header__title" style="display:flex;align-items:center;gap:10px"><i class="far fa-layer-group" style="font-size:22px;color:var(--hz-horizon-primary)"></i>Dashboard</div>
+        <div class="hz-page-header__desc">Real-time overview of your M&amp;A deal pipeline</div>
+      </div>
+      <div class="hz-row hz-gap-2" style="align-items:center">
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="width:32px;padding:0;justify-content:center"><i class="far fa-chevron-left"></i></button>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-calendar"></i>7 days ago<i class="far fa-chevron-down" style="font-size:11px"></i></button>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="width:32px;padding:0;justify-content:center"><i class="far fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <div class="hz-card">
+      <div class="hz-card__header">
+        <div class="hz-h6" style="margin:0;display:flex;align-items:center;gap:8px"><i class="far fa-sparkles" style="color:var(--hz-horizon-primary)"></i>Today's Recap<span class="hz-body-s hz-muted" style="font-weight:400">Sep 18, 2026</span></div>
+      </div>
+      <div class="hz-card__body" style="align-items:center;text-align:center;padding:32px 20px;gap:12px">
+        <div class="hz-body-l hz-muted">Today's recap isn't ready yet.</div>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm">Generate now</button>
+      </div>
+    </div>
+
+    <div class="hz-card">
+      <div class="hz-card__header">
+        <div class="hz-h6" style="margin:0;display:flex;align-items:center;gap:8px"><i class="far fa-calendar-week" style="color:var(--hz-horizon-primary)"></i>7-Day Recap<span class="hz-body-s hz-muted" style="font-weight:400">Sep 14 – Sep 21, 2026</span></div>
+      </div>
+      <div class="hz-card__body" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+        <div style="border:1px solid var(--hz-green-200);background:var(--hz-green-50);border-radius:10px;padding:14px;min-width:0">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span class="hz-body-s" style="font-weight:700;letter-spacing:.06em;color:var(--hz-green-700)">NEW DEALS</span><i class="far fa-sparkles" style="color:var(--hz-green-600);font-size:14px"></i></div>
+          <div style="display:flex;align-items:baseline;gap:8px;margin-top:6px;flex-wrap:wrap;min-width:0">
+            <span class="hz-h3" style="color:var(--hz-green-800)">49</span>
+            <span class="hz-body-s hz-muted">total</span>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;min-width:0">
+            <span class="hz-body-s hz-muted"><span style="font-weight:700;color:var(--hz-blue-700);text-decoration:underline">25</span> Inbound</span>
+            <span class="hz-body-s hz-muted"><span style="font-weight:700;color:var(--hz-blue-700);text-decoration:underline">24</span> Outbound</span>
+          </div>
+        </div>
+        <div style="border:1px solid var(--hz-red-200);background:var(--hz-red-50);border-radius:10px;padding:16px">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span class="hz-body-s" style="font-weight:700;letter-spacing:.06em;color:var(--hz-red-700)">DROPPED</span><i class="far fa-sparkles" style="color:var(--hz-red-600);font-size:14px"></i></div>
+          <div class="hz-h3" style="margin-top:6px;color:var(--hz-red-800)">15</div>
+          <div class="hz-body-s hz-muted">deals removed</div>
+        </div>
+        <div style="border:1px solid var(--hz-blue-200);background:var(--hz-blue-50);border-radius:10px;padding:16px">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span class="hz-body-s" style="font-weight:700;letter-spacing:.06em;color:var(--hz-blue-700)">STAGE MOVES</span><i class="far fa-sparkles" style="color:var(--hz-blue-600);font-size:14px"></i></div>
+          <div class="hz-h3" style="margin-top:6px;color:var(--hz-blue-800)">0</div>
+          <div class="hz-body-s hz-muted">pipeline movements</div>
+        </div>
+      </div>
+      <div class="hz-card__body" style="padding-top:0;display:flex;flex-direction:column;gap:20px">
+        <div style="min-width:0">
+          <div class="hz-body-s" style="font-weight:600;color:var(--hz-green-700)"><i class="fas fa-circle" style="font-size:6px;margin-right:6px"></i>NEW DEALS THIS WEEK</div>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-top:10px">
+            <div style="display:flex;gap:10px">
+              <span style="width:26px;height:26px;border-radius:7px;background:var(--hz-green-100);color:var(--hz-green-700);display:flex;align-items:center;justify-content:center;flex:none"><i class="far fa-plus" style="font-size:12px"></i></span>
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;justify-content:space-between;gap:6px;min-width:0"><span style="font-weight:700;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Project Bold</span><span class="hz-body-s hz-muted" style="flex:none">Sep 20</span></div>
+                <div style="margin-top:6px"><span class="hz-chip hz-chip--success" style="font-size:11px">Inbound</span></div>
+                <div class="hz-body-s" style="margin-top:6px;color:var(--hz-text-secondary);font-weight:600">UHP Chemicals and Gases – Front End Semiconductor</div>
+                <div style="margin-top:6px"><span class="hz-chip" style="font-size:11px">South Korea</span></div>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px">
+              <span style="width:26px;height:26px;border-radius:7px;background:var(--hz-green-100);color:var(--hz-green-700);display:flex;align-items:center;justify-content:center;flex:none"><i class="far fa-plus" style="font-size:12px"></i></span>
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;justify-content:space-between;gap:6px;min-width:0"><span style="font-weight:700;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">C-Hawk Technology</span><span class="hz-body-s hz-muted" style="flex:none">Sep 20</span></div>
+                <div style="margin-top:6px"><span class="hz-chip hz-chip--success" style="font-size:11px">Inbound</span></div>
+                <div class="hz-body-s" style="margin-top:6px;color:var(--hz-text-secondary);font-weight:600">Semiconductor Equipment – OEM Sub-system &amp; Component Manufacturing</div>
+                <div style="margin-top:6px"><span class="hz-chip" style="font-size:11px">United States</span></div>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px">
+              <span style="width:26px;height:26px;border-radius:7px;background:var(--hz-green-100);color:var(--hz-green-700);display:flex;align-items:center;justify-content:center;flex:none"><i class="far fa-plus" style="font-size:12px"></i></span>
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;justify-content:space-between;gap:6px;min-width:0"><span style="font-weight:700;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">NusaPrint Media Group</span><span class="hz-body-s hz-muted" style="flex:none">Sep 20</span></div>
+                <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap"><span class="hz-chip hz-chip--success" style="font-size:11px">Inbound</span><span class="hz-chip" style="font-size:11px">Publishing / Print Media</span></div>
+                <div style="margin-top:6px"><span class="hz-chip" style="font-size:11px">Indonesia</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="min-width:0">
+          <div class="hz-body-s" style="font-weight:600;color:var(--hz-red-700)"><i class="fas fa-circle" style="font-size:6px;margin-right:6px"></i>DROPPED DEALS</div>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-top:10px">
+            <div style="display:flex;gap:10px">
+              <span style="width:26px;height:26px;border-radius:7px;background:var(--hz-red-100);color:var(--hz-red-700);display:flex;align-items:center;justify-content:center;flex:none"><i class="far fa-circle-xmark" style="font-size:12px"></i></span>
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;justify-content:space-between;gap:6px;min-width:0"><span style="font-weight:700;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">NusaPrint Media Group</span><span class="hz-body-s hz-muted" style="flex:none">Jun 22</span></div>
+                <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap"><span class="hz-chip hz-chip--success" style="font-size:11px">Inbound</span><span class="hz-chip" style="font-size:11px">Publishing / Print Media</span></div>
+                <div style="margin-top:6px"><span class="hz-chip" style="font-size:11px">Indonesia</span></div>
+                <div class="hz-body-s hz-muted" style="margin-top:6px">Dropped at L0</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px">
+              <span style="width:26px;height:26px;border-radius:7px;background:var(--hz-red-100);color:var(--hz-red-700);display:flex;align-items:center;justify-content:center;flex:none"><i class="far fa-circle-xmark" style="font-size:12px"></i></span>
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;justify-content:space-between;gap:6px;min-width:0"><span style="font-weight:700;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Metro Residences Devel…</span><span class="hz-body-s hz-muted" style="flex:none">Jun 20</span></div>
+                <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap"><span class="hz-chip" style="font-size:11px;background:var(--hz-blue-50);color:var(--hz-blue-700)">Outbound</span><span class="hz-chip" style="font-size:11px">Real Estate / Property Development</span></div>
+                <div style="margin-top:6px"><span class="hz-chip" style="font-size:11px">Thailand</span></div>
+                <div class="hz-body-s hz-muted" style="margin-top:6px">Dropped at L0</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px">
+              <span style="width:26px;height:26px;border-radius:7px;background:var(--hz-red-100);color:var(--hz-red-700);display:flex;align-items:center;justify-content:center;flex:none"><i class="far fa-circle-xmark" style="font-size:12px"></i></span>
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;justify-content:space-between;gap:6px;min-width:0"><span style="font-weight:700;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">GameOn Studios</span><span class="hz-body-s hz-muted" style="flex:none">Jun 18</span></div>
+                <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap"><span class="hz-chip hz-chip--success" style="font-size:11px">Inbound</span><span class="hz-chip" style="font-size:11px">Gaming / Entertainment</span></div>
+                <div style="margin-top:6px"><span class="hz-chip" style="font-size:11px">Indonesia</span></div>
+                <div class="hz-body-s hz-muted" style="margin-top:6px">Dropped at L0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="min-width:0">
+          <div class="hz-body-s" style="font-weight:600;color:var(--hz-blue-700)"><i class="fas fa-circle" style="font-size:6px;margin-right:6px"></i>PIPELINE STAGE MOVEMENTS</div>
+          <div class="hz-body-s hz-muted" style="margin-top:10px">No stage movements</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hz-card">
+      <div class="hz-card__header">
+        <div>
+          <div class="hz-h6" style="margin:0;display:flex;align-items:center;gap:8px"><i class="far fa-chart-line" style="color:var(--hz-horizon-primary)"></i>Deal Funnel<span class="hz-body-s hz-muted" style="font-weight:400">Sep 11 – Sep 18, 2026</span></div>
+          <div class="hz-body-s hz-muted" style="margin-top:4px">Current status of companies added in this period</div>
+        </div>
+      </div>
+      <div class="hz-card__body" style="align-items:center;text-align:center;padding:44px 20px;gap:10px">
+        <i class="far fa-building" style="font-size:38px;color:var(--hz-neutral-300)"></i>
+        <div class="hz-body-l hz-muted">No pipeline activity in this period.</div>
+      </div>
+    </div>
+
+    <div class="hz-card">
+      <div class="hz-card__header">
+        <div class="hz-h6" style="margin:0;display:flex;align-items:center;gap:8px"><i class="far fa-clock" style="color:var(--hz-horizon-primary)"></i>Activity Feed<span class="hz-body-s hz-muted" style="font-weight:400">Sep 11 – Sep 18, 2026</span></div>
+      </div>
+      <div class="hz-card__body" style="padding-top:0">
+        <nav class="hz-tabs--pill">
+          <sc-for list="{{ feedTabs }}" as="t" hint-placeholder-count="5">
+            <button class="{{ t.cls }}" onClick="{{ selectFeedTab }}" data-tab="{{ t.label }}">{{ t.label }}</button>
+          </sc-for>
+        </nav>
+        <div style="text-align:center;padding:40px 0;color:var(--hz-text-tertiary)">No activity in this period</div>
+      </div>
+    </div>
+
+    <div class="hz-card">
+      <div class="hz-card__header">
+        <div>
+          <div class="hz-h6" style="margin:0;display:flex;align-items:center;gap:8px"><i class="far fa-chart-bar" style="color:var(--hz-horizon-primary)"></i>Insights<span class="hz-body-s hz-muted" style="font-weight:400">Sep 11 – Sep 18, 2026</span></div>
+          <div class="hz-body-s hz-muted" style="margin-top:4px">Pipeline health · Origination quality · AI throughput</div>
+        </div>
+      </div>
+      <div class="hz-card__body" style="gap:16px">
+        <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:24px;text-align:center;position:relative">
+          <button style="position:absolute;top:10px;right:10px;background:none;border:none;color:var(--hz-text-tertiary);cursor:pointer"><i class="far fa-gear"></i></button>
+          <div class="hz-body-s hz-muted">L0 → L1 conversion</div>
+          <div class="hz-h2" style="margin-top:6px">0%</div>
+          <div class="hz-body-s" style="color:var(--hz-orange-600);font-weight:600;margin-top:4px">target 10–15%</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:18px">
+            <div style="display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px"><i class="far fa-users" style="color:var(--hz-horizon-primary)"></i>Leads from Bankers</div>
+            <div style="text-align:center;padding:28px 0;color:var(--hz-text-tertiary);font-size:13px">No banker-sourced deals.</div>
+          </div>
+          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:18px">
+            <div style="display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px"><i class="far fa-handshake" style="color:var(--hz-horizon-primary)"></i>Banker related companies</div>
+            <div class="hz-body-s hz-muted" style="margin-top:4px">Bankers ranked by companies attached</div>
+            <div style="text-align:center;padding:20px 0;color:var(--hz-text-tertiary);font-size:13px">No related companies linked to bankers yet.</div>
+          </div>
+          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:18px">
+            <div style="display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px"><i class="far fa-globe" style="color:var(--hz-horizon-primary)"></i>Deals by country</div>
+            <div style="text-align:center;padding:28px 0;color:var(--hz-text-tertiary);font-size:13px">No country data.</div>
+          </div>
+          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:18px">
+            <div style="display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px"><i class="far fa-grid-2" style="color:var(--hz-horizon-primary)"></i>Deals by industry segment</div>
+            <div style="text-align:center;padding:28px 0;color:var(--hz-text-tertiary);font-size:13px">No segmented deals.</div>
+          </div>
+        </div>
+        <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:18px">
+          <div style="display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px"><i class="far fa-wand-magic-sparkles" style="color:var(--hz-horizon-primary)"></i>AI screening &amp; deck throughput</div>
+          <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:14px">
+            <div><div class="hz-h5" style="margin:0">0</div><div class="hz-body-s hz-muted">companies</div><div class="hz-body-s" style="font-weight:600;margin-top:2px">Screened (L0)</div></div>
+            <div><div class="hz-h5" style="margin:0">0</div><div class="hz-body-s hz-muted">0 done · 0 failed</div><div class="hz-body-s" style="font-weight:600;margin-top:2px">Company cards</div></div>
+            <div><div class="hz-h5" style="margin:0">0</div><div class="hz-body-s hz-muted">generated</div><div class="hz-body-s" style="font-weight:600;margin-top:2px">Decks</div></div>
+            <div><div class="hz-h5" style="margin:0">0</div><div class="hz-body-s hz-muted">0 pass · 0 fail · 0 tent</div><div class="hz-body-s" style="font-weight:600;margin-top:2px">AI opinions</div></div>
+            <div><div class="hz-h5" style="margin:0">0</div><div class="hz-body-s hz-muted">0 pass · 0 fail</div><div class="hz-body-s" style="font-weight:600;margin-top:2px">AI screenings</div></div>
+            <div><div class="hz-h5" style="margin:0">0</div><div class="hz-body-s hz-muted">0 pending</div><div class="hz-body-s" style="font-weight:600;margin-top:2px">HITL resolved · 0/0</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="border-left:1px solid var(--hz-border-subtle);background:var(--hz-surface-card);display:flex;flex-direction:column;height:100%">
+  <div style="padding:14px 16px;border-bottom:1px solid var(--hz-border-subtle);display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px"><i class="far fa-sparkles" style="color:var(--hz-horizon-primary)"></i>AI CoPilot</div>
+    <div style="display:flex;align-items:center;gap:10px;color:var(--hz-text-tertiary)">
+      <span class="hz-body-s" style="font-weight:600;color:var(--hz-text-secondary)">Auto <i class="far fa-chevron-down" style="font-size:10px"></i></span>
+      <i class="far fa-pen"></i>
+      <i class="far fa-expand"></i>
+    </div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-start;padding:20px;gap:16px">
+    <div class="hz-h4" style="margin:0;color:var(--hz-horizon-primary)">Ask away, Nur!</div>
+    <div style="display:flex;align-items:center;gap:8px;border:1px solid var(--hz-border-default);border-radius:12px;padding:10px 12px;background:var(--hz-surface-page)">
+      <i class="far fa-paperclip" style="color:var(--hz-text-tertiary)"></i>
+      <input placeholder="Ask anything…" style="flex:1;border:none;outline:none;background:none;font-family:inherit;font-size:14px;color:var(--hz-text-primary)">
+      <button style="width:28px;height:28px;border-radius:8px;border:none;background:var(--hz-horizon-primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer"><i class="far fa-arrow-up" style="font-size:12px"></i></button>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <button style="font-family:inherit;text-align:left;background:var(--hz-surface-subtle);border:1px solid var(--hz-border-subtle);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;cursor:pointer;color:var(--hz-text-primary)"><i class="far fa-briefcase" style="color:var(--hz-horizon-primary)"></i><span style="font-size:13px;font-weight:600">Active Deal Summary</span></button>
+      <button style="font-family:inherit;text-align:left;background:var(--hz-surface-subtle);border:1px solid var(--hz-border-subtle);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;cursor:pointer;color:var(--hz-text-primary)"><i class="far fa-chart-line" style="color:var(--hz-horizon-primary)"></i><span style="font-size:13px;font-weight:600">Fund Performance</span></button>
+      <button style="font-family:inherit;text-align:left;background:var(--hz-surface-subtle);border:1px solid var(--hz-border-subtle);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;cursor:pointer;color:var(--hz-text-primary)"><i class="far fa-magnifying-glass" style="color:var(--hz-horizon-primary)"></i><span style="font-size:13px;font-weight:600">Asset Analysis</span></button>
+      <button style="font-family:inherit;text-align:left;background:var(--hz-surface-subtle);border:1px solid var(--hz-border-subtle);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;cursor:pointer;color:var(--hz-text-primary)"><i class="far fa-globe" style="color:var(--hz-horizon-primary)"></i><span style="font-size:13px;font-weight:600">Cross-Portfolio View</span></button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1680,&quot;height&quot;:1000}}">
+class Component extends DCLogic {
+  state = { feedTab: 'All' };
+  renderVals() {
+    const feedTabs = ['All', 'New', 'Moved', 'Dropped', 'Notes'].map(label => ({
+      label, cls: 'hz-tab--pill' + (label === this.state.feedTab ? ' is-active' : '')
+    }));
+    return {
+      feedTabs,
+      selectFeedTab: (e) => this.setState({ feedTab: e.currentTarget.dataset.tab }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

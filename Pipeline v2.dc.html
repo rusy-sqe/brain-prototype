@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:220px minmax(0,1fr)">
+
+<div class="hz-sidebar" style="width:220px;height:100vh;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-weight:800;font-size:19px;letter-spacing:.03em;color:var(--hz-text-primary)">BR</span>
+        <i class="fas fa-caret-up" style="color:var(--hz-horizon-primary);font-size:16px;margin:0 -2px"></i>
+        <span style="font-weight:800;font-size:19px;letter-spacing:.03em;color:var(--hz-text-primary)">IN</span>
+      </div>
+      <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-window-maximize" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:12px;padding:6px 2px;justify-content:space-between">
+      <span style="font-weight:600;color:var(--hz-text-secondary)">Demo</span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-message-plus"></i>New Chat</button>
+  </div>
+  <div style="padding:8px 6px;flex:1;min-height:0;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-grid-2" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Pipeline.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-diagram-project" style="font-size:17px"></i><span class="hz-sidebar__label">Pipeline</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Master Data</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-building-columns" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb-on" style="font-size:17px"></i><span class="hz-sidebar__label">Insight</span></a>
+        <a href="AI Agent.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-robot" style="font-size:17px"></i><span class="hz-sidebar__label">AI Agent</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-display" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-wand-magic-sparkles" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-nodes" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Chat History</div>
+      <div style="padding:16px 10px;text-align:center;color:var(--hz-text-tertiary);font-size:13px;line-height:1.5">No chats yet. Start a new conversation.</div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%">
+      <span class="hz-avatar hz-avatar--sm">TU</span>
+      <span><span class="hz-account-trigger__name" style="display:block">Test User</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div style="min-width:0;overflow-y:auto">
+  <div style="background:linear-gradient(135deg,var(--hz-blue-50),var(--hz-neutral-50));padding:24px 28px 28px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+      <div>
+        <div class="hz-h2" style="margin:0">Deal Pipeline</div>
+        <div class="hz-body-r hz-muted" style="margin-top:4px">Track companies through all stages</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="background:var(--hz-surface-card)"><i class="far fa-gear"></i>Track Settings</button>
+        <button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-text-secondary)"><i class="far fa-compress"></i>Exit Full Screen</button>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-top:24px;border-radius:10px;overflow:hidden">
+      <button class="{{ tabClass.pre }}" style="{{ tabStyle.pre }}" onClick="{{ selectPre }}">Pre Pipeline<span style="{{ badgeStyle.pre }}">2</span></button>
+      <button class="{{ tabClass.l0 }}" style="{{ tabStyle.l0 }}" onClick="{{ selectL0 }}">L0<span style="{{ badgeStyle.l0 }}">3</span></button>
+      <button class="{{ tabClass.l1 }}" style="{{ tabStyle.l1 }}" onClick="{{ selectL1 }}">L1<span style="{{ badgeStyle.l1 }}">4</span></button>
+      <button class="{{ tabClass.l2 }}" style="{{ tabStyle.l2 }}" onClick="{{ selectL2 }}">L2<span style="{{ badgeStyle.l2 }}">4</span></button>
+      <button class="{{ tabClass.l3 }}" style="{{ tabStyle.l3 }}" onClick="{{ selectL3 }}">L3<span style="{{ badgeStyle.l3 }}">4</span></button>
+      <button class="{{ tabClass.l4 }}" style="{{ tabStyle.l4 }}" onClick="{{ selectL4 }}">L4<span style="{{ badgeStyle.l4 }}">4</span></button>
+      <button class="{{ tabClass.l5 }}" style="{{ tabStyle.l5 }}" onClick="{{ selectL5 }}">L5<span style="{{ badgeStyle.l5 }}">4</span></button>
+    </div>
+  </div>
+
+  <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+
+    <sc-if value="{{ isPre }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div class="hz-h3" style="margin:0">Pre Pipeline</div>
+      <div class="hz-body-r hz-muted" style="margin-top:4px">Candidates not yet promoted into L0 sourcing</div>
+    </div>
+
+    <div class="hz-card" style="padding:20px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="width:40px;height:40px;border-radius:10px;background:var(--hz-horizon-primary);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far fa-sparkles" style="font-size:17px"></i></span>
+          <div>
+            <span class="hz-h5" style="margin:0;color:var(--hz-horizon-primary)">AI Market Scanning</span>
+            <div class="hz-body-s hz-muted" style="margin-top:2px">Powered by AI thesis matching</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-gear"></i>Configure</button>
+          <button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-play"></i>Run Scan Now</button>
+          <button class="hz-btn hz-btn--text hz-btn--sm"><i class="far fa-eye-slash"></i>Hide</button>
+        </div>
+      </div>
+      <div style="display:flex;gap:56px;margin-top:20px;flex-wrap:wrap">
+        <div>
+          <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:600">Last scan completed</div>
+          <div style="font-weight:700;margin-top:4px">–</div>
+        </div>
+        <div>
+          <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:600">Next scan</div>
+          <div style="font-weight:700;margin-top:4px">–</div>
+        </div>
+        <div>
+          <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:600">New candidates (last 7d)</div>
+          <div style="font-weight:700;margin-top:4px">0</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hz-card" style="padding:20px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="width:40px;height:40px;border-radius:10px;background:var(--hz-horizon-primary);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far fa-bullseye-arrow" style="font-size:17px"></i></span>
+          <div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <span class="hz-h5" style="margin:0;color:var(--hz-horizon-primary)">AI-Discovered Companies</span>
+              <span class="hz-badge hz-badge--soft" style="color:var(--hz-horizon-primary);background:var(--hz-blue-50)"><i class="far fa-bolt"></i> AI Powered</span>
+            </div>
+            <div class="hz-body-s hz-muted" style="margin-top:2px">Companies matching your investment thesis will appear here</div>
+          </div>
+        </div>
+        <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ toggleDiscovered }}">{{ discoveredLabel }}<i class="{{ discoveredIcon }}"></i></button>
+      </div>
+    </div>
+
+    <div class="hz-card" style="padding:20px;border:1px solid var(--hz-border-subtle)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div>
+          <div class="hz-h5" style="margin:0"><span style="width:6px;height:6px;border-radius:50%;background:var(--hz-orange-500);display:inline-block;margin-right:8px"></span>Inbound Pending Review<span class="hz-badge hz-badge--soft" style="margin-left:6px;background:var(--hz-orange-50);color:var(--hz-orange-700)">2</span></div>
+          <div class="hz-body-s hz-muted" style="margin-top:2px">Companies awaiting initial screening decision</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px;position:relative">
+          <i class="far fa-magnifying-glass" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--hz-text-tertiary);font-size:13px"></i>
+          <input placeholder="Search companies or sectors…" style="width:100%;padding:9px 12px 9px 34px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+        </div>
+        <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+          <option>All Origins</option>
+        </select>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="width:36px;padding:0;justify-content:center"><i class="far fa-sliders-h"></i></button>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:14px;padding:12px 14px;background:var(--hz-yellow-50);border:1px solid var(--hz-yellow-200);border-radius:8px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--hz-yellow-900,#7a5c00)">
+          <span class="hz-badge hz-badge--dot" style="background:var(--hz-orange-500);color:#fff">2</span>
+          <span>new companies from email attachments</span>
+          <span class="hz-muted">— 2 other</span>
+        </div>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm">Triage Unreviewed</button>
+      </div>
+
+      <div style="overflow-x:auto;margin-top:14px">
+        <table class="hz-table">
+          <thead>
+            <tr>
+              <th>Company <i class="far fa-arrow-up-arrow-down" style="font-size:10px"></i></th>
+              <th>Deal Sponsor</th>
+              <th>Entered by</th>
+              <th>Banker / Source</th>
+              <th>Advisor</th>
+              <th>Live</th>
+              <th>NBO Date</th>
+              <th>Sector</th>
+              <th>Geo</th>
+              <th>Matched Tracks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-left:3px solid var(--hz-orange-400)">
+              <td><i class="far fa-sparkles" style="color:var(--hz-horizon-primary);margin-right:8px"></i>PT Sinar Teknologi<div class="hz-body-s hz-muted">[Project Sinar]</div></td>
+              <td class="hz-muted">—</td>
+              <td class="hz-muted">—</td>
+              <td><span class="hz-chip" style="background:var(--hz-neutral-100)"><i class="far fa-building-columns" style="font-size:11px"></i>Golden Sacks</span></td>
+              <td class="hz-muted">—</td>
+              <td><span class="hz-badge hz-badge--outline">Not live</span></td>
+              <td class="hz-muted">-</td>
+              <td>Technology</td>
+              <td>Indonesia</td>
+              <td class="hz-muted">—</td>
+            </tr>
+            <tr style="border-left:3px solid var(--hz-orange-400)">
+              <td><i class="far fa-sparkles" style="color:var(--hz-horizon-primary);margin-right:8px"></i>BrightStar Energy<div class="hz-body-s hz-muted">[Project BrightStar]</div></td>
+              <td class="hz-muted">—</td>
+              <td class="hz-muted">—</td>
+              <td><span class="hz-chip" style="background:var(--hz-neutral-100)"><i class="far fa-building-columns" style="font-size:11px"></i>JP Organ</span></td>
+              <td class="hz-muted">—</td>
+              <td><span class="hz-badge hz-badge--outline">Not live</span></td>
+              <td class="hz-muted">-</td>
+              <td>Energy</td>
+              <td>Indonesia</td>
+              <td class="hz-muted">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isL0 }}" hint-placeholder-val="{{ true }}">
+    <div>
+      
+      
+    </div>
+
+    <div class="hz-card" style="padding:20px;border:1px solid var(--hz-border-subtle)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div>
+          <div class="hz-h5" style="margin:0">L0 Pipeline Companies</div>
+          <div class="hz-body-s hz-muted" style="margin-top:2px">Companies sourced and ready for screening</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          
+          <button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-plus"></i>Add Company</button>
+          
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px;position:relative">
+          <i class="far fa-magnifying-glass" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--hz-text-tertiary);font-size:13px"></i>
+          <input placeholder="Search companies or sectors…" style="width:100%;padding:9px 12px 9px 34px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+        </div>
+        <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+          <option>All Origins</option>
+        </select>
+        <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+          <option>All Sources</option>
+          <option>Inbound</option>
+          <option>Outbound</option>
+        </select>
+        <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+          <option>Active</option>
+          <option>Dropped</option>
+        </select>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="width:36px;padding:0;justify-content:center"><i class="far fa-sliders-h"></i></button>
+      </div>
+
+      <div style="overflow-x:auto;margin-top:14px">
+        <table class="hz-table">
+          <thead>
+            <tr>
+              <th>Company <i class="far fa-arrow-up-arrow-down" style="font-size:10px"></i></th>
+              <th>Deal Sponsor</th>
+              <th>Entered by</th>
+              <th>Banker / Source</th>
+              <th>Advisor</th>
+              <th>Live</th>
+              <th>NBO Date</th>
+              <th>Sector</th>
+              <th>Geo</th>
+              <th>Matched Tracks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><i class="far fa-sparkles" style="color:var(--hz-horizon-primary);margin-right:8px"></i>Palantir Technologies<div class="hz-body-s hz-muted">[Project Boom]</div></td>
+              <td>Nico Alimin</td>
+              <td>Alwan Abdurrafi</td>
+              <td><span class="hz-chip" style="background:var(--hz-neutral-100)"><i class="far fa-building-columns" style="font-size:11px"></i>Aldira</span></td>
+              <td class="hz-muted">—</td>
+              <td><span class="hz-badge hz-badge--outline">Not live</span></td>
+              <td class="hz-muted">-</td>
+              <td>AI Software / Government &amp; Enterprise Analytics</td>
+              <td>USA</td>
+              <td><span class="hz-badge hz-badge--soft">Consolidation Play: rolli</span></td>
+            </tr>
+            <tr>
+              <td><i class="far fa-sparkles" style="color:var(--hz-horizon-primary);margin-right:8px"></i>BV Holdings JSC<div class="hz-body-s hz-muted">[Project Banyan]</div></td>
+              <td class="hz-muted">Admin</td>
+              <td>Nico Alimin</td>
+              <td><span class="hz-chip" style="background:var(--hz-neutral-100)"><i class="far fa-building-columns" style="font-size:11px"></i>Aldira</span></td>
+              <td class="hz-muted">—</td>
+              <td><span class="hz-badge hz-badge--outline">Not live</span></td>
+              <td class="hz-muted">-</td>
+              <td>Packaging Paper &amp; Containerboard Manufacturing</td>
+              <td>Vietnam</td>
+              <td><span class="hz-badge hz-badge--soft">Consolidation Play: rolli</span></td>
+            </tr>
+            <tr>
+              <td><i class="far fa-sparkles" style="color:var(--hz-horizon-primary);margin-right:8px"></i>[Project Phoenix (项目凤凰)]</td>
+              <td class="hz-muted">Admin</td>
+              <td class="hz-muted">Admin</td>
+              <td><span class="hz-chip" style="background:var(--hz-neutral-100)"><i class="far fa-building-columns" style="font-size:11px"></i>Aldira</span></td>
+              <td class="hz-muted">—</td>
+              <td><span class="hz-badge hz-badge--outline">Not live</span></td>
+              <td class="hz-muted">-</td>
+              <td>Pulp &amp; Paper</td>
+              <td>China</td>
+              <td><span class="hz-badge hz-badge--soft">Paper Companies</span> <span class="hz-badge hz-badge--soft">Consolidation Play: rolli</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="hz-card" style="padding:20px;background:var(--hz-blue-50);border:1px solid var(--hz-blue-100)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="color:var(--hz-horizon-primary);flex-shrink:0"><i class="far fa-sparkles" style="font-size:18px"></i></span>
+          <div>
+            <div class="hz-h5" style="margin:0">AI Screening Progress</div>
+            <div class="hz-body-s hz-muted" style="margin-top:2px">Real-time status of company screenings</div>
+          </div>
+        </div>
+        <button class="hz-btn hz-btn--text hz-btn--sm"><i class="far fa-eye-slash"></i>Hide</button>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:8px;margin-top:16px;font-weight:700">
+        <i class="far fa-circle-check" style="color:var(--hz-green-600)"></i>Completed (4)
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;background:var(--hz-red-50);border:1px solid var(--hz-red-200);border-radius:10px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:12px;min-width:0">
+            <i class="far fa-circle-xmark" style="color:var(--hz-red-600);font-size:16px"></i>
+            <div>
+              <div style="font-weight:700">Palantir Technologies — Project Boom <span class="hz-badge hz-badge--soft" style="margin-left:6px">SEA Industrial Tech Roll-Up</span></div>
+              <div class="hz-body-s hz-muted" style="margin-top:2px">2 criteria evaluated</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+            <span class="hz-body-s"><span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">1✗</span></span>
+            <span class="hz-chip" style="background:var(--hz-red-600);color:#fff">Failed</span>
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-green-700);border-color:var(--hz-green-300)"><i class="far fa-arrow-right"></i>Promote to L1</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;background:var(--hz-yellow-50);border:1px solid var(--hz-yellow-200);border-radius:10px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:12px;min-width:0">
+            <i class="far fa-circle-question" style="color:var(--hz-orange-500);font-size:16px"></i>
+            <div>
+              <div style="font-weight:700">Palantir Technologies — Project Boom <span class="hz-badge hz-badge--soft" style="margin-left:6px">Consolidation Play: rolling up paper companies globally</span></div>
+              <div class="hz-body-s hz-muted" style="margin-top:2px">2 criteria evaluated</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+            <span class="hz-body-s"><span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">0✗</span> <span style="color:var(--hz-orange-600)">1?</span></span>
+            <span class="hz-chip" style="background:var(--hz-orange-100);color:var(--hz-orange-800)">Inconclusive</span>
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-green-700);border-color:var(--hz-green-300)"><i class="far fa-arrow-right"></i>Promote to L1</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;background:var(--hz-yellow-50);border:1px solid var(--hz-yellow-200);border-radius:10px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:12px;min-width:0">
+            <i class="far fa-circle-question" style="color:var(--hz-orange-500);font-size:16px"></i>
+            <div>
+              <div style="font-weight:700">BV Holdings JSC — Project Banyan <span class="hz-badge hz-badge--soft" style="margin-left:6px">Consolidation Play: rolling up paper companies globally</span></div>
+              <div class="hz-body-s hz-muted" style="margin-top:2px">2 criteria evaluated</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+            <span class="hz-body-s"><span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">0✗</span> <span style="color:var(--hz-orange-600)">1?</span></span>
+            <span class="hz-chip" style="background:var(--hz-orange-100);color:var(--hz-orange-800)">Inconclusive</span>
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-green-700);border-color:var(--hz-green-300)"><i class="far fa-arrow-right"></i>Promote to L1</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;background:var(--hz-yellow-50);border:1px solid var(--hz-yellow-200);border-radius:10px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:12px;min-width:0">
+            <i class="far fa-circle-question" style="color:var(--hz-orange-500);font-size:16px"></i>
+            <div>
+              <div style="font-weight:700">BV Holdings JSC — Project Banyan <span class="hz-badge hz-badge--soft" style="margin-left:6px">Paper Companies</span></div>
+              <div class="hz-body-s hz-muted" style="margin-top:2px">1 criteria evaluated</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+            <span class="hz-body-s"><span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">0✗</span></span>
+            <span class="hz-chip" style="background:var(--hz-orange-100);color:var(--hz-orange-800)">Inconclusive</span>
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-green-700);border-color:var(--hz-green-300)"><i class="far fa-arrow-right"></i>Promote to L1</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+  </div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { stage: 'pre', discoveredShown: false, subTab: 'inbound' };
+  stages = ['pre','l0','l1','l2','l3','l4','l5'];
+  renderVals() {
+    const tabClass = {}, tabStyle = {}, badgeStyle = {}, selectors = {};
+    const colors = {
+      pre: 'var(--hz-neutral-200)', l0: 'var(--hz-horizon-primary)', l1: 'var(--hz-blue-200)', l2: 'var(--hz-orange-200)',
+      l3: 'var(--hz-green-100)', l4: 'var(--hz-green-100)', l5: 'var(--hz-magenta-100, #fbcfe8)'
+    };
+    const textColors = {
+      pre: 'var(--hz-text-secondary)', l0: '#fff', l1: 'var(--hz-blue-900)', l2: 'var(--hz-orange-800)',
+      l3: 'var(--hz-green-800)', l4: 'var(--hz-green-800)', l5: 'var(--hz-magenta-800, #831843)'
+    };
+    for (const s of this.stages) {
+      const active = this.state.stage === s;
+      tabClass[s] = 'hz-btn';
+      tabStyle[s] = `border:none;border-radius:0;padding:12px 10px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;font-family:inherit;font-size:14px;background:${active ? colors[s] : 'var(--hz-surface-card)'};color:${active ? textColors[s] : 'var(--hz-text-secondary)'}`;
+      badgeStyle[s] = `background:${active ? 'rgba(255,255,255,.25)' : 'var(--hz-neutral-200)'};color:${active ? '#fff' : 'var(--hz-text-secondary)'};border-radius:999px;padding:1px 8px;font-size:12px;font-weight:700`;
+      selectors[s] = () => this.setState({ stage: s });
+    }
+    const subTabs = ['pending','inbound','outbound'];
+    const subTabClass = {};
+    for (const t of subTabs) subTabClass[t] = this.state.subTab === t ? 'is-active' : '';
+    return {
+      isPre: this.state.stage === 'pre',
+      isL0: this.state.stage === 'l0',
+      tabClass, tabStyle, badgeStyle,
+      selectPre: selectors.pre, selectL0: selectors.l0, selectL1: selectors.l1, selectL2: selectors.l2,
+      selectL3: selectors.l3, selectL4: selectors.l4, selectL5: selectors.l5,
+      discoveredLabel: this.state.discoveredShown ? 'Hide' : 'Show',
+      discoveredIcon: this.state.discoveredShown ? 'far fa-chevron-up' : 'far fa-chevron-down',
+      toggleDiscovered: () => this.setState(s => ({ discoveredShown: !s.discoveredShown })),
+      subTabClass,
+      selectPending: () => this.setState({ subTab: 'pending' }),
+      selectInbound: () => this.setState({ subTab: 'inbound' }),
+      selectOutbound: () => this.setState({ subTab: 'outbound' })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:220px minmax(0,1fr)">
+
+<div class="hz-sidebar" style="width:220px;height:100vh;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-weight:800;font-size:19px;letter-spacing:.03em;color:var(--hz-text-primary)">BR</span>
+        <i class="fas fa-caret-up" style="color:var(--hz-horizon-primary);font-size:16px;margin:0 -2px"></i>
+        <span style="font-weight:800;font-size:19px;letter-spacing:.03em;color:var(--hz-text-primary)">IN</span>
+      </div>
+      <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-window-maximize" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:12px;padding:6px 2px;justify-content:space-between">
+      <span style="font-weight:600;color:var(--hz-text-secondary)">Demo</span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-message-plus"></i>New Chat</button>
+  </div>
+  <div style="padding:8px 6px;flex:1;min-height:0;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-th-large" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-search-location" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span><span class="hz-badge hz-badge--secondary" style="margin-left:auto;background:var(--hz-neutral-300);color:var(--hz-text-primary)">2</span></a>
+        <a href="Pipeline v2.1.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-sitemap" style="font-size:17px"></i><span class="hz-sidebar__label">Pipeline</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Master Data</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-university" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb" style="font-size:17px"></i><span class="hz-sidebar__label">Insight</span></a>
+        <a href="AI Agent.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-robot" style="font-size:17px"></i><span class="hz-sidebar__label">AI Agent</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-desktop" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-magic" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-alt" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Chat History</div>
+      <div style="padding:16px 10px;text-align:center;color:var(--hz-text-tertiary);font-size:13px;line-height:1.5">No chats yet. Start a new conversation.</div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%">
+      <span class="hz-avatar hz-avatar--sm">TU</span>
+      <span><span class="hz-account-trigger__name" style="display:block">Test User</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div style="min-width:0;overflow-y:auto">
+  <div style="background:linear-gradient(135deg,var(--hz-blue-50),var(--hz-neutral-50));padding:24px 28px 28px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+      <div>
+        <div class="hz-h2" style="margin:0">Sourcing</div>
+        <div class="hz-body-r hz-muted" style="margin-top:4px">Candidates not yet promoted into L0 sourcing</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="background:var(--hz-surface-card)"><i class="far fa-gear"></i>Track Settings</button>
+        
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+
+    <div class="hz-tabs">
+      <button class="hz-tab {{ viewTabClass.scanning }}" onClick="{{ selectScanningView }}">AI Market Scanning</button>
+      <button class="hz-tab {{ viewTabClass.pending }}" onClick="{{ selectPendingView }}">Pending Confirmation<span class="hz-badge hz-badge--soft" style="margin-left:6px;background:var(--hz-orange-50);color:var(--hz-orange-700)">2</span></button>
+    </div>
+
+    <sc-if value="{{ isScanningView }}" hint-placeholder-val="{{ true }}">
+    <div class="hz-card" style="padding:20px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="width:40px;height:40px;border-radius:10px;background:var(--hz-horizon-primary);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far fa-sparkles" style="font-size:17px"></i></span>
+          <div>
+            <span class="hz-h5" style="margin:0;color:var(--hz-horizon-primary)">AI Market Scanning</span>
+            <div class="hz-body-s hz-muted" style="margin-top:2px">Powered by AI thesis matching</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-gear"></i>Configure</button>
+          <button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-play"></i>Run Scan Now</button>
+          <button class="hz-btn hz-btn--text hz-btn--sm"><i class="far fa-eye-slash"></i>Hide</button>
+        </div>
+      </div>
+      <div style="display:flex;gap:56px;margin-top:20px;flex-wrap:wrap">
+        <div>
+          <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:600">Last scan completed</div>
+          <div style="font-weight:700;margin-top:4px">–</div>
+        </div>
+        <div>
+          <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:600">Next scan</div>
+          <div style="font-weight:700;margin-top:4px">–</div>
+        </div>
+        <div>
+          <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:600">New candidates (last 7d)</div>
+          <div style="font-weight:700;margin-top:4px">0</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hz-card" style="padding:20px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="width:40px;height:40px;border-radius:10px;background:var(--hz-horizon-primary);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far fa-bullseye-arrow" style="font-size:17px"></i></span>
+          <div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <span class="hz-h5" style="margin:0;color:var(--hz-horizon-primary)">AI-Discovered Companies</span>
+              
+            </div>
+            <div class="hz-body-s hz-muted" style="margin-top:2px">Companies matching your investment thesis will appear here</div>
+          </div>
+        </div>
+        <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ toggleDiscovered }}">{{ discoveredLabel }}<i class="{{ discoveredIcon }}"></i></button>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isPendingView }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-card" style="padding:20px;border:1px solid var(--hz-border-subtle)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div>
+          <div class="hz-h5" style="margin:0"><span style="width:6px;height:6px;border-radius:50%;background:var(--hz-orange-500);display:inline-block;margin-right:8px"></span>Pending Confirmation<span class="hz-badge hz-badge--soft" style="margin-left:6px;background:var(--hz-orange-50);color:var(--hz-orange-700)">2</span></div>
+          <div class="hz-body-s hz-muted" style="margin-top:2px">Companies awaiting initial screening decision</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px;position:relative">
+          <i class="far fa-magnifying-glass" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--hz-text-tertiary);font-size:13px"></i>
+          <input placeholder="Search companies or sectors…" style="width:100%;padding:9px 12px 9px 34px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+        </div>
+        <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+          <option>All Origins</option>
+        </select>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="width:36px;padding:0;justify-content:center"><i class="far fa-sliders-h"></i></button>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:14px;padding:12px 14px;background:var(--hz-yellow-50);border:1px solid var(--hz-yellow-200);border-radius:8px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--hz-yellow-900,#7a5c00)">
+          <span class="hz-badge hz-badge--dot" style="background:var(--hz-orange-500);color:#fff">2</span>
+          <span>new companies from email attachments</span>
+          <span class="hz-muted">— 2 other</span>
+        </div>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm">Triage Unreviewed</button>
+      </div>
+
+      <div style="overflow-x:auto;margin-top:14px">
+        <table class="hz-table">
+          <thead>
+            <tr>
+              <th>Company <i class="far fa-arrow-up-arrow-down" style="font-size:10px"></i></th>
+              <th>Deal Sponsor</th>
+              <th>Entered by</th>
+              <th>Banker / Source</th>
+              <th>Advisor</th>
+              <th>Live</th>
+              <th>NBO Date</th>
+              <th>Sector</th>
+              <th>Geo</th>
+              <th>Matched Tracks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-left:3px solid var(--hz-orange-400)">
+              <td><i class="far fa-sparkles" style="color:var(--hz-horizon-primary);margin-right:8px"></i>PT Sinar Teknologi<div class="hz-body-s hz-muted">[Project Sinar]</div></td>
+              <td class="hz-muted">—</td>
+              <td class="hz-muted">—</td>
+              <td><span class="hz-chip" style="background:var(--hz-neutral-100)"><i class="far fa-university" style="font-size:11px"></i>Golden Sacks</span></td>
+              <td class="hz-muted">—</td>
+              <td><span class="hz-badge hz-badge--outline">Not live</span></td>
+              <td class="hz-muted">-</td>
+              <td>Technology</td>
+              <td>Indonesia</td>
+              <td class="hz-muted">—</td>
+            </tr>
+            <tr style="border-left:3px solid var(--hz-orange-400)">
+              <td><i class="far fa-sparkles" style="color:var(--hz-horizon-primary);margin-right:8px"></i>BrightStar Energy<div class="hz-body-s hz-muted">[Project BrightStar]</div></td>
+              <td class="hz-muted">—</td>
+              <td class="hz-muted">—</td>
+              <td><span class="hz-chip" style="background:var(--hz-neutral-100)"><i class="far fa-university" style="font-size:11px"></i>JP Organ</span></td>
+              <td class="hz-muted">—</td>
+              <td><span class="hz-badge hz-badge--outline">Not live</span></td>
+              <td class="hz-muted">-</td>
+              <td>Energy</td>
+              <td>Indonesia</td>
+              <td class="hz-muted">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </sc-if>
+
+  </div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { discoveredShown: false, view: 'scanning' };
+  renderVals() {
+    return {
+      discoveredLabel: this.state.discoveredShown ? 'Hide' : 'Show',
+      discoveredIcon: this.state.discoveredShown ? 'far fa-chevron-up' : 'far fa-chevron-down',
+      toggleDiscovered: () => this.setState(s => ({ discoveredShown: !s.discoveredShown })),
+      isScanningView: this.state.view === 'scanning',
+      isPendingView: this.state.view === 'pending',
+      viewTabClass: {
+        scanning: this.state.view === 'scanning' ? 'is-active' : '',
+        pending: this.state.view === 'pending' ? 'is-active' : ''
+      },
+      selectScanningView: () => this.setState({ view: 'scanning' }),
+      selectPendingView: () => this.setState({ view: 'pending' })
+    };
+  }
+}
+</script>
+</body>
+</html>

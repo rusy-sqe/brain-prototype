@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:200px minmax(0,1fr) 280px">
+
+<div class="hz-sidebar" style="width:200px;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="width:28px;height:28px;border-radius:8px;background:var(--hz-horizon-primary);color:#fff;display:flex;align-items:center;justify-content:center"><i class="far fa-brain" style="font-size:15px"></i></span>
+        <span class="hz-h6" style="margin:0;letter-spacing:.02em">Investment Brain</span>
+      </div>
+      <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:10px;padding:6px 8px">
+      <span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-200)"><i class="far fa-building" style="font-size:12px"></i></span>
+      <span><span class="hz-account-trigger__name" style="display:block">Startech VCC</span></span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-message-plus"></i>New Chat</button>
+  </div>
+  <div style="padding:8px 6px;flex:1;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-grid-2" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-diagram-project" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Master Data</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-building-columns" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb-on" style="font-size:17px"></i><span class="hz-sidebar__label">Insight</span></a>
+        <a href="AI Agent.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-robot" style="font-size:17px"></i><span class="hz-sidebar__label">AI Agent</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-display" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-wand-magic-sparkles" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-nodes" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Chat History</div>
+      <div class="hz-sidebar__group-items">
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-message" style="font-size:16px"></i><span class="hz-sidebar__label">New Artefact Creation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-message" style="font-size:16px"></i><span class="hz-sidebar__label">Investment thesis artifact</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-message" style="font-size:16px"></i><span class="hz-sidebar__label">Refresh artifact</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%">
+      <span class="hz-avatar hz-avatar--sm">NK</span>
+      <span><span class="hz-account-trigger__name" style="display:block">Nur Khairusy</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div class="hz-shell__main" style="min-width:0">
+  <div class="hz-shell__content" style="gap:16px;padding:20px">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <a href="Insight List.dc.html" class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500);text-decoration:none"><i class="far fa-arrow-left"></i>Back</a>
+      </div>
+      <div class="hz-row hz-gap-2">
+        <button class="hz-btn hz-btn--text hz-btn--sm" style="{{ updateBtnStyle }}" onClick="{{ toggleUpdateActive }}"><i class="far fa-object-group"></i>{{ updateBtnLabel }}</button>
+        <div style="position:relative">
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" onClick="{{ toggleShareMenu }}"><i class="far fa-share-alt"></i>Share</button>
+          <sc-if value="{{ shareMenuOpen }}">
+            <div style="position:absolute;top:calc(100% + 6px);right:0;z-index:20;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:10px;box-shadow:var(--hz-shadow-md, 0 4px 16px rgba(0,0,0,.12));min-width:170px;padding:6px">
+              <button class="hz-btn hz-btn--text hz-btn--sm" style="width:100%;justify-content:flex-start;color:var(--hz-text-primary)" onClick="{{ toggleShareMenu }}"><i class="far fa-file-pdf" style="width:16px"></i>Export to PDF</button>
+            </div>
+          </sc-if>
+        </div>
+        <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" title="History"><i class="far fa-history"></i></button>
+        <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" title="Expand"><i class="far fa-expand"></i></button>
+        <div style="position:relative">
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="width: 32px; padding: 0; justify-content: center; color: var(--hz-neutral-500)" onClick="{{ toggleMoreMenu }}"><i class="far fa-ellipsis-v"></i></button>
+          <sc-if value="{{ moreMenuOpen }}">
+            <div style="position:absolute;top:calc(100% + 6px);right:0;z-index:20;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:10px;box-shadow:var(--hz-shadow-md, 0 4px 16px rgba(0,0,0,.12));min-width:150px;padding:6px">
+              <button class="hz-btn hz-btn--text hz-btn--sm" style="width:100%;justify-content:flex-start;color:var(--hz-red-600, #d33)" onClick="{{ openDeleteConfirm }}"><i class="far fa-trash" style="width:16px"></i>Delete</button>
+            </div>
+          </sc-if>
+        </div>
+
+        <sc-if value="{{ deleteConfirmOpen }}">
+          <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+            <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:360px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+              <div class="hz-h5" style="margin:0 0 8px">Delete this insight?</div>
+              <div class="hz-body-s hz-muted" style="margin-bottom:20px">This action can't be undone.</div>
+              <div style="display:flex;justify-content:flex-end;gap:10px">
+                <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeDeleteConfirm }}">Cancel</button>
+                <button class="hz-btn hz-btn--sm" style="background:var(--hz-red-600, #d33);color:#fff;border:none" onClick="{{ closeDeleteConfirm }}">Delete</button>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+
+    <div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="hz-h3" style="margin:0">Semiconductor Deal Landscape &amp; Valuation Benchmarks</div>
+        
+      </div>
+      <div class="hz-body-l hz-muted" style="margin-top:6px;max-width:760px">Market brief on semiconductor equipment &amp; sub-system deal activity across South Korea and the US, plus active bidder landscape, valuation multiples and diligence risks.</div>
+      <div class="hz-body-s hz-muted" style="margin-top:8px">Updated 21 Sept 2026, 09:52</div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,var(--hz-blue-800),var(--hz-blue-900));border-radius:14px;padding:32px;color:#fff">
+      <div class="hz-body-s" style="font-weight:700;letter-spacing:.1em;color:var(--hz-blue-200)">MARKET BRIEF · SOUTH KOREA · UNITED STATES · REGENERATED</div>
+      <div class="hz-h2" style="margin:10px 0 0;color:#fff">Semiconductor Equipment — Deal Landscape &amp; Bidder Activity</div>
+      <div class="hz-body-l" style="margin-top:12px;color:var(--hz-blue-100);max-width:820px">Who's actively bidding on front-end semiconductor and OEM sub-system assets this quarter, what multiples are clearing, and which diligence flags keep killing deals at L0. This is v2: every figure re-pulled from source.</div>
+      <div style="margin-top:20px;background:rgba(255,255,255,.1);border-radius:10px;padding:16px 18px;font-size:13.5px;line-height:1.6;color:var(--hz-blue-50)">Refreshed 21 September 2026. Figures are sourced from banker submissions and public filings — not transaction-confirmed. FX: <strong style="color:#fff">Rp15,450 / USD</strong> (20 Sep 2026 mid-market), replacing the Rp15,120 used in v1.</div>
+    </div>
+
+    <div>
+      <div class="hz-h5" style="margin:0 0 12px">What changed since v1</div>
+      <div class="hz-card" style="overflow-x:auto">
+        <table class="hz-table">
+          <thead><tr><th>Item</th><th>V1 (Q2 2026)</th><th>Now (Sep 2026)</th><th>So what</th></tr></thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:600">Top-of-market multiple</td>
+              <td class="hz-muted">7.2–8.1x EV/EBITDA (front-end tooling)</td>
+              <td><strong style="color:var(--hz-blue-700)">6.4x</strong> is the current ceiling across tracked mandates</td>
+              <td class="hz-muted">Top-of-market has compressed; treat v1 comps as stale.</td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Active bidder count</td>
+              <td class="hz-muted">18 tracked strategics + funds</td>
+              <td><strong style="color:var(--hz-blue-700)">−22%</strong>; down to 14, concentrated in 2 corridors</td>
+              <td class="hz-muted">Fewer credible bidders per asset — longer processes likely.</td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">FX</td>
+              <td class="hz-muted">Rp15,120 / USD</td>
+              <td><strong style="color:var(--hz-blue-700)">Rp15,450 / USD</strong> (IDR −2.2%)</td>
+              <td class="hz-muted">Slightly softer rupiah on USD-denominated deal value.</td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Diligence flag rate</td>
+              <td class="hz-muted">1 in 5 deals dropped at L0</td>
+              <td><strong style="color:var(--hz-blue-700)">1 in 3</strong> now dropped at L0</td>
+              <td class="hz-muted">Screening is tightening — mostly IP provenance and export-control flags.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div style="border-left:1px solid var(--hz-border-subtle);background:var(--hz-surface-card);display:flex;flex-direction:column;height:100%">
+  <div style="padding:14px 16px;border-bottom:1px solid var(--hz-border-subtle);display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px"><i class="far fa-sparkles" style="color:var(--hz-horizon-primary)"></i>AI CoPilot</div>
+    <div style="display:flex;align-items:center;gap:10px;color:var(--hz-text-tertiary)">
+      <span class="hz-body-s" style="font-weight:600;color:var(--hz-text-secondary)">Auto <i class="far fa-chevron-down" style="font-size:10px"></i></span>
+      <i class="far fa-pen"></i>
+      <i class="far fa-expand"></i>
+    </div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-start;padding:20px;gap:16px">
+    <div class="hz-h4" style="margin:0;color:var(--hz-horizon-primary)">Ask away, Nur!</div>
+    <div style="display:flex;align-items:center;gap:8px;border:1px solid var(--hz-border-default);border-radius:12px;padding:10px 12px;background:var(--hz-surface-page)">
+      <i class="far fa-paperclip" style="color:var(--hz-text-tertiary)"></i>
+      <input placeholder="Ask anything…" style="flex:1;border:none;outline:none;background:none;font-family:inherit;font-size:14px;color:var(--hz-text-primary)">
+      <button style="width:28px;height:28px;border-radius:8px;border:none;background:var(--hz-horizon-primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer"><i class="far fa-arrow-up" style="font-size:12px"></i></button>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <button style="font-family:inherit;text-align:left;background:var(--hz-surface-subtle);border:1px solid var(--hz-border-subtle);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;cursor:pointer;color:var(--hz-text-primary)"><i class="far fa-briefcase" style="color:var(--hz-horizon-primary)"></i><span style="font-size:13px;font-weight:600">Active Deal Summary</span></button>
+      <button style="font-family:inherit;text-align:left;background:var(--hz-surface-subtle);border:1px solid var(--hz-border-subtle);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;cursor:pointer;color:var(--hz-text-primary)"><i class="far fa-chart-line" style="color:var(--hz-horizon-primary)"></i><span style="font-size:13px;font-weight:600">Fund Performance</span></button>
+      <button style="font-family:inherit;text-align:left;background:var(--hz-surface-subtle);border:1px solid var(--hz-border-subtle);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;cursor:pointer;color:var(--hz-text-primary)"><i class="far fa-magnifying-glass" style="color:var(--hz-horizon-primary)"></i><span style="font-size:13px;font-weight:600">Asset Analysis</span></button>
+      <button style="font-family:inherit;text-align:left;background:var(--hz-surface-subtle);border:1px solid var(--hz-border-subtle);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;cursor:pointer;color:var(--hz-text-primary)"><i class="far fa-globe" style="color:var(--hz-horizon-primary)"></i><span style="font-size:13px;font-weight:600">Cross-Portfolio View</span></button>
+    </div>
+  </div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { shareMenuOpen: false, updateActive: false, moreMenuOpen: false, deleteConfirmOpen: false };
+  renderVals() {
+    return {
+      shareMenuOpen: this.state.shareMenuOpen,
+      toggleShareMenu: () => this.setState(s => ({ shareMenuOpen: !s.shareMenuOpen })),
+      updateBtnStyle: this.state.updateActive
+        ? 'color:var(--hz-horizon-primary);background:var(--hz-surface-subtle)'
+        : 'color:var(--hz-neutral-500)',
+      updateBtnLabel: this.state.updateActive ? 'Select Section to Update' : 'Update',
+      toggleUpdateActive: () => this.setState(s => ({ updateActive: !s.updateActive })),
+      moreMenuOpen: this.state.moreMenuOpen,
+      toggleMoreMenu: () => this.setState(s => ({ moreMenuOpen: !s.moreMenuOpen })),
+      deleteConfirmOpen: this.state.deleteConfirmOpen,
+      openDeleteConfirm: () => this.setState({ moreMenuOpen: false, deleteConfirmOpen: true }),
+      closeDeleteConfirm: () => this.setState({ deleteConfirmOpen: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

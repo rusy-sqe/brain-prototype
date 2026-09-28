@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)} .hz-table--compact td{padding:8px 10px !important}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:220px minmax(0,1fr)">
+
+<div class="hz-sidebar" style="width:220px;height:100vh;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-weight:800;font-size:19px;letter-spacing:.03em;color:var(--hz-text-primary)">BR</span>
+        <i class="fas fa-caret-up" style="color:var(--hz-horizon-primary);font-size:16px;margin:0 -2px"></i>
+        <span style="font-weight:800;font-size:19px;letter-spacing:.03em;color:var(--hz-text-primary)">IN</span>
+      </div>
+      <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-window-maximize" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:12px;padding:6px 2px;justify-content:space-between">
+      <span style="font-weight:600;color:var(--hz-text-secondary)">Demo</span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-message-plus"></i>New Chat</button>
+  </div>
+  <div style="padding:8px 6px;flex:1;min-height:0;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-th-large" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-search-location" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span><span class="hz-badge hz-badge--secondary" style="margin-left:auto;background:var(--hz-neutral-300);color:var(--hz-text-primary)">2</span></a>
+        <a href="Pipeline v2.1.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-sitemap" style="font-size:17px"></i><span class="hz-sidebar__label">Pipeline</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Master Data</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-university" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb" style="font-size:17px"></i><span class="hz-sidebar__label">Insight</span></a>
+        <a href="AI Agent.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-robot" style="font-size:17px"></i><span class="hz-sidebar__label">AI Agent</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-desktop" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-magic" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-alt" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Chat History</div>
+      <div style="padding:16px 10px;text-align:center;color:var(--hz-text-tertiary);font-size:13px;line-height:1.5">No chats yet. Start a new conversation.</div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%">
+      <span class="hz-avatar hz-avatar--sm">TU</span>
+      <span><span class="hz-account-trigger__name" style="display:block">Test User</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div style="min-width:0;overflow-y:auto">
+  <div style="background:linear-gradient(135deg,var(--hz-blue-50),var(--hz-neutral-50));padding:24px 28px 28px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+      <div>
+        <div class="hz-h2" style="margin:0">Deal Pipeline</div>
+        <div class="hz-body-r hz-muted" style="margin-top:4px">Track companies through all stages</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="background:var(--hz-surface-card);color:var(--hz-neutral-500);border-color:var(--hz-neutral-300)"><i class="far fa-cog"></i>Track</button>
+        
+      </div>
+    </div>
+
+  </div>
+
+  <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+
+    <div class="hz-tabs">
+      <button class="hz-tab {{ viewTabClass.companies }}" onClick="{{ selectCompaniesView }}">Pipeline Companies</button>
+      <button class="hz-tab {{ viewTabClass.screening }}" onClick="{{ selectScreeningView }}"><i class="far fa-sparkles" style="margin-right:6px"></i>AI Screening Progress<span class="hz-badge hz-badge--soft" style="margin-left: 6px; background-color: var(--hz-red-500); color: #fff">4</span></button>
+    </div>
+
+    <sc-if value="{{ isCompaniesView }}" hint-placeholder-val="{{ true }}">
+    <div class="hz-card" style="padding:20px;border:1px solid var(--hz-border-subtle)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div>
+          <div class="hz-h5" style="margin:0">Pipeline Companies</div>
+          <div class="hz-body-s hz-muted" style="margin-top:2px">Manage your deal in pipelines</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          
+          <button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-plus"></i>Add Company</button>
+          
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;margin-top:16px">
+        <span class="hz-body-s" style="font-weight:700;letter-spacing:.06em;color:var(--hz-text-tertiary)">STAGE</span>
+        <div class="hz-tabs" style="border-bottom:none">
+          <sc-for list="{{ stageOptions }}" as="opt" hint-placeholder-count="6">
+            <button class="hz-tab {{ opt.tabClass }}" onClick="{{ opt.selectOnly }}">{{ opt.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px;position:relative">
+          <i class="far fa-magnifying-glass" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--hz-text-tertiary);font-size:13px"></i>
+          <input placeholder="Search companies or sectors…" style="width:100%;padding:9px 12px 9px 34px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+        </div>
+        <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+          <option>All Origins</option>
+        </select>
+        <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+          <option>All Sources</option>
+          <option>Inbound</option>
+          <option>Outbound</option>
+        </select>
+        <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+          <option>Active</option>
+          <option>Dropped</option>
+        </select>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="width:36px;padding:0;justify-content:center;color:var(--hz-neutral-500);border-color:var(--hz-neutral-300)"><i class="far fa-sliders-h"></i></button>
+      </div>
+
+      <div style="overflow-x:auto;margin-top:14px">
+        <table class="hz-table hz-table--compact" style="font-size:13px">
+          <thead>
+            <tr>
+              <th style="padding:8px 10px">Company <i class="far fa-arrow-up-arrow-down" style="font-size:10px"></i></th>
+              <th style="padding:8px 10px">Stage</th>
+              <th style="padding:8px 10px">Banker / Source</th>
+              <th style="padding:8px 10px">Sector</th>
+              <th style="padding:8px 10px">Geo</th>
+              <th style="padding:8px 10px">Matched Tracks</th>
+              <th style="padding:8px 10px;text-align:center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Palantir Technologies<div class="hz-body-s hz-muted">[Project Boom]</div></td>
+              <td><span class="hz-body-s hz-muted">L0</span></td>
+              <td><span class="hz-chip" style="background:var(--hz-neutral-100)"><i class="far fa-university" style="font-size:11px"></i>Aldira</span></td>
+              <td>AI Software / Government &amp; Enterprise Analytics</td>
+              <td>USA</td>
+              <td style="max-width:180px"><span class="hz-badge hz-badge--soft" style="display: inline; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: top; font-weight: 500; font-size: 10px">Consolidation Play: rolling up</span></td>
+              <td style="text-align:center"><div style="display:flex;justify-content:center;gap:4px"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" title="Update" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-pencil"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" title="View details" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-eye"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" title="AI Insight" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-sparkles"></i>Ask</button></div></td>
+            </tr>
+            <tr>
+              <td>BV Holdings JSC<div class="hz-body-s hz-muted">[Project Banyan]</div></td>
+              <td><span class="hz-body-s hz-muted">L0</span></td>
+              <td><span class="hz-chip" style="background:var(--hz-neutral-100)"><i class="far fa-university" style="font-size:11px"></i>Aldira</span></td>
+              <td>Packaging Paper &amp; Containerboard Manufacturing</td>
+              <td>Vietnam</td>
+              <td style="max-width:180px"><span class="hz-badge hz-badge--soft" style="display: inline; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: top; font-weight: 500; font-size: 10px">Consolidation Play: rolling up</span></td>
+              <td style="text-align:center"><div style="display:flex;justify-content:center;gap:4px"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" title="Update" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-pencil"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" title="View details" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-eye"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" title="AI Insight" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-sparkles"></i>Ask</button></div></td>
+            </tr>
+            <tr>
+              <td>[Project Phoenix (项目凤凰)]</td>
+              <td><span class="hz-body-s hz-muted">L0</span></td>
+              <td><span class="hz-chip" style="background:var(--hz-neutral-100)"><i class="far fa-university" style="font-size:11px"></i>Aldira</span></td>
+              <td>Pulp &amp; Paper</td>
+              <td>China</td>
+              <td style="max-width:220px"><div style="display:flex;flex-wrap:wrap;gap:4px"><span class="hz-badge hz-badge--soft" style="white-space: nowrap; font-weight: 500; font-size: 10px">Paper Companies</span><span class="hz-badge hz-badge--soft" style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline; font-weight: 500; font-size: 10px">Consolidation Play: rolling up</span></div></td>
+              <td style="text-align:center"><div style="display:flex;justify-content:center;gap:4px"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" title="Update" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-pencil"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" title="View details" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-eye"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" title="AI Insight" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-sparkles"></i>Ask</button></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isScreeningView }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-card" style="padding:20px;border:1px solid var(--hz-border-subtle)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="color:var(--hz-horizon-primary);flex-shrink:0"><i class="far fa-sparkles" style="font-size:18px"></i></span>
+          <div>
+            <div class="hz-h5" style="margin:0">AI Screening Progress</div>
+            <div class="hz-body-s hz-muted" style="margin-top:2px">Real-time status of company screenings</div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div style="display:flex;align-items:center;gap:8px;margin-top:16px;font-weight:700">
+        <i class="far fa-circle-check" style="color:var(--hz-green-600)"></i>Completed (4)
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:12px;min-width:0">
+            <i class="far fa-circle-xmark" style="color:var(--hz-red-600);font-size:16px"></i>
+            <div>
+              <div style="font-weight:700">Palantir Technologies — Project Boom</div>
+              <div style="margin-top:4px"><span class="hz-badge hz-badge--soft" style="font-weight:400">SEA Industrial Tech Roll-Up</span></div>
+              <div class="hz-body-s hz-muted" style="margin-top:2px">2 criteria evaluated · <span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">1✗</span> · <span style="color:var(--hz-red-600);font-weight:700">Failed</span></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-red-600);border-color:var(--hz-red-300)"><i class="far fa-times"></i>Drop</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:12px;min-width:0">
+            <i class="far fa-circle-question" style="color:var(--hz-orange-500);font-size:16px"></i>
+            <div>
+              <div style="font-weight:700">Palantir Technologies — Project Boom</div>
+              <div style="margin-top:4px"><span class="hz-badge hz-badge--soft" style="font-weight:400">Consolidation Play: rolling up paper companies globally</span></div>
+              <div class="hz-body-s hz-muted" style="margin-top:2px">2 criteria evaluated · <span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">0✗</span> <span style="color:var(--hz-orange-600)">1?</span> · <span style="color:var(--hz-orange-700);font-weight:700">Inconclusive</span></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-red-600);border-color:var(--hz-red-300)"><i class="far fa-times"></i>Drop</button>
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-green-700);border-color:var(--hz-green-300)"><i class="far fa-arrow-right"></i>Promote to L1</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:12px;min-width:0">
+            <i class="far fa-circle-question" style="color:var(--hz-orange-500);font-size:16px"></i>
+            <div>
+              <div style="font-weight:700">BV Holdings JSC — Project Banyan</div>
+              <div style="margin-top:4px"><span class="hz-badge hz-badge--soft" style="font-weight:400">Consolidation Play: rolling up paper companies globally</span></div>
+              <div class="hz-body-s hz-muted" style="margin-top:2px">2 criteria evaluated · <span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">0✗</span> <span style="color:var(--hz-orange-600)">1?</span> · <span style="color:var(--hz-orange-700);font-weight:700">Inconclusive</span></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-red-600);border-color:var(--hz-red-300)"><i class="far fa-times"></i>Drop</button>
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-green-700);border-color:var(--hz-green-300)"><i class="far fa-arrow-right"></i>Promote to L1</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:12px;min-width:0">
+            <i class="far fa-circle-question" style="color:var(--hz-orange-500);font-size:16px"></i>
+            <div>
+              <div style="font-weight:700">BV Holdings JSC — Project Banyan</div>
+              <div style="margin-top:4px"><span class="hz-badge hz-badge--soft" style="font-weight:400">Paper Companies</span></div>
+              <div class="hz-body-s hz-muted" style="margin-top:2px">1 criteria evaluated · <span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">0✗</span> · <span style="color:var(--hz-orange-700);font-weight:700">Inconclusive</span></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-red-600);border-color:var(--hz-red-300)"><i class="far fa-times"></i>Drop</button>
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-green-700);border-color:var(--hz-green-300)"><i class="far fa-arrow-right"></i>Promote to L1</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+  </div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { discoveredShown: false, subTab: 'inbound', view: 'companies', stageMenuOpen: false, selectedStages: ['l0'] };
+  stages = ['l0','l1','l2','l3','l4','l5'];
+  stageLabels = { l0: 'L0', l1: 'L1', l2: 'L2', l3: 'L3', l4: 'L4', l5: 'L5' };
+
+  componentDidMount() {
+    this._onDocClick = (e) => {
+      const el = this.stageFilterEl;
+      if (el && !el.contains(e.target)) this.setState({ stageMenuOpen: false });
+    };
+    document.addEventListener('mousedown', this._onDocClick);
+  }
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this._onDocClick);
+  }
+
+  toggleStage(key) {
+    this.setState(s => {
+      const sel = s.selectedStages.includes(key)
+        ? s.selectedStages.filter(k => k !== key)
+        : [...s.selectedStages, key];
+      return { selectedStages: sel };
+    });
+  }
+
+  renderVals() {
+    const subTabs = ['pending','inbound','outbound'];
+    const subTabClass = {};
+    for (const t of subTabs) subTabClass[t] = this.state.subTab === t ? 'is-active' : '';
+
+    const selected = this.state.selectedStages;
+
+    const stageOptions = this.stages.map(key => ({
+      key,
+      label: this.stageLabels[key],
+      tabClass: selected.length === 1 && selected[0] === key ? 'is-active' : '',
+      selectOnly: () => this.setState({ selectedStages: [key] })
+    }));
+
+    return {
+      stageOptions,
+      isCompaniesView: this.state.view === 'companies',
+      isScreeningView: this.state.view === 'screening',
+      viewTabClass: {
+        companies: this.state.view === 'companies' ? 'is-active' : '',
+        screening: this.state.view === 'screening' ? 'is-active' : ''
+      },
+      selectCompaniesView: () => this.setState({ view: 'companies' }),
+      selectScreeningView: () => this.setState({ view: 'screening' }),
+      discoveredLabel: this.state.discoveredShown ? 'Hide' : 'Show',
+      discoveredIcon: this.state.discoveredShown ? 'far fa-chevron-up' : 'far fa-chevron-down',
+      toggleDiscovered: () => this.setState(s => ({ discoveredShown: !s.discoveredShown })),
+      subTabClass,
+      selectPending: () => this.setState({ subTab: 'pending' }),
+      selectInbound: () => this.setState({ subTab: 'inbound' }),
+      selectOutbound: () => this.setState({ subTab: 'outbound' })
+    };
+  }
+}
+</script>
+</body>
+</html>

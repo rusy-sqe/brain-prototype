@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:200px minmax(0,1fr)">
+
+<div class="hz-sidebar" style="width:200px;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="width:28px;height:28px;border-radius:8px;background:var(--hz-horizon-primary);color:#fff;display:flex;align-items:center;justify-content:center"><i class="far fa-brain" style="font-size:15px"></i></span>
+        <span class="hz-h6" style="margin:0;letter-spacing:.02em">Investment Brain</span>
+      </div>
+      <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:10px;padding:6px 8px">
+      <span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-200)"><i class="far fa-building" style="font-size:12px"></i></span>
+      <span><span class="hz-account-trigger__name" style="display:block">Startech VCC</span></span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-message-plus"></i>New Chat</button>
+  </div>
+  <div style="padding:8px 6px;flex:1;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-grid-2" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-diagram-project" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Master Data</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-building-columns" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb-on" style="font-size:17px"></i><span class="hz-sidebar__label">Insight</span></a>
+        <a href="AI Agent.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-robot" style="font-size:17px"></i><span class="hz-sidebar__label">AI Agent</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-display" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-wand-magic-sparkles" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-nodes" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Chat History</div>
+      <div class="hz-sidebar__group-items">
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-message" style="font-size:16px"></i><span class="hz-sidebar__label">New Artefact Creation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-message" style="font-size:16px"></i><span class="hz-sidebar__label">Investment thesis artifact</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-message" style="font-size:16px"></i><span class="hz-sidebar__label">Refresh artifact</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%">
+      <span class="hz-avatar hz-avatar--sm">NK</span>
+      <span><span class="hz-account-trigger__name" style="display:block">Nur Khairusy</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div class="hz-shell__main" style="min-width:0">
+  <div class="hz-shell__content" style="gap:20px;padding:20px">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <div>
+        <div class="hz-h3" style="margin:0">Insights</div>
+        <div class="hz-body-r hz-muted" style="margin-top:4px">AI-generated insight helping you analyze market and any investment usecase</div>
+      </div>
+    </div>
+
+    <div class="hz-tabs">
+      <button class="hz-tab {{ tab1Class }}" onClick="{{ showList }}">Insight List</button>
+      <button class="hz-tab {{ tab2Class }}" onClick="{{ showTemplates }}">Template List</button>
+    </div>
+
+    <sc-if value="{{ isListTab }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;justify-content:flex-end">
+      <a href="Insight Chat.dc.html" class="hz-btn hz-btn--primary hz-btn--sm" style="text-decoration:none"><i class="far fa-plus"></i>New Insight</a>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a href="Insight.dc.html" style="text-decoration:none;color:inherit;display:block;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:12px;padding:20px;transition:border-color .15s" onMouseOver="this.style.borderColor='var(--hz-horizon-primary)'" onMouseOut="this.style.borderColor='var(--hz-border-subtle)'">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+          <div style="min-width:0;flex:1">
+            <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+              <div class="hz-h5" style="margin:0;min-width:0">Semiconductor Deal Landscape &amp; Valuation Benchmarks</div>
+              
+            </div>
+            
+          </div>
+          
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;margin-top:14px">
+          <span class="hz-body-s hz-muted"><i class="far fa-clock" style="margin-right:5px"></i>Updated 21 Sept 2026, 09:52</span>
+          
+        </div>
+      </a>
+
+      <div style="background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:12px;padding:20px">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+          <div style="min-width:0;flex:1">
+            <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+              <div class="hz-h5" style="margin:0;min-width:0">Southeast Asia Logistics — Fund Exposure Review</div>
+              
+            </div>
+            
+          </div>
+          
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;margin-top:14px">
+          <span class="hz-body-s hz-muted"><i class="far fa-clock" style="margin-right:5px"></i>Updated 15 Sept 2026, 14:10</span>
+          
+        </div>
+      </div>
+
+      <div style="background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:12px;padding:20px">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+          <div style="min-width:0;flex:1">
+            <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+              <div class="hz-h5" style="margin:0;min-width:0">Consumer Fintech — Regulatory Watch, Q3 2026</div>
+              
+            </div>
+            
+          </div>
+          
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;margin-top:14px">
+          <span class="hz-body-s hz-muted"><i class="far fa-clock" style="margin-right:5px"></i>Updated 9 Sept 2026, 11:30</span>
+          
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isTemplateTab }}">
+    <div style="display:flex;justify-content:flex-end">
+      <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ openUpload }}"><i class="far fa-upload"></i>Upload Template</button>
+    </div>
+
+    <sc-if value="{{ uploadOpen }}">
+      <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+        <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:420px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <div class="hz-h5" style="margin:0">Upload Template</div>
+            <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeUpload }}"><i class="far fa-xmark"></i></button>
+          </div>
+          <div class="hz-field hz-field--stacked" style="margin-bottom:16px">
+            <label class="hz-field__label">Template Name</label>
+            <div class="hz-field__control">
+              <input type="text" class="hz-field__input" placeholder="e.g. Market Brief">
+            </div>
+          </div>
+          <div style="border:2px dashed var(--hz-border-default);border-radius:10px;padding:28px;text-align:center;color:var(--hz-text-tertiary)">
+            <i class="far fa-cloud-arrow-up" style="font-size:26px;color:var(--hz-horizon-primary)"></i>
+            <div class="hz-body-r" style="margin-top:10px;color:var(--hz-text-secondary)">Drag &amp; drop a file, or</div>
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="margin-top:10px">Browse Files</button>
+            <div class="hz-body-s hz-muted" style="margin-top:8px">DOCX, PDF up to 10MB</div>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px">
+            <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeUpload }}">Cancel</button>
+            <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ closeUpload }}">Upload</button>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px">
+      <div style="background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px">
+        
+        <div class="hz-h6" style="margin:0">Market Brief</div>
+        <div class="hz-body-s hz-muted">Deal landscape, active bidders and valuation benchmarks for a sector or region.</div>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="margin-top:auto">Use Template</button>
+      </div>
+      <div style="background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px">
+        
+        <div class="hz-h6" style="margin:0">Portfolio Exposure Review</div>
+        <div class="hz-body-s hz-muted">Cross-portfolio exposure benchmarked against fund concentration limits.</div>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="margin-top:auto">Use Template</button>
+      </div>
+      <div style="background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px">
+        
+        <div class="hz-h6" style="margin:0">Regulatory Watch</div>
+        <div class="hz-body-s hz-muted">Tracks rule changes affecting portfolio companies, with exposure and remediation checklist.</div>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="margin-top:auto">Use Template</button>
+      </div>
+    </div>
+    </sc-if>
+
+  </div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { activeTab: 'list', uploadOpen: false };
+  renderVals() {
+    const active = this.state.activeTab;
+    return {
+      isListTab: active === 'list',
+      isTemplateTab: active === 'template',
+      tab1Class: active === 'list' ? 'is-active' : '',
+      tab2Class: active === 'template' ? 'is-active' : '',
+      showList: () => this.setState({ activeTab: 'list' }),
+      showTemplates: () => this.setState({ activeTab: 'template' }),
+      uploadOpen: this.state.uploadOpen,
+      openUpload: () => this.setState({ uploadOpen: true }),
+      closeUpload: () => this.setState({ uploadOpen: false })
+    };
+  }
+}
+</script>
+</body>
+</html>
