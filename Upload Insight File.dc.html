@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:200px minmax(0,1fr)">
+
+<div class="hz-sidebar" style="width:200px;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="uploads/logo-brain-light.svg" alt="Investment Brain" style="height:24px;width:auto">
+      </div>
+      <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:10px;padding:6px 8px">
+      <span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-200)"><i class="far fa-building" style="font-size:12px"></i></span>
+      <span><span class="hz-account-trigger__name" style="display:block">Startech VCC</span></span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-comment-plus"></i>New Chat</button>
+  </div>
+  <div style="padding:8px 6px;flex:1;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-th-large" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-search-location" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Master Data</span></div>
+        <a href="CRM.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM &amp; Email</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-university" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb" style="font-size:17px"></i><span class="hz-sidebar__label">Insight</span></a>
+        <a href="AI Agent.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-robot" style="font-size:17px"></i><span class="hz-sidebar__label">AI Agent</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-desktop" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-magic" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-alt" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%">
+      <span class="hz-avatar hz-avatar--sm">NK</span>
+      <span><span class="hz-account-trigger__name" style="display:block">Nur Khairusy</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div class="hz-shell__main" style="min-width:0">
+  <div class="hz-shell__content" style="gap:20px;padding:20px">
+
+    <div>
+      <a href="Insight List.dc.html" class="hz-body-s" style="text-decoration:none;font-weight:600"><i class="far fa-arrow-left" style="margin-right:6px"></i>Back to Insights</a>
+    </div>
+
+    <div>
+      <div class="hz-h3" style="margin:0">Upload a File</div>
+      <div class="hz-body-r hz-muted" style="margin-top:4px">Upload a document to generate an insight from its contents.</div>
+    </div>
+
+    <sc-if value="{{ noFile }}" hint-placeholder-val="{{ true }}">
+    <div style="border:2px dashed {{ dropBorder }};border-radius:14px;padding:48px 24px;text-align:center;background:{{ dropBg }};transition:background-color .15s,border-color .15s" onDragOver="{{ onDragOver }}" onDragLeave="{{ onDragLeave }}" onDrop="{{ onDrop }}">
+      <i class="far fa-cloud-upload" style="font-size:32px;color:var(--hz-horizon-primary)"></i>
+      <div class="hz-body-r" style="margin-top:12px;color:var(--hz-text-secondary)">Drag &amp; drop a file here</div>
+      <div class="hz-body-s hz-muted" style="margin-top:4px">A single HTML file up to 25MB</div>
+      <button class="hz-btn hz-btn--secondary hz-btn--sm" style="margin-top:16px" onClick="{{ browseFiles }}">Browse Files</button>
+    </div>
+    </sc-if>
+    <input type="file" accept=".html,text/html" ref="{{ fileInputRef }}" onChange="{{ onFileSelected }}" style="display:none">
+
+    <sc-if value="{{ hasFile }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;background:var(--hz-surface-card)">
+      <i class="far fa-file-alt" style="color:var(--hz-horizon-primary);font-size:18px"></i>
+      <div style="flex:1;min-width:0">
+        <div style="font-weight:700">{{ fileName }}</div>
+        <div class="hz-body-s hz-muted">Ready to process</div>
+      </div>
+      <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ browseFiles }}">Change file</button>
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ clearFile }}"><i class="far fa-times"></i></button>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-body-s" style="color:var(--hz-red-600);display:flex;align-items:center;gap:8px"><i class="far fa-exclamation-circle"></i>Only a single .html file is allowed.</div>
+    </sc-if>
+
+    <div style="display:flex;justify-content:flex-end;gap:10px">
+      <a href="Insight List.dc.html" class="hz-btn hz-btn--text hz-btn--sm" style="text-decoration:none">Cancel</a>
+      <button class="hz-btn hz-btn--primary hz-btn--sm" disabled="{{ uploadDisabled }}" onClick="{{ startGenerate }}"><i class="far fa-sparkles"></i>Generate Insight</button>
+    </div>
+
+  </div>
+</div>
+
+<sc-if value="{{ showProgress }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1000">
+  <div style="background:var(--hz-surface-card);border-radius:12px;padding:32px;width:400px;max-width:90vw;text-align:center;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+    <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+    <div style="width:48px;height:48px;border-radius:50%;background:var(--hz-green-50);color:var(--hz-green-600);display:flex;align-items:center;justify-content:center;margin:0 auto"><i class="far fa-check" style="font-size:20px"></i></div>
+    <div class="hz-h5" style="margin:16px 0 4px">Insight Ready</div>
+    <div class="hz-body-s hz-muted">Your insight has been generated successfully.</div>
+    <a href="Insight.dc.html" class="hz-btn hz-btn--primary hz-btn--sm" style="text-decoration:none;margin-top:20px"><i class="far fa-arrow-right"></i>View Insight</a>
+    </sc-if>
+    <sc-if value="{{ isGenerating }}" hint-placeholder-val="{{ true }}">
+    <div style="width:48px;height:48px;border-radius:50%;background:var(--hz-blue-50);color:var(--hz-horizon-primary);display:flex;align-items:center;justify-content:center;margin:0 auto"><i class="far fa-sparkles" style="font-size:20px"></i></div>
+    <div class="hz-h5" style="margin:16px 0 4px">Generating Insight</div>
+    <div class="hz-body-s hz-muted">{{ progressLabel }}</div>
+    <div style="height:8px;background:var(--hz-neutral-200);border-radius:99px;margin-top:20px;overflow:hidden">
+      <div style="height:100%;background:var(--hz-horizon-primary);border-radius:99px;width:{{ progressPct }}%;transition:width .3s"></div>
+    </div>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { dragging: false, fileName: null, error: false, progress: 0, generating: false };
+  steps = ['Parsing document…', 'Extracting key data…', 'Synthesizing insight…', 'Finalizing…'];
+
+  startGenerate() {
+    if (this.state.generating || !this.state.fileName) return;
+    this.setState({ generating: true, progress: 0 });
+    clearInterval(this._t);
+    this._t = setInterval(() => {
+      this.setState(s => {
+        const next = Math.min(s.progress + 8, 100);
+        if (next >= 100) {
+          clearInterval(this._t);
+          if (Math.random() < 0.25) {
+            window.location.href = 'Insight Generation Failed.dc.html';
+          }
+        }
+        return { progress: next };
+      });
+    }, 200);
+  }
+
+  handleFiles(files) {
+    if (!files || !files.length) return;
+    if (files.length > 1) { this.setState({ error: true, fileName: null }); return; }
+    const f = files[0];
+    const isHtml = f.name.toLowerCase().endsWith('.html') || f.type === 'text/html';
+    if (!isHtml) { this.setState({ error: true, fileName: null }); return; }
+    this.setState({ fileName: f.name, error: false });
+  }
+
+  renderVals() {
+    const hasFile = !!this.state.fileName;
+    return {
+      hasError: this.state.error,
+      noFile: !hasFile,
+      showProgress: this.state.generating,
+      isDone: this.state.progress >= 100,
+      isGenerating: this.state.progress < 100,
+      progressPct: this.state.progress,
+      progressLabel: this.steps[Math.min(Math.floor(this.state.progress / 26), this.steps.length - 1)],
+      startGenerate: () => this.startGenerate(),
+      dropBorder: this.state.dragging ? 'var(--hz-horizon-primary)' : 'var(--hz-border-default)',
+      dropBg: this.state.dragging ? 'var(--hz-blue-50)' : 'var(--hz-surface-card)',
+      onDragOver: (e) => { e.preventDefault(); this.setState({ dragging: true }); },
+      onDragLeave: () => this.setState({ dragging: false }),
+      onDrop: (e) => { e.preventDefault(); this.setState({ dragging: false }); this.handleFiles(e.dataTransfer.files); },
+      browseFiles: () => this.fileInputEl && this.fileInputEl.click(),
+      fileInputRef: (el) => { this.fileInputEl = el; },
+      onFileSelected: (e) => this.handleFiles(e.target.files),
+      hasFile,
+      fileName: this.state.fileName,
+      clearFile: () => this.setState({ fileName: null }),
+      uploadDisabled: !hasFile,
+    };
+  }
+}
+</script>
+</body>
+</html>

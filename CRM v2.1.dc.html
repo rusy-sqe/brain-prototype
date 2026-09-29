@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:200px minmax(0,1fr)">
+
+<div class="hz-sidebar" style="width:200px;height:100vh;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="uploads/logo-brain-light.svg" alt="Investment Brain" style="height:24px;width:auto">
+      </div>
+      <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:10px;padding:6px 8px">
+      <span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-200)"><i class="far fa-building" style="font-size:12px"></i></span>
+      <span><span class="hz-account-trigger__name" style="display:block">M&amp;A Team<br></span></span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-message-plus"></i>New Chat</button>
+  </div>
+  <div style="padding:8px 6px;flex:1;min-height:0;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-th-large" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-search-location" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span><span class="hz-badge hz-badge--secondary" style="margin-left:auto;background:var(--hz-neutral-300);color:var(--hz-text-primary)">2</span></a>
+        <a href="Pipeline v2.1.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-sitemap" style="font-size:17px"></i><span class="hz-sidebar__label">Pipeline</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Master Data</span></div>
+        <a href="CRM.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM &amp; Email</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-university" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb" style="font-size:17px"></i><span class="hz-sidebar__label">Insight</span></a>
+        <a href="AI Agent.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-robot" style="font-size:17px"></i><span class="hz-sidebar__label">AI Agent</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-desktop" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-magic" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-alt" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Chat History</div>
+      <div style="padding:16px 10px;text-align:center;color:var(--hz-text-tertiary);font-size:13px;line-height:1.5">No chats yet. Start a new conversation.</div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%">
+      <span class="hz-avatar hz-avatar--sm">NK</span>
+      <span><span class="hz-account-trigger__name" style="display:block">Nur Khairusy</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div style="min-width:0;overflow-y:auto">
+
+  <div style="background:linear-gradient(135deg,var(--hz-blue-50),var(--hz-neutral-50));padding:24px 28px">
+    <div class="hz-h2" style="margin:0">CRM — Banker Relationships</div>
+    <div class="hz-body-r hz-muted" style="margin-top:4px">Auto-extracted from Google Vault · 0 email accounts</div>
+  </div>
+
+  <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+
+  <div class="hz-card" style="padding:20px">
+    <div style="display:flex;align-items:center;gap:10px;font-weight:700"><i class="far fa-table-columns"></i>Overview</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px">
+      <div class="hz-card" style="padding:18px;display:flex;align-items:flex-start;gap:12px">
+        <span style="width:34px;height:34px;border-radius:8px;background:var(--hz-red-50);color:var(--hz-red-600);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far fa-exclamation-triangle"></i></span>
+        <div>
+          <div class="hz-body-s hz-muted">No contact in 30+ days</div>
+          <div class="hz-h3" style="margin:2px 0 0">185</div>
+          <div class="hz-body-s hz-muted">Companies</div>
+          <a href="#" style="font-size:13px;font-weight:600">Follow up →</a>
+        </div>
+      </div>
+      <div class="hz-card" style="padding:18px;display:flex;align-items:flex-start;gap:12px">
+        <span style="width:34px;height:34px;border-radius:8px;background:var(--hz-orange-50);color:var(--hz-orange-600);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far fa-exclamation-triangle"></i></span>
+        <div>
+          <div class="hz-body-s hz-muted">Awaiting curation</div>
+          <div class="hz-h3" style="margin:2px 0 0">0</div>
+          <div class="hz-body-s hz-muted">Records</div>
+          <a href="#" style="font-size:13px;font-weight:600">Review →</a>
+        </div>
+      </div>
+      <div class="hz-card" style="padding:18px;display:flex;align-items:flex-start;gap:12px">
+        <span style="width:34px;height:34px;border-radius:8px;background:var(--hz-green-50);color:var(--hz-green-600);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far fa-envelope"></i></span>
+        <div>
+          <div class="hz-body-s hz-muted">Received today</div>
+          <div class="hz-h3" style="margin:2px 0 0">0</div>
+          <div class="hz-body-s hz-muted">Emails</div>
+          <div class="hz-body-s" style="margin-top:2px"><span style="color:var(--hz-green-600)">●</span> Synced 3 months ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hz-card" style="padding:20px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:220px;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px;position:relative">
+        <i class="far fa-magnifying-glass" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--hz-text-tertiary);font-size:13px"></i>
+        <input placeholder="Search by company name or PIC name…" style="width:100%;padding:9px 12px 9px 34px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+      </div>
+      <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-calendar"></i>Last Contact<i class="far fa-chevron-down" style="font-size:10px"></i></button>
+      <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-tag"></i>Topic<i class="far fa-chevron-down" style="font-size:10px"></i></button>
+      <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-users"></i>Team member<i class="far fa-chevron-down" style="font-size:10px"></i></button>
+      </div>
+      <button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-plus"></i>Add Contact</button>
+    </div>
+
+    <div style="overflow-x:auto;margin-top:16px">
+      <table class="hz-table hz-table--compact" style="font-size:13px">
+        <thead>
+          <tr>
+            <th style="padding:8px 10px">Source</th>
+            <th style="padding:8px 10px">Industry Focus</th>
+            <th style="padding:8px 10px">Primary PIC</th>
+            <th style="padding:8px 10px">Response P50</th>
+            <th style="padding:8px 10px">Last Contact</th>
+            <th style="padding:8px 10px">Topics</th>
+            <th style="padding:8px 10px">Team Member</th>
+            <th style="padding:8px 10px"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">F</span><div><div style="font-weight:700">01fintech</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300)"><i class="far fa-envelope"></i> AUTO</span></div></div></div></td>
+            <td>Fintech</td>
+            <td><div style="font-weight:700">Kenny Man</div><div class="hz-body-s hz-muted">Founder &amp; Managing Partner</div><a href="#" class="hz-body-s">kennyman@01fintech.com</a></td>
+            <td>4h</td>
+            <td>2 days ago</td>
+            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">venture-building</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">joint-venture</span></div></td>
+            <td><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px;background:var(--hz-neutral-200);color:var(--hz-neutral-700)">NK</span></td>
+            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" onClick="{{ openAiDraft0 }}" title="Draft Follow-up"><i class="far fa-sparkles"></i>Follow Up</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow0 }}"><i class="{{ chevron0 }}"></i></button></div></td>
+          </tr>
+          <sc-if value="{{ expanded0 }}" hint-placeholder-val="{{ false }}">
+          <tr>
+            <td colspan="8" style="padding:0;background:var(--hz-surface-page)">
+              <div style="padding:20px 24px">
+                <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle)">
+                  <button onClick="{{ setTab0Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab0ContactsColor }};border-bottom:2px solid {{ tab0ContactsBorder }}">Contacts (1)</button>
+                  <button onClick="{{ setTab0Topics }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab0TopicsColor }};border-bottom:2px solid {{ tab0TopicsBorder }}">Topics Tag (3)</button>
+                  <button onClick="{{ setTab0Companies }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab0CompaniesColor }};border-bottom:2px solid {{ tab0CompaniesBorder }}">Related Companies (0)</button>
+                  <button onClick="{{ setTab0Notes }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab0NotesColor }};border-bottom:2px solid {{ tab0NotesBorder }}">Notes</button>
+                </div>
+                <sc-if value="{{ tab0IsContacts }}" hint-placeholder-val="{{ true }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (1)</div>
+                    <div style="display:flex;gap:10px;align-items:center">
+                      <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openAiDraft0 }}"><i class="far fa-sparkles"></i>Draft Follow-up</button>
+                      <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:flex-start;gap:14px;margin-top:16px">
+                    <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">KM</span>
+                    <div>
+                      <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Kenny Man</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                      <div class="hz-muted" style="margin-top:2px">Founder &amp; Managing Partner</div>
+                      <a href="#" style="display:block;font-family:monospace;font-size:13px;margin-top:2px">kennyman@01fintech.com</a>
+                      <div class="hz-muted" style="font-size:13px;margin-top:2px">+6582883968</div>
+                    </div>
+                  </div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab0IsTopics }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">TOPICS TAG (3)</div>
+                    <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add tag</a>
+                  </div>
+                  <div style="margin-top:16px">
+                    <div class="hz-body-s" style="font-weight:700;color:var(--hz-horizon-primary);letter-spacing:.04em">DEAL RELATED</div>
+                    <div style="display:flex;gap:8px;margin-top:8px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">investment-partnership</span></div>
+                  </div>
+                  <div style="margin-top:18px">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">NON-DEAL RELATED</div>
+                    <div style="display:flex;gap:8px;margin-top:8px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">joint-venture</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">venture-building</span></div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;margin-top:16px">
+                    <span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">Auto</span><span class="hz-muted" style="font-size:13px">from emails ·</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-text-primary);border:1px solid var(--hz-border-default)">Manual</span><span class="hz-muted" style="font-size:13px">added by you</span>
+                  </div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab0IsCompanies }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">RELATED COMPANIES (0)</div>
+                    <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-plus"></i>Add company</button>
+                  </div>
+                  <div class="hz-muted" style="margin-top:16px">No related companies yet. Use "Add company" to link one.</div>
+                  <div style="margin-top:14px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">auto</span><span class="hz-muted" style="font-size:13px;margin-left:8px">detected from email evidence — suggestions only, not guaranteed truth</span></div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab0IsNotes }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">NOTES</div>
+                  <textarea placeholder="Add a note about this firm…" style="width:100%;min-height:110px;margin-top:10px;border:1px solid var(--hz-border-default);border-radius:8px;padding:12px;font-family:inherit;font-size:14px;color:var(--hz-text-primary);background:var(--hz-surface-card);resize:vertical"></textarea>
+                  <div style="display:flex;justify-content:flex-end;margin-top:10px"><button class="hz-btn hz-btn--primary hz-btn--sm">Save note</button></div>
+                </div>
+                </sc-if>
+              </div>
+            </td>
+          </tr>
+          </sc-if>
+          <tr>
+            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">C</span><div><div style="font-weight:700">385capitalworks</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300)"><i class="far fa-envelope"></i> AUTO</span></div></div></div></td>
+            <td>Private Equity</td>
+            <td><div style="font-weight:700">Austin Miller</div><a href="#" class="hz-body-s">miller@385capitalworks.com</a></td>
+            <td>1 day</td>
+            <td>5 days ago</td>
+            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">investment</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">fundraising</span></div></td>
+            <td><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px;background:var(--hz-neutral-200);color:var(--hz-neutral-700)">RS</span></td>
+            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" onClick="{{ openAiDraft1 }}" title="Draft Follow-up"><i class="far fa-sparkles"></i>Follow Up</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow1 }}"><i class="{{ chevron1 }}"></i></button></div></td>
+          </tr>
+          <sc-if value="{{ expanded1 }}" hint-placeholder-val="{{ false }}">
+          <tr>
+            <td colspan="8" style="padding:0;background:var(--hz-surface-page)">
+              <div style="padding:20px 24px">
+                <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle)">
+                  <button onClick="{{ setTab1Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab1ContactsColor }};border-bottom:2px solid {{ tab1ContactsBorder }}">Contacts (1)</button>
+                  <button onClick="{{ setTab1Topics }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab1TopicsColor }};border-bottom:2px solid {{ tab1TopicsBorder }}">Topics Tag (2)</button>
+                  <button onClick="{{ setTab1Companies }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab1CompaniesColor }};border-bottom:2px solid {{ tab1CompaniesBorder }}">Related Companies (0)</button>
+                  <button onClick="{{ setTab1Notes }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab1NotesColor }};border-bottom:2px solid {{ tab1NotesBorder }}">Notes</button>
+                </div>
+                <sc-if value="{{ tab1IsContacts }}" hint-placeholder-val="{{ true }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (1)</div>
+                    <div style="display:flex;gap:10px;align-items:center">
+                      <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openAiDraft1 }}"><i class="far fa-sparkles"></i>Draft Follow-up</button>
+                      <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:flex-start;gap:14px;margin-top:16px">
+                    <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">AM</span>
+                    <div>
+                      <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Austin Miller</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                      <div class="hz-muted" style="margin-top:2px">Partner</div>
+                      <a href="#" style="display:block;font-family:monospace;font-size:13px;margin-top:2px">miller@385capitalworks.com</a>
+                      <div class="hz-muted" style="font-size:13px;margin-top:2px">+1 917 555 0134</div>
+                    </div>
+                  </div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab1IsTopics }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">TOPICS TAG (2)</div>
+                    <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add tag</a>
+                  </div>
+                  <div style="margin-top:16px">
+                    <div class="hz-body-s" style="font-weight:700;color:var(--hz-horizon-primary);letter-spacing:.04em">DEAL RELATED</div>
+                    <div style="display:flex;gap:8px;margin-top:8px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">investment</span></div>
+                  </div>
+                  <div style="margin-top:18px">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">NON-DEAL RELATED</div>
+                    <div style="display:flex;gap:8px;margin-top:8px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">fundraising</span></div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;margin-top:16px">
+                    <span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">Auto</span><span class="hz-muted" style="font-size:13px">from emails ·</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-text-primary);border:1px solid var(--hz-border-default)">Manual</span><span class="hz-muted" style="font-size:13px">added by you</span>
+                  </div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab1IsCompanies }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">RELATED COMPANIES (0)</div>
+                    <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-plus"></i>Add company</button>
+                  </div>
+                  <div class="hz-muted" style="margin-top:16px">No related companies yet. Use "Add company" to link one.</div>
+                  <div style="margin-top:14px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">auto</span><span class="hz-muted" style="font-size:13px;margin-left:8px">detected from email evidence — suggestions only, not guaranteed truth</span></div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab1IsNotes }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">NOTES</div>
+                  <textarea placeholder="Add a note about this firm…" style="width:100%;min-height:110px;margin-top:10px;border:1px solid var(--hz-border-default);border-radius:8px;padding:12px;font-family:inherit;font-size:14px;color:var(--hz-text-primary);background:var(--hz-surface-card);resize:vertical"></textarea>
+                  <div style="display:flex;justify-content:flex-end;margin-top:10px"><button class="hz-btn hz-btn--primary hz-btn--sm">Save note</button></div>
+                </div>
+                </sc-if>
+              </div>
+            </td>
+          </tr>
+          </sc-if>
+          <tr>
+            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">AC</span><div><div style="font-weight:700">Abacus Capital</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300)"><i class="far fa-envelope"></i> AUTO</span></div></div></div></td>
+            <td>Asset Management</td>
+            <td><div style="font-weight:700">ravena@abacuscapital.com</div><a href="#" class="hz-body-s">ravena@abacuscapital.com</a></td>
+            <td>6h</td>
+            <td>1 week ago</td>
+            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">investment-opportunity</span></div></td>
+            <td><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px;background:var(--hz-neutral-200);color:var(--hz-neutral-700)">NK</span></td>
+            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" onClick="{{ openAiDraft2 }}" title="Draft Follow-up"><i class="far fa-sparkles"></i>Follow Up</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow2 }}"><i class="{{ chevron2 }}"></i></button></div></td>
+          </tr>
+          <sc-if value="{{ expanded2 }}" hint-placeholder-val="{{ false }}">
+          <tr>
+            <td colspan="8" style="padding:0;background:var(--hz-surface-page)">
+              <div style="padding:20px 24px">
+                <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle)">
+                  <button onClick="{{ setTab2Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab2ContactsColor }};border-bottom:2px solid {{ tab2ContactsBorder }}">Contacts (1)</button>
+                  <button onClick="{{ setTab2Topics }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab2TopicsColor }};border-bottom:2px solid {{ tab2TopicsBorder }}">Topics Tag (1)</button>
+                  <button onClick="{{ setTab2Companies }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab2CompaniesColor }};border-bottom:2px solid {{ tab2CompaniesBorder }}">Related Companies (0)</button>
+                  <button onClick="{{ setTab2Notes }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab2NotesColor }};border-bottom:2px solid {{ tab2NotesBorder }}">Notes</button>
+                </div>
+                <sc-if value="{{ tab2IsContacts }}" hint-placeholder-val="{{ true }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (1)</div>
+                    <div style="display:flex;gap:10px;align-items:center">
+                      <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openAiDraft2 }}"><i class="far fa-sparkles"></i>Draft Follow-up</button>
+                      <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:flex-start;gap:14px;margin-top:16px">
+                    <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">R</span>
+                    <div>
+                      <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Ravena</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                      <div class="hz-muted" style="margin-top:2px">Investment Associate</div>
+                      <a href="#" style="display:block;font-family:monospace;font-size:13px;margin-top:2px">ravena@abacuscapital.com</a>
+                      <div class="hz-muted" style="font-size:13px;margin-top:2px">+62 812 3456 7890</div>
+                    </div>
+                  </div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab2IsTopics }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">TOPICS TAG (1)</div>
+                    <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add tag</a>
+                  </div>
+                  <div style="margin-top:16px">
+                    <div class="hz-body-s" style="font-weight:700;color:var(--hz-horizon-primary);letter-spacing:.04em">DEAL RELATED</div>
+                    <div style="display:flex;gap:8px;margin-top:8px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">investment-opportunity</span></div>
+                  </div>
+                  <div style="margin-top:18px">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">NON-DEAL RELATED</div>
+                    <div style="display:flex;gap:8px;margin-top:8px"></div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;margin-top:16px">
+                    <span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">Auto</span><span class="hz-muted" style="font-size:13px">from emails ·</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-text-primary);border:1px solid var(--hz-border-default)">Manual</span><span class="hz-muted" style="font-size:13px">added by you</span>
+                  </div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab2IsCompanies }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">RELATED COMPANIES (0)</div>
+                    <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-plus"></i>Add company</button>
+                  </div>
+                  <div class="hz-muted" style="margin-top:16px">No related companies yet. Use "Add company" to link one.</div>
+                  <div style="margin-top:14px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">auto</span><span class="hz-muted" style="font-size:13px;margin-left:8px">detected from email evidence — suggestions only, not guaranteed truth</span></div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab2IsNotes }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">NOTES</div>
+                  <textarea placeholder="Add a note about this firm…" style="width:100%;min-height:110px;margin-top:10px;border:1px solid var(--hz-border-default);border-radius:8px;padding:12px;font-family:inherit;font-size:14px;color:var(--hz-text-primary);background:var(--hz-surface-card);resize:vertical"></textarea>
+                  <div style="display:flex;justify-content:flex-end;margin-top:10px"><button class="hz-btn hz-btn--primary hz-btn--sm">Save note</button></div>
+                </div>
+                </sc-if>
+              </div>
+            </td>
+          </tr>
+          </sc-if>
+          <tr>
+            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">AE</span><div><div style="font-weight:700">Acciona Energy</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300)"><i class="far fa-envelope"></i> AUTO</span></div></div></div></td>
+            <td>Renewable Energy</td>
+            <td><div style="font-weight:700">Darrel Digal</div><a href="#" class="hz-body-s">darreldigal@axcionaenergy.com</a></td>
+            <td>2 days</td>
+            <td>3 weeks ago</td>
+            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">solar-energy</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">project-development</span></div></td>
+            <td><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px;background:var(--hz-neutral-200);color:var(--hz-neutral-700)">RS</span></td>
+            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" onClick="{{ openAiDraft3 }}" title="Draft Follow-up"><i class="far fa-sparkles"></i>Follow Up</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow3 }}"><i class="{{ chevron3 }}"></i></button></div></td>
+          </tr>
+          <sc-if value="{{ expanded3 }}" hint-placeholder-val="{{ false }}">
+          <tr>
+            <td colspan="8" style="padding:0;background:var(--hz-surface-page)">
+              <div style="padding:20px 24px">
+                <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle)">
+                  <button onClick="{{ setTab3Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab3ContactsColor }};border-bottom:2px solid {{ tab3ContactsBorder }}">Contacts (1)</button>
+                  <button onClick="{{ setTab3Topics }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab3TopicsColor }};border-bottom:2px solid {{ tab3TopicsBorder }}">Topics Tag (2)</button>
+                  <button onClick="{{ setTab3Companies }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab3CompaniesColor }};border-bottom:2px solid {{ tab3CompaniesBorder }}">Related Companies (0)</button>
+                  <button onClick="{{ setTab3Notes }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab3NotesColor }};border-bottom:2px solid {{ tab3NotesBorder }}">Notes</button>
+                </div>
+                <sc-if value="{{ tab3IsContacts }}" hint-placeholder-val="{{ true }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (1)</div>
+                    <div style="display:flex;gap:10px;align-items:center">
+                      <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openAiDraft3 }}"><i class="far fa-sparkles"></i>Draft Follow-up</button>
+                      <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:flex-start;gap:14px;margin-top:16px">
+                    <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">DD</span>
+                    <div>
+                      <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Darrel Digal</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                      <div class="hz-muted" style="margin-top:2px">Business Development</div>
+                      <a href="#" style="display:block;font-family:monospace;font-size:13px;margin-top:2px">darreldigal@axcionaenergy.com</a>
+                      <div class="hz-muted" style="font-size:13px;margin-top:2px">+62 811 2233 4455</div>
+                    </div>
+                  </div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab3IsTopics }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">TOPICS TAG (2)</div>
+                    <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add tag</a>
+                  </div>
+                  <div style="margin-top:16px">
+                    <div class="hz-body-s" style="font-weight:700;color:var(--hz-horizon-primary);letter-spacing:.04em">DEAL RELATED</div>
+                    <div style="display:flex;gap:8px;margin-top:8px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">solar-energy</span></div>
+                  </div>
+                  <div style="margin-top:18px">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">NON-DEAL RELATED</div>
+                    <div style="display:flex;gap:8px;margin-top:8px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">project-development</span></div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;margin-top:16px">
+                    <span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">Auto</span><span class="hz-muted" style="font-size:13px">from emails ·</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-text-primary);border:1px solid var(--hz-border-default)">Manual</span><span class="hz-muted" style="font-size:13px">added by you</span>
+                  </div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab3IsCompanies }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">RELATED COMPANIES (0)</div>
+                    <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-plus"></i>Add company</button>
+                  </div>
+                  <div class="hz-muted" style="margin-top:16px">No related companies yet. Use "Add company" to link one.</div>
+                  <div style="margin-top:14px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">auto</span><span class="hz-muted" style="font-size:13px;margin-left:8px">detected from email evidence — suggestions only, not guaranteed truth</span></div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab3IsNotes }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">NOTES</div>
+                  <textarea placeholder="Add a note about this firm…" style="width:100%;min-height:110px;margin-top:10px;border:1px solid var(--hz-border-default);border-radius:8px;padding:12px;font-family:inherit;font-size:14px;color:var(--hz-text-primary);background:var(--hz-surface-card);resize:vertical"></textarea>
+                  <div style="display:flex;justify-content:flex-end;margin-top:10px"><button class="hz-btn hz-btn--primary hz-btn--sm">Save note</button></div>
+                </div>
+                </sc-if>
+              </div>
+            </td>
+          </tr>
+          </sc-if>
+          <tr>
+            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">A</span><div><div style="font-weight:700">Adivira</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300)"><i class="far fa-envelope"></i> AUTO</span></div></div></div></td>
+            <td>Fintech</td>
+            <td><div style="font-weight:700">Adhitia</div><a href="#" class="hz-body-s">adhitia.budiarjo@adivira.com</a></td>
+            <td>12h</td>
+            <td style="color: #BE0606"><b>1 month ago</b></td>
+            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">white-label</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">product-distribution</span></div></td>
+            <td><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px;background:var(--hz-neutral-200);color:var(--hz-neutral-700)">NK</span></td>
+            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" onClick="{{ openAiDraft4 }}" title="Draft Follow-up"><i class="far fa-sparkles"></i>Follow Up</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow4 }}"><i class="{{ chevron4 }}"></i></button></div></td>
+          </tr>
+          <sc-if value="{{ expanded4 }}" hint-placeholder-val="{{ false }}">
+          <tr>
+            <td colspan="8" style="padding:0;background:var(--hz-surface-page)">
+              <div style="padding:20px 24px">
+                <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle)">
+                  <button onClick="{{ setTab4Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab4ContactsColor }};border-bottom:2px solid {{ tab4ContactsBorder }}">Contacts (1)</button>
+                  <button onClick="{{ setTab4Topics }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab4TopicsColor }};border-bottom:2px solid {{ tab4TopicsBorder }}">Topics Tag (2)</button>
+                  <button onClick="{{ setTab4Companies }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab4CompaniesColor }};border-bottom:2px solid {{ tab4CompaniesBorder }}">Related Companies (0)</button>
+                  <button onClick="{{ setTab4Notes }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab4NotesColor }};border-bottom:2px solid {{ tab4NotesBorder }}">Notes</button>
+                </div>
+                <sc-if value="{{ tab4IsContacts }}" hint-placeholder-val="{{ true }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (1)</div>
+                    <div style="display:flex;gap:10px;align-items:center">
+                      <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openAiDraft4 }}"><i class="far fa-sparkles"></i>Draft Follow-up</button>
+                      <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:flex-start;gap:14px;margin-top:16px">
+                    <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">A</span>
+                    <div>
+                      <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Adhitia</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                      <div class="hz-muted" style="margin-top:2px">Partnership Lead</div>
+                      <a href="#" style="display:block;font-family:monospace;font-size:13px;margin-top:2px">adhitia.budiarjo@adivira.com</a>
+                      <div class="hz-muted" style="font-size:13px;margin-top:2px">+62 813 9988 7766</div>
+                    </div>
+                  </div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab4IsTopics }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">TOPICS TAG (2)</div>
+                    <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add tag</a>
+                  </div>
+                  <div style="margin-top:16px">
+                    <div class="hz-body-s" style="font-weight:700;color:var(--hz-horizon-primary);letter-spacing:.04em">DEAL RELATED</div>
+                    <div style="display:flex;gap:8px;margin-top:8px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">white-label</span></div>
+                  </div>
+                  <div style="margin-top:18px">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">NON-DEAL RELATED</div>
+                    <div style="display:flex;gap:8px;margin-top:8px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">product-distribution</span></div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;margin-top:16px">
+                    <span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">Auto</span><span class="hz-muted" style="font-size:13px">from emails ·</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-text-primary);border:1px solid var(--hz-border-default)">Manual</span><span class="hz-muted" style="font-size:13px">added by you</span>
+                  </div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab4IsCompanies }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">RELATED COMPANIES (0)</div>
+                    <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-plus"></i>Add company</button>
+                  </div>
+                  <div class="hz-muted" style="margin-top:16px">No related companies yet. Use "Add company" to link one.</div>
+                  <div style="margin-top:14px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">auto</span><span class="hz-muted" style="font-size:13px;margin-left:8px">detected from email evidence — suggestions only, not guaranteed truth</span></div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab4IsNotes }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">NOTES</div>
+                  <textarea placeholder="Add a note about this firm…" style="width:100%;min-height:110px;margin-top:10px;border:1px solid var(--hz-border-default);border-radius:8px;padding:12px;font-family:inherit;font-size:14px;color:var(--hz-text-primary);background:var(--hz-surface-card);resize:vertical"></textarea>
+                  <div style="display:flex;justify-content:flex-end;margin-top:10px"><button class="hz-btn hz-btn--primary hz-btn--sm">Save note</button></div>
+                </div>
+                </sc-if>
+              </div>
+            </td>
+          </tr>
+          </sc-if>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<sc-if value="{{ aiModalOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1000" onClick="{{ closeAiDraft }}">
+  <div style="background:var(--hz-surface-card);border-radius:12px;width:560px;max-width:92vw;max-height:85vh;overflow-y:auto;box-shadow:var(--hz-shadow-lg)" onClick="{{ stopPropagation }}">
+    <div style="padding:20px 24px;border-bottom:1px solid var(--hz-border-subtle);display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="width:32px;height:32px;border-radius:8px;background:var(--hz-blue-50);color:var(--hz-horizon-primary);display:flex;align-items:center;justify-content:center"><i class="far fa-sparkles"></i></span>
+        <div class="hz-h5" style="margin:0">AI Follow-up Draft</div>
+      </div>
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeAiDraft }}"><i class="far fa-times"></i></button>
+    </div>
+    <div style="padding:24px">
+      <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em;margin-bottom:6px">TO</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+        <span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">{{ aiModalInitials }}</span>
+        <div><div style="font-weight:700">{{ aiModalName }}</div><div class="hz-body-s hz-muted">{{ aiModalEmail }}</div></div>
+      </div>
+      <div style="background:var(--hz-blue-50);border-radius:8px;padding:14px 16px;margin-bottom:16px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+          <div style="display:flex;align-items:center;gap:8px;color:var(--hz-horizon-primary);font-weight:700;font-size:13px;letter-spacing:.02em"><i class="far fa-sparkles"></i>KEY CONVERSATIONS FROM BRAIN AI</div>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-horizon-primary);white-space:nowrap"><i class="far fa-comment-alt"></i>Chat with AI Copilot</button>
+        </div>
+        <ul style="margin:8px 0 0;padding-left:18px">
+          <sc-for list="{{ aiModalHighlights }}" as="point" hint-placeholder-count="2">
+          <li class="hz-body-s" style="margin-bottom:4px">{{ point }}</li>
+          </sc-for>
+        </ul>
+      </div>
+      <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em;margin-bottom:6px">SUBJECT</div>
+      <input value="{{ aiModalSubject }}" onChange="{{ setAiSubject }}" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary);margin-bottom:16px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">DRAFT</div>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ generateAiDraft }}"><i class="{{ aiGenerateIcon }}"></i>{{ aiGenerateLabel }}</button>
+      </div>
+      <textarea value="{{ aiModalBody }}" onChange="{{ setAiBody }}" placeholder="Click Generate to draft a follow-up with AI…" style="width:100%;min-height:180px;border:1px solid var(--hz-border-default);border-radius:8px;padding:12px;font-family:inherit;font-size:14px;color:var(--hz-text-primary);background:var(--hz-surface-page);resize:vertical"></textarea>
+      <div class="hz-body-s hz-muted" style="margin-top:8px"><i class="far fa-info-circle"></i> AI-assisted draft — review before sending.</div>
+    </div>
+    <div style="padding:16px 24px;border-top:1px solid var(--hz-border-subtle);display:flex;justify-content:flex-end;gap:10px">
+      <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ closeAiDraft }}">Cancel</button>
+      <button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-copy"></i>Copy Draft</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { expanded: {}, tab: {}, aiModalOpen: false, aiContact: null, aiSubject: '', aiBody: '', aiGenerating: false };
+
+  contacts = {
+    0: { name: 'Kenny Man', email: 'kennyman@01fintech.com', company: '01fintech', initials: 'KM', highlights: ['Discussed potential joint-venture structure for OTT distribution', 'Kenny flagged Q3 fundraising timeline as tight', 'Asked for warm intro to our portfolio payments company'] },
+    1: { name: 'Austin Miller', email: 'miller@385capitalworks.com', company: '385capitalworks', initials: 'AM', highlights: ['Interested in co-investing on next round', 'Requested updated financial model', 'Mentioned fundraising close targeted for year-end'] },
+    2: { name: 'Ravena', email: 'ravena@abacuscapital.com', company: 'Abacus Capital', initials: 'R', highlights: ['Shared investment opportunity in logistics sector', 'Waiting on our IC feedback before next step'] },
+    3: { name: 'Darrel Digal', email: 'darreldigal@axcionaenergy.com', company: 'Acciona Energy', initials: 'DD', highlights: ['Solar project pipeline expanding into new region', 'Needs decision on project-development partnership by month-end'] },
+    4: { name: 'Adhitia', email: 'adhitia.budiarjo@adivira.com', company: 'Adivira', initials: 'A', highlights: ['Proposed white-label partnership terms', 'Following up on product-distribution agreement draft'] },
+  };
+
+  toggleRow(i) {
+    this.setState(s => ({ expanded: { ...s.expanded, [i]: !s.expanded[i] } }));
+  }
+  setTab(i, t) {
+    this.setState(s => ({ tab: { ...s.tab, [i]: t } }));
+  }
+  openAiDraft(i) {
+    const c = this.contacts[i];
+    this.setState({ aiModalOpen: true, aiContact: c, aiSubject: 'Following up — ' + c.company, aiBody: '', aiGenerating: false });
+  }
+  closeAiDraft() {
+    this.setState({ aiModalOpen: false });
+  }
+  generateAiDraft() {
+    this.setState({ aiGenerating: true });
+    setTimeout(() => {
+      const c = this.state.aiContact;
+      const body = `Hi ${c.name.split(' ')[0]},\n\nHope you're doing well. Wanted to follow up on our last conversation with ${c.company} — happy to schedule a quick call this week to discuss next steps.\n\nLet me know what works on your end.\n\nBest`;
+      this.setState({ aiBody: body, aiGenerating: false });
+    }, 900);
+  }
+  setAiSubject(e) { this.setState({ aiSubject: e.target.value }); }
+  setAiBody(e) { this.setState({ aiBody: e.target.value }); }
+
+  renderVals() {
+    const vals = {
+      aiModalOpen: this.state.aiModalOpen,
+      aiModalName: this.state.aiContact ? this.state.aiContact.name : '',
+      aiModalEmail: this.state.aiContact ? this.state.aiContact.email : '',
+      aiModalInitials: this.state.aiContact ? this.state.aiContact.initials : '',
+      aiModalHighlights: this.state.aiContact ? this.state.aiContact.highlights : [],
+      aiModalSubject: this.state.aiSubject,
+      aiModalBody: this.state.aiBody,
+      aiGenerateLabel: this.state.aiGenerating ? 'Generating…' : 'Generate',
+      aiGenerateIcon: this.state.aiGenerating ? 'far fa-spinner fa-spin' : 'far fa-sparkles',
+      closeAiDraft: () => this.closeAiDraft(),
+      generateAiDraft: () => this.generateAiDraft(),
+      setAiSubject: (e) => this.setAiSubject(e),
+      setAiBody: (e) => this.setAiBody(e),
+      stopPropagation: (e) => e.stopPropagation(),
+    };
+    for (let i = 0; i < 5; i++) {
+      vals['openAiDraft' + i] = () => this.openAiDraft(i);
+      const exp = !!this.state.expanded[i];
+      const tab = this.state.tab[i] || 'contacts';
+      vals['expanded' + i] = exp;
+      vals['chevron' + i] = exp ? 'far fa-chevron-up' : 'far fa-chevron-down';
+      vals['toggleRow' + i] = () => this.toggleRow(i);
+      vals['setTab' + i + 'Contacts'] = () => this.setTab(i, 'contacts');
+      vals['setTab' + i + 'Topics'] = () => this.setTab(i, 'topics');
+      vals['setTab' + i + 'Companies'] = () => this.setTab(i, 'companies');
+      vals['setTab' + i + 'Notes'] = () => this.setTab(i, 'notes');
+      vals['tab' + i + 'IsContacts'] = tab === 'contacts';
+      vals['tab' + i + 'IsTopics'] = tab === 'topics';
+      vals['tab' + i + 'IsCompanies'] = tab === 'companies';
+      vals['tab' + i + 'IsNotes'] = tab === 'notes';
+      vals['tab' + i + 'ContactsColor'] = tab === 'contacts' ? 'var(--hz-horizon-primary)' : 'var(--hz-text-tertiary)';
+      vals['tab' + i + 'ContactsBorder'] = tab === 'contacts' ? 'var(--hz-horizon-primary)' : 'transparent';
+      vals['tab' + i + 'TopicsColor'] = tab === 'topics' ? 'var(--hz-horizon-primary)' : 'var(--hz-text-tertiary)';
+      vals['tab' + i + 'TopicsBorder'] = tab === 'topics' ? 'var(--hz-horizon-primary)' : 'transparent';
+      vals['tab' + i + 'CompaniesColor'] = tab === 'companies' ? 'var(--hz-horizon-primary)' : 'var(--hz-text-tertiary)';
+      vals['tab' + i + 'CompaniesBorder'] = tab === 'companies' ? 'var(--hz-horizon-primary)' : 'transparent';
+      vals['tab' + i + 'NotesColor'] = tab === 'notes' ? 'var(--hz-horizon-primary)' : 'var(--hz-text-tertiary)';
+      vals['tab' + i + 'NotesBorder'] = tab === 'notes' ? 'var(--hz-horizon-primary)' : 'transparent';
+    }
+    return vals;
+  }
+}
+</script>
+</body>
+</html>

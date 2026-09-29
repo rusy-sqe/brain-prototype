@@ -19,14 +19,12 @@
   <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
     <div style="display:flex;align-items:center;justify-content:space-between">
       <div style="display:flex;align-items:center;gap:6px">
-        <span style="font-weight:800;font-size:19px;letter-spacing:.03em;color:var(--hz-text-primary)">BR</span>
-        <i class="fas fa-caret-up" style="color:var(--hz-horizon-primary);font-size:16px;margin:0 -2px"></i>
-        <span style="font-weight:800;font-size:19px;letter-spacing:.03em;color:var(--hz-text-primary)">IN</span>
+        <img src="uploads/logo-brain-light-d6a97625.svg" alt="Investment Brain" style="height:24px;width:auto">
       </div>
       <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-window-maximize" style="font-size:12px"></i></button>
     </div>
     <button class="hz-account-trigger" style="width:100%;margin-top:12px;padding:6px 2px;justify-content:space-between">
-      <span style="font-weight:600;color:var(--hz-text-secondary)">Demo</span>
+      <span style="font-weight:600;color:var(--hz-text-secondary)">M&amp;A Team</span>
       <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
     </button>
     <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-message-plus"></i>New Chat</button>
@@ -39,7 +37,7 @@
         <a href="Sourcing.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-search-location" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span><span class="hz-badge hz-badge--secondary" style="margin-left:auto;background:var(--hz-neutral-300);color:var(--hz-text-primary)">2</span></a>
         <a href="Pipeline v2.1.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-sitemap" style="font-size:17px"></i><span class="hz-sidebar__label">Pipeline</span></a>
         <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Master Data</span></div>
-        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM</span></div>
+        <a href="CRM.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM &amp; Email</span></a>
         <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-university" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
         <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
       </div>
@@ -79,7 +77,7 @@
         <div class="hz-body-r hz-muted" style="margin-top:4px">Candidates not yet promoted into L0 sourcing</div>
       </div>
       <div style="display:flex;align-items:center;gap:16px">
-        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="background:var(--hz-surface-card)"><i class="far fa-gear"></i>Track Settings</button>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="background:var(--hz-surface-card)"><i class="far fa-cog"></i>Track</button>
         
       </div>
     </div>
@@ -103,23 +101,23 @@
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:10px">
-          <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-gear"></i>Configure</button>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" title="Configure"><i class="far fa-cog"></i></button>
           <button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-play"></i>Run Scan Now</button>
-          <button class="hz-btn hz-btn--text hz-btn--sm"><i class="far fa-eye-slash"></i>Hide</button>
+          
         </div>
       </div>
       <div style="display:flex;gap:56px;margin-top:20px;flex-wrap:wrap">
         <div>
           <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:600">Last scan completed</div>
-          <div style="font-weight:700;margin-top:4px">–</div>
+          <div style="font-weight:700;margin-top:4px">Sep 28, 2026, 09:00 AM</div>
         </div>
         <div>
           <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:600">Next scan</div>
-          <div style="font-weight:700;margin-top:4px">–</div>
+          <div style="font-weight:700;margin-top:4px">Sep 29, 2026, 09:00 AM</div>
         </div>
         <div>
           <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:600">New candidates (last 7d)</div>
-          <div style="font-weight:700;margin-top:4px">0</div>
+          <div style="font-weight:700;margin-top:4px">23</div>
         </div>
       </div>
     </div>
@@ -136,8 +134,44 @@
             <div class="hz-body-s hz-muted" style="margin-top:2px">Companies matching your investment thesis will appear here</div>
           </div>
         </div>
-        <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ toggleDiscovered }}">{{ discoveredLabel }}<i class="{{ discoveredIcon }}"></i></button>
+        
       </div>
+      <sc-if value="{{ discoveredShown }}" hint-placeholder-val="{{ false }}">
+      <div style="overflow-x:auto;margin-top:14px">
+        <table class="hz-table">
+          <thead>
+            <tr>
+              <th>Company <i class="far fa-arrow-up-arrow-down" style="font-size:10px"></i></th>
+              <th style="max-width:220px">Sector <i class="far fa-arrow-up-arrow-down" style="font-size:10px"></i></th>
+              <th style="white-space:nowrap">Revenue <i class="far fa-arrow-up-arrow-down" style="font-size:10px"></i></th>
+              <th style="white-space:nowrap">EBITDA <i class="far fa-arrow-up-arrow-down" style="font-size:10px"></i></th>
+              <th style="white-space:nowrap">Valuation <i class="far fa-arrow-up-arrow-down" style="font-size:10px"></i></th>
+              <th style="text-align:center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>PT Plan B Media</td><td class="hz-muted" style="max-width:220px">Out-of-Home (OOH) Advertising / Media</td><td style="white-space:nowrap">85 M USD</td><td style="white-space:nowrap">22 M USD</td><td style="white-space:nowrap">210 M USD</td><td style="text-align:center"><div style="display:flex;justify-content:center;gap:4px"><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)"><i class="far fa-sparkles"></i>Ask</button><button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-arrow-right"></i>Add to L0</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)"><i class="far fa-ellipsis-v"></i></button></div></td></tr>
+            <tr><td>PT Sinar Sosro</td><td class="hz-muted" style="max-width:220px">Beverages / Food &amp; Beverage</td><td style="white-space:nowrap">1.2 B USD</td><td style="white-space:nowrap">180 M USD</td><td style="white-space:nowrap">1.8 B USD</td><td style="text-align:center"><div style="display:flex;justify-content:center;gap:4px"><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)"><i class="far fa-sparkles"></i>Ask</button><button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-arrow-right"></i>Add to L0</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)"><i class="far fa-ellipsis-v"></i></button></div></td></tr>
+            <tr><td>Sivers Semiconductors</td><td class="hz-muted" style="max-width:220px">Semiconductors</td><td style="white-space:nowrap">34 M USD</td><td style="white-space:nowrap">4 M USD</td><td style="white-space:nowrap">95 M USD</td><td style="text-align:center"><div style="display:flex;justify-content:center;gap:4px"><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)"><i class="far fa-sparkles"></i>Ask</button><button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-arrow-right"></i>Add to L0</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)"><i class="far fa-ellipsis-v"></i></button></div></td></tr>
+            <tr><td>PT Tirta Investama</td><td class="hz-muted" style="max-width:220px">Beverages / Bottled Water</td><td style="white-space:nowrap">950 M USD</td><td style="white-space:nowrap">140 M USD</td><td style="white-space:nowrap">1.4 B USD</td><td style="text-align:center"><div style="display:flex;justify-content:center;gap:4px"><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)"><i class="far fa-sparkles"></i>Ask</button><button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-arrow-right"></i>Add to L0</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)"><i class="far fa-ellipsis-v"></i></button></div></td></tr>
+            <tr><td>Big Tree Outdoor</td><td class="hz-muted" style="max-width:220px">Out-of-Home (OOH) Advertising / Media</td><td style="white-space:nowrap">62 M USD</td><td style="white-space:nowrap">15 M USD</td><td style="white-space:nowrap">140 M USD</td><td style="text-align:center"><div style="display:flex;justify-content:center;gap:4px"><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)"><i class="far fa-sparkles"></i>Ask</button><button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-arrow-right"></i>Add to L0</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)"><i class="far fa-ellipsis-v"></i></button></div></td></tr>
+            <tr><td>SCG Packaging (SCGP)</td><td class="hz-muted" style="max-width:220px">Paper &amp; Paper Packaging</td><td style="white-space:nowrap">2.4 B USD</td><td style="white-space:nowrap">380 M USD</td><td style="white-space:nowrap">3.1 B USD</td><td style="text-align:center"><div style="display:flex;justify-content:center;gap:4px"><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)"><i class="far fa-sparkles"></i>Ask</button><button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-arrow-right"></i>Add to L0</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)"><i class="far fa-ellipsis-v"></i></button></div></td></tr>
+            <tr><td>Nordic Semiconductor ASA</td><td class="hz-muted" style="max-width:220px">Semiconductors</td><td style="white-space:nowrap">210 M USD</td><td style="white-space:nowrap">28 M USD</td><td style="white-space:nowrap">620 M USD</td><td style="text-align:center"><div style="display:flex;justify-content:center;gap:4px"><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)"><i class="far fa-sparkles"></i>Ask</button><button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-arrow-right"></i>Add to L0</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)"><i class="far fa-ellipsis-v"></i></button></div></td></tr>
+            <tr><td>HoST Pte Ltd</td><td class="hz-muted" style="max-width:220px">Industrial Automation / Industrial Hardware &amp; Software Distribution</td><td style="white-space:nowrap">48 M USD</td><td style="white-space:nowrap">7 M USD</td><td style="white-space:nowrap">85 M USD</td><td style="text-align:center"><div style="display:flex;justify-content:center;gap:4px"><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)"><i class="far fa-sparkles"></i>Ask</button><button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-arrow-right"></i>Add to L0</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)"><i class="far fa-ellipsis-v"></i></button></div></td></tr>
+            <tr><td>Allied Solutions Global</td><td class="hz-muted" style="max-width:220px">Industrial Automation / OT Cybersecurity</td><td style="white-space:nowrap">76 M USD</td><td style="white-space:nowrap">12 M USD</td><td style="white-space:nowrap">160 M USD</td><td style="text-align:center"><div style="display:flex;justify-content:center;gap:4px"><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)"><i class="far fa-sparkles"></i>Ask</button><button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-arrow-right"></i>Add to L0</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)"><i class="far fa-ellipsis-v"></i></button></div></td></tr>
+            <tr><td>PT BDx Indonesia</td><td class="hz-muted" style="max-width:220px">Data Center / Digital Infrastructure</td><td style="white-space:nowrap">310 M USD</td><td style="white-space:nowrap">95 M USD</td><td style="white-space:nowrap">1.1 B USD</td><td style="text-align:center"><div style="display:flex;justify-content:center;gap:4px"><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)"><i class="far fa-sparkles"></i>Ask</button><button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-arrow-right"></i>Add to L0</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)"><i class="far fa-ellipsis-v"></i></button></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px">
+        <span class="hz-body-s hz-muted">Showing 1-10 of 23 companies</span>
+        <div style="display:flex;align-items:center;gap:10px">
+          <button class="hz-btn hz-btn--secondary hz-btn--sm" style="width:32px;padding:0;justify-content:center"><i class="far fa-chevron-left"></i></button>
+          <span class="hz-body-s" style="font-weight:600">1 / 3</span>
+          <button class="hz-btn hz-btn--secondary hz-btn--sm" style="width:32px;padding:0;justify-content:center"><i class="far fa-chevron-right"></i></button>
+        </div>
+      </div>
+      </sc-if>
     </div>
     </sc-if>
 
@@ -224,11 +258,12 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { discoveredShown: false, view: 'scanning' };
+  state = { discoveredShown: true, view: 'scanning' };
   renderVals() {
     return {
       discoveredLabel: this.state.discoveredShown ? 'Hide' : 'Show',
       discoveredIcon: this.state.discoveredShown ? 'far fa-chevron-up' : 'far fa-chevron-down',
+      discoveredShown: this.state.discoveredShown,
       toggleDiscovered: () => this.setState(s => ({ discoveredShown: !s.discoveredShown })),
       isScanningView: this.state.view === 'scanning',
       isPendingView: this.state.view === 'pending',
