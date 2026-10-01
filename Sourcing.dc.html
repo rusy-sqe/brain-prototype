@@ -86,11 +86,11 @@
   <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
 
     <div class="hz-tabs">
-      <button class="hz-tab {{ viewTabClass.scanning }}" onClick="{{ selectScanningView }}">AI Market Scanning</button>
       <button class="hz-tab {{ viewTabClass.pending }}" onClick="{{ selectPendingView }}">Pending Confirmation<span class="hz-badge hz-badge--soft" style="margin-left:6px;background:var(--hz-orange-50);color:var(--hz-orange-700)">2</span></button>
+      <button class="hz-tab {{ viewTabClass.scanning }}" onClick="{{ selectScanningView }}">AI Market Scanning</button>
     </div>
 
-    <sc-if value="{{ isScanningView }}" hint-placeholder-val="{{ true }}">
+    <sc-if value="{{ isScanningView }}" hint-placeholder-val="{{ false }}">
     <div class="hz-card" style="padding:20px">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
         <div style="display:flex;align-items:flex-start;gap:12px">
@@ -175,7 +175,7 @@
     </div>
     </sc-if>
 
-    <sc-if value="{{ isPendingView }}" hint-placeholder-val="{{ false }}">
+    <sc-if value="{{ isPendingView }}" hint-placeholder-val="{{ true }}">
     <div class="hz-card" style="padding:20px;border:1px solid var(--hz-border-subtle)">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
         <div>
@@ -258,7 +258,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { discoveredShown: true, view: 'scanning' };
+  state = { discoveredShown: true, view: 'pending' };
   renderVals() {
     return {
       discoveredLabel: this.state.discoveredShown ? 'Hide' : 'Show',
