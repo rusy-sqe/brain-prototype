@@ -120,6 +120,7 @@
       </div>
 
       <div style="display:flex;align-items:center;gap:12px;margin-top:16px;min-width:0">
+        <button onClick="{{ pendingChip.toggle }}" style="{{ pendingChip.style }}">Pending Confirmation<sc-if value="{{ pendingChip.badge }}" hint-placeholder-val="{{ false }}"><span class="hz-badge" style="background:var(--hz-red-50);color:var(--hz-red-700)">{{ pendingChip.badge }}</span></sc-if></button>
         <button class="hz-btn hz-btn--text hz-btn--sm" style="width:24px;height:24px;padding:0;justify-content:center;color:var(--hz-neutral-500);flex-shrink:0" title="What are pipeline stages?" onClick="{{ openStageHelp }}"><i class="far fa-question-circle"></i></button>
         <span class="hz-body-s" style="font-weight:700;letter-spacing:.06em;color:var(--hz-text-tertiary);flex-shrink:0">STAGE</span>
         <div class="hz-tabs" style="border-bottom:none;flex-wrap:nowrap;overflow-x:auto;min-width:0">
@@ -142,15 +143,14 @@
       </sc-if>
 
       <div style="display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap">
-        <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-          <option>All Origins</option>
-        </select>
+        
         <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
           <option>All Sources</option>
           <option>Inbound</option>
           <option>Outbound</option>
         </select>
         <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+          <option>All Pipeline Status</option>
           <option>Active</option>
           <option>Dropped</option>
         </select>
@@ -173,8 +173,10 @@
             <tr>
               <th style="padding:8px 10px;position:sticky;left:0;z-index:3;background:var(--hz-surface-card);box-shadow:1px 0 0 var(--hz-border-subtle)">Company <i class="far fa-arrow-up-arrow-down" style="font-size:10px"></i></th>
               <th style="padding:8px 10px">Stage</th>
+              <th style="padding:8px 10px">Pipeline Status</th>
               <th style="padding:8px 10px;white-space:nowrap">Created At</th>
               <th style="padding:8px 10px">Banker / Source</th>
+              <th style="padding:8px 10px">Inbound / Outbound</th>
               <th style="padding:8px 10px">Sector</th>
               <th style="padding:8px 10px">Geo</th>
               <th style="padding:8px 10px">Matched Tracks</th>
@@ -196,8 +198,10 @@
             <tr>
               <td style="position:sticky;left:0;z-index:1;background:var(--hz-surface-card);box-shadow:1px 0 0 var(--hz-border-subtle)"><span style="cursor:pointer;color:var(--hz-text-primary)" style-hover="color:var(--hz-blue-600)">{{ row.title }}</span><sc-if value="{{ row.subtitle }}" hint-placeholder-val="{{ false }}"><div class="hz-body-s hz-muted" style="cursor:pointer" style-hover="color:var(--hz-blue-600)">{{ row.subtitle }}</div></sc-if></td>
               <td><span class="hz-body-s hz-muted">{{ row.stageLabel }}</span></td>
+              <td style="font-weight:600;color:{{ row.pipelineStatusColor }}">{{ row.pipelineStatus }}</td>
               <td style="white-space:nowrap">{{ row.createdAt }}</td>
               <td>{{ row.banker }}</td>
+              <td>{{ row.sourceDirection }}</td>
               <td>{{ row.sector }}</td>
               <td>{{ row.geo }}</td>
               <td style="max-width:220px"><div style="display:flex;flex-wrap:wrap;gap:4px">
@@ -224,17 +228,17 @@
                   <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" onClick="{{ row.back }}" onMouseOver="this.style.background='var(--hz-neutral-100)'" onMouseOut="this.style.background='none'"><i class="far fa-arrow-left"></i>Move Back</button>
                 </div>
                 </sc-if>
-              </div></td>
-            </tr>
-            </sc-for>
+              </div>
+            
+            
             <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
             <tr><td colspan="7" style="text-align:center;padding:24px;color:var(--hz-text-tertiary)">No companies match your search.</td></tr>
             </sc-if>
-          </tbody>
-        </table>
+          
+        
       </div>
-    </div>
-    </sc-if>
+    </td></tr></sc-for></tbody></table></div>
+    
 
     <sc-if value="{{ isScreeningView }}" hint-placeholder-val="{{ false }}">
     <div class="hz-card" style="padding:20px;border:1px solid var(--hz-border-subtle)">
@@ -331,7 +335,7 @@
     </sc-if>
 
   </div>
-</div>
+</sc-if></div>
 
 <sc-if value="{{ stageHelpOpen }}" hint-placeholder-val="{{ false }}">
 <div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1000">
@@ -490,10 +494,10 @@
 </sc-if>
 
 </div>
-</x-dc>
+</div></x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { sortOrder: 'newest', addCompanyMenuOpen: false, discoveredShown: false, subTab: 'inbound', view: 'companies', stageMenuOpen: false, selectedStages: ['l0'], companySearch: '', moveMenuOpenId: null, configureOpen: false, activeTrackKey: 'semicon', configTab: 'thesis', moveMenuOpenIndex: null, modalTab: 'track', trackDirty: false, dirtyStages: {}, stageInfoExpanded: false, stageHelpOpen: false };
+  state = { droppedIds: [5, 18, 33], sortOrder: 'newest', addCompanyMenuOpen: false, discoveredShown: false, subTab: 'inbound', view: 'companies', stageMenuOpen: false, selectedStages: ['l0'], companySearch: '', moveMenuOpenId: null, configureOpen: false, activeTrackKey: 'semicon', configTab: 'thesis', moveMenuOpenIndex: null, modalTab: 'track', trackDirty: false, dirtyStages: {}, stageInfoExpanded: false, stageHelpOpen: false };
   stages = ['l0','l1','l2','l3','l4','l5'];
   pendingCompanies = [
     { id: 900, name: 'Driftwood Capital', project: '[Project Driftwood]', stage: 'pending', banker: 'Aldira', sector: 'Specialty Logistics', geo: 'USA', tracks: ['Inbound Referral'] },
@@ -672,7 +676,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
     const trackFilterOptions = [...new Set(this.companies.flatMap(c => c.tracks))].sort();
     const trackFilter = this.state.trackFilter || '';
     const filteredCompanies = this.companies
-      .filter(c => search ? [c.name, c.project, c.sector, c.geo, c.banker].join(' ').toLowerCase().includes(search) : this.state.selectedStages.includes(c.stage))
+      .filter(c => search ? [c.name, c.project, c.sector, c.geo, c.banker].join(' ').toLowerCase().includes(search) : (this.state.selectedStages.includes('all') || this.state.selectedStages.includes(c.stage)))
       .filter(c => !trackFilter || c.tracks.includes(trackFilter))
       .map(c => {
         const stageIdx = this.stages.indexOf(c.stage);
@@ -699,6 +703,9 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
           valuation: hasFinancials && stageIdx >= 3 ? `$${revenueM * 3}.00M` : '—',
           stake: stageIdx >= 4 ? `${60 + (c.id % 4) * 10}%` : '-',
           status: 'Unreviewed',
+          sourceDirection: c.id % 2 === 0 ? 'Inbound' : 'Outbound',
+          pipelineStatus: this.state.droppedIds.includes(c.id) ? 'Dropped' : 'Active',
+          pipelineStatusColor: this.state.droppedIds.includes(c.id) ? 'var(--hz-red-600)' : 'var(--hz-green-700)',
           remarks: '-',
           created: createdDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
           lastActivity: '-',
@@ -707,7 +714,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
           aiOpinionColor: opinion.color,
           moveOpen: this.state.moveMenuOpenId === c.id,
           toggleMove: () => this.setState(s => ({ moveMenuOpenId: s.moveMenuOpenId === c.id ? null : c.id })),
-          drop: () => this.setState({ moveMenuOpenId: null }),
+          drop: () => this.setState(s => ({ moveMenuOpenId: null, droppedIds: s.droppedIds.includes(c.id) ? s.droppedIds : [...s.droppedIds, c.id] })),
           next: () => this.setState({ moveMenuOpenId: null }),
           back: () => this.setState({ moveMenuOpenId: null })
         };
@@ -716,12 +723,21 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
     const noResults = filteredCompanies.length === 0;
 
     const pendingCount = this.companies.filter(c => c.stage === 'pending').length;
-    const stageOptions = [{
-      key: 'pending',
-      label: 'Pending Confirmation',
+    const pendingActive = selected.length === 1 && selected[0] === 'pending';
+    const pendingChip = {
       badge: pendingCount || null,
-      tabClass: selected.length === 1 && selected[0] === 'pending' ? 'is-active' : '',
-      selectOnly: () => this.setState({ selectedStages: ['pending'], stageInfoExpanded: false })
+      active: pendingActive,
+      style: pendingActive
+        ? 'display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;border:1px solid var(--hz-horizon-primary);background:var(--hz-blue-50);color:var(--hz-horizon-primary);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;flex-shrink:0;white-space:nowrap'
+        : 'display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;border:1px solid var(--hz-border-default);background:var(--hz-surface-page);color:var(--hz-text-secondary);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;flex-shrink:0;white-space:nowrap',
+      toggle: () => this.setState({ selectedStages: pendingActive ? ['all'] : ['pending'], stageInfoExpanded: false })
+    };
+    const stageOptions = [{
+      key: 'all',
+      label: 'All Stages',
+      badge: null,
+      tabClass: selected.length === 1 && selected[0] === 'all' ? 'is-active' : '',
+      selectOnly: () => this.setState({ selectedStages: ['all'], stageInfoExpanded: false })
     }].concat(this.stages.map(key => ({
       key,
       label: this.stageLabels[key],
@@ -810,6 +826,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       closeStageHelp: () => this.setState({ stageHelpOpen: false }),
       stageHelpItems,
       activeStageInfo,
+      pendingChip,
       companySearch: this.state.companySearch,
       setCompanySearch: (e) => this.setState({ companySearch: e.target.value, selectedStages: e.target.value.trim() ? [] : ['l0'] }),
       filteredCompanies,
