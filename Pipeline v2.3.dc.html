@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)} .hz-table--compact td{padding:8px 10px !important}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:220px minmax(0,1fr)">
+
+<div class="hz-sidebar" style="width:220px;height:100vh;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:6px">
+        <img src="uploads/logo-brain-light-d6a97625.svg" alt="Investment Brain" style="height:24px;width:auto">
+      </div>
+      <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-window-maximize" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:12px;padding:6px 2px;justify-content:space-between">
+      <span style="font-weight:600;color:var(--hz-text-secondary)">M&amp;A Team</span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-message-plus"></i>New Chat</button>
+  </div>
+  <div style="padding:8px 6px;flex:1;min-height:0;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-th-large" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-search-location" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span><span class="hz-badge hz-badge--secondary" style="margin-left:auto;background:var(--hz-neutral-300);color:var(--hz-text-primary)">2</span></a>
+        <a href="Pipeline v2.1.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-project-diagram" style="font-size:17px"></i><span class="hz-sidebar__label">Pipeline</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Company List<br></span></div>
+        <a href="CRM.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM &amp; Email</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-university" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb" style="font-size:17px"></i><span class="hz-sidebar__label">Insight</span></a>
+        <a href="AI Agent.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-robot" style="font-size:17px"></i><span class="hz-sidebar__label">AI Agent</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-desktop" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-magic" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-alt" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Chat History</div>
+      <div style="padding:16px 10px;text-align:center;color:var(--hz-text-tertiary);font-size:13px;line-height:1.5">No chats yet. Start a new conversation.</div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%">
+      <span class="hz-avatar hz-avatar--sm">TU</span>
+      <span><span class="hz-account-trigger__name" style="display:block">Test User</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div style="min-width:0;overflow-y:auto">
+  <div style="background:linear-gradient(135deg,var(--hz-blue-50),var(--hz-neutral-50));padding:24px 28px 28px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+      <div>
+        <div class="hz-h2" style="margin:0">Deal Pipeline</div>
+        <div class="hz-body-r hz-muted" style="margin-top:4px">Track companies through all stages</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="background:var(--hz-surface-card);color:var(--hz-neutral-500);border-color:var(--hz-neutral-300)" onClick="{{ openConfigure }}"><i class="far fa-cog"></i>Configure</button>
+        
+      </div>
+    </div>
+
+  </div>
+
+  <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+
+    <div class="hz-tabs">
+      <button class="hz-tab {{ viewTabClass.companies }}" onClick="{{ selectCompaniesView }}">Pipeline Companies</button>
+      <button class="hz-tab {{ viewTabClass.screening }}" onClick="{{ selectScreeningView }}"><i class="far fa-sparkles" style="margin-right:6px"></i>AI Screening Progress<span class="hz-badge hz-badge--soft" style="margin-left: 6px; background-color: var(--hz-red-500); color: #fff">4</span></button>
+    </div>
+
+    <sc-if value="{{ isCompaniesView }}" hint-placeholder-val="{{ true }}">
+    <div class="hz-card" style="padding:20px;border:1px solid var(--hz-border-subtle)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div>
+          <div class="hz-h5" style="margin:0">Pipeline Companies</div>
+          <div class="hz-body-s hz-muted" style="margin-top:2px">Manage your deal in pipelines</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="position:relative;display:inline-block">
+            <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ toggleAddCompanyMenu }}"><i class="far fa-plus"></i>Add Company</button>
+            <sc-if value="{{ addCompanyMenuOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:100%;right:0;margin-top:4px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);min-width:180px;z-index:100;padding:6px;text-align:left">
+              <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" onClick="{{ selectManualAdd }}" onMouseOver="this.style.background='var(--hz-neutral-100)'" onMouseOut="this.style.background='none'"><i class="far fa-pencil"></i>Manual</button>
+              <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" onClick="{{ selectAskAI }}" onMouseOver="this.style.background='var(--hz-neutral-100)'" onMouseOut="this.style.background='none'"><i class="far fa-sparkles"></i>Ask AI</button>
+              <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" onClick="{{ selectDropFile }}" onMouseOver="this.style.background='var(--hz-neutral-100)'" onMouseOut="this.style.background='none'"><i class="far fa-folder-open"></i>Drop File</button>
+            </div>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px;position:relative">
+          <i class="far fa-magnifying-glass" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--hz-text-tertiary);font-size:13px"></i>
+          <input placeholder="Search companies or sectors…" value="{{ companySearch }}" onChange="{{ setCompanySearch }}" style="width:100%;padding:9px 12px 9px 34px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;margin-top:16px;min-width:0">
+        <button onClick="{{ pendingChip.toggle }}" style="{{ pendingChip.style }}">Pending Confirmation<sc-if value="{{ pendingChip.badge }}" hint-placeholder-val="{{ false }}"><span class="hz-badge" style="background:var(--hz-red-50);color:var(--hz-red-700)">{{ pendingChip.badge }}</span></sc-if></button>
+        <button class="hz-btn hz-btn--text hz-btn--sm" style="width:24px;height:24px;padding:0;justify-content:center;color:var(--hz-neutral-500);flex-shrink:0" title="What are pipeline stages?" onClick="{{ openStageHelp }}"><i class="far fa-question-circle"></i></button>
+        <span class="hz-body-s" style="font-weight:700;letter-spacing:.06em;color:var(--hz-text-tertiary);flex-shrink:0">STAGE</span>
+        <div class="hz-tabs" style="border-bottom:none;flex-wrap:nowrap;overflow-x:auto;min-width:0">
+          <sc-for list="{{ stageOptions }}" as="opt" hint-placeholder-count="7">
+            <button class="hz-tab {{ opt.tabClass }}" style="white-space:nowrap;flex-shrink:0" onClick="{{ opt.selectOnly }}">{{ opt.label }}<sc-if value="{{ opt.badge }}" hint-placeholder-val="{{ false }}"><span class="hz-badge" style="margin-left:6px;background:var(--hz-red-50);color:var(--hz-red-700)">{{ opt.badge }}</span></sc-if></button>
+          </sc-for>
+        </div>
+        <i class="far fa-chevron-right" style="color:var(--hz-neutral-400);font-size:12px;flex-shrink:0"></i>
+      </div>
+
+      <sc-if value="{{ activeStageInfo }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:8px;padding-left:2px">
+        <div class="hz-body-s">
+          <span class="hz-muted"><span style="font-weight:700">Description: </span>{{ activeStageInfo.descriptionShown }}</span>
+          <sc-if value="{{ activeStageInfo.truncatable }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ openStageHelp }}" style="background:none;border:none;padding:0;margin-left:4px;font-family:inherit;font-size:12px;font-weight:600;color:var(--hz-horizon-primary);cursor:pointer">Show more</button>
+          </sc-if>
+        </div>
+      </div>
+      </sc-if>
+
+      <div style="display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap">
+        
+        <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+          <option>All Sources</option>
+          <option>Inbound</option>
+          <option>Outbound</option>
+        </select>
+        <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+          <option>All Pipeline Status</option>
+          <option>Active</option>
+          <option>Dropped</option>
+        </select>
+        <select value="{{ trackFilter }}" onChange="{{ setTrackFilter }}" style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+          <option value="">All Tracks</option>
+          <sc-for list="{{ trackFilterOptions }}" as="t" hint-placeholder-count="4">
+          <option value="{{ t }}">{{ t }}</option>
+          </sc-for>
+        </select>
+        <select value="{{ sortOrder }}" onChange="{{ setSortOrder }}" style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+          <option value="newest">Sort by: Newest</option>
+          <option value="oldest">Sort by: Oldest</option>
+        </select>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="width:36px;padding:0;justify-content:center;color:var(--hz-neutral-500);border-color:var(--hz-neutral-300)"><i class="far fa-sliders-h"></i></button>
+      </div>
+
+      <div style="overflow-x:auto;margin-top:14px">
+        <table class="hz-table hz-table--compact" style="font-size:13px;min-width:2400px">
+          <thead>
+            <tr>
+              <th style="padding:8px 10px;position:sticky;left:0;z-index:3;background:var(--hz-surface-card);box-shadow:1px 0 0 var(--hz-border-subtle)">Company <i class="far fa-arrow-up-arrow-down" style="font-size:10px"></i></th>
+              <th style="padding:8px 10px">Stage</th>
+              <th style="padding:8px 10px">Pipeline Status</th>
+              <th style="padding:8px 10px;white-space:nowrap">Created At</th>
+              <th style="padding:8px 10px">Banker / Source</th>
+              <th style="padding:8px 10px">Inbound / Outbound</th>
+              <th style="padding:8px 10px">Sector</th>
+              <th style="padding:8px 10px">Geo</th>
+              <th style="padding:8px 10px">Matched Tracks</th>
+              <th style="padding:8px 10px">Deal Type</th>
+              <th style="padding:8px 10px">Revenue</th>
+              <th style="padding:8px 10px">EBITDA</th>
+              <th style="padding:8px 10px">Valuation</th>
+              <th style="padding:8px 10px">% Stake</th>
+              <th style="padding:8px 10px">Status</th>
+              <th style="padding:8px 10px">Additional Remarks</th>
+              <th style="padding:8px 10px">Created</th>
+              <th style="padding:8px 10px">Last Activity</th>
+              <th style="padding:8px 10px;min-width:260px">AI Opinion</th>
+              <th style="padding:8px 10px;text-align:center;position:sticky;right:0;z-index:3;background:var(--hz-surface-card);box-shadow:-1px 0 0 var(--hz-border-subtle)">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ filteredCompanies }}" as="row" hint-placeholder-count="8">
+            <tr>
+              <td style="position:sticky;left:0;z-index:1;background:var(--hz-surface-card);box-shadow:1px 0 0 var(--hz-border-subtle)"><span style="cursor:pointer;color:var(--hz-text-primary)" style-hover="color:var(--hz-blue-600)">{{ row.title }}</span><sc-if value="{{ row.subtitle }}" hint-placeholder-val="{{ false }}"><div class="hz-body-s hz-muted" style="cursor:pointer" style-hover="color:var(--hz-blue-600)">{{ row.subtitle }}</div></sc-if></td>
+              <td><span class="hz-body-s hz-muted">{{ row.stageLabel }}</span></td>
+              <td style="font-weight:600;color:{{ row.pipelineStatusColor }}">{{ row.pipelineStatus }}</td>
+              <td style="white-space:nowrap">{{ row.createdAt }}</td>
+              <td>{{ row.banker }}</td>
+              <td>{{ row.sourceDirection }}</td>
+              <td>{{ row.sector }}</td>
+              <td>{{ row.geo }}</td>
+              <td style="max-width:220px"><div style="display:flex;flex-wrap:wrap;gap:4px">
+                <sc-for list="{{ row.tracks }}" as="track" hint-placeholder-count="1">
+                <span class="hz-badge hz-badge--soft" style="max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline;font-weight:500;font-size:10px">{{ track }}</span>
+                </sc-for>
+              </div></td>
+              <td>{{ row.dealType }}</td>
+              <td style="white-space:nowrap">{{ row.revenue }}</td>
+              <td style="white-space:nowrap">{{ row.ebitda }}</td>
+              <td style="white-space:nowrap">{{ row.valuation }}</td>
+              <td>{{ row.stake }}</td>
+              <td class="hz-muted">{{ row.status }}</td>
+              <td class="hz-muted" style="max-width:180px">{{ row.remarks }}</td>
+              <td style="white-space:nowrap" class="hz-muted">{{ row.created }}</td>
+              <td class="hz-muted">{{ row.lastActivity }}</td>
+              <td style="min-width:260px"><span style="color:{{ row.aiOpinionColor }}"><i class="far {{ row.aiOpinionIcon }}"></i></span> {{ row.aiOpinion }}</td>
+              <td style="text-align:center;position:sticky;right:0;z-index:1;background:var(--hz-surface-card);box-shadow:-1px 0 0 var(--hz-border-subtle)"><div style="display:flex;justify-content:center;align-items:center;gap:1px"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:22px;height:22px;padding:0;justify-content:center;color:var(--hz-neutral-500);font-size:11px" title="Update" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-pencil" style="font-size:11px"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:22px;height:22px;padding:0;justify-content:center;color:var(--hz-neutral-500);font-size:11px" title="View details" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-eye" style="font-size:11px"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="padding:0 4px;gap:3px;color:var(--hz-neutral-500);font-size:11px" title="AI Insight" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-sparkles" style="font-size:11px"></i>Ask</button><div style="position:relative;display:inline-block">
+                <button class="hz-btn hz-btn--text hz-btn--sm" style="padding:0 4px;gap:3px;color:var(--hz-neutral-500);font-size:11px" title="Move" onClick="{{ row.toggleMove }}" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-exchange-alt" style="font-size:11px"></i>Move</button>
+                <sc-if value="{{ row.moveOpen }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;top:100%;right:0;margin-top:4px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);min-width:160px;z-index:100;padding:6px;text-align:left">
+                  <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-red-600)" onClick="{{ row.drop }}" onMouseOver="this.style.background='var(--hz-red-50)'" onMouseOut="this.style.background='none'"><i class="far fa-times-circle"></i>Dropped</button>
+                  <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" onClick="{{ row.next }}" onMouseOver="this.style.background='var(--hz-neutral-100)'" onMouseOut="this.style.background='none'"><i class="far fa-arrow-right"></i>Move Next</button>
+                  <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" onClick="{{ row.back }}" onMouseOver="this.style.background='var(--hz-neutral-100)'" onMouseOut="this.style.background='none'"><i class="far fa-arrow-left"></i>Move Back</button>
+                </div>
+                </sc-if>
+              </div>
+            
+            
+            <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+            <tr><td colspan="7" style="text-align:center;padding:24px;color:var(--hz-text-tertiary)">No companies match your search.</td></tr>
+            </sc-if>
+          
+        
+      </div>
+    </td></tr></sc-for></tbody></table></div>
+    
+
+    <sc-if value="{{ isScreeningView }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-card" style="padding:20px;border:1px solid var(--hz-border-subtle)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="color:var(--hz-horizon-primary);flex-shrink:0"><i class="far fa-sparkles" style="font-size:18px"></i></span>
+          <div>
+            <div class="hz-h5" style="margin:0">AI Screening Progress</div>
+            <div class="hz-body-s hz-muted" style="margin-top:2px">Real-time status of company screenings</div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div style="display:flex;align-items:center;gap:8px;margin-top:16px;font-weight:700">
+        <i class="far fa-circle-check" style="color:var(--hz-green-600)"></i>Completed (5)
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:12px;min-width:0">
+            <i class="far fa-circle-check" style="color:var(--hz-green-600);font-size:16px"></i>
+            <div>
+              <div style="font-weight:700">Nordic Semiconductor ASA — Project Boom</div>
+              <div style="margin-top:4px"><span class="hz-badge hz-badge--soft" style="font-weight:400">SEA Industrial Tech Roll-Up</span></div>
+              <div class="hz-body-s hz-muted" style="margin-top:2px">2 criteria evaluated · <span style="color:var(--hz-green-600)">2✓</span> <span style="color:var(--hz-red-600)">0✗</span> · <span style="color:var(--hz-green-700);font-weight:700">Passed</span></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-green-700);border-color:var(--hz-green-300)"><i class="far fa-arrow-right"></i>Promote to L1</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:12px;min-width:0">
+            <i class="far fa-circle-xmark" style="color:var(--hz-red-600);font-size:16px"></i>
+            <div>
+              <div style="font-weight:700">Palantir Technologies — Project Boom</div>
+              <div style="margin-top:4px"><span class="hz-badge hz-badge--soft" style="font-weight:400">SEA Industrial Tech Roll-Up</span></div>
+              <div class="hz-body-s hz-muted" style="margin-top:2px">2 criteria evaluated · <span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">1✗</span> · <span style="color:var(--hz-red-600);font-weight:700">Failed</span></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-red-600);border-color:var(--hz-red-300)"><i class="far fa-times"></i>Drop</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:12px;min-width:0">
+            <i class="far fa-circle-question" style="color:var(--hz-orange-500);font-size:16px"></i>
+            <div>
+              <div style="font-weight:700">Palantir Technologies — Project Boom</div>
+              <div style="margin-top:4px"><span class="hz-badge hz-badge--soft" style="font-weight:400">Consolidation Play: rolling up paper companies globally</span></div>
+              <div class="hz-body-s hz-muted" style="margin-top:2px">2 criteria evaluated · <span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">0✗</span> <span style="color:var(--hz-orange-600)">1?</span> · <span style="color:var(--hz-orange-700);font-weight:700">Inconclusive</span></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-red-600);border-color:var(--hz-red-300)"><i class="far fa-times"></i>Drop</button>
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-green-700);border-color:var(--hz-green-300)"><i class="far fa-arrow-right"></i>Promote to L1</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:12px;min-width:0">
+            <i class="far fa-circle-question" style="color:var(--hz-orange-500);font-size:16px"></i>
+            <div>
+              <div style="font-weight:700">BV Holdings JSC — Project Banyan</div>
+              <div style="margin-top:4px"><span class="hz-badge hz-badge--soft" style="font-weight:400">Consolidation Play: rolling up paper companies globally</span></div>
+              <div class="hz-body-s hz-muted" style="margin-top:2px">2 criteria evaluated · <span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">0✗</span> <span style="color:var(--hz-orange-600)">1?</span> · <span style="color:var(--hz-orange-700);font-weight:700">Inconclusive</span></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-red-600);border-color:var(--hz-red-300)"><i class="far fa-times"></i>Drop</button>
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-green-700);border-color:var(--hz-green-300)"><i class="far fa-arrow-right"></i>Promote to L1</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:12px;min-width:0">
+            <i class="far fa-circle-question" style="color:var(--hz-orange-500);font-size:16px"></i>
+            <div>
+              <div style="font-weight:700">BV Holdings JSC — Project Banyan</div>
+              <div style="margin-top:4px"><span class="hz-badge hz-badge--soft" style="font-weight:400">Paper Companies</span></div>
+              <div class="hz-body-s hz-muted" style="margin-top:2px">1 criteria evaluated · <span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">0✗</span> · <span style="color:var(--hz-orange-700);font-weight:700">Inconclusive</span></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-red-600);border-color:var(--hz-red-300)"><i class="far fa-times"></i>Drop</button>
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-green-700);border-color:var(--hz-green-300)"><i class="far fa-arrow-right"></i>Promote to L1</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+  </div>
+</sc-if></div>
+
+<sc-if value="{{ stageHelpOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1000">
+  <div style="background:var(--hz-surface-card);border-radius:12px;width:min(640px,92vw);max-height:85vh;display:flex;flex-direction:column;overflow:hidden">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--hz-border-subtle)">
+      <div>
+        <div class="hz-h4" style="margin:0">Pipeline Stages</div>
+        <div class="hz-body-s hz-muted" style="margin-top:4px">What each stage means and what's needed to move forward.</div>
+      </div>
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeStageHelp }}"><i class="far fa-times" style="font-size:18px"></i></button>
+    </div>
+    <div style="padding:20px 24px;overflow-y:auto;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ stageHelpItems }}" as="s" hint-placeholder-count="6">
+      <div style="padding:12px 14px;border:1px solid var(--hz-border-subtle);border-radius:10px">
+        <div style="font-weight:700">{{ s.label }}</div>
+        <div class="hz-body-s hz-muted" style="margin-top:4px;white-space:pre-wrap">{{ s.description }}</div>
+      </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ confirmAction }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1200">
+  <div style="background:var(--hz-surface-card);border-radius:12px;width:min(400px,90vw);padding:24px;display:flex;flex-direction:column;gap:16px">
+    <div class="hz-h5" style="margin:0">Please confirm</div>
+    <div class="hz-body-s" style="color:var(--hz-text-secondary)"><b>{{ confirmActionWord }}</b> "{{ confirmActionLabel }}"<sc-if value="{{ confirmActionIsMove }}" hint-placeholder-val="{{ false }}"> one position?</sc-if><sc-if value="{{ !confirmActionIsMove }}" hint-placeholder-val="{{ false }}"> stage? This can't be undone.</sc-if></div>
+    <sc-if value="{{ confirmActionIsMove }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-body-s" style="color:var(--hz-text-tertiary)">All companies currently in this stage will move together with it.</div>
+    </sc-if>
+    <sc-if value="{{ confirmDeleteHasCompanies }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:8px;padding:12px;border:1px solid var(--hz-orange-200);background:var(--hz-orange-50);border-radius:8px">
+      <div class="hz-body-s" style="color:var(--hz-text-primary)">There are companies in this pipeline. Choose a pipeline stage to move them to.</div>
+      <select value="{{ confirmMoveTarget }}" onChange="{{ setConfirmMoveTarget }}" style="width:100%;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+        <option value="">Select a stage…</option>
+        <sc-for list="{{ confirmMoveTargetOptions }}" as="opt" hint-placeholder-count="5">
+        <option value="{{ opt.key }}">{{ opt.label }}</option>
+        </sc-for>
+      </select>
+    </div>
+    </sc-if>
+    <div style="display:flex;justify-content:flex-end;gap:10px">
+      <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ cancelConfirmAction }}">Cancel</button>
+      <button class="hz-btn hz-btn--primary hz-btn--sm" disabled="{{ confirmConfirmDisabled }}" onClick="{{ runConfirmAction }}">Confirm</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ newStageModalOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1100">
+  <div style="background:var(--hz-surface-card);border-radius:12px;width:min(480px,92vw);max-height:90vh;display:flex;flex-direction:column;overflow:hidden">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--hz-border-subtle)">
+      <div class="hz-h4" style="margin:0">New Pipeline Stage</div>
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeNewStageModal }}"><i class="far fa-times" style="font-size:18px"></i></button>
+    </div>
+    <div style="padding:20px 24px;overflow-y:auto;display:flex;flex-direction:column;gap:16px">
+      <div>
+        <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Code</label>
+        <input value="{{ newStageCode }}" onChange="{{ setNewStageCode }}" placeholder="e.g. L6" style="width:100%;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+      </div>
+      <div>
+        <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Display name</label>
+        <input value="{{ newStageName }}" onChange="{{ setNewStageName }}" placeholder="e.g. Post-Close Review" style="width:100%;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+      </div>
+      <div>
+        <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Description</label>
+        <textarea value="{{ newStageDescription }}" onChange="{{ setNewStageDescription }}" placeholder="What happens at this stage, and what must be produced to exit it…" style="width:100%;min-height:100px;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;line-height:1.5;background:var(--hz-surface-page);color:var(--hz-text-primary);resize:vertical;white-space:pre-wrap"></textarea>
+      </div>
+      <div>
+        <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Position After</label>
+        <select value="{{ newStagePositionAfter }}" onChange="{{ setNewStagePositionAfter }}" style="width:100%;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+          <sc-for list="{{ positionAfterOptions }}" as="opt" hint-placeholder-count="6">
+          <option value="{{ opt.key }}">{{ opt.label }}</option>
+          </sc-for>
+        </select>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;gap:10px;padding:16px 24px;border-top:1px solid var(--hz-border-subtle)">
+      <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeNewStageModal }}">Cancel</button>
+      <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ createStage }}">Create Stage</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ configureOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1000">
+  <div style="background:var(--hz-surface-card);border-radius:12px;width:min(1100px,94vw);max-height:90vh;display:flex;flex-direction:column;overflow:hidden">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;padding:24px 28px;border-bottom:1px solid var(--hz-border-subtle)">
+      <div>
+        <div class="hz-h3" style="margin:0">Configuration</div>
+        <div class="hz-body-r hz-muted" style="margin-top:4px">Manage the investment theses used to auto-match inbound and outbound deals.</div>
+      </div>
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeConfigure }}"><i class="far fa-times" style="font-size:18px"></i></button>
+    </div>
+
+    <div class="hz-tabs" style="padding:0 28px">
+      <button class="hz-tab {{ modalTabClass.track }}" onClick="{{ selectModalTrackTab }}">Investment Track</button>
+      <button class="hz-tab {{ modalTabClass.settings }}" onClick="{{ selectModalSettingsTab }}">Pipeline Settings</button>
+    </div>
+
+    <sc-if value="{{ isModalTrackTab }}" hint-placeholder-val="{{ true }}">
+    <div style="display:grid;grid-template-columns:260px minmax(0,1fr);flex:1;min-height:0">
+      <div style="border-right:1px solid var(--hz-border-subtle);padding:16px 12px;overflow-y:auto;display:flex;flex-direction:column;gap:4px">
+        <div class="hz-body-s" style="font-weight:700;letter-spacing:.06em;color:var(--hz-text-tertiary);padding:4px 8px">TRACKS</div>
+        <sc-for list="{{ tracks }}" as="track" hint-placeholder-count="5">
+        <button onClick="{{ track.select }}" style="text-align:left;border:none;background:{{ track.bg }};border-radius:8px;padding:10px 12px;cursor:pointer;font-family:inherit">
+          <div style="font-weight:700;color:{{ track.titleColor }}">{{ track.name }}</div>
+          <div class="hz-body-s hz-muted" style="margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ track.summary }}</div>
+        </button>
+        </sc-for>
+        <button style="margin-top:8px;border:1px dashed var(--hz-border-default);border-radius:8px;padding:10px 12px;background:none;font-family:inherit;font-weight:600;color:var(--hz-text-secondary);display:flex;align-items:center;gap:8px;cursor:pointer"><i class="far fa-plus"></i>New track</button>
+      </div>
+
+      <div style="padding:24px 28px;overflow-y:auto;display:flex;flex-direction:column;gap:20px">
+        <div>
+          <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:8px">Track name <span style="color:var(--hz-red-600)">*</span></label>
+          <input value="{{ activeTrack.name }}" onChange="{{ markTrackDirty }}" style="width:100%;padding:10px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:15px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+        </div>
+        <div>
+          <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:8px">PIC</label>
+          <select style="width:100%;padding:10px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:15px;background:var(--hz-surface-page);color:var(--hz-text-tertiary)">
+            <option>Set PIC…</option>
+          </select>
+        </div>
+
+        <div class="hz-tabs">
+          <button class="hz-tab {{ configTabClass.thesis }}" onClick="{{ selectThesisTab }}">Investment Thesis</button>
+          <button class="hz-tab {{ configTabClass.criteria }}" onClick="{{ selectCriteriaTab }}">AI Screening Criteria</button>
+          <button class="hz-tab {{ configTabClass.variables }}" onClick="{{ selectVariablesTab }}">Variables</button>
+        </div>
+
+        <textarea value="{{ activeTrack.thesis }}" onChange="{{ markTrackDirty }}" style="width:100%;min-height:340px;border:1px solid var(--hz-border-default);border-radius:8px;padding:16px;font-family:inherit;font-size:14px;line-height:1.6;color:var(--hz-text-primary);background:var(--hz-surface-page);resize:vertical;white-space:pre-wrap"></textarea>
+
+        <sc-if value="{{ trackDirty }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;justify-content:flex-end;gap:10px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ cancelTrack }}">Cancel</button>
+          <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ saveTrack }}">Save Track</button>
+        </div>
+        </sc-if>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isModalSettingsTab }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1;min-height:0;overflow-y:auto;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+        <div>
+          <div class="hz-h5" style="margin:0">Pipeline Settings</div>
+          <div class="hz-body-s hz-muted" style="margin-top:2px">Rename pipeline stages shown across the app.</div>
+        </div>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="white-space:nowrap" onClick="{{ openNewStageModal }}"><i class="fas fa-plus" style="margin-right:6px"></i>New Pipeline Stage</button>
+      </div>
+      <sc-for list="{{ stageFields }}" as="stage" hint-placeholder-count="6">
+      <div style="padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;display:flex;flex-direction:column;gap:12px;position:relative">
+        <div style="display:flex;justify-content:flex-end;position:relative">
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;height:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ stage.toggleMenu }}"><i class="fas fa-cog"></i></button>
+          <sc-if value="{{ stage.menuOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:100%;right:0;margin-top:4px;background:var(--hz-surface-page);border:1px solid var(--hz-border-default);border-radius:8px;box-shadow:var(--hz-shadow-md);min-width:96px;z-index:10;overflow:hidden">
+            <button class="hz-btn hz-btn--text hz-btn--sm" disabled="{{ !stage.canMoveUp }}" style="width:100%;justify-content:flex-start;padding:6px 10px;border-radius:0;font-size:12px" onClick="{{ stage.moveUp }}"><i class="fas fa-arrow-up" style="margin-right:6px;width:12px"></i>Move up</button>
+            <button class="hz-btn hz-btn--text hz-btn--sm" disabled="{{ !stage.canMoveDown }}" style="width:100%;justify-content:flex-start;padding:6px 10px;border-radius:0;font-size:12px" onClick="{{ stage.moveDown }}"><i class="fas fa-arrow-down" style="margin-right:6px;width:12px"></i>Move down</button>
+            <button class="hz-btn hz-btn--text hz-btn--sm" style="width:100%;justify-content:flex-start;padding:6px 10px;border-radius:0;color:var(--hz-red-600);font-size:12px" onClick="{{ stage.deleteStage }}"><i class="fas fa-trash-alt" style="margin-right:6px;width:12px"></i>Delete</button>
+          </div>
+          </sc-if>
+        </div>
+        <div style="display:grid;grid-template-columns:100px 1fr;gap:12px;align-items:start">
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Code</label>
+            <input value="{{ stage.code }}" onChange="{{ stage.setCode }}" style="width:100%;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+          </div>
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Display name</label>
+            <input value="{{ stage.name }}" onChange="{{ stage.setName }}" maxlength="40" style="width:100%;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+            <div class="hz-body-s hz-muted" style="margin-top:4px;text-align:right">{{ stage.nameCount }}/40</div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <label class="hz-body-s" style="font-weight:700">Description</label>
+            <div style="display:flex;gap:4px">
+              <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" title="Bullet list" onClick="{{ stage.addBullet }}"><i class="far fa-list-ul"></i></button>
+              <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" title="Numbered list" onClick="{{ stage.addNumber }}"><i class="far fa-list-ol"></i></button>
+            </div>
+          </div>
+          <textarea ref="{{ stage.descriptionRef }}" value="{{ stage.description }}" onChange="{{ stage.setDescription }}" placeholder="What happens at this stage, and what must be produced to exit it…" style="width:100%;min-height:120px;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;line-height:1.5;background:var(--hz-surface-page);color:var(--hz-text-primary);resize:vertical;white-space:pre-wrap"></textarea>
+        </div>
+
+        <sc-if value="{{ stage.dirty }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;justify-content:flex-end;gap:10px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ stage.cancel }}">Cancel</button>
+          <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ stage.save }}">Save</button>
+        </div>
+        </sc-if>
+      </div>
+      </sc-for>
+    </div>
+    </sc-if>
+
+  </div>
+</div>
+</sc-if>
+
+</div>
+</div></x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { droppedIds: [5, 18, 33], sortOrder: 'newest', addCompanyMenuOpen: false, discoveredShown: false, subTab: 'inbound', view: 'companies', stageMenuOpen: false, selectedStages: ['l0'], companySearch: '', moveMenuOpenId: null, configureOpen: false, activeTrackKey: 'semicon', configTab: 'thesis', moveMenuOpenIndex: null, modalTab: 'track', trackDirty: false, dirtyStages: {}, stageInfoExpanded: false, stageHelpOpen: false, stageOrder: null, settingsMenuOpenKey: null, newStageModalOpen: false, newStageCode: '', newStageName: '', newStageDescription: '', newStagePositionAfter: '', confirmAction: null, confirmMoveTarget: '' };
+  stages = ['l0','l1','l2','l3','l4','l5'];
+  pendingCompanies = [
+    { id: 900, name: 'Driftwood Capital', project: '[Project Driftwood]', stage: 'pending', banker: 'Aldira', sector: 'Specialty Logistics', geo: 'USA', tracks: ['Inbound Referral'] },
+    { id: 901, name: 'Marlowe Systems', project: '[Project Marlowe]', stage: 'pending', banker: 'Meridian Capital', sector: 'Industrial IoT', geo: 'Singapore', tracks: ['Inbound Referral'] },
+    { id: 902, name: 'Halcyon Foods', project: '[Project Halcyon]', stage: 'pending', banker: 'Varro & Co', sector: 'Food & Beverage', geo: 'Philippines', tracks: ['Inbound Referral'] }
+  ];
+  companies = [
+    { id: 0, name: 'North Group', project: '[Project Keystone]', stage: 'l0', banker: 'Aldira', sector: 'AI Software / Enterprise Analytics', geo: 'USA', tracks: ['Consolidation Play: rolling up', 'Platform Buildout'] },
+    { id: 1, name: 'Summit Partners', project: '[Project Harbor]', stage: 'l0', banker: 'Meridian Capital', sector: 'Packaging Paper & Containerboard', geo: 'Vietnam', tracks: ['Paper Companies'] },
+    { id: 2, name: 'Cascade Dynamics', project: '[Project Lumen]', stage: 'l0', banker: 'Northbridge Advisors', sector: 'Pulp & Paper', geo: 'China', tracks: ['Digital Transformation Thesis'] },
+    { id: 3, name: 'Vertex Systems', project: '[Project Granite]', stage: 'l0', banker: 'Solstice Partners', sector: 'Fintech / Payments', geo: 'Indonesia', tracks: ['Cross-border Expansion', 'Consolidation Play: rolling up'] },
+    { id: 4, name: 'Meridian Ventures', project: '[Project Beacon]', stage: 'l0', banker: 'Varro & Co', sector: 'Healthcare SaaS', geo: 'Singapore', tracks: ['Carve-out Opportunity'] },
+    { id: 5, name: 'Anchor Materials', project: '[Project Cedar]', stage: 'l0', banker: 'Harrow Lane', sector: 'Renewable Energy / Solar', geo: 'India', tracks: ['Platform Buildout'] },
+    { id: 6, name: 'Pioneer Networks', project: '[Project Atlas]', stage: 'l0', banker: 'Pinecrest Group', sector: 'Logistics & Supply Chain', geo: 'Thailand', tracks: ['Add-on Acquisition', 'Cross-border Expansion'] },
+    { id: 7, name: 'Keystone Holdings', project: '[Project Orion]', stage: 'l0', banker: 'Delta Bridge', sector: 'Specialty Chemicals', geo: 'Philippines', tracks: ['Growth Equity Candidate'] },
+    { id: 8, name: 'Harbor Technologies', project: '[Project Pinnacle]', stage: 'l0', banker: 'Aldira', sector: 'Consumer Retail Tech', geo: 'Malaysia', tracks: ['Consolidation Play: rolling up'] },
+    { id: 9, name: 'Lumen Industries', project: '[Project Crescent]', stage: 'l0', banker: 'Meridian Capital', sector: 'Agritech / Food Processing', geo: 'Japan', tracks: ['Paper Companies', 'Add-on Acquisition'] },
+    { id: 10, name: 'Granite Group', project: '[Project Ironwood]', stage: 'l0', banker: 'Northbridge Advisors', sector: 'Industrial Automation', geo: 'South Korea', tracks: ['Digital Transformation Thesis'] },
+    { id: 11, name: 'Beacon Partners', project: '[Project Sterling]', stage: 'l0', banker: 'Solstice Partners', sector: 'Telecom Infrastructure', geo: 'Australia', tracks: ['Cross-border Expansion'] },
+    { id: 12, name: 'Cedar Dynamics', project: '[Project Bluewave]', stage: 'l0', banker: 'Varro & Co', sector: 'EdTech Platforms', geo: 'USA', tracks: ['Carve-out Opportunity', 'Paper Companies'] },
+    { id: 13, name: 'Atlas Systems', project: '[Project North]', stage: 'l0', banker: 'Harrow Lane', sector: 'Mining & Materials', geo: 'Vietnam', tracks: ['Platform Buildout'] },
+    { id: 14, name: 'Orion Ventures', project: '[Project Summit]', stage: 'l0', banker: 'Pinecrest Group', sector: 'Real Estate PropTech', geo: 'China', tracks: ['Add-on Acquisition'] },
+    { id: 15, name: 'Pinnacle Materials', project: '[Project Cascade]', stage: 'l1', banker: 'Delta Bridge', sector: 'Cybersecurity', geo: 'Indonesia', tracks: ['Growth Equity Candidate', 'Carve-out Opportunity'] },
+    { id: 16, name: 'Crescent Networks', project: '[Project Vertex]', stage: 'l1', banker: 'Aldira', sector: 'Insurtech', geo: 'Singapore', tracks: ['Consolidation Play: rolling up'] },
+    { id: 17, name: 'Ironwood Holdings', project: '[Project Meridian]', stage: 'l1', banker: 'Meridian Capital', sector: 'Biotech / Pharma', geo: 'India', tracks: ['Paper Companies'] },
+    { id: 18, name: 'Sterling Technologies', project: '[Project Anchor]', stage: 'l1', banker: 'Northbridge Advisors', sector: 'Automotive Components', geo: 'Thailand', tracks: ['Digital Transformation Thesis', 'Growth Equity Candidate'] },
+    { id: 19, name: 'Bluewave Industries', project: '[Project Pioneer]', stage: 'l1', banker: 'Solstice Partners', sector: 'Media & Entertainment', geo: 'Philippines', tracks: ['Cross-border Expansion'] },
+    { id: 20, name: 'North Group', project: '[Project Keystone]', stage: 'l1', banker: 'Varro & Co', sector: 'AI Software / Enterprise Analytics', geo: 'Malaysia', tracks: ['Carve-out Opportunity'] },
+    { id: 21, name: 'Summit Partners', project: '[Project Harbor]', stage: 'l1', banker: 'Harrow Lane', sector: 'Packaging Paper & Containerboard', geo: 'Japan', tracks: ['Platform Buildout', 'Digital Transformation Thesis'] },
+    { id: 22, name: 'Cascade Dynamics', project: '[Project Lumen]', stage: 'l1', banker: 'Pinecrest Group', sector: 'Pulp & Paper', geo: 'South Korea', tracks: ['Add-on Acquisition'] },
+    { id: 23, name: 'Vertex Systems', project: '[Project Granite]', stage: 'l1', banker: 'Delta Bridge', sector: 'Fintech / Payments', geo: 'Australia', tracks: ['Growth Equity Candidate'] },
+    { id: 24, name: 'Meridian Ventures', project: '[Project Beacon]', stage: 'l1', banker: 'Aldira', sector: 'Healthcare SaaS', geo: 'USA', tracks: ['Consolidation Play: rolling up', 'Platform Buildout'] },
+    { id: 25, name: 'Anchor Materials', project: '[Project Cedar]', stage: 'l1', banker: 'Meridian Capital', sector: 'Renewable Energy / Solar', geo: 'Vietnam', tracks: ['Paper Companies'] },
+    { id: 26, name: 'Pioneer Networks', project: '[Project Atlas]', stage: 'l1', banker: 'Northbridge Advisors', sector: 'Logistics & Supply Chain', geo: 'China', tracks: ['Digital Transformation Thesis'] },
+    { id: 27, name: 'Keystone Holdings', project: '[Project Orion]', stage: 'l2', banker: 'Solstice Partners', sector: 'Specialty Chemicals', geo: 'Indonesia', tracks: ['Cross-border Expansion', 'Consolidation Play: rolling up'] },
+    { id: 28, name: 'Harbor Technologies', project: '[Project Pinnacle]', stage: 'l2', banker: 'Varro & Co', sector: 'Consumer Retail Tech', geo: 'Singapore', tracks: ['Carve-out Opportunity'] },
+    { id: 29, name: 'Lumen Industries', project: '[Project Crescent]', stage: 'l2', banker: 'Harrow Lane', sector: 'Agritech / Food Processing', geo: 'India', tracks: ['Platform Buildout'] },
+    { id: 30, name: 'Granite Group', project: '[Project Ironwood]', stage: 'l2', banker: 'Pinecrest Group', sector: 'Industrial Automation', geo: 'Thailand', tracks: ['Add-on Acquisition', 'Cross-border Expansion'] },
+    { id: 31, name: 'Beacon Partners', project: '[Project Sterling]', stage: 'l2', banker: 'Delta Bridge', sector: 'Telecom Infrastructure', geo: 'Philippines', tracks: ['Growth Equity Candidate'] },
+    { id: 32, name: 'Cedar Dynamics', project: '[Project Bluewave]', stage: 'l2', banker: 'Aldira', sector: 'EdTech Platforms', geo: 'Malaysia', tracks: ['Consolidation Play: rolling up'] },
+    { id: 33, name: 'Atlas Systems', project: '[Project North]', stage: 'l2', banker: 'Meridian Capital', sector: 'Mining & Materials', geo: 'Japan', tracks: ['Paper Companies', 'Add-on Acquisition'] },
+    { id: 34, name: 'Orion Ventures', project: '[Project Summit]', stage: 'l2', banker: 'Northbridge Advisors', sector: 'Real Estate PropTech', geo: 'South Korea', tracks: ['Digital Transformation Thesis'] },
+    { id: 35, name: 'Pinnacle Materials', project: '[Project Cascade]', stage: 'l2', banker: 'Solstice Partners', sector: 'Cybersecurity', geo: 'Australia', tracks: ['Cross-border Expansion'] },
+    { id: 36, name: 'Crescent Networks', project: '[Project Vertex]', stage: 'l2', banker: 'Varro & Co', sector: 'Insurtech', geo: 'USA', tracks: ['Carve-out Opportunity', 'Paper Companies'] },
+    { id: 37, name: 'Ironwood Holdings', project: '[Project Meridian]', stage: 'l3', banker: 'Harrow Lane', sector: 'Biotech / Pharma', geo: 'Vietnam', tracks: ['Platform Buildout'] },
+    { id: 38, name: 'Sterling Technologies', project: '[Project Anchor]', stage: 'l3', banker: 'Pinecrest Group', sector: 'Automotive Components', geo: 'China', tracks: ['Add-on Acquisition'] },
+    { id: 39, name: 'Bluewave Industries', project: '[Project Pioneer]', stage: 'l3', banker: 'Delta Bridge', sector: 'Media & Entertainment', geo: 'Indonesia', tracks: ['Growth Equity Candidate', 'Carve-out Opportunity'] },
+    { id: 40, name: 'North Group', project: '[Project Keystone]', stage: 'l3', banker: 'Aldira', sector: 'AI Software / Enterprise Analytics', geo: 'Singapore', tracks: ['Consolidation Play: rolling up'] },
+    { id: 41, name: 'Summit Partners', project: '[Project Harbor]', stage: 'l3', banker: 'Meridian Capital', sector: 'Packaging Paper & Containerboard', geo: 'India', tracks: ['Paper Companies'] },
+    { id: 42, name: 'Cascade Dynamics', project: '[Project Lumen]', stage: 'l3', banker: 'Northbridge Advisors', sector: 'Pulp & Paper', geo: 'Thailand', tracks: ['Digital Transformation Thesis', 'Growth Equity Candidate'] },
+    { id: 43, name: 'Vertex Systems', project: '[Project Granite]', stage: 'l3', banker: 'Solstice Partners', sector: 'Fintech / Payments', geo: 'Philippines', tracks: ['Cross-border Expansion'] },
+    { id: 44, name: 'Meridian Ventures', project: '[Project Beacon]', stage: 'l4', banker: 'Varro & Co', sector: 'Healthcare SaaS', geo: 'Malaysia', tracks: ['Carve-out Opportunity'] },
+    { id: 45, name: 'Anchor Materials', project: '[Project Cedar]', stage: 'l4', banker: 'Harrow Lane', sector: 'Renewable Energy / Solar', geo: 'Japan', tracks: ['Platform Buildout', 'Digital Transformation Thesis'] },
+    { id: 46, name: 'Pioneer Networks', project: '[Project Atlas]', stage: 'l4', banker: 'Pinecrest Group', sector: 'Logistics & Supply Chain', geo: 'South Korea', tracks: ['Add-on Acquisition'] },
+    { id: 47, name: 'Keystone Holdings', project: '[Project Orion]', stage: 'l4', banker: 'Delta Bridge', sector: 'Specialty Chemicals', geo: 'Australia', tracks: ['Growth Equity Candidate'] },
+    { id: 48, name: 'Harbor Technologies', project: '[Project Pinnacle]', stage: 'l5', banker: 'Aldira', sector: 'Consumer Retail Tech', geo: 'USA', tracks: ['Consolidation Play: rolling up', 'Platform Buildout'] },
+    { id: 49, name: 'Lumen Industries', project: '[Project Crescent]', stage: 'l5', banker: 'Meridian Capital', sector: 'Agritech / Food Processing', geo: 'Vietnam', tracks: ['Paper Companies'] }
+  ].concat(this.pendingCompanies);
+  stageLabels = { l0: 'L0 · Company Sourcing', l1: 'L1 · Preliminary Review', l2: 'L2 · Deep Dive', l3: 'L3 · Due Diligence', l4: 'L4 · IC Review', l5: 'L5 · Closing' };
+  stageDescriptions = {
+    l0: 'Initial company identification and sourcing.\n\nKey deliverables:\n• Sourcing memo\n• Initial thesis fit check',
+    l1: 'First-pass review against investment thesis, covering initial fit with the fund\'s stated sector focus, geography, and check-size range, a preliminary sanity check on business model durability and unit economics, an early look at management team quality and founder-market fit, a scan for obvious red flags in ownership structure, litigation history, or regulatory exposure, and a rough sizing of the addressable market to confirm the opportunity clears the fund\'s minimum return threshold before committing further diligence resources.\n\nKey deliverables:\n• Screening summary\n• Preliminary financial snapshot',
+    l2: 'Deeper analysis of financials and market position.\n\nKey deliverables:\n• Deep dive deck\n• Market & competitive analysis',
+    l3: 'Full due diligence and data room review.\n\nKey deliverables:\n• Due diligence report\n• Data room checklist',
+    l4: 'Investment committee presentation and decision.\n\nKey deliverables:\n• IC memo\n• Investment recommendation',
+    l5: 'Deal closing and documentation.\n\nKey deliverables:\n• Signed SPA\n• Closing checklist'
+  };
+
+  tracksData = {
+    semicon: { name: 'Semicon Supply Chain', summary: '*Screening criteria* High-performance / process-critical materials…', thesis: `*Screening criteria*
+High-performance / process-critical materials with differentiated chemistry or technical know-how
+Meaningful exposure to semiconductor and/or electronics end-markets
+EBITDA >US$5m for core control acquisitions
+EBITDA margin >15% for established specialty chemicals businesses
+Control acquisitions preferred; strategic minority investments selectively considered for enabling technologies
+
+*In scope*
+Functional chemicals & additives: high-performance additives and formulated chemistries used in semiconductor and electronics applications
+Advanced polymers & bonding: engineering polymers, high-performance resins, structural/technical adhesives and sealants
+Catalysts & separation: fine/specialty catalysts, membrane materials and separation chemistries
+Semiconductor process materials: front-end process chemicals, electronic chemicals, deposition/etch-related materials and other process-critical chemistries` },
+    china: { name: 'China Minority', summary: 'Minority deals in China', thesis: 'Minority investment opportunities in China-based operating companies with defensible market position and clear exit path via strategic or IPO.' },
+    mining: { name: 'Mining', summary: 'In scope Semiconductor-critical minerals…', thesis: 'In-scope: mining and processing of minerals critical to semiconductor and battery supply chains — rare earths, lithium, cobalt and high-purity silica.' },
+    track2: { name: 'Track 2 - Semiconductor Materials', summary: 'Build an advanced materials platform…', thesis: 'Build an advanced materials platform serving semiconductor fabs across SEA through consolidation of niche suppliers.' },
+    track1: { name: 'Track 1 - Specialty Chemicals', summary: '- Specialty chemicals platform…', thesis: '- Specialty chemicals platform with >US$5m EBITDA, >15% margin, control preferred.' }
+  };
+
+  descriptionRefs = {};
+  nameOverride = {};
+  codeOverride = {};
+  runConfirmAction() {
+    const action = this.state.confirmAction;
+    if (!action) return;
+    if (action.type === 'delete') {
+      const affected = this.companies.filter(c => c.stage === action.key);
+      if (affected.length && !this.state.confirmMoveTarget) return;
+      if (affected.length) { affected.forEach(c => { c.stage = this.state.confirmMoveTarget; }); }
+    }
+    this.setState(s => {
+      const order = [...(s.stageOrder || this.stages)];
+      const idx = order.indexOf(action.key);
+      if (action.type === 'moveUp' && idx > 0) { [order[idx - 1], order[idx]] = [order[idx], order[idx - 1]]; }
+      if (action.type === 'moveDown' && idx < order.length - 1) { [order[idx + 1], order[idx]] = [order[idx], order[idx + 1]]; }
+      const newOrder = action.type === 'delete' ? order.filter(k => k !== action.key) : order;
+      return { stageOrder: newOrder, confirmAction: null, confirmMoveTarget: '' };
+    });
+  }
+  createStage() {
+    const code = (this.state.newStageCode || '').trim();
+    if (!code) return;
+    const key = code.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    this.stageLabels[key] = code.toUpperCase() + (this.state.newStageName ? ' · ' + this.state.newStageName : '');
+    this.stageDescriptions[key] = this.state.newStageDescription || '';
+    this.stageDeliverables[key] = [];
+    this.setState(s => {
+      const order = [...(s.stageOrder || this.stages)];
+      const afterIdx = order.indexOf(s.newStagePositionAfter);
+      if (afterIdx === -1) order.push(key); else order.splice(afterIdx + 1, 0, key);
+      return { stageOrder: order, newStageModalOpen: false, newStageCode: '', newStageName: '', newStageDescription: '', newStagePositionAfter: '' };
+    });
+  }
+  deliverableFileRefs = {};
+  stageDeliverables = {
+    l0: [{ name: 'Sourcing Memo', description: 'Summary of how the company was identified and sourced.', fileName: 'sourcing_memo_template.docx' }, { name: 'Thesis Fit Check', description: 'Checklist confirming fit with investment thesis.', fileName: '' }],
+    l1: [{ name: 'Screening Summary', description: 'One-pager summarizing the initial screening outcome.', fileName: 'screening_summary_template.docx' }, { name: 'Preliminary Financial Snapshot', description: 'Quick view of revenue, margins, and growth.', fileName: 'financial_snapshot_template.xlsx' }],
+    l2: [{ name: 'Deep Dive Deck', description: 'Detailed analysis of business model and market.', fileName: 'deep_dive_deck_template.pptx' }, { name: 'Market & Competitive Analysis', description: 'Positioning versus key competitors.', fileName: 'market_analysis_template.docx' }],
+    l3: [{ name: 'Due Diligence Report', description: 'Findings from legal, financial, and operational DD.', fileName: 'dd_report_template.docx' }, { name: 'Data Room Checklist', description: 'Tracks completeness of the data room.', fileName: 'dataroom_checklist_template.xlsx' }],
+    l4: [{ name: 'IC Memo', description: 'Investment committee memo for the decision meeting.', fileName: 'ic_memo_template.docx' }, { name: 'Investment Recommendation', description: 'Final recommendation with terms.', fileName: 'recommendation_template.docx' }],
+    l5: [{ name: 'Signed SPA', description: 'Executed share purchase agreement.', fileName: 'spa_template.pdf' }, { name: 'Closing Checklist', description: 'Final steps required to close the deal.', fileName: 'closing_checklist_template.xlsx' }]
+  };
+
+  insertListMarker(key, marker) {
+    const el = this.descriptionRefs[key];
+    const current = this.stageDescriptions[key] ?? '';
+    let next;
+    if (el) {
+      const pos = el.selectionStart ?? current.length;
+      const needsNewline = pos > 0 && current[pos - 1] !== '\n';
+      const insert = (needsNewline ? '\n' : '') + marker;
+      next = current.slice(0, pos) + insert + current.slice(pos);
+    } else {
+      next = current + (current && !current.endsWith('\n') ? '\n' : '') + marker;
+    }
+    this.stageDescriptions[key] = next;
+    this.forceUpdate();
+  }
+
+  componentDidMount() {
+    this._onDocClick = (e) => {
+      const el = this.stageFilterEl;
+      if (el && !el.contains(e.target)) this.setState({ stageMenuOpen: false });
+      if (!e.target.closest('[title="Move"]') && !e.target.closest('button')) this.setState({ moveMenuOpenId: null });
+      else if (e.target.closest('button') && !e.target.closest('[title="Move"]') && !e.target.closest('div[style*="position:absolute"]')) this.setState({ moveMenuOpenId: null });
+    };
+    document.addEventListener('mousedown', this._onDocClick);
+  }
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this._onDocClick);
+  }
+
+  toggleStage(key) {
+    this.setState(s => {
+      const sel = s.selectedStages.includes(key)
+        ? s.selectedStages.filter(k => k !== key)
+        : [...s.selectedStages, key];
+      return { selectedStages: sel };
+    });
+  }
+
+  renderVals() {
+    const toggleAddCompanyMenu = () => this.setState(s => ({ addCompanyMenuOpen: !s.addCompanyMenuOpen }));
+    const selectManualAdd = () => this.setState({ addCompanyMenuOpen: false });
+    const selectAskAI = () => this.setState({ addCompanyMenuOpen: false });
+    const selectDropFile = () => this.setState({ addCompanyMenuOpen: false });
+    const subTabs = ['pending','inbound','outbound'];
+    const subTabClass = {};
+    for (const t of subTabs) subTabClass[t] = this.state.subTab === t ? 'is-active' : '';
+
+    const selected = this.state.selectedStages;
+
+    const trackKeys = Object.keys(this.tracksData);
+    const tracks = trackKeys.map(key => {
+      const t = this.tracksData[key];
+      const active = key === this.state.activeTrackKey;
+      return {
+        key,
+        name: t.name,
+        summary: t.summary,
+        bg: active ? 'var(--hz-blue-100)' : 'transparent',
+        titleColor: active ? 'var(--hz-horizon-primary-dark)' : 'var(--hz-text-primary)',
+        select: () => this.setState({ activeTrackKey: key })
+      };
+    });
+    const activeTrack = this.tracksData[this.state.activeTrackKey];
+    const configTabClass = {
+      thesis: this.state.configTab === 'thesis' ? 'is-active' : '',
+      criteria: this.state.configTab === 'criteria' ? 'is-active' : '',
+      variables: this.state.configTab === 'variables' ? 'is-active' : ''
+    };
+
+    const search = (this.state.companySearch || '').trim().toLowerCase();
+    const dealTypes = ['Majority', 'Minority', 'Growth Equity', 'Buyout'];
+    const opinions = [
+      { icon: 'fa-circle-check', color: 'var(--hz-green-600)', text: 'Strong fundamentals and clear thesis fit; recommend advancing.' },
+      { icon: 'fa-circle-xmark', color: 'var(--hz-red-600)', text: 'Thin margins and structural headwinds in the sector; recommend pass.' },
+      { icon: 'fa-circle-question', color: 'var(--hz-orange-500)', text: 'Promising growth profile but data room gaps remain; needs follow-up.' }
+    ];
+    const trackFilterOptions = [...new Set(this.companies.flatMap(c => c.tracks))].sort();
+    const trackFilter = this.state.trackFilter || '';
+    const filteredCompanies = this.companies
+      .filter(c => search ? [c.name, c.project, c.sector, c.geo, c.banker].join(' ').toLowerCase().includes(search) : (this.state.selectedStages.includes('all') || this.state.selectedStages.includes(c.stage)))
+      .filter(c => !trackFilter || c.tracks.includes(trackFilter))
+      .map(c => {
+        const stageIdx = this.stages.indexOf(c.stage);
+        const hasFinancials = c.id % 3 === 1;
+        const revenueM = 80 + (c.id * 37) % 900;
+        const ebitdaM = Math.round(revenueM * (0.15 + (c.id % 5) * 0.03));
+        const opinion = opinions[c.id % opinions.length];
+        const createdDate = new Date(2026, 5, 2 + (c.id % 28));
+        const createdAtDate = new Date(2026, 9, 12 - (c.id % 40));
+        return {
+          id: c.id,
+          createdAtDate,
+          createdAt: createdAtDate.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit' }),
+          title: c.name || c.project,
+          subtitle: c.name ? c.project : false,
+          stageLabel: c.stage.toUpperCase(),
+          banker: c.banker,
+          sector: c.sector,
+          geo: c.geo,
+          tracks: c.tracks,
+          dealType: dealTypes[c.id % dealTypes.length],
+          revenue: hasFinancials ? `$${revenueM}.00M` : '—',
+          ebitda: hasFinancials ? `$${ebitdaM}.00M` : '—',
+          valuation: hasFinancials && stageIdx >= 3 ? `$${revenueM * 3}.00M` : '—',
+          stake: stageIdx >= 4 ? `${60 + (c.id % 4) * 10}%` : '-',
+          status: 'Unreviewed',
+          sourceDirection: c.id % 2 === 0 ? 'Inbound' : 'Outbound',
+          pipelineStatus: this.state.droppedIds.includes(c.id) ? 'Dropped' : 'Active',
+          pipelineStatusColor: this.state.droppedIds.includes(c.id) ? 'var(--hz-red-600)' : 'var(--hz-green-700)',
+          remarks: '-',
+          created: createdDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+          lastActivity: '-',
+          aiOpinion: opinion.text,
+          aiOpinionIcon: opinion.icon,
+          aiOpinionColor: opinion.color,
+          moveOpen: this.state.moveMenuOpenId === c.id,
+          toggleMove: () => this.setState(s => ({ moveMenuOpenId: s.moveMenuOpenId === c.id ? null : c.id })),
+          drop: () => this.setState(s => ({ moveMenuOpenId: null, droppedIds: s.droppedIds.includes(c.id) ? s.droppedIds : [...s.droppedIds, c.id] })),
+          next: () => this.setState({ moveMenuOpenId: null }),
+          back: () => this.setState({ moveMenuOpenId: null })
+        };
+      })
+      .sort((a, b) => this.state.sortOrder === 'oldest' ? a.createdAtDate - b.createdAtDate : b.createdAtDate - a.createdAtDate);
+    const noResults = filteredCompanies.length === 0;
+
+    const pendingCount = this.companies.filter(c => c.stage === 'pending').length;
+    const pendingActive = selected.length === 1 && selected[0] === 'pending';
+    const pendingChip = {
+      badge: pendingCount || null,
+      active: pendingActive,
+      style: pendingActive
+        ? 'display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;border:1px solid var(--hz-horizon-primary);background:var(--hz-blue-50);color:var(--hz-horizon-primary);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;flex-shrink:0;white-space:nowrap'
+        : 'display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;border:1px solid var(--hz-border-default);background:var(--hz-surface-page);color:var(--hz-text-secondary);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;flex-shrink:0;white-space:nowrap',
+      toggle: () => this.setState({ selectedStages: pendingActive ? ['all'] : ['pending'], stageInfoExpanded: false })
+    };
+    const stageOptions = [{
+      key: 'all',
+      label: 'All Stages',
+      badge: null,
+      tabClass: selected.length === 1 && selected[0] === 'all' ? 'is-active' : '',
+      selectOnly: () => this.setState({ selectedStages: ['all'], stageInfoExpanded: false })
+    }].concat(this.stages.map(key => ({
+      key,
+      label: this.stageLabels[key],
+      tabClass: selected.length === 1 && selected[0] === key ? 'is-active' : '',
+      selectOnly: () => this.setState({ selectedStages: [key], stageInfoExpanded: false })
+    })));
+
+    const stageOrderKeys = this.state.stageOrder || this.stages;
+    const stageFields = stageOrderKeys.map((key, idx) => ({
+      key,
+      code: this.codeOverride[key] ?? key.toUpperCase(),
+      setCode: (e) => { this.codeOverride[key] = e.target.value; this.setState(s => ({ dirtyStages: { ...s.dirtyStages, [key]: true } })); },
+      menuOpen: this.state.settingsMenuOpenKey === key,
+      toggleMenu: () => this.setState(s => ({ settingsMenuOpenKey: s.settingsMenuOpenKey === key ? null : key })),
+      canMoveUp: idx > 0,
+      canMoveDown: idx < stageOrderKeys.length - 1,
+      moveUp: () => this.setState({ settingsMenuOpenKey: null, confirmAction: { type: 'moveUp', key, idx, label: this.stageLabels[key] } }),
+      moveDown: () => this.setState({ settingsMenuOpenKey: null, confirmAction: { type: 'moveDown', key, idx, label: this.stageLabels[key] } }),
+      deleteStage: () => this.setState({ settingsMenuOpenKey: null, confirmAction: { type: 'delete', key, idx, label: this.stageLabels[key] }, confirmMoveTarget: '' }),
+      addStage: () => this.addStage(),
+      name: this.nameOverride[key] ?? (this.stageLabels[key].split(' · ')[1] || this.stageLabels[key]),
+      nameCount: (this.nameOverride[key] ?? (this.stageLabels[key].split(' · ')[1] || this.stageLabels[key])).length,
+      setName: (e) => { this.nameOverride[key] = e.target.value.slice(0, 40); this.setState(s => ({ dirtyStages: { ...s.dirtyStages, [key]: true } })); },
+      description: this.stageDescriptions[key],
+      descriptionRef: (el) => { if (el) this.descriptionRefs[key] = el; },
+      deliverableRows: this.stageDeliverables[key].map((row, i) => ({
+        idx: i,
+        name: row.name,
+        setName: (e) => { row.name = e.target.value; this.setState(s => ({ dirtyStages: { ...s.dirtyStages, [key]: true } })); },
+        description: row.description,
+        setDescription: (e) => { row.description = e.target.value; this.setState(s => ({ dirtyStages: { ...s.dirtyStages, [key]: true } })); },
+        fileNameShown: row.fileName || 'No file uploaded',
+        uploadLabel: row.fileName ? 'Change' : 'Upload',
+        uploadBtnClass: row.fileName ? 'hz-btn hz-btn--text hz-btn--sm' : 'hz-btn hz-btn--secondary hz-btn--sm',
+        uploadBtnStyle: row.fileName ? 'padding:0;white-space:nowrap;color:var(--hz-horizon-primary);text-decoration:underline' : 'padding:4px 10px;white-space:nowrap',
+        fileInputRef: (el) => { if (el) this.deliverableFileRefs[key + '-' + i] = el; },
+        triggerUpload: () => { const el = this.deliverableFileRefs[key + '-' + i]; if (el) el.click(); },
+        setFile: (e) => {
+          const file = e.target.files && e.target.files[0];
+          if (file) { row.fileName = file.name; this.setState(s => ({ dirtyStages: { ...s.dirtyStages, [key]: true } })); }
+        }
+      })),
+      setDescription: (e) => { this.stageDescriptions[key] = e.target.value; this.setState(s => ({ dirtyStages: { ...s.dirtyStages, [key]: true } })); },
+      addBullet: () => { this.insertListMarker(key, '• '); this.setState(s => ({ dirtyStages: { ...s.dirtyStages, [key]: true } })); },
+      addNumber: () => {
+        const current = this.stageDescriptions[key] ?? '';
+        const lines = current.split('\n').filter(l => /^\d+\.\s/.test(l));
+        const n = lines.length + 1;
+        this.insertListMarker(key, n + '. ');
+        this.setState(s => ({ dirtyStages: { ...s.dirtyStages, [key]: true } }));
+      },
+      dirty: !!this.state.dirtyStages[key],
+      save: () => this.setState(s => { const d = { ...s.dirtyStages }; delete d[key]; return { dirtyStages: d }; }),
+      cancel: () => {
+        delete this.nameOverride[key];
+        this.setState(s => { const d = { ...s.dirtyStages }; delete d[key]; return { dirtyStages: d }; });
+      }
+    }));
+
+    let activeStageInfo = null;
+    if (selected.length === 1) {
+      const key = selected[0];
+      const desc = this.stageDescriptions[key] || '';
+      const expanded = this.state.stageInfoExpanded;
+      const LIMIT = 160;
+      const truncatable = desc.length > LIMIT;
+      activeStageInfo = {
+        descriptionShown: truncatable ? desc.slice(0, LIMIT).trimEnd() + '…' : desc,
+        truncatable
+      };
+    }
+
+    const stageHelpItems = [{
+      key: 'pending',
+      label: 'Pending Confirmation',
+      description: 'Inbound and outbound leads awaiting confirmation before entering the pipeline at L0.'
+    }].concat(this.stages.map(key => ({
+      key,
+      label: this.stageLabels[key],
+      description: this.stageDescriptions[key]
+    })));
+
+    return {
+      sortOrder: this.state.sortOrder,
+      setSortOrder: (e) => this.setState({ sortOrder: e.target.value }),
+      trackFilter,
+      trackFilterOptions,
+      setTrackFilter: (e) => this.setState({ trackFilter: e.target.value }),
+      addCompanyMenuOpen: this.state.addCompanyMenuOpen,
+      toggleAddCompanyMenu,
+      selectManualAdd,
+      selectAskAI,
+      selectDropFile,
+      stageHelpOpen: this.state.stageHelpOpen,
+      openStageHelp: () => this.setState({ stageHelpOpen: true }),
+      closeStageHelp: () => this.setState({ stageHelpOpen: false }),
+      stageHelpItems,
+      activeStageInfo,
+      pendingChip,
+      companySearch: this.state.companySearch,
+      setCompanySearch: (e) => this.setState({ companySearch: e.target.value, selectedStages: e.target.value.trim() ? [] : ['l0'] }),
+      filteredCompanies,
+      noResults,
+      stageFields,
+      confirmAction: this.state.confirmAction,
+      confirmActionWord: this.state.confirmAction ? (this.state.confirmAction.type === 'delete' ? 'Delete' : this.state.confirmAction.type === 'moveUp' ? 'Move up' : 'Move down') : '',
+      confirmActionLabel: this.state.confirmAction ? this.state.confirmAction.label : '',
+      confirmActionIsMove: this.state.confirmAction ? this.state.confirmAction.type !== 'delete' : false,
+      confirmDeleteHasCompanies: this.state.confirmAction && this.state.confirmAction.type === 'delete' ? this.companies.some(c => c.stage === this.state.confirmAction.key) : false,
+      confirmMoveTarget: this.state.confirmMoveTarget,
+      setConfirmMoveTarget: (e) => this.setState({ confirmMoveTarget: e.target.value }),
+      confirmMoveTargetOptions: this.state.confirmAction ? stageOrderKeys.filter(k => k !== this.state.confirmAction.key).map(k => ({ key: k, label: this.stageLabels[k] })) : [],
+      confirmConfirmDisabled: !!(this.state.confirmAction && this.state.confirmAction.type === 'delete' && this.companies.some(c => c.stage === this.state.confirmAction.key) && !this.state.confirmMoveTarget),
+      cancelConfirmAction: () => this.setState({ confirmAction: null }),
+      runConfirmAction: () => this.runConfirmAction(),
+      newStageModalOpen: this.state.newStageModalOpen,
+      openNewStageModal: () => this.setState({ newStageModalOpen: true, newStagePositionAfter: stageOrderKeys[stageOrderKeys.length - 1] || '' }),
+      closeNewStageModal: () => this.setState({ newStageModalOpen: false }),
+      newStageCode: this.state.newStageCode,
+      setNewStageCode: (e) => this.setState({ newStageCode: e.target.value }),
+      newStageName: this.state.newStageName,
+      setNewStageName: (e) => this.setState({ newStageName: e.target.value }),
+      newStageDescription: this.state.newStageDescription,
+      setNewStageDescription: (e) => this.setState({ newStageDescription: e.target.value }),
+      newStagePositionAfter: this.state.newStagePositionAfter,
+      setNewStagePositionAfter: (e) => this.setState({ newStagePositionAfter: e.target.value }),
+      positionAfterOptions: stageOrderKeys.map(key => ({ key, label: this.stageLabels[key] })),
+      createStage: () => this.createStage(),
+      trackDirty: this.state.trackDirty,
+      markTrackDirty: () => this.setState({ trackDirty: true }),
+      saveTrack: () => this.setState({ trackDirty: false }),
+      cancelTrack: () => this.setState({ trackDirty: false }),
+      modalTabClass: {
+        track: this.state.modalTab === 'track' ? 'is-active' : '',
+        settings: this.state.modalTab === 'settings' ? 'is-active' : ''
+      },
+      isModalTrackTab: this.state.modalTab === 'track',
+      isModalSettingsTab: this.state.modalTab === 'settings',
+      selectModalTrackTab: () => this.setState({ modalTab: 'track' }),
+      selectModalSettingsTab: () => this.setState({ modalTab: 'settings' }),
+      configureOpen: this.state.configureOpen,
+      openConfigure: () => this.setState({ configureOpen: true }),
+      closeConfigure: () => this.setState({ configureOpen: false }),
+      tracks,
+      activeTrack,
+      configTabClass,
+      selectThesisTab: () => this.setState({ configTab: 'thesis' }),
+      selectCriteriaTab: () => this.setState({ configTab: 'criteria' }),
+      selectVariablesTab: () => this.setState({ configTab: 'variables' }),
+      stageOptions,
+      isCompaniesView: this.state.view === 'companies',
+      isScreeningView: this.state.view === 'screening',
+      viewTabClass: {
+        companies: this.state.view === 'companies' ? 'is-active' : '',
+        screening: this.state.view === 'screening' ? 'is-active' : ''
+      },
+      selectCompaniesView: () => this.setState({ view: 'companies' }),
+      selectScreeningView: () => this.setState({ view: 'screening' }),
+      discoveredLabel: this.state.discoveredShown ? 'Hide' : 'Show',
+      discoveredIcon: this.state.discoveredShown ? 'far fa-chevron-up' : 'far fa-chevron-down',
+      toggleDiscovered: () => this.setState(s => ({ discoveredShown: !s.discoveredShown })),
+      subTabClass,
+      selectPending: () => this.setState({ subTab: 'pending' }),
+      selectInbound: () => this.setState({ subTab: 'inbound' }),
+      selectOutbound: () => this.setState({ subTab: 'outbound' })
+    };
+  }
+}
+</script>
+</body>
+</html>
