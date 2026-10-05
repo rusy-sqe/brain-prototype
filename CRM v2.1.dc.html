@@ -113,6 +113,10 @@
   </div>
 
   <div class="hz-card" style="padding:20px">
+    <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle);margin-bottom:16px">
+      <button onClick="{{ setPrivateTab }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ privateTabColor }};border-bottom:2px solid {{ privateTabBorder }}">Your Private Contact</button>
+      <button onClick="{{ setSharedTab }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ sharedTabColor }};border-bottom:2px solid {{ sharedTabBorder }}">Shared Contacts</button>
+    </div>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
     <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:220px;flex-wrap:wrap">
         <div style="flex:1;min-width:220px;position:relative">
@@ -170,15 +174,24 @@
                       <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
                     </div>
                   </div>
-                  <div style="display:flex;align-items:flex-start;gap:14px;margin-top:16px">
-                    <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">KM</span>
-                    <div>
-                      <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Kenny Man</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
-                      <div class="hz-muted" style="margin-top:2px">Founder &amp; Managing Partner</div>
-                      <a href="#" style="display:block;font-family:monospace;font-size:13px;margin-top:2px">kennyman@01fintech.com</a>
-                      <div class="hz-muted" style="font-size:13px;margin-top:2px">+6582883968</div>
-                    </div>
-                  </div>
+                  <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:16px">
+                    <tbody>
+                      <tr>
+                        <td colspan="2" style="padding:0 0 12px 0">
+                          <div style="display:flex;align-items:center;gap:10px">
+                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">KM</span>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Kenny Man</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Title</td><td style="padding:4px 0;text-align:right;font-weight:600">Founder &amp; Managing Partner</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Email</td><td style="padding:4px 0;text-align:right;font-weight:600"><a href="#" style="font-family:monospace">kennyman@01fintech.com</a></td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Phone</td><td style="padding:4px 0;text-align:right;font-weight:600">+6582883968</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Past Deals</td><td style="padding:4px 0;text-align:right;font-weight:600">2</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Area Focus</td><td style="padding:4px 0;text-align:right;font-weight:600">Southeast Asia</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Industry Focus</td><td style="padding:4px 0;text-align:right;font-weight:600">Fintech</td></tr>
+                    </tbody>
+                  </table>
                 </div>
                 </sc-if>
                 <sc-if value="{{ tab0IsTopics }}" hint-placeholder-val="{{ false }}">
@@ -250,15 +263,24 @@
                       <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
                     </div>
                   </div>
-                  <div style="display:flex;align-items:flex-start;gap:14px;margin-top:16px">
-                    <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">AM</span>
-                    <div>
-                      <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Austin Miller</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
-                      <div class="hz-muted" style="margin-top:2px">Partner</div>
-                      <a href="#" style="display:block;font-family:monospace;font-size:13px;margin-top:2px">miller@385capitalworks.com</a>
-                      <div class="hz-muted" style="font-size:13px;margin-top:2px">+1 917 555 0134</div>
-                    </div>
-                  </div>
+                  <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:16px">
+                    <tbody>
+                      <tr>
+                        <td colspan="2" style="padding:0 0 12px 0">
+                          <div style="display:flex;align-items:center;gap:10px">
+                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">AM</span>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Austin Miller</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Title</td><td style="padding:4px 0;text-align:right;font-weight:600">Partner</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Email</td><td style="padding:4px 0;text-align:right;font-weight:600"><a href="#" style="font-family:monospace">miller@385capitalworks.com</a></td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Phone</td><td style="padding:4px 0;text-align:right;font-weight:600">+1 917 555 0134</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Past Deals</td><td style="padding:4px 0;text-align:right;font-weight:600">5</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Area Focus</td><td style="padding:4px 0;text-align:right;font-weight:600">North America</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Industry Focus</td><td style="padding:4px 0;text-align:right;font-weight:600">Private Equity</td></tr>
+                    </tbody>
+                  </table>
                 </div>
                 </sc-if>
                 <sc-if value="{{ tab1IsTopics }}" hint-placeholder-val="{{ false }}">
@@ -330,15 +352,24 @@
                       <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
                     </div>
                   </div>
-                  <div style="display:flex;align-items:flex-start;gap:14px;margin-top:16px">
-                    <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">R</span>
-                    <div>
-                      <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Ravena</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
-                      <div class="hz-muted" style="margin-top:2px">Investment Associate</div>
-                      <a href="#" style="display:block;font-family:monospace;font-size:13px;margin-top:2px">ravena@abacuscapital.com</a>
-                      <div class="hz-muted" style="font-size:13px;margin-top:2px">+62 812 3456 7890</div>
-                    </div>
-                  </div>
+                  <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:16px">
+                    <tbody>
+                      <tr>
+                        <td colspan="2" style="padding:0 0 12px 0">
+                          <div style="display:flex;align-items:center;gap:10px">
+                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">R</span>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Ravena</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Title</td><td style="padding:4px 0;text-align:right;font-weight:600">Investment Associate</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Email</td><td style="padding:4px 0;text-align:right;font-weight:600"><a href="#" style="font-family:monospace">ravena@abacuscapital.com</a></td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Phone</td><td style="padding:4px 0;text-align:right;font-weight:600">+62 812 3456 7890</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Past Deals</td><td style="padding:4px 0;text-align:right;font-weight:600">1</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Area Focus</td><td style="padding:4px 0;text-align:right;font-weight:600">Indonesia</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Industry Focus</td><td style="padding:4px 0;text-align:right;font-weight:600">Asset Management</td></tr>
+                    </tbody>
+                  </table>
                 </div>
                 </sc-if>
                 <sc-if value="{{ tab2IsTopics }}" hint-placeholder-val="{{ false }}">
@@ -410,15 +441,24 @@
                       <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
                     </div>
                   </div>
-                  <div style="display:flex;align-items:flex-start;gap:14px;margin-top:16px">
-                    <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">DD</span>
-                    <div>
-                      <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Darrel Digal</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
-                      <div class="hz-muted" style="margin-top:2px">Business Development</div>
-                      <a href="#" style="display:block;font-family:monospace;font-size:13px;margin-top:2px">darreldigal@axcionaenergy.com</a>
-                      <div class="hz-muted" style="font-size:13px;margin-top:2px">+62 811 2233 4455</div>
-                    </div>
-                  </div>
+                  <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:16px">
+                    <tbody>
+                      <tr>
+                        <td colspan="2" style="padding:0 0 12px 0">
+                          <div style="display:flex;align-items:center;gap:10px">
+                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">DD</span>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Darrel Digal</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Title</td><td style="padding:4px 0;text-align:right;font-weight:600">Business Development</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Email</td><td style="padding:4px 0;text-align:right;font-weight:600"><a href="#" style="font-family:monospace">darreldigal@axcionaenergy.com</a></td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Phone</td><td style="padding:4px 0;text-align:right;font-weight:600">+62 811 2233 4455</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Past Deals</td><td style="padding:4px 0;text-align:right;font-weight:600">3</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Area Focus</td><td style="padding:4px 0;text-align:right;font-weight:600">Indonesia</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Industry Focus</td><td style="padding:4px 0;text-align:right;font-weight:600">Renewable Energy</td></tr>
+                    </tbody>
+                  </table>
                 </div>
                 </sc-if>
                 <sc-if value="{{ tab3IsTopics }}" hint-placeholder-val="{{ false }}">
@@ -490,15 +530,24 @@
                       <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
                     </div>
                   </div>
-                  <div style="display:flex;align-items:flex-start;gap:14px;margin-top:16px">
-                    <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">A</span>
-                    <div>
-                      <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Adhitia</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
-                      <div class="hz-muted" style="margin-top:2px">Partnership Lead</div>
-                      <a href="#" style="display:block;font-family:monospace;font-size:13px;margin-top:2px">adhitia.budiarjo@adivira.com</a>
-                      <div class="hz-muted" style="font-size:13px;margin-top:2px">+62 813 9988 7766</div>
-                    </div>
-                  </div>
+                  <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:16px">
+                    <tbody>
+                      <tr>
+                        <td colspan="2" style="padding:0 0 12px 0">
+                          <div style="display:flex;align-items:center;gap:10px">
+                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">A</span>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Adhitia</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Title</td><td style="padding:4px 0;text-align:right;font-weight:600">Partnership Lead</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Email</td><td style="padding:4px 0;text-align:right;font-weight:600"><a href="#" style="font-family:monospace">adhitia.budiarjo@adivira.com</a></td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Phone</td><td style="padding:4px 0;text-align:right;font-weight:600">+62 813 9988 7766</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Past Deals</td><td style="padding:4px 0;text-align:right;font-weight:600">1</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Area Focus</td><td style="padding:4px 0;text-align:right;font-weight:600">Indonesia</td></tr>
+                      <tr><td style="padding:4px 0;color:var(--hz-text-tertiary)">Industry Focus</td><td style="padding:4px 0;text-align:right;font-weight:600">Fintech</td></tr>
+                    </tbody>
+                  </table>
                 </div>
                 </sc-if>
                 <sc-if value="{{ tab4IsTopics }}" hint-placeholder-val="{{ false }}">
@@ -598,7 +647,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { expanded: {}, tab: {}, aiModalOpen: false, aiContact: null, aiSubject: '', aiBody: '', aiGenerating: false };
+  state = { expanded: {}, tab: {}, aiModalOpen: false, aiContact: null, aiSubject: '', aiBody: '', aiGenerating: false, contactsMainTab: 'private' };
 
   contacts = {
     0: { name: 'Kenny Man', email: 'kennyman@01fintech.com', company: '01fintech', initials: 'KM', highlights: ['Discussed potential joint-venture structure for OTT distribution', 'Kenny flagged Q3 fundraising timeline as tight', 'Asked for warm intro to our portfolio payments company'] },
@@ -634,6 +683,15 @@ class Component extends DCLogic {
 
   renderVals() {
     const vals = {
+      contactsMainTab: this.state.contactsMainTab,
+      isSharedTab: this.state.contactsMainTab === 'shared',
+      isPrivateTab: this.state.contactsMainTab === 'private',
+      sharedTabColor: this.state.contactsMainTab === 'shared' ? 'var(--hz-text-primary)' : 'var(--hz-text-tertiary)',
+      sharedTabBorder: this.state.contactsMainTab === 'shared' ? 'var(--hz-horizon-primary)' : 'transparent',
+      privateTabColor: this.state.contactsMainTab === 'private' ? 'var(--hz-text-primary)' : 'var(--hz-text-tertiary)',
+      privateTabBorder: this.state.contactsMainTab === 'private' ? 'var(--hz-horizon-primary)' : 'transparent',
+      setSharedTab: () => this.setState({ contactsMainTab: 'shared' }),
+      setPrivateTab: () => this.setState({ contactsMainTab: 'private' }),
       aiModalOpen: this.state.aiModalOpen,
       aiModalName: this.state.aiContact ? this.state.aiContact.name : '',
       aiModalEmail: this.state.aiContact ? this.state.aiContact.email : '',

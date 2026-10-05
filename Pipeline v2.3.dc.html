@@ -103,14 +103,169 @@
             <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ toggleAddCompanyMenu }}"><i class="far fa-plus"></i>Add Company</button>
             <sc-if value="{{ addCompanyMenuOpen }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute;top:100%;right:0;margin-top:4px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);min-width:180px;z-index:100;padding:6px;text-align:left">
-              <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" onClick="{{ selectManualAdd }}" onMouseOver="this.style.background='var(--hz-neutral-100)'" onMouseOut="this.style.background='none'"><i class="far fa-pencil"></i>Manual</button>
-              <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" onClick="{{ selectAskAI }}" onMouseOver="this.style.background='var(--hz-neutral-100)'" onMouseOut="this.style.background='none'"><i class="far fa-sparkles"></i>Ask AI</button>
-              <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" onClick="{{ selectDropFile }}" onMouseOver="this.style.background='var(--hz-neutral-100)'" onMouseOut="this.style.background='none'"><i class="far fa-folder-open"></i>Drop File</button>
+              <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" style-hover="background:var(--hz-blue-50);color:var(--hz-horizon-primary)" onClick="{{ selectManualAdd }}"><i class="far fa-pencil"></i>Manual</button>
+              <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" style-hover="background:var(--hz-blue-50);color:var(--hz-horizon-primary)" onClick="{{ selectAskAI }}"><i class="far fa-sparkles"></i>Ask AI</button>
+              <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" style-hover="background:var(--hz-blue-50);color:var(--hz-horizon-primary)" onClick="{{ selectDropFile }}"><i class="far fa-folder-open"></i>Drop File</button>
             </div>
             </sc-if>
           </div>
         </div>
       </div>
+
+      <sc-if value="{{ addCompanyModalOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1300">
+        <div style="background:var(--hz-surface-card);border-radius:12px;width:min(640px,94vw);max-height:90vh;display:flex;flex-direction:column;overflow:hidden">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--hz-border-subtle);flex-shrink:0">
+            <div class="hz-h4" style="margin:0">Add New Company</div>
+            <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeAddCompanyModal }}"><i class="far fa-times" style="font-size:18px"></i></button>
+          </div>
+
+          <div style="padding:20px 24px;overflow-y:auto;display:flex;flex-direction:column;gap:22px">
+
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div>
+                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Company name <span style="color:var(--hz-red-600)">*</span></label>
+                <input value="{{ ncTarget.value }}" onChange="{{ ncTarget.onChange }}" placeholder="Company name" style="width:100%;padding:8px 10px;border:1px solid {{ ncTargetMissing ? 'var(--hz-red-600)' : 'var(--hz-border-default)' }};border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+              </div>
+              <div>
+                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Segment <span style="color:var(--hz-red-600)">*</span></label>
+                <div style="position:relative">
+                  <button onClick="{{ toggleSegmentMenu }}" style="width:100%;text-align:left;padding:8px 10px;border:1px solid {{ ncSegmentMissing ? 'var(--hz-red-600)' : 'var(--hz-border-default)' }};border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary);display:flex;align-items:center;justify-content:space-between;cursor:pointer">
+                    <span>{{ ncSegmentsLabel }}</span>
+                    <i class="far fa-chevron-down" style="font-size:11px;color:var(--hz-text-tertiary)"></i>
+                  </button>
+                  <sc-if value="{{ segmentMenuOpen }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute;top:100%;left:0;right:0;margin-top:4px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:50;padding:6px;max-height:220px;overflow-y:auto">
+                    <sc-for list="{{ ncSegmentOptions }}" as="opt" hint-placeholder-count="5">
+                    <label style="display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:13px" style-hover="background:var(--hz-neutral-100)">
+                      <input type="checkbox" checked="{{ isSegmentChecked(opt) }}" onChange="{{ () => toggleSegment(opt) }}">
+                      {{ opt }}
+                    </label>
+                    </sc-for>
+                  </div>
+                  </sc-if>
+                </div>
+                <div class="hz-body-s hz-muted" style="margin-top:4px">Broad category, not a niche</div>
+              </div>
+              <div>
+                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Geography <span style="color:var(--hz-red-600)">*</span></label>
+                <select value="{{ ncGeography.value }}" onChange="{{ ncGeography.onChange }}" style="width:100%;padding:8px 10px;border:1px solid {{ ncGeographyMissing ? 'var(--hz-red-600)' : 'var(--hz-border-default)' }};border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+                  <option value="">Select a country…</option>
+                  <option value="Indonesia">Indonesia</option>
+                  <option value="Malaysia">Malaysia</option>
+                  <option value="Philippines">Philippines</option>
+                  <option value="Singapore">Singapore</option>
+                  <option value="Thailand">Thailand</option>
+                  <option value="Vietnam">Vietnam</option>
+                </select>
+                <div class="hz-body-s hz-muted" style="margin-top:4px">Exactly one HQ country</div>
+              </div>
+              <div>
+                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Company focus <span style="color:var(--hz-red-600)">*</span></label>
+                <textarea value="{{ ncCompanyFocus.value }}" onChange="{{ ncCompanyFocus.onChange }}" placeholder="What does this company actually do?" style="width:100%;min-height:64px;padding:8px 10px;border:1px solid {{ ncCompanyFocusMissing ? 'var(--hz-red-600)' : 'var(--hz-border-default)' }};border-radius:8px;font-family:inherit;font-size:14px;line-height:1.5;background:var(--hz-surface-page);color:var(--hz-text-primary);resize:vertical"></textarea>
+              </div>
+              <div>
+                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Pipeline Stage <span style="color:var(--hz-red-600)">*</span></label>
+                <select value="{{ ncPipelineStage.value }}" onChange="{{ ncPipelineStage.onChange }}" style="width:100%;padding:8px 10px;border:1px solid {{ ncPipelineStageMissing ? 'var(--hz-red-600)' : 'var(--hz-border-default)' }};border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+                  <option value="">Select a stage…</option>
+                  <option value="pending">Pending Confirmation</option>
+                  <sc-for list="{{ ncPipelineStageOptions }}" as="opt" hint-placeholder-count="6">
+                  <option value="{{ opt.key }}">{{ opt.label }}</option>
+                  </sc-for>
+                </select>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:14px;padding-top:18px;border-top:1px solid var(--hz-border-subtle)">
+              <div class="hz-body-s" style="font-weight:700;letter-spacing:.04em;color:var(--hz-text-tertiary)">RECOMMENDED</div>
+              <div>
+                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Website</label>
+                <input value="{{ ncWebsite.value }}" onChange="{{ ncWebsite.onChange }}" placeholder="https://…" style="width:100%;padding:8px 10px;border:1px solid {{ ncWebsiteInvalid ? 'var(--hz-red-600)' : 'var(--hz-border-default)' }};border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+                <sc-if value="{{ ncWebsiteInvalid }}" hint-placeholder-val="{{ false }}">
+                <div class="hz-body-s" style="margin-top:4px;color:var(--hz-red-600)">Must start with http:// or https://</div>
+                </sc-if>
+              </div>
+              <div>
+                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Deal Sponsor</label>
+                <div style="position:relative">
+                  <button onClick="{{ toggleDealSponsorMenu }}" style="width:100%;text-align:left;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary);display:flex;align-items:center;justify-content:space-between;cursor:pointer">
+                    <span>{{ ncDealSponsorsLabel }}</span>
+                    <i class="far fa-chevron-down" style="font-size:11px;color:var(--hz-text-tertiary)"></i>
+                  </button>
+                  <sc-if value="{{ dealSponsorMenuOpen }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute;top:100%;left:0;right:0;margin-top:4px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:50;padding:6px;max-height:220px;overflow-y:auto">
+                    <sc-for list="{{ ncDealSponsorOptions }}" as="opt" hint-placeholder-count="6">
+                    <label style="display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:13px" style-hover="background:var(--hz-neutral-100)">
+                      <input type="checkbox" checked="{{ isSponsorChecked(opt) }}" onChange="{{ () =&gt; toggleSponsor(opt) }}">
+                      {{ opt }}
+                    </label>
+                    </sc-for>
+                  </div>
+                  </sc-if>
+                </div>
+              </div>
+              <div>
+                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Source</label>
+                <div style="display:flex;gap:8px">
+                  <button onClick="{{ setSourceInbound }}" style="flex:1;padding:8px 12px;border-radius:999px;border:1px solid {{ ncSourceInbound ? 'var(--hz-horizon-primary)' : 'var(--hz-border-default)' }};background:{{ ncSourceInbound ? 'var(--hz-blue-50)' : 'var(--hz-surface-page)' }};color:{{ ncSourceInbound ? 'var(--hz-horizon-primary)' : 'var(--hz-text-secondary)' }};font-family:inherit;font-size:13px;font-weight:600;cursor:pointer">Inbound</button>
+                  <button onClick="{{ setSourceOutbound }}" style="flex:1;padding:8px 12px;border-radius:999px;border:1px solid {{ ncSourceOutbound ? 'var(--hz-horizon-primary)' : 'var(--hz-border-default)' }};background:{{ ncSourceOutbound ? 'var(--hz-blue-50)' : 'var(--hz-surface-page)' }};color:{{ ncSourceOutbound ? 'var(--hz-horizon-primary)' : 'var(--hz-text-secondary)' }};font-family:inherit;font-size:13px;font-weight:600;cursor:pointer">Outbound</button>
+                </div>
+              </div>
+              
+            </div>
+
+            
+
+            <div style="padding-top:18px;border-top:1px solid var(--hz-border-subtle)">
+              <button onClick="{{ toggleMoreDetail }}" style="background:none;border:none;padding:0;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;color:var(--hz-horizon-primary);display:flex;align-items:center;gap:6px" style-hover="text-decoration:underline">Add more detail <i class="far {{ moreDetailOpen ? 'fa-chevron-up' : 'fa-chevron-down' }}" style="font-size:11px"></i></button>
+              <sc-if value="{{ moreDetailOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;margin-top:14px">
+                <div>
+                  <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Comments</label>
+                  <textarea value="{{ ncComments.value }}" onChange="{{ ncComments.onChange }}" style="width:100%;min-height:60px;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary);resize:vertical"></textarea>
+                </div>
+                <div>
+                  <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Remarks</label>
+                  <textarea value="{{ ncRemarks.value }}" onChange="{{ ncRemarks.onChange }}" style="width:100%;min-height:60px;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary);resize:vertical"></textarea>
+                </div>
+                <div>
+                  <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Investment thesis</label>
+                  <div style="position:relative">
+                    <button onClick="{{ toggleThesisTagMenu }}" style="width:100%;text-align:left;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary);display:flex;align-items:center;justify-content:space-between;cursor:pointer">
+                      <span>{{ ncThesisTagsLabel }}</span>
+                      <i class="far fa-chevron-down" style="font-size:11px;color:var(--hz-text-tertiary)"></i>
+                    </button>
+                    <sc-if value="{{ thesisTagMenuOpen }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:100%;left:0;right:0;margin-top:4px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:50;padding:6px;max-height:220px;overflow-y:auto">
+                      <sc-for list="{{ ncThesisOptions }}" as="opt" hint-placeholder-count="5">
+                      <label style="display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:13px" style-hover="background:var(--hz-neutral-100)">
+                        <input type="checkbox" checked="{{ isThesisTagChecked(opt) }}" onChange="{{ () =&gt; toggleThesisTag(opt) }}">
+                        {{ opt }}
+                      </label>
+                      </sc-for>
+                    </div>
+                    </sc-if>
+                  </div>
+                </div>
+                
+                
+              </div>
+              </sc-if>
+            </div>
+
+          </div>
+
+          <div style="display:flex;justify-content:flex-end;gap:10px;padding:16px 24px;border-top:1px solid var(--hz-border-subtle);flex-shrink:0">
+            <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeAddCompanyModal }}">Cancel</button>
+            <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ submitAddCompany }}">Add to Pipeline</button>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ successToast }}" hint-placeholder-val="{{ false }}">
+      <div style="position:fixed;bottom:24px;right:24px;background:var(--hz-green-700);color:#fff;padding:12px 18px;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.2);display:flex;align-items:center;gap:10px;z-index:1400;font-size:14px;font-weight:600"><i class="far fa-check-circle"></i>{{ successToast }}</div>
+      </sc-if>
 
       <div style="display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap">
         <div style="flex:1;min-width:220px;position:relative">
@@ -544,7 +699,16 @@
 </div></x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { droppedIds: [5, 18, 33], sortOrder: 'newest', addCompanyMenuOpen: false, discoveredShown: false, subTab: 'inbound', view: 'companies', stageMenuOpen: false, selectedStages: ['l0'], companySearch: '', moveMenuOpenId: null, configureOpen: false, activeTrackKey: 'semicon', configTab: 'thesis', moveMenuOpenIndex: null, modalTab: 'track', trackDirty: false, dirtyStages: {}, stageInfoExpanded: false, stageHelpOpen: false, stageOrder: null, settingsMenuOpenKey: null, newStageModalOpen: false, newStageCode: '', newStageName: '', newStageDescription: '', newStagePositionAfter: '', confirmAction: null, confirmMoveTarget: '' };
+  dealSponsorOptions = ['Aldira', 'Meridian Capital', 'Northbridge Advisors', 'Solstice Partners', 'Varro & Co', 'Harrow Lane', 'Pinecrest Group', 'Delta Bridge'];
+  segmentOptions = ['Semiconductor', 'Upstream Palm Oil', 'Industrial Tech', 'Agritech', 'Logistics'];
+  newCompanyDefaults = {
+    target: '', segments: [], geography: '', companyFocus: '', pipelineStage: '',
+    website: '', dealSponsors: [], source: '', relatedOfferings: '',
+    fiscalYear: '', revenue: '', ebitda: '', ev: '',
+    comments: '', remarks: '', thesisTags: [], watchlistId: '', watchlistStatus: '',
+    moreDetailOpen: false
+  };
+  state = { segmentMenuOpen: false, successToast: null, thesisTagMenuOpen: false, dealSponsorMenuOpen: false, addCompanyModalOpen: false, newCompany: { ...this.newCompanyDefaults }, newCompanySubmitAttempted: false, droppedIds: [5, 18, 33], sortOrder: 'newest', addCompanyMenuOpen: false, discoveredShown: false, subTab: 'inbound', view: 'companies', stageMenuOpen: false, selectedStages: ['l0'], companySearch: '', moveMenuOpenId: null, configureOpen: false, activeTrackKey: 'semicon', configTab: 'thesis', moveMenuOpenIndex: null, modalTab: 'track', trackDirty: false, dirtyStages: {}, stageInfoExpanded: false, stageHelpOpen: false, stageOrder: null, settingsMenuOpenKey: null, newStageModalOpen: false, newStageCode: '', newStageName: '', newStageDescription: '', newStagePositionAfter: '', confirmAction: null, confirmMoveTarget: '' };
   stages = ['l0','l1','l2','l3','l4','l5'];
   pendingCompanies = [
     { id: 900, name: 'Driftwood Capital', project: '[Project Driftwood]', stage: 'pending', banker: 'Aldira', sector: 'Specialty Logistics', geo: 'USA', tracks: ['Inbound Referral'] },
@@ -714,9 +878,119 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
     });
   }
 
+  buildAddCompanyModalVals() {
+    const nc = this.state.newCompany;
+    const attempted = this.state.newCompanySubmitAttempted;
+    const f = (field) => ({
+      value: nc[field],
+      onChange: (e) => this.setNewCompanyField(field, e.target.value)
+    });
+    const missing = (field) => attempted && !String(nc[field] || '').trim();
+    const revenueNum = parseFloat(nc.revenue);
+    const ebitdaNum = parseFloat(nc.ebitda);
+    const evNum = parseFloat(nc.ev);
+    const haveAll = !isNaN(revenueNum) && !isNaN(ebitdaNum) && !isNaN(evNum);
+    const ebitdaMargin = haveAll && revenueNum !== 0 ? ((ebitdaNum / revenueNum) * 100).toFixed(1) + '%' : '—';
+    const evEbitda = haveAll && ebitdaNum !== 0 ? (evNum / ebitdaNum).toFixed(1) + 'x' : '—';
+    const showThesisWarning = !isNaN(revenueNum) && !isNaN(ebitdaNum) && (revenueNum < 10 || revenueNum > 50 || ebitdaNum <= 0);
+    const websiteInvalid = !!nc.website && !/^https?:\/\//i.test(nc.website);
+    return {
+      addCompanyModalOpen: this.state.addCompanyModalOpen,
+      closeAddCompanyModal: () => this.closeAddCompanyModal(),
+      submitAddCompany: () => this.submitAddCompany(),
+      ncTarget: f('target'), ncTargetMissing: missing('target'),
+      ncSegmentMissing: attempted && !nc.segments.length,
+      ncSegmentOptions: this.segmentOptions,
+      ncSegmentsLabel: nc.segments.length ? nc.segments.join(', ') : 'Select…',
+      toggleSegmentMenu: () => this.setState({ segmentMenuOpen: !this.state.segmentMenuOpen }),
+      segmentMenuOpen: this.state.segmentMenuOpen,
+      isSegmentChecked: (name) => nc.segments.includes(name),
+      toggleSegment: (name) => this.setState(s => ({
+        newCompany: {
+          ...s.newCompany,
+          segments: s.newCompany.segments.includes(name)
+            ? s.newCompany.segments.filter(n => n !== name)
+            : [...s.newCompany.segments, name]
+        }
+      })),
+      ncGeography: f('geography'), ncGeographyMissing: missing('geography'),
+      ncCompanyFocus: f('companyFocus'), ncCompanyFocusMissing: missing('companyFocus'),
+      ncPipelineStage: f('pipelineStage'), ncPipelineStageMissing: missing('pipelineStage'),
+      ncPipelineStageOptions: this.stages.map(key => ({ key, label: this.stageLabels[key] })),
+      ncWebsite: f('website'), ncWebsiteInvalid: websiteInvalid,
+      ncDealSponsorOptions: this.dealSponsorOptions,
+      ncDealSponsors: nc.dealSponsors,
+      toggleDealSponsorMenu: () => this.setState({ dealSponsorMenuOpen: !this.state.dealSponsorMenuOpen }),
+      dealSponsorMenuOpen: this.state.dealSponsorMenuOpen,
+      ncDealSponsorsLabel: nc.dealSponsors.length ? nc.dealSponsors.join(', ') : 'Select…',
+      isSponsorChecked: (name) => nc.dealSponsors.includes(name),
+      toggleSponsor: (name) => this.setState(s => ({
+        newCompany: {
+          ...s.newCompany,
+          dealSponsors: s.newCompany.dealSponsors.includes(name)
+            ? s.newCompany.dealSponsors.filter(n => n !== name)
+            : [...s.newCompany.dealSponsors, name]
+        }
+      })),
+      ncSourceInbound: nc.source === 'Inbound',
+      ncSourceOutbound: nc.source === 'Outbound',
+      setSourceInbound: () => this.setNewCompanyField('source', 'Inbound'),
+      setSourceOutbound: () => this.setNewCompanyField('source', 'Outbound'),
+      ncRelatedOfferings: f('relatedOfferings'),
+      ncFiscalYear: f('fiscalYear'),
+      ncRevenue: f('revenue'),
+      ncEbitda: f('ebitda'),
+      ncEv: f('ev'),
+      ebitdaMargin, evEbitda, showThesisWarning,
+      moreDetailOpen: nc.moreDetailOpen,
+      toggleMoreDetail: () => this.setNewCompanyField('moreDetailOpen', !nc.moreDetailOpen),
+      ncComments: f('comments'),
+      ncRemarks: f('remarks'),
+      ncThesisOptions: Object.values(this.tracksData).map(t => t.name),
+      ncThesisTags: nc.thesisTags,
+      toggleThesisTagMenu: () => this.setState({ thesisTagMenuOpen: !this.state.thesisTagMenuOpen }),
+      thesisTagMenuOpen: this.state.thesisTagMenuOpen,
+      ncThesisTagsLabel: nc.thesisTags.length ? nc.thesisTags.join(', ') : 'Select…',
+      isThesisTagChecked: (name) => nc.thesisTags.includes(name),
+      toggleThesisTag: (name) => this.setState(s => ({
+        newCompany: {
+          ...s.newCompany,
+          thesisTags: s.newCompany.thesisTags.includes(name)
+            ? s.newCompany.thesisTags.filter(n => n !== name)
+            : [...s.newCompany.thesisTags, name]
+        }
+      })),
+      ncWatchlistId: f('watchlistId'),
+      ncWatchlistStatus: f('watchlistStatus'),
+      ncWatchlistEnabled: !!String(nc.watchlistId || '').trim()
+    };
+  }
+  setNewCompanyField(field, value) {
+    this.setState(s => ({ newCompany: { ...s.newCompany, [field]: value } }));
+  }
+  closeAddCompanyModal() {
+    this.setState({ addCompanyModalOpen: false, newCompany: { ...this.newCompanyDefaults }, newCompanySubmitAttempted: false });
+  }
+  submitAddCompany() {
+    const nc = this.state.newCompany;
+    const required = ['target', 'geography', 'companyFocus', 'pipelineStage'];
+    const missing = required.some(f => !String(nc[f] || '').trim()) || !nc.segments.length;
+    if (missing) { this.setState({ newCompanySubmitAttempted: true }); return; }
+    const id = Math.max(0, ...this.companies.map(c => c.id)) + 1;
+    this.companies.push({
+      id, name: nc.target, project: '', stage: nc.pipelineStage, banker: '-', sector: nc.segments.join(', '), geo: nc.geography,
+      dealType: '-', revenue: nc.revenue || '-', ebitda: nc.ebitda || '-', valuation: nc.ev || '-', stake: '-',
+      status: 'Unreviewed', sourceDirection: nc.source || '-', remarks: nc.remarks || '-', createdAt: new Date(), lastActivity: '-',
+      aiOpinion: nc.thesisTags.join(', ') || '-'
+    });
+    const addedName = nc.target;
+    this.closeAddCompanyModal();
+    this.setState({ successToast: `"${addedName}" added to pipeline` });
+    setTimeout(() => this.setState(s => s.successToast === `"${addedName}" added to pipeline` ? { successToast: null } : null), 3000);
+  }
   renderVals() {
     const toggleAddCompanyMenu = () => this.setState(s => ({ addCompanyMenuOpen: !s.addCompanyMenuOpen }));
-    const selectManualAdd = () => this.setState({ addCompanyMenuOpen: false });
+    const selectManualAdd = () => this.setState({ addCompanyMenuOpen: false, addCompanyModalOpen: true });
     const selectAskAI = () => this.setState({ addCompanyMenuOpen: false });
     const selectDropFile = () => this.setState({ addCompanyMenuOpen: false });
     const subTabs = ['pending','inbound','outbound'];
@@ -909,6 +1183,8 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       toggleAddCompanyMenu,
       selectManualAdd,
       selectAskAI,
+      ...this.buildAddCompanyModalVals(),
+      successToast: this.state.successToast,
       selectDropFile,
       stageHelpOpen: this.state.stageHelpOpen,
       openStageHelp: () => this.setState({ stageHelpOpen: true }),
