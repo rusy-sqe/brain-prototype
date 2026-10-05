@@ -150,12 +150,12 @@
           <option>Outbound</option>
         </select>
         <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-          <option>All Pipeline Status</option>
+          <option>All Active Status</option>
           <option>Active</option>
           <option>Dropped</option>
         </select>
         <select value="{{ trackFilter }}" onChange="{{ setTrackFilter }}" style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-          <option value="">All Tracks</option>
+          <option value="">All Matched Track</option>
           <sc-for list="{{ trackFilterOptions }}" as="t" hint-placeholder-count="4">
           <option value="{{ t }}">{{ t }}</option>
           </sc-for>
