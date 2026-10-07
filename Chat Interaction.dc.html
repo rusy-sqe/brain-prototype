@@ -13,7 +13,7 @@
 <script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
 <style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)} .hz-table--compact td{padding:8px 10px !important}</style>
 </helmet>
-<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:{{ sidebarGridCols }} {{ copilotColWidth }}">
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:{{ sidebarGridCols }}">
 
 <div class="hz-sidebar {{ sidebarCollapsedClass }}" style="width:{{ sidebarWidth }}px;height:100vh;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;min-height:0;overflow:hidden;transition:width .15s">
   <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
@@ -57,7 +57,7 @@
         <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
         <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
         <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-desktop" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
-        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-magic" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-magic" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workforce<br></span></div>
         <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-alt" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
       </div>
     </div>
@@ -80,645 +80,22 @@
   </div>
 </div>
 
-<div style="min-width:0;overflow-y:auto">
-  <div style="background:linear-gradient(135deg,var(--hz-blue-50),var(--hz-neutral-50));padding:24px 28px 28px">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
-      <div>
-        <div class="hz-h2" style="margin:0">Deal Pipeline</div>
-        <div class="hz-body-r hz-muted" style="margin-top:4px">Track companies through all stages</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:16px">
-        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="background:var(--hz-surface-card);color:var(--hz-neutral-500);border-color:var(--hz-neutral-300)" onClick="{{ openConfigure }}"><i class="far fa-cog"></i>Configure</button>
-        
-      </div>
-    </div>
-
-  </div>
-
-  <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
-
-    <div class="hz-tabs">
-      <button class="hz-tab {{ viewTabClass.companies }}" onClick="{{ selectCompaniesView }}">Pipeline Companies</button>
-      <button class="hz-tab {{ viewTabClass.screening }}" onClick="{{ selectScreeningView }}"><i class="far fa-sparkles" style="margin-right:6px"></i>AI Screening Progress<span class="hz-badge hz-badge--soft" style="margin-left: 6px; background-color: var(--hz-red-500); color: #fff">4</span></button>
-    </div>
-
-    <sc-if value="{{ isCompaniesView }}" hint-placeholder-val="{{ true }}">
-    <div class="hz-card" style="padding:20px;border:1px solid var(--hz-border-subtle)">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
-        <div>
-          <div class="hz-h5" style="margin:0">Pipeline Companies</div>
-          <div class="hz-body-s hz-muted" style="margin-top:2px">Manage your deal in pipelines</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px">
-          <div style="position:relative;display:inline-block">
-            <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ toggleAddCompanyMenu }}"><i class="far fa-plus"></i>Add Company</button>
-            <sc-if value="{{ addCompanyMenuOpen }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;top:100%;right:0;margin-top:4px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);min-width:180px;z-index:100;padding:6px;text-align:left">
-              <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" style-hover="background:var(--hz-blue-50);color:var(--hz-horizon-primary)" onClick="{{ selectManualAdd }}"><i class="far fa-pencil"></i>Manual</button>
-              <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" style-hover="background:var(--hz-blue-50);color:var(--hz-horizon-primary)" onClick="{{ selectAskAI }}"><i class="far fa-sparkles"></i>Ask AI</button>
-              <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" style-hover="background:var(--hz-blue-50);color:var(--hz-horizon-primary)" onClick="{{ selectDropFile }}"><i class="far fa-folder-open"></i>Drop File</button>
-            </div>
-            </sc-if>
-          </div>
-        </div>
-      </div>
-
-      <sc-if value="{{ addCompanyModalOpen }}" hint-placeholder-val="{{ false }}">
-      <div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1300">
-        <div style="background:var(--hz-surface-card);border-radius:12px;width:min(640px,94vw);max-height:90vh;display:flex;flex-direction:column;overflow:hidden">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--hz-border-subtle);flex-shrink:0">
-            <div class="hz-h4" style="margin:0">Add New Company</div>
-            <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeAddCompanyModal }}"><i class="far fa-times" style="font-size:18px"></i></button>
-          </div>
-
-          <div style="padding:20px 24px;overflow-y:auto;display:flex;flex-direction:column;gap:22px">
-
-            <div style="display:flex;flex-direction:column;gap:14px">
-              <div>
-                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Company name <span style="color:var(--hz-red-600)">*</span></label>
-                <input value="{{ ncTarget.value }}" onChange="{{ ncTarget.onChange }}" placeholder="Company name" style="width:100%;padding:8px 10px;border:1px solid {{ ncTargetMissing ? 'var(--hz-red-600)' : 'var(--hz-border-default)' }};border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-              </div>
-              <div>
-                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Segment <span style="color:var(--hz-red-600)">*</span></label>
-                <div style="position:relative">
-                  <button onClick="{{ toggleSegmentMenu }}" style="width:100%;text-align:left;padding:8px 10px;border:1px solid {{ ncSegmentMissing ? 'var(--hz-red-600)' : 'var(--hz-border-default)' }};border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary);display:flex;align-items:center;justify-content:space-between;cursor:pointer">
-                    <span>{{ ncSegmentsLabel }}</span>
-                    <i class="far fa-chevron-down" style="font-size:11px;color:var(--hz-text-tertiary)"></i>
-                  </button>
-                  <sc-if value="{{ segmentMenuOpen }}" hint-placeholder-val="{{ false }}">
-                  <div style="position:absolute;top:100%;left:0;right:0;margin-top:4px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:50;padding:6px;max-height:220px;overflow-y:auto">
-                    <sc-for list="{{ ncSegmentOptions }}" as="opt" hint-placeholder-count="5">
-                    <label style="display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:13px" style-hover="background:var(--hz-neutral-100)">
-                      <input type="checkbox" checked="{{ isSegmentChecked(opt) }}" onChange="{{ () =&gt; toggleSegment(opt) }}">
-                      {{ opt }}
-                    </label>
-                    </sc-for>
-                  </div>
-                  </sc-if>
-                </div>
-                <div class="hz-body-s hz-muted" style="margin-top:4px">Broad category, not a niche</div>
-              </div>
-              <div>
-                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Geography <span style="color:var(--hz-red-600)">*</span></label>
-                <select value="{{ ncGeography.value }}" onChange="{{ ncGeography.onChange }}" style="width:100%;padding:8px 10px;border:1px solid {{ ncGeographyMissing ? 'var(--hz-red-600)' : 'var(--hz-border-default)' }};border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-                  <option value="">Select a country…</option>
-                  <option value="Indonesia">Indonesia</option>
-                  <option value="Malaysia">Malaysia</option>
-                  <option value="Philippines">Philippines</option>
-                  <option value="Singapore">Singapore</option>
-                  <option value="Thailand">Thailand</option>
-                  <option value="Vietnam">Vietnam</option>
-                </select>
-                <div class="hz-body-s hz-muted" style="margin-top:4px">Exactly one HQ country</div>
-              </div>
-              <div>
-                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Company focus <span style="color:var(--hz-red-600)">*</span></label>
-                <textarea value="{{ ncCompanyFocus.value }}" onChange="{{ ncCompanyFocus.onChange }}" placeholder="What does this company actually do?" style="width:100%;min-height:64px;padding:8px 10px;border:1px solid {{ ncCompanyFocusMissing ? 'var(--hz-red-600)' : 'var(--hz-border-default)' }};border-radius:8px;font-family:inherit;font-size:14px;line-height:1.5;background:var(--hz-surface-page);color:var(--hz-text-primary);resize:vertical"></textarea>
-              </div>
-              <div>
-                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Pipeline Stage <span style="color:var(--hz-red-600)">*</span></label>
-                <select value="{{ ncPipelineStage.value }}" onChange="{{ ncPipelineStage.onChange }}" style="width:100%;padding:8px 10px;border:1px solid {{ ncPipelineStageMissing ? 'var(--hz-red-600)' : 'var(--hz-border-default)' }};border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-                  <option value="">Select a stage…</option>
-                  <option value="pending">Pending Confirmation</option>
-                  <sc-for list="{{ ncPipelineStageOptions }}" as="opt" hint-placeholder-count="6">
-                  <option value="{{ opt.key }}">{{ opt.label }}</option>
-                  </sc-for>
-                </select>
-              </div>
-            </div>
-
-            <div style="display:flex;flex-direction:column;gap:14px;padding-top:18px;border-top:1px solid var(--hz-border-subtle)">
-              <div class="hz-body-s" style="font-weight:700;letter-spacing:.04em;color:var(--hz-text-tertiary)">RECOMMENDED</div>
-              <div>
-                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Website</label>
-                <input value="{{ ncWebsite.value }}" onChange="{{ ncWebsite.onChange }}" placeholder="https://…" style="width:100%;padding:8px 10px;border:1px solid {{ ncWebsiteInvalid ? 'var(--hz-red-600)' : 'var(--hz-border-default)' }};border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-                <sc-if value="{{ ncWebsiteInvalid }}" hint-placeholder-val="{{ false }}">
-                <div class="hz-body-s" style="margin-top:4px;color:var(--hz-red-600)">Must start with http:// or https://</div>
-                </sc-if>
-              </div>
-              <div>
-                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Deal Sponsor</label>
-                <div style="position:relative">
-                  <button onClick="{{ toggleDealSponsorMenu }}" style="width:100%;text-align:left;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary);display:flex;align-items:center;justify-content:space-between;cursor:pointer">
-                    <span>{{ ncDealSponsorsLabel }}</span>
-                    <i class="far fa-chevron-down" style="font-size:11px;color:var(--hz-text-tertiary)"></i>
-                  </button>
-                  <sc-if value="{{ dealSponsorMenuOpen }}" hint-placeholder-val="{{ false }}">
-                  <div style="position:absolute;top:100%;left:0;right:0;margin-top:4px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:50;padding:6px;max-height:220px;overflow-y:auto">
-                    <sc-for list="{{ ncDealSponsorOptions }}" as="opt" hint-placeholder-count="6">
-                    <label style="display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:13px" style-hover="background:var(--hz-neutral-100)">
-                      <input type="checkbox" checked="{{ isSponsorChecked(opt) }}" onChange="{{ () =&gt; toggleSponsor(opt) }}">
-                      {{ opt }}
-                    </label>
-                    </sc-for>
-                  </div>
-                  </sc-if>
-                </div>
-              </div>
-              <div>
-                <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Source</label>
-                <div style="display:flex;gap:8px">
-                  <button onClick="{{ setSourceInbound }}" style="flex:1;padding:8px 12px;border-radius:999px;border:1px solid {{ ncSourceInbound ? 'var(--hz-horizon-primary)' : 'var(--hz-border-default)' }};background:{{ ncSourceInbound ? 'var(--hz-blue-50)' : 'var(--hz-surface-page)' }};color:{{ ncSourceInbound ? 'var(--hz-horizon-primary)' : 'var(--hz-text-secondary)' }};font-family:inherit;font-size:13px;font-weight:600;cursor:pointer">Inbound</button>
-                  <button onClick="{{ setSourceOutbound }}" style="flex:1;padding:8px 12px;border-radius:999px;border:1px solid {{ ncSourceOutbound ? 'var(--hz-horizon-primary)' : 'var(--hz-border-default)' }};background:{{ ncSourceOutbound ? 'var(--hz-blue-50)' : 'var(--hz-surface-page)' }};color:{{ ncSourceOutbound ? 'var(--hz-horizon-primary)' : 'var(--hz-text-secondary)' }};font-family:inherit;font-size:13px;font-weight:600;cursor:pointer">Outbound</button>
-                </div>
-              </div>
-              
-            </div>
-
-            
-
-            <div style="padding-top:18px;border-top:1px solid var(--hz-border-subtle)">
-              <button onClick="{{ toggleMoreDetail }}" style="background:none;border:none;padding:0;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;color:var(--hz-horizon-primary);display:flex;align-items:center;gap:6px" style-hover="text-decoration:underline">Add more detail <i class="far {{ moreDetailOpen ? 'fa-chevron-up' : 'fa-chevron-down' }}" style="font-size:11px"></i></button>
-              <sc-if value="{{ moreDetailOpen }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;flex-direction:column;gap:14px;margin-top:14px">
-                <div>
-                  <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Comments</label>
-                  <textarea value="{{ ncComments.value }}" onChange="{{ ncComments.onChange }}" style="width:100%;min-height:60px;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary);resize:vertical"></textarea>
-                </div>
-                <div>
-                  <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Remarks</label>
-                  <textarea value="{{ ncRemarks.value }}" onChange="{{ ncRemarks.onChange }}" style="width:100%;min-height:60px;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary);resize:vertical"></textarea>
-                </div>
-                <div>
-                  <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Investment thesis</label>
-                  <div style="position:relative">
-                    <button onClick="{{ toggleThesisTagMenu }}" style="width:100%;text-align:left;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary);display:flex;align-items:center;justify-content:space-between;cursor:pointer">
-                      <span>{{ ncThesisTagsLabel }}</span>
-                      <i class="far fa-chevron-down" style="font-size:11px;color:var(--hz-text-tertiary)"></i>
-                    </button>
-                    <sc-if value="{{ thesisTagMenuOpen }}" hint-placeholder-val="{{ false }}">
-                    <div style="position:absolute;top:100%;left:0;right:0;margin-top:4px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:50;padding:6px;max-height:220px;overflow-y:auto">
-                      <sc-for list="{{ ncThesisOptions }}" as="opt" hint-placeholder-count="5">
-                      <label style="display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:13px" style-hover="background:var(--hz-neutral-100)">
-                        <input type="checkbox" checked="{{ isThesisTagChecked(opt) }}" onChange="{{ () =&gt; toggleThesisTag(opt) }}">
-                        {{ opt }}
-                      </label>
-                      </sc-for>
-                    </div>
-                    </sc-if>
-                  </div>
-                </div>
-                
-                
-              </div>
-              </sc-if>
-            </div>
-
-          </div>
-
-          <div style="display:flex;justify-content:flex-end;gap:10px;padding:16px 24px;border-top:1px solid var(--hz-border-subtle);flex-shrink:0">
-            <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeAddCompanyModal }}">Cancel</button>
-            <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ submitAddCompany }}">Add to Pipeline</button>
-          </div>
-        </div>
-      </div>
-      </sc-if>
-
-      <sc-if value="{{ successToast }}" hint-placeholder-val="{{ false }}">
-      <div style="position:fixed;bottom:24px;right:24px;background:var(--hz-green-700);color:#fff;padding:12px 18px;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.2);display:flex;align-items:center;gap:10px;z-index:1400;font-size:14px;font-weight:600"><i class="far fa-check-circle"></i>{{ successToast }}</div>
-      </sc-if>
-
-      <div style="display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap">
-        <div style="flex:1;min-width:220px;position:relative">
-          <i class="far fa-magnifying-glass" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--hz-text-tertiary);font-size:13px"></i>
-          <input placeholder="Search companies or sectors…" value="{{ companySearch }}" onChange="{{ setCompanySearch }}" style="width:100%;padding:9px 12px 9px 34px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-        </div>
-      </div>
-
-      <div style="display:flex;align-items:center;gap:12px;margin-top:16px;min-width:0">
-        <button onClick="{{ pendingChip.toggle }}" style="{{ pendingChip.style }}">Pending Confirmation<sc-if value="{{ pendingChip.badge }}" hint-placeholder-val="{{ false }}"><span class="hz-badge" style="background:var(--hz-red-50);color:var(--hz-red-700)">{{ pendingChip.badge }}</span></sc-if></button>
-        <button class="hz-btn hz-btn--text hz-btn--sm" style="width:24px;height:24px;padding:0;justify-content:center;color:var(--hz-neutral-500);flex-shrink:0" title="What are pipeline stages?" onClick="{{ openStageHelp }}"><i class="far fa-question-circle"></i></button>
-        <span class="hz-body-s" style="font-weight:700;letter-spacing:.06em;color:var(--hz-text-tertiary);flex-shrink:0">STAGE</span>
-        <div class="hz-tabs" style="border-bottom:none;flex-wrap:nowrap;overflow-x:auto;min-width:0">
-          <sc-for list="{{ stageOptions }}" as="opt" hint-placeholder-count="7">
-            <button class="hz-tab {{ opt.tabClass }}" style="white-space:nowrap;flex-shrink:0" onClick="{{ opt.selectOnly }}">{{ opt.label }}<sc-if value="{{ opt.badge }}" hint-placeholder-val="{{ false }}"><span class="hz-badge" style="margin-left:6px;background:var(--hz-red-50);color:var(--hz-red-700)">{{ opt.badge }}</span></sc-if></button>
-          </sc-for>
-        </div>
-        <i class="far fa-chevron-right" style="color:var(--hz-neutral-400);font-size:12px;flex-shrink:0"></i>
-      </div>
-
-      <sc-if value="{{ activeStageInfo }}" hint-placeholder-val="{{ false }}">
-      <div style="margin-top:8px;padding-left:2px">
-        <div class="hz-body-s">
-          <span class="hz-muted"><span style="font-weight:700">Description: </span>{{ activeStageInfo.descriptionShown }}</span>
-          <sc-if value="{{ activeStageInfo.truncatable }}" hint-placeholder-val="{{ false }}">
-          <button onClick="{{ openStageHelp }}" style="background:none;border:none;padding:0;margin-left:4px;font-family:inherit;font-size:12px;font-weight:600;color:var(--hz-horizon-primary);cursor:pointer">Show more</button>
-          </sc-if>
-        </div>
-      </div>
-      </sc-if>
-
-      <div style="display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap">
-        
-        <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-          <option>All Sources</option>
-          <option>Inbound</option>
-          <option>Outbound</option>
-        </select>
-        <select style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-          <option>All Active Status</option>
-          <option>Active</option>
-          <option>Dropped</option>
-        </select>
-        <select value="{{ trackFilter }}" onChange="{{ setTrackFilter }}" style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-          <option value="">All Matched Track</option>
-          <sc-for list="{{ trackFilterOptions }}" as="t" hint-placeholder-count="4">
-          <option value="{{ t }}">{{ t }}</option>
-          </sc-for>
-        </select>
-        <select value="{{ sortOrder }}" onChange="{{ setSortOrder }}" style="padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-          <option value="newest">Sort by: Newest</option>
-          <option value="oldest">Sort by: Oldest</option>
-        </select>
-        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="width:36px;padding:0;justify-content:center;color:var(--hz-neutral-500);border-color:var(--hz-neutral-300)"><i class="far fa-sliders-h"></i></button>
-      </div>
-
-      <div style="overflow-x:auto;margin-top:14px">
-        <table class="hz-table hz-table--compact" style="font-size:13px;min-width:2400px">
-          <thead>
-            <tr>
-              <th style="padding:8px 10px;position:sticky;left:0;z-index:3;background:var(--hz-surface-card);box-shadow:1px 0 0 var(--hz-border-subtle)">Company <i class="far fa-arrow-up-arrow-down" style="font-size:10px"></i></th>
-              <th style="padding:8px 10px">Stage</th>
-              <th style="padding:8px 10px">ACTIVE?</th>
-              <th style="padding:8px 10px;white-space:nowrap">Created At</th>
-              <th style="padding:8px 10px">Banker / Source</th>
-              <th style="padding:8px 10px">Inbound / Outbound</th>
-              <th style="padding:8px 10px">Sector</th>
-              <th style="padding:8px 10px">Geo</th>
-              <th style="padding:8px 10px">Matched Tracks</th>
-              <th style="padding:8px 10px">Deal Type</th>
-              <th style="padding:8px 10px">Revenue</th>
-              <th style="padding:8px 10px">EBITDA</th>
-              <th style="padding:8px 10px">Valuation</th>
-              <th style="padding:8px 10px">% Stake</th>
-              <th style="padding:8px 10px">Status</th>
-              <th style="padding:8px 10px">Additional Remarks</th>
-              <th style="padding:8px 10px">Created</th>
-              <th style="padding:8px 10px">Last Activity</th>
-              <th style="padding:8px 10px;min-width:260px">AI Opinion</th>
-              <th style="padding:8px 10px;text-align:center;position:sticky;right:0;z-index:3;background:var(--hz-surface-card);box-shadow:-1px 0 0 var(--hz-border-subtle)">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <sc-for list="{{ filteredCompanies }}" as="row" hint-placeholder-count="8">
-            <tr>
-              <td style="position:sticky;left:0;z-index:1;background:var(--hz-surface-card);box-shadow:1px 0 0 var(--hz-border-subtle)"><span style="cursor:pointer;color:var(--hz-text-primary)" style-hover="color:var(--hz-blue-600)">{{ row.title }}</span><sc-if value="{{ row.subtitle }}" hint-placeholder-val="{{ false }}"><div class="hz-body-s hz-muted" style="cursor:pointer" style-hover="color:var(--hz-blue-600)">{{ row.subtitle }}</div></sc-if></td>
-              <td><span class="hz-body-s hz-muted">{{ row.stageLabel }}</span></td>
-              <td style="font-weight:600;color:{{ row.pipelineStatusColor }}">{{ row.pipelineStatus }}</td>
-              <td style="white-space:nowrap">{{ row.createdAt }}</td>
-              <td>{{ row.banker }}</td>
-              <td>{{ row.sourceDirection }}</td>
-              <td>{{ row.sector }}</td>
-              <td>{{ row.geo }}</td>
-              <td style="max-width:220px"><div style="display:flex;flex-wrap:wrap;gap:4px">
-                <sc-for list="{{ row.tracks }}" as="track" hint-placeholder-count="1">
-                <span class="hz-badge hz-badge--soft" style="max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline;font-weight:500;font-size:10px">{{ track }}</span>
-                </sc-for>
-              </div></td>
-              <td>{{ row.dealType }}</td>
-              <td style="white-space:nowrap">{{ row.revenue }}</td>
-              <td style="white-space:nowrap">{{ row.ebitda }}</td>
-              <td style="white-space:nowrap">{{ row.valuation }}</td>
-              <td>{{ row.stake }}</td>
-              <td class="hz-muted">{{ row.status }}</td>
-              <td class="hz-muted" style="max-width:180px">{{ row.remarks }}</td>
-              <td style="white-space:nowrap" class="hz-muted">{{ row.created }}</td>
-              <td class="hz-muted">{{ row.lastActivity }}</td>
-              <td style="min-width:260px"><span style="color:{{ row.aiOpinionColor }}"><i class="far {{ row.aiOpinionIcon }}"></i></span> {{ row.aiOpinion }}</td>
-              <td style="text-align:center;position:sticky;right:0;z-index:1;background:var(--hz-surface-card);box-shadow:-1px 0 0 var(--hz-border-subtle)"><div style="display:flex;justify-content:center;align-items:center;gap:1px"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:22px;height:22px;padding:0;justify-content:center;color:var(--hz-neutral-500);font-size:11px" title="Update" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-pencil" style="font-size:11px"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:22px;height:22px;padding:0;justify-content:center;color:var(--hz-neutral-500);font-size:11px" title="View details" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-eye" style="font-size:11px"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="padding:0 4px;gap:3px;color:var(--hz-neutral-500);font-size:11px" title="AI Insight" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-sparkles" style="font-size:11px"></i>Ask</button><div style="position:relative;display:inline-block">
-                <button class="hz-btn hz-btn--text hz-btn--sm" style="padding:0 4px;gap:3px;color:var(--hz-neutral-500);font-size:11px" title="Move" onClick="{{ row.toggleMove }}" onMouseOver="this.style.color='var(--hz-text-primary)'" onMouseOut="this.style.color='var(--hz-neutral-500)'"><i class="far fa-exchange-alt" style="font-size:11px"></i>Move</button>
-                <sc-if value="{{ row.moveOpen }}" hint-placeholder-val="{{ false }}">
-                <div style="position:absolute;top:100%;right:0;margin-top:4px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);min-width:160px;z-index:100;padding:6px;text-align:left">
-                  <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-red-600)" onClick="{{ row.drop }}" onMouseOver="this.style.background='var(--hz-red-50)'" onMouseOut="this.style.background='none'"><i class="far fa-times-circle"></i>Dropped</button>
-                  <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" onClick="{{ row.next }}" onMouseOver="this.style.background='var(--hz-neutral-100)'" onMouseOut="this.style.background='none'"><i class="far fa-arrow-right"></i>Move Next</button>
-                  <button style="width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:none;font-family:inherit;font-size:13px;cursor:pointer;border-radius:6px;color:var(--hz-text-primary)" onClick="{{ row.back }}" onMouseOver="this.style.background='var(--hz-neutral-100)'" onMouseOut="this.style.background='none'"><i class="far fa-arrow-left"></i>Move Back</button>
-                </div>
-                </sc-if>
-              </div>
-            
-            
-            <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
-            <tr><td colspan="7" style="text-align:center;padding:24px;color:var(--hz-text-tertiary)">No companies match your search.</td></tr>
-            </sc-if>
-          
-        
-      </div>
-    </td></tr></sc-for></tbody></table></div>
-    
-
-    <sc-if value="{{ isScreeningView }}" hint-placeholder-val="{{ false }}">
-    <div class="hz-card" style="padding:20px;border:1px solid var(--hz-border-subtle)">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
-        <div style="display:flex;align-items:flex-start;gap:12px">
-          <span style="color:var(--hz-horizon-primary);flex-shrink:0"><i class="far fa-sparkles" style="font-size:18px"></i></span>
-          <div>
-            <div class="hz-h5" style="margin:0">AI Screening Progress</div>
-            <div class="hz-body-s hz-muted" style="margin-top:2px">Real-time status of company screenings</div>
-          </div>
-        </div>
-        
-      </div>
-
-      <div style="display:flex;align-items:center;gap:8px;margin-top:16px;font-weight:700">
-        <i class="far fa-circle-check" style="color:var(--hz-green-600)"></i>Completed (5)
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;flex-wrap:wrap">
-          <div style="display:flex;align-items:center;gap:12px;min-width:0">
-            <i class="far fa-circle-check" style="color:var(--hz-green-600);font-size:16px"></i>
-            <div>
-              <div style="font-weight:700">Nordic Semiconductor ASA — Project Boom</div>
-              <div style="margin-top:4px"><span class="hz-badge hz-badge--soft" style="font-weight:400">SEA Industrial Tech Roll-Up</span></div>
-              <div class="hz-body-s hz-muted" style="margin-top:2px">2 criteria evaluated · <span style="color:var(--hz-green-600)">2✓</span> <span style="color:var(--hz-red-600)">0✗</span> · <span style="color:var(--hz-green-700);font-weight:700">Passed</span></div>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
-            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-green-700);border-color:var(--hz-green-300)"><i class="far fa-arrow-right"></i>Promote to L1</button>
-          </div>
-        </div>
-
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;flex-wrap:wrap">
-          <div style="display:flex;align-items:center;gap:12px;min-width:0">
-            <i class="far fa-circle-xmark" style="color:var(--hz-red-600);font-size:16px"></i>
-            <div>
-              <div style="font-weight:700">Palantir Technologies — Project Boom</div>
-              <div style="margin-top:4px"><span class="hz-badge hz-badge--soft" style="font-weight:400">SEA Industrial Tech Roll-Up</span></div>
-              <div class="hz-body-s hz-muted" style="margin-top:2px">2 criteria evaluated · <span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">1✗</span> · <span style="color:var(--hz-red-600);font-weight:700">Failed</span></div>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
-            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-red-600);border-color:var(--hz-red-300)"><i class="far fa-times"></i>Drop</button>
-          </div>
-        </div>
-
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;flex-wrap:wrap">
-          <div style="display:flex;align-items:center;gap:12px;min-width:0">
-            <i class="far fa-circle-question" style="color:var(--hz-orange-500);font-size:16px"></i>
-            <div>
-              <div style="font-weight:700">Palantir Technologies — Project Boom</div>
-              <div style="margin-top:4px"><span class="hz-badge hz-badge--soft" style="font-weight:400">Consolidation Play: rolling up paper companies globally</span></div>
-              <div class="hz-body-s hz-muted" style="margin-top:2px">2 criteria evaluated · <span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">0✗</span> <span style="color:var(--hz-orange-600)">1?</span> · <span style="color:var(--hz-orange-700);font-weight:700">Inconclusive</span></div>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
-            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-red-600);border-color:var(--hz-red-300)"><i class="far fa-times"></i>Drop</button>
-            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-green-700);border-color:var(--hz-green-300)"><i class="far fa-arrow-right"></i>Promote to L1</button>
-          </div>
-        </div>
-
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;flex-wrap:wrap">
-          <div style="display:flex;align-items:center;gap:12px;min-width:0">
-            <i class="far fa-circle-question" style="color:var(--hz-orange-500);font-size:16px"></i>
-            <div>
-              <div style="font-weight:700">BV Holdings JSC — Project Banyan</div>
-              <div style="margin-top:4px"><span class="hz-badge hz-badge--soft" style="font-weight:400">Consolidation Play: rolling up paper companies globally</span></div>
-              <div class="hz-body-s hz-muted" style="margin-top:2px">2 criteria evaluated · <span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">0✗</span> <span style="color:var(--hz-orange-600)">1?</span> · <span style="color:var(--hz-orange-700);font-weight:700">Inconclusive</span></div>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
-            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-red-600);border-color:var(--hz-red-300)"><i class="far fa-times"></i>Drop</button>
-            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-green-700);border-color:var(--hz-green-300)"><i class="far fa-arrow-right"></i>Promote to L1</button>
-          </div>
-        </div>
-
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;flex-wrap:wrap">
-          <div style="display:flex;align-items:center;gap:12px;min-width:0">
-            <i class="far fa-circle-question" style="color:var(--hz-orange-500);font-size:16px"></i>
-            <div>
-              <div style="font-weight:700">BV Holdings JSC — Project Banyan</div>
-              <div style="margin-top:4px"><span class="hz-badge hz-badge--soft" style="font-weight:400">Paper Companies</span></div>
-              <div class="hz-body-s hz-muted" style="margin-top:2px">1 criteria evaluated · <span style="color:var(--hz-green-600)">1✓</span> <span style="color:var(--hz-red-600)">0✗</span> · <span style="color:var(--hz-orange-700);font-weight:700">Inconclusive</span></div>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
-            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-red-600);border-color:var(--hz-red-300)"><i class="far fa-times"></i>Drop</button>
-            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="color:var(--hz-green-700);border-color:var(--hz-green-300)"><i class="far fa-arrow-right"></i>Promote to L1</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    </sc-if>
-
-  </div>
-</sc-if></div>
-
-<sc-if value="{{ stageHelpOpen }}" hint-placeholder-val="{{ false }}">
-<div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1000">
-  <div style="background:var(--hz-surface-card);border-radius:12px;width:min(640px,92vw);max-height:85vh;display:flex;flex-direction:column;overflow:hidden">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--hz-border-subtle)">
-      <div>
-        <div class="hz-h4" style="margin:0">Pipeline Stages</div>
-        <div class="hz-body-s hz-muted" style="margin-top:4px">What each stage means and what's needed to move forward.</div>
-      </div>
-      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeStageHelp }}"><i class="far fa-times" style="font-size:18px"></i></button>
-    </div>
-    <div style="padding:20px 24px;overflow-y:auto;display:flex;flex-direction:column;gap:14px">
-      <sc-for list="{{ stageHelpItems }}" as="s" hint-placeholder-count="6">
-      <div style="padding:12px 14px;border:1px solid var(--hz-border-subtle);border-radius:10px">
-        <div style="font-weight:700">{{ s.label }}</div>
-        <div class="hz-body-s hz-muted" style="margin-top:4px;white-space:pre-wrap">{{ s.description }}</div>
-      </div>
-      </sc-for>
-    </div>
-  </div>
-</div>
-</sc-if>
-
-<sc-if value="{{ confirmAction }}" hint-placeholder-val="{{ false }}">
-<div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1200">
-  <div style="background:var(--hz-surface-card);border-radius:12px;width:min(400px,90vw);padding:24px;display:flex;flex-direction:column;gap:16px">
-    <div class="hz-h5" style="margin:0">Please confirm</div>
-    <div class="hz-body-s" style="color:var(--hz-text-secondary)"><b>{{ confirmActionWord }}</b> "{{ confirmActionLabel }}"<sc-if value="{{ confirmActionIsMove }}" hint-placeholder-val="{{ false }}"> one position?</sc-if><sc-if value="{{ !confirmActionIsMove }}" hint-placeholder-val="{{ false }}"> stage? This can't be undone.</sc-if></div>
-    <sc-if value="{{ confirmActionIsMove }}" hint-placeholder-val="{{ false }}">
-    <div class="hz-body-s" style="color:var(--hz-text-tertiary)">All companies currently in this stage will move together with it.</div>
-    </sc-if>
-    <sc-if value="{{ confirmDeleteHasCompanies }}" hint-placeholder-val="{{ false }}">
-    <div style="display:flex;flex-direction:column;gap:8px;padding:12px;border:1px solid var(--hz-orange-200);background:var(--hz-orange-50);border-radius:8px">
-      <div class="hz-body-s" style="color:var(--hz-text-primary)">There are companies in this pipeline. Choose a pipeline stage to move them to.</div>
-      <select value="{{ confirmMoveTarget }}" onChange="{{ setConfirmMoveTarget }}" style="width:100%;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-        <option value="">Select a stage…</option>
-        <sc-for list="{{ confirmMoveTargetOptions }}" as="opt" hint-placeholder-count="5">
-        <option value="{{ opt.key }}">{{ opt.label }}</option>
-        </sc-for>
-      </select>
-    </div>
-    </sc-if>
-    <div style="display:flex;justify-content:flex-end;gap:10px">
-      <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ cancelConfirmAction }}">Cancel</button>
-      <button class="hz-btn hz-btn--primary hz-btn--sm" disabled="{{ confirmConfirmDisabled }}" onClick="{{ runConfirmAction }}">Confirm</button>
-    </div>
-  </div>
-</div>
-</sc-if>
-
-<sc-if value="{{ newStageModalOpen }}" hint-placeholder-val="{{ false }}">
-<div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1100">
-  <div style="background:var(--hz-surface-card);border-radius:12px;width:min(480px,92vw);max-height:90vh;display:flex;flex-direction:column;overflow:hidden">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--hz-border-subtle)">
-      <div class="hz-h4" style="margin:0">New Pipeline Stage</div>
-      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeNewStageModal }}"><i class="far fa-times" style="font-size:18px"></i></button>
-    </div>
-    <div style="padding:20px 24px;overflow-y:auto;display:flex;flex-direction:column;gap:16px">
-      <div>
-        <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Code</label>
-        <input value="{{ newStageCode }}" onChange="{{ setNewStageCode }}" placeholder="e.g. L6" style="width:100%;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-      </div>
-      <div>
-        <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Display name</label>
-        <input value="{{ newStageName }}" onChange="{{ setNewStageName }}" placeholder="e.g. Post-Close Review" style="width:100%;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-      </div>
-      <div>
-        <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Description</label>
-        <textarea value="{{ newStageDescription }}" onChange="{{ setNewStageDescription }}" placeholder="What happens at this stage, and what must be produced to exit it…" style="width:100%;min-height:100px;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;line-height:1.5;background:var(--hz-surface-page);color:var(--hz-text-primary);resize:vertical;white-space:pre-wrap"></textarea>
-      </div>
-      <div>
-        <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Position After</label>
-        <select value="{{ newStagePositionAfter }}" onChange="{{ setNewStagePositionAfter }}" style="width:100%;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-          <sc-for list="{{ positionAfterOptions }}" as="opt" hint-placeholder-count="6">
-          <option value="{{ opt.key }}">{{ opt.label }}</option>
-          </sc-for>
-        </select>
-      </div>
-    </div>
-    <div style="display:flex;justify-content:flex-end;gap:10px;padding:16px 24px;border-top:1px solid var(--hz-border-subtle)">
-      <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeNewStageModal }}">Cancel</button>
-      <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ createStage }}">Create Stage</button>
-    </div>
-  </div>
-</div>
-</sc-if>
-
-<sc-if value="{{ configureOpen }}" hint-placeholder-val="{{ false }}">
-<div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1000">
-  <div style="background:var(--hz-surface-card);border-radius:12px;width:min(1100px,94vw);max-height:90vh;display:flex;flex-direction:column;overflow:hidden">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;padding:24px 28px;border-bottom:1px solid var(--hz-border-subtle)">
-      <div>
-        <div class="hz-h3" style="margin:0">Configuration</div>
-        <div class="hz-body-r hz-muted" style="margin-top:4px">Manage the investment theses used to auto-match inbound and outbound deals.</div>
-      </div>
-      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeConfigure }}"><i class="far fa-times" style="font-size:18px"></i></button>
-    </div>
-
-    <div class="hz-tabs" style="padding:0 28px">
-      <button class="hz-tab {{ modalTabClass.track }}" onClick="{{ selectModalTrackTab }}">Investment Track</button>
-      <button class="hz-tab {{ modalTabClass.settings }}" onClick="{{ selectModalSettingsTab }}">Pipeline Settings</button>
-    </div>
-
-    <sc-if value="{{ isModalTrackTab }}" hint-placeholder-val="{{ true }}">
-    <div style="display:grid;grid-template-columns:260px minmax(0,1fr);flex:1;min-height:0">
-      <div style="border-right:1px solid var(--hz-border-subtle);padding:16px 12px;overflow-y:auto;display:flex;flex-direction:column;gap:4px">
-        <div class="hz-body-s" style="font-weight:700;letter-spacing:.06em;color:var(--hz-text-tertiary);padding:4px 8px">TRACKS</div>
-        <sc-for list="{{ tracks }}" as="track" hint-placeholder-count="5">
-        <button onClick="{{ track.select }}" style="text-align:left;border:none;background:{{ track.bg }};border-radius:8px;padding:10px 12px;cursor:pointer;font-family:inherit">
-          <div style="font-weight:700;color:{{ track.titleColor }}">{{ track.name }}</div>
-          <div class="hz-body-s hz-muted" style="margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ track.summary }}</div>
-        </button>
-        </sc-for>
-        <button style="margin-top:8px;border:1px dashed var(--hz-border-default);border-radius:8px;padding:10px 12px;background:none;font-family:inherit;font-weight:600;color:var(--hz-text-secondary);display:flex;align-items:center;gap:8px;cursor:pointer"><i class="far fa-plus"></i>New track</button>
-      </div>
-
-      <div style="padding:24px 28px;overflow-y:auto;display:flex;flex-direction:column;gap:20px">
-        <div>
-          <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:8px">Track name <span style="color:var(--hz-red-600)">*</span></label>
-          <input value="{{ activeTrack.name }}" onChange="{{ markTrackDirty }}" style="width:100%;padding:10px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:15px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-        </div>
-        <div>
-          <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:8px">PIC</label>
-          <select style="width:100%;padding:10px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:15px;background:var(--hz-surface-page);color:var(--hz-text-tertiary)">
-            <option>Set PIC…</option>
-          </select>
-        </div>
-
-        <div class="hz-tabs">
-          <button class="hz-tab {{ configTabClass.thesis }}" onClick="{{ selectThesisTab }}">Investment Thesis</button>
-          <button class="hz-tab {{ configTabClass.criteria }}" onClick="{{ selectCriteriaTab }}">AI Screening Criteria</button>
-          <button class="hz-tab {{ configTabClass.variables }}" onClick="{{ selectVariablesTab }}">Variables</button>
-        </div>
-
-        <textarea value="{{ activeTrack.thesis }}" onChange="{{ markTrackDirty }}" style="width:100%;min-height:340px;border:1px solid var(--hz-border-default);border-radius:8px;padding:16px;font-family:inherit;font-size:14px;line-height:1.6;color:var(--hz-text-primary);background:var(--hz-surface-page);resize:vertical;white-space:pre-wrap"></textarea>
-
-        <sc-if value="{{ trackDirty }}" hint-placeholder-val="{{ false }}">
-        <div style="display:flex;justify-content:flex-end;gap:10px">
-          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ cancelTrack }}">Cancel</button>
-          <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ saveTrack }}">Save Track</button>
-        </div>
-        </sc-if>
-      </div>
-    </div>
-    </sc-if>
-
-    <sc-if value="{{ isModalSettingsTab }}" hint-placeholder-val="{{ false }}">
-    <div style="flex:1;min-height:0;overflow-y:auto;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
-        <div>
-          <div class="hz-h5" style="margin:0">Pipeline Settings</div>
-          <div class="hz-body-s hz-muted" style="margin-top:2px">Rename pipeline stages shown across the app.</div>
-        </div>
-        <button class="hz-btn hz-btn--secondary hz-btn--sm" style="white-space:nowrap" onClick="{{ openNewStageModal }}"><i class="fas fa-plus" style="margin-right:6px"></i>New Pipeline Stage</button>
-      </div>
-      <sc-for list="{{ stageFields }}" as="stage" hint-placeholder-count="6">
-      <div style="padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;display:flex;flex-direction:column;gap:12px;position:relative">
-        <div style="display:flex;justify-content:flex-end;position:relative">
-          <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;height:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ stage.toggleMenu }}"><i class="fas fa-cog"></i></button>
-          <sc-if value="{{ stage.menuOpen }}" hint-placeholder-val="{{ false }}">
-          <div style="position:absolute;top:100%;right:0;margin-top:4px;background:var(--hz-surface-page);border:1px solid var(--hz-border-default);border-radius:8px;box-shadow:var(--hz-shadow-md);min-width:96px;z-index:10;overflow:hidden">
-            <button class="hz-btn hz-btn--text hz-btn--sm" disabled="{{ !stage.canMoveUp }}" style="width:100%;justify-content:flex-start;padding:6px 10px;border-radius:0;font-size:12px" onClick="{{ stage.moveUp }}"><i class="fas fa-arrow-up" style="margin-right:6px;width:12px"></i>Move up</button>
-            <button class="hz-btn hz-btn--text hz-btn--sm" disabled="{{ !stage.canMoveDown }}" style="width:100%;justify-content:flex-start;padding:6px 10px;border-radius:0;font-size:12px" onClick="{{ stage.moveDown }}"><i class="fas fa-arrow-down" style="margin-right:6px;width:12px"></i>Move down</button>
-            <button class="hz-btn hz-btn--text hz-btn--sm" style="width:100%;justify-content:flex-start;padding:6px 10px;border-radius:0;color:var(--hz-red-600);font-size:12px" onClick="{{ stage.deleteStage }}"><i class="fas fa-trash-alt" style="margin-right:6px;width:12px"></i>Delete</button>
-          </div>
-          </sc-if>
-        </div>
-        <div style="display:grid;grid-template-columns:100px 1fr;gap:12px;align-items:start">
-          <div>
-            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Code</label>
-            <input value="{{ stage.code }}" onChange="{{ stage.setCode }}" style="width:100%;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-          </div>
-          <div>
-            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Display name</label>
-            <input value="{{ stage.name }}" onChange="{{ stage.setName }}" maxlength="40" style="width:100%;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-            <div class="hz-body-s hz-muted" style="margin-top:4px;text-align:right">{{ stage.nameCount }}/40</div>
-          </div>
-        </div>
-        <div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-            <label class="hz-body-s" style="font-weight:700">Description</label>
-            <div style="display:flex;gap:4px">
-              <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" title="Bullet list" onClick="{{ stage.addBullet }}"><i class="far fa-list-ul"></i></button>
-              <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" title="Numbered list" onClick="{{ stage.addNumber }}"><i class="far fa-list-ol"></i></button>
-            </div>
-          </div>
-          <textarea ref="{{ stage.descriptionRef }}" value="{{ stage.description }}" onChange="{{ stage.setDescription }}" placeholder="What happens at this stage, and what must be produced to exit it…" style="width:100%;min-height:120px;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;line-height:1.5;background:var(--hz-surface-page);color:var(--hz-text-primary);resize:vertical;white-space:pre-wrap"></textarea>
-        </div>
-
-        <sc-if value="{{ stage.dirty }}" hint-placeholder-val="{{ false }}">
-        <div style="display:flex;justify-content:flex-end;gap:10px">
-          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ stage.cancel }}">Cancel</button>
-          <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ stage.save }}">Save</button>
-        </div>
-        </sc-if>
-      </div>
-      </sc-for>
-    </div>
-    </sc-if>
-
-  </div>
-</div>
-</sc-if>
-
-</div>
 
 <sc-if value="{{ copilotOpen }}" hint-placeholder-val="{{ false }}">
-  <div style="width:100%;height:100vh;border-left:1px solid var(--hz-border-subtle);background:var(--hz-surface-card);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+  <div style="width:100%;height:100vh;background:var(--hz-surface-card);display:flex;flex-direction:column;min-height:0;overflow:hidden">
     <div style="padding:10px 12px 0;border-bottom:1px solid var(--hz-border-subtle);display:flex;flex-wrap:nowrap;align-items:center;gap:6px;overflow:hidden">
-      <span style="width:22px;height:22px;border-radius:7px;background:var(--hz-blue-50);color:var(--hz-horizon-primary);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far fa-sparkles" style="font-size:11px"></i></span>
       <div style="display:flex;align-items:center;gap:2px;flex:1;min-width:0">
         <sc-for list="{{ copilotTabs }}" as="tab" hint-placeholder-count="2">
-          <button onClick="{{ tab.select }}" style="border:none;background:none;font-family:inherit;font-size:13px;font-weight:700;padding:10px 10px 9px;cursor:pointer;color:{{ tab.color }};border-bottom:2px solid {{ tab.borderColor }};white-space:nowrap">{{ tab.label }}</button>
+          <button onClick="{{ tab.select }}" style="border:none;background:none;font-family:inherit;font-size:13px;font-weight:700;padding:10px 10px 9px;cursor:pointer;color:{{ tab.color }};border-bottom:2px solid {{ tab.borderColor }};white-space:nowrap;display:flex;align-items:center;gap:6px">
+            <sc-if value="{{ tab.showIcon }}" hint-placeholder-val="{{ false }}">
+              <span style="width:18px;height:18px;border-radius:5px;background:{{ tab.iconBg }};color:{{ tab.iconColor }};display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far {{ tab.icon }}" style="font-size:9px"></i></span>
+            </sc-if>
+            {{ tab.label }}
+          </button>
         </sc-for>
       </div>
-      <button class="hz-sidebar__collapse-btn" title="Toggle full width" onClick="{{ toggleCopilotFullWidth }}" style="margin-left:auto;flex-shrink:0;width:22px;height:22px;margin-bottom:9px"><i class="far {{ copilotExpandIcon }}" style="font-size:12px"></i></button>
-      <button class="hz-sidebar__collapse-btn" title="Close" onClick="{{ toggleCopilot }}" style="flex-shrink:0;width:22px;height:22px;margin-bottom:9px"><i class="far fa-times" style="font-size:12px"></i></button>
+      <a href="Pipeline v2.3.dc.html" title="Exit full screen" class="hz-sidebar__collapse-btn" style="flex-shrink:0;width:22px;height:22px;display:flex;align-items:center;justify-content:center;color:var(--hz-text-secondary);text-decoration:none"><i class="far fa-compress" style="font-size:12px"></i></a>
+      <a href="Pipeline v2.3.dc.html" title="Exit" class="hz-sidebar__collapse-btn" style="flex-shrink:0;width:22px;height:22px;display:flex;align-items:center;justify-content:center;color:var(--hz-text-secondary);text-decoration:none"><i class="far fa-times" style="font-size:12px"></i></a>
     </div>
     <sc-if value="{{ copilotTabIsCowork }}" hint-placeholder-val="{{ false }}">
       <div style="flex:1;min-height:0;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:16px">
@@ -947,9 +324,8 @@
       </div>
     </sc-if>
     <sc-if value="{{ !copilotTabIsCowork }}" hint-placeholder-val="{{ true }}">
-    <div style="flex:1;min-height:0;overflow-y:auto;padding:24px 20px;display:flex;flex-direction:column">
+    <div style="flex:1;min-height:0;overflow-y:auto;padding:24px 20px;display:flex;flex-direction:column;max-width:560px;width:100%;margin:0 auto;justify-content:{{ chatColumnJustify }}">
       <sc-if value="{{ !hasCopilotMessages }}" hint-placeholder-val="{{ true }}">
-        <div style="flex:1;min-height:40px"></div>
         <div class="hz-h4" style="color:var(--hz-horizon-primary);margin:0 0 16px">Ask away, Nur!</div>
       </sc-if>
       <sc-if value="{{ hasCopilotMessages }}" hint-placeholder-val="{{ false }}">
@@ -988,8 +364,41 @@
                   <div style="font-size:14px;color:var(--hz-text-primary)">{{ msg.intro }}</div>
                 </sc-if>
                 <sc-if value="{{ msg.isDone }}" hint-placeholder-val="{{ false }}">
-                  <div style="font-size:14px;color:var(--hz-text-primary);line-height:1.5">{{ msg.text }}</div>
-                  <button onClick="{{ msg.copy }}" style="display:flex;align-items:center;gap:6px;align-self:flex-start;border:none;background:none;padding:4px 6px;margin-left:-6px;font-family:inherit;font-size:12px;color:var(--hz-text-tertiary);cursor:pointer;border-radius:6px" style-hover="background:var(--hz-neutral-100);color:var(--hz-text-secondary)"><i class="far {{ msg.copyIcon }}" style="font-size:12px"></i><span>{{ msg.copyLabel }}</span></button>
+                  <sc-if value="{{ msg.isPlainDone }}" hint-placeholder-val="{{ true }}">
+                    <div style="font-size:14px;color:var(--hz-text-primary);line-height:1.5">{{ msg.text }}</div>
+                  </sc-if>
+                  <sc-if value="{{ msg.isRich }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;gap:12px">
+                      <div class="hz-h5" style="margin:0;border-bottom:1px solid var(--hz-border-subtle);padding-bottom:8px">{{ msg.richHeading }}</div>
+                      <div style="display:flex;flex-direction:column;gap:10px">
+                        <sc-for list="{{ msg.richItems }}" as="it" hint-placeholder-count="3">
+                          <div style="display:flex;gap:8px;font-size:14px;line-height:1.5;color:var(--hz-text-primary)">
+                            <span style="flex-shrink:0;font-weight:700">{{ it.num }}.</span>
+                            <span><span style="font-weight:700">{{ it.title }}</span> {{ it.desc }}</span>
+                          </div>
+                        </sc-for>
+                      </div>
+                      <div style="font-size:14px;line-height:1.5;color:var(--hz-text-primary)">{{ msg.richFooter }}</div>
+                      <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
+                        <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--hz-text-secondary)"><i class="far fa-books"></i>Sources</div>
+                        <div style="display:flex;flex-wrap:wrap;gap:8px">
+                          <sc-for list="{{ msg.richSources }}" as="src" hint-placeholder-count="4">
+                            <span class="hz-chip" style="font-size:12px;padding:5px 10px;background:var(--hz-blue-50);color:var(--hz-horizon-primary);border:none;cursor:pointer;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ src.label }}<i class="far fa-external-link" style="font-size:10px;margin-left:6px"></i></span>
+                          </sc-for>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--hz-text-secondary);margin-top:4px"><i class="far fa-file"></i>Files</div>
+                        <div style="display:flex;flex-wrap:wrap;gap:8px">
+                          <sc-for list="{{ msg.richFiles }}" as="file" hint-placeholder-count="2">
+                            <span class="hz-chip" style="font-size:12px;padding:5px 10px;background:var(--hz-orange-50, #fff4e5);color:var(--hz-orange-600, #b5540a);border:none;cursor:pointer"><i class="far fa-file-powerpoint" style="margin-right:6px"></i>{{ file.name }}</span>
+                          </sc-for>
+                        </div>
+                      </div>
+                    </div>
+                  </sc-if>
+                  <div style="display:flex;align-items:center;gap:2px;align-self:flex-start">
+                    <button onClick="{{ msg.copy }}" style="display:flex;align-items:center;gap:6px;border:none;background:none;padding:4px 6px;margin-left:-6px;font-family:inherit;font-size:12px;color:var(--hz-text-tertiary);cursor:pointer;border-radius:6px" style-hover="background:var(--hz-neutral-100);color:var(--hz-text-secondary)"><i class="far {{ msg.copyIcon }}" style="font-size:12px"></i><span>{{ msg.copyLabel }}</span></button>
+                    <button onClick="{{ msg.retry }}" style="display:flex;align-items:center;gap:6px;border:none;background:none;padding:4px 6px;font-family:inherit;font-size:12px;color:var(--hz-text-tertiary);cursor:pointer;border-radius:6px" style-hover="background:var(--hz-neutral-100);color:var(--hz-text-secondary)"><i class="far fa-redo" style="font-size:12px"></i><span>Retry</span></button>
+                  </div>
                   <sc-if value="{{ msg.isLastDone }}" hint-placeholder-val="{{ false }}">
                     <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px">
                       <div style="display:flex;align-items:center;gap:6px">
@@ -1001,13 +410,21 @@
                         </div>
                         <button onClick="{{ dismissFeedback }}" style="border:none;background:none;cursor:pointer;color:var(--hz-text-tertiary);padding:1px;margin-left:auto"><i class="far fa-times" style="font-size:11px"></i></button>
                       </div>
-                      <sc-if value="{{ feedbackRated }}" hint-placeholder-val="{{ false }}">
+                      <sc-if value="{{ feedbackLowRating }}" hint-placeholder-val="{{ false }}">
                         <div style="display:flex;flex-wrap:wrap;gap:6px">
                           <sc-for list="{{ feedbackTags }}" as="tag" hint-placeholder-count="6">
                             <button onClick="{{ tag.toggle }}" style="border:1px solid {{ tag.borderColor }};background:{{ tag.bg }};color:{{ tag.color }};border-radius:999px;padding:2px 9px;font-family:inherit;font-size:11px;cursor:pointer">{{ tag.label }}</button>
                           </sc-for>
-                          <button onClick="{{ askBrainToImprove }}" disabled="{{ askBrainDisabled }}" style="border:1px solid var(--hz-border-default);background:var(--hz-surface-card);color:var(--hz-text-primary);border-radius:999px;padding:2px 9px;font-family:inherit;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:4px" style-hover="background:var(--hz-neutral-100);border-color:var(--hz-horizon-primary);color:var(--hz-horizon-primary)"><i class="far {{ askBrainIcon }}" style="font-size:10px"></i>{{ askBrainLabel }}</button>
-                          <button onClick="{{ toggleWriteFeedback }}" style="border:1px solid var(--hz-border-default);background:var(--hz-surface-card);color:var(--hz-text-primary);border-radius:999px;padding:2px 9px;font-family:inherit;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:4px" style-hover="background:var(--hz-neutral-100);border-color:var(--hz-horizon-primary);color:var(--hz-horizon-primary)"><i class="far fa-bullhorn" style="font-size:10px"></i>Write a feedback</button>
+                        </div>
+                        <sc-if value="{{ feedbackSomethingElseOpen }}" hint-placeholder-val="{{ false }}">
+                          <textarea value="{{ feedbackOtherText }}" onChange="{{ onFeedbackOtherTextChange }}" placeholder="Tell us more (optional)..." rows="2" style="width:100%;resize:vertical;border:1px solid var(--hz-border-default);border-radius:8px;padding:8px 10px;font-family:inherit;font-size:12px;color:var(--hz-text-primary);margin-top:4px"></textarea>
+                        </sc-if>
+                        <button onClick="{{ submitChipFeedback }}" style="align-self:flex-start;border:none;background:none;color:var(--hz-horizon-primary);font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;padding:4px 2px;margin-top:2px">{{ submitChipFeedbackLabel }}</button>
+                      </sc-if>
+                      <div style="display:flex;gap:6px;margin-top:4px">
+                        <button onClick="{{ askBrainToImprove }}" disabled="{{ askBrainDisabled }}" style="border:1px solid var(--hz-horizon-primary);background:var(--hz-blue-50);color:var(--hz-horizon-primary);border-radius:999px;padding:4px 11px;font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:4px" style-hover="background:var(--hz-blue-100)"><i class="far {{ askBrainIcon }}" style="font-size:10px"></i>{{ askBrainLabel }}</button>
+                        <button onClick="{{ toggleWriteFeedback }}" style="border:1px solid var(--hz-border-default);background:var(--hz-surface-card);color:var(--hz-text-primary);border-radius:999px;padding:4px 11px;font-family:inherit;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:4px" style-hover="background:var(--hz-neutral-100);border-color:var(--hz-horizon-primary);color:var(--hz-horizon-primary)"><i class="far fa-bullhorn" style="font-size:10px"></i>Write a feedback</button>
+                      </div>
                         </div>
                         <sc-if value="{{ writeFeedbackOpen }}" hint-placeholder-val="{{ false }}">
                           <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px">
@@ -1021,12 +438,9 @@
                       </sc-if>
                     </div>
                   </sc-if>
-                </sc-if>
               </div>
             </sc-if>
           </sc-for>
-        </div>
-      </sc-if>
       <div style="display:flex;align-items:center;gap:8px;border:1px solid var(--hz-border-default);border-radius:999px;padding:8px 8px 8px 16px;margin-bottom:10px;width:100%">
         <i class="far fa-paperclip" style="color:var(--hz-text-tertiary)"></i>
         <input placeholder="Ask anything..." value="{{ copilotInput }}" onChange="{{ setCopilotInput }}" onKeyDown="{{ copilotInputKeyDown }}" style="flex:1;border:0;outline:none;background:transparent;font-family:inherit;font-size:14px">
@@ -1045,11 +459,29 @@
                 </span>
               </button>
             </sc-for>
+            <div style="height:1px;background:var(--hz-border-subtle);margin:4px 2px"></div>
+            <a href="AI Agent.dc.html" style="width:100%;border:none;background:none;display:flex;align-items:center;gap:10px;padding:10px 10px;font-family:inherit;text-align:left;cursor:pointer;border-radius:8px;text-decoration:none;box-sizing:border-box" style-hover="background:var(--hz-neutral-50)">
+              <span style="width:28px;height:28px;border-radius:8px;background:var(--hz-neutral-100);color:var(--hz-text-secondary);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far fa-sliders-h" style="font-size:12px"></i></span>
+              <span style="font-weight:600;font-size:13px;color:var(--hz-text-primary)">Manage Agent</span>
+            </a>
           </div>
         </sc-if>
         <span class="hz-chip" style="font-size:11px;padding:2px 8px;gap:3px;min-width:0;flex-shrink:1;overflow:hidden;white-space:nowrap;cursor:pointer;border:none;background:transparent" style-hover="background:var(--hz-neutral-100)" onClick="{{ toggleAgentMenu }}"><i class="far fa-robot" style="font-size:10px;flex-shrink:0"></i><span style="overflow:hidden;text-overflow:ellipsis">{{ selectedAgentName }}</span></span>
         <span class="hz-body-s hz-muted" style="font-weight:600;font-size:12px;flex-shrink:0">Auto</span>
         <i class="far fa-chevron-down" style="font-size:10px;color:var(--hz-text-tertiary);flex-shrink:0"></i>
+        <span style="margin-left:auto;position:relative">
+          <sc-if value="{{ researchModeMenuOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:fixed;inset:0;z-index:60" onClick="{{ closeResearchModeMenu }}"></div>
+            <div style="position:absolute;bottom:calc(100% + 8px);right:0;width:220px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:12px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.18));z-index:61;overflow:hidden;padding:6px">
+              <sc-for list="{{ researchModeOptions }}" as="rm" hint-placeholder-count="3">
+                <button onClick="{{ rm.select }}" style="width:100%;border:none;background:{{ rm.bg }};display:flex;align-items:center;gap:8px;padding:9px 10px;font-family:inherit;text-align:left;cursor:pointer;border-radius:8px;font-size:12px;color:{{ rm.color }}" style-hover="background:var(--hz-neutral-50)">
+                  <i class="far {{ rm.icon }}" style="font-size:11px;flex-shrink:0"></i>{{ rm.label }}
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+          <span class="hz-chip" style="font-size:11px;padding:2px 8px;gap:4px;white-space:nowrap;cursor:pointer;border:1px solid {{ researchModeBorderColor }};background:{{ researchModeBg }};color:{{ researchModeTextColor }}" style-hover="border-color:var(--hz-horizon-primary)" onClick="{{ toggleResearchModeMenu }}"><i class="far fa-flask" style="font-size:10px"></i>{{ researchModeLabel }}</span>
+        </span>
       </div>
       <sc-if value="{{ !hasCopilotMessages }}" hint-placeholder-val="{{ true }}">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
@@ -1066,9 +498,6 @@
 </sc-if>
 </div>
 
-<sc-if value="{{ !copilotOpen }}" hint-placeholder-val="{{ true }}">
-  <button onClick="{{ toggleCopilot }}" title="Open AI CoPilot" style="position:fixed;right:24px;bottom:24px;width:52px;height:52px;border-radius:50%;background:var(--hz-horizon-primary);color:#fff;border:0;box-shadow:var(--hz-shadow-lg, 0 8px 24px rgba(0,0,0,.18));display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:50"><i class="far fa-sparkles" style="font-size:20px"></i></button>
-</sc-if>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
@@ -1083,8 +512,17 @@ class Component extends DCLogic {
   };
   state = { segmentMenuOpen: false, successToast: null, thesisTagMenuOpen: false, dealSponsorMenuOpen: false, addCompanyModalOpen: false, newCompany: { ...this.newCompanyDefaults }, newCompanySubmitAttempted: false, droppedIds: [5, 18, 33], sortOrder: 'newest', addCompanyMenuOpen: false, discoveredShown: false, subTab: 'inbound', view: 'companies', stageMenuOpen: false, selectedStages: ['l0'], companySearch: '', moveMenuOpenId: null, configureOpen: false, activeTrackKey: 'semicon', configTab: 'thesis', moveMenuOpenIndex: null, modalTab: 'track', trackDirty: false, dirtyStages: {}, stageInfoExpanded: false, stageHelpOpen: false, stageOrder: null, settingsMenuOpenKey: null, newStageModalOpen: false, newStageCode: '', newStageName: '', newStageDescription: '', newStagePositionAfter: '', confirmAction: null, confirmMoveTarget: '' };
   stages = ['l0','l1','l2','l3','l4','l5'];
-  sidebarState = { sidebarCollapsed: false, copilotOpen: true, copilotInput: '', copilotMessages: [], copilotFullWidth: false, agentMenuOpen: false, selectedAgentId: 'general', feedbackRating: 0, feedbackTagIds: [], feedbackDismissed: false, copilotActiveTab: 'copilot', cowork: this.buildInitialCowork() };
-  feedbackTagDefs = ['Not what I asked for', 'Broken layout', 'Poor graphics', "It's slop", 'Bad writing'];
+  sidebarState = { sidebarCollapsed: false, copilotOpen: true, copilotInput: '', copilotMessages: [], copilotFullWidth: true, agentMenuOpen: false, selectedAgentId: 'general', feedbackRating: 0, feedbackTagIds: [], feedbackDismissed: false, copilotActiveTab: 'copilot', cowork: this.buildInitialCowork() };
+  feedbackTagDefs = [
+    { id: 'misunderstood', label: 'Misunderstood my request' },
+    { id: 'ignored', label: 'Ignored my instructions' },
+    { id: 'wrong_info', label: 'Wrong or made-up info' },
+    { id: 'missed_context', label: 'Missed my context' },
+    { id: 'unwanted_actions', label: "Did things I didn't ask", requiresTools: true },
+    { id: 'shallow', label: 'Incomplete or too shallow' },
+    { id: 'broken_display', label: 'Hard to read or broken display', requiresStructured: true },
+    { id: 'other', label: 'Something else' }
+  ];
   agentOptionsData = [
     { id: 'general', name: 'General Copilot', help: 'Answers broad questions across the workspace.' },
     { id: 'pipeline', name: 'Pipeline Analyst', help: 'Surfaces stalled deals and pipeline trends.' },
@@ -1110,8 +548,25 @@ class Component extends DCLogic {
   copilotReplies = [
     "Here's what I found: 3 deals in L0 haven't had activity in over 14 days — Project Keystone, Project Harbor, and Project Lumen. Want me to draft follow-up nudges?",
     'Based on your pipeline, revenue and EBITDA are missing for most L0 entries. I can flag those for the sourcing team to fill in.',
-    "Your most active deals this month are Project Delphi and Blue Harbor Logistics — both moved forward a stage in the last two weeks."
+    "Your most active deals this month are Project Delphi and Blue Harbor Logistics — both moved forward a stage in the last two weeks.",
+    '__RICH_EXAMPLE__'
   ];
+  richExample = {
+    heading: "3. What additional diligence would strengthen this assessment",
+    items: [
+      { title: "Reprice the \"pass\" against entry point.", desc: "A fundamentals verdict divorced from valuation is incomplete for an M&A/investment screen — model implied forward multiples (P/S, EV/EBITDA) against a range of growth-deceleration scenarios (e.g., 85% to 40% to 25% YoY) to see where the current price becomes indefensible." },
+      { title: "Contract-level backlog quality.", desc: "Get a breakdown of government RPO by termination clause type and renewal history — how much backlog is real versus optionality that's historically not been exercised." },
+      { title: "Customer cohort analysis.", desc: "Net revenue retention and logo-level concentration (top 10/20 customers as % of revenue) for both government and commercial books — the 1,007-customer base is small enough that this matters a lot." },
+      { title: "International commercial diagnostic.", desc: "Root-cause the international commercial lag — is it sales-cycle/localization, competitive displacement (e.g., France), or platform-fit issues? This determines whether the TAM story is global or U.S.-only." },
+      { title: "Margin durability under a growth deceleration scenario.", desc: "Confirm how much of the 60% adjusted operating margin is opex leverage that holds versus one-time efficiency/timing — test sensitivity if growth normalizes to 30-40%." },
+      { title: "Political/regulatory exposure map.", desc: "Systematically catalog sovereign-AI and data-sovereignty policy risk across key non-U.S. markets (EU, UK, Five Eyes) given the France precedent." },
+      { title: "Insider activity and lock-up dynamics.", desc: "Given reports of insider selling cited alongside the pullback, check Form 4 filings for pace/size of insider sales as a sentiment cross-check." },
+      { title: "Competitive displacement risk from hyperscaler-native AI tooling", desc: "assess how much of Palantir's AIP value proposition could be replicated by AWS Bedrock/Azure AI Foundry-native orchestration over a 2-3 year horizon." }
+    ],
+    footer: "Net: the pass is well-supported on pure operating fundamentals — the numbers cited are accurate and, if anything, slightly conservative versus Q1'26. But the rationale is silent on price paid and on the concentration/political risks that could compress the multiple even without any fundamental deterioration. I'd flag it as a pass on business quality, unresolved on valuation and durability — worth a follow-up note in the card rather than treating it as a clean-through screen.",
+    sources: ["Is Palantir's High Valuation A Worr...", "Is Palantir (PLTR) Stock Overvalued...", "Palantir Falls 5% While Tech Stocks...", "Palantir Faces a Valuation Stress T...", "Palantir Technologies (Nasdaq:PLTR)...", "PLTR Stock Price — Palantir Technol..."],
+    files: ["ai_value_chain_deck.pptx", "ai_value_chain_deck.pptx"]
+  };
   setCopilotMsg(id, patch) {
     this.sidebarState.copilotMessages = this.sidebarState.copilotMessages.map(m => m.id === id ? { ...m, ...patch } : m);
     this.forceUpdate();
@@ -1329,14 +784,52 @@ class Component extends DCLogic {
     const intro = this.pick(this.copilotIntros);
     const reply = this.pick(this.copilotReplies);
     this.sidebarState.copilotMessages = [...this.sidebarState.copilotMessages,
-      { id: userId, role: 'user', text },
-      { id: assistantId, role: 'assistant', status: 'tools', tools, toolsOpen: false, thought, thoughtOpen: false, intro: '' }
+      { id: userId, role: 'user', text, createdAt: Date.now() },
+      { id: assistantId, role: 'assistant', status: 'tools', tools, toolsOpen: false, thought, thoughtOpen: false, intro: '', createdAt: Date.now() }
     ];
+    this.sidebarState.feedbackRating = 0; this.sidebarState.feedbackTagIds = []; this.sidebarState.feedbackDismissed = false; this.sidebarState.feedbackSomethingElseOpen = false; this.sidebarState.feedbackOtherText = '';
     this.sidebarState.copilotInput = '';
     this.forceUpdate();
     setTimeout(() => this.setCopilotMsg(assistantId, { status: 'thinking' }), 900);
     setTimeout(() => this.setCopilotMsg(assistantId, { status: 'intro', intro }), 2000);
-    setTimeout(() => this.setCopilotMsg(assistantId, { status: 'done', text: reply }), 3100);
+    setTimeout(() => this.setCopilotMsg(assistantId, this.doneFields(reply)), 3100);
+  }
+  doneFields(reply) {
+    if (reply === '__RICH_EXAMPLE__') return { status: 'done', text: '', isRich: true, rich: this.richExample, doneAt: Date.now() };
+    return { status: 'done', text: reply, isRich: false, doneAt: Date.now() };
+  }
+  retryCopilotMessage(id) {
+    const tools = this.pick(this.copilotToolSets);
+    const thought = this.pick(this.copilotThoughts);
+    const intro = this.pick(this.copilotIntros);
+    const reply = this.pick(this.copilotReplies);
+    this.setCopilotMsg(id, { status: 'tools', tools, toolsOpen: false, thought, thoughtOpen: false, intro: '', text: '', createdAt: Date.now() });
+    this.sidebarState.feedbackRating = 0; this.sidebarState.feedbackTagIds = []; this.sidebarState.feedbackDismissed = false; this.sidebarState.feedbackSomethingElseOpen = false; this.sidebarState.feedbackOtherText = '';
+    setTimeout(() => this.setCopilotMsg(id, { status: 'thinking' }), 900);
+    setTimeout(() => this.setCopilotMsg(id, { status: 'intro', intro }), 2000);
+    setTimeout(() => this.setCopilotMsg(id, this.doneFields(reply)), 3100);
+  }
+  getLastDoneMsg() {
+    const doneIds = this.sidebarState.copilotMessages.filter(x => x.role === 'assistant' && x.status === 'done').map(x => x.id);
+    if (!doneIds.length) return null;
+    const maxId = Math.max(...doneIds);
+    return this.sidebarState.copilotMessages.find(x => x.id === maxId);
+  }
+  logFeedbackEvent(type, payload) {
+    console.log('[feedback]', type, payload);
+  }
+  buildFeedbackTrace(msg) {
+    if (!msg) return null;
+    const idx = this.sidebarState.copilotMessages.findIndex(m => m.id === msg.id);
+    const userMsg = [...this.sidebarState.copilotMessages.slice(0, idx)].reverse().find(m => m.role === 'user');
+    return {
+      userInput: userMsg ? userMsg.text : null,
+      toolCalls: msg.tools || [],
+      toolOutputs: msg.thought || null,
+      finalResponse: msg.isRich ? msg.rich : msg.text,
+      latencyMs: (msg.createdAt && msg.doneAt) ? msg.doneAt - msg.createdAt : null,
+      rating: this.sidebarState.feedbackRating
+    };
   }
   pendingCompanies = [
     { id: 900, name: 'Driftwood Capital', project: '[Project Driftwood]', stage: 'pending', banker: 'Aldira', sector: 'Specialty Logistics', geo: 'USA', tracks: ['Inbound Referral'] },
@@ -1819,13 +1312,31 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       accountJustify: this.sidebarState.sidebarCollapsed ? 'center' : 'flex-start',
       toggleSidebar: () => { this.sidebarState.sidebarCollapsed = !this.sidebarState.sidebarCollapsed; this.forceUpdate(); },
       copilotOpen: this.sidebarState.copilotOpen,
-      copilotColWidth: this.sidebarState.copilotOpen ? (this.sidebarState.copilotFullWidth ? 'minmax(0,1fr)' : '320px') : '0px',
       copilotFullWidth: this.sidebarState.copilotFullWidth,
       copilotExpandIcon: this.sidebarState.copilotFullWidth ? 'fa-compress' : 'fa-expand-alt',
       toggleCopilotFullWidth: () => { this.sidebarState.copilotFullWidth = !this.sidebarState.copilotFullWidth; this.forceUpdate(); },
       agentMenuOpen: this.sidebarState.agentMenuOpen,
       toggleAgentMenu: () => { this.sidebarState.agentMenuOpen = !this.sidebarState.agentMenuOpen; this.forceUpdate(); },
       closeAgentMenu: () => { this.sidebarState.agentMenuOpen = false; this.forceUpdate(); },
+      researchModeMenuOpen: !!this.sidebarState.researchModeMenuOpen,
+      toggleResearchModeMenu: () => { this.sidebarState.researchModeMenuOpen = !this.sidebarState.researchModeMenuOpen; this.forceUpdate(); },
+      closeResearchModeMenu: () => { this.sidebarState.researchModeMenuOpen = false; this.forceUpdate(); },
+      researchModeActive: !!this.sidebarState.researchMode,
+      researchModeBorderColor: this.sidebarState.researchMode ? 'var(--hz-horizon-primary)' : 'var(--hz-border-default)',
+      researchModeBg: this.sidebarState.researchMode ? 'var(--hz-blue-50)' : 'transparent',
+      researchModeTextColor: this.sidebarState.researchMode ? 'var(--hz-horizon-primary)' : 'var(--hz-text-secondary)',
+      researchModeLabel: ({ internal: 'Deep Dive Internal', external: 'Explore External', balanced: 'Balanced' })[this.sidebarState.researchMode] || 'Research Mode',
+      researchModeOptions: [
+        { id: 'internal', label: 'Deep Dive Internal Data', icon: 'fa-database' },
+        { id: 'external', label: 'Explore External Data', icon: 'fa-globe' },
+        { id: 'balanced', label: 'Balance Internal or External', icon: 'fa-balance-scale' },
+        ...(this.sidebarState.researchMode ? [{ id: null, label: 'Turn Off Research Mode', icon: 'fa-power-off' }] : [])
+      ].map(o => ({
+        label: o.label, icon: o.icon,
+        bg: this.sidebarState.researchMode === o.id ? 'var(--hz-blue-50)' : 'transparent',
+        color: this.sidebarState.researchMode === o.id ? 'var(--hz-horizon-primary)' : 'var(--hz-text-primary)',
+        select: () => { this.sidebarState.researchMode = o.id; this.sidebarState.researchModeMenuOpen = false; this.forceUpdate(); }
+      })),
       selectedAgentName: (this.agentOptionsData.find(a => a.id === this.sidebarState.selectedAgentId) || this.agentOptionsData[0]).name,
       agentOptions: this.agentOptionsData.map(agent => ({
         ...agent,
@@ -1849,6 +1360,13 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
         isThinking: m.role === 'assistant' && m.status === 'thinking',
         showIntro: m.role === 'assistant' && (m.status === 'intro' || m.status === 'done') && !!m.intro,
         isDone: m.role === 'assistant' && m.status === 'done',
+        isRich: !!m.isRich,
+        isPlainDone: m.role === 'assistant' && m.status === 'done' && !m.isRich,
+        richHeading: m.rich ? m.rich.heading : '',
+        richItems: m.rich ? m.rich.items.map((it, i) => ({ num: i + 1, title: it.title, desc: it.desc })) : [],
+        richFooter: m.rich ? m.rich.footer : '',
+        richSources: m.rich ? m.rich.sources.map(s => ({ label: s })) : [],
+        richFiles: m.rich ? m.rich.files.map(f => ({ name: f })) : [],
         isLastDone: m.role === 'assistant' && m.status === 'done' && !this.sidebarState.feedbackDismissed && m.id === Math.max(...this.sidebarState.copilotMessages.filter(x => x.role === 'assistant' && x.status === 'done').map(x => x.id)),
         copyIcon: m.copied ? 'fa-check' : 'fa-copy',
         copyLabel: m.copied ? 'Copied' : 'Copy',
@@ -1856,7 +1374,8 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
           navigator.clipboard?.writeText(m.text || '');
           this.setCopilotMsg(m.id, { copied: true });
           setTimeout(() => this.setCopilotMsg(m.id, { copied: false }), 1500);
-        }
+        },
+        retry: () => this.retryCopilotMessage(m.id)
       })),
       copilotGenerating: this.sidebarState.copilotMessages.some(m => m.role === 'assistant' && m.status !== 'done'),
       feedbackStars: [1, 2, 3, 4, 5].map(n => ({
@@ -1870,9 +1389,13 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       ...this.buildCoworkVals(),
       copilotTabs: [
         { id: 'copilot', label: 'AI CoPilot' },
-        { id: 'cowork', label: 'AI Cowork' }
+        { id: 'cowork', label: 'AI Workforce' }
       ].map(t => ({
         label: t.label,
+        showIcon: true,
+        icon: t.id === 'copilot' ? 'fa-sparkles' : 'fa-users-cog',
+        iconBg: this.sidebarState.copilotActiveTab === t.id ? 'var(--hz-blue-50)' : 'var(--hz-neutral-100)',
+        iconColor: this.sidebarState.copilotActiveTab === t.id ? 'var(--hz-horizon-primary)' : 'var(--hz-text-tertiary)',
         color: this.sidebarState.copilotActiveTab === t.id ? 'var(--hz-text-primary)' : 'var(--hz-text-tertiary)',
         borderColor: this.sidebarState.copilotActiveTab === t.id ? 'var(--hz-horizon-primary)' : 'transparent',
         select: () => { this.sidebarState.copilotActiveTab = t.id; this.forceUpdate(); }
@@ -1890,20 +1413,42 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       toggleWriteFeedback: () => { this.sidebarState.writeFeedbackOpen = !this.sidebarState.writeFeedbackOpen; this.sidebarState.writeFeedbackSubmitted = false; this.forceUpdate(); },
       writeFeedbackSubmitLabel: this.sidebarState.writeFeedbackSubmitted ? 'Sent!' : 'Submit',
       submitWrittenFeedback: () => { this.sidebarState.writeFeedbackSubmitted = true; this.forceUpdate(); setTimeout(() => { this.sidebarState.writeFeedbackOpen = false; this.sidebarState.writeFeedbackSubmitted = false; this.sidebarState.feedbackText = ''; this.forceUpdate(); }, 900); },
-      feedbackTags: this.feedbackTagDefs.map(label => {
-        const active = this.sidebarState.feedbackTagIds.includes(label);
-        return {
-          label,
-          borderColor: active ? 'var(--hz-horizon-primary)' : 'var(--hz-border-default)',
-          bg: active ? 'var(--hz-blue-50)' : 'var(--hz-surface-card)',
-          color: active ? 'var(--hz-horizon-primary)' : 'var(--hz-text-primary)',
-          toggle: () => {
-            this.sidebarState.feedbackTagIds = active ? this.sidebarState.feedbackTagIds.filter(t => t !== label) : [...this.sidebarState.feedbackTagIds, label];
-            this.forceUpdate();
-          }
-        };
-      }),
+      feedbackLowRating: this.sidebarState.feedbackRating > 0 && this.sidebarState.feedbackRating <= 2,
+      feedbackTags: (() => {
+        const lastMsg = this.getLastDoneMsg();
+        const hasTools = !!(lastMsg && lastMsg.tools && lastMsg.tools.length > 0);
+        const hasStructured = !!(lastMsg && lastMsg.isRich);
+        return this.feedbackTagDefs
+          .filter(t => (!t.requiresTools || hasTools) && (!t.requiresStructured || hasStructured))
+          .map(t => {
+            const active = this.sidebarState.feedbackTagIds.includes(t.id);
+            return {
+              label: t.label,
+              borderColor: active ? 'var(--hz-horizon-primary)' : 'var(--hz-border-default)',
+              bg: active ? 'var(--hz-blue-50)' : 'var(--hz-surface-card)',
+              color: active ? 'var(--hz-horizon-primary)' : 'var(--hz-text-primary)',
+              toggle: () => {
+                const nowActive = !active;
+                this.sidebarState.feedbackTagIds = nowActive ? [...this.sidebarState.feedbackTagIds, t.id] : this.sidebarState.feedbackTagIds.filter(x => x !== t.id);
+                if (t.id === 'other') this.sidebarState.feedbackSomethingElseOpen = nowActive;
+                this.logFeedbackEvent('chip_toggle', { chip: t.id, active: nowActive, ...this.buildFeedbackTrace(lastMsg) });
+                this.forceUpdate();
+              }
+            };
+          });
+      })(),
+      feedbackSomethingElseOpen: !!this.sidebarState.feedbackSomethingElseOpen,
+      feedbackOtherText: this.sidebarState.feedbackOtherText || '',
+      onFeedbackOtherTextChange: (e) => { this.sidebarState.feedbackOtherText = e.target.value; this.forceUpdate(); },
+      submitChipFeedbackLabel: this.sidebarState.feedbackSubmitted ? 'Submitted' : 'Submit',
+      submitChipFeedback: () => {
+        const lastMsg = this.getLastDoneMsg();
+        this.logFeedbackEvent('feedback_submit', { chips: this.sidebarState.feedbackTagIds, otherText: this.sidebarState.feedbackOtherText || '', ...this.buildFeedbackTrace(lastMsg) });
+        this.sidebarState.feedbackSubmitted = true;
+        this.forceUpdate();
+      },
       hasCopilotMessages: this.sidebarState.copilotMessages.length > 0,
+      chatColumnJustify: this.sidebarState.copilotMessages.length > 0 ? 'flex-start' : 'center',
       sendCopilotMessage: () => this.sendCopilotMessage(),
       sendBtnIcon: this.sidebarState.copilotMessages.some(m => m.role === 'assistant' && m.status !== 'done') ? 'fa-square' : 'fa-paper-plane',
       sendBtnBg: this.sidebarState.copilotMessages.some(m => m.role === 'assistant' && m.status !== 'done') ? 'var(--hz-red-500, #e5484d)' : '',

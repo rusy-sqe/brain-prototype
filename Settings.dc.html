@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)} .hz-user-menu-row:hover{background:var(--hz-blue-50)}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:200px minmax(0,1fr)">
+
+<div class="hz-sidebar" style="width:200px;height:100vh;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="uploads/logo-brain-light.svg" alt="Investment Brain" style="height:24px;width:auto">
+      </div>
+      <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:10px;padding:6px 8px">
+      <span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-200)"><i class="far fa-building" style="font-size:12px"></i></span>
+      <span><span class="hz-account-trigger__name" style="display:block">Startech VCC</span></span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-comment-plus"></i>New Chat</button>
+  </div>
+  <div style="padding:8px 6px;flex:1;min-height:0;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-th-large" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-search-location" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span></a>
+        <a href="Pipeline v2.1.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-project-diagram" style="font-size:17px"></i><span class="hz-sidebar__label">Pipeline</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Master Data</span></div>
+        <a href="CRM.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM &amp; Email</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-university" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb-on" style="font-size:17px"></i><span class="hz-sidebar__label">Insight</span></a>
+        <a href="AI Agent.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-robot" style="font-size:17px"></i><span class="hz-sidebar__label">AI Agent</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-desktop" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-magic" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-alt" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Chat History</div>
+      <div style="padding:16px 10px;text-align:center;color:var(--hz-text-tertiary);font-size:13px;line-height:1.5">No chats yet. Start a new conversation.</div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle);position:relative">
+    <sc-if value="{{ userMenuOpen }}">
+      <div style="position:fixed;inset:0;z-index:60" onClick="{{ closeUserMenu }}"></div>
+      <div style="position:absolute;bottom:calc(100% + 8px);left:8px;right:8px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:12px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.18));z-index:61;overflow:hidden">
+        <div style="padding:16px 16px 14px">
+          <div class="hz-h6" style="margin:0">Nur Khairusy</div>
+          <div class="hz-body-s hz-muted" style="margin-top:2px">nur.khairusy@sqe.co.id</div>
+        </div>
+        <div style="border-top:1px solid var(--hz-border-subtle)"></div>
+        <div style="padding:4px 0">
+          <a href="Profile.dc.html" class="hz-user-menu-row" style="width:100%;border:none;background:none;display:flex;align-items:center;gap:12px;padding:10px 16px;font-family:inherit;font-size:14px;color:var(--hz-text-primary);text-align:left;cursor:pointer;text-decoration:none"><i class="far fa-user-circle" style="font-size:16px;width:16px;color:var(--hz-text-secondary)"></i><span>Profile</span></a>
+          <button class="hz-user-menu-row" style="width:100%;border:none;background:none;display:flex;align-items:center;gap:12px;padding:10px 16px;font-family:inherit;font-size:14px;color:var(--hz-text-primary);text-align:left;cursor:pointer"><i class="far fa-comment-alt-plus" style="font-size:16px;width:16px;color:var(--hz-text-secondary)"></i><span>Send Feedback</span></button>
+          <button class="hz-user-menu-row" style="width:100%;border:none;background:none;display:flex;align-items:center;gap:12px;padding:10px 16px;font-family:inherit;font-size:14px;color:var(--hz-text-primary);text-align:left;cursor:pointer"><i class="far fa-sun" style="font-size:16px;width:16px;color:var(--hz-text-secondary)"></i><span>Theme</span><i class="far fa-chevron-right" style="font-size:12px;color:var(--hz-text-tertiary);margin-left:auto"></i></button>
+        </div>
+        <div style="border-top:1px solid var(--hz-border-subtle)"></div>
+        <div style="padding:4px 0">
+          <button class="hz-user-menu-row" style="width:100%;border:none;background:none;display:flex;align-items:center;gap:12px;padding:10px 16px;font-family:inherit;font-size:14px;color:var(--hz-text-primary);text-align:left;cursor:pointer"><i class="far fa-sign-out" style="font-size:16px;width:16px;color:var(--hz-text-secondary)"></i><span>Sign Out</span></button>
+        </div>
+      </div>
+    </sc-if>
+    <button class="hz-account-trigger" style="width:100%" onClick="{{ toggleUserMenu }}">
+      
+      <span><span class="hz-account-trigger__name" style="display:block">Nur Khairusy</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div style="min-width:0;overflow-y:auto;padding:24px 28px">
+
+  <sc-if value="{{ showSavedAlert }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-alert hz-alert--success" style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <span><i class="far fa-circle-check"></i> Agent saved successfully.</span>
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center" onClick="{{ dismissSavedAlert }}"><i class="far fa-times"></i></button>
+    </div>
+  </sc-if>
+
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+    <div>
+      <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.08em;font-weight:700">Workspace</div>
+      <div class="hz-h1" style="margin:4px 0 0">AI Agents</div>
+    </div>
+    <a href="Configure Agent.dc.html" class="hz-btn hz-btn--sm" style="background:var(--hz-neutral-900);color:#fff;border:none;text-decoration:none"><i class="far fa-plus"></i>Hire an Agent</a>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:12px;margin-top:20px;flex-wrap:wrap">
+    <div class="hz-tabs" style="border-bottom:none">
+      <button class="hz-tab">5&nbsp;&nbsp;All</button>
+      <button class="hz-tab is-active">5&nbsp;&nbsp;Active</button>
+      <button class="hz-tab">0&nbsp;&nbsp;Inactive</button>
+    </div>
+    <div style="flex:1;min-width:220px;position:relative">
+      <i class="far fa-search" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--hz-text-tertiary);font-size:13px"></i>
+      <input placeholder="Search agents…" style="width:100%;padding:9px 12px 9px 34px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px">
+
+    <div class="hz-card" style="padding:20px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span class="hz-avatar" style="background:var(--hz-neutral-100);color:var(--hz-text-primary);width:48px;height:48px;font-weight:700">AN</span>
+          <div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="hz-h6" style="margin:0">General Analyst</span>
+              <span class="hz-badge hz-badge--outline">Default</span>
+            </div>
+            <div class="hz-body-r hz-muted" style="margin-top:4px">The workspace generalist — the fallback when a specialist isn't needed.</div>
+          </div>
+        </div>
+        <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ active.AN }}" onChange="{{ requestToggle.AN }}"><span class="hz-switch__slider"></span></label>
+      </div>
+      <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-top:18px">On Demand</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Story Creation</span>
+        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Chart Recipes</span>
+        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Design Tokens</span>
+        <span class="hz-chip" style="font-size:12px;padding:3px 9px">+1 more</span>
+      </div>
+    </div>
+
+    <div class="hz-card" style="padding:20px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span class="hz-avatar" style="background:var(--hz-green-100);color:var(--hz-green-800);width:48px;height:48px;font-weight:700">CF</span>
+          <div>
+            <span class="hz-h6" style="margin:0">CFO</span>
+            <div class="hz-body-r hz-muted" style="margin-top:4px">Reads the business as capital allocation, cash, and margin — thinks in bridges and payback.</div>
+          </div>
+        </div>
+        <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ active.CF }}" onChange="{{ requestToggle.CF }}"><span class="hz-switch__slider"></span></label>
+      </div>
+      <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-top:18px">On Demand</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Story Creation</span>
+        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Section Template</span>
+        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Design Tokens</span>
+        <span class="hz-chip" style="font-size:12px;padding:3px 9px">+2 more</span>
+      </div>
+    </div>
+
+    <div class="hz-card" style="padding:20px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span class="hz-avatar" style="background:var(--hz-teal-100, #ccfbf1);color:var(--hz-teal-800, #115e59);width:48px;height:48px;font-weight:700">CI</span>
+          <div>
+            <span class="hz-h6" style="margin:0">CIO</span>
+            <div class="hz-body-r hz-muted" style="margin-top:4px">Evaluates capital deployment and portfolio construction, weighs risk-adjusted return, and stress-tests allocation decisions.</div>
+          </div>
+        </div>
+        <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ active.CH }}" onChange="{{ requestToggle.CH }}"><span class="hz-switch__slider"></span></label>
+      </div>
+      <div class="hz-body-s" style="text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-top:18px;color:var(--hz-horizon-primary)">Always On</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+        <span class="hz-chip" style="background:var(--hz-blue-50);color:var(--hz-horizon-primary);font-size:12px;padding:3px 9px"><i class="far fa-circle" style="font-size:6px"></i>Design Tokens</span>
+      </div>
+      <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-top:14px">On Demand</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Story Creation</span>
+        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Chart Recipes</span>
+        <span class="hz-chip" style="font-size:12px;padding:3px 9px">+1 more</span>
+      </div>
+    </div>
+
+    <div class="hz-card" style="padding:20px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span class="hz-avatar" style="background:var(--hz-neutral-100);color:var(--hz-text-primary);width:48px;height:48px;font-weight:700">FA</span>
+          <div>
+            <span class="hz-h6" style="margin:0">Finance Agent</span>
+            <div class="hz-body-r hz-muted" style="margin-top:4px">To help CXOs understand and act on the organization's financial performance, health, and risk…</div>
+          </div>
+        </div>
+        <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ active.FA }}" onChange="{{ requestToggle.FA }}"><span class="hz-switch__slider"></span></label>
+      </div>
+      <div class="hz-body-s" style="text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-top:18px;color:var(--hz-horizon-primary)">Always On</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+        <span class="hz-chip" style="background:var(--hz-blue-50);color:var(--hz-horizon-primary);font-size:12px;padding:3px 9px"><i class="far fa-circle" style="font-size:6px"></i>Design Tokens</span>
+      </div>
+      <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-top:14px">On Demand</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Story Creation</span>
+        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Section Template</span>
+        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Chart Recipes</span>
+      </div>
+    </div>
+
+    
+
+    <a href="Configure Agent.dc.html" class="hz-card" style="padding:20px;border:1.5px dashed var(--hz-border-default);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;text-decoration:none;color:inherit">
+      <span style="width:40px;height:40px;border-radius:50%;border:1px solid var(--hz-border-default);display:flex;align-items:center;justify-content:center;color:var(--hz-text-tertiary)"><i class="far fa-plus"></i></span>
+      <span class="hz-h6" style="margin:0">Hire a new Agent</span>
+      <div class="hz-body-s hz-muted">Give a persona and pick their skills — CoPilot can draft it with you.</div>
+    </a>
+
+  </div>
+
+  <sc-if value="{{ confirmOpen }}">
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+      <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:380px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+        <div class="hz-h5" style="margin:0 0 8px">{{ confirmTitle }}</div>
+        <div class="hz-body-r hz-muted" style="margin-bottom:20px">{{ confirmMessage }}</div>
+        <div style="display:flex;justify-content:flex-end;gap:10px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ cancelToggle }}">Cancel</button>
+          <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ confirmToggle }}">{{ confirmActionLabel }}</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  agentNames = { AN: 'General Analyst', CF: 'CFO', CH: 'CIO', FA: 'Finance Agent', CO: 'COO' };
+  state = {
+    active: { AN: true, CF: true, CH: true, FA: true, CO: true },
+    pendingKey: null,
+    userMenuOpen: false,
+    showSavedAlert: typeof sessionStorage !== 'undefined' && sessionStorage.getItem('agentSaved') === '1'
+  };
+
+  componentDidMount() {
+    if (this.state.showSavedAlert) sessionStorage.removeItem('agentSaved');
+  }
+
+  renderVals() {
+    const active = this.state.active;
+    const requestToggle = {};
+    for (const key of Object.keys(active)) {
+      requestToggle[key] = () => this.setState({ pendingKey: key });
+    }
+    const pending = this.state.pendingKey;
+    const turningOn = pending ? !active[pending] : false;
+    return {
+      showSavedAlert: this.state.showSavedAlert,
+      dismissSavedAlert: () => this.setState({ showSavedAlert: false }),
+      userMenuOpen: this.state.userMenuOpen,
+      toggleUserMenu: () => this.setState(s => ({ userMenuOpen: !s.userMenuOpen })),
+      closeUserMenu: () => this.setState({ userMenuOpen: false }),
+      active,
+      requestToggle,
+      confirmOpen: !!pending,
+      confirmTitle: pending ? `${turningOn ? 'Turn on' : 'Turn off'} ${this.agentNames[pending]}?` : '',
+      confirmMessage: pending
+        ? (turningOn
+          ? `${this.agentNames[pending]} will become active and available to the workspace.`
+          : `${this.agentNames[pending]} will be turned off and won't be available until reactivated.`)
+        : '',
+      confirmActionLabel: turningOn ? 'Turn On' : 'Turn Off',
+      cancelToggle: () => this.setState({ pendingKey: null }),
+      confirmToggle: () => this.setState(s => ({
+        active: { ...s.active, [s.pendingKey]: !s.active[s.pendingKey] },
+        pendingKey: null
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
