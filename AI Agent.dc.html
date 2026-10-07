@@ -24,8 +24,8 @@
       <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
     </div>
     <button class="hz-account-trigger" style="width:100%;margin-top:10px;padding:6px 8px">
-      <span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-200)"><i class="far fa-building" style="font-size:12px"></i></span>
-      <span><span class="hz-account-trigger__name" style="display:block">Startech VCC</span></span>
+      
+      <span><span class="hz-account-trigger__name" style="display:block">DEMO</span></span>
       <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
     </button>
     <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-comment-plus"></i>New Chat</button>
@@ -79,23 +79,30 @@
     </div>
   </sc-if>
 
-  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
-    <div>
-      <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.08em;font-weight:700">Workspace</div>
-      <div class="hz-h1" style="margin:4px 0 0">AI Agents</div>
+  <sc-if value="{{ hireSuccessName }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-alert hz-alert--success" style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <span><i class="far fa-circle-check"></i> "{{ hireSuccessName }}" hired and added to your agents.</span>
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center" onClick="{{ dismissHireSuccess }}"><i class="far fa-times"></i></button>
     </div>
-    <a href="Configure Agent.dc.html" class="hz-btn hz-btn--sm" style="background:var(--hz-neutral-900);color:#fff;border:none;text-decoration:none"><i class="far fa-plus"></i>Hire an Agent</a>
+  </sc-if>
+
+  <div style="background:linear-gradient(135deg, var(--hz-blue-50), var(--hz-surface-page) 70%);margin:-24px -28px 20px;padding:28px 28px 24px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+    <div>
+      <div class="hz-h1" style="margin:0">AI Agents</div>
+      <div class="hz-body-r hz-muted" style="margin-top:6px">Your always-on team of specialists. Each one watching a slice of the business, surfacing what needs your attention before you have to go looking for it.</div>
+    </div>
+    
   </div>
 
   <div style="display:flex;align-items:center;gap:12px;margin-top:20px;flex-wrap:wrap">
     <div class="hz-tabs" style="border-bottom:none">
-      <button class="hz-tab">5&nbsp;&nbsp;All</button>
-      <button class="hz-tab is-active">5&nbsp;&nbsp;Active</button>
+      <button class="hz-tab">3&nbsp; All</button>
+      <button class="hz-tab is-active">3&nbsp; Active</button>
       <button class="hz-tab">0&nbsp;&nbsp;Inactive</button>
     </div>
     <div style="flex:1;min-width:220px;position:relative">
-      <i class="far fa-search" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--hz-text-tertiary);font-size:13px"></i>
-      <input placeholder="Search agents…" style="width:100%;padding:9px 12px 9px 34px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+      
+      
     </div>
   </div>
 
@@ -103,100 +110,70 @@
 
     <div class="hz-card" style="padding:20px">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
-        <div style="display:flex;align-items:flex-start;gap:12px">
-          <span class="hz-avatar" style="background:var(--hz-neutral-100);color:var(--hz-text-primary);width:48px;height:48px;font-weight:700">AN</span>
-          <div>
-            <div style="display:flex;align-items:center;gap:8px">
-              <span class="hz-h6" style="margin:0">General Analyst</span>
-              <span class="hz-badge hz-badge--outline">Default</span>
-            </div>
-            <div class="hz-body-r hz-muted" style="margin-top:4px">The workspace generalist — the fallback when a specialist isn't needed.</div>
+        <div style="display:flex;align-items:flex-start;gap:12px;flex:1;min-width:0">
+          <span class="hz-avatar" style="background:var(--hz-neutral-100);color:var(--hz-text-primary);width:48px;height:48px;font-weight:700">GA</span>
+          <div style="flex:1;min-width:0">
+            <span class="hz-h6" style="margin:0">General Analyst</span>
+            <div class="hz-body-r hz-muted" style="margin-top: 4px; width: 100%">Answers broad questions across the workspace.</div>
           </div>
         </div>
-        <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ active.AN }}" onChange="{{ requestToggle.AN }}"><span class="hz-switch__slider"></span></label>
-      </div>
-      <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-top:18px">On Demand</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
-        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Story Creation</span>
-        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Chart Recipes</span>
-        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Design Tokens</span>
-        <span class="hz-chip" style="font-size:12px;padding:3px 9px">+1 more</span>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+          
+          <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ active.AN }}" onChange="{{ requestToggle.AN }}"></label>
+        </div>
       </div>
     </div>
 
     <div class="hz-card" style="padding:20px">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
         <div style="display:flex;align-items:flex-start;gap:12px">
-          <span class="hz-avatar" style="background:var(--hz-green-100);color:var(--hz-green-800);width:48px;height:48px;font-weight:700">CF</span>
+          <span class="hz-avatar" style="background:var(--hz-green-100);color:var(--hz-green-800);width:48px;height:48px;font-weight:700">PA</span>
           <div>
-            <span class="hz-h6" style="margin:0">CFO</span>
-            <div class="hz-body-r hz-muted" style="margin-top:4px">Reads the business as capital allocation, cash, and margin — thinks in bridges and payback.</div>
+            <span class="hz-h6" style="margin:0">Pipeline Analyst</span>
+            <div class="hz-body-r hz-muted" style="margin-top:4px">Surfaces stalled deals and pipeline trends.</div>
           </div>
         </div>
-        <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ active.CF }}" onChange="{{ requestToggle.CF }}"><span class="hz-switch__slider"></span></label>
-      </div>
-      <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-top:18px">On Demand</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
-        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Story Creation</span>
-        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Section Template</span>
-        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Design Tokens</span>
-        <span class="hz-chip" style="font-size:12px;padding:3px 9px">+2 more</span>
+        <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ active.CF }}" onChange="{{ requestToggle.CF }}"></label>
       </div>
     </div>
 
     <div class="hz-card" style="padding:20px">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
         <div style="display:flex;align-items:flex-start;gap:12px">
-          <span class="hz-avatar" style="background:var(--hz-teal-100, #ccfbf1);color:var(--hz-teal-800, #115e59);width:48px;height:48px;font-weight:700">CI</span>
+          <span class="hz-avatar" style="background:var(--hz-teal-100, #ccfbf1);color:var(--hz-teal-800, #115e59);width:48px;height:48px;font-weight:700">RS</span>
           <div>
-            <span class="hz-h6" style="margin:0">CIO</span>
-            <div class="hz-body-r hz-muted" style="margin-top:4px">Evaluates capital deployment and portfolio construction, weighs risk-adjusted return, and stress-tests allocation decisions.</div>
+            <span class="hz-h6" style="margin:0">Research Specialist</span>
+            <div class="hz-body-r hz-muted" style="margin-top:4px">Digs into external market and industry data.</div>
           </div>
         </div>
-        <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ active.CH }}" onChange="{{ requestToggle.CH }}"><span class="hz-switch__slider"></span></label>
-      </div>
-      <div class="hz-body-s" style="text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-top:18px;color:var(--hz-horizon-primary)">Always On</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
-        <span class="hz-chip" style="background:var(--hz-blue-50);color:var(--hz-horizon-primary);font-size:12px;padding:3px 9px"><i class="far fa-circle" style="font-size:6px"></i>Design Tokens</span>
-      </div>
-      <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-top:14px">On Demand</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
-        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Story Creation</span>
-        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Chart Recipes</span>
-        <span class="hz-chip" style="font-size:12px;padding:3px 9px">+1 more</span>
-      </div>
-    </div>
-
-    <div class="hz-card" style="padding:20px">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
-        <div style="display:flex;align-items:flex-start;gap:12px">
-          <span class="hz-avatar" style="background:var(--hz-neutral-100);color:var(--hz-text-primary);width:48px;height:48px;font-weight:700">FA</span>
-          <div>
-            <span class="hz-h6" style="margin:0">Finance Agent</span>
-            <div class="hz-body-r hz-muted" style="margin-top:4px">To help CXOs understand and act on the organization's financial performance, health, and risk…</div>
-          </div>
-        </div>
-        <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ active.FA }}" onChange="{{ requestToggle.FA }}"><span class="hz-switch__slider"></span></label>
-      </div>
-      <div class="hz-body-s" style="text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-top:18px;color:var(--hz-horizon-primary)">Always On</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
-        <span class="hz-chip" style="background:var(--hz-blue-50);color:var(--hz-horizon-primary);font-size:12px;padding:3px 9px"><i class="far fa-circle" style="font-size:6px"></i>Design Tokens</span>
-      </div>
-      <div class="hz-body-s hz-muted" style="text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-top:14px">On Demand</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
-        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Story Creation</span>
-        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Section Template</span>
-        <span class="hz-chip" style="font-size:12px;padding:3px 9px">Chart Recipes</span>
+        <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ active.CH }}" onChange="{{ requestToggle.CH }}"></label>
       </div>
     </div>
 
     
 
-    <a href="Configure Agent.dc.html" class="hz-card" style="padding:20px;border:1.5px dashed var(--hz-border-default);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;text-decoration:none;color:inherit">
-      <span style="width:40px;height:40px;border-radius:50%;border:1px solid var(--hz-border-default);display:flex;align-items:center;justify-content:center;color:var(--hz-text-tertiary)"><i class="far fa-plus"></i></span>
-      <span class="hz-h6" style="margin:0">Hire a new Agent</span>
-      <div class="hz-body-s hz-muted">Give a persona and pick their skills — CoPilot can draft it with you.</div>
-    </a>
+    
+
+    <sc-for list="{{ customAgents }}" as="agent" hint-placeholder-count="0">
+      <div class="hz-card" style="padding:20px">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+          <div style="display:flex;align-items:flex-start;gap:12px;flex:1;min-width:0">
+            <span class="hz-avatar" style="background:var(--hz-blue-50);color:var(--hz-horizon-primary);width:48px;height:48px;font-weight:700">{{ agent.initials }}</span>
+            <div>
+              <span class="hz-h6" style="margin:0">{{ agent.name }}</span>
+              <div class="hz-body-r hz-muted" style="margin-top:4px">{{ agent.help }}</div>
+            </div>
+          </div>
+          <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ agent.active }}" onChange="{{ agent.toggle }}"></label>
+        </div>
+      </div>
+    </sc-for>
+
+    <button onClick="{{ openHireModal }}" class="hz-card" style="padding:20px;border:none;background:var(--hz-horizon-primary);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;font-family:inherit;cursor:pointer;width:100%;box-shadow:var(--hz-shadow-md, 0 4px 12px rgba(0,0,0,.08))" style-hover="background:var(--hz-horizon-primary-dark)">
+      <span style="width:40px;height:40px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--hz-horizon-primary)"><i class="far fa-plus"></i></span>
+      <span class="hz-h6" style="margin:0;color:#fff">Hire a new AI Agent</span>
+      <div class="hz-body-s" style="color:rgba(255,255,255,.85)">Give a persona, CoPilot can draft it with you.</div>
+    </button>
 
   </div>
 
@@ -213,6 +190,41 @@
     </div>
   </sc-if>
 
+  <sc-if value="{{ hireModalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+      <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:460px;max-height:90vh;overflow-y:auto;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px">
+          <div class="hz-h5" style="margin:0">Hire a new AI Agent</div>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeHireModal }}"><i class="far fa-times"></i></button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Name of the agent</label>
+            <input value="{{ hireDraft.name }}" onChange="{{ setHireField.name }}" placeholder="e.g. Market Research Agent" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px">
+            <sc-if value="{{ hireNameMissing }}" hint-placeholder-val="{{ false }}">
+              <div class="hz-body-s" style="color:var(--hz-red-600, #c0392b);margin-top:4px">Give your agent a name.</div>
+            </sc-if>
+          </div>
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">How this agent helps</label>
+            <input value="{{ hireDraft.help }}" onChange="{{ setHireField.help }}" placeholder="One line on what it's for" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px">
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+              <label class="hz-body-s" style="font-weight:700">Instructions / persona</label>
+              <button onClick="{{ generatePersonaWithCopilot }}" style="border:none;background:none;color:var(--hz-horizon-primary);font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;padding:0"><i class="far fa-sparkles" style="font-size:11px"></i>Generate with Copilot</button>
+            </div>
+            <textarea value="{{ hireDraft.persona }}" onChange="{{ setHireField.persona }}" placeholder="Describe how it should think and behave in detail..." rows="6" style="width:100%;resize:vertical;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px"></textarea>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeHireModal }}">Cancel</button>
+          <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ submitHireModal }}">Hire Agent</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
 </div>
 
 </div>
@@ -223,7 +235,12 @@ class Component extends DCLogic {
   state = {
     active: { AN: true, CF: true, CH: true, FA: true, CO: true },
     pendingKey: null,
-    showSavedAlert: typeof sessionStorage !== 'undefined' && sessionStorage.getItem('agentSaved') === '1'
+    showSavedAlert: typeof sessionStorage !== 'undefined' && sessionStorage.getItem('agentSaved') === '1',
+    hireModalOpen: false,
+    hireDraft: { name: '', help: '', persona: '' },
+    customAgents: [],
+    hireNameMissing: false,
+    hireSuccessName: ''
   };
 
   componentDidMount() {
@@ -243,6 +260,38 @@ class Component extends DCLogic {
       dismissSavedAlert: () => this.setState({ showSavedAlert: false }),
       active,
       requestToggle,
+      hireModalOpen: this.state.hireModalOpen,
+      openHireModal: () => this.setState({ hireModalOpen: true, hireDraft: { name: '', help: '', persona: '' }, hireNameMissing: false }),
+      closeHireModal: () => this.setState({ hireModalOpen: false }),
+      hireDraft: this.state.hireDraft,
+      hireNameMissing: this.state.hireNameMissing,
+      hireSuccessName: this.state.hireSuccessName,
+      dismissHireSuccess: () => this.setState({ hireSuccessName: '' }),
+      customAgents: this.state.customAgents.map((a, i) => ({
+        ...a,
+        initials: a.name.trim().split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase() || 'AG',
+        toggle: () => this.setState(s => ({ customAgents: s.customAgents.map((x, j) => j === i ? { ...x, active: !x.active } : x) }))
+      })),
+      setHireField: {
+        name: (e) => this.setState(s => ({ hireDraft: { ...s.hireDraft, name: e.target.value } })),
+        help: (e) => this.setState(s => ({ hireDraft: { ...s.hireDraft, help: e.target.value } })),
+        persona: (e) => this.setState(s => ({ hireDraft: { ...s.hireDraft, persona: e.target.value } }))
+      },
+      submitHireModal: () => {
+        const draft = this.state.hireDraft;
+        if (!draft.name.trim()) { this.setState({ hireNameMissing: true }); return; }
+        this.setState(s => ({
+          customAgents: [...s.customAgents, { name: draft.name.trim(), help: draft.help.trim() || 'Newly hired agent.', persona: draft.persona, active: true }],
+          hireModalOpen: false,
+          hireSuccessName: draft.name.trim()
+        }));
+        setTimeout(() => this.setState(s => s.hireSuccessName === draft.name.trim() ? { hireSuccessName: '' } : null), 3500);
+      },
+      generatePersonaWithCopilot: () => {
+        const draft = this.state.hireDraft;
+        const persona = `You are ${draft.name || 'this agent'}. ${draft.help ? draft.help + ' ' : ''}Respond in a clear, decision-focused way, flag risks proactively, and defer to the user's judgment on final calls.`;
+        this.setState({ hireDraft: { ...draft, persona } });
+      },
       confirmOpen: !!pending,
       confirmTitle: pending ? `${turningOn ? 'Turn on' : 'Turn off'} ${this.agentNames[pending]}?` : '',
       confirmMessage: pending
