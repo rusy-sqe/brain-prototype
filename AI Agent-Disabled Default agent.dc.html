@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)}
+.agent-card-actions{opacity:0;transition:opacity .15s}
+.agent-card:hover .agent-card-actions{opacity:1}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:200px minmax(0,1fr)">
+
+<div class="hz-sidebar" style="width:200px;height:100vh;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="uploads/logo-brain-light.svg" alt="Investment Brain" style="height:24px;width:auto">
+      </div>
+      <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:10px;padding:6px 8px">
+      
+      <span><span class="hz-account-trigger__name" style="display:block">DEMO</span></span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-comment-plus"></i>New Chat</button>
+  </div>
+  <div style="padding:8px 6px;flex:1;min-height:0;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-th-large" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-search-location" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span></a>
+        <a href="Pipeline v2.1.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-project-diagram" style="font-size:17px"></i><span class="hz-sidebar__label">Pipeline</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Master Data</span></div>
+        <a href="CRM.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM &amp; Email</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-university" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb-on" style="font-size:17px"></i><span class="hz-sidebar__label">Insight</span></a>
+        <a href="AI Agent.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-robot" style="font-size:17px"></i><span class="hz-sidebar__label">AI Agent</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-desktop" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-magic" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-alt" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Chat History</div>
+      <div style="padding:16px 10px;text-align:center;color:var(--hz-text-tertiary);font-size:13px;line-height:1.5">No chats yet. Start a new conversation.</div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%">
+      <span class="hz-avatar hz-avatar--sm">NK</span>
+      <span><span class="hz-account-trigger__name" style="display:block">Nur Khairusy</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div style="min-width:0;overflow-y:auto;padding:24px 28px">
+
+  <sc-if value="{{ showSavedAlert }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-alert hz-alert--success" style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <span><i class="far fa-circle-check"></i> Agent saved successfully.</span>
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center" onClick="{{ dismissSavedAlert }}"><i class="far fa-times"></i></button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ hireSuccessVisible }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-alert hz-alert--success" style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <span><i class="far fa-circle-check"></i> "{{ hireSuccessName }}" hired and added to your agents.</span>
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center" onClick="{{ dismissHireSuccess }}"><i class="far fa-times"></i></button>
+    </div>
+  </sc-if>
+
+  <div style="background:linear-gradient(135deg, var(--hz-blue-50), var(--hz-surface-page) 70%);margin:-24px -28px 20px;padding:28px 28px 24px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+    <div>
+      <div class="hz-h1" style="margin:0">AI Agents</div>
+      <div class="hz-body-r hz-muted" style="margin-top:6px">Specialized AI agents that analyze different areas of your business, answer questions, and surface insights that matter.</div>
+    </div>
+    
+  </div>
+
+  <div style="display:flex;align-items:center;gap:12px;margin-top:20px;flex-wrap:wrap">
+    <div class="hz-tabs" style="border-bottom:none">
+      <button class="hz-tab is-active">All</button>
+      <button class="hz-tab">3&nbsp; Active</button>
+      <button class="hz-tab">0&nbsp;&nbsp;Inactive</button>
+    </div>
+    <div style="flex:1;min-width:220px;position:relative">
+      
+      
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px">
+
+    <div class="hz-card agent-card" style="padding:20px;display:flex;flex-direction:column;gap:14px">
+      <div onClick="{{ openDetail.AN }}" style="display:flex;align-items:flex-start;gap:12px;flex:1;min-width:0;cursor:pointer">
+        <span class="hz-avatar" style="background:var(--hz-neutral-100);color:var(--hz-text-primary);width:48px;height:48px;font-weight:700">GA</span>
+        <div style="flex:1;min-width:0">
+          <span class="hz-h6" style="margin:0">{{ defaultAgents.AN.name }}</span>
+          <div class="hz-body-r hz-muted" style="margin-top: 4px; width: 100%">{{ defaultAgents.AN.help }}</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:10px;border-top:1px solid var(--hz-border-default)">
+        <div class="agent-card-actions" style="display:flex;gap:8px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="border:none;opacity:.5;cursor:not-allowed" disabled="{{ true }}"><i class="far fa-pencil"></i>Update</button>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="border:none" onClick="{{ openDetail.AN }}"><i class="far fa-eye"></i>View Details</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="hz-body-s hz-muted">{{ onOffText.AN }}</span>
+          <label class="hz-switch" style="flex-shrink:0;cursor:pointer" onClick="{{ openLockedModal }}"><input type="checkbox" checked="{{ active.AN }}" style="pointer-events:none"><span class="hz-switch__slider" style="background:var(--hz-neutral-300)"></span></label>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="hz-card agent-card" style="padding:20px;display:flex;flex-direction:column;gap:14px">
+      <div onClick="{{ openDetail.CF }}" style="display:flex;align-items:flex-start;gap:12px;flex:1;min-width:0;cursor:pointer">
+        <span class="hz-avatar" style="background:var(--hz-green-100);color:var(--hz-green-800);width:48px;height:48px;font-weight:700">PA</span>
+        <div>
+          <span class="hz-h6" style="margin:0">{{ defaultAgents.CF.name }}</span>
+          <div class="hz-body-r hz-muted" style="margin-top:4px">{{ defaultAgents.CF.help }}</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:10px;border-top:1px solid var(--hz-border-default)">
+        <div class="agent-card-actions" style="display:flex;gap:8px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="border:none;opacity:.5;cursor:not-allowed" disabled="{{ true }}"><i class="far fa-pencil"></i>Update</button>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="border:none" onClick="{{ openDetail.CF }}"><i class="far fa-eye"></i>View Details</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="hz-body-s hz-muted">{{ onOffText.CF }}</span>
+          <label class="hz-switch" style="flex-shrink:0;cursor:pointer" onClick="{{ openLockedModal }}"><input type="checkbox" checked="{{ active.CF }}" style="pointer-events:none"><span class="hz-switch__slider" style="background:var(--hz-neutral-300)"></span></label>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="hz-card agent-card" style="padding:20px;display:flex;flex-direction:column;gap:14px">
+      <div onClick="{{ openDetail.CH }}" style="display:flex;align-items:flex-start;gap:12px;flex:1;min-width:0;cursor:pointer">
+        <span class="hz-avatar" style="background:var(--hz-teal-100, #ccfbf1);color:var(--hz-teal-800, #115e59);width:48px;height:48px;font-weight:700">RS</span>
+        <div>
+          <span class="hz-h6" style="margin:0">{{ defaultAgents.CH.name }}</span>
+          <div class="hz-body-r hz-muted" style="margin-top:4px">{{ defaultAgents.CH.help }}</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:10px;border-top:1px solid var(--hz-border-default)">
+        <div class="agent-card-actions" style="display:flex;gap:8px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="border:none;opacity:.5;cursor:not-allowed" disabled="{{ true }}"><i class="far fa-pencil"></i>Update</button>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="border:none" onClick="{{ openDetail.CH }}"><i class="far fa-eye"></i>View Details</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="hz-body-s hz-muted">{{ onOffText.CH }}</span>
+          <label class="hz-switch" style="flex-shrink:0;cursor:pointer" onClick="{{ openLockedModal }}"><input type="checkbox" checked="{{ active.CH }}" style="pointer-events:none"><span class="hz-switch__slider" style="background:var(--hz-neutral-300)"></span></label>
+        </div>
+      </div>
+    </div>
+
+
+    
+
+    
+
+    <sc-for list="{{ customAgents }}" as="agent" hint-placeholder-count="0">
+      <div class="hz-card agent-card" style="padding:20px;display:flex;flex-direction:column;gap:14px">
+        <div onClick="{{ agent.openDetail }}" style="display:flex;align-items:flex-start;gap:12px;flex:1;min-width:0;cursor:pointer">
+          <span class="hz-avatar" style="background:var(--hz-blue-50);color:var(--hz-horizon-primary);width:48px;height:48px;font-weight:700">{{ agent.initials }}</span>
+          <div>
+            <span class="hz-h6" style="margin:0">{{ agent.name }}</span>
+            <div class="hz-body-r hz-muted" style="margin-top:4px">{{ agent.help }}</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:10px;border-top:1px solid var(--hz-border-default)">
+          <div class="agent-card-actions" style="display:flex;gap:8px">
+            <button class="hz-btn hz-btn--text hz-btn--sm" style="border:none" onClick="{{ agent.openUpdate }}"><i class="far fa-pencil"></i>Update</button>
+            <button class="hz-btn hz-btn--text hz-btn--sm" style="border:none" onClick="{{ agent.openDetail }}"><i class="far fa-eye"></i>View Details</button>
+          </div>
+          <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ agent.active }}" onChange="{{ agent.toggle }}"><span class="hz-switch__slider"></span></label>
+        </div>
+      </div>
+    </sc-for>
+
+
+    <button onClick="{{ openHireModal }}" class="hz-card" style="padding:20px;border:none;background:var(--hz-horizon-primary);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;font-family:inherit;cursor:pointer;width:100%;box-shadow:var(--hz-shadow-md, 0 4px 12px rgba(0,0,0,.08))" style-hover="background:var(--hz-horizon-primary-dark)">
+      <span style="width:40px;height:40px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--hz-horizon-primary)"><i class="far fa-plus"></i></span>
+      <span class="hz-h6" style="margin:0;color:#fff">Hire a new AI Agent</span>
+      <div class="hz-body-s" style="color:rgba(255,255,255,.85)">Give a persona, CoPilot can draft it with you.</div>
+    </button>
+
+  </div>
+
+  <sc-if value="{{ confirmOpen }}">
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+      <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:380px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+        <div class="hz-h5" style="margin:0 0 8px">{{ confirmTitle }}</div>
+        <div class="hz-body-r hz-muted" style="margin-bottom:20px">{{ confirmMessage }}</div>
+        <div style="display:flex;justify-content:flex-end;gap:10px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ cancelToggle }}">Cancel</button>
+          <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ confirmToggle }}">{{ confirmActionLabel }}</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ detailOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+      <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:460px;max-height:90vh;overflow-y:auto;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <span class="hz-avatar" style="background:{{ detailAgent.bg }};color:{{ detailAgent.fg }};width:44px;height:44px;font-weight:700">{{ detailAgent.initials }}</span>
+            <div>
+              <div class="hz-h5" style="margin:0">{{ detailAgent.name }}</div>
+              
+            </div>
+          </div>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeDetail }}"><i class="far fa-times"></i></button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">How this agent helps</label>
+            <div class="hz-body-r hz-muted">{{ detailAgent.help }}</div>
+          </div>
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Instructions / persona</label>
+            <div class="hz-body-r hz-muted" style="white-space:pre-wrap">{{ detailAgent.persona }}</div>
+          </div>
+        </div>
+        <sc-if value="{{ detailAgent.isDefault }}" hint-placeholder-val="{{ false }}">
+          <div class="hz-body-s hz-muted" style="margin-top:12px">This is a default agent. Create your own agent for customization.</div>
+        </sc-if>
+        <div style="display:flex;justify-content:space-between;gap:10px;margin-top:20px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="border:none;opacity:.5;cursor:not-allowed" disabled="{{ detailAgent.isDefault }}" onClick="{{ openUpdateFromDetail }}"><i class="far fa-pencil"></i>Update</button>
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeDetail }}">Close</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ updateModalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+      <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:460px;max-height:90vh;overflow-y:auto;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px">
+          <div class="hz-h5" style="margin:0">Update Agent</div>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeUpdateModal }}"><i class="far fa-times"></i></button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Name of the agent</label>
+            <input value="{{ updateDraft.name }}" onChange="{{ setUpdateField.name }}" placeholder="e.g. Market Research Agent" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px">
+            <sc-if value="{{ updateNameMissing }}" hint-placeholder-val="{{ false }}">
+              <div class="hz-body-s" style="color:var(--hz-red-600, #c0392b);margin-top:4px">Give your agent a name.</div>
+            </sc-if>
+          </div>
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">How this agent helps</label>
+            <input value="{{ updateDraft.help }}" onChange="{{ setUpdateField.help }}" placeholder="One line on what it's for" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px">
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+              <label class="hz-body-s" style="font-weight:700">Instructions / persona</label>
+              <button onClick="{{ generatePersonaForUpdate }}" style="border:none;background:none;color:var(--hz-horizon-primary);font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;padding:0"><i class="far fa-sparkles" style="font-size:11px"></i>Generate with Copilot</button>
+            </div>
+            <textarea value="{{ updateDraft.persona }}" onChange="{{ setUpdateField.persona }}" placeholder="Describe how it should think and behave in detail..." rows="6" style="width:100%;resize:vertical;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px"></textarea>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeUpdateModal }}">Cancel</button>
+          <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ submitUpdateModal }}">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ lockedModalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+      <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:380px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+        <div class="hz-h5" style="margin:0 0 8px">This agent can't be changed</div>
+        <div class="hz-body-r hz-muted" style="margin-bottom:20px">Default agents are always on and can't be turned off. Create your own agent if you need different behavior.</div>
+        <div style="display:flex;justify-content:flex-end;gap:10px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeLockedModal }}">Close</button>
+          <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ createAgentFromLocked }}">Create New Agent</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ hireModalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+      <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:460px;max-height:90vh;overflow-y:auto;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px">
+          <div class="hz-h5" style="margin:0">Hire a new AI Agent</div>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeHireModal }}"><i class="far fa-times"></i></button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Name of the agent</label>
+            <input value="{{ hireDraft.name }}" onChange="{{ setHireField.name }}" placeholder="e.g. Market Research Agent" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px">
+            <sc-if value="{{ hireNameMissing }}" hint-placeholder-val="{{ false }}">
+              <div class="hz-body-s" style="color:var(--hz-red-600, #c0392b);margin-top:4px">Give your agent a name.</div>
+            </sc-if>
+          </div>
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">How this agent helps</label>
+            <input value="{{ hireDraft.help }}" onChange="{{ setHireField.help }}" placeholder="One line on what it's for" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px">
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+              <label class="hz-body-s" style="font-weight:700">Instructions / persona</label>
+              <button onClick="{{ generatePersonaWithCopilot }}" style="border:none;background:none;color:var(--hz-horizon-primary);font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;padding:0"><i class="far fa-sparkles" style="font-size:11px"></i>Generate with Copilot</button>
+            </div>
+            <textarea value="{{ hireDraft.persona }}" onChange="{{ setHireField.persona }}" placeholder="Describe how it should think and behave in detail..." rows="6" style="width:100%;resize:vertical;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px"></textarea>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeHireModal }}">Cancel</button>
+          <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ submitHireModal }}">Hire Agent</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  agentNames = { AN: 'General Analyst', CF: 'CFO', CH: 'CIO', FA: 'Finance Agent', CO: 'COO' };
+  agentInfo = {
+    AN: { name: 'General Analyst', help: 'Answers broad questions across the workspace.', persona: 'You are the General Analyst. Answer broad questions about the workspace clearly and concisely, pulling from whatever data is available, and point the user to a specialist agent when a question goes deeper than a general answer.', bg: 'var(--hz-neutral-100)', fg: 'var(--hz-text-primary)', initials: 'GA' },
+    CF: { name: 'Pipeline Analyst', help: 'Surfaces stalled deals and pipeline trends.', persona: 'You are the Pipeline Analyst. Monitor the deal pipeline, flag deals that have stalled or lost momentum, and summarize trends across stages proactively.', bg: 'var(--hz-green-100)', fg: 'var(--hz-green-800)', initials: 'PA' },
+    CH: { name: 'Research Specialist', help: 'Digs into external market and industry data.', persona: 'You are the Research Specialist. Dig into external market, industry, and competitor data on request, and surface relevant findings with sources.', bg: 'var(--hz-teal-100, #ccfbf1)', fg: 'var(--hz-teal-800, #115e59)', initials: 'RS' }
+  };
+  state = {
+    active: { AN: true, CF: true, CH: true, FA: true, CO: true },
+    pendingKey: null,
+    detailKey: null,
+    detailCustomIndex: null,
+    agentOverrides: {},
+    updateModalOpen: false,
+    updateDraft: { name: '', help: '', persona: '' },
+    updateTargetKey: null,
+    updateTargetCustomIndex: null,
+    updateNameMissing: false,
+    lockedModalOpen: false,
+    showSavedAlert: typeof sessionStorage !== 'undefined' && sessionStorage.getItem('agentSaved') === '1',
+    hireModalOpen: false,
+    hireDraft: { name: '', help: '', persona: '' },
+    customAgents: [],
+    hireNameMissing: false,
+    hireSuccessName: ''
+  };
+
+  componentDidMount() {
+    if (this.state.showSavedAlert) sessionStorage.removeItem('agentSaved');
+  }
+
+  renderVals() {
+    const active = this.state.active;
+    const requestToggle = {};
+    for (const key of Object.keys(active)) {
+      requestToggle[key] = () => this.setState({ pendingKey: key });
+    }
+    const onOffText = {};
+    for (const key of Object.keys(active)) onOffText[key] = active[key] ? 'ON' : 'OFF';
+    const getDefaultAgent = (key) => ({ ...this.agentInfo[key], ...this.state.agentOverrides[key] });
+    const openDetail = {};
+    const openUpdate = {};
+    for (const key of Object.keys(this.agentInfo)) {
+      openDetail[key] = () => this.setState({ detailKey: key, detailCustomIndex: null });
+      openUpdate[key] = () => {
+        const a = getDefaultAgent(key);
+        this.setState({ updateModalOpen: true, updateTargetKey: key, updateTargetCustomIndex: null, updateDraft: { name: a.name, help: a.help, persona: a.persona }, updateNameMissing: false });
+      };
+    }
+    const openUpdateFromDetail = () => {
+      if (this.state.detailKey) openUpdate[this.state.detailKey]();
+      else if (this.state.detailCustomIndex !== null) {
+        const i = this.state.detailCustomIndex;
+        const a = this.state.customAgents[i];
+        this.setState({ updateModalOpen: true, updateTargetKey: null, updateTargetCustomIndex: i, updateDraft: { name: a.name, help: a.help, persona: a.persona || '' }, updateNameMissing: false });
+      }
+    };
+    let detailAgent = null;
+    if (this.state.detailKey) {
+      const info = getDefaultAgent(this.state.detailKey);
+      detailAgent = { ...info, statusText: active[this.state.detailKey] ? 'Active' : 'Inactive', statusChipClass: active[this.state.detailKey] ? 'hz-chip--success' : 'hz-chip--disabled', isDefault: true };
+    } else if (this.state.detailCustomIndex !== null) {
+      const a = this.state.customAgents[this.state.detailCustomIndex];
+      if (a) {
+        detailAgent = {
+          name: a.name, help: a.help, persona: a.persona || 'No instructions provided.',
+          bg: 'var(--hz-blue-50)', fg: 'var(--hz-horizon-primary)',
+          initials: a.name.trim().split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase() || 'AG',
+          statusText: a.active ? 'Active' : 'Inactive', statusChipClass: a.active ? 'hz-chip--success' : 'hz-chip--disabled'
+        };
+      }
+    }
+    const closeDetail = () => this.setState({ detailKey: null, detailCustomIndex: null });
+    const defaultAgents = { AN: getDefaultAgent('AN'), CF: getDefaultAgent('CF'), CH: getDefaultAgent('CH') };
+    const pending = this.state.pendingKey;
+    const turningOn = pending ? !active[pending] : false;
+    return {
+      showSavedAlert: this.state.showSavedAlert,
+      dismissSavedAlert: () => this.setState({ showSavedAlert: false }),
+      active,
+      requestToggle,
+      onOffText,
+      defaultAgents,
+      lockedModalOpen: this.state.lockedModalOpen,
+      openLockedModal: () => this.setState({ lockedModalOpen: true }),
+      closeLockedModal: () => this.setState({ lockedModalOpen: false }),
+      createAgentFromLocked: () => this.setState({ lockedModalOpen: false, hireModalOpen: true, hireDraft: { name: '', help: '', persona: '' }, hireNameMissing: false }),
+      openDetail,
+      openUpdate,
+      openUpdateFromDetail,
+      detailAgent,
+      detailOpen: !!detailAgent,
+      closeDetail,
+      updateModalOpen: this.state.updateModalOpen,
+      updateDraft: this.state.updateDraft,
+      updateNameMissing: this.state.updateNameMissing,
+      closeUpdateModal: () => this.setState({ updateModalOpen: false }),
+      setUpdateField: {
+        name: (e) => this.setState(s => ({ updateDraft: { ...s.updateDraft, name: e.target.value } })),
+        help: (e) => this.setState(s => ({ updateDraft: { ...s.updateDraft, help: e.target.value } })),
+        persona: (e) => this.setState(s => ({ updateDraft: { ...s.updateDraft, persona: e.target.value } }))
+      },
+      generatePersonaForUpdate: () => {
+        const draft = this.state.updateDraft;
+        const persona = `You are ${draft.name || 'this agent'}. ${draft.help ? draft.help + ' ' : ''}Respond in a clear, decision-focused way, flag risks proactively, and defer to the user's judgment on final calls.`;
+        this.setState({ updateDraft: { ...draft, persona } });
+      },
+      submitUpdateModal: () => {
+        const draft = this.state.updateDraft;
+        if (!draft.name.trim()) { this.setState({ updateNameMissing: true }); return; }
+        const { updateTargetKey, updateTargetCustomIndex } = this.state;
+        if (updateTargetKey) {
+          this.setState(s => ({
+            agentOverrides: { ...s.agentOverrides, [updateTargetKey]: { name: draft.name.trim(), help: draft.help.trim(), persona: draft.persona } },
+            updateModalOpen: false
+          }));
+        } else if (updateTargetCustomIndex !== null) {
+          this.setState(s => ({
+            customAgents: s.customAgents.map((x, j) => j === updateTargetCustomIndex ? { ...x, name: draft.name.trim(), help: draft.help.trim(), persona: draft.persona } : x),
+            updateModalOpen: false
+          }));
+        }
+      },
+      hireModalOpen: this.state.hireModalOpen,
+      openHireModal: () => this.setState({ hireModalOpen: true, hireDraft: { name: '', help: '', persona: '' }, hireNameMissing: false }),
+      closeHireModal: () => this.setState({ hireModalOpen: false }),
+      hireDraft: this.state.hireDraft,
+      hireNameMissing: this.state.hireNameMissing,
+      hireSuccessName: this.state.hireSuccessName,
+      hireSuccessVisible: !!this.state.hireSuccessName,
+      dismissHireSuccess: () => this.setState({ hireSuccessName: '' }),
+      customAgents: this.state.customAgents.map((a, i) => ({
+        ...a,
+        initials: a.name.trim().split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase() || 'AG',
+        toggle: () => this.setState(s => ({ customAgents: s.customAgents.map((x, j) => j === i ? { ...x, active: !x.active } : x) })),
+        openDetail: () => this.setState({ detailCustomIndex: i, detailKey: null }),
+        openUpdate: () => this.setState({ updateModalOpen: true, updateTargetKey: null, updateTargetCustomIndex: i, updateDraft: { name: a.name, help: a.help, persona: a.persona || '' }, updateNameMissing: false })
+      })),
+      setHireField: {
+        name: (e) => this.setState(s => ({ hireDraft: { ...s.hireDraft, name: e.target.value } })),
+        help: (e) => this.setState(s => ({ hireDraft: { ...s.hireDraft, help: e.target.value } })),
+        persona: (e) => this.setState(s => ({ hireDraft: { ...s.hireDraft, persona: e.target.value } }))
+      },
+      submitHireModal: () => {
+        const draft = this.state.hireDraft;
+        if (!draft.name.trim()) { this.setState({ hireNameMissing: true }); return; }
+        this.setState(s => ({
+          customAgents: [...s.customAgents, { name: draft.name.trim(), help: draft.help.trim() || 'Newly hired agent.', persona: draft.persona, active: true }],
+          hireModalOpen: false,
+          hireSuccessName: draft.name.trim()
+        }));
+        setTimeout(() => this.setState(s => s.hireSuccessName === draft.name.trim() ? { hireSuccessName: '' } : null), 3500);
+      },
+      generatePersonaWithCopilot: () => {
+        const draft = this.state.hireDraft;
+        const persona = `You are ${draft.name || 'this agent'}. ${draft.help ? draft.help + ' ' : ''}Respond in a clear, decision-focused way, flag risks proactively, and defer to the user's judgment on final calls.`;
+        this.setState({ hireDraft: { ...draft, persona } });
+      },
+      confirmOpen: !!pending,
+      confirmTitle: pending ? `${turningOn ? 'Turn on' : 'Turn off'} ${this.agentNames[pending]}?` : '',
+      confirmMessage: pending
+        ? (turningOn
+          ? `${this.agentNames[pending]} will become active and available to the workspace.`
+          : `${this.agentNames[pending]} will be turned off and won't be available until reactivated.`)
+        : '',
+      confirmActionLabel: turningOn ? 'Turn On' : 'Turn Off',
+      cancelToggle: () => this.setState({ pendingKey: null }),
+      confirmToggle: () => this.setState(s => ({
+        active: { ...s.active, [s.pendingKey]: !s.active[s.pendingKey] },
+        pendingKey: null
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

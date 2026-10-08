@@ -12,7 +12,9 @@
 <link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
 <link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
 <script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
-<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)} .hz-item-row:hover{background:var(--hz-blue-50)}</style>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)} .hz-item-row:hover{background:var(--hz-blue-50)}
+.info-tip__bubble{opacity:0;visibility:hidden;transition:opacity .12s}
+.info-tip:hover .info-tip__bubble{opacity:1;visibility:visible}</style>
 </helmet>
 <div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:200px minmax(0,1fr)">
 
@@ -84,9 +86,9 @@
 
   <div class="hz-tabs" style="margin-bottom:18px">
     <button class="hz-tab {{ yourProfileTabClass }}" onClick="{{ setTab.yourProfile }}">Your Profile</button>
-    <button class="hz-tab {{ attentionTabClass }}" onClick="{{ setTab.attention }}">Needs Attention <span class="hz-badge" style="background:var(--hz-neutral-100);color:var(--hz-text-secondary);border-radius:999px;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;margin-left:4px">{{ attentionItems.length }}</span></button>
+    <button class="hz-tab {{ attentionTabClass }}" onClick="{{ setTab.attention }}">Needs Attention <span class="hz-badge" style="background:var(--hz-red-600, #c0392b);color:#fff;border-radius:999px;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;margin-left:4px">{{ attentionItems.length }}</span></button>
     <button class="hz-tab {{ companiesTabClass }}" onClick="{{ setTab.companies }}">Companies</button>
-    <button class="hz-tab {{ insightsTabClass }}" onClick="{{ setTab.insights }}">Insights <span class="hz-badge" style="background:var(--hz-neutral-100);color:var(--hz-text-secondary);border-radius:999px;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;margin-left:4px">{{ insightItems.length }}</span></button>
+    <button class="hz-tab {{ insightsTabClass }}" onClick="{{ setTab.insights }}">Insights <span class="hz-badge" style="background:var(--hz-red-600, #c0392b);color:#fff;border-radius:999px;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;margin-left:4px">{{ insightItems.length }}</span></button>
     <button class="hz-tab {{ memoryTabClass }}" onClick="{{ setTab.memory }}">Memory</button>
   </div>
 
@@ -189,31 +191,157 @@
     <div class="hz-card" style="padding:16px 20px;display:flex;flex-direction:row;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px">
       <div>
         <div class="hz-h6" style="margin:0">Remember me across conversations</div>
-        <div class="hz-body-r hz-muted" style="margin-top:4px">When off, the CoPilot stops learning from your chats and stops using what it already knows. Memories below are kept until you delete them.</div>
+        <div class="hz-body-r hz-muted" style="margin-top:4px">When on, CoPilot remembers your preferences, pipeline context, and past conversations — so it gets sharper and more personal the more you use it, instead of starting from zero every chat. Turn it off anytime; memories below are kept until you delete them.</div>
       </div>
-      <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ rememberOn }}" onChange="{{ toggleRemember }}"><span class="hz-switch__slider"></span></label>
+      <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ rememberOn }}" onChange="{{ requestToggleRemember }}"><span class="hz-switch__slider"></span></label>
     </div>
 
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
       <span class="hz-body-r hz-muted">{{ memoryItems.length }} memories.</span>
       <div style="display:flex;gap:10px">
-        <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-upload"></i>Import memory from another location</button>
-        <button class="hz-btn hz-btn--text hz-btn--sm">Forget all</button>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openImportMemory }}"><i class="far fa-upload"></i>Import memory from another location</button>
+        <button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-text-tertiary)" onClick="{{ openForgetAllConfirm }}">Forget all</button>
       </div>
     </div>
+
+    <sc-if value="{{ deleteMemoryConfirmOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+        <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:380px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+          <div class="hz-h5" style="margin:0 0 8px">Delete this memory?</div>
+          <div class="hz-body-r hz-muted" style="margin-bottom:20px">CoPilot will no longer use this when answering you. This can't be undone.</div>
+          <div style="display:flex;justify-content:flex-end;gap:10px">
+            <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ cancelDeleteMemory }}">Cancel</button>
+            <button class="hz-btn hz-btn--primary hz-btn--sm" style="background:var(--hz-red-600, #c0392b)" onClick="{{ confirmDeleteMemory }}">Delete</button>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ importMemoryOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+        <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:460px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
+            <div style="display:flex;align-items:center;gap:7px">
+              <div class="hz-h5" style="margin:0">Import memory</div>
+              <span class="info-tip" style="position:relative;display:inline-flex">
+                <i class="far fa-info-circle" style="color:var(--hz-text-tertiary);font-size:13px;cursor:help"></i>
+                <span class="hz-tooltip hz-tooltip--bottom info-tip__bubble" style="position:absolute;top:calc(100% + 11px);left:50%;transform:translateX(-50%);z-index:60;width:320px;max-width:320px">
+                  <span class="hz-tooltip__arrow"></span>
+                  <span class="hz-tooltip__row"><span class="hz-tooltip__text" style="font-size:12px;line-height:1.4">What the assistant remembers about you — goals, budget, preferences — so you don't repeat yourself. Only long-term facts are kept; you can review or delete them anytime.</span></span>
+                </span>
+              </span>
+            </div>
+            <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeImportMemory }}"><i class="far fa-times"></i></button>
+          </div>
+          <div class="hz-body-r hz-muted" style="margin-bottom:18px">Bring in context from another tool or export so CoPilot can use it.</div>
+
+          <div class="hz-tabs" style="margin-bottom:16px">
+            <button class="hz-tab {{ importFileTabClass }}" onClick="{{ setImportTab.file }}">Upload a file</button>
+            <button class="hz-tab {{ importTextTabClass }}" onClick="{{ setImportTab.text }}">Paste text</button>
+          </div>
+
+          <sc-if value="{{ showImportFile }}" hint-placeholder-val="{{ true }}">
+            <label style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:1.5px dashed var(--hz-border-default);border-radius:10px;padding:32px 16px;cursor:pointer;color:var(--hz-text-secondary);text-align:center">
+              <input type="file" accept=".doc,.docx,.pdf,.txt,.md,text/plain" style="display:none" onChange="{{ onImportFileChange }}">
+              <i class="far fa-cloud-upload-alt" style="font-size:22px"></i>
+              <span class="hz-body-r" style="font-weight:600;color:var(--hz-text-primary)">Click to upload</span>
+              <span class="hz-body-s hz-muted">Docs (.doc, .docx, .pdf) or plain text files</span>
+              <sc-if value="{{ importFileName }}" hint-placeholder-val="{{ false }}">
+                <span class="hz-chip" style="margin-top:4px">{{ importFileName }}</span>
+              </sc-if>
+            </label>
+            <div style="margin-top:14px">
+              <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Context for this file (optional)</label>
+              <input value="{{ importFileNote }}" onChange="{{ onImportFileNoteChange }}" placeholder="e.g. Notes from our last board meeting" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px">
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ showImportText }}" hint-placeholder-val="{{ false }}">
+            <textarea value="{{ importText }}" onChange="{{ onImportTextChange }}" placeholder="Paste the text you want CoPilot to remember…" rows="7" style="width:100%;resize:vertical;padding:10px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px"></textarea>
+          </sc-if>
+
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px">
+            <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeImportMemory }}">Cancel</button>
+            <button class="hz-btn hz-btn--primary hz-btn--sm" disabled="{{ importDisabled }}" onClick="{{ submitImportMemory }}">Import</button>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ digestingMemory }}" hint-placeholder-val="{{ false }}">
+      <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+        <div style="background:var(--hz-surface-card);border-radius:14px;padding:32px;width:360px;display:flex;flex-direction:column;align-items:center;gap:14px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+          <i class="far fa-spinner-third fa-spin" style="font-size:26px;color:var(--hz-horizon-primary)"></i>
+          <div class="hz-body-r" style="font-weight:600;text-align:center">BRAIN digesting what's relevant as memory…</div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ reviewMemoryOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+        <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:520px;max-height:85vh;overflow-y:auto;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
+            <div class="hz-h5" style="margin:0">Review what CoPilot will remember</div>
+            <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeReviewMemory }}"><i class="far fa-times"></i></button>
+          </div>
+          <div class="hz-body-r hz-muted" style="margin-bottom:16px">Here's what CoPilot pulled out as relevant. Edit or remove anything before saving — you're always in control.</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ reviewDraftItems }}" as="item" hint-placeholder-count="3">
+              <div style="display:flex;align-items:flex-start;gap:8px">
+                <textarea value="{{ item.text }}" onChange="{{ item.onChange }}" rows="2" style="flex:1;resize:vertical;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px"></textarea>
+                <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;flex-shrink:0;color:var(--hz-text-tertiary)" onClick="{{ item.onRemove }}"><i class="far fa-trash-alt"></i></button>
+              </div>
+            </sc-for>
+          </div>
+          <sc-if value="{{ reviewEmpty }}" hint-placeholder-val="{{ false }}">
+            <div class="hz-body-r hz-muted" style="margin-top:8px">Nothing left to save — go back and add something, or cancel.</div>
+          </sc-if>
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px">
+            <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeReviewMemory }}">Cancel</button>
+            <button class="hz-btn hz-btn--primary hz-btn--sm" disabled="{{ reviewEmpty }}" onClick="{{ confirmReviewMemory }}">Save to Memory</button>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ rememberOffConfirmOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+        <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:400px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+          <div class="hz-h5" style="margin:0 0 8px">Turn off memory?</div>
+          <div class="hz-body-r hz-muted" style="margin-bottom:20px">CoPilot will stop learning from your chats and stop using what it already knows — so answers get more generic and you'll have to re-explain context it already understood. Existing memories are kept until you delete them, but nothing new will be remembered.</div>
+          <div style="display:flex;justify-content:flex-end;gap:10px">
+            <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ cancelToggleRemember }}">Keep it on</button>
+            <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ confirmToggleRemember }}">Turn Off</button>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ forgetAllConfirmOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+        <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:400px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+          <div class="hz-h5" style="margin:0 0 8px">Forget everything?</div>
+          <div class="hz-body-r hz-muted" style="margin-bottom:20px">This permanently deletes everything Investment Brain has learned about you — preferences, pipeline context, and prior conversations. CoPilot responses will lose this context and won't be personalized until it learns again from scratch. This can't be undone.</div>
+          <div style="display:flex;justify-content:flex-end;gap:10px">
+            <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeForgetAllConfirm }}">Cancel</button>
+            <button class="hz-btn hz-btn--primary hz-btn--sm" style="background:var(--hz-red-600, #c0392b)" onClick="{{ confirmForgetAll }}">Forget All</button>
+          </div>
+        </div>
+      </div>
+    </sc-if>
 
     <div style="display:flex;flex-direction:column;gap:10px">
       <sc-for list="{{ memoryItems }}" as="item" hint-placeholder-count="4">
         <div class="hz-card" style="padding:16px 18px;display:flex;flex-direction:row;align-items:flex-start;gap:14px">
-          <i class="far fa-comment-alt" style="color:var(--hz-text-secondary);margin-top:3px"></i>
           <div style="flex:1;min-width:0">
             <div class="hz-body-r" style="font-weight:600">{{ item.text }}</div>
             <div style="display:flex;align-items:center;gap:8px;margin-top:8px">
-              <span class="hz-chip" style="font-size:11px;padding:2px 8px">From a conversation</span>
+              <span class="hz-chip" style="font-size:11px;padding:2px 8px;border:none">{{ item.source }}</span>
+              <span class="hz-body-s hz-muted">·</span>
               <span class="hz-body-s hz-muted">{{ item.time }}</span>
             </div>
           </div>
-          <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;flex-shrink:0"><i class="far fa-trash-alt"></i></button>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;flex-shrink:0;color:var(--hz-text-tertiary)" onClick="{{ item.requestDelete }}"><i class="far fa-trash-alt"></i></button>
         </div>
       </sc-for>
     </div>
@@ -226,7 +354,24 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { tab: 'yourProfile', rememberOn: true, profile: { fullName: 'Nur Khairusy', nickName: 'Nur', email: 'nur.khairusy@sqe.co.id', phone: '+62 812-3456-7890', jobTitle: 'Investment Associate', howBrainHelps: 'Helps me screen inbound deals faster and keep the pipeline up to date without manual data entry.' } };
+  defaultMemoryItems = [
+    { text: 'Role & coverage: VP, M&A — covers SEA healthcare services, mid-market ($20–150M revenue).', time: '2 minutes ago' },
+    { text: 'Analytical method: haircuts management projections by 15% on first-pass screens.', time: '2 minutes ago' },
+    { text: 'Output preference: prefers EV/EBITDA comps shown in tables, not prose. ', time: '2 minutes ago' },
+    { text: 'Working style: wants a one-line summary before any detailed breakdown.', time: '2 minutes ago' },
+    { text: 'Output preference: prefers concise responses over long explanations. ', time: '2 minutes ago' },
+    { text: 'Analytical method: screens industrials on revenue growth + EBITDA margin before valuation.', time: '2 minutes ago', source: 'From a conversation' },
+    { text: 'Imported from "IC_Onboarding_Notes.pdf" — leads IC memos for SEA deals above $50M enterprise value.', time: '4 days ago', source: 'From an imported memory' }
+  ];
+  summarizeFile(fileName, note) {
+    const base = note && note.trim() ? `Imported "${fileName}" — ${note.trim()}` : `Imported "${fileName}"`;
+    return [base, `Will use context from "${fileName}" when relevant to your questions`];
+  }
+  summarizeText(text) {
+    const sentences = text.split(/(?<=[.!?])\s+/).map(s => s.trim()).filter(Boolean);
+    return sentences.slice(0, 4).length ? sentences.slice(0, 4) : [text.trim().slice(0, 160)];
+  }
+  state = { tab: 'yourProfile', rememberOn: true, rememberOffConfirmOpen: false, forgetAllConfirmOpen: false, importMemoryOpen: false, importTab: 'file', importFileName: '', importFileNote: '', importText: '', memoryItems: null, deleteMemoryIndex: null, reviewMemoryOpen: false, reviewDraft: [], profile: { fullName: 'Nur Khairusy', nickName: 'Nur', email: 'nur.khairusy@sqe.co.id', phone: '+62 812-3456-7890', jobTitle: 'Investment Associate', howBrainHelps: 'Helps me screen inbound deals faster and keep the pipeline up to date without manual data entry.' } };
   renderVals() {
     const tab = this.state.tab;
     const cls = t => t === tab ? 'is-active' : '';
@@ -251,7 +396,59 @@ class Component extends DCLogic {
         howBrainHelps: e => this.setState(s => ({ profile: { ...s.profile, howBrainHelps: e.target.value } }))
       },
       rememberOn: this.state.rememberOn,
-      toggleRemember: () => this.setState(s => ({ rememberOn: !s.rememberOn })),
+      requestToggleRemember: () => this.state.rememberOn ? this.setState({ rememberOffConfirmOpen: true }) : this.setState({ rememberOn: true }),
+      rememberOffConfirmOpen: this.state.rememberOffConfirmOpen,
+      cancelToggleRemember: () => this.setState({ rememberOffConfirmOpen: false }),
+      confirmToggleRemember: () => this.setState({ rememberOn: false, rememberOffConfirmOpen: false }),
+      forgetAllConfirmOpen: this.state.forgetAllConfirmOpen,
+      openForgetAllConfirm: () => this.setState({ forgetAllConfirmOpen: true }),
+      closeForgetAllConfirm: () => this.setState({ forgetAllConfirmOpen: false }),
+      confirmForgetAll: () => this.setState({ forgetAllConfirmOpen: false, memoryItems: [] }),
+      importMemoryOpen: this.state.importMemoryOpen,
+      openImportMemory: () => this.setState({ importMemoryOpen: true, importTab: 'file', importFileName: '', importFileNote: '', importText: '' }),
+      closeImportMemory: () => this.setState({ importMemoryOpen: false }),
+      importFileTabClass: this.state.importTab === 'file' ? 'is-active' : '',
+      importTextTabClass: this.state.importTab === 'text' ? 'is-active' : '',
+      showImportFile: this.state.importTab === 'file',
+      showImportText: this.state.importTab === 'text',
+      setImportTab: {
+        file: () => this.setState({ importTab: 'file' }),
+        text: () => this.setState({ importTab: 'text' })
+      },
+      importFileName: this.state.importFileName,
+      importFileNote: this.state.importFileNote,
+      importText: this.state.importText,
+      onImportFileChange: (e) => this.setState({ importFileName: e.target.files && e.target.files[0] ? e.target.files[0].name : '' }),
+      onImportFileNoteChange: (e) => this.setState({ importFileNote: e.target.value }),
+      onImportTextChange: (e) => this.setState({ importText: e.target.value }),
+      importDisabled: this.state.importTab === 'file' ? !this.state.importFileName : !this.state.importText.trim(),
+      submitImportMemory: () => {
+        this.setState({ importMemoryOpen: false, digestingMemory: true });
+        setTimeout(() => {
+          this.setState(s => {
+            const summary = s.importTab === 'file'
+              ? this.summarizeFile(s.importFileName, s.importFileNote)
+              : this.summarizeText(s.importText);
+            return { digestingMemory: false, reviewMemoryOpen: true, reviewDraft: summary };
+          });
+        }, 1400);
+      },
+      digestingMemory: this.state.digestingMemory,
+      reviewMemoryOpen: this.state.reviewMemoryOpen,
+      closeReviewMemory: () => this.setState({ reviewMemoryOpen: false }),
+      reviewDraftItems: this.state.reviewDraft.map((text, i) => ({
+        text,
+        onChange: (e) => this.setState(s => ({ reviewDraft: s.reviewDraft.map((t, j) => j === i ? e.target.value : t) })),
+        onRemove: () => this.setState(s => ({ reviewDraft: s.reviewDraft.filter((_, j) => j !== i) }))
+      })),
+      reviewEmpty: this.state.reviewDraft.filter(t => t.trim()).length === 0,
+      confirmReviewMemory: () => this.setState(s => ({
+        reviewMemoryOpen: false,
+        memoryItems: [
+          ...(s.memoryItems !== null ? s.memoryItems : this.defaultMemoryItems),
+          ...s.reviewDraft.filter(t => t.trim()).map(t => ({ text: t.trim(), time: 'Just now', source: 'From an imported memory', ts: Date.now() }))
+        ]
+      })),
       setTab: {
         attention: () => this.setState({ tab: 'attention' }),
         companies: () => this.setState({ tab: 'companies' }),
@@ -267,15 +464,15 @@ class Component extends DCLogic {
         { title: 'Capital deployment', description: 'Sample-data capital deployment dashboard built on the "capital-deployment (1)" template — all figures are illustrative dummy data.', meta: 'Updated 8 days ago' },
         { title: 'Benchmarks — Graha Nusantara company card (SAMPLE DATA layout review)', description: 'Layout-review build of the mnabrain-benchmarks template, populated end-to-end with clearly-labelled illustrative sample data for the Graha Nusantara company-card benchmark example. No figure is a verified real number.', meta: 'Updated 8 days ago' }
       ],
-      memoryItems: [
-        { text: 'User prefers shorter responses', time: '2 minutes ago' },
-        { text: "User's pipeline deals have combined revenue of $43.6B but median deal size is $82.5M revenue / $13.6M EBITDA, with no AI Opinion verdicts assigned yet to any of the 34 deals", time: '2 minutes ago' },
-        { text: "User's M&A thesis targets SEA Industrial Tech Roll-Up with deal size band of $10–50M revenue, but pipeline is bifurcated: thesis-aligned SEA mid-market cluster (PropSys Asia $18.2M, AmSure Insurance Brokers $21.0M, Reviewed Shopping List Co $22.6M) alongside outbound-sourced Northeast Asian semiconductor mega-caps (Amazing Semiconductor Engineering $18.0B, UMW $7.2B, Shinypants Chemical Co $14.0B) that exceed target criteria", time: '2 minutes ago' },
-        { text: "User manages an active M&A pipeline of 34 deals across L0–L5 funnel stages (L0: 30, L1: 3, L2: 1, L3+: 0) with no deals dropped, sourced roughly evenly from inbound (18) and outbound (16) channels as of October 5, 2026", time: '2 minutes ago' },
-        { text: "User's pipeline segment mix spans Chemicals, Logistics, Infrastructure, Industrial Automation, Clean Energy, Healthcare Services, and dense semiconductor supply-chain cluster (wet process chemicals, photoresists, CMP slurries, OSAT, equipment, packaging, foundry) with no single segment holding more than one company", time: '2 minutes ago' },
-        { text: "User's most advanced pipeline deals: Project Delphi (AI/SaaS, India, $29.5M revenue) at L2; Blue Harbor Logistics (Indonesia, $134.5M revenue), Ember Renewables (Vietnam, $74.3M revenue), and unnamed Project Gemini (Healthcare Services, Philippines, $61.0M revenue) at L1", time: '2 minutes ago' },
-        { text: "User's pipeline geography: Southeast Asia dominates by count (Indonesia 7, Malaysia 5, Vietnam 3, Singapore 3, Philippines 2), with separate Northeast Asia cluster (Japan 4, South Korea 3, Taiwan 3) of large-cap semiconductor/materials names averaging $3.6B–$8.5B revenue", time: '2 minutes ago' }
-      ]
+      memoryItems: [...(this.state.memoryItems !== null ? this.state.memoryItems : this.defaultMemoryItems)]
+        .sort((a, b) => (b.ts ?? 0) - (a.ts ?? 0))
+        .map((item, i) => ({ ...item, source: item.source || 'From a conversation', requestDelete: () => this.setState({ deleteMemoryIndex: this.state.memoryItems.indexOf(item) }) })),
+      deleteMemoryConfirmOpen: this.state.deleteMemoryIndex !== null,
+      cancelDeleteMemory: () => this.setState({ deleteMemoryIndex: null }),
+      confirmDeleteMemory: () => this.setState(s => ({
+        memoryItems: (s.memoryItems !== null ? s.memoryItems : this.defaultMemoryItems).filter((_, i) => i !== s.deleteMemoryIndex),
+        deleteMemoryIndex: null
+      })),
     };
   }
 }
