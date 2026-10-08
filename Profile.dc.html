@@ -94,14 +94,14 @@
 
   <sc-if value="{{ showAttention }}" hint-placeholder-val="{{ true }}">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-      <i class="far fa-shield-check" style="color:var(--hz-text-secondary)"></i>
+      
       <span style="font-weight:700">Needs your attention</span>
       <span class="hz-badge" style="background:var(--hz-neutral-100);color:var(--hz-text-secondary);border-radius:999px;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:12px">{{ attentionItems.length }}</span>
     </div>
     <div style="display:flex;flex-direction:column;gap:10px">
       <sc-for list="{{ attentionItems }}" as="item" hint-placeholder-count="2">
         <div class="hz-card hz-item-row" style="padding:16px 18px;display:flex;flex-direction:row;align-items:center;gap:14px;cursor:pointer">
-          <span style="width:34px;height:34px;border-radius:9px;background:var(--hz-blue-50);color:var(--hz-horizon-primary);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far fa-shield-check"></i></span>
+          
           <div style="flex:1;min-width:0">
             <div class="hz-h6" style="margin:0">{{ item.title }}</div>
             <div class="hz-body-r hz-muted" style="margin-top:2px">{{ item.status }}</div>
@@ -144,7 +144,7 @@
   </sc-if>
 
   <sc-if value="{{ showYourProfile }}" hint-placeholder-val="{{ false }}">
-    <div class="hz-card" style="padding:24px;max-width:560px;display:flex;flex-direction:column;gap:18px">
+    <div class="hz-card" style="padding:24px;max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:18px">
       <div class="hz-field hz-field--filled">
         <div class="hz-field__control">
           <span class="hz-field__label">Full Name</span>
@@ -157,16 +157,32 @@
           <input class="hz-field__input" placeholder=" " value="{{ profile.nickName }}" onChange="{{ updateProfile.nickName }}">
         </div>
       </div>
-      <div class="hz-field hz-field--filled">
+      <div class="hz-field hz-field--filled hz-field--disabled">
         <div class="hz-field__control">
           <span class="hz-field__label">Email</span>
-          <input class="hz-field__input" placeholder=" " value="{{ profile.email }}" onChange="{{ updateProfile.email }}">
+          <input class="hz-field__input" placeholder=" " value="{{ profile.email }}" disabled="{{ true }}">
         </div>
       </div>
-      <div class="hz-field hz-field--filled">
-        <div class="hz-field__control">
-          <span class="hz-field__label">Phone</span>
-          <input class="hz-field__input" placeholder=" " value="{{ profile.phone }}" onChange="{{ updateProfile.phone }}">
+      <div style="display:flex;gap:10px">
+        <div class="hz-field hz-field--filled" style="width:110px;flex-shrink:0">
+          <div class="hz-field__control">
+            <span class="hz-field__label">Code</span>
+            <select class="hz-field__input" value="{{ profile.phoneCode }}" onChange="{{ updateProfile.phoneCode }}">
+              <option value="+62">🇮🇩 +62</option>
+              <option value="+65">🇸🇬 +65</option>
+              <option value="+60">🇲🇾 +60</option>
+              <option value="+66">🇹🇭 +66</option>
+              <option value="+63">🇵🇭 +63</option>
+              <option value="+84">🇻🇳 +84</option>
+              <option value="+1">🇺🇸 +1</option>
+            </select>
+          </div>
+        </div>
+        <div class="hz-field hz-field--filled" style="flex:1">
+          <div class="hz-field__control">
+            <span class="hz-field__label">Phone</span>
+            <input class="hz-field__input" placeholder=" " value="{{ profile.phone }}" onChange="{{ updateProfile.phone }}">
+          </div>
         </div>
       </div>
       <div class="hz-field hz-field--filled">
@@ -181,7 +197,7 @@
           <textarea class="hz-field__input" placeholder=" " style="min-height:72px;resize:vertical;padding-top:1rem" value="{{ profile.howBrainHelps }}" onChange="{{ updateProfile.howBrainHelps }}"></textarea>
         </div>
       </div>
-      <div>
+      <div style="display:flex;justify-content:flex-end">
         <button class="hz-btn hz-btn--primary hz-btn--sm">Save Changes</button>
       </div>
     </div>
@@ -371,7 +387,7 @@ class Component extends DCLogic {
     const sentences = text.split(/(?<=[.!?])\s+/).map(s => s.trim()).filter(Boolean);
     return sentences.slice(0, 4).length ? sentences.slice(0, 4) : [text.trim().slice(0, 160)];
   }
-  state = { tab: 'yourProfile', rememberOn: true, rememberOffConfirmOpen: false, forgetAllConfirmOpen: false, importMemoryOpen: false, importTab: 'file', importFileName: '', importFileNote: '', importText: '', memoryItems: null, deleteMemoryIndex: null, reviewMemoryOpen: false, reviewDraft: [], profile: { fullName: 'Nur Khairusy', nickName: 'Nur', email: 'nur.khairusy@sqe.co.id', phone: '+62 812-3456-7890', jobTitle: 'Investment Associate', howBrainHelps: 'Helps me screen inbound deals faster and keep the pipeline up to date without manual data entry.' } };
+  state = { tab: 'yourProfile', rememberOn: true, rememberOffConfirmOpen: false, forgetAllConfirmOpen: false, importMemoryOpen: false, importTab: 'file', importFileName: '', importFileNote: '', importText: '', memoryItems: null, deleteMemoryIndex: null, reviewMemoryOpen: false, reviewDraft: [], profile: { fullName: 'Nur Khairusy', nickName: 'Nur', email: 'nur.khairusy@sqe.co.id', phone: '8123456789', phoneCode: '+62', jobTitle: 'Investment Associate', howBrainHelps: 'Helps me screen inbound deals faster and keep the pipeline up to date without manual data entry.' } };
   renderVals() {
     const tab = this.state.tab;
     const cls = t => t === tab ? 'is-active' : '';
@@ -392,6 +408,7 @@ class Component extends DCLogic {
         nickName: e => this.setState(s => ({ profile: { ...s.profile, nickName: e.target.value } })),
         email: e => this.setState(s => ({ profile: { ...s.profile, email: e.target.value } })),
         phone: e => this.setState(s => ({ profile: { ...s.profile, phone: e.target.value } })),
+        phoneCode: e => this.setState(s => ({ profile: { ...s.profile, phoneCode: e.target.value } })),
         jobTitle: e => this.setState(s => ({ profile: { ...s.profile, jobTitle: e.target.value } })),
         howBrainHelps: e => this.setState(s => ({ profile: { ...s.profile, howBrainHelps: e.target.value } }))
       },
