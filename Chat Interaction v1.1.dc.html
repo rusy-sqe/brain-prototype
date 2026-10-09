@@ -11,7 +11,11 @@
 <link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
 <link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
 <script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
-<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)} .hz-table--compact td{padding:8px 10px !important}</style>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)} .hz-table--compact td{padding:8px 10px !important}
+.source-preview__bubble{opacity:0;visibility:hidden;transition:opacity .12s}
+.source-preview:hover .source-preview__bubble{opacity:1;visibility:visible}
+.cite-preview__bubble{opacity:0;visibility:hidden;transition:opacity .12s}
+.cite-preview:hover .cite-preview__bubble{opacity:1;visibility:visible}</style>
 </helmet>
 <div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:{{ sidebarGridCols }}">
 
@@ -365,16 +369,53 @@
                 </sc-if>
                 <sc-if value="{{ msg.isDone }}" hint-placeholder-val="{{ false }}">
                   <sc-if value="{{ msg.isPlainDone }}" hint-placeholder-val="{{ true }}">
-                    <div style="font-size:14px;color:var(--hz-text-primary);line-height:1.5">{{ msg.text }}</div>
+                    <div style="font-size:14px;color:var(--hz-text-primary);line-height:1.5">{{ msg.text }}<span class="cite-preview" style="position:relative;display:inline-flex;vertical-align:middle">
+                      <span style="display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;margin-left:4px;background:#fff;color:var(--hz-text-secondary);border-radius:999px;font-size:10px;font-weight:700;cursor:pointer">1</span>
+                      <span class="hz-tooltip hz-tooltip--bottom cite-preview__bubble" style="position:absolute;top:calc(100% + 10px);left:0;z-index:60;width:260px">
+                        <span class="hz-tooltip__arrow" style="left:10px"></span>
+                        <span class="hz-tooltip__row" style="flex-direction:column;align-items:flex-start;gap:4px">
+                          <span class="hz-tooltip__text" style="font-size:12px;font-weight:700">{{ msg.plainSources.0.label }}</span>
+                          <span class="hz-tooltip__text" style="font-size:12px;line-height:1.4;color:var(--hz-text-secondary)">{{ msg.plainCitePreview }}</span>
+                        </span>
+                      </span>
+                    </span></div>
+                    <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+                      <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--hz-text-secondary)"><i class="far fa-books"></i>Sources</div>
+                      <div style="display:flex;flex-wrap:wrap;gap:8px">
+                        <sc-for list="{{ msg.plainSources }}" as="src" hint-placeholder-count="3">
+                          <span class="source-preview" style="position:relative;display:inline-flex">
+                            <span class="hz-chip" style="font-size:12px;padding:5px 10px;background:var(--hz-blue-50);color:var(--hz-horizon-primary);border:none;cursor:pointer;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span style="font-weight:700;margin-right:4px">{{ src.num }}.</span>{{ src.label }}<i class="far fa-external-link" style="font-size:10px;margin-left:6px"></i></span>
+                            <span class="hz-tooltip hz-tooltip--bottom source-preview__bubble" style="position:absolute;top:calc(100% + 10px);left:0;z-index:60;width:260px">
+                              <span class="hz-tooltip__arrow" style="left:16px"></span>
+                              <span class="hz-tooltip__row"><span class="hz-tooltip__text" style="font-size:12px;line-height:1.4">{{ src.label }}</span></span>
+                            </span>
+                          </span>
+                        </sc-for>
+                      </div>
+                      <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--hz-text-secondary);margin-top:4px"><i class="far fa-file"></i>Files</div>
+                      <div style="display:flex;flex-wrap:wrap;gap:8px">
+                        <sc-for list="{{ msg.plainFiles }}" as="file" hint-placeholder-count="1">
+                          <span class="hz-chip" style="font-size:12px;padding:5px 10px;background:var(--hz-orange-50, #fff4e5);color:var(--hz-orange-600, #b5540a);border:none;cursor:pointer"><i class="far fa-file-excel" style="margin-right:6px"></i>{{ file.name }}</span>
+                        </sc-for>
+                      </div>
+                    </div>
                   </sc-if>
                   <sc-if value="{{ msg.isRich }}" hint-placeholder-val="{{ false }}">
                     <div style="display:flex;flex-direction:column;gap:12px">
                       <div class="hz-h5" style="margin:0;border-bottom:1px solid var(--hz-border-subtle);padding-bottom:8px">{{ msg.richHeading }}</div>
                       <div style="display:flex;flex-direction:column;gap:10px">
                         <sc-for list="{{ msg.richItems }}" as="it" hint-placeholder-count="3">
-                          <div style="display:flex;gap:8px;font-size:14px;line-height:1.5;color:var(--hz-text-primary)">
-                            <span style="flex-shrink:0;font-weight:700">{{ it.num }}.</span>
-                            <span><span style="font-weight:700">{{ it.title }}</span> {{ it.desc }}</span>
+                          <div style="font-size:14px;line-height:1.5;color:var(--hz-text-primary)">
+                            <span style="font-weight:700">{{ it.title }}</span> {{ it.desc }}<span class="cite-preview" style="position:relative;display:inline-flex;vertical-align:middle">
+                              <span style="display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;margin-left:4px;background:#fff;color:var(--hz-text-secondary);border-radius:999px;font-size:10px;font-weight:700;cursor:pointer">{{ it.num }}</span>
+                              <span class="hz-tooltip hz-tooltip--bottom cite-preview__bubble" style="position:absolute;top:calc(100% + 10px);left:0;z-index:60;width:260px">
+                                <span class="hz-tooltip__arrow" style="left:10px"></span>
+                                <span class="hz-tooltip__row" style="flex-direction:column;align-items:flex-start;gap:4px">
+                                  <span class="hz-tooltip__text" style="font-size:12px;font-weight:700">{{ it.citeSource }}</span>
+                                  <span class="hz-tooltip__text" style="font-size:12px;line-height:1.4;color:var(--hz-text-secondary)">{{ it.citePreview }}</span>
+                                </span>
+                              </span>
+                            </span>
                           </div>
                         </sc-for>
                       </div>
@@ -383,7 +424,13 @@
                         <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--hz-text-secondary)"><i class="far fa-books"></i>Sources</div>
                         <div style="display:flex;flex-wrap:wrap;gap:8px">
                           <sc-for list="{{ msg.richSources }}" as="src" hint-placeholder-count="4">
-                            <span class="hz-chip" style="font-size:12px;padding:5px 10px;background:var(--hz-blue-50);color:var(--hz-horizon-primary);border:none;cursor:pointer;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ src.label }}<i class="far fa-external-link" style="font-size:10px;margin-left:6px"></i></span>
+                            <span class="source-preview" style="position:relative;display:inline-flex">
+                              <span class="hz-chip" style="font-size:12px;padding:5px 10px;background:var(--hz-blue-50);color:var(--hz-horizon-primary);border:none;cursor:pointer;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ src.label }}<i class="far fa-external-link" style="font-size:10px;margin-left:6px"></i></span>
+                              <span class="hz-tooltip hz-tooltip--bottom source-preview__bubble" style="position:absolute;top:calc(100% + 10px);left:0;z-index:60;width:260px">
+                                <span class="hz-tooltip__arrow" style="left:16px"></span>
+                                <span class="hz-tooltip__row"><span class="hz-tooltip__text" style="font-size:12px;line-height:1.4">{{ src.label }}</span></span>
+                              </span>
+                            </span>
                           </sc-for>
                         </div>
                         <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--hz-text-secondary);margin-top:4px"><i class="far fa-file"></i>Files</div>
@@ -395,22 +442,23 @@
                       </div>
                     </div>
                   </sc-if>
-                  <div style="display:flex;align-items:center;gap:2px;align-self:flex-start">
+                  <div style="display:flex;align-items:center;gap:2px;align-self:flex-start;width:100%">
                     <button onClick="{{ msg.copy }}" style="display:flex;align-items:center;gap:6px;border:none;background:none;padding:4px 6px;margin-left:-6px;font-family:inherit;font-size:12px;color:var(--hz-text-tertiary);cursor:pointer;border-radius:6px" style-hover="background:var(--hz-neutral-100);color:var(--hz-text-secondary)"><i class="far {{ msg.copyIcon }}" style="font-size:12px"></i><span>{{ msg.copyLabel }}</span></button>
                     <button onClick="{{ msg.retry }}" style="display:flex;align-items:center;gap:6px;border:none;background:none;padding:4px 6px;font-family:inherit;font-size:12px;color:var(--hz-text-tertiary);cursor:pointer;border-radius:6px" style-hover="background:var(--hz-neutral-100);color:var(--hz-text-secondary)"><i class="far fa-redo" style="font-size:12px"></i><span>Retry</span></button>
+                    <sc-if value="{{ msg.isLastDone }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex;align-items:center;gap:4px;margin-left:auto">
+                        <button onClick="{{ toggleWriteFeedback }}" style="border:1px solid var(--hz-border-default);background:var(--hz-surface-card);color:var(--hz-text-primary);border-radius:999px;padding:3px 10px;font-family:inherit;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:4px" style-hover="background:var(--hz-neutral-100);border-color:var(--hz-horizon-primary);color:var(--hz-horizon-primary)"><i class="far fa-bullhorn" style="font-size:10px"></i>Write a feedback</button>
+                        <button onClick="{{ selectThumbsUp }}" style="border:none;background:none;cursor:pointer;padding:1px;font-size:14px;color:{{ thumbsUpColor }};margin-left:6px"><i class="{{ thumbsUpIcon }} fa-thumbs-up"></i></button>
+                        <button onClick="{{ selectThumbsDown }}" style="border:none;background:none;cursor:pointer;padding:1px;font-size:14px;color:{{ thumbsDownColor }}"><i class="{{ thumbsDownIcon }} fa-thumbs-down"></i></button>
+                      </div>
+                    </sc-if>
                   </div>
                   <sc-if value="{{ msg.isLastDone }}" hint-placeholder-val="{{ false }}">
                     <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px">
                       <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
-                        <span style="font-size:12px;color:var(--hz-text-tertiary)">Rate this:</span>
-                        <div style="display:flex;align-items:center">
-                          <sc-for list="{{ feedbackStars }}" as="star" hint-placeholder-count="5">
-                            <button onClick="{{ star.select }}" style="border:none;background:none;cursor:pointer;padding:1px;font-size:13px;color:{{ star.color }}"><i class="{{ star.icon }} fa-star"></i></button>
-                          </sc-for>
-                        </div>
-                        <button onClick="{{ askBrainToImprove }}" disabled="{{ askBrainDisabled }}" style="border:1px solid var(--hz-horizon-primary);background:var(--hz-blue-50);color:var(--hz-horizon-primary);border-radius:999px;padding:3px 10px;font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:4px" style-hover="background:var(--hz-blue-100)"><i class="far {{ askBrainIcon }}" style="font-size:10px"></i>{{ askBrainLabel }}</button>
-                        <button onClick="{{ toggleWriteFeedback }}" style="border:1px solid var(--hz-border-default);background:var(--hz-surface-card);color:var(--hz-text-primary);border-radius:999px;padding:3px 10px;font-family:inherit;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:4px" style-hover="background:var(--hz-neutral-100);border-color:var(--hz-horizon-primary);color:var(--hz-horizon-primary)"><i class="far fa-bullhorn" style="font-size:10px"></i>Write a feedback</button>
-                        <button onClick="{{ dismissFeedback }}" style="border:none;background:none;cursor:pointer;color:var(--hz-text-tertiary);padding:1px;margin-left:auto"><i class="far fa-times" style="font-size:11px"></i></button>
+                        <sc-if value="{{ feedbackOneStar }}" hint-placeholder-val="{{ false }}">
+                          <button onClick="{{ askBrainToImprove }}" disabled="{{ askBrainDisabled }}" style="border:1px solid var(--hz-horizon-primary);background:var(--hz-blue-50);color:var(--hz-horizon-primary);border-radius:999px;padding:3px 10px;font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:4px" style-hover="background:var(--hz-blue-100)"><i class="far {{ askBrainIcon }}" style="font-size:10px"></i>{{ askBrainLabel }}</button>
+                        </sc-if>
                       </div>
                       <sc-if value="{{ feedbackLowRating }}" hint-placeholder-val="{{ false }}">
                         <div style="display:flex;flex-wrap:wrap;gap:6px">
@@ -532,6 +580,8 @@ class Component extends DCLogic {
     "Let me check the pipeline and recent activity on this first.",
     "Looking into the records now to get you an accurate answer."
   ];
+  plainReplySources = ["Q3 2026 Pipeline Export.csv", "Internal Deal Notes — Sourcing Team", "SEA Market Activity Tracker"];
+  plainReplyFiles = ["pipeline_export_q3.xlsx"];
   copilotReplies = [
     "Here's what I found: 3 deals in L0 haven't had activity in over 14 days — Project Keystone, Project Harbor, and Project Lumen. Want me to draft follow-up nudges?",
     'Based on your pipeline, revenue and EBITDA are missing for most L0 entries. I can flag those for the sourcing team to fill in.',
@@ -1355,8 +1405,11 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
         isDone: m.role === 'assistant' && m.status === 'done',
         isRich: !!m.isRich,
         isPlainDone: m.role === 'assistant' && m.status === 'done' && !m.isRich,
+        plainSources: m.role === 'assistant' && m.status === 'done' && !m.isRich ? this.plainReplySources.map((s, i) => ({ label: s, num: i + 1 })) : [],
+        plainFiles: m.role === 'assistant' && m.status === 'done' && !m.isRich ? this.plainReplyFiles.map(f => ({ name: f })) : [],
+        plainCitePreview: 'Pulled from ' + this.plainReplySources[0] + ' — a short preview excerpt of the cited passage would appear here.',
         richHeading: m.rich ? m.rich.heading : '',
-        richItems: m.rich ? m.rich.items.map((it, i) => ({ num: i + 1, title: it.title, desc: it.desc })) : [],
+        richItems: m.rich ? m.rich.items.map((it, i) => ({ num: i + 1, title: it.title, desc: it.desc, citeSource: m.rich.sources[i % m.rich.sources.length], citePreview: (m.rich.sources[i % m.rich.sources.length] || '') + ' — full article text would appear here as a short preview excerpt.' })) : [],
         richFooter: m.rich ? m.rich.footer : '',
         richSources: m.rich ? m.rich.sources.map(s => ({ label: s })) : [],
         richFiles: m.rich ? m.rich.files.map(f => ({ name: f })) : [],
@@ -1371,12 +1424,13 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
         retry: () => this.retryCopilotMessage(m.id)
       })),
       copilotGenerating: this.sidebarState.copilotMessages.some(m => m.role === 'assistant' && m.status !== 'done'),
-      feedbackStars: [1, 2, 3, 4, 5].map(n => ({
-        icon: n <= this.sidebarState.feedbackRating ? 'fas' : 'far',
-        color: n <= this.sidebarState.feedbackRating ? 'var(--hz-orange-500)' : 'var(--hz-neutral-300)',
-        select: () => this.setState({}) || (this.sidebarState.feedbackRating = n, this.forceUpdate())
-      })),
-      feedbackRated: this.sidebarState.feedbackRating > 0,
+      thumbsUpIcon: this.sidebarState.feedbackRating === 1 ? 'fas' : 'far',
+      thumbsUpColor: this.sidebarState.feedbackRating === 1 ? 'var(--hz-horizon-primary)' : 'var(--hz-neutral-400)',
+      thumbsDownIcon: this.sidebarState.feedbackRating === -1 ? 'fas' : 'far',
+      thumbsDownColor: this.sidebarState.feedbackRating === -1 ? 'var(--hz-horizon-primary)' : 'var(--hz-neutral-400)',
+      selectThumbsUp: () => { this.sidebarState.feedbackRating = 1; this.forceUpdate(); },
+      selectThumbsDown: () => { this.sidebarState.feedbackRating = -1; this.forceUpdate(); },
+      feedbackRated: this.sidebarState.feedbackRating !== 0,
       dismissFeedback: () => { this.sidebarState.feedbackDismissed = true; this.forceUpdate(); },
       copilotTabIsCowork: this.sidebarState.copilotActiveTab === 'cowork',
       ...this.buildCoworkVals(),
@@ -1406,7 +1460,8 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       toggleWriteFeedback: () => { this.sidebarState.writeFeedbackOpen = !this.sidebarState.writeFeedbackOpen; this.sidebarState.writeFeedbackSubmitted = false; this.forceUpdate(); },
       writeFeedbackSubmitLabel: this.sidebarState.writeFeedbackSubmitted ? 'Sent!' : 'Submit',
       submitWrittenFeedback: () => { this.sidebarState.writeFeedbackSubmitted = true; this.forceUpdate(); setTimeout(() => { this.sidebarState.writeFeedbackOpen = false; this.sidebarState.writeFeedbackSubmitted = false; this.sidebarState.feedbackText = ''; this.forceUpdate(); }, 900); },
-      feedbackLowRating: this.sidebarState.feedbackRating > 0 && this.sidebarState.feedbackRating <= 2,
+      feedbackLowRating: this.sidebarState.feedbackRating === -1,
+      feedbackOneStar: this.sidebarState.feedbackRating === -1,
       feedbackTags: (() => {
         const lastMsg = this.getLastDoneMsg();
         const hasTools = !!(lastMsg && lastMsg.tools && lastMsg.tools.length > 0);
