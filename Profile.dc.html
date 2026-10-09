@@ -209,7 +209,10 @@
         <div class="hz-h6" style="margin:0">Remember me across conversations</div>
         <div class="hz-body-r hz-muted" style="margin-top:4px">When on, CoPilot remembers your preferences, pipeline context, and past conversations — so it gets sharper and more personal the more you use it, instead of starting from zero every chat. Turn it off anytime; memories below are kept until you delete them.</div>
       </div>
-      <label class="hz-switch" style="flex-shrink:0"><input type="checkbox" checked="{{ rememberOn }}" onChange="{{ requestToggleRemember }}"><span class="hz-switch__slider"></span></label>
+      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+        <span class="hz-body-s" style="font-weight:700;color:{{ rememberOnColor }};min-width:28px">{{ rememberOnLabel }}</span>
+        <label class="hz-switch"><input type="checkbox" checked="{{ rememberOn }}" onChange="{{ requestToggleRemember }}"><span class="hz-switch__slider"></span></label>
+      </div>
     </div>
 
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
@@ -224,10 +227,10 @@
       <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
         <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:380px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
           <div class="hz-h5" style="margin:0 0 8px">Delete this memory?</div>
-          <div class="hz-body-r hz-muted" style="margin-bottom:20px">CoPilot will no longer use this when answering you. This can't be undone.</div>
+          <div class="hz-body-r hz-muted" style="margin-bottom:20px">BRAIN will permanently forget this and stop using it in answers. This can’t be undone.</div>
           <div style="display:flex;justify-content:flex-end;gap:10px">
-            <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ cancelDeleteMemory }}">Cancel</button>
-            <button class="hz-btn hz-btn--primary hz-btn--sm" style="background:var(--hz-red-600, #c0392b)" onClick="{{ confirmDeleteMemory }}">Delete</button>
+            <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ cancelDeleteMemory }}">Keep it</button>
+            <button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-red-600, #c0392b)" onClick="{{ confirmDeleteMemory }}">Delete anyway</button>
           </div>
         </div>
       </div>
@@ -324,7 +327,7 @@
       <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
         <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:400px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
           <div class="hz-h5" style="margin:0 0 8px">Turn off memory?</div>
-          <div class="hz-body-r hz-muted" style="margin-bottom:20px">CoPilot will stop learning from your chats and stop using what it already knows — so answers get more generic and you'll have to re-explain context it already understood. Existing memories are kept until you delete them, but nothing new will be remembered.</div>
+          <div class="hz-body-r hz-muted" style="margin-bottom:20px">CoPilot will stop saving new memories and won’t use your saved memories in answers. Your saved memories stay until you delete them. You can turn memory back on anytime.</div>
           <div style="display:flex;justify-content:flex-end;gap:10px">
             <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ cancelToggleRemember }}">Keep it on</button>
             <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ confirmToggleRemember }}">Turn Off</button>
@@ -336,8 +339,8 @@
     <sc-if value="{{ forgetAllConfirmOpen }}" hint-placeholder-val="{{ false }}">
       <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
         <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:400px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
-          <div class="hz-h5" style="margin:0 0 8px">Forget everything?</div>
-          <div class="hz-body-r hz-muted" style="margin-bottom:20px">This permanently deletes everything Investment Brain has learned about you — preferences, pipeline context, and prior conversations. CoPilot responses will lose this context and won't be personalized until it learns again from scratch. This can't be undone.</div>
+          <div class="hz-h5" style="margin:0 0 8px">Delete all memories?</div>
+          <div class="hz-body-r hz-muted" style="margin-bottom:20px">This permanently deletes everything BRAIN has saved about you, including preferences, context, and what it learned from past conversations. <br><br>Your chat history isn’t affected. This can’t be undone.</div>
           <div style="display:flex;justify-content:flex-end;gap:10px">
             <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeForgetAllConfirm }}">Cancel</button>
             <button class="hz-btn hz-btn--primary hz-btn--sm" style="background:var(--hz-red-600, #c0392b)" onClick="{{ confirmForgetAll }}">Forget All</button>
@@ -413,6 +416,8 @@ class Component extends DCLogic {
         howBrainHelps: e => this.setState(s => ({ profile: { ...s.profile, howBrainHelps: e.target.value } }))
       },
       rememberOn: this.state.rememberOn,
+      rememberOnLabel: this.state.rememberOn ? 'ON' : 'OFF',
+      rememberOnColor: this.state.rememberOn ? 'var(--hz-horizon-primary)' : 'var(--hz-text-tertiary)',
       requestToggleRemember: () => this.state.rememberOn ? this.setState({ rememberOffConfirmOpen: true }) : this.setState({ rememberOn: true }),
       rememberOffConfirmOpen: this.state.rememberOffConfirmOpen,
       cancelToggleRemember: () => this.setState({ rememberOffConfirmOpen: false }),
@@ -483,7 +488,7 @@ class Component extends DCLogic {
       ],
       memoryItems: [...(this.state.memoryItems !== null ? this.state.memoryItems : this.defaultMemoryItems)]
         .sort((a, b) => (b.ts ?? 0) - (a.ts ?? 0))
-        .map((item, i) => ({ ...item, source: item.source || 'From a conversation', requestDelete: () => this.setState({ deleteMemoryIndex: this.state.memoryItems.indexOf(item) }) })),
+        .map((item, i) => ({ ...item, source: item.source || 'From a conversation', requestDelete: () => this.setState({ deleteMemoryIndex: (this.state.memoryItems !== null ? this.state.memoryItems : this.defaultMemoryItems).indexOf(item) }) })),
       deleteMemoryConfirmOpen: this.state.deleteMemoryIndex !== null,
       cancelDeleteMemory: () => this.setState({ deleteMemoryIndex: null }),
       confirmDeleteMemory: () => this.setState(s => ({

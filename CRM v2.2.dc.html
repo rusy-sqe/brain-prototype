@@ -653,9 +653,13 @@
       <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeEditModal }}"><i class="far fa-times"></i></button>
     </div>
     <div style="padding:24px;display:flex;flex-direction:column;gap:14px">
-      <div style="display:flex;align-items:center;gap:10px">
-        <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">{{ editInitials }}</span>
-        <div class="hz-body-s hz-muted">{{ editCompany }}</div>
+      <div>
+        <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em;margin-bottom:6px">SOURCE NAME</div>
+        <input value="{{ editCompany }}" onChange="{{ setEditCompany }}" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;font-weight:600;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+      </div>
+      <div>
+        
+        
       </div>
       <div>
         <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em;margin-bottom:6px">NAME</div>
@@ -750,10 +754,10 @@ class Component extends DCLogic {
 
   contacts = {
     0: { name: 'Kenny Man', email: 'kennyman@01fintech.com', company: '01fintech', initials: 'KM', source: 'Inbound · Auto-detected', title: 'Founder & Managing Partner', phone: '+6582883968', pastDeals: '2', areaFocus: 'Southeast Asia', industryFocus: 'Fintech', highlights: ['Discussed potential joint-venture structure for OTT distribution', 'Kenny flagged Q3 fundraising timeline as tight', 'Asked for warm intro to our portfolio payments company'] },
-    1: { name: 'Austin Miller', email: 'miller@385capitalworks.com', company: '385capitalworks', initials: 'AM', title: 'Partner', phone: '+1 917 555 0134', pastDeals: '5', areaFocus: 'North America', industryFocus: 'Private Equity', highlights: ['Interested in co-investing on next round', 'Requested updated financial model', 'Mentioned fundraising close targeted for year-end'] },
-    2: { name: 'Ravena', email: 'ravena@abacuscapital.com', company: 'Abacus Capital', initials: 'R', title: 'Investment Associate', phone: '+62 812 3456 7890', pastDeals: '1', areaFocus: 'Indonesia', industryFocus: 'Asset Management', highlights: ['Shared investment opportunity in logistics sector', 'Waiting on our IC feedback before next step'] },
-    3: { name: 'Darrel Digal', email: 'darreldigal@axcionaenergy.com', company: 'Acciona Energy', initials: 'DD', title: 'Business Development', phone: '+62 811 2233 4455', pastDeals: '3', areaFocus: 'Indonesia', industryFocus: 'Renewable Energy', highlights: ['Solar project pipeline expanding into new region', 'Needs decision on project-development partnership by month-end'] },
-    4: { name: 'Adhitia', email: 'adhitia.budiarjo@adivira.com', company: 'Adivira', initials: 'A', title: 'Partnership Lead', phone: '+62 813 9988 7766', pastDeals: '1', areaFocus: 'Indonesia', industryFocus: 'Fintech', highlights: ['Proposed white-label partnership terms', 'Following up on product-distribution agreement draft'] },
+    1: { name: 'Austin Miller', email: 'miller@385capitalworks.com', company: '385capitalworks', initials: 'AM', source: 'Inbound · Auto-detected', title: 'Partner', phone: '+1 917 555 0134', pastDeals: '5', areaFocus: 'North America', industryFocus: 'Private Equity', highlights: ['Interested in co-investing on next round', 'Requested updated financial model', 'Mentioned fundraising close targeted for year-end'] },
+    2: { name: 'Ravena', email: 'ravena@abacuscapital.com', company: 'Abacus Capital', initials: 'R', source: 'Inbound · Auto-detected', title: 'Investment Associate', phone: '+62 812 3456 7890', pastDeals: '1', areaFocus: 'Indonesia', industryFocus: 'Asset Management', highlights: ['Shared investment opportunity in logistics sector', 'Waiting on our IC feedback before next step'] },
+    3: { name: 'Darrel Digal', email: 'darreldigal@axcionaenergy.com', company: 'Acciona Energy', initials: 'DD', source: 'Inbound · Auto-detected', title: 'Business Development', phone: '+62 811 2233 4455', pastDeals: '3', areaFocus: 'Indonesia', industryFocus: 'Renewable Energy', highlights: ['Solar project pipeline expanding into new region', 'Needs decision on project-development partnership by month-end'] },
+    4: { name: 'Adhitia', email: 'adhitia.budiarjo@adivira.com', company: 'Adivira', initials: 'A', source: 'Inbound · Auto-detected', title: 'Partnership Lead', phone: '+62 813 9988 7766', pastDeals: '1', areaFocus: 'Indonesia', industryFocus: 'Fintech', highlights: ['Proposed white-label partnership terms', 'Following up on product-distribution agreement draft'] },
   };
 
   editContact(i) {
@@ -826,6 +830,7 @@ class Component extends DCLogic {
       editModalOpen: this.state.editModalOpen,
       editInitials: this.state.editForm.initials || '',
       editCompany: this.state.editForm.company || '',
+      editSource: this.state.editForm.source || '',
       editName: this.state.editForm.name || '',
       editTitle: this.state.editForm.title || '',
       editEmail: this.state.editForm.email || '',
@@ -835,6 +840,8 @@ class Component extends DCLogic {
       editIndustryFocus: this.state.editForm.industryFocus || '',
       closeEditModal: () => this.closeEditModal(),
       saveEditContact: () => this.saveEditContact(),
+      setEditSource: (e) => this.setEditField('source', e),
+      setEditCompany: (e) => this.setEditField('company', e),
       setEditName: (e) => this.setEditField('name', e),
       setEditTitle: (e) => this.setEditField('title', e),
       setEditEmail: (e) => this.setEditField('email', e),
