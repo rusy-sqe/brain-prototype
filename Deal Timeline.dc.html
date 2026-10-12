@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)} textarea:focus,input:focus{outline:none;border-color:var(--hz-horizon-primary)}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:200px minmax(0,1fr)">
+
+<div class="hz-sidebar" style="width:200px;height:100vh;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="uploads/logo-brain-light.svg" alt="Investment Brain" style="height:24px;width:auto">
+      </div>
+      <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:10px;padding:6px 8px">
+      
+      <span><span class="hz-account-trigger__name" style="display:block">M&amp;A Team<br></span></span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-message-plus"></i>New Chat</button>
+  </div>
+  <div style="padding:8px 6px;flex:1;min-height:0;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-th-large" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-search-location" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span><span class="hz-badge hz-badge--secondary" style="margin-left:auto;background:var(--hz-neutral-300);color:var(--hz-text-primary)">9</span></a>
+        <a href="Pipeline v2.1.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-sitemap" style="font-size:17px"></i><span class="hz-sidebar__label">Pipeline</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Master Data</span></div>
+        <a href="CRM v2.2.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-university" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb" style="font-size:17px"></i><span class="hz-sidebar__label">Insights</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-desktop" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-magic" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-alt" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%">
+      
+      <span><span class="hz-account-trigger__name" style="display:block">Nur Khairusy</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div style="min-width:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column">
+
+  <div style="background:linear-gradient(135deg,var(--hz-blue-50),var(--hz-neutral-50));flex-shrink:0">
+    <div style="padding:16px 28px 0;display:flex;align-items:center;justify-content:flex-end">
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-text-tertiary)"><i class="far fa-compress-alt"></i>Exit Full Screen</button>
+    </div>
+    <div style="padding:4px 28px 16px;display:flex;align-items:center;gap:14px">
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;height:32px;padding:0;justify-content:center;color:var(--hz-text-secondary)"><i class="far fa-arrow-left"></i></button>
+      <span class="hz-avatar" style="background:var(--hz-blue-100);color:var(--hz-horizon-primary);font-weight:700;flex-shrink:0">BC</span>
+      <div class="hz-h4" style="margin:0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Bibica Corporation <span style="color:var(--hz-text-tertiary);font-weight:600">[Project Xero-Two]</span></div>
+      <span class="hz-badge hz-badge--soft" style="background:var(--hz-surface-card);border:1px solid var(--hz-border-default);color:var(--hz-text-secondary);flex-shrink:0;white-space:nowrap">Paper &amp; Pulp</span>
+      <span class="hz-badge hz-badge--soft" style="background:var(--hz-surface-card);border:1px solid var(--hz-border-default);color:var(--hz-text-secondary);flex-shrink:0;white-space:nowrap">LO · Company Sourcing</span>
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;height:32px;padding:0;justify-content:center;margin-left:auto;flex-shrink:0;color:var(--hz-text-tertiary)"><i class="far fa-ellipsis-v"></i></button>
+    </div>
+    <div class="hz-tabs" style="padding:0 28px">
+      <button class="hz-tab">Overview</button>
+      <button class="hz-tab">Additional Context</button>
+      <button class="hz-tab is-active">Timeline</button>
+      <button class="hz-tab">Details</button>
+      <button class="hz-tab">L1 Screening</button>
+      <button class="hz-tab">Voting</button>
+    </div>
+  </div>
+
+  <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px;flex:1">
+
+    <div class="hz-card" style="padding:20px">
+      <div class="hz-body-r" style="font-weight:700;margin-bottom:12px">Add to timeline</div>
+      <textarea placeholder="Write a timeline entry…" style="width:100%;min-height:90px;border:1px solid var(--hz-border-default);border-radius:8px;padding:12px;font-family:inherit;font-size:14px;color:var(--hz-text-primary);background:var(--hz-surface-page);resize:vertical"></textarea>
+      <div style="display:flex;gap:10px;margin-top:12px">
+        <button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-plus"></i>Add entry</button>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-upload"></i>Upload file</button>
+        <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-link"></i>Add link</button>
+      </div>
+    </div>
+
+    <div class="hz-card" style="padding:20px;flex:1;display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">4 EVENTS</div>
+        <div style="display:flex;gap:4px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;height:28px;padding:0;justify-content:center;color:var(--hz-text-tertiary)"><i class="far fa-chevron-left"></i></button>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;height:28px;padding:0;justify-content:center;color:var(--hz-text-tertiary)"><i class="far fa-chevron-right"></i></button>
+        </div>
+      </div>
+
+      <div style="position:relative;padding:0 6px">
+        <div style="position:absolute;top:62px;left:6%;right:6%;height:2px;background:var(--hz-border-subtle)"></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative">
+          <sc-for list="{{ events }}" as="ev" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+            <div class="hz-body-s hz-muted">{{ ev.date }}</div>
+            <div class="hz-body-s" style="font-weight:700;letter-spacing:.04em;color:{{ ev.typeColor }}">{{ ev.typeLabel }}</div>
+            <span style="width:11px;height:11px;border-radius:50%;background:{{ ev.dotColor }};border:2px solid var(--hz-surface-card);box-shadow:0 0 0 2px {{ ev.dotColor }};z-index:1"></span>
+            <button onClick="{{ ev.select }}" style="margin-top:8px;display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:8px;border:1px solid {{ ev.cardBorder }};background:var(--hz-surface-card);cursor:pointer;font-family:inherit;max-width:100%">
+              <i class="{{ ev.icon }}" style="color:var(--hz-text-tertiary);font-size:12px;flex-shrink:0"></i>
+              <span class="hz-body-s" style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--hz-text-primary)">{{ ev.title }}</span>
+            </button>
+          </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <sc-if value="{{ selectedEvent }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-card" style="padding:20px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <i class="{{ selectedEvent.icon }}" style="color:var(--hz-text-tertiary);font-size:14px;margin-top:3px"></i>
+          <div>
+            <div class="hz-h5" style="margin:0">{{ selectedEvent.title }}</div>
+            <div class="hz-body-s hz-muted" style="margin-top:2px">{{ selectedEvent.typeLabel }} · {{ selectedEvent.timestamp }} · {{ selectedEvent.relative }}</div>
+            
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:4px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-red-600)" onClick="{{ requestDeleteSelected }}"><i class="far fa-trash"></i>Delete</button>
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeSelected }}">Close</button>
+        </div>
+      </div>
+      <div class="hz-body-r" style="margin-top:16px;white-space:pre-wrap;line-height:1.6">{{ selectedEvent.body }}</div>
+    </div>
+    </sc-if>
+
+  </div>
+</div>
+
+<sc-if value="{{ deleteConfirmOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1000" onClick="{{ cancelDelete }}">
+  <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:400px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))" onClick="{{ stopPropagation }}">
+    <div class="hz-h5" style="margin:0 0 8px">Delete this entry?</div>
+    <div class="hz-body-r hz-muted" style="margin-bottom:20px">This removes it from the deal timeline permanently. This can't be undone.</div>
+    <div style="display:flex;justify-content:flex-end;gap:10px">
+      <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ cancelDelete }}">Cancel</button>
+      <button class="hz-btn hz-btn--primary hz-btn--sm" style="background:var(--hz-red-600)" onClick="{{ confirmDelete }}">Delete</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { selectedId: 2, deleteConfirmOpen: false };
+
+  items = [
+    { id: 0, date: 'Oct 12, 2026', typeLabel: 'NOTE', icon: 'far fa-sticky-note', title: 'test', timestamp: 'Oct 12, 2026 11:20', relative: '20 minutes ago', body: 'test', tag: 'LO · Company Sourcing' },
+    { id: 1, date: 'Oct 12, 2026', typeLabel: 'NOTE', icon: 'far fa-sticky-note', title: 'what about it', timestamp: 'Oct 12, 2026 11:28', relative: '12 minutes ago', body: 'what about it', tag: 'LO · Company Sourcing' },
+    { id: 2, date: 'Oct 12, 2026', typeLabel: 'NOTE', icon: 'far fa-sticky-note', title: 'Kelington Group Bhd, KG (Outbound Target)', timestamp: 'Oct 12, 2026 11:39', relative: '4 minutes ago', body:
+`Kelington Group Bhd, KG (Outbound Target)
+
+A. Met with the shareholder.
+
+B. Recap of KG:
+Market cap:$2bn,
+Revenue $300m, EBITDA $50m,
+% of revenue: gas equipment 90%,
+industrial and specialty gas 10%, our angle was to explore possibility of non-core business divestment, ie. Gas
+
+C. KG is Leader in SEA for Gas equipment, as such, KG familiar with diff type of gases used by each of their customers fabs - reason is because they need to build the infrastructure.
+
+Currently produce own bulk gases, O2, N2, CO2, etc.
+
+For specialty electronic gases, do not produce in-house, trading only, source from China, can value add by purifying gas before on-selling to customers. Looking to produce in the longer term (this makes IEMC in TW compelling)
+
+Focus on front-end semis and solar, customers include Micron, GF, Osram, etc.
+
+Feedback on Samator valuation: high valuation, tough to get buyer.
+
+D. Gas is KG next phase of growth, not looking to sell, doubling down.
+As such, no actionable deal. Areas to explore going forward:
+1) M&A of Larger Co, we can co-invest, sounds like they are exploring something, will follow-on.
+2) If we invest into TW gas Co's, explore gas portfolio synergies, can setup JV to distribute into SEA and leveraging their network in MYS, SG, and India.
+
+Jien`, tag: 'LO · Company Sourcing' },
+    { id: 3, date: 'Oct 12, 2026', typeLabel: 'UPLOAD', icon: 'far fa-paperclip', title: 'c-hawk-technology…', timestamp: 'Oct 12, 2026 11:05', relative: '35 minutes ago', body: 'c-hawk-technology.pdf', tag: 'LO · Company Sourcing' },
+  ];
+
+  select(id) { this.setState({ selectedId: id }); }
+  closeSelected() { this.setState({ selectedId: null }); }
+  requestDeleteSelected() { this.setState({ deleteConfirmOpen: true }); }
+  cancelDelete() { this.setState({ deleteConfirmOpen: false }); }
+  confirmDelete() {
+    this.items = this.items.filter(it => it.id !== this.state.selectedId);
+    this.setState({ deleteConfirmOpen: false, selectedId: null });
+  }
+
+  renderVals() {
+    const sel = this.state.selectedId;
+    return {
+      events: this.items.map(it => ({
+        ...it,
+        typeColor: it.typeLabel === 'UPLOAD' ? 'var(--hz-green-600)' : 'var(--hz-horizon-primary)',
+        dotColor: it.typeLabel === 'UPLOAD' ? 'var(--hz-green-500)' : 'var(--hz-horizon-primary)',
+        cardBorder: it.id === sel ? 'var(--hz-horizon-primary)' : 'var(--hz-border-default)',
+        select: () => this.select(it.id),
+      })),
+      selectedEvent: this.items.find(it => it.id === sel) || null,
+      closeSelected: () => this.closeSelected(),
+      requestDeleteSelected: () => this.requestDeleteSelected(),
+      deleteConfirmOpen: this.state.deleteConfirmOpen,
+      cancelDelete: () => this.cancelDelete(),
+      confirmDelete: () => this.confirmDelete(),
+      stopPropagation: (e) => e.stopPropagation(),
+    };
+  }
+}
+</script>
+</body>
+</html>

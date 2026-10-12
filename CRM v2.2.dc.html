@@ -153,7 +153,7 @@
             <td colspan="8" style="padding:0;background:var(--hz-surface-page)">
               <div style="padding:20px 24px">
                 <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle)">
-                  <button onClick="{{ setTab0Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab0ContactsColor }};border-bottom:2px solid {{ tab0ContactsBorder }}">Contacts (1)</button>
+                  <button onClick="{{ setTab0Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab0ContactsColor }};border-bottom:2px solid {{ tab0ContactsBorder }}">Contacts (6)</button>
                   <button onClick="{{ setTab0Topics }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab0TopicsColor }};border-bottom:2px solid {{ tab0TopicsBorder }}">Topics Tag (3)</button>
                   <button onClick="{{ setTab0Companies }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab0CompaniesColor }};border-bottom:2px solid {{ tab0CompaniesBorder }}">Related Companies (0)</button>
                   <button onClick="{{ setTab0Notes }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab0NotesColor }};border-bottom:2px solid {{ tab0NotesBorder }}">Notes</button>
@@ -161,7 +161,7 @@
                 <sc-if value="{{ tab0IsContacts }}" hint-placeholder-val="{{ true }}">
                 <div style="padding-top:16px">
                   <div style="display:flex;align-items:center;justify-content:space-between">
-                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (1)</div>
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (6)</div>
                     <div style="display:flex;gap:10px;align-items:center">
                       <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openAiDraft0 }}"><i class="far fa-sparkles"></i>Draft Follow-up</button>
                       <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
@@ -173,7 +173,7 @@
                         <td colspan="2" style="padding:0 0 12px 0">
                           <div style="display:flex;align-items:center;gap:10px">
                             <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">KM</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Kenny Man</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Kenny Man</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700)"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span></div>
                           </div>
                         </td>
                       </tr>
@@ -190,6 +190,70 @@
                         <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">kennyman@01fintech.com</a></td>
                         <td style="padding:4px 10px;font-weight:600">+6582883968</td>
                         <td style="padding:4px 10px;font-weight:600">2</td>
+                        <td style="padding:4px 10px;font-weight:600">Southeast Asia</td>
+                        <td style="padding:4px 0 4px 10px;font-weight:600">Fintech</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" style="padding:14px 0 12px 0">
+                          <div style="display:flex;align-items:center;gap:10px">
+                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">LW</span>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Lina Wijaya</span></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding:4px 10px 4px 0;font-weight:600">Head of Operations</td>
+                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">lina.wijaya@01fintech.com</a></td>
+                        <td style="padding:4px 10px;font-weight:600">+6281234567</td>
+                        <td style="padding:4px 10px;font-weight:600">0</td>
+                        <td style="padding:4px 10px;font-weight:600">Southeast Asia</td>
+                        <td style="padding:4px 0 4px 10px;font-weight:600">Fintech</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" style="padding:14px 0 12px 0">
+                          <div style="display:flex;align-items:center;gap:10px">
+                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">RS</span>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Rama Santoso</span></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding:4px 10px 4px 0;font-weight:600">CFO</td>
+                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">rama.santoso@01fintech.com</a></td>
+                        <td style="padding:4px 10px;font-weight:600">+6281298765</td>
+                        <td style="padding:4px 10px;font-weight:600">1</td>
+                        <td style="padding:4px 10px;font-weight:600">Southeast Asia</td>
+                        <td style="padding:4px 0 4px 10px;font-weight:600">Fintech</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" style="padding:14px 0 12px 0">
+                          <div style="display:flex;align-items:center;gap:10px">
+                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">TP</span>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Tara Putri</span></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding:4px 10px 4px 0;font-weight:600">Product Lead</td>
+                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">tara.putri@01fintech.com</a></td>
+                        <td style="padding:4px 10px;font-weight:600">+6281355566</td>
+                        <td style="padding:4px 10px;font-weight:600">0</td>
+                        <td style="padding:4px 10px;font-weight:600">Southeast Asia</td>
+                        <td style="padding:4px 0 4px 10px;font-weight:600">Fintech</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" style="padding:14px 0 12px 0">
+                          <div style="display:flex;align-items:center;gap:10px">
+                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">BH</span>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Budi Hartono</span></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding:4px 10px 4px 0;font-weight:600">Legal Counsel</td>
+                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">budi.hartono@01fintech.com</a></td>
+                        <td style="padding:4px 10px;font-weight:600">+6281399912</td>
+                        <td style="padding:4px 10px;font-weight:600">1</td>
                         <td style="padding:4px 10px;font-weight:600">Southeast Asia</td>
                         <td style="padding:4px 0 4px 10px;font-weight:600">Fintech</td>
                       </tr>
@@ -272,7 +336,7 @@
                         <td colspan="2" style="padding:0 0 12px 0">
                           <div style="display:flex;align-items:center;gap:10px">
                             <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">AM</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Austin Miller</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Austin Miller</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700)"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span></div>
                           </div>
                         </td>
                       </tr>
@@ -371,7 +435,7 @@
                         <td colspan="2" style="padding:0 0 12px 0">
                           <div style="display:flex;align-items:center;gap:10px">
                             <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">R</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Ravena</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Ravena</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700)"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span></div>
                           </div>
                         </td>
                       </tr>
@@ -470,7 +534,7 @@
                         <td colspan="2" style="padding:0 0 12px 0">
                           <div style="display:flex;align-items:center;gap:10px">
                             <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">DD</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Darrel Digal</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Darrel Digal</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700)"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span></div>
                           </div>
                         </td>
                       </tr>
@@ -569,7 +633,7 @@
                         <td colspan="2" style="padding:0 0 12px 0">
                           <div style="display:flex;align-items:center;gap:10px">
                             <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">A</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Adhitia</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Adhitia</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700)"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span></div>
                           </div>
                         </td>
                       </tr>
@@ -633,6 +697,196 @@
             </td>
           </tr>
           </sc-if>
+          <tr>
+            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">B</span><div><div style="font-weight:700">Bintang Capital</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300)"><i class="far fa-envelope"></i> AUTO</span></div></div></div></td>
+            <td>Private Equity</td>
+            <td><div style="font-weight:700">Siti Rahayu</div><a href="#" class="hz-body-s">siti.rahayu@bintangcapital.com</a></td>
+            <td>6h</td>
+            <td>5 days ago</td>
+            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">co-investment</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">due-diligence</span></div></td>
+            <td><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px;background:var(--hz-neutral-200);color:var(--hz-neutral-700)">NK</span></td>
+            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact5 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" onClick="{{ openAiDraft5 }}" title="Draft Follow-up"><i class="far fa-sparkles"></i>Follow Up</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow5 }}"><i class="{{ chevron5 }}"></i></button></div></td>
+          </tr>
+          <sc-if value="{{ expanded5 }}" hint-placeholder-val="{{ false }}">
+          <tr>
+            <td colspan="8" style="padding:0;background:var(--hz-surface-page)">
+              <div style="padding:20px 24px">
+                <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle)">
+                  <button onClick="{{ setTab5Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab5ContactsColor }};border-bottom:2px solid {{ tab5ContactsBorder }}">Contacts (1)</button>
+                  <button onClick="{{ setTab5Topics }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab5TopicsColor }};border-bottom:2px solid {{ tab5TopicsBorder }}">Topics Tag (2)</button>
+                  <button onClick="{{ setTab5Companies }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab5CompaniesColor }};border-bottom:2px solid {{ tab5CompaniesBorder }}">Related Companies (0)</button>
+                  <button onClick="{{ setTab5Notes }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab5NotesColor }};border-bottom:2px solid {{ tab5NotesBorder }}">Notes</button>
+                </div>
+                <sc-if value="{{ tab5IsContacts }}" hint-placeholder-val="{{ true }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (1)</div>
+                    <div style="display:flex;gap:10px;align-items:center">
+                      <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openAiDraft5 }}"><i class="far fa-sparkles"></i>Draft Follow-up</button>
+                      <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
+                    </div>
+                  </div>
+                  <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:16px">
+                    <tbody>
+                      <tr>
+                        <td colspan="2" style="padding:0 0 12px 0">
+                          <div style="display:flex;align-items:center;gap:10px">
+                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">SR</span>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Siti Rahayu</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th style="padding:4px 10px 4px 0;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Title</th>
+                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Email</th>
+                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Phone</th>
+                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Past Deals</th>
+                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Area Focus</th>
+                        <th style="padding:4px 0 4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Industry Focus</th>
+                      </tr>
+                      <tr>
+                        <td style="padding:4px 10px 4px 0;font-weight:600">Managing Director</td>
+                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">siti.rahayu@bintangcapital.com</a></td>
+                        <td style="padding:4px 10px;font-weight:600">+62 811 7788 9900</td>
+                        <td style="padding:4px 10px;font-weight:600">4</td>
+                        <td style="padding:4px 10px;font-weight:600">Indonesia</td>
+                        <td style="padding:4px 0 4px 10px;font-weight:600">Private Equity</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab5IsTopics }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">TOPICS TAG (2)</div>
+                    <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add tag</a>
+                  </div>
+                  <div style="margin-top:16px">
+                    <div class="hz-body-s" style="font-weight:700;color:var(--hz-horizon-primary);letter-spacing:.04em">DEAL RELATED</div>
+                    <div style="display:flex;gap:8px;margin-top:8px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">co-investment</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">due-diligence</span></div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;margin-top:16px">
+                    <span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">Auto</span><span class="hz-muted" style="font-size:13px">from emails ·</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-text-primary);border:1px solid var(--hz-border-default)">Manual</span><span class="hz-muted" style="font-size:13px">added by you</span>
+                  </div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab5IsCompanies }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">RELATED COMPANIES (0)</div>
+                    <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-plus"></i>Add company</button>
+                  </div>
+                  <div class="hz-muted" style="margin-top:16px">No related companies yet. Use "Add company" to link one.</div>
+                  <div style="margin-top:14px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">auto</span><span class="hz-muted" style="font-size:13px;margin-left:8px">detected from email evidence — suggestions only, not guaranteed truth</span></div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab5IsNotes }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">NOTES</div>
+                  <textarea placeholder="Add a note about this firm…" style="width:100%;min-height:110px;margin-top:10px;border:1px solid var(--hz-border-default);border-radius:8px;padding:12px;font-family:inherit;font-size:14px;color:var(--hz-text-primary);background:var(--hz-surface-card);resize:vertical"></textarea>
+                  <div style="display:flex;justify-content:flex-end;margin-top:10px"><button class="hz-btn hz-btn--primary hz-btn--sm">Save note</button></div>
+                </div>
+                </sc-if>
+              </div>
+            </td>
+          </tr>
+          </sc-if>
+          <tr>
+            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">C</span><div><div style="font-weight:700">Cendana Holdings</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300)"><i class="far fa-envelope"></i> AUTO</span></div></div></div></td>
+            <td>Logistics</td>
+            <td><div style="font-weight:700">Yusuf Pratama</div><a href="#" class="hz-body-s">yusuf.pratama@cendanaholdings.com</a></td>
+            <td>1d</td>
+            <td style="color: #BE0606">2 months ago</td>
+            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">expansion</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">warehousing</span></div></td>
+            <td><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px;background:var(--hz-neutral-200);color:var(--hz-neutral-700)">NK</span></td>
+            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact6 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" onClick="{{ openAiDraft6 }}" title="Draft Follow-up"><i class="far fa-sparkles"></i>Follow Up</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow6 }}"><i class="{{ chevron6 }}"></i></button></div></td>
+          </tr>
+          <sc-if value="{{ expanded6 }}" hint-placeholder-val="{{ false }}">
+          <tr>
+            <td colspan="8" style="padding:0;background:var(--hz-surface-page)">
+              <div style="padding:20px 24px">
+                <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle)">
+                  <button onClick="{{ setTab6Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab6ContactsColor }};border-bottom:2px solid {{ tab6ContactsBorder }}">Contacts (1)</button>
+                  <button onClick="{{ setTab6Topics }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab6TopicsColor }};border-bottom:2px solid {{ tab6TopicsBorder }}">Topics Tag (2)</button>
+                  <button onClick="{{ setTab6Companies }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab6CompaniesColor }};border-bottom:2px solid {{ tab6CompaniesBorder }}">Related Companies (0)</button>
+                  <button onClick="{{ setTab6Notes }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab6NotesColor }};border-bottom:2px solid {{ tab6NotesBorder }}">Notes</button>
+                </div>
+                <sc-if value="{{ tab6IsContacts }}" hint-placeholder-val="{{ true }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (1)</div>
+                    <div style="display:flex;gap:10px;align-items:center">
+                      <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openAiDraft6 }}"><i class="far fa-sparkles"></i>Draft Follow-up</button>
+                      <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
+                    </div>
+                  </div>
+                  <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:16px">
+                    <tbody>
+                      <tr>
+                        <td colspan="2" style="padding:0 0 12px 0">
+                          <div style="display:flex;align-items:center;gap:10px">
+                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">YP</span>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Yusuf Pratama</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700)"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th style="padding:4px 10px 4px 0;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Title</th>
+                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Email</th>
+                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Phone</th>
+                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Past Deals</th>
+                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Area Focus</th>
+                        <th style="padding:4px 0 4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Industry Focus</th>
+                      </tr>
+                      <tr>
+                        <td style="padding:4px 10px 4px 0;font-weight:600">VP Corporate Development</td>
+                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">yusuf.pratama@cendanaholdings.com</a></td>
+                        <td style="padding:4px 10px;font-weight:600">+62 812 4455 6677</td>
+                        <td style="padding:4px 10px;font-weight:600">2</td>
+                        <td style="padding:4px 10px;font-weight:600">Southeast Asia</td>
+                        <td style="padding:4px 0 4px 10px;font-weight:600">Logistics</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab6IsTopics }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">TOPICS TAG (2)</div>
+                    <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add tag</a>
+                  </div>
+                  <div style="margin-top:16px">
+                    <div class="hz-body-s" style="font-weight:700;color:var(--hz-horizon-primary);letter-spacing:.04em">DEAL RELATED</div>
+                    <div style="display:flex;gap:8px;margin-top:8px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">expansion</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">warehousing</span></div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;margin-top:16px">
+                    <span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">Auto</span><span class="hz-muted" style="font-size:13px">from emails ·</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-text-primary);border:1px solid var(--hz-border-default)">Manual</span><span class="hz-muted" style="font-size:13px">added by you</span>
+                  </div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab6IsCompanies }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">RELATED COMPANIES (0)</div>
+                    <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-plus"></i>Add company</button>
+                  </div>
+                  <div class="hz-muted" style="margin-top:16px">No related companies yet. Use "Add company" to link one.</div>
+                  <div style="margin-top:14px"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-orange-700);border:1px solid var(--hz-orange-300)">auto</span><span class="hz-muted" style="font-size:13px;margin-left:8px">detected from email evidence — suggestions only, not guaranteed truth</span></div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ tab6IsNotes }}" hint-placeholder-val="{{ false }}">
+                <div style="padding-top:16px">
+                  <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">NOTES</div>
+                  <textarea placeholder="Add a note about this firm…" style="width:100%;min-height:110px;margin-top:10px;border:1px solid var(--hz-border-default);border-radius:8px;padding:12px;font-family:inherit;font-size:14px;color:var(--hz-text-primary);background:var(--hz-surface-card);resize:vertical"></textarea>
+                  <div style="display:flex;justify-content:flex-end;margin-top:10px"><button class="hz-btn hz-btn--primary hz-btn--sm">Save note</button></div>
+                </div>
+                </sc-if>
+              </div>
+            </td>
+          </tr>
+          </sc-if>
         </tbody>
       </table>
     </div>
@@ -658,8 +912,8 @@
         <input value="{{ editCompany }}" onChange="{{ setEditCompany }}" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;font-weight:600;background:var(--hz-surface-page);color:var(--hz-text-primary)">
       </div>
       <div>
-        
-        
+        <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em;margin-bottom:6px">SOURCE</div>
+        <input value="{{ editSource }}" onChange="{{ setEditSource }}" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
       </div>
       <div>
         <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em;margin-bottom:6px">NAME</div>
@@ -729,6 +983,14 @@
           </sc-for>
         </ul>
       </div>
+      <div style="background:var(--hz-orange-50);border-radius:8px;padding:14px 16px;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:8px;color:var(--hz-orange-600);font-weight:700;font-size:13px;letter-spacing:.02em"><i class="far fa-flag"></i>THINGS TO FOLLOW UP ON</div>
+        <ul style="margin:8px 0 0;padding-left:18px">
+          <sc-for list="{{ aiModalFollowUps }}" as="point" hint-placeholder-count="2">
+          <li class="hz-body-s" style="margin-bottom:4px">{{ point }}</li>
+          </sc-for>
+        </ul>
+      </div>
       <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em;margin-bottom:6px">SUBJECT</div>
       <input value="{{ aiModalSubject }}" onChange="{{ setAiSubject }}" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary);margin-bottom:16px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
@@ -745,19 +1007,19 @@
   </div>
 </div>
 </sc-if>
-
-</div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = { expanded: {}, tab: {}, aiModalOpen: false, aiContact: null, aiSubject: '', aiBody: '', aiGenerating: false, contactsMainTab: 'private', lastContactFilterActive: false, editModalOpen: false, editIndex: null, editForm: {} };
 
   contacts = {
-    0: { name: 'Kenny Man', email: 'kennyman@01fintech.com', company: '01fintech', initials: 'KM', source: 'Inbound · Auto-detected', title: 'Founder & Managing Partner', phone: '+6582883968', pastDeals: '2', areaFocus: 'Southeast Asia', industryFocus: 'Fintech', highlights: ['Discussed potential joint-venture structure for OTT distribution', 'Kenny flagged Q3 fundraising timeline as tight', 'Asked for warm intro to our portfolio payments company'] },
-    1: { name: 'Austin Miller', email: 'miller@385capitalworks.com', company: '385capitalworks', initials: 'AM', source: 'Inbound · Auto-detected', title: 'Partner', phone: '+1 917 555 0134', pastDeals: '5', areaFocus: 'North America', industryFocus: 'Private Equity', highlights: ['Interested in co-investing on next round', 'Requested updated financial model', 'Mentioned fundraising close targeted for year-end'] },
-    2: { name: 'Ravena', email: 'ravena@abacuscapital.com', company: 'Abacus Capital', initials: 'R', source: 'Inbound · Auto-detected', title: 'Investment Associate', phone: '+62 812 3456 7890', pastDeals: '1', areaFocus: 'Indonesia', industryFocus: 'Asset Management', highlights: ['Shared investment opportunity in logistics sector', 'Waiting on our IC feedback before next step'] },
-    3: { name: 'Darrel Digal', email: 'darreldigal@axcionaenergy.com', company: 'Acciona Energy', initials: 'DD', source: 'Inbound · Auto-detected', title: 'Business Development', phone: '+62 811 2233 4455', pastDeals: '3', areaFocus: 'Indonesia', industryFocus: 'Renewable Energy', highlights: ['Solar project pipeline expanding into new region', 'Needs decision on project-development partnership by month-end'] },
-    4: { name: 'Adhitia', email: 'adhitia.budiarjo@adivira.com', company: 'Adivira', initials: 'A', source: 'Inbound · Auto-detected', title: 'Partnership Lead', phone: '+62 813 9988 7766', pastDeals: '1', areaFocus: 'Indonesia', industryFocus: 'Fintech', highlights: ['Proposed white-label partnership terms', 'Following up on product-distribution agreement draft'] },
+    0: { name: 'Kenny Man', email: 'kennyman@01fintech.com', company: '01fintech', initials: 'KM', source: 'Inbound · Auto-detected', title: 'Founder & Managing Partner', phone: '+6582883968', pastDeals: '2', areaFocus: 'Southeast Asia', industryFocus: 'Fintech', highlights: ['Discussed potential joint-venture structure for OTT distribution', 'Kenny flagged Q3 fundraising timeline as tight', 'Asked for warm intro to our portfolio payments company'], followUps: ['Send warm intro to portfolio payments company', 'Confirm Q3 fundraising timeline on next call'] },
+    1: { name: 'Austin Miller', email: 'miller@385capitalworks.com', company: '385capitalworks', initials: 'AM', source: 'Inbound · Auto-detected', title: 'Partner', phone: '+1 917 555 0134', pastDeals: '5', areaFocus: 'North America', industryFocus: 'Private Equity', highlights: ['Interested in co-investing on next round', 'Requested updated financial model', 'Mentioned fundraising close targeted for year-end'], followUps: ['Send updated financial model', 'Check in before year-end close'] },
+    2: { name: 'Ravena', email: 'ravena@abacuscapital.com', company: 'Abacus Capital', initials: 'R', source: 'Inbound · Auto-detected', title: 'Investment Associate', phone: '+62 812 3456 7890', pastDeals: '1', areaFocus: 'Indonesia', industryFocus: 'Asset Management', highlights: ['Shared investment opportunity in logistics sector', 'Waiting on our IC feedback before next step'], followUps: ['Get IC feedback on logistics opportunity'] },
+    3: { name: 'Darrel Digal', email: 'darreldigal@axcionaenergy.com', company: 'Acciona Energy', initials: 'DD', source: 'Inbound · Auto-detected', title: 'Business Development', phone: '+62 811 2233 4455', pastDeals: '3', areaFocus: 'Indonesia', industryFocus: 'Renewable Energy', highlights: ['Solar project pipeline expanding into new region', 'Needs decision on project-development partnership by month-end'], followUps: ['Decide on project-development partnership by month-end'] },
+    4: { name: 'Adhitia', email: 'adhitia.budiarjo@adivira.com', company: 'Adivira', initials: 'A', source: 'Inbound · Auto-detected', title: 'Partnership Lead', phone: '+62 813 9988 7766', pastDeals: '1', areaFocus: 'Indonesia', industryFocus: 'Fintech', highlights: ['Proposed white-label partnership terms', 'Following up on product-distribution agreement draft'], followUps: ['Review and respond to product-distribution agreement draft'] },
+    5: { name: 'Siti Rahayu', email: 'siti.rahayu@bintangcapital.com', company: 'Bintang Capital', initials: 'SR', source: 'Inbound · Auto-detected', title: 'Managing Director', phone: '+62 811 7788 9900', pastDeals: '4', areaFocus: 'Indonesia', industryFocus: 'Private Equity', highlights: ['Exploring co-investment opportunity in next round', 'Requested access to due-diligence data room'] },
+    6: { name: 'Yusuf Pratama', email: 'yusuf.pratama@cendanaholdings.com', company: 'Cendana Holdings', initials: 'YP', source: 'Inbound · Auto-detected', title: 'VP Corporate Development', phone: '+62 812 4455 6677', pastDeals: '2', areaFocus: 'Southeast Asia', industryFocus: 'Logistics', highlights: ['Evaluating regional warehousing expansion', 'No contact in over 2 months — relationship going cold'], followUps: ['Re-engage before relationship goes cold'] },
   };
 
   editContact(i) {
@@ -815,6 +1077,7 @@ class Component extends DCLogic {
       aiModalEmail: this.state.aiContact ? this.state.aiContact.email : '',
       aiModalInitials: this.state.aiContact ? this.state.aiContact.initials : '',
       aiModalHighlights: this.state.aiContact ? this.state.aiContact.highlights : [],
+      aiModalFollowUps: this.state.aiContact ? (this.state.aiContact.followUps || ['No outstanding follow-ups flagged']) : [],
       aiModalSubject: this.state.aiSubject,
       aiModalBody: this.state.aiBody,
       aiGenerateLabel: this.state.aiGenerating ? 'Generating…' : 'Generate',
@@ -850,7 +1113,7 @@ class Component extends DCLogic {
       setEditAreaFocus: (e) => this.setEditField('areaFocus', e),
       setEditIndustryFocus: (e) => this.setEditField('industryFocus', e),
     };
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 7; i++) {
       vals['openAiDraft' + i] = () => this.openAiDraft(i);
       vals['editContact' + i] = () => this.editContact(i);
       const exp = !!this.state.expanded[i];

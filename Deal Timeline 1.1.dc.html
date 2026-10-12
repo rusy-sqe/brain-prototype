@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)} textarea:focus,input:focus{outline:none;border-color:var(--hz-horizon-primary)}
+.tl-card:hover .tl-type, .tl-card:hover .tl-date, .tl-card:hover .tl-title, .tl-card:hover .tl-icon { color:var(--hz-text-primary) !important; font-weight:700 !important }
+</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:200px minmax(0,1fr)">
+
+<div class="hz-sidebar" style="width:200px;height:100vh;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="uploads/logo-brain-light.svg" alt="Investment Brain" style="height:24px;width:auto">
+      </div>
+      <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:10px;padding:6px 8px">
+      
+      <span><span class="hz-account-trigger__name" style="display:block">M&amp;A Team<br></span></span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-message-plus"></i>New Chat</button>
+  </div>
+  <div style="padding:8px 6px;flex:1;min-height:0;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-th-large" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-search-location" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span><span class="hz-badge hz-badge--secondary" style="margin-left:auto;background:var(--hz-neutral-300);color:var(--hz-text-primary)">9</span></a>
+        <a href="Pipeline v2.1.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-sitemap" style="font-size:17px"></i><span class="hz-sidebar__label">Pipeline</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Master Data</span></div>
+        <a href="CRM v2.2.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-university" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb" style="font-size:17px"></i><span class="hz-sidebar__label">Insights</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-desktop" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-magic" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-alt" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%">
+      
+      <span><span class="hz-account-trigger__name" style="display:block">Nur Khairusy</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div style="min-width:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column">
+
+  <div style="background:linear-gradient(135deg,var(--hz-blue-50),var(--hz-neutral-50));flex-shrink:0">
+    <div style="padding:16px 28px 0;display:flex;align-items:center;justify-content:flex-end">
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-text-tertiary)"><i class="far fa-compress-alt"></i>Exit Full Screen</button>
+    </div>
+    <div style="padding:4px 28px 16px;display:flex;align-items:center;gap:14px">
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;height:32px;padding:0;justify-content:center;color:var(--hz-text-secondary)"><i class="far fa-arrow-left"></i></button>
+      <span class="hz-avatar" style="background:var(--hz-blue-100);color:var(--hz-horizon-primary);font-weight:700;flex-shrink:0">BC</span>
+      <div class="hz-h4" style="margin:0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Bibica Corporation <span style="color:var(--hz-text-tertiary);font-weight:600">[Project Xero-Two]</span></div>
+      <span class="hz-badge hz-badge--soft" style="background:var(--hz-surface-card);border:1px solid var(--hz-border-default);color:var(--hz-text-secondary);flex-shrink:0;white-space:nowrap">Paper &amp; Pulp</span>
+      <span class="hz-badge hz-badge--soft" style="background:var(--hz-surface-card);border:1px solid var(--hz-border-default);color:var(--hz-text-secondary);flex-shrink:0;white-space:nowrap">LO · Company Sourcing</span>
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;height:32px;padding:0;justify-content:center;margin-left:auto;flex-shrink:0;color:var(--hz-text-tertiary)"><i class="far fa-ellipsis-v"></i></button>
+    </div>
+    <div class="hz-tabs" style="padding:0 28px">
+      <button class="hz-tab">Overview</button>
+      <button class="hz-tab">Additional Context</button>
+      <button class="hz-tab is-active">Timeline</button>
+      <button class="hz-tab">Details</button>
+      <button class="hz-tab">L1 Screening</button>
+      <button class="hz-tab">Voting</button>
+    </div>
+  </div>
+
+  <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px;flex:1">
+
+    <div class="hz-card" style="padding:20px">
+      <div class="hz-body-r" style="font-weight:700;margin-bottom:12px">Add to timeline</div>
+      <textarea placeholder="Write a timeline entry…" style="width:100%;min-height:90px;border:1px solid var(--hz-border-default);border-radius:8px;padding:12px;font-family:inherit;font-size:14px;color:var(--hz-text-primary);background:var(--hz-surface-page);resize:vertical"></textarea>
+      <div style="display:flex;gap:10px;margin-top:12px;justify-content:flex-end">
+        <button class="hz-btn hz-btn--text hz-btn--sm" style="border:none;color:var(--hz-text-tertiary)" style-hover="color:var(--hz-horizon-primary)"><i class="far fa-upload"></i>Upload file</button>
+        <button class="hz-btn hz-btn--text hz-btn--sm" style="border:none;color:var(--hz-text-tertiary)" style-hover="color:var(--hz-horizon-primary)"><i class="far fa-link"></i>Add link</button>
+        <div class="hz-btn hz-btn--secondary hz-btn--sm" style="border:1px solid var(--hz-horizon-primary);color:var(--hz-horizon-primary);padding:0;gap:0;overflow:hidden">
+          <label style="position:relative;display:flex;align-items:center;padding:0 10px;height:100%;cursor:pointer">
+            <span style="white-space:nowrap">{{ entryDateDisplay }}</span>
+            <input type="date" value="{{ entryDate }}" onChange="{{ setEntryDate }}" style="position:absolute;inset:0;opacity:0;cursor:pointer;border:none;padding:0;margin:0;width:100%">
+          </label>
+          <span style="width:1px;align-self:stretch;background:var(--hz-horizon-primary);opacity:.3"></span>
+          <label style="position:relative;display:flex;align-items:center;padding:0 10px;height:100%;cursor:pointer">
+            <span style="white-space:nowrap">{{ entryTimeDisplay }}</span>
+            <input type="time" value="{{ entryTime }}" onChange="{{ setEntryTime }}" style="position:absolute;inset:0;opacity:0;cursor:pointer;border:none;padding:0;margin:0;width:100%">
+          </label>
+        </div>
+        <button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-plus"></i>Add entry</button>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:20px;align-items:stretch;flex:1;min-height:600px">
+    <div class="hz-card" style="padding:20px;flex:0 0 20%;min-width:220px;display:flex;flex-direction:column">
+      <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em;margin-bottom:20px">{{ eventsCount }} EVENTS</div>
+
+      <div style="position:relative;padding-left:4px;flex:1;overflow-y:auto">
+        <div style="position:absolute;top:6px;bottom:6px;left:9px;width:2px;background:var(--hz-border-subtle)"></div>
+        <div style="display:flex;flex-direction:column;gap:12px;position:relative">
+          <sc-for list="{{ events }}" as="ev" hint-placeholder-count="4">
+          <div style="display:flex;align-items:flex-start;gap:10px">
+            <span style="width:11px;height:11px;border-radius:50%;background:{{ ev.dotColor }};border:2px solid var(--hz-surface-card);box-shadow:0 0 0 2px {{ ev.dotColor }};flex-shrink:0;margin-top:6px;z-index:1"></span>
+            <button onClick="{{ ev.select }}" class="tl-card" style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px;padding:8px 10px;border-radius:8px;border:1px solid {{ ev.cardBorder }};background:{{ ev.cardBg }};cursor:pointer;font-family:inherit;text-align:left;transition:background .12s,border-color .12s,box-shadow .12s" style-hover="background:{{ ev.cardBgHover }};border-color:var(--hz-horizon-primary);box-shadow:var(--hz-shadow-sm, 0 1px 4px rgba(0,0,0,.08))">
+              <div style="display:flex;align-items:center;gap:6px">
+                <span class="hz-body-s tl-type" style="font-weight:700;letter-spacing:.04em;color:{{ ev.typeColor }}">{{ ev.typeLabelShort }}</span>
+                <span class="hz-body-s tl-date" style="color:{{ ev.mutedColor }}">{{ ev.dateShort }}</span>
+                <sc-if value="{{ ev.hasFile }}" hint-placeholder-val="{{ false }}"><i class="far fa-paperclip tl-icon" style="color:var(--hz-text-tertiary);font-size:11px;flex-shrink:0"></i></sc-if>
+                <sc-if value="{{ ev.hasLink }}" hint-placeholder-val="{{ false }}"><i class="far fa-link tl-icon" style="color:var(--hz-text-tertiary);font-size:11px;flex-shrink:0"></i></sc-if>
+              </div>
+              <span class="hz-body-s tl-title" style="font-weight:{{ ev.titleWeight }};overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;color:{{ ev.titleColor }}">{{ ev.title }}</span>
+            </button>
+          </div>
+          </sc-for>
+        </div>
+      </div>
+      <button class="hz-btn hz-btn--text hz-btn--sm hz-btn--full" style="margin-top:16px;border:none">Load more...</button>
+    </div>
+
+    <sc-if value="{{ noSelection }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-card" style="padding:20px;flex:1;min-width:0;display:flex;align-items:center;justify-content:center">
+      <div style="text-align:center;max-width:320px">
+        <i class="far fa-clock-rotate-left" style="font-size:28px;color:var(--hz-text-tertiary)"></i>
+        <div class="hz-h5" style="margin:14px 0 6px">No entry selected</div>
+        <div class="hz-body-r hz-muted">Add a new entry above, or select an existing one from the timeline on the left to view its details.</div>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ selectedEvent }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-card" style="padding:20px;flex:1;min-width:0;overflow-y:auto">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          
+          <div>
+            <div class="hz-h5" style="margin:0">{{ selectedEvent.title }}</div>
+            <div class="hz-body-s hz-muted" style="margin-top:2px">{{ selectedEvent.typeLabel }} · {{ selectedEvent.timestamp }} · {{ selectedEvent.relative }}</div>
+            <sc-if value="{{ selectedEvent.hasFile }}" hint-placeholder-val="{{ false }}">
+            <span class="hz-badge hz-badge--soft" style="margin-top:6px;max-width:220px;background:var(--hz-surface-page);border:1px solid var(--hz-border-default);color:var(--hz-horizon-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline-flex;cursor:pointer"><i class="far fa-paperclip" style="margin-right:4px;flex-shrink:0"></i>{{ selectedEvent.title }}</span>
+            </sc-if>
+            <sc-if value="{{ selectedEvent.hasLink }}" hint-placeholder-val="{{ false }}">
+            <a href="{{ selectedEvent.link }}" target="_blank" class="hz-badge hz-badge--soft" style="margin-top:6px;max-width:220px;background:var(--hz-surface-page);border:1px solid var(--hz-border-default);color:var(--hz-horizon-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline-flex;text-decoration:none"><i class="far fa-link" style="margin-right:4px;flex-shrink:0"></i>{{ selectedEvent.link }}</a>
+            </sc-if>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:4px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ startEditSelected }}"><i class="far fa-pen"></i>Edit</button>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-red-600)" title="Delete" onClick="{{ requestDeleteSelected }}"><i class="far fa-trash"></i></button>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center" title="Close" onClick="{{ closeSelected }}"><i class="far fa-times"></i></button>
+        </div>
+      </div>
+      <sc-if value="{{ isEditingSelected }}" hint-placeholder-val="{{ false }}">
+      <textarea value="{{ editBody }}" onChange="{{ setEditBody }}" style="width:100%;min-height:220px;margin-top:16px;border:1px solid var(--hz-border-default);border-radius:8px;padding:12px;font-family:inherit;font-size:14px;color:var(--hz-text-primary);background:var(--hz-surface-page);resize:vertical;line-height:1.6"></textarea>
+      <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:12px">
+        <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ cancelEditSelected }}">Cancel</button>
+        <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ saveEditSelected }}">Save</button>
+      </div>
+      </sc-if>
+      <sc-if value="{{ isNotEditingSelected }}" hint-placeholder-val="{{ true }}">
+      <div class="hz-body-r" style="margin-top:16px;white-space:pre-wrap;line-height:1.6">{{ selectedEvent.body }}</div>
+      </sc-if>
+    </div>
+    </sc-if>
+    </div>
+
+  </div>
+</div>
+
+<sc-if value="{{ deleteConfirmOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1000" onClick="{{ cancelDelete }}">
+  <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:400px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))" onClick="{{ stopPropagation }}">
+    <div class="hz-h5" style="margin:0 0 8px">Delete this entry?</div>
+    <div class="hz-body-r hz-muted" style="margin-bottom:20px">This removes it from the deal timeline permanently. This can't be undone.</div>
+    <div style="display:flex;justify-content:flex-end;gap:10px">
+      <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ cancelDelete }}">Cancel</button>
+      <button class="hz-btn hz-btn--primary hz-btn--sm" style="background:var(--hz-red-600)" onClick="{{ confirmDelete }}">Delete</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { selectedId: 2, deleteConfirmOpen: false, isEditingSelected: false, editBody: '', entryDate: new Date().toISOString().slice(0, 10), entryTime: new Date().toTimeString().slice(0, 5) };
+
+  formatEntryDateOnly(dateStr) {
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const [y, m, d] = dateStr.split('-').map(Number);
+    return `${d} ${months[m - 1]} ${y}`;
+  }
+
+  items = [
+    { id: 0, date: 'Oct 12, 2026', dateShort: '12 Oct 26', typeLabel: 'NOTE', icon: 'far fa-sticky-note', title: 'Screened out — too small', timestamp: 'Oct 12, 2026 11:20', relative: '20 minutes ago', body: 'Screened out — too small\n\nRevenue under $20m, below our target deal size. Keeping on watchlist in case of future consolidation into a larger platform.', tag: 'LO · Company Sourcing' },
+    { id: 1, date: 'Oct 12, 2026', dateShort: '12 Oct 26', typeLabel: 'NOTE', icon: 'far fa-sticky-note', link: 'https://example.com/cap-table', title: 'Question on ownership structure', timestamp: 'Oct 12, 2026 11:28', relative: '12 minutes ago', body: 'Question on ownership structure\n\nNeed to confirm whether the founding family retains majority control post any non-core divestment, or if a PE sponsor already holds a blocking stake.', tag: 'LO · Company Sourcing' },
+    { id: 2, date: 'Oct 12, 2026', dateShort: '12 Oct 26', typeLabel: 'NOTE', icon: 'far fa-sticky-note', title: 'Kelington Group Bhd, KG (Outbound Target)', timestamp: 'Oct 12, 2026 11:39', relative: '4 minutes ago', body:
+`Kelington Group Bhd, KG (Outbound Target)
+
+A. Met with the shareholder.
+
+B. Recap of KG:
+Market cap:$2bn,
+Revenue $300m, EBITDA $50m,
+% of revenue: gas equipment 90%,
+industrial and specialty gas 10%, our angle was to explore possibility of non-core business divestment, ie. Gas
+
+C. KG is Leader in SEA for Gas equipment, as such, KG familiar with diff type of gases used by each of their customers fabs - reason is because they need to build the infrastructure.
+
+Currently produce own bulk gases, O2, N2, CO2, etc.
+
+For specialty electronic gases, do not produce in-house, trading only, source from China, can value add by purifying gas before on-selling to customers. Looking to produce in the longer term (this makes IEMC in TW compelling)
+
+Focus on front-end semis and solar, customers include Micron, GF, Osram, etc.
+
+Feedback on Samator valuation: high valuation, tough to get buyer.
+
+D. Gas is KG next phase of growth, not looking to sell, doubling down.
+As such, no actionable deal. Areas to explore going forward:
+1) M&A of Larger Co, we can co-invest, sounds like they are exploring something, will follow-on.
+2) If we invest into TW gas Co's, explore gas portfolio synergies, can setup JV to distribute into SEA and leveraging their network in MYS, SG, and India.
+
+Jien`, tag: 'LO · Company Sourcing' },
+    { id: 3, date: 'Oct 12, 2026', dateShort: '12 Oct 26', typeLabel: 'UPLOAD', icon: 'far fa-paperclip', title: 'c-hawk-technology…', timestamp: 'Oct 12, 2026 11:05', relative: '35 minutes ago', body: 'c-hawk-technology.pdf', tag: 'LO · Company Sourcing' },
+    { id: 4, date: 'Oct 11, 2026', dateShort: '11 Oct 26', typeLabel: 'NOTE', icon: 'far fa-sticky-note', title: 'Follow-up call with CFO', timestamp: 'Oct 11, 2026 15:12', relative: '1 day ago', body: 'Follow-up call with CFO\n\nDiscussed revised EBITDA projections for FY27 and confirmed timeline for data room access next week.', tag: 'LO · Company Sourcing' },
+    { id: 5, date: 'Oct 10, 2026', dateShort: '10 Oct 26', typeLabel: 'UPLOAD', icon: 'far fa-paperclip', title: 'management-deck-v3.pdf', timestamp: 'Oct 10, 2026 09:40', relative: '2 days ago', body: 'management-deck-v3.pdf', tag: 'LO · Company Sourcing' },
+    { id: 6, date: 'Oct 8, 2026', dateShort: '8 Oct 26', typeLabel: 'NOTE', icon: 'far fa-sticky-note', title: 'Initial outreach email sent', timestamp: 'Oct 8, 2026 10:02', relative: '4 days ago', body: 'Initial outreach email sent\n\nIntroduced the firm and proposed a call to discuss potential non-core divestment interest.', tag: 'LO · Company Sourcing' },
+  ];
+
+  select(id) { this.setState({ selectedId: id, isEditingSelected: false }); }
+  closeSelected() { this.setState({ selectedId: null, isEditingSelected: false }); }
+  startEditSelected() {
+    const item = this.items.find(it => it.id === this.state.selectedId);
+    this.setState({ isEditingSelected: true, editBody: item ? item.body : '' });
+  }
+  cancelEditSelected() { this.setState({ isEditingSelected: false }); }
+  setEditBody(e) { this.setState({ editBody: e.target.value }); }
+  saveEditSelected() {
+    const item = this.items.find(it => it.id === this.state.selectedId);
+    if (item) item.body = this.state.editBody;
+    this.setState({ isEditingSelected: false });
+  }
+  requestDeleteSelected() { this.setState({ deleteConfirmOpen: true }); }
+  cancelDelete() { this.setState({ deleteConfirmOpen: false }); }
+  confirmDelete() {
+    this.items = this.items.filter(it => it.id !== this.state.selectedId);
+    this.setState({ deleteConfirmOpen: false, selectedId: null });
+  }
+
+  renderVals() {
+    const sel = this.state.selectedId;
+    return {
+      events: this.items.map((it, i) => {
+        const isSel = it.id === sel;
+        return {
+          showDate: i === 0 || this.items[i - 1].date !== it.date,
+          ...it,
+          typeColor: isSel ? 'var(--hz-horizon-primary)' : 'var(--hz-text-tertiary)',
+          dotColor: isSel ? 'var(--hz-horizon-primary)' : 'var(--hz-neutral-300)',
+          cardBorder: isSel ? 'var(--hz-horizon-primary)' : 'transparent',
+          cardBg: isSel ? 'var(--hz-blue-50)' : 'var(--hz-surface-card)',
+          cardBgHover: isSel ? 'var(--hz-blue-50)' : 'var(--hz-neutral-50)',
+          titleColor: isSel ? 'var(--hz-horizon-primary-dark)' : 'var(--hz-text-primary)',
+          titleWeight: isSel ? 600 : 400,
+          mutedColor: isSel ? 'var(--hz-horizon-primary)' : 'var(--hz-text-tertiary)',
+          typeLabelShort: 'Note',
+          dateShort: it.dateShort,
+          hasFile: it.typeLabel === 'UPLOAD',
+          hasLink: !!it.link,
+          select: () => this.select(it.id),
+        };
+      }),
+      eventsCount: this.items.length,
+      entryDate: this.state.entryDate,
+      entryTime: this.state.entryTime,
+      entryDateDisplay: this.formatEntryDateOnly(this.state.entryDate),
+      entryTimeDisplay: this.state.entryTime,
+      setEntryDate: (e) => this.setState({ entryDate: e.target.value }),
+      setEntryTime: (e) => this.setState({ entryTime: e.target.value }),
+      selectedEvent: (() => {
+        const found = this.items.find(it => it.id === sel);
+        if (!found) return null;
+        return { ...found, hasFile: found.typeLabel === 'UPLOAD', hasLink: !!found.link };
+      })(),
+      noSelection: !this.items.find(it => it.id === sel),
+      isEditingSelected: this.state.isEditingSelected,
+      isNotEditingSelected: !this.state.isEditingSelected,
+      editBody: this.state.editBody,
+      startEditSelected: () => this.startEditSelected(),
+      cancelEditSelected: () => this.cancelEditSelected(),
+      setEditBody: (e) => this.setEditBody(e),
+      saveEditSelected: () => this.saveEditSelected(),
+      closeSelected: () => this.closeSelected(),
+      requestDeleteSelected: () => this.requestDeleteSelected(),
+      deleteConfirmOpen: this.state.deleteConfirmOpen,
+      cancelDelete: () => this.cancelDelete(),
+      confirmDelete: () => this.confirmDelete(),
+      stopPropagation: (e) => e.stopPropagation(),
+    };
+  }
+}
+</script>
+</body>
+</html>
