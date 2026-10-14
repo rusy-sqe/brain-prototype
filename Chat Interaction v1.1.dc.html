@@ -15,7 +15,8 @@
 .source-preview__bubble{opacity:0;visibility:hidden;transition:opacity .12s}
 .source-preview:hover .source-preview__bubble{opacity:1;visibility:visible}
 .cite-preview__bubble{opacity:0;visibility:hidden;transition:opacity .12s}
-.cite-preview:hover .cite-preview__bubble{opacity:1;visibility:visible}</style>
+.cite-preview:hover .cite-preview__bubble{opacity:1;visibility:visible}
+.cite-preview__bubble a:hover{text-decoration:underline}</style>
 </helmet>
 <div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:{{ sidebarGridCols }}">
 
@@ -375,7 +376,8 @@
                         <span class="hz-tooltip__arrow" style="left:10px"></span>
                         <span class="hz-tooltip__row" style="flex-direction:column;align-items:flex-start;gap:4px">
                           <span class="hz-tooltip__text" style="font-size:12px;font-weight:700">{{ msg.plainSources.0.label }}</span>
-                          <span class="hz-tooltip__text" style="font-size:12px;line-height:1.4;color:var(--hz-text-secondary)">{{ msg.plainCitePreview }}</span>
+                          <span class="hz-tooltip__text" style="font-size:12px;line-height:1.4;color:rgba(255,255,255,.72)">{{ msg.plainCitePreview }}</span>
+                          <a href="{{ msg.plainSourceUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:#fff;font-size:12px;font-weight:700;margin-top:2px">Open source<i class="far fa-external-link" style="font-size:10px"></i></a>
                         </span>
                       </span>
                     </span></div>
@@ -412,7 +414,8 @@
                                 <span class="hz-tooltip__arrow" style="left:10px"></span>
                                 <span class="hz-tooltip__row" style="flex-direction:column;align-items:flex-start;gap:4px">
                                   <span class="hz-tooltip__text" style="font-size:12px;font-weight:700">{{ it.citeSource }}</span>
-                                  <span class="hz-tooltip__text" style="font-size:12px;line-height:1.4;color:var(--hz-text-secondary)">{{ it.citePreview }}</span>
+                                  <span class="hz-tooltip__text" style="font-size:12px;line-height:1.4;color:rgba(255,255,255,.72)">{{ it.citePreview }}</span>
+                                  <a href="{{ it.citeUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:#fff;font-size:12px;font-weight:700;margin-top:2px">Open source<i class="far fa-external-link" style="font-size:10px"></i></a>
                                 </span>
                               </span>
                             </span>
@@ -1378,7 +1381,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       researchModeBorderColor: this.sidebarState.researchMode ? 'var(--hz-horizon-primary)' : 'var(--hz-border-default)',
       researchModeBg: this.sidebarState.researchMode ? 'var(--hz-blue-50)' : 'transparent',
       researchModeTextColor: this.sidebarState.researchMode ? 'var(--hz-horizon-primary)' : 'var(--hz-text-secondary)',
-      researchModeLabel: 'External Research',
+      researchModeLabel: 'Deep Research',
       toggleResearchMode: () => { this.sidebarState.researchMode = this.sidebarState.researchMode ? null : 'external'; this.forceUpdate(); },
       selectedAgentName: (this.agentOptionsData.find(a => a.id === this.sidebarState.selectedAgentId) || this.agentOptionsData[0]).name,
       agentOptions: this.agentOptionsData.map(agent => ({
@@ -1408,8 +1411,9 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
         plainSources: m.role === 'assistant' && m.status === 'done' && !m.isRich ? this.plainReplySources.map((s, i) => ({ label: s, num: i + 1 })) : [],
         plainFiles: m.role === 'assistant' && m.status === 'done' && !m.isRich ? this.plainReplyFiles.map(f => ({ name: f })) : [],
         plainCitePreview: 'Pulled from ' + this.plainReplySources[0] + ' — a short preview excerpt of the cited passage would appear here.',
+        plainSourceUrl: 'https://www.google.com/search?q=' + encodeURIComponent(this.plainReplySources[0] || ''),
         richHeading: m.rich ? m.rich.heading : '',
-        richItems: m.rich ? m.rich.items.map((it, i) => ({ num: i + 1, title: it.title, desc: it.desc, citeSource: m.rich.sources[i % m.rich.sources.length], citePreview: (m.rich.sources[i % m.rich.sources.length] || '') + ' — full article text would appear here as a short preview excerpt.' })) : [],
+        richItems: m.rich ? m.rich.items.map((it, i) => ({ num: i + 1, title: it.title, desc: it.desc, citeSource: m.rich.sources[i % m.rich.sources.length], citePreview: (m.rich.sources[i % m.rich.sources.length] || '') + ' — full article text would appear here as a short preview excerpt.', citeUrl: 'https://www.google.com/search?q=' + encodeURIComponent(m.rich.sources[i % m.rich.sources.length] || '') })) : [],
         richFooter: m.rich ? m.rich.footer : '',
         richSources: m.rich ? m.rich.sources.map(s => ({ label: s })) : [],
         richFiles: m.rich ? m.rich.files.map(f => ({ name: f })) : [],

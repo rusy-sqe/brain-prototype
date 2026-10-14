@@ -608,7 +608,7 @@ body{
 .hz-tooltip__arrow{ position:absolute; width:23px; height:11px; overflow:hidden; }
 .hz-tooltip__arrow::before{ content:""; position:absolute; width:16px; height:16px; background:var(--hz-neutral-950); transform:rotate(45deg); left:3.5px; top:-8px; }
 .hz-tooltip--top .hz-tooltip__arrow{ top:-11px; left:50%; margin-left:-11.5px; }
-.hz-tooltip--bottom .hz-tooltip__arrow{ bottom:-11px; left:50%; margin-left:-11.5px; transform:scaleY(-1); }
+.hz-tooltip--bottom .hz-tooltip__arrow{ top:-11px; left:50%; margin-left:-11.5px; transform:scaleY(-1); }
 .hz-tooltip--left .hz-tooltip__arrow{ left:-16px; top:50%; margin-top:-5.5px; transform:rotate(-90deg); }
 .hz-tooltip--right .hz-tooltip__arrow{ right:-16px; top:50%; margin-top:-5.5px; transform:rotate(90deg); }
 

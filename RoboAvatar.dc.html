@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<style>
+@keyframes robo-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+@keyframes robo-shake{0%,100%{transform:translateX(0) rotate(0)}20%{transform:translateX(-6%) rotate(-3deg)}40%{transform:translateX(6%) rotate(3deg)}60%{transform:translateX(-4%) rotate(-2deg)}80%{transform:translateX(4%) rotate(2deg)}}
+@keyframes robo-tilt{0%,100%{rotate:0deg}50%{rotate:4deg}}
+@keyframes robo-glow{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes robo-talk{0%,100%{height:28%}25%{height:85%}50%{height:45%}75%{height:95%}100%{height:28%}}
+@keyframes robo-badge-spin{from{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.2)}to{transform:rotate(360deg) scale(1)}}
+@keyframes robo-badge-bell{0%,55%,100%{transform:rotate(0deg) scale(1)}10%{transform:rotate(-14deg) scale(1.18)}20%{transform:rotate(12deg) scale(1.2)}30%{transform:rotate(-9deg) scale(1.1)}40%{transform:rotate(6deg) scale(1.05)}}
+@keyframes robo-badge-twinkle{0%,100%{transform:rotate(0deg) scale(1);opacity:.8}50%{transform:rotate(7deg) scale(1.22);opacity:1}}
+@keyframes robo-badge-float{0%,100%{transform:translateY(0) rotate(-6deg) scale(1)}50%{transform:translateY(-15%) rotate(6deg) scale(1.15)}}
+@keyframes robo-z-float{0%{transform:translate(0,0) scale(.6);opacity:0}15%{opacity:1}100%{transform:translate(60%,-140%) scale(1.15);opacity:0}}
+
+.robo-wrap{position:relative;display:inline-block;width:calc(var(--robo-sz)*1px);height:calc(var(--robo-sz)*1px)}
+.robo-head{position:absolute;left:8%;top:10%;width:84%;height:80%;border-radius:38% 38% 42% 42%/42% 42% 40% 40%;
+  background:linear-gradient(150deg, color-mix(in srgb, var(--robo-color) 45%, white) 0%, var(--robo-color) 52%, color-mix(in srgb, var(--robo-color) 72%, black) 100%);
+  box-shadow:inset 0 calc(var(--robo-sz)*0.03*1px) calc(var(--robo-sz)*0.05*1px) rgba(255,255,255,.55), inset 0 calc(var(--robo-sz)*-0.04*1px) calc(var(--robo-sz)*0.06*1px) rgba(0,0,0,.18), 0 calc(var(--robo-sz)*0.06*1px) calc(var(--robo-sz)*0.12*1px) rgba(0,0,0,.22);
+  animation:robo-breathe var(--robo-breathe-dur,3.2s) ease-in-out infinite}
+.robo-head.is-error{animation:robo-shake var(--robo-breathe-dur,3.2s) ease-in-out infinite}
+.robo-head.is-exploring{animation:robo-breathe var(--robo-breathe-dur,3.2s) ease-in-out infinite, robo-tilt calc(var(--robo-breathe-dur,3.2s)*1.3) ease-in-out infinite}
+.robo-head.is-sleeping{opacity:.72}
+.robo-ear{position:absolute;top:38%;width:17%;height:17%;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--robo-color) 40%, white), var(--robo-color) 55%, color-mix(in srgb, var(--robo-color) 75%, black) 100%);
+  box-shadow:0 0 calc(var(--robo-sz)*0.08*1px) var(--robo-accent), inset 0 0 0 calc(var(--robo-sz)*0.012*1px) rgba(255,255,255,.5);
+  animation:robo-glow var(--robo-glow-dur,1.8s) ease-in-out infinite}
+.robo-ear.left{left:1%}
+.robo-ear.right{right:1%}
+.robo-antenna{position:absolute;left:50%;top:-2%;width:4%;height:14%;transform:translateX(-50%);border-radius:40%;
+  background:linear-gradient(180deg, color-mix(in srgb, var(--robo-color) 50%, white), var(--robo-color))}
+.robo-antenna-ball{position:absolute;left:50%;top:-10%;width:11%;height:11%;transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #fff, var(--robo-accent));box-shadow:0 0 calc(var(--robo-sz)*0.07*1px) var(--robo-accent);animation:robo-glow var(--robo-glow-dur,1.8s) ease-in-out infinite}
+.robo-visor{position:absolute;left:18%;top:40%;width:64%;height:36%;border-radius:22%;background:#1b2230;overflow:hidden;box-shadow:inset 0 0 0 calc(var(--robo-sz)*0.01*1px) rgba(255,255,255,.08)}
+.robo-visor-gloss{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.22), transparent 60%)}
+.robo-eyes-row{position:absolute;left:0;right:0;top:22%;height:36%;display:flex;align-items:center;justify-content:space-evenly;padding:0 10%}
+.robo-eye-glow{animation:robo-glow var(--robo-glow-dur,1.8s) ease-in-out infinite}
+.eye-arc{width:30%;height:52%;border-radius:0 0 50% 50% / 0 0 100% 100%;border-bottom:3px solid var(--robo-accent);box-shadow:0 2px calc(var(--robo-sz)*0.05*1px) var(--robo-accent)}
+.eye-arc-thin{width:30%;height:18%;align-self:flex-end;border-radius:0 0 50% 50%/0 0 100% 100%;border-bottom:2px solid var(--robo-accent)}
+.eye-arc-deep{width:34%;height:70%;border-radius:0 0 55% 55%/0 0 100% 100%;border-bottom:4px solid var(--robo-accent);box-shadow:0 2px calc(var(--robo-sz)*0.06*1px) var(--robo-accent)}
+.eye-dash{width:32%;height:14%;align-self:center;border-radius:40%;background:var(--robo-accent);box-shadow:0 0 calc(var(--robo-sz)*0.05*1px) var(--robo-accent)}
+.eye-ring{width:42%;height:42%;border-radius:50%;border:3px solid var(--robo-accent);box-shadow:0 0 calc(var(--robo-sz)*0.07*1px) var(--robo-accent)}
+.eye-circle{width:44%;height:44%;border-radius:50%;background:var(--robo-accent);box-shadow:0 0 calc(var(--robo-sz)*0.06*1px) var(--robo-accent)}
+.eye-diag{width:38%;height:14%;border-radius:40%;background:var(--robo-accent);box-shadow:0 0 calc(var(--robo-sz)*0.05*1px) var(--robo-accent)}
+.eye-diag.l{transform:rotate(18deg)}
+.eye-diag.r{transform:rotate(-18deg)}
+.eye-excl{display:flex;flex-direction:column;align-items:center;gap:8%;height:70%;justify-content:center}
+.eye-excl-bar{width:16%;height:55%;border-radius:40%;background:var(--robo-accent);box-shadow:0 0 calc(var(--robo-sz)*0.05*1px) var(--robo-accent)}
+.eye-excl-dot{width:16%;aspect-ratio:1;border-radius:50%;background:var(--robo-accent)}
+.eye-diamond{width:34%;height:34%;background:var(--robo-accent);clip-path:polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);box-shadow:0 0 calc(var(--robo-sz)*0.06*1px) var(--robo-accent)}
+.robo-mouth-row{position:absolute;left:0;right:0;bottom:14%;display:flex;align-items:center;justify-content:center;height:22%}
+.mouth-flat{width:26%;height:12%;border-radius:40%;background:var(--robo-accent)}
+.mouth-smile{width:34%;height:60%;border-bottom:3px solid var(--robo-accent);border-radius:0 0 50% 50%/0 0 100% 100%}
+.mouth-open{width:26%;height:70%;border-radius:50%;background:var(--robo-accent);box-shadow:0 0 calc(var(--robo-sz)*0.05*1px) var(--robo-accent)}
+.mouth-talk{display:flex;align-items:flex-end;justify-content:center;gap:7%;width:36%;height:100%}
+.robo-talk-bar{width:16%;height:40%;border-radius:40%;background:var(--robo-accent);box-shadow:0 0 calc(var(--robo-sz)*0.04*1px) var(--robo-accent);animation:robo-talk var(--robo-glow-dur,1.8s) ease-in-out infinite}
+.robo-badge{position:absolute;top:-6%;right:-8%;width:36%;height:36%;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 calc(var(--robo-sz)*0.02*1px) calc(var(--robo-sz)*0.06*1px) rgba(0,0,0,.2), 0 0 calc(var(--robo-sz)*0.1*1px) var(--robo-accent)}
+.robo-badge i{color:var(--robo-accent);font-size:calc(var(--robo-sz)*0.15*1px)}
+.robo-badge-spin{animation:robo-badge-spin var(--robo-badge-dur,2.2s) linear infinite}
+.robo-badge-bell{animation:robo-badge-bell var(--robo-badge-dur,2.2s) ease-in-out infinite}
+.robo-badge-twinkle{animation:robo-badge-twinkle var(--robo-badge-dur,2.2s) ease-in-out infinite}
+.robo-badge-float{animation:robo-badge-float var(--robo-badge-dur,2.2s) ease-in-out infinite}
+.robo-z{position:absolute;right:4%;top:6%;color:var(--robo-accent);font-weight:700;font-family:var(--hz-font-display,sans-serif);text-shadow:0 0 6px var(--robo-accent)}
+</style>
+</helmet>
+
+<div class="robo-wrap" style="--robo-sz:{{ m.sz }};--robo-color:{{ color }};--robo-accent:{{ m.accent }};--robo-breathe-dur:{{ m.breatheDur }}s;--robo-glow-dur:{{ m.glowDur }}s;--robo-badge-dur:{{ m.badgeDur }}s">
+
+  <sc-if value="{{ m.isSleeping }}" hint-placeholder-val="{{ false }}">
+    <span class="robo-z" style="font-size:{{ m.sz }}%;top:2%">Z</span>
+  </sc-if>
+
+  <div class="robo-head {{ m.headClass }}">
+    <div class="robo-ear left"></div>
+    <div class="robo-ear right"></div>
+    <div class="robo-antenna"></div>
+    <div class="robo-antenna-ball"></div>
+
+    <div class="robo-visor">
+      <div class="robo-visor-gloss"></div>
+
+      <div class="robo-eyes-row robo-eye-glow">
+        <sc-if value="{{ m.isIdle }}" hint-placeholder-val="{{ true }}"><div class="eye-arc"></div><div class="eye-arc"></div></sc-if>
+        <sc-if value="{{ m.isSleeping }}" hint-placeholder-val="{{ false }}"><div class="eye-arc-thin"></div><div class="eye-arc-thin"></div></sc-if>
+        <sc-if value="{{ m.isThinking }}" hint-placeholder-val="{{ false }}"><div class="eye-dash"></div><div class="eye-dash"></div></sc-if>
+        <sc-if value="{{ m.isSpeaking }}" hint-placeholder-val="{{ false }}"><div class="eye-ring"></div><div class="eye-ring"></div></sc-if>
+        <sc-if value="{{ m.isHappy }}" hint-placeholder-val="{{ false }}"><div class="eye-arc-deep"></div><div class="eye-arc-deep"></div></sc-if>
+        <sc-if value="{{ m.isWorking }}" hint-placeholder-val="{{ false }}"><div class="eye-diag l"></div><div class="eye-diag r"></div></sc-if>
+        <sc-if value="{{ m.isAttention }}" hint-placeholder-val="{{ false }}"><div class="eye-circle"></div><div class="eye-circle"></div></sc-if>
+        <sc-if value="{{ m.isError }}" hint-placeholder-val="{{ false }}">
+          <div class="eye-excl"><div class="eye-excl-bar"></div><div class="eye-excl-dot"></div></div>
+          <div class="eye-excl"><div class="eye-excl-bar"></div><div class="eye-excl-dot"></div></div>
+        </sc-if>
+        <sc-if value="{{ m.isExploring }}" hint-placeholder-val="{{ false }}"><div class="eye-diamond"></div><div class="eye-diamond"></div></sc-if>
+      </div>
+
+      <div class="robo-mouth-row">
+        <sc-if value="{{ m.mouthIsFlat }}" hint-placeholder-val="{{ true }}"><div class="mouth-flat robo-mouth-glow"></div></sc-if>
+        <sc-if value="{{ m.isHappy }}" hint-placeholder-val="{{ false }}"><div class="mouth-smile"></div></sc-if>
+        <sc-if value="{{ m.isSpeaking }}" hint-placeholder-val="{{ false }}">
+          <div class="mouth-talk">
+            <div class="robo-talk-bar" style="animation-delay:0s"></div>
+            <div class="robo-talk-bar" style="animation-delay:.15s"></div>
+            <div class="robo-talk-bar" style="animation-delay:.3s"></div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ m.isExploring }}" hint-placeholder-val="{{ false }}"><div class="mouth-open robo-mouth-glow"></div></sc-if>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ m.hasBadge }}" hint-placeholder-val="{{ false }}">
+    <div class="robo-badge {{ m.badgeAnimClass }}"><i class="fas fa-{{ m.badgeIcon }}"></i></div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:120,&quot;height&quot;:120},&quot;color&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#3b82f6&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#3b82f6&quot;,&quot;#8b5cf6&quot;,&quot;#14b8a6&quot;,&quot;#f97316&quot;,&quot;#ef4444&quot;]},&quot;speed&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;balanced&quot;,&quot;tsType&quot;:&quot;'slow'|'balanced'|'energetic'&quot;,&quot;options&quot;:[&quot;slow&quot;,&quot;balanced&quot;,&quot;energetic&quot;]},&quot;size&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:96,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:24,&quot;max&quot;:240,&quot;step&quot;:2,&quot;unit&quot;:&quot;px&quot;},&quot;state&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;idle&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;idle&quot;,&quot;thinking&quot;,&quot;speaking&quot;,&quot;happy&quot;,&quot;working&quot;,&quot;attention&quot;,&quot;error&quot;,&quot;sleeping&quot;,&quot;exploring&quot;]}}">
+class Component extends DCLogic {
+  renderVals() {
+    const state = this.props.state || 'idle';
+    const speed = this.props.speed || 'balanced';
+    const sz = Number(this.props.size) || 96;
+    const color = this.props.color || '#3b82f6';
+    const mult = speed === 'slow' ? 1.4 : speed === 'energetic' ? 0.65 : 1;
+
+    const accents = {
+      idle: 'var(--robo-color)',
+      thinking: 'var(--hz-purple-500, #8b5cf6)',
+      speaking: 'var(--hz-teal-500, #14b8a6)',
+      happy: 'var(--hz-yellow-500, #eab308)',
+      working: 'var(--hz-azure-500, #0ea5e9)',
+      attention: 'var(--hz-orange-500, #f97316)',
+      error: 'var(--hz-red-500, #ef4444)',
+      sleeping: 'var(--hz-neutral-400, #9ca3af)',
+      exploring: 'var(--hz-teal-500, #14b8a6)'
+    };
+    const badges = {
+      thinking: { icon: 'lightbulb', anim: 'robo-badge-twinkle' },
+      speaking: { icon: 'volume-up', anim: 'robo-badge-twinkle' },
+      happy: { icon: 'sparkles', anim: 'robo-badge-twinkle' },
+      working: { icon: 'cog', anim: 'robo-badge-spin' },
+      attention: { icon: 'bell', anim: 'robo-badge-bell' },
+      error: { icon: 'exclamation-triangle', anim: 'robo-badge-bell' },
+      sleeping: { icon: 'moon', anim: 'robo-badge-float' },
+      exploring: { icon: 'search', anim: 'robo-badge-float' }
+    };
+    const badge = badges[state];
+
+    const m = {
+      sz, accent: accents[state] || 'var(--robo-color)',
+      breatheDur: +(3.2 * mult).toFixed(2),
+      glowDur: +(1.8 * mult).toFixed(2),
+      badgeDur: +(2.2 * mult).toFixed(2),
+      headClass: state === 'error' ? 'is-error' : state === 'exploring' ? 'is-exploring' : state === 'sleeping' ? 'is-sleeping' : '',
+      isIdle: state === 'idle', isThinking: state === 'thinking', isSpeaking: state === 'speaking',
+      isHappy: state === 'happy', isWorking: state === 'working', isAttention: state === 'attention',
+      isError: state === 'error', isSleeping: state === 'sleeping', isExploring: state === 'exploring',
+      mouthIsFlat: ['idle', 'thinking', 'working', 'attention', 'error', 'sleeping'].includes(state),
+      hasBadge: !!badge,
+      badgeIcon: badge ? badge.icon : '',
+      badgeAnimClass: badge ? badge.anim : ''
+    };
+    return { m, color };
+  }
+}
+</script>
+</body>
+</html>

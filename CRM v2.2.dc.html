@@ -11,7 +11,17 @@
 <link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
 <link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
 <script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
-<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)}</style>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)}
+.copy-line .copy-btn{opacity:0;transition:opacity .12s,color .12s,background .12s;border:none;background:none;cursor:pointer;color:var(--hz-text-tertiary);padding:3px 5px;border-radius:4px;display:inline-flex;align-items:center;flex-shrink:0}
+.copy-line:hover .copy-btn{opacity:1}
+.copy-line .copy-btn:hover{color:var(--hz-horizon-primary);background:var(--hz-neutral-100)}
+.copy-line .copy-btn.is-copied{color:var(--hz-green-600,#16a34a);opacity:1}
+.deals-cell .clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;white-space:normal}
+.deals-cell.is-expanded .clamp-2{-webkit-line-clamp:unset;overflow:visible}
+.deals-more{display:none;border:none;background:none;color:var(--hz-horizon-primary);font-size:12px;font-weight:600;cursor:pointer;padding:2px 0;margin-top:2px}
+.deals-cell.has-overflow .deals-more{display:inline-block}
+.row-action-btn{border:none;background:none;cursor:pointer;color:var(--hz-text-tertiary);display:inline-flex;align-items:center;gap:5px;padding:5px 7px;border-radius:6px;font-size:12px;font-weight:600;font-family:inherit}
+.row-action-btn:hover{color:var(--hz-horizon-primary);background:var(--hz-neutral-100)}</style>
 </helmet>
 <div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:200px minmax(0,1fr)">
 
@@ -24,7 +34,7 @@
       <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
     </div>
     <button class="hz-account-trigger" style="width:100%;margin-top:10px;padding:6px 8px">
-      <span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-200)"><i class="far fa-building" style="font-size:12px"></i></span>
+      
       <span><span class="hz-account-trigger__name" style="display:block">M&amp;A Team<br></span></span>
       <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
     </button>
@@ -62,7 +72,7 @@
   </div>
   <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
     <button class="hz-account-trigger" style="width:100%">
-      <span class="hz-avatar hz-avatar--sm">NK</span>
+      
       <span><span class="hz-account-trigger__name" style="display:block">Nur Khairusy</span></span>
       <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
       <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
@@ -79,10 +89,10 @@
 
   <div style="padding:16px 28px 24px;display:flex;flex-direction:column;gap:16px">
 
-  <div class="hz-card" style="padding:12px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 24px;align-items:center;min-height:64px">
+  <div class="hz-card" style="padding:12px 18px;display:grid;grid-template-columns:minmax(340px,1.4fr) repeat(auto-fit,minmax(200px,1fr));gap:10px 24px;align-items:center;min-height:48px">
     <button onClick="{{ applyNoContactFilter }}" style="display:flex;align-items:center;gap:10px;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;text-align:left;border-right:1px solid var(--hz-border-subtle);padding-right:24px">
       <span style="width:32px;height:32px;border-radius:8px;background:var(--hz-red-50);color:var(--hz-red-600);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far fa-exclamation-triangle" style="font-size:13px"></i></span>
-      <span style="line-height:1.2"><span style="font-size:22px;font-weight:700;color:var(--hz-horizon-primary)">185</span> <span style="font-size:14px;font-weight:600;color:var(--hz-text-primary)">no contact in 30+ days</span> <span style="font-size:13px;font-weight:700;color:var(--hz-horizon-primary);text-decoration:underline;margin-left:4px">Follow up →</span></span>
+      <span style="line-height:1.2;white-space:nowrap"><span style="font-size:22px;font-weight:700;color:var(--hz-horizon-primary)">185</span> <span style="font-size:14px;font-weight:600;color:var(--hz-text-primary)">no contact in 30+ days</span> <span style="font-size:13px;font-weight:700;color:var(--hz-horizon-primary);text-decoration:underline;margin-left:4px">Follow up →</span></span>
     </button>
     <div style="display:flex;align-items:center;gap:8px;color:var(--hz-text-tertiary);border-right:1px solid var(--hz-border-subtle);padding-right:24px">
       <i class="far fa-inbox" style="font-size:13px"></i>
@@ -110,9 +120,9 @@
         <i class="far fa-magnifying-glass" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--hz-text-tertiary);font-size:13px"></i>
         <input placeholder="Search by company name or PIC name…" style="width:100%;padding:9px 12px 9px 34px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
       </div>
-      <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-calendar"></i>Last Contact<i class="far fa-chevron-down" style="font-size:10px"></i></button>
-      <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-tag"></i>Topic<i class="far fa-chevron-down" style="font-size:10px"></i></button>
-      <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-users"></i>Team member<i class="far fa-chevron-down" style="font-size:10px"></i></button>
+      <button class="hz-btn hz-btn--sm" style="background:transparent;color:var(--hz-text-secondary);border:1px solid var(--hz-neutral-300)"><i class="far fa-calendar"></i>Last Contact<i class="far fa-chevron-down" style="font-size:10px"></i></button>
+      <button class="hz-btn hz-btn--sm" style="background:transparent;color:var(--hz-text-secondary);border:1px solid var(--hz-neutral-300)"><i class="far fa-tag"></i>Topic<i class="far fa-chevron-down" style="font-size:10px"></i></button>
+      <button class="hz-btn hz-btn--sm" style="background:transparent;color:var(--hz-text-secondary);border:1px solid var(--hz-neutral-300)"><i class="far fa-users"></i>Team member<i class="far fa-chevron-down" style="font-size:10px"></i></button>
       <sc-if value="{{ lastContactFilterActive }}" hint-placeholder-val="{{ false }}">
       <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--hz-red-50);color:var(--hz-red-700);font-size:13px;font-weight:600">
         <i class="far fa-exclamation-triangle" style="font-size:11px"></i>No contact 30+ days
@@ -132,26 +142,26 @@
             <th style="padding:8px 10px">Primary PIC</th>
             <th style="padding:8px 10px">Response P50</th>
             <th style="padding:8px 10px">Last Contact</th>
-            <th style="padding:8px 10px">Topics</th>
+            <th style="padding:8px 10px;width:220px">Topics</th>
             <th style="padding:8px 10px">Team Member</th>
             <th style="padding:8px 10px"></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">F</span><div><div style="font-weight:700">01fintech</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300)"><i class="far fa-envelope"></i> AUTO</span></div></div></div></td>
+            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">F</span><div><div style="font-weight:700">01fintech</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300);font-size:9px;padding:1px 5px;height:auto;line-height:1.4"><i class="far fa-envelope" style="font-size:8px"></i> AUTO</span></div></div></div></td>
             <td>Fintech</td>
             <td><div style="font-weight:700">Kenny Man</div><div class="hz-body-s hz-muted">Founder &amp; Managing Partner</div><a href="#" class="hz-body-s">kennyman@01fintech.com</a></td>
             <td>4h</td>
             <td>2 days ago</td>
-            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">venture-building</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">joint-venture</span></div></td>
-            <td><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px;background:var(--hz-neutral-200);color:var(--hz-neutral-700)">NK</span></td>
-            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact0 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" onClick="{{ openAiDraft0 }}" title="Draft Follow-up"><i class="far fa-sparkles"></i>Follow Up</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow0 }}"><i class="{{ chevron0 }}"></i></button></div></td>
+            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300);font-size:10px;padding:2px 7px;height:auto">venture-building</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300);font-size:10px;padding:2px 7px;height:auto">joint-venture</span></div></td>
+            <td><span class="hz-badge" style="background:#fff;color:var(--hz-text-secondary);border:1px solid var(--hz-border-default);font-size:10px;font-weight:600;padding:2px 8px;height:auto;white-space:nowrap">Nur Khairusy</span></td>
+            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact0 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ openAiDraft0 }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow0 }}"><i class="{{ chevron0 }}"></i></button></div></td>
           </tr>
           <sc-if value="{{ expanded0 }}" hint-placeholder-val="{{ false }}">
           <tr>
             <td colspan="8" style="padding:0;background:var(--hz-surface-page)">
-              <div style="padding:20px 24px">
+              <div style="padding:20px 20px 20px 12px">
                 <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle)">
                   <button onClick="{{ setTab0Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab0ContactsColor }};border-bottom:2px solid {{ tab0ContactsBorder }}">Contacts (6)</button>
                   <button onClick="{{ setTab0Topics }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab0TopicsColor }};border-bottom:2px solid {{ tab0TopicsBorder }}">Topics Tag (3)</button>
@@ -160,105 +170,165 @@
                 </div>
                 <sc-if value="{{ tab0IsContacts }}" hint-placeholder-val="{{ true }}">
                 <div style="padding-top:16px">
-                  <div style="display:flex;align-items:center;justify-content:space-between">
-                    <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (6)</div>
+                  <div style="display:flex;align-items:center;justify-content:flex-end">
+                    
                     <div style="display:flex;gap:10px;align-items:center">
-                      <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openAiDraft0 }}"><i class="far fa-sparkles"></i>Draft Follow-up</button>
-                      <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
+                      
+                      <a href="#" style="font-weight:700;font-size:14px;text-decoration:none"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
                     </div>
                   </div>
-                  <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:16px">
-                    <tbody>
-                      <tr>
-                        <td colspan="2" style="padding:0 0 12px 0">
-                          <div style="display:flex;align-items:center;gap:10px">
-                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">KM</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Kenny Man</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700)"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th style="padding:4px 10px 4px 0;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Title</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Email</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Phone</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Past Deals</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Area Focus</th>
-                        <th style="padding:4px 0 4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Industry Focus</th>
-                      </tr>
-                      <tr>
-                        <td style="padding:4px 10px 4px 0;font-weight:600">Founder &amp; Managing Partner</td>
-                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">kennyman@01fintech.com</a></td>
-                        <td style="padding:4px 10px;font-weight:600">+6582883968</td>
-                        <td style="padding:4px 10px;font-weight:600">2</td>
-                        <td style="padding:4px 10px;font-weight:600">Southeast Asia</td>
-                        <td style="padding:4px 0 4px 10px;font-weight:600">Fintech</td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="padding:14px 0 12px 0">
-                          <div style="display:flex;align-items:center;gap:10px">
-                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">LW</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Lina Wijaya</span></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding:4px 10px 4px 0;font-weight:600">Head of Operations</td>
-                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">lina.wijaya@01fintech.com</a></td>
-                        <td style="padding:4px 10px;font-weight:600">+6281234567</td>
-                        <td style="padding:4px 10px;font-weight:600">0</td>
-                        <td style="padding:4px 10px;font-weight:600">Southeast Asia</td>
-                        <td style="padding:4px 0 4px 10px;font-weight:600">Fintech</td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="padding:14px 0 12px 0">
-                          <div style="display:flex;align-items:center;gap:10px">
-                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">RS</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Rama Santoso</span></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding:4px 10px 4px 0;font-weight:600">CFO</td>
-                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">rama.santoso@01fintech.com</a></td>
-                        <td style="padding:4px 10px;font-weight:600">+6281298765</td>
-                        <td style="padding:4px 10px;font-weight:600">1</td>
-                        <td style="padding:4px 10px;font-weight:600">Southeast Asia</td>
-                        <td style="padding:4px 0 4px 10px;font-weight:600">Fintech</td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="padding:14px 0 12px 0">
-                          <div style="display:flex;align-items:center;gap:10px">
-                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">TP</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Tara Putri</span></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding:4px 10px 4px 0;font-weight:600">Product Lead</td>
-                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">tara.putri@01fintech.com</a></td>
-                        <td style="padding:4px 10px;font-weight:600">+6281355566</td>
-                        <td style="padding:4px 10px;font-weight:600">0</td>
-                        <td style="padding:4px 10px;font-weight:600">Southeast Asia</td>
-                        <td style="padding:4px 0 4px 10px;font-weight:600">Fintech</td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="padding:14px 0 12px 0">
-                          <div style="display:flex;align-items:center;gap:10px">
-                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">BH</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Budi Hartono</span></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding:4px 10px 4px 0;font-weight:600">Legal Counsel</td>
-                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">budi.hartono@01fintech.com</a></td>
-                        <td style="padding:4px 10px;font-weight:600">+6281399912</td>
-                        <td style="padding:4px 10px;font-weight:600">1</td>
-                        <td style="padding:4px 10px;font-weight:600">Southeast Asia</td>
-                        <td style="padding:4px 0 4px 10px;font-weight:600">Fintech</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div style="overflow-x:auto;margin-top:8px;border:1px solid var(--hz-border-subtle);border-radius:8px">
+        <div style="min-width:1000px;font-size:12px">
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;background:var(--hz-neutral-50);border-bottom:1px solid var(--hz-border-subtle);position:sticky;top:0">
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Name</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Email / Phone</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Past Deals Summary</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Area Focus</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Industry Focus</div>
+            <div style="padding:6px 10px;text-align:center;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Action</div>
+          </div>
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;min-height:48px;align-items:center;border-bottom:1px solid var(--hz-border-subtle)" data-row="1">
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0">
+              <span class="row-name" style="font-weight:400;font-size:12px;white-space:nowrap">Kenny Man</span>
+              <span class="hz-badge hz-badge--soft" style="background: var(--hz-green-50); color: var(--hz-green-700); white-space: nowrap; height: auto; padding: 2px 6px; font-size: 11px; font-weight: 400">Primary</span>
+              <span class="hz-badge hz-badge--soft" style="background: var(--hz-orange-50); color: var(--hz-orange-700); white-space: nowrap; height: auto; padding: 2px 6px; font-size: 11px; font-weight: 500"><i class="far fa-flag" style="font-size: 10px; margin-right: 3px;"><br></i></span>
+            <span class="row-title" style="width:100%;font-size:11px;color:var(--hz-text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="Founder &amp; Managing Partner">Founder &amp; Managing Partner</span></div>
+            <div style="padding:6px 10px;min-width:0;display:flex;flex-direction:column;gap:2px" title="kennyman@01fintech.com · +6582883968">
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <a href="#" class="row-email" style="font-family:monospace;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">kennyman@01fintech.com</a>
+                <button class="copy-btn" data-copy="kennyman@01fintech.com" onClick="{{ copyToClipboard }}" title="Copy email"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <span class="row-phone" style="font-family:monospace;color:var(--hz-text-tertiary);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">+6582883968</span>
+                <button class="copy-btn" data-copy="+6582883968" onClick="{{ copyToClipboard }}" title="Copy phone"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+            </div>
+            <div class="deals-cell" style="padding:6px 10px;min-width:0">
+              <span class="clamp-2" title="Co-led 2 fintech growth rounds across Southeast Asia.">Co-led 2 fintech growth rounds across Southeast Asia.</span>
+              <button class="deals-more" onClick="{{ toggleDealsExpand }}">Show more</button>
+            </div>
+            <div class="row-area" style="padding:6px 10px;white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-width:0;line-height:1.3" title="Southeast Asia">Southeast Asia</div>
+            <div class="row-industry" style="padding:6px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0" title="Fintech">Fintech</div>
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:2px;justify-content:flex-end">
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ editRowContact }}" title="Edit contact"><i class="far fa-pen"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ followUpRowContact }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ lookupRowContact }}" title="Look up contact"><i class="far fa-search"></i></button>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;min-height:48px;align-items:center;border-bottom:1px solid var(--hz-border-subtle)" data-row="1">
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0">
+              <span class="row-name" style="font-weight:400;font-size:12px;white-space:nowrap">Lina Wijaya</span>
+              
+              
+            <span class="row-title" style="width:100%;font-size:11px;color:var(--hz-text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="Head of Operations">Head of Operations</span></div>
+            <div style="padding:6px 10px;min-width:0;display:flex;flex-direction:column;gap:2px" title="lina.wijaya@01fintech.com · +6281234567">
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <a href="#" class="row-email" style="font-family:monospace;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">lina.wijaya@01fintech.com</a>
+                <button class="copy-btn" data-copy="lina.wijaya@01fintech.com" onClick="{{ copyToClipboard }}" title="Copy email"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <span class="row-phone" style="font-family:monospace;color:var(--hz-text-tertiary);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">+6281234567</span>
+                <button class="copy-btn" data-copy="+6281234567" onClick="{{ copyToClipboard }}" title="Copy phone"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+            </div>
+            <div class="deals-cell" style="padding:6px 10px;min-width:0">
+              <span class="clamp-2" title="No past deals on record yet.">No past deals on record yet.</span>
+              <button class="deals-more" onClick="{{ toggleDealsExpand }}">Show more</button>
+            </div>
+            <div class="row-area" style="padding:6px 10px;white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-width:0;line-height:1.3" title="Southeast Asia">Southeast Asia</div>
+            <div class="row-industry" style="padding:6px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0" title="Fintech">Fintech</div>
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:2px;justify-content:flex-end">
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ editRowContact }}" title="Edit contact"><i class="far fa-pen"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ followUpRowContact }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ lookupRowContact }}" title="Look up contact"><i class="far fa-search"></i></button>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;min-height:48px;align-items:center;border-bottom:1px solid var(--hz-border-subtle)" data-row="1">
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0">
+              <span class="row-name" style="font-weight:400;font-size:12px;white-space:nowrap">Rama Santoso</span>
+              
+              
+            <span class="row-title" style="width:100%;font-size:11px;color:var(--hz-text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="CFO">CFO</span></div>
+            <div style="padding:6px 10px;min-width:0;display:flex;flex-direction:column;gap:2px" title="rama.santoso@01fintech.com · +6281298765">
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <a href="#" class="row-email" style="font-family:monospace;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">rama.santoso@01fintech.com</a>
+                <button class="copy-btn" data-copy="rama.santoso@01fintech.com" onClick="{{ copyToClipboard }}" title="Copy email"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <span class="row-phone" style="font-family:monospace;color:var(--hz-text-tertiary);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">+6281298765</span>
+                <button class="copy-btn" data-copy="+6281298765" onClick="{{ copyToClipboard }}" title="Copy phone"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+            </div>
+            <div class="deals-cell" style="padding:6px 10px;min-width:0">
+              <span class="clamp-2" title="Advised on 1 fintech Series B raise.">Advised on 1 fintech Series B raise.</span>
+              <button class="deals-more" onClick="{{ toggleDealsExpand }}">Show more</button>
+            </div>
+            <div class="row-area" style="padding:6px 10px;white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-width:0;line-height:1.3" title="Southeast Asia">Southeast Asia</div>
+            <div class="row-industry" style="padding:6px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0" title="Fintech">Fintech</div>
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:2px;justify-content:flex-end">
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ editRowContact }}" title="Edit contact"><i class="far fa-pen"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ followUpRowContact }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ lookupRowContact }}" title="Look up contact"><i class="far fa-search"></i></button>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;min-height:48px;align-items:center;border-bottom:1px solid var(--hz-border-subtle)" data-row="1">
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0">
+              <span class="row-name" style="font-weight:400;font-size:12px;white-space:nowrap">Tara Putri</span>
+              
+              
+            <span class="row-title" style="width:100%;font-size:11px;color:var(--hz-text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="Product Lead">Product Lead</span></div>
+            <div style="padding:6px 10px;min-width:0;display:flex;flex-direction:column;gap:2px" title="tara.putri@01fintech.com · +6281355566">
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <a href="#" class="row-email" style="font-family:monospace;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">tara.putri@01fintech.com</a>
+                <button class="copy-btn" data-copy="tara.putri@01fintech.com" onClick="{{ copyToClipboard }}" title="Copy email"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <span class="row-phone" style="font-family:monospace;color:var(--hz-text-tertiary);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">+6281355566</span>
+                <button class="copy-btn" data-copy="+6281355566" onClick="{{ copyToClipboard }}" title="Copy phone"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+            </div>
+            <div class="deals-cell" style="padding:6px 10px;min-width:0">
+              <span class="clamp-2" title="No past deals on record yet.">No past deals on record yet.</span>
+              <button class="deals-more" onClick="{{ toggleDealsExpand }}">Show more</button>
+            </div>
+            <div class="row-area" style="padding:6px 10px;white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-width:0;line-height:1.3" title="Southeast Asia">Southeast Asia</div>
+            <div class="row-industry" style="padding:6px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0" title="Fintech">Fintech</div>
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:2px;justify-content:flex-end">
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ editRowContact }}" title="Edit contact"><i class="far fa-pen"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ followUpRowContact }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ lookupRowContact }}" title="Look up contact"><i class="far fa-search"></i></button>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;min-height:48px;align-items:center;border-bottom:1px solid var(--hz-border-subtle)" data-row="1">
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0">
+              <span class="row-name" style="font-weight:400;font-size:12px;white-space:nowrap">Budi Hartono</span>
+              
+              
+            <span class="row-title" style="width:100%;font-size:11px;color:var(--hz-text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="Legal Counsel">Legal Counsel</span></div>
+            <div style="padding:6px 10px;min-width:0;display:flex;flex-direction:column;gap:2px" title="budi.hartono@01fintech.com · +6281399912">
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <a href="#" class="row-email" style="font-family:monospace;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">budi.hartono@01fintech.com</a>
+                <button class="copy-btn" data-copy="budi.hartono@01fintech.com" onClick="{{ copyToClipboard }}" title="Copy email"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <span class="row-phone" style="font-family:monospace;color:var(--hz-text-tertiary);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">+6281399912</span>
+                <button class="copy-btn" data-copy="+6281399912" onClick="{{ copyToClipboard }}" title="Copy phone"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+            </div>
+            <div class="deals-cell" style="padding:6px 10px;min-width:0">
+              <span class="clamp-2" title="Supported legal diligence on 1 fintech acquisition.">Supported legal diligence on 1 fintech acquisition.</span>
+              <button class="deals-more" onClick="{{ toggleDealsExpand }}">Show more</button>
+            </div>
+            <div class="row-area" style="padding:6px 10px;white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-width:0;line-height:1.3" title="Southeast Asia">Southeast Asia</div>
+            <div class="row-industry" style="padding:6px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0" title="Fintech">Fintech</div>
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:2px;justify-content:flex-end">
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ editRowContact }}" title="Edit contact"><i class="far fa-pen"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ followUpRowContact }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ lookupRowContact }}" title="Look up contact"><i class="far fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
                 </div>
                 </sc-if>
                 <sc-if value="{{ tab0IsTopics }}" hint-placeholder-val="{{ false }}">
@@ -302,19 +372,19 @@
           </tr>
           </sc-if>
           <tr>
-            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">C</span><div><div style="font-weight:700">385capitalworks</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300)"><i class="far fa-envelope"></i> AUTO</span></div></div></div></td>
+            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">C</span><div><div style="font-weight:700">385capitalworks</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300);font-size:9px;padding:1px 5px;height:auto;line-height:1.4"><i class="far fa-envelope" style="font-size:8px"></i> AUTO</span></div></div></div></td>
             <td>Private Equity</td>
             <td><div style="font-weight:700">Austin Miller</div><a href="#" class="hz-body-s">miller@385capitalworks.com</a></td>
             <td>1 day</td>
             <td>5 days ago</td>
-            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">investment</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">fundraising</span></div></td>
-            <td><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px;background:var(--hz-neutral-200);color:var(--hz-neutral-700)">RS</span></td>
-            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact1 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" onClick="{{ openAiDraft1 }}" title="Draft Follow-up"><i class="far fa-sparkles"></i>Follow Up</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow1 }}"><i class="{{ chevron1 }}"></i></button></div></td>
+            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300);font-size:10px;padding:2px 7px;height:auto">investment</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300);font-size:10px;padding:2px 7px;height:auto">fundraising</span></div></td>
+            <td><span class="hz-badge" style="background:#fff;color:var(--hz-text-secondary);border:1px solid var(--hz-border-default);font-size:10px;font-weight:600;padding:2px 8px;height:auto;white-space:nowrap">Rian Saputra</span></td>
+            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact1 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ openAiDraft1 }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow1 }}"><i class="{{ chevron1 }}"></i></button></div></td>
           </tr>
           <sc-if value="{{ expanded1 }}" hint-placeholder-val="{{ false }}">
           <tr>
             <td colspan="8" style="padding:0;background:var(--hz-surface-page)">
-              <div style="padding:20px 24px">
+              <div style="padding:20px 20px 20px 12px">
                 <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle)">
                   <button onClick="{{ setTab1Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab1ContactsColor }};border-bottom:2px solid {{ tab1ContactsBorder }}">Contacts (1)</button>
                   <button onClick="{{ setTab1Topics }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab1TopicsColor }};border-bottom:2px solid {{ tab1TopicsBorder }}">Topics Tag (2)</button>
@@ -327,7 +397,7 @@
                     <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (1)</div>
                     <div style="display:flex;gap:10px;align-items:center">
                       <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openAiDraft1 }}"><i class="far fa-sparkles"></i>Draft Follow-up</button>
-                      <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
+                      <a href="#" style="font-weight:700;font-size:14px;text-decoration:none"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
                     </div>
                   </div>
                   <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:16px">
@@ -336,25 +406,13 @@
                         <td colspan="2" style="padding:0 0 12px 0">
                           <div style="display:flex;align-items:center;gap:10px">
                             <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">AM</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Austin Miller</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700)"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th style="padding:4px 10px 4px 0;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Title</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Email</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Phone</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Past Deals</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Area Focus</th>
-                        <th style="padding:4px 0 4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Industry Focus</th>
-                      </tr>
-                      <tr>
-                        <td style="padding:4px 10px 4px 0;font-weight:600">Partner</td>
-                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">miller@385capitalworks.com</a></td>
-                        <td style="padding:4px 10px;font-weight:600">+1 917 555 0134</td>
-                        <td style="padding:4px 10px;font-weight:600">5</td>
-                        <td style="padding:4px 10px;font-weight:600">North America</td>
-                        <td style="padding:4px 0 4px 10px;font-weight:600">Private Equity</td>
+                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Austin Miller</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700)"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span></div></div></td>
+                        <td style="font-weight:600">Partner</td>
+                        <td style="font-weight:600"><a href="#" style="font-family:monospace">miller@385capitalworks.com</a></td>
+                        <td style="font-weight:600">+1 917 555 0134</td>
+                        <td style="font-weight:600">5</td>
+                        <td style="font-weight:600">North America</td>
+                        <td style="font-weight:600">Private Equity</td>
                       </tr>
                     </tbody>
                   </table>
@@ -401,19 +459,19 @@
           </tr>
           </sc-if>
           <tr>
-            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">AC</span><div><div style="font-weight:700">Abacus Capital</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300)"><i class="far fa-envelope"></i> AUTO</span></div></div></div></td>
+            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">AC</span><div><div style="font-weight:700">Abacus Capital</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300);font-size:9px;padding:1px 5px;height:auto;line-height:1.4"><i class="far fa-envelope" style="font-size:8px"></i> AUTO</span></div></div></div></td>
             <td>Asset Management</td>
             <td><div style="font-weight:700">ravena@abacuscapital.com</div><a href="#" class="hz-body-s">ravena@abacuscapital.com</a></td>
             <td>6h</td>
             <td>1 week ago</td>
-            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">investment-opportunity</span></div></td>
-            <td><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px;background:var(--hz-neutral-200);color:var(--hz-neutral-700)">NK</span></td>
-            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact2 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" onClick="{{ openAiDraft2 }}" title="Draft Follow-up"><i class="far fa-sparkles"></i>Follow Up</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow2 }}"><i class="{{ chevron2 }}"></i></button></div></td>
+            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300);font-size:10px;padding:2px 7px;height:auto">investment-opportunity</span></div></td>
+            <td><span class="hz-badge" style="background:#fff;color:var(--hz-text-secondary);border:1px solid var(--hz-border-default);font-size:10px;font-weight:600;padding:2px 8px;height:auto;white-space:nowrap">Nur Khairusy</span></td>
+            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact2 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ openAiDraft2 }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow2 }}"><i class="{{ chevron2 }}"></i></button></div></td>
           </tr>
           <sc-if value="{{ expanded2 }}" hint-placeholder-val="{{ false }}">
           <tr>
             <td colspan="8" style="padding:0;background:var(--hz-surface-page)">
-              <div style="padding:20px 24px">
+              <div style="padding:20px 20px 20px 12px">
                 <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle)">
                   <button onClick="{{ setTab2Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab2ContactsColor }};border-bottom:2px solid {{ tab2ContactsBorder }}">Contacts (1)</button>
                   <button onClick="{{ setTab2Topics }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab2TopicsColor }};border-bottom:2px solid {{ tab2TopicsBorder }}">Topics Tag (1)</button>
@@ -426,37 +484,49 @@
                     <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (1)</div>
                     <div style="display:flex;gap:10px;align-items:center">
                       <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openAiDraft2 }}"><i class="far fa-sparkles"></i>Draft Follow-up</button>
-                      <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
+                      <a href="#" style="font-weight:700;font-size:14px;text-decoration:none"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
                     </div>
                   </div>
-                  <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:16px">
-                    <tbody>
-                      <tr>
-                        <td colspan="2" style="padding:0 0 12px 0">
-                          <div style="display:flex;align-items:center;gap:10px">
-                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">R</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Ravena</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700)"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th style="padding:4px 10px 4px 0;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Title</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Email</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Phone</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Past Deals</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Area Focus</th>
-                        <th style="padding:4px 0 4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Industry Focus</th>
-                      </tr>
-                      <tr>
-                        <td style="padding:4px 10px 4px 0;font-weight:600">Investment Associate</td>
-                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">ravena@abacuscapital.com</a></td>
-                        <td style="padding:4px 10px;font-weight:600">+62 812 3456 7890</td>
-                        <td style="padding:4px 10px;font-weight:600">1</td>
-                        <td style="padding:4px 10px;font-weight:600">Indonesia</td>
-                        <td style="padding:4px 0 4px 10px;font-weight:600">Asset Management</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div style="overflow-x:auto;margin-top:8px;border:1px solid var(--hz-border-subtle);border-radius:8px">
+        <div style="min-width:1000px;font-size:12px">
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;background:var(--hz-neutral-50);border-bottom:1px solid var(--hz-border-subtle);position:sticky;top:0">
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Name</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Email / Phone</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Past Deals Summary</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Area Focus</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Industry Focus</div>
+            <div style="padding:6px 10px;text-align:center;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Action</div>
+          </div>
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;min-height:48px;align-items:center;border-bottom:1px solid var(--hz-border-subtle)" data-row="1">
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0">
+              <span class="row-name" style="font-weight:400;font-size:12px;white-space:nowrap">Ravena</span>
+              <span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700);white-space:nowrap;height:auto;padding:2px 6px;font-size:11px">Primary</span>
+              <span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700);white-space:nowrap;height:auto;padding:2px 6px;font-size:11px"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span>
+            <span class="row-title" style="width:100%;font-size:11px;color:var(--hz-text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="Investment Associate">Investment Associate</span></div>
+            <div style="padding:6px 10px;min-width:0;display:flex;flex-direction:column;gap:2px" title="ravena@abacuscapital.com · +62 812 3456 7890">
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <a href="#" class="row-email" style="font-family:monospace;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">ravena@abacuscapital.com</a>
+                <button class="copy-btn" data-copy="ravena@abacuscapital.com" onClick="{{ copyToClipboard }}" title="Copy email"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <span class="row-phone" style="font-family:monospace;color:var(--hz-text-tertiary);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">+62 812 3456 7890</span>
+                <button class="copy-btn" data-copy="+62 812 3456 7890" onClick="{{ copyToClipboard }}" title="Copy phone"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+            </div>
+            <div class="deals-cell" style="padding:6px 10px;min-width:0">
+              <span class="clamp-2" title="Sourced 1 asset management mandate in Indonesia.">Sourced 1 asset management mandate in Indonesia.</span>
+              <button class="deals-more" onClick="{{ toggleDealsExpand }}">Show more</button>
+            </div>
+            <div class="row-area" style="padding:6px 10px;white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-width:0;line-height:1.3" title="Indonesia">Indonesia</div>
+            <div class="row-industry" style="padding:6px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0" title="Asset Management">Asset Management</div>
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:2px;justify-content:flex-end">
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ editRowContact }}" title="Edit contact"><i class="far fa-pen"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ followUpRowContact }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ lookupRowContact }}" title="Look up contact"><i class="far fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
                 </div>
                 </sc-if>
                 <sc-if value="{{ tab2IsTopics }}" hint-placeholder-val="{{ false }}">
@@ -500,19 +570,19 @@
           </tr>
           </sc-if>
           <tr>
-            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">AE</span><div><div style="font-weight:700">Acciona Energy</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300)"><i class="far fa-envelope"></i> AUTO</span></div></div></div></td>
+            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">AE</span><div><div style="font-weight:700">Acciona Energy</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300);font-size:9px;padding:1px 5px;height:auto;line-height:1.4"><i class="far fa-envelope" style="font-size:8px"></i> AUTO</span></div></div></div></td>
             <td>Renewable Energy</td>
             <td><div style="font-weight:700">Darrel Digal</div><a href="#" class="hz-body-s">darreldigal@axcionaenergy.com</a></td>
             <td>2 days</td>
             <td>3 weeks ago</td>
-            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">solar-energy</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">project-development</span></div></td>
-            <td><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px;background:var(--hz-neutral-200);color:var(--hz-neutral-700)">RS</span></td>
-            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact3 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" onClick="{{ openAiDraft3 }}" title="Draft Follow-up"><i class="far fa-sparkles"></i>Follow Up</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow3 }}"><i class="{{ chevron3 }}"></i></button></div></td>
+            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300);font-size:10px;padding:2px 7px;height:auto">solar-energy</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300);font-size:10px;padding:2px 7px;height:auto">project-development</span></div></td>
+            <td><span class="hz-badge" style="background:#fff;color:var(--hz-text-secondary);border:1px solid var(--hz-border-default);font-size:10px;font-weight:600;padding:2px 8px;height:auto;white-space:nowrap">Rian Saputra</span></td>
+            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact3 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ openAiDraft3 }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow3 }}"><i class="{{ chevron3 }}"></i></button></div></td>
           </tr>
           <sc-if value="{{ expanded3 }}" hint-placeholder-val="{{ false }}">
           <tr>
             <td colspan="8" style="padding:0;background:var(--hz-surface-page)">
-              <div style="padding:20px 24px">
+              <div style="padding:20px 20px 20px 12px">
                 <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle)">
                   <button onClick="{{ setTab3Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab3ContactsColor }};border-bottom:2px solid {{ tab3ContactsBorder }}">Contacts (1)</button>
                   <button onClick="{{ setTab3Topics }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab3TopicsColor }};border-bottom:2px solid {{ tab3TopicsBorder }}">Topics Tag (2)</button>
@@ -525,37 +595,49 @@
                     <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (1)</div>
                     <div style="display:flex;gap:10px;align-items:center">
                       <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openAiDraft3 }}"><i class="far fa-sparkles"></i>Draft Follow-up</button>
-                      <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
+                      <a href="#" style="font-weight:700;font-size:14px;text-decoration:none"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
                     </div>
                   </div>
-                  <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:16px">
-                    <tbody>
-                      <tr>
-                        <td colspan="2" style="padding:0 0 12px 0">
-                          <div style="display:flex;align-items:center;gap:10px">
-                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">DD</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Darrel Digal</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700)"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th style="padding:4px 10px 4px 0;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Title</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Email</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Phone</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Past Deals</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Area Focus</th>
-                        <th style="padding:4px 0 4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Industry Focus</th>
-                      </tr>
-                      <tr>
-                        <td style="padding:4px 10px 4px 0;font-weight:600">Business Development</td>
-                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">darreldigal@axcionaenergy.com</a></td>
-                        <td style="padding:4px 10px;font-weight:600">+62 811 2233 4455</td>
-                        <td style="padding:4px 10px;font-weight:600">3</td>
-                        <td style="padding:4px 10px;font-weight:600">Indonesia</td>
-                        <td style="padding:4px 0 4px 10px;font-weight:600">Renewable Energy</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div style="overflow-x:auto;margin-top:8px;border:1px solid var(--hz-border-subtle);border-radius:8px">
+        <div style="min-width:1000px;font-size:12px">
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;background:var(--hz-neutral-50);border-bottom:1px solid var(--hz-border-subtle);position:sticky;top:0">
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Name</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Email / Phone</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Past Deals Summary</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Area Focus</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Industry Focus</div>
+            <div style="padding:6px 10px;text-align:center;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Action</div>
+          </div>
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;min-height:48px;align-items:center;border-bottom:1px solid var(--hz-border-subtle)" data-row="1">
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0">
+              <span class="row-name" style="font-weight:400;font-size:12px;white-space:nowrap">Darrel Digal</span>
+              <span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700);white-space:nowrap;height:auto;padding:2px 6px;font-size:11px">Primary</span>
+              <span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700);white-space:nowrap;height:auto;padding:2px 6px;font-size:11px"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span>
+            <span class="row-title" style="width:100%;font-size:11px;color:var(--hz-text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="Business Development">Business Development</span></div>
+            <div style="padding:6px 10px;min-width:0;display:flex;flex-direction:column;gap:2px" title="darreldigal@axcionaenergy.com · +62 811 2233 4455">
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <a href="#" class="row-email" style="font-family:monospace;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">darreldigal@axcionaenergy.com</a>
+                <button class="copy-btn" data-copy="darreldigal@axcionaenergy.com" onClick="{{ copyToClipboard }}" title="Copy email"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <span class="row-phone" style="font-family:monospace;color:var(--hz-text-tertiary);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">+62 811 2233 4455</span>
+                <button class="copy-btn" data-copy="+62 811 2233 4455" onClick="{{ copyToClipboard }}" title="Copy phone"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+            </div>
+            <div class="deals-cell" style="padding:6px 10px;min-width:0">
+              <span class="clamp-2" title="Closed 3 renewable energy partnership deals.">Closed 3 renewable energy partnership deals.</span>
+              <button class="deals-more" onClick="{{ toggleDealsExpand }}">Show more</button>
+            </div>
+            <div class="row-area" style="padding:6px 10px;white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-width:0;line-height:1.3" title="Indonesia">Indonesia</div>
+            <div class="row-industry" style="padding:6px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0" title="Renewable Energy">Renewable Energy</div>
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:2px;justify-content:flex-end">
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ editRowContact }}" title="Edit contact"><i class="far fa-pen"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ followUpRowContact }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ lookupRowContact }}" title="Look up contact"><i class="far fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
                 </div>
                 </sc-if>
                 <sc-if value="{{ tab3IsTopics }}" hint-placeholder-val="{{ false }}">
@@ -599,19 +681,19 @@
           </tr>
           </sc-if>
           <tr>
-            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">A</span><div><div style="font-weight:700">Adivira</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300)"><i class="far fa-envelope"></i> AUTO</span></div></div></div></td>
+            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">A</span><div><div style="font-weight:700">Adivira</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300);font-size:9px;padding:1px 5px;height:auto;line-height:1.4"><i class="far fa-envelope" style="font-size:8px"></i> AUTO</span></div></div></div></td>
             <td>Fintech</td>
             <td><div style="font-weight:700">Adhitia</div><a href="#" class="hz-body-s">adhitia.budiarjo@adivira.com</a></td>
             <td>12h</td>
             <td style="color: #BE0606"><b>1 month ago</b></td>
-            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">white-label</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">product-distribution</span></div></td>
-            <td><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px;background:var(--hz-neutral-200);color:var(--hz-neutral-700)">NK</span></td>
-            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact4 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" onClick="{{ openAiDraft4 }}" title="Draft Follow-up"><i class="far fa-sparkles"></i>Follow Up</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow4 }}"><i class="{{ chevron4 }}"></i></button></div></td>
+            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300);font-size:10px;padding:2px 7px;height:auto">white-label</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300);font-size:10px;padding:2px 7px;height:auto">product-distribution</span></div></td>
+            <td><span class="hz-badge" style="background:#fff;color:var(--hz-text-secondary);border:1px solid var(--hz-border-default);font-size:10px;font-weight:600;padding:2px 8px;height:auto;white-space:nowrap">Nur Khairusy</span></td>
+            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact4 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ openAiDraft4 }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow4 }}"><i class="{{ chevron4 }}"></i></button></div></td>
           </tr>
           <sc-if value="{{ expanded4 }}" hint-placeholder-val="{{ false }}">
           <tr>
             <td colspan="8" style="padding:0;background:var(--hz-surface-page)">
-              <div style="padding:20px 24px">
+              <div style="padding:20px 20px 20px 12px">
                 <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle)">
                   <button onClick="{{ setTab4Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab4ContactsColor }};border-bottom:2px solid {{ tab4ContactsBorder }}">Contacts (1)</button>
                   <button onClick="{{ setTab4Topics }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab4TopicsColor }};border-bottom:2px solid {{ tab4TopicsBorder }}">Topics Tag (2)</button>
@@ -624,37 +706,49 @@
                     <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (1)</div>
                     <div style="display:flex;gap:10px;align-items:center">
                       <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openAiDraft4 }}"><i class="far fa-sparkles"></i>Draft Follow-up</button>
-                      <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
+                      <a href="#" style="font-weight:700;font-size:14px;text-decoration:none"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
                     </div>
                   </div>
-                  <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:16px">
-                    <tbody>
-                      <tr>
-                        <td colspan="2" style="padding:0 0 12px 0">
-                          <div style="display:flex;align-items:center;gap:10px">
-                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">A</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Adhitia</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700)"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th style="padding:4px 10px 4px 0;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Title</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Email</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Phone</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Past Deals</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Area Focus</th>
-                        <th style="padding:4px 0 4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Industry Focus</th>
-                      </tr>
-                      <tr>
-                        <td style="padding:4px 10px 4px 0;font-weight:600">Partnership Lead</td>
-                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">adhitia.budiarjo@adivira.com</a></td>
-                        <td style="padding:4px 10px;font-weight:600">+62 813 9988 7766</td>
-                        <td style="padding:4px 10px;font-weight:600">1</td>
-                        <td style="padding:4px 10px;font-weight:600">Indonesia</td>
-                        <td style="padding:4px 0 4px 10px;font-weight:600">Fintech</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div style="overflow-x:auto;margin-top:8px;border:1px solid var(--hz-border-subtle);border-radius:8px">
+        <div style="min-width:1000px;font-size:12px">
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;background:var(--hz-neutral-50);border-bottom:1px solid var(--hz-border-subtle);position:sticky;top:0">
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Name</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Email / Phone</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Past Deals Summary</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Area Focus</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Industry Focus</div>
+            <div style="padding:6px 10px;text-align:center;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Action</div>
+          </div>
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;min-height:48px;align-items:center;border-bottom:1px solid var(--hz-border-subtle)" data-row="1">
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0">
+              <span class="row-name" style="font-weight:400;font-size:12px;white-space:nowrap">Adhitia</span>
+              <span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700);white-space:nowrap;height:auto;padding:2px 6px;font-size:11px">Primary</span>
+              <span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700);white-space:nowrap;height:auto;padding:2px 6px;font-size:11px"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span>
+            <span class="row-title" style="width:100%;font-size:11px;color:var(--hz-text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="Partnership Lead">Partnership Lead</span></div>
+            <div style="padding:6px 10px;min-width:0;display:flex;flex-direction:column;gap:2px" title="adhitia.budiarjo@adivira.com · +62 813 9988 7766">
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <a href="#" class="row-email" style="font-family:monospace;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">adhitia.budiarjo@adivira.com</a>
+                <button class="copy-btn" data-copy="adhitia.budiarjo@adivira.com" onClick="{{ copyToClipboard }}" title="Copy email"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <span class="row-phone" style="font-family:monospace;color:var(--hz-text-tertiary);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">+62 813 9988 7766</span>
+                <button class="copy-btn" data-copy="+62 813 9988 7766" onClick="{{ copyToClipboard }}" title="Copy phone"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+            </div>
+            <div class="deals-cell" style="padding:6px 10px;min-width:0">
+              <span class="clamp-2" title="Structured 1 fintech partnership deal.">Structured 1 fintech partnership deal.</span>
+              <button class="deals-more" onClick="{{ toggleDealsExpand }}">Show more</button>
+            </div>
+            <div class="row-area" style="padding:6px 10px;white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-width:0;line-height:1.3" title="Indonesia">Indonesia</div>
+            <div class="row-industry" style="padding:6px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0" title="Fintech">Fintech</div>
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:2px;justify-content:flex-end">
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ editRowContact }}" title="Edit contact"><i class="far fa-pen"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ followUpRowContact }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ lookupRowContact }}" title="Look up contact"><i class="far fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
                 </div>
                 </sc-if>
                 <sc-if value="{{ tab4IsTopics }}" hint-placeholder-val="{{ false }}">
@@ -698,19 +792,19 @@
           </tr>
           </sc-if>
           <tr>
-            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">B</span><div><div style="font-weight:700">Bintang Capital</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300)"><i class="far fa-envelope"></i> AUTO</span></div></div></div></td>
+            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">B</span><div><div style="font-weight:700">Bintang Capital</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300);font-size:9px;padding:1px 5px;height:auto;line-height:1.4"><i class="far fa-envelope" style="font-size:8px"></i> AUTO</span></div></div></div></td>
             <td>Private Equity</td>
             <td><div style="font-weight:700">Siti Rahayu</div><a href="#" class="hz-body-s">siti.rahayu@bintangcapital.com</a></td>
             <td>6h</td>
             <td>5 days ago</td>
-            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">co-investment</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">due-diligence</span></div></td>
-            <td><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px;background:var(--hz-neutral-200);color:var(--hz-neutral-700)">NK</span></td>
-            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact5 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" onClick="{{ openAiDraft5 }}" title="Draft Follow-up"><i class="far fa-sparkles"></i>Follow Up</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow5 }}"><i class="{{ chevron5 }}"></i></button></div></td>
+            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300);font-size:10px;padding:2px 7px;height:auto">co-investment</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300);font-size:10px;padding:2px 7px;height:auto">due-diligence</span></div></td>
+            <td><span class="hz-badge" style="background:#fff;color:var(--hz-text-secondary);border:1px solid var(--hz-border-default);font-size:10px;font-weight:600;padding:2px 8px;height:auto;white-space:nowrap">Nur Khairusy</span></td>
+            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact5 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ openAiDraft5 }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow5 }}"><i class="{{ chevron5 }}"></i></button></div></td>
           </tr>
           <sc-if value="{{ expanded5 }}" hint-placeholder-val="{{ false }}">
           <tr>
             <td colspan="8" style="padding:0;background:var(--hz-surface-page)">
-              <div style="padding:20px 24px">
+              <div style="padding:20px 20px 20px 12px">
                 <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle)">
                   <button onClick="{{ setTab5Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab5ContactsColor }};border-bottom:2px solid {{ tab5ContactsBorder }}">Contacts (1)</button>
                   <button onClick="{{ setTab5Topics }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab5TopicsColor }};border-bottom:2px solid {{ tab5TopicsBorder }}">Topics Tag (2)</button>
@@ -723,37 +817,49 @@
                     <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (1)</div>
                     <div style="display:flex;gap:10px;align-items:center">
                       <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openAiDraft5 }}"><i class="far fa-sparkles"></i>Draft Follow-up</button>
-                      <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
+                      <a href="#" style="font-weight:700;font-size:14px;text-decoration:none"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
                     </div>
                   </div>
-                  <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:16px">
-                    <tbody>
-                      <tr>
-                        <td colspan="2" style="padding:0 0 12px 0">
-                          <div style="display:flex;align-items:center;gap:10px">
-                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">SR</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Siti Rahayu</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th style="padding:4px 10px 4px 0;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Title</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Email</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Phone</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Past Deals</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Area Focus</th>
-                        <th style="padding:4px 0 4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Industry Focus</th>
-                      </tr>
-                      <tr>
-                        <td style="padding:4px 10px 4px 0;font-weight:600">Managing Director</td>
-                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">siti.rahayu@bintangcapital.com</a></td>
-                        <td style="padding:4px 10px;font-weight:600">+62 811 7788 9900</td>
-                        <td style="padding:4px 10px;font-weight:600">4</td>
-                        <td style="padding:4px 10px;font-weight:600">Indonesia</td>
-                        <td style="padding:4px 0 4px 10px;font-weight:600">Private Equity</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div style="overflow-x:auto;margin-top:8px;border:1px solid var(--hz-border-subtle);border-radius:8px">
+        <div style="min-width:1000px;font-size:12px">
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;background:var(--hz-neutral-50);border-bottom:1px solid var(--hz-border-subtle);position:sticky;top:0">
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Name</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Email / Phone</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Past Deals Summary</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Area Focus</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Industry Focus</div>
+            <div style="padding:6px 10px;text-align:center;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Action</div>
+          </div>
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;min-height:48px;align-items:center;border-bottom:1px solid var(--hz-border-subtle)" data-row="1">
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0">
+              <span class="row-name" style="font-weight:400;font-size:12px;white-space:nowrap">Siti Rahayu</span>
+              <span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700);white-space:nowrap;height:auto;padding:2px 6px;font-size:11px">Primary</span>
+              
+            <span class="row-title" style="width:100%;font-size:11px;color:var(--hz-text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="Managing Director">Managing Director</span></div>
+            <div style="padding:6px 10px;min-width:0;display:flex;flex-direction:column;gap:2px" title="siti.rahayu@bintangcapital.com · +62 811 7788 9900">
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <a href="#" class="row-email" style="font-family:monospace;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">siti.rahayu@bintangcapital.com</a>
+                <button class="copy-btn" data-copy="siti.rahayu@bintangcapital.com" onClick="{{ copyToClipboard }}" title="Copy email"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <span class="row-phone" style="font-family:monospace;color:var(--hz-text-tertiary);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">+62 811 7788 9900</span>
+                <button class="copy-btn" data-copy="+62 811 7788 9900" onClick="{{ copyToClipboard }}" title="Copy phone"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+            </div>
+            <div class="deals-cell" style="padding:6px 10px;min-width:0">
+              <span class="clamp-2" title="Led 4 private equity buyout transactions.">Led 4 private equity buyout transactions.</span>
+              <button class="deals-more" onClick="{{ toggleDealsExpand }}">Show more</button>
+            </div>
+            <div class="row-area" style="padding:6px 10px;white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-width:0;line-height:1.3" title="Indonesia">Indonesia</div>
+            <div class="row-industry" style="padding:6px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0" title="Private Equity">Private Equity</div>
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:2px;justify-content:flex-end">
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ editRowContact }}" title="Edit contact"><i class="far fa-pen"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ followUpRowContact }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ lookupRowContact }}" title="Look up contact"><i class="far fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
                 </div>
                 </sc-if>
                 <sc-if value="{{ tab5IsTopics }}" hint-placeholder-val="{{ false }}">
@@ -793,19 +899,19 @@
           </tr>
           </sc-if>
           <tr>
-            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">C</span><div><div style="font-weight:700">Cendana Holdings</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300)"><i class="far fa-envelope"></i> AUTO</span></div></div></div></td>
+            <td style="padding:10px"><div style="display:flex;align-items:center;gap:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-700);color:#fff">C</span><div><div style="font-weight:700">Cendana Holdings</div><div class="hz-body-s hz-muted">Inbound <span class="hz-badge hz-badge--soft" style="margin-left:4px;background:transparent;color:var(--hz-neutral-500);border:1px solid var(--hz-neutral-300);font-size:9px;padding:1px 5px;height:auto;line-height:1.4"><i class="far fa-envelope" style="font-size:8px"></i> AUTO</span></div></div></div></td>
             <td>Logistics</td>
             <td><div style="font-weight:700">Yusuf Pratama</div><a href="#" class="hz-body-s">yusuf.pratama@cendanaholdings.com</a></td>
             <td>1d</td>
             <td style="color: #BE0606">2 months ago</td>
-            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">expansion</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300)">warehousing</span></div></td>
-            <td><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px;background:var(--hz-neutral-200);color:var(--hz-neutral-700)">NK</span></td>
-            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact6 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-neutral-500)" onClick="{{ openAiDraft6 }}" title="Draft Follow-up"><i class="far fa-sparkles"></i>Follow Up</button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow6 }}"><i class="{{ chevron6 }}"></i></button></div></td>
+            <td><div class="hz-body-s hz-muted" style="margin-bottom:4px">0 emails</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300);font-size:10px;padding:2px 7px;height:auto">expansion</span><span class="hz-badge hz-badge--soft" style="background:transparent;color:var(--hz-neutral-500);font-weight:400;border:1px solid var(--hz-neutral-300);font-size:10px;padding:2px 7px;height:auto">warehousing</span></div></td>
+            <td><span class="hz-badge" style="background:#fff;color:var(--hz-text-secondary);border:1px solid var(--hz-border-default);font-size:10px;font-weight:600;padding:2px 8px;height:auto;white-space:nowrap">Nur Khairusy</span></td>
+            <td><div style="display:flex;align-items:center;gap:4px;justify-content:flex-end"><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ editContact6 }}" title="Edit contact"><i class="far fa-pen"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ openAiDraft6 }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button><button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ toggleRow6 }}"><i class="{{ chevron6 }}"></i></button></div></td>
           </tr>
           <sc-if value="{{ expanded6 }}" hint-placeholder-val="{{ false }}">
           <tr>
             <td colspan="8" style="padding:0;background:var(--hz-surface-page)">
-              <div style="padding:20px 24px">
+              <div style="padding:20px 20px 20px 12px">
                 <div style="display:flex;gap:24px;border-bottom:1px solid var(--hz-border-subtle)">
                   <button onClick="{{ setTab6Contacts }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab6ContactsColor }};border-bottom:2px solid {{ tab6ContactsBorder }}">Contacts (1)</button>
                   <button onClick="{{ setTab6Topics }}" style="background:none;border:none;padding:0 0 12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:{{ tab6TopicsColor }};border-bottom:2px solid {{ tab6TopicsBorder }}">Topics Tag (2)</button>
@@ -818,37 +924,49 @@
                     <div class="hz-body-s hz-muted" style="font-weight:700;letter-spacing:.04em">CONTACTS (1)</div>
                     <div style="display:flex;gap:10px;align-items:center">
                       <button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ openAiDraft6 }}"><i class="far fa-sparkles"></i>Draft Follow-up</button>
-                      <a href="#" style="font-weight:700;font-size:14px"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
+                      <a href="#" style="font-weight:700;font-size:14px;text-decoration:none"><i class="far fa-plus" style="font-size:11px"></i> Add contact</a>
                     </div>
                   </div>
-                  <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:16px">
-                    <tbody>
-                      <tr>
-                        <td colspan="2" style="padding:0 0 12px 0">
-                          <div style="display:flex;align-items:center;gap:10px">
-                            <span class="hz-avatar" style="background:var(--hz-neutral-700);color:#fff">YP</span>
-                            <div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:16px">Yusuf Pratama</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700)">Primary</span><span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700)"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th style="padding:4px 10px 4px 0;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Title</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Email</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Phone</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Past Deals</th>
-                        <th style="padding:4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Area Focus</th>
-                        <th style="padding:4px 0 4px 10px;text-align:left;color:var(--hz-text-tertiary);font-weight:600;font-size:12px">Industry Focus</th>
-                      </tr>
-                      <tr>
-                        <td style="padding:4px 10px 4px 0;font-weight:600">VP Corporate Development</td>
-                        <td style="padding:4px 10px;font-weight:600"><a href="#" style="font-family:monospace">yusuf.pratama@cendanaholdings.com</a></td>
-                        <td style="padding:4px 10px;font-weight:600">+62 812 4455 6677</td>
-                        <td style="padding:4px 10px;font-weight:600">2</td>
-                        <td style="padding:4px 10px;font-weight:600">Southeast Asia</td>
-                        <td style="padding:4px 0 4px 10px;font-weight:600">Logistics</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div style="overflow-x:auto;margin-top:8px;border:1px solid var(--hz-border-subtle);border-radius:8px">
+        <div style="min-width:1000px;font-size:12px">
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;background:var(--hz-neutral-50);border-bottom:1px solid var(--hz-border-subtle);position:sticky;top:0">
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Name</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Email / Phone</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Past Deals Summary</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Area Focus</div>
+            <div style="padding:6px 10px;text-align:left;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Industry Focus</div>
+            <div style="padding:6px 10px;text-align:center;text-transform:uppercase;font-size:10px;font-weight:700;color:var(--hz-text-primary);letter-spacing:.04em">Action</div>
+          </div>
+          <div style="display:grid;grid-template-columns:2.4fr 2.2fr 2.2fr 1fr 1.7fr 1.2fr;min-height:48px;align-items:center;border-bottom:1px solid var(--hz-border-subtle)" data-row="1">
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0">
+              <span class="row-name" style="font-weight:400;font-size:12px;white-space:nowrap">Yusuf Pratama</span>
+              <span class="hz-badge hz-badge--soft" style="background:var(--hz-green-50);color:var(--hz-green-700);white-space:nowrap;height:auto;padding:2px 6px;font-size:11px">Primary</span>
+              <span class="hz-badge hz-badge--soft" style="background:var(--hz-orange-50);color:var(--hz-orange-700);white-space:nowrap;height:auto;padding:2px 6px;font-size:11px"><i class="far fa-flag" style="font-size:10px;margin-right:3px"></i>Follow-up suggested</span>
+            <span class="row-title" style="width:100%;font-size:11px;color:var(--hz-text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="VP Corporate Development">VP Corporate Development</span></div>
+            <div style="padding:6px 10px;min-width:0;display:flex;flex-direction:column;gap:2px" title="yusuf.pratama@cendanaholdings.com · +62 812 4455 6677">
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <a href="#" class="row-email" style="font-family:monospace;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">yusuf.pratama@cendanaholdings.com</a>
+                <button class="copy-btn" data-copy="yusuf.pratama@cendanaholdings.com" onClick="{{ copyToClipboard }}" title="Copy email"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+              <div class="copy-line" style="display:flex;align-items:center;gap:4px;min-width:0">
+                <span class="row-phone" style="font-family:monospace;color:var(--hz-text-tertiary);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">+62 812 4455 6677</span>
+                <button class="copy-btn" data-copy="+62 812 4455 6677" onClick="{{ copyToClipboard }}" title="Copy phone"><i class="far fa-copy" style="font-size:11px"></i></button>
+              </div>
+            </div>
+            <div class="deals-cell" style="padding:6px 10px;min-width:0">
+              <span class="clamp-2" title="Executed 2 logistics M&amp;A transactions.">Executed 2 logistics M&amp;A transactions.</span>
+              <button class="deals-more" onClick="{{ toggleDealsExpand }}">Show more</button>
+            </div>
+            <div class="row-area" style="padding:6px 10px;white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-width:0;line-height:1.3" title="Southeast Asia">Southeast Asia</div>
+            <div class="row-industry" style="padding:6px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0" title="Logistics">Logistics</div>
+            <div style="padding:6px 10px;display:flex;align-items:center;gap:2px;justify-content:flex-end">
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ editRowContact }}" title="Edit contact"><i class="far fa-pen"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ followUpRowContact }}" title="Send follow-up"><i class="far fa-paper-plane"></i></button>
+              <button class="row-action-btn" style="width:28px;justify-content:center;padding:5px" onClick="{{ lookupRowContact }}" title="Look up contact"><i class="far fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
                 </div>
                 </sc-if>
                 <sc-if value="{{ tab6IsTopics }}" hint-placeholder-val="{{ false }}">
@@ -1007,13 +1125,13 @@
   </div>
 </div>
 </sc-if>
-</x-dc>
+</div></x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = { expanded: {}, tab: {}, aiModalOpen: false, aiContact: null, aiSubject: '', aiBody: '', aiGenerating: false, contactsMainTab: 'private', lastContactFilterActive: false, editModalOpen: false, editIndex: null, editForm: {} };
 
   contacts = {
-    0: { name: 'Kenny Man', email: 'kennyman@01fintech.com', company: '01fintech', initials: 'KM', source: 'Inbound · Auto-detected', title: 'Founder & Managing Partner', phone: '+6582883968', pastDeals: '2', areaFocus: 'Southeast Asia', industryFocus: 'Fintech', highlights: ['Discussed potential joint-venture structure for OTT distribution', 'Kenny flagged Q3 fundraising timeline as tight', 'Asked for warm intro to our portfolio payments company'], followUps: ['Send warm intro to portfolio payments company', 'Confirm Q3 fundraising timeline on next call'] },
+    0: { name: 'Kenny Man', email: 'kennyman@01fintech.com', company: '01fintech', initials: 'KM', source: 'Inbound · Auto-detected', title: 'Founder &amp; Managing Partner', phone: '+6582883968', pastDeals: '2', areaFocus: 'Southeast Asia', industryFocus: 'Fintech', highlights: ['Discussed potential joint-venture structure for OTT distribution', 'Kenny flagged Q3 fundraising timeline as tight', 'Asked for warm intro to our portfolio payments company', 'Kenny and Rama Santoso (CFO) walked our analyst through 01fintech\u2019s Q2 burn rate ahead of the fundraise', 'Lina Wijaya coordinated with our ops team about the OTT integration timeline', 'Kenny introduced Budi Hartono (Legal Counsel) to review term sheet language on the joint venture'], followUps: ['Send warm intro to portfolio payments company', 'Confirm Q3 fundraising timeline on next call'] },
     1: { name: 'Austin Miller', email: 'miller@385capitalworks.com', company: '385capitalworks', initials: 'AM', source: 'Inbound · Auto-detected', title: 'Partner', phone: '+1 917 555 0134', pastDeals: '5', areaFocus: 'North America', industryFocus: 'Private Equity', highlights: ['Interested in co-investing on next round', 'Requested updated financial model', 'Mentioned fundraising close targeted for year-end'], followUps: ['Send updated financial model', 'Check in before year-end close'] },
     2: { name: 'Ravena', email: 'ravena@abacuscapital.com', company: 'Abacus Capital', initials: 'R', source: 'Inbound · Auto-detected', title: 'Investment Associate', phone: '+62 812 3456 7890', pastDeals: '1', areaFocus: 'Indonesia', industryFocus: 'Asset Management', highlights: ['Shared investment opportunity in logistics sector', 'Waiting on our IC feedback before next step'], followUps: ['Get IC feedback on logistics opportunity'] },
     3: { name: 'Darrel Digal', email: 'darreldigal@axcionaenergy.com', company: 'Acciona Energy', initials: 'DD', source: 'Inbound · Auto-detected', title: 'Business Development', phone: '+62 811 2233 4455', pastDeals: '3', areaFocus: 'Indonesia', industryFocus: 'Renewable Energy', highlights: ['Solar project pipeline expanding into new region', 'Needs decision on project-development partnership by month-end'], followUps: ['Decide on project-development partnership by month-end'] },
@@ -1034,6 +1152,7 @@ class Component extends DCLogic {
   }
   saveEditContact() {
     const i = this.state.editIndex;
+    if (i === -1) { this.setState({ editModalOpen: false }); return; }
     this.contacts[i] = { ...this.contacts[i], ...this.state.editForm };
     this.setState({ editModalOpen: false });
   }
@@ -1061,6 +1180,57 @@ class Component extends DCLogic {
   setAiSubject(e) { this.setState({ aiSubject: e.target.value }); }
   setAiBody(e) { this.setState({ aiBody: e.target.value }); }
 
+  copyToClipboard(e) {
+    const val = e.currentTarget.getAttribute('data-copy');
+    navigator.clipboard.writeText(val);
+    const btn = e.currentTarget;
+    btn.classList.add('is-copied');
+    const icon = btn.querySelector('i');
+    if (icon) { icon.className = 'far fa-check'; }
+    setTimeout(() => { btn.classList.remove('is-copied'); if (icon) icon.className = 'far fa-copy'; }, 1200);
+  }
+
+  toggleDealsExpand(e) {
+    const cell = e.currentTarget.closest('.deals-cell');
+    if (!cell) return;
+    const expanded = cell.classList.toggle('is-expanded');
+    e.currentTarget.textContent = expanded ? 'Show less' : 'Show more';
+  }
+
+  editRowContact(e) {
+    const row = e.currentTarget.closest('[data-row]');
+    if (!row) return;
+    const g = (cls) => row.querySelector('.' + cls)?.textContent.trim() || '';
+    this.setState({
+      editModalOpen: true, editIndex: -1,
+      editForm: { name: g('row-name'), title: g('row-title'), email: g('row-email'), phone: g('row-phone'), areaFocus: g('row-area'), industryFocus: g('row-industry'), source: '', pastDeals: '', company: '', initials: '' }
+    });
+  }
+
+  followUpRowContact(e) {
+    const row = e.currentTarget.closest('[data-row]');
+    if (!row) return;
+    const name = row.querySelector('.row-name')?.textContent.trim() || '';
+    const email = row.querySelector('.row-email')?.textContent.trim() || '';
+    this.setState({ aiModalOpen: true, aiContact: { name, email, company: '', initials: '' }, aiSubject: 'Following up — ' + name, aiBody: '', aiGenerating: false });
+  }
+
+  lookupRowContact(e) {
+    const row = e.currentTarget.closest('[data-row]');
+    const name = row?.querySelector('.row-name')?.textContent.trim() || '';
+    window.open('https://www.google.com/search?q=' + encodeURIComponent(name), '_blank');
+  }
+
+  componentDidMount() {
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.deals-cell .clamp-2').forEach((el) => {
+        if (el.scrollHeight > el.clientHeight + 1) {
+          el.closest('.deals-cell').classList.add('has-overflow');
+        }
+      });
+    });
+  }
+
   renderVals() {
     const vals = {
       contactsMainTab: this.state.contactsMainTab,
@@ -1086,6 +1256,11 @@ class Component extends DCLogic {
       generateAiDraft: () => this.generateAiDraft(),
       setAiSubject: (e) => this.setAiSubject(e),
       setAiBody: (e) => this.setAiBody(e),
+      copyToClipboard: (e) => this.copyToClipboard(e),
+      toggleDealsExpand: (e) => this.toggleDealsExpand(e),
+      editRowContact: (e) => this.editRowContact(e),
+      followUpRowContact: (e) => this.followUpRowContact(e),
+      lookupRowContact: (e) => this.lookupRowContact(e),
       stopPropagation: (e) => e.stopPropagation(),
       lastContactFilterActive: this.state.lastContactFilterActive,
       applyNoContactFilter: () => this.setState({ lastContactFilterActive: true }),

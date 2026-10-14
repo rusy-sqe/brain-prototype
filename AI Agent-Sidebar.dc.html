@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)}
+.agent-row-actions{opacity:0;transition:opacity .15s}
+.agent-row:hover .agent-row-actions{opacity:1}
+.agent-row:hover{background:var(--hz-blue-50)}
+.agent-row.is-selected{background:var(--hz-blue-50);border-color:var(--hz-horizon-primary)!important}
+.chat-row:hover{background:var(--hz-neutral-50);border-color:var(--hz-border-default)}
+.thread-opt:hover{background:var(--hz-blue-50);border-color:var(--hz-horizon-primary)}
+.thread-src:hover{text-decoration:underline}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:200px 300px minmax(0,1fr)">
+
+<div class="hz-sidebar" style="width:200px;height:100vh;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="uploads/logo-brain-light.svg" alt="Investment Brain" style="height:24px;width:auto">
+      </div>
+      <button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:10px;padding:6px 8px">
+      <span><span class="hz-account-trigger__name" style="display:block">DEMO</span></span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-comment-plus"></i>New Chat</button>
+  </div>
+  <div style="padding:8px 6px;flex:1;min-height:0;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-th-large" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-search-location" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span></a>
+        <a href="Pipeline v2.1.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-project-diagram" style="font-size:17px"></i><span class="hz-sidebar__label">Pipeline</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Master Data</span></div>
+        <a href="CRM.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM &amp; Email</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-university" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb-on" style="font-size:17px"></i><span class="hz-sidebar__label">Insight</span></a>
+        <a href="AI Agent.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-robot" style="font-size:17px"></i><span class="hz-sidebar__label">AI Agent</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-desktop" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-magic" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-alt" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Chat History</div>
+      <div style="padding:16px 10px;text-align:center;color:var(--hz-text-tertiary);font-size:13px;line-height:1.5">No chats yet. Start a new conversation.</div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%">
+      <span class="hz-avatar hz-avatar--sm">NK</span>
+      <span><span class="hz-account-trigger__name" style="display:block">Nur Khairusy</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div style="width:300px;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+  <div style="padding:16px 16px 12px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div class="hz-h6" style="margin:0">AI Agents</div>
+    <div class="hz-body-s hz-muted" style="margin-top:4px">Select an agent to view its chat history.</div>
+  </div>
+  <div style="flex:1;min-height:0;overflow-y:auto;padding:10px 8px;display:flex;flex-direction:column;gap:6px">
+
+    <sc-for list="{{ agentList }}" as="agent" hint-placeholder-count="3">
+      <div class="hz-card agent-row {{ agent.selectedClass }}" style="padding:10px;display:flex;flex-direction:column;gap:8px;border:1px solid transparent;cursor:pointer" onClick="{{ agent.select }}">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <dc-import name="RoboAvatar" state="{{ agent.roboState }}" color="{{ agent.color }}" speed="balanced" size="{{ 52 }}" hint-size="52px,52px"></dc-import>
+          <div style="flex:1;min-width:0">
+            <div style="display:flex;align-items:center;gap:6px">
+              <span class="hz-body-r" style="font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ agent.name }}</span>
+              <sc-if value="{{ agent.active }}" hint-placeholder-val="{{ true }}">
+                <span style="width:6px;height:6px;border-radius:50%;background:var(--hz-green-600,#16a34a);flex-shrink:0"></span>
+              </sc-if>
+            </div>
+            <div class="hz-body-s hz-muted" style="margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ agent.help }}</div>
+          </div>
+        </div>
+        <div class="agent-row-actions" style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:6px;border-top:1px solid var(--hz-border-default)">
+          <div style="display:flex;gap:6px">
+            <button class="hz-btn hz-btn--text hz-btn--sm" style="border:none;padding:2px 6px" disabled="{{ agent.updateDisabled }}" style-disabled="opacity:.5;cursor:not-allowed" onClick="{{ agent.openUpdate }}"><i class="far fa-pencil"></i></button>
+            <button class="hz-btn hz-btn--text hz-btn--sm" style="border:none;padding:2px 6px" onClick="{{ agent.openDetail }}"><i class="far fa-eye"></i></button>
+          </div>
+          <label class="hz-switch" style="flex-shrink:0;transform:scale(.8);cursor:pointer" onClick="{{ agent.toggleClick }}"><input type="checkbox" checked="{{ agent.active }}" style="pointer-events:none"><span class="hz-switch__slider"></span></label>
+        </div>
+      </div>
+    </sc-for>
+
+  </div>
+  <div style="padding:10px;border-top:1px solid var(--hz-border-subtle)">
+    <button onClick="{{ openHireModal }}" class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm"><i class="far fa-plus"></i>Hire a new Agent</button>
+  </div>
+</div>
+
+<div style="min-width:0;overflow-y:auto;padding:24px 28px">
+
+  <sc-if value="{{ showSavedAlert }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-alert hz-alert--success" style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <span><i class="far fa-circle-check"></i> Agent saved successfully.</span>
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center" onClick="{{ dismissSavedAlert }}"><i class="far fa-times"></i></button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ hireSuccessVisible }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-alert hz-alert--success" style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <span><i class="far fa-circle-check"></i> "{{ hireSuccessName }}" hired and added to your agents.</span>
+      <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center" onClick="{{ dismissHireSuccess }}"><i class="far fa-times"></i></button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ hasSelection }}" hint-placeholder-val="{{ false }}">
+    <sc-if value="{{ threadOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+        <button class="hz-btn hz-btn--text hz-btn--sm" style="border:none;padding:4px 6px" onClick="{{ closeThread }}"><i class="far fa-arrow-left"></i></button>
+        <dc-import name="RoboAvatar" state="speaking" color="{{ selectedAgent.color }}" speed="balanced" size="{{ 48 }}" hint-size="48px,48px"></dc-import>
+        <div>
+          <div class="hz-body-r" style="font-weight:700">{{ selectedAgent.name }}</div>
+          <div class="hz-body-s hz-muted" style="margin-top:1px">{{ openChat.title }}</div>
+        </div>
+      </div>
+
+      <div style="max-width:720px;display:flex;flex-direction:column;gap:18px">
+        <sc-for list="{{ openChat.thread }}" as="turn" hint-placeholder-count="2">
+          <div>
+            <sc-if value="{{ turn.dateLabel }}" hint-placeholder-val="{{ false }}">
+              <div style="text-align:center;color:var(--hz-text-tertiary);font-size:12px;margin-bottom:12px">{{ turn.dateLabel }}</div>
+            </sc-if>
+            <div class="hz-card" style="padding:16px 18px;background:var(--hz-neutral-50);border:none">
+              <sc-for list="{{ turn.bullets }}" as="b" hint-placeholder-count="0">
+                <div class="hz-body-r" style="display:flex;gap:8px;margin-bottom:8px">
+                  <span style="color:var(--hz-text-tertiary)">\u2022</span><span>{{ b }}</span>
+                </div>
+              </sc-for>
+              <sc-if value="{{ turn.text }}" hint-placeholder-val="{{ false }}">
+                <div class="hz-body-r">{{ turn.text }}</div>
+              </sc-if>
+              <sc-if value="{{ turn.sources }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:10px">
+                  <sc-for list="{{ turn.sources }}" as="src" hint-placeholder-count="0">
+                    <a href="#" class="thread-src hz-body-s" style="font-weight:600;display:flex;align-items:center;gap:6px;text-decoration:none"><i class="far fa-globe"></i>{{ src }}</a>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+            <sc-if value="{{ turn.decision }}" hint-placeholder-val="{{ false }}">
+              <div class="hz-card" style="margin-top:10px;padding:0;overflow:hidden;border:1px solid var(--hz-border-default)">
+                <div class="hz-body-r" style="padding:14px 18px;font-weight:600">{{ turn.decision.question }}</div>
+                <sc-for list="{{ turn.decision.options }}" as="opt" hint-placeholder-count="2">
+                  <div class="thread-opt" style="padding:12px 18px;display:flex;align-items:center;gap:10px;border-top:1px solid var(--hz-border-subtle);cursor:pointer;border-left:2px solid transparent">
+                    <span class="hz-chip" style="width:22px;height:22px;padding:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:var(--hz-neutral-100)">{{ opt.letter }}</span>
+                    <span class="hz-body-r">{{ opt.label }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="max-width:720px;margin-top:18px">
+        <input placeholder="Type your own answer" style="width:100%;padding:11px 14px;border:1px solid var(--hz-border-default);border-radius:24px;font-family:inherit;font-size:14px">
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ threadClosed }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <dc-import name="RoboAvatar" state="idle" color="{{ selectedAgent.color }}" speed="balanced" size="{{ 64 }}" hint-size="64px,64px"></dc-import>
+          <div>
+            <div class="hz-h5" style="margin:0">{{ selectedAgent.name }}</div>
+            <div class="hz-body-s hz-muted" style="margin-top:2px">{{ selectedAgent.help }}</div>
+          </div>
+        </div>
+        <button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-comment-plus"></i>New Chat</button>
+      </div>
+
+      <div class="hz-h6" style="margin:0 0 10px">Chat history</div>
+      <sc-if value="{{ selectedHasChats }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <sc-for list="{{ selectedChats }}" as="chat" hint-placeholder-count="3">
+            <div class="hz-card chat-row" style="padding:12px 16px;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--hz-border-subtle);cursor:pointer" onClick="{{ chat.open }}">
+              <div class="hz-body-r" style="font-weight:600;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ chat.title }}</div>
+              <div class="hz-body-s hz-muted" style="flex-shrink:0;text-align:right">{{ chat.time }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ selectedNoChats }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:48px 20px;color:var(--hz-text-tertiary)">
+          <i class="far fa-comment-dots" style="font-size:28px;margin-bottom:10px;display:block"></i>
+          No chat history yet for this agent. Start a new conversation.
+        </div>
+      </sc-if>
+
+      <div style="max-width:720px;margin-top:18px;display:flex;gap:8px;align-items:center">
+        <input value="{{ chatboxValue }}" onChange="{{ setChatboxValue }}" placeholder="Message {{ selectedAgent.name }}..." style="flex:1;padding:11px 14px;border:1px solid var(--hz-border-default);border-radius:24px;font-family:inherit;font-size:14px">
+        <button class="hz-btn hz-btn--primary hz-btn--sm" style="border-radius:50%;width:40px;height:40px;padding:0;justify-content:center;flex-shrink:0" onClick="{{ sendChatbox }}"><i class="far fa-arrow-up"></i></button>
+      </div>
+    </sc-if>
+  </sc-if>
+
+  <sc-if value="{{ noSelection }}" hint-placeholder-val="{{ false }}">
+    <div style="text-align:center;padding:80px 20px;color:var(--hz-text-tertiary)">
+      <i class="far fa-robot" style="font-size:32px;margin-bottom:12px;display:block"></i>
+      Select an agent from the list to view its chat history.
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ confirmOpen }}">
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+      <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:380px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+        <div class="hz-h5" style="margin:0 0 8px">{{ confirmTitle }}</div>
+        <div class="hz-body-r hz-muted" style="margin-bottom:20px">{{ confirmMessage }}</div>
+        <div style="display:flex;justify-content:flex-end;gap:10px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ cancelToggle }}">Cancel</button>
+          <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ confirmToggle }}">{{ confirmActionLabel }}</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ detailOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+      <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:460px;max-height:90vh;overflow-y:auto;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <dc-import name="RoboAvatar" state="idle" color="{{ detailAgent.color }}" speed="balanced" size="{{ 64 }}" hint-size="64px,64px"></dc-import>
+            <div>
+              <div class="hz-h5" style="margin:0">{{ detailAgent.name }}</div>
+            </div>
+          </div>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeDetail }}"><i class="far fa-times"></i></button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">How this agent helps</label>
+            <div class="hz-body-r hz-muted">{{ detailAgent.help }}</div>
+          </div>
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Instructions / persona</label>
+            <div class="hz-body-r hz-muted" style="white-space:pre-wrap">{{ detailAgent.persona }}</div>
+          </div>
+        </div>
+        <sc-if value="{{ detailAgent.isDefault }}" hint-placeholder-val="{{ false }}">
+          <div class="hz-body-s hz-muted" style="margin-top:12px">This is a default agent. Create your own agent for customization.</div>
+        </sc-if>
+        <div style="display:flex;justify-content:space-between;gap:10px;margin-top:20px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="border:none;opacity:.5;cursor:not-allowed" disabled="{{ detailAgent.isDefault }}" onClick="{{ openUpdateFromDetail }}"><i class="far fa-pencil"></i>Update</button>
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeDetail }}">Close</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ updateModalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+      <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:460px;max-height:90vh;overflow-y:auto;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px">
+          <div class="hz-h5" style="margin:0">Update Agent</div>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeUpdateModal }}"><i class="far fa-times"></i></button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Name of the agent</label>
+            <input value="{{ updateDraft.name }}" onChange="{{ setUpdateField.name }}" placeholder="e.g. Market Research Agent" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px">
+            <sc-if value="{{ updateNameMissing }}" hint-placeholder-val="{{ false }}">
+              <div class="hz-body-s" style="color:var(--hz-red-600, #c0392b);margin-top:4px">Give your agent a name.</div>
+            </sc-if>
+          </div>
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">How this agent helps</label>
+            <input value="{{ updateDraft.help }}" onChange="{{ setUpdateField.help }}" placeholder="One line on what it's for" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px">
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+              <label class="hz-body-s" style="font-weight:700">Instructions / persona</label>
+              <button onClick="{{ generatePersonaForUpdate }}" style="border:none;background:none;color:var(--hz-horizon-primary);font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;padding:0"><i class="far fa-sparkles" style="font-size:11px"></i>Generate with Copilot</button>
+            </div>
+            <textarea value="{{ updateDraft.persona }}" onChange="{{ setUpdateField.persona }}" placeholder="Describe how it should think and behave in detail..." rows="6" style="width:100%;resize:vertical;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px"></textarea>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeUpdateModal }}">Cancel</button>
+          <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ submitUpdateModal }}">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ lockedModalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+      <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:380px;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+        <div class="hz-h5" style="margin:0 0 8px">This agent can't be changed</div>
+        <div class="hz-body-r hz-muted" style="margin-bottom:20px">Default agents are always on and can't be turned off. Create your own agent if you need different behavior.</div>
+        <div style="display:flex;justify-content:flex-end;gap:10px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeLockedModal }}">Close</button>
+          <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ createAgentFromLocked }}">Create New Agent</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ hireModalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:50">
+      <div style="background:var(--hz-surface-card);border-radius:14px;padding:24px;width:460px;max-height:90vh;overflow-y:auto;box-shadow:var(--hz-shadow-lg, 0 8px 32px rgba(0,0,0,.2))">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px">
+          <div class="hz-h5" style="margin:0">Hire a new AI Agent</div>
+          <button class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeHireModal }}"><i class="far fa-times"></i></button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">Name of the agent</label>
+            <input value="{{ hireDraft.name }}" onChange="{{ setHireField.name }}" placeholder="e.g. Market Research Agent" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px">
+            <sc-if value="{{ hireNameMissing }}" hint-placeholder-val="{{ false }}">
+              <div class="hz-body-s" style="color:var(--hz-red-600, #c0392b);margin-top:4px">Give your agent a name.</div>
+            </sc-if>
+          </div>
+          <div>
+            <label class="hz-body-s" style="font-weight:700;display:block;margin-bottom:6px">How this agent helps</label>
+            <input value="{{ hireDraft.help }}" onChange="{{ setHireField.help }}" placeholder="One line on what it's for" style="width:100%;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px">
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+              <label class="hz-body-s" style="font-weight:700">Instructions / persona</label>
+              <button onClick="{{ generatePersonaWithCopilot }}" style="border:none;background:none;color:var(--hz-horizon-primary);font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;padding:0"><i class="far fa-sparkles" style="font-size:11px"></i>Generate with Copilot</button>
+            </div>
+            <textarea value="{{ hireDraft.persona }}" onChange="{{ setHireField.persona }}" placeholder="Describe how it should think and behave in detail..." rows="6" style="width:100%;resize:vertical;padding:9px 12px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px"></textarea>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px">
+          <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ closeHireModal }}">Cancel</button>
+          <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ submitHireModal }}">Hire Agent</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  agentNames = { AN: 'General Analyst', CF: 'CFO', CH: 'CIO', FA: 'Finance Agent', CO: 'COO' };
+  agentInfo = {
+    AN: { name: 'General Analyst', help: 'Answers broad questions across the workspace.', persona: 'You are the General Analyst. Answer broad questions about the workspace clearly and concisely, pulling from whatever data is available, and point the user to a specialist agent when a question goes deeper than a general answer.', bg: 'var(--hz-neutral-100)', fg: 'var(--hz-text-primary)', initials: 'GA', color: '#64748b' },
+    CF: { name: 'Pipeline Analyst', help: 'Surfaces stalled deals and pipeline trends.', persona: 'You are the Pipeline Analyst. Monitor the deal pipeline, flag deals that have stalled or lost momentum, and summarize trends across stages proactively.', bg: 'var(--hz-green-100)', fg: 'var(--hz-green-800)', initials: 'PA', color: '#22c55e' },
+    CH: { name: 'Research Specialist', help: 'Digs into external market and industry data.', persona: 'You are the Research Specialist. Dig into external market, industry, and competitor data on request, and surface relevant findings with sources.', bg: 'var(--hz-teal-100, #ccfbf1)', fg: 'var(--hz-teal-800, #115e59)', initials: 'RS', color: '#14b8a6' }
+  };
+  chatHistory = {
+    AN: [
+      {
+        title: 'Portfolio exposure by sector', snippet: 'Here is the breakdown across the current portfolio...', time: '2h ago',
+        thread: [
+          { dateLabel: 'Yesterday 4:08 PM', bullets: [
+            'Fintech is now 34% of active deals, up from 22% last quarter.',
+            'Healthcare and logistics are flat; consumer is down to 9%.',
+            'Three deals have no sector tagged yet \u2014 Northwind, Varra Capital, and Solace Health.'
+          ] },
+          { decision: { question: 'Want me to flag the untagged deals to their owners, or tag them myself from the deal notes?', options: [
+            { letter: 'A', label: 'Flag to owners' },
+            { letter: 'B', label: 'Tag them yourself' }
+          ] } },
+          { dateLabel: 'Today 9:14 AM', text: 'All three were fintech after all \u2014 tagged and reflected in the breakdown above.', sources: ['Pipeline export', 'Deal notes \u2014 Oct 12'] }
+        ]
+      },
+      { title: 'Summarize last week\u2019s activity', snippet: 'Three new deals were added, two moved to...', time: 'Yesterday',
+        thread: [
+          { dateLabel: 'Yesterday 8:02 AM', bullets: [
+            'Three new deals were added: Northwind, Solace Health, and Varra Capital.',
+            'Two deals moved to Due Diligence: Atlas Freight and Keystone Robotics.',
+            'One deal closed: Brightline Energy, $18M.'
+          ], sources: ['CRM activity log'] }
+        ]
+      },
+      { title: 'What changed in the workspace today', snippet: 'Five updates across pipeline and CRM records...', time: '3 days ago',
+        thread: [
+          { dateLabel: '3 days ago, 6:45 PM', bullets: [
+            'Five CRM contacts were edited, two by Nico and three by Hendric.',
+            'The CFO agent flagged two deals as stalled (30+ days no activity).',
+            'No new insights were generated today.'
+          ] }
+        ]
+      }
+    ],
+    CF: [
+      {
+        title: 'Deals stalled over 30 days', snippet: 'Four deals have had no activity in the last month...', time: '5h ago',
+        thread: [
+          { dateLabel: 'Today 7:30 AM', bullets: [
+            'Four deals have had no logged activity in 30+ days: Northwind, Keystone Robotics, Varra Capital, and Solace Health.',
+            'Northwind and Keystone are both past their expected close date.',
+            'Nobody owns a follow-up for Varra Capital or Solace Health.'
+          ] },
+          { decision: { question: 'Want me to draft a check-in email for the two unowned deals, or just notify their last touchpoint?', options: [
+            { letter: 'A', label: 'Draft check-in emails' },
+            { letter: 'B', label: 'Notify last touchpoint' }
+          ] } }
+        ]
+      },
+      {
+        title: 'Pipeline trend vs last quarter', snippet: 'Volume is up 12% quarter over quarter...', time: '2 days ago',
+        thread: [
+          { dateLabel: '2 days ago, 2:15 PM', bullets: [
+            'Deal volume is up 12% quarter over quarter, driven mostly by fintech sourcing.',
+            'Average time in Due Diligence increased from 18 to 24 days.',
+            'Win rate held steady at 31%.'
+          ], sources: ['Q3 Pipeline Export.csv'] },
+          { text: 'The longer diligence time tracks with the two new compliance checks added in September \u2014 not a sourcing or team issue.' }
+        ]
+      }
+    ],
+    CH: []
+  };
+
+  state = {
+    active: { AN: true, CF: true, CH: true, FA: true, CO: true },
+    pendingKey: null,
+    detailKey: null,
+    detailCustomIndex: null,
+    selectedKey: null,
+    selectedCustomIndex: null,
+    openChatIndex: null,
+    agentOverrides: {},
+    updateModalOpen: false,
+    updateDraft: { name: '', help: '', persona: '' },
+    updateTargetKey: null,
+    updateTargetCustomIndex: null,
+    updateNameMissing: false,
+    lockedModalOpen: false,
+    showSavedAlert: typeof sessionStorage !== 'undefined' && sessionStorage.getItem('agentSaved') === '1',
+    hireModalOpen: false,
+    hireDraft: { name: '', help: '', persona: '' },
+    customAgents: [],
+    hireNameMissing: false,
+    hireSuccessName: '',
+    chatboxValue: ''
+  };
+
+  componentDidMount() {
+    if (this.state.showSavedAlert) sessionStorage.removeItem('agentSaved');
+  }
+
+  renderVals() {
+    const active = this.state.active;
+    const getDefaultAgent = (key) => ({ ...this.agentInfo[key], ...this.state.agentOverrides[key] });
+    const openDetail = {};
+    const openUpdate = {};
+    for (const key of Object.keys(this.agentInfo)) {
+      openDetail[key] = () => this.setState({ detailKey: key, detailCustomIndex: null });
+      openUpdate[key] = () => {
+        const a = getDefaultAgent(key);
+        this.setState({ updateModalOpen: true, updateTargetKey: key, updateTargetCustomIndex: null, updateDraft: { name: a.name, help: a.help, persona: a.persona }, updateNameMissing: false });
+      };
+    }
+    const openUpdateFromDetail = () => {
+      if (this.state.detailKey) openUpdate[this.state.detailKey]();
+      else if (this.state.detailCustomIndex !== null) {
+        const i = this.state.detailCustomIndex;
+        const a = this.state.customAgents[i];
+        this.setState({ updateModalOpen: true, updateTargetKey: null, updateTargetCustomIndex: i, updateDraft: { name: a.name, help: a.help, persona: a.persona || '' }, updateNameMissing: false });
+      }
+    };
+    let detailAgent = null;
+    if (this.state.detailKey) {
+      const info = getDefaultAgent(this.state.detailKey);
+      detailAgent = { ...info, isDefault: true };
+    } else if (this.state.detailCustomIndex !== null) {
+      const a = this.state.customAgents[this.state.detailCustomIndex];
+      if (a) {
+        detailAgent = {
+          name: a.name, help: a.help, persona: a.persona || 'No instructions provided.',
+          bg: 'var(--hz-blue-50)', fg: 'var(--hz-horizon-primary)', color: '#3b82f6',
+          initials: a.name.trim().split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase() || 'AG',
+          isDefault: false
+        };
+      }
+    }
+    const closeDetail = () => this.setState({ detailKey: null, detailCustomIndex: null });
+    const defaultKeys = ['AN', 'CF', 'CH'];
+
+    const agentList = defaultKeys.map((key) => {
+      const a = getDefaultAgent(key);
+      const selected = this.state.selectedKey === key;
+      return {
+        key, name: a.name, help: a.help, bg: a.bg, fg: a.fg, initials: a.initials, color: a.color,
+        roboState: selected ? 'speaking' : (active[key] ? 'idle' : 'sleeping'),
+        active: active[key], updateDisabled: true,
+        selectedClass: selected ? 'is-selected' : '',
+        select: () => this.setState({ selectedKey: key, selectedCustomIndex: null, openChatIndex: null }),
+        openDetail: (e) => { e.stopPropagation(); openDetail[key](); },
+        openUpdate: () => {},
+        toggleClick: (e) => { e.stopPropagation(); this.setState({ lockedModalOpen: true }); }
+      };
+    }).concat(this.state.customAgents.map((a, i) => {
+      const selected = this.state.selectedCustomIndex === i;
+      const initials = a.name.trim().split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase() || 'AG';
+      return {
+        key: 'custom-' + i, name: a.name, help: a.help, bg: 'var(--hz-blue-50)', fg: 'var(--hz-horizon-primary)', initials, color: '#3b82f6',
+        roboState: selected ? 'speaking' : (a.active ? 'idle' : 'sleeping'),
+        active: a.active, updateDisabled: false,
+        selectedClass: selected ? 'is-selected' : '',
+        select: () => this.setState({ selectedCustomIndex: i, selectedKey: null, openChatIndex: null }),
+        openDetail: (e) => { e.stopPropagation(); this.setState({ detailCustomIndex: i, detailKey: null }); },
+        openUpdate: (e) => { e.stopPropagation(); this.setState({ updateModalOpen: true, updateTargetKey: null, updateTargetCustomIndex: i, updateDraft: { name: a.name, help: a.help, persona: a.persona || '' }, updateNameMissing: false }); },
+        toggleClick: (e) => { e.stopPropagation(); this.setState(s => ({ customAgents: s.customAgents.map((x, j) => j === i ? { ...x, active: !x.active } : x) })); }
+      };
+    }));
+
+    let selectedAgent = null, selectedChats = [];
+    if (this.state.selectedKey) {
+      const a = getDefaultAgent(this.state.selectedKey);
+      selectedAgent = a;
+      selectedChats = (this.chatHistory[this.state.selectedKey] || []).map((c, i) => ({ ...c, open: () => this.setState({ openChatIndex: i }) }));
+    } else if (this.state.selectedCustomIndex !== null) {
+      const a = this.state.customAgents[this.state.selectedCustomIndex];
+      if (a) {
+        selectedAgent = { name: a.name, help: a.help, bg: 'var(--hz-blue-50)', fg: 'var(--hz-horizon-primary)', color: '#3b82f6', initials: a.name.trim().split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase() || 'AG' };
+        selectedChats = [];
+      }
+    }
+
+    const pending = this.state.pendingKey;
+    const turningOn = pending ? !active[pending] : false;
+    return {
+      showSavedAlert: this.state.showSavedAlert,
+      dismissSavedAlert: () => this.setState({ showSavedAlert: false }),
+      agentList,
+      hasSelection: !!selectedAgent,
+      noSelection: !selectedAgent,
+      selectedAgent,
+      selectedChats,
+      selectedHasChats: selectedChats.length > 0,
+      selectedNoChats: selectedChats.length === 0,
+      chatboxValue: this.state.chatboxValue,
+      setChatboxValue: (e) => this.setState({ chatboxValue: e.target.value }),
+      sendChatbox: () => { if (this.state.chatboxValue.trim()) this.setState({ chatboxValue: '' }); },
+      threadOpen: this.state.openChatIndex !== null,
+      threadClosed: this.state.openChatIndex === null,
+      openChat: this.state.openChatIndex !== null ? selectedChats[this.state.openChatIndex] : null,
+      closeThread: () => this.setState({ openChatIndex: null }),
+      lockedModalOpen: this.state.lockedModalOpen,
+      openLockedModal: () => this.setState({ lockedModalOpen: true }),
+      closeLockedModal: () => this.setState({ lockedModalOpen: false }),
+      createAgentFromLocked: () => this.setState({ lockedModalOpen: false, hireModalOpen: true, hireDraft: { name: '', help: '', persona: '' }, hireNameMissing: false }),
+      openUpdateFromDetail,
+      detailAgent,
+      detailOpen: !!detailAgent,
+      closeDetail,
+      updateModalOpen: this.state.updateModalOpen,
+      updateDraft: this.state.updateDraft,
+      updateNameMissing: this.state.updateNameMissing,
+      closeUpdateModal: () => this.setState({ updateModalOpen: false }),
+      setUpdateField: {
+        name: (e) => this.setState(s => ({ updateDraft: { ...s.updateDraft, name: e.target.value } })),
+        help: (e) => this.setState(s => ({ updateDraft: { ...s.updateDraft, help: e.target.value } })),
+        persona: (e) => this.setState(s => ({ updateDraft: { ...s.updateDraft, persona: e.target.value } }))
+      },
+      generatePersonaForUpdate: () => {
+        const draft = this.state.updateDraft;
+        const persona = `You are ${draft.name || 'this agent'}. ${draft.help ? draft.help + ' ' : ''}Respond in a clear, decision-focused way, flag risks proactively, and defer to the user's judgment on final calls.`;
+        this.setState({ updateDraft: { ...draft, persona } });
+      },
+      submitUpdateModal: () => {
+        const draft = this.state.updateDraft;
+        if (!draft.name.trim()) { this.setState({ updateNameMissing: true }); return; }
+        const { updateTargetKey, updateTargetCustomIndex } = this.state;
+        if (updateTargetKey) {
+          this.setState(s => ({
+            agentOverrides: { ...s.agentOverrides, [updateTargetKey]: { name: draft.name.trim(), help: draft.help.trim(), persona: draft.persona } },
+            updateModalOpen: false
+          }));
+        } else if (updateTargetCustomIndex !== null) {
+          this.setState(s => ({
+            customAgents: s.customAgents.map((x, j) => j === updateTargetCustomIndex ? { ...x, name: draft.name.trim(), help: draft.help.trim(), persona: draft.persona } : x),
+            updateModalOpen: false
+          }));
+        }
+      },
+      hireModalOpen: this.state.hireModalOpen,
+      openHireModal: () => this.setState({ hireModalOpen: true, hireDraft: { name: '', help: '', persona: '' }, hireNameMissing: false }),
+      closeHireModal: () => this.setState({ hireModalOpen: false }),
+      hireDraft: this.state.hireDraft,
+      hireNameMissing: this.state.hireNameMissing,
+      hireSuccessName: this.state.hireSuccessName,
+      hireSuccessVisible: !!this.state.hireSuccessName,
+      dismissHireSuccess: () => this.setState({ hireSuccessName: '' }),
+      setHireField: {
+        name: (e) => this.setState(s => ({ hireDraft: { ...s.hireDraft, name: e.target.value } })),
+        help: (e) => this.setState(s => ({ hireDraft: { ...s.hireDraft, help: e.target.value } })),
+        persona: (e) => this.setState(s => ({ hireDraft: { ...s.hireDraft, persona: e.target.value } }))
+      },
+      submitHireModal: () => {
+        const draft = this.state.hireDraft;
+        if (!draft.name.trim()) { this.setState({ hireNameMissing: true }); return; }
+        this.setState(s => ({
+          customAgents: [...s.customAgents, { name: draft.name.trim(), help: draft.help.trim() || 'Newly hired agent.', persona: draft.persona, active: true }],
+          hireModalOpen: false,
+          hireSuccessName: draft.name.trim()
+        }));
+        setTimeout(() => this.setState(s => s.hireSuccessName === draft.name.trim() ? { hireSuccessName: '' } : null), 3500);
+      },
+      generatePersonaWithCopilot: () => {
+        const draft = this.state.hireDraft;
+        const persona = `You are ${draft.name || 'this agent'}. ${draft.help ? draft.help + ' ' : ''}Respond in a clear, decision-focused way, flag risks proactively, and defer to the user's judgment on final calls.`;
+        this.setState({ hireDraft: { ...draft, persona } });
+      },
+      confirmOpen: !!pending,
+      confirmTitle: pending ? `${turningOn ? 'Turn on' : 'Turn off'} ${this.agentNames[pending]}?` : '',
+      confirmMessage: pending
+        ? (turningOn
+          ? `${this.agentNames[pending]} will become active and available to the workspace.`
+          : `${this.agentNames[pending]} will be turned off and won't be available until reactivated.`)
+        : '',
+      confirmActionLabel: turningOn ? 'Turn On' : 'Turn Off',
+      cancelToggle: () => this.setState({ pendingKey: null }),
+      confirmToggle: () => this.setState(s => ({
+        active: { ...s.active, [s.pendingKey]: !s.active[s.pendingKey] },
+        pendingKey: null
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
