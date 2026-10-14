@@ -1,0 +1,345 @@
+<!-- @dsCard group="Foundations" name="Icons" subtitle="FA Pro 5 wrapper · solid · regular · light · brands · duotone" viewport="1200x1080" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Icon</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+  body { padding: 48px; background: var(--hz-neutral-50); color: var(--hz-text-primary); }
+  .page { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+
+  .head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; }
+  .eyebrow { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--hz-text-tertiary); font-weight: 600; }
+
+  .section { background: var(--hz-surface-card); border: 1px solid var(--hz-border-subtle); border-radius: 14px; padding: 36px 40px; }
+  .section-label { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--hz-text-tertiary); font-weight: 600; margin-bottom: 24px; }
+
+  /* Variant table */
+  .variants { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--hz-border-subtle); border-radius: 10px; overflow: hidden; }
+  .variant-col { background: var(--hz-surface-card); padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+  .variant-col:first-child { background: var(--hz-neutral-950); }
+  .variant-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .variant-badge { font-family: ui-monospace, monospace; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; }
+  .variant-name { font-size: 13px; font-weight: 600; }
+  .variant-icons { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .icon-dot { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 16px; }
+
+  /* Solid column (dark bg) */
+  .variant-col--solid .variant-name { color: #fff; }
+  .variant-col--solid .variant-badge { background: rgba(255,255,255,.12); color: rgba(255,255,255,.7); }
+  .variant-col--solid .icon-dot { background: rgba(255,255,255,.06); color: #fff; }
+
+  /* Regular */
+  .variant-col--regular .variant-badge { background: var(--hz-blue-50); color: var(--hz-blue-600); }
+  .variant-col--regular .icon-dot { background: var(--hz-neutral-50); color: var(--hz-neutral-800); }
+
+  /* Light */
+  .variant-col--light .variant-badge { background: var(--hz-neutral-100); color: var(--hz-neutral-600); }
+  .variant-col--light .icon-dot { background: var(--hz-neutral-50); color: var(--hz-neutral-500); }
+
+  /* Brands */
+  .variant-col--brands .variant-badge { background: var(--hz-orange-50); color: var(--hz-orange-700); }
+  .variant-col--brands .icon-dot { background: var(--hz-neutral-50); color: var(--hz-neutral-700); }
+
+  /* Size scale */
+  .size-row { display: flex; align-items: flex-end; gap: 28px; flex-wrap: wrap; }
+  .size-item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .size-label { font-family: ui-monospace, monospace; font-size: 11px; color: var(--hz-text-tertiary); }
+
+  /* Category grid */
+  .categories { display: flex; flex-direction: column; gap: 20px; }
+  .category { display: flex; flex-direction: column; gap: 10px; }
+  .category-name { font-size: 12px; font-weight: 600; color: var(--hz-text-tertiary); text-transform: uppercase; letter-spacing: .08em; }
+  .icon-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .icon-tile { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 8px; border-radius: 10px; background: var(--hz-neutral-50); border: 1px solid var(--hz-border-subtle); width: 68px; cursor: default; transition: background .15s, border-color .15s; }
+  .icon-tile:hover { background: var(--hz-horizon-primary-pale); border-color: var(--hz-horizon-primary-soft); color: var(--hz-horizon-primary); }
+  .icon-tile i { font-size: 18px; color: inherit; }
+  .icon-tile span { font-size: 10px; color: var(--hz-text-tertiary); text-align: center; line-height: 1.2; font-family: ui-monospace, monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; text-align: center; }
+
+  /* Usage code */
+  .code-block { background: var(--hz-neutral-950); border-radius: 10px; padding: 24px 28px; }
+  .code-block pre { margin: 0; font-family: ui-monospace, monospace; font-size: 13px; line-height: 1.7; color: #e2e8f0; }
+  .tok-tag   { color: #93c5fd; }
+  .tok-attr  { color: #86efac; }
+  .tok-val   { color: #fca5a5; }
+  .tok-str   { color: #fcd34d; }
+  .tok-cmt   { color: #64748b; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <div>
+      <div class="eyebrow">Components · Icon</div>
+      <h1 class="hz-h2" style="margin-top: 10px;">Icon</h1>
+      <p class="hz-body-l" style="color: var(--hz-text-secondary); margin-top: 6px; max-width: 540px;">
+        FontAwesome Pro 5.15 wrapper. Renders any FA glyph with a typed API — variant, size, fixed-width, spin, and accessible labels built in.
+      </p>
+    </div>
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <span class="hz-chip">FA Pro 5.15.4</span>
+      <span class="hz-chip">solid · regular · light · brands · duotone</span>
+    </div>
+  </div>
+
+  <!-- 01 Variants -->
+  <section class="section">
+    <div class="section-label">01 · Variants</div>
+    <div class="variants">
+
+      <div class="variant-col variant-col--solid">
+        <div class="variant-header">
+          <span class="variant-badge">fas</span>
+          <span class="variant-name">Solid</span>
+        </div>
+        <div class="variant-icons">
+          <div class="icon-dot"><i class="fas fa-home"></i></div>
+          <div class="icon-dot"><i class="fas fa-user"></i></div>
+          <div class="icon-dot"><i class="fas fa-bell"></i></div>
+          <div class="icon-dot"><i class="fas fa-wallet"></i></div>
+          <div class="icon-dot"><i class="fas fa-chart-bar"></i></div>
+          <div class="icon-dot"><i class="fas fa-cog"></i></div>
+          <div class="icon-dot"><i class="fas fa-lock"></i></div>
+          <div class="icon-dot"><i class="fas fa-check-circle"></i></div>
+          <div class="icon-dot"><i class="fas fa-times-circle"></i></div>
+          <div class="icon-dot"><i class="fas fa-download"></i></div>
+        </div>
+      </div>
+
+      <div class="variant-col variant-col--regular">
+        <div class="variant-header">
+          <span class="variant-badge">far</span>
+          <span class="variant-name">Regular</span>
+        </div>
+        <div class="variant-icons">
+          <div class="icon-dot"><i class="far fa-home"></i></div>
+          <div class="icon-dot"><i class="far fa-user"></i></div>
+          <div class="icon-dot"><i class="far fa-bell"></i></div>
+          <div class="icon-dot"><i class="far fa-wallet"></i></div>
+          <div class="icon-dot"><i class="far fa-chart-bar"></i></div>
+          <div class="icon-dot"><i class="far fa-cog"></i></div>
+          <div class="icon-dot"><i class="far fa-lock"></i></div>
+          <div class="icon-dot"><i class="far fa-check-circle"></i></div>
+          <div class="icon-dot"><i class="far fa-times-circle"></i></div>
+          <div class="icon-dot"><i class="far fa-download"></i></div>
+        </div>
+      </div>
+
+      <div class="variant-col variant-col--light">
+        <div class="variant-header">
+          <span class="variant-badge">fal</span>
+          <span class="variant-name">Light</span>
+        </div>
+        <div class="variant-icons">
+          <div class="icon-dot"><i class="fal fa-home"></i></div>
+          <div class="icon-dot"><i class="fal fa-user"></i></div>
+          <div class="icon-dot"><i class="fal fa-bell"></i></div>
+          <div class="icon-dot"><i class="fal fa-wallet"></i></div>
+          <div class="icon-dot"><i class="fal fa-chart-bar"></i></div>
+          <div class="icon-dot"><i class="fal fa-cog"></i></div>
+          <div class="icon-dot"><i class="fal fa-lock"></i></div>
+          <div class="icon-dot"><i class="fal fa-check-circle"></i></div>
+          <div class="icon-dot"><i class="fal fa-times-circle"></i></div>
+          <div class="icon-dot"><i class="fal fa-download"></i></div>
+        </div>
+      </div>
+
+      <div class="variant-col variant-col--brands">
+        <div class="variant-header">
+          <span class="variant-badge">fab</span>
+          <span class="variant-name">Brands</span>
+        </div>
+        <div class="variant-icons">
+          <div class="icon-dot"><i class="fab fa-github"></i></div>
+          <div class="icon-dot"><i class="fab fa-google"></i></div>
+          <div class="icon-dot"><i class="fab fa-slack"></i></div>
+          <div class="icon-dot"><i class="fab fa-microsoft"></i></div>
+          <div class="icon-dot"><i class="fab fa-whatsapp"></i></div>
+          <div class="icon-dot"><i class="fab fa-instagram"></i></div>
+          <div class="icon-dot"><i class="fab fa-linkedin"></i></div>
+          <div class="icon-dot"><i class="fab fa-twitter"></i></div>
+          <div class="icon-dot"><i class="fab fa-youtube"></i></div>
+          <div class="icon-dot"><i class="fab fa-figma"></i></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 02 Size scale -->
+  <section class="section">
+    <div class="section-label">02 · Size scale</div>
+    <div class="size-row">
+      <div class="size-item">
+        <i class="fas fa-bolt fa-xs" style="color: var(--hz-text-tertiary);"></i>
+        <span class="size-label">xs</span>
+      </div>
+      <div class="size-item">
+        <i class="fas fa-bolt fa-sm" style="color: var(--hz-text-tertiary);"></i>
+        <span class="size-label">sm</span>
+      </div>
+      <div class="size-item">
+        <i class="fas fa-bolt" style="color: var(--hz-text-secondary);"></i>
+        <span class="size-label">base</span>
+      </div>
+      <div class="size-item">
+        <i class="fas fa-bolt fa-lg" style="color: var(--hz-text-secondary);"></i>
+        <span class="size-label">lg</span>
+      </div>
+      <div class="size-item">
+        <i class="fas fa-bolt fa-2x" style="color: var(--hz-horizon-primary);"></i>
+        <span class="size-label">2x</span>
+      </div>
+      <div class="size-item">
+        <i class="fas fa-bolt fa-3x" style="color: var(--hz-horizon-primary);"></i>
+        <span class="size-label">3x</span>
+      </div>
+      <div class="size-item">
+        <i class="fas fa-bolt fa-4x" style="color: var(--hz-horizon-primary);"></i>
+        <span class="size-label">4x</span>
+      </div>
+      <div class="size-item">
+        <i class="fas fa-bolt fa-5x" style="color: var(--hz-horizon-primary);"></i>
+        <span class="size-label">5x</span>
+      </div>
+      <div style="width: 1px; height: 48px; background: var(--hz-border-subtle); align-self: center; margin: 0 8px;"></div>
+      <div class="size-item" style="gap: 12px;">
+        <i class="fas fa-spinner fa-spin fa-2x" style="color: var(--hz-horizon-primary);"></i>
+        <span class="size-label">spin</span>
+      </div>
+      <div class="size-item" style="gap: 12px;">
+        <i class="fas fa-circle-notch fa-pulse fa-2x" style="color: var(--hz-text-tertiary);"></i>
+        <span class="size-label">pulse</span>
+      </div>
+      <div style="width: 1px; height: 48px; background: var(--hz-border-subtle); align-self: center; margin: 0 8px;"></div>
+      <div class="size-item" style="gap: 12px; flex-direction: row; align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--hz-text-secondary);">
+            <i class="fas fa-fw fa-home"></i> Dashboard
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--hz-text-secondary);">
+            <i class="fas fa-fw fa-chart-bar"></i> Analytics
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--hz-text-secondary);">
+            <i class="fas fa-fw fa-wallet"></i> Finance
+          </div>
+        </div>
+        <span class="size-label" style="align-self: flex-end;">fw</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 Icon catalog -->
+  <section class="section">
+    <div class="section-label">03 · Icon catalog</div>
+    <div class="categories">
+
+      <div class="category">
+        <div class="category-name">Navigation &amp; UI</div>
+        <div class="icon-grid">
+          <div class="icon-tile"><i class="far fa-home"></i><span>home</span></div>
+          <div class="icon-tile"><i class="far fa-search"></i><span>search</span></div>
+          <div class="icon-tile"><i class="far fa-bars"></i><span>bars</span></div>
+          <div class="icon-tile"><i class="far fa-cog"></i><span>cog</span></div>
+          <div class="icon-tile"><i class="far fa-sliders-h"></i><span>sliders-h</span></div>
+          <div class="icon-tile"><i class="far fa-times"></i><span>times</span></div>
+          <div class="icon-tile"><i class="far fa-chevron-down"></i><span>chevron-down</span></div>
+          <div class="icon-tile"><i class="far fa-chevron-right"></i><span>chevron-right</span></div>
+          <div class="icon-tile"><i class="far fa-arrow-left"></i><span>arrow-left</span></div>
+          <div class="icon-tile"><i class="far fa-arrow-right"></i><span>arrow-right</span></div>
+          <div class="icon-tile"><i class="far fa-external-link-alt"></i><span>external-link</span></div>
+          <div class="icon-tile"><i class="far fa-ellipsis-h"></i><span>ellipsis-h</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-name">Finance</div>
+        <div class="icon-grid">
+          <div class="icon-tile"><i class="far fa-coins"></i><span>coins</span></div>
+          <div class="icon-tile"><i class="far fa-credit-card"></i><span>credit-card</span></div>
+          <div class="icon-tile"><i class="far fa-wallet"></i><span>wallet</span></div>
+          <div class="icon-tile"><i class="far fa-file-invoice"></i><span>file-invoice</span></div>
+          <div class="icon-tile"><i class="far fa-receipt"></i><span>receipt</span></div>
+          <div class="icon-tile"><i class="far fa-money-bill-wave"></i><span>money-bill</span></div>
+          <div class="icon-tile"><i class="far fa-chart-line"></i><span>chart-line</span></div>
+          <div class="icon-tile"><i class="far fa-chart-pie"></i><span>chart-pie</span></div>
+          <div class="icon-tile"><i class="far fa-chart-bar"></i><span>chart-bar</span></div>
+          <div class="icon-tile"><i class="far fa-building"></i><span>building</span></div>
+          <div class="icon-tile"><i class="far fa-folder"></i><span>folder</span></div>
+          <div class="icon-tile"><i class="far fa-download"></i><span>download</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-name">People &amp; Comms</div>
+        <div class="icon-grid">
+          <div class="icon-tile"><i class="far fa-user"></i><span>user</span></div>
+          <div class="icon-tile"><i class="far fa-users"></i><span>users</span></div>
+          <div class="icon-tile"><i class="far fa-user-check"></i><span>user-check</span></div>
+          <div class="icon-tile"><i class="far fa-user-plus"></i><span>user-plus</span></div>
+          <div class="icon-tile"><i class="far fa-bell"></i><span>bell</span></div>
+          <div class="icon-tile"><i class="far fa-comment"></i><span>comment</span></div>
+          <div class="icon-tile"><i class="far fa-comments"></i><span>comments</span></div>
+          <div class="icon-tile"><i class="far fa-envelope"></i><span>envelope</span></div>
+          <div class="icon-tile"><i class="far fa-phone"></i><span>phone</span></div>
+          <div class="icon-tile"><i class="far fa-address-card"></i><span>address-card</span></div>
+          <div class="icon-tile"><i class="far fa-question-circle"></i><span>question</span></div>
+          <div class="icon-tile"><i class="far fa-at"></i><span>at</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-name">Status &amp; Feedback</div>
+        <div class="icon-grid">
+          <div class="icon-tile" style="color: var(--hz-green-600);"><i class="far fa-check-circle"></i><span>check-circle</span></div>
+          <div class="icon-tile" style="color: var(--hz-red-500);"><i class="far fa-times-circle"></i><span>times-circle</span></div>
+          <div class="icon-tile" style="color: var(--hz-yellow-600);"><i class="far fa-exclamation-triangle"></i><span>exclamation</span></div>
+          <div class="icon-tile" style="color: var(--hz-teal-600);"><i class="far fa-info-circle"></i><span>info-circle</span></div>
+          <div class="icon-tile"><i class="far fa-shield-check"></i><span>shield-check</span></div>
+          <div class="icon-tile"><i class="far fa-lock"></i><span>lock</span></div>
+          <div class="icon-tile"><i class="far fa-unlock"></i><span>unlock</span></div>
+          <div class="icon-tile"><i class="far fa-eye"></i><span>eye</span></div>
+          <div class="icon-tile"><i class="far fa-eye-slash"></i><span>eye-slash</span></div>
+          <div class="icon-tile"><i class="far fa-ban"></i><span>ban</span></div>
+          <div class="icon-tile"><i class="far fa-clock"></i><span>clock</span></div>
+          <div class="icon-tile"><i class="far fa-spinner"></i><span>spinner</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 04 Usage -->
+  <section class="section">
+    <div class="section-label">04 · Usage</div>
+    <div class="code-block">
+      <pre><span class="tok-cmt">// Import from compiled bundle</span>
+<span class="tok-cmt">// const { Icon } = window.SQESuiteDesignSystem_2c1e79;</span>
+
+<span class="tok-cmt">// Default — solid</span>
+&lt;<span class="tok-tag">Icon</span> <span class="tok-attr">name</span>=<span class="tok-str">"home"</span> /&gt;
+
+<span class="tok-cmt">// Variant</span>
+&lt;<span class="tok-tag">Icon</span> <span class="tok-attr">name</span>=<span class="tok-str">"user"</span> <span class="tok-attr">variant</span>=<span class="tok-str">"regular"</span> /&gt;
+&lt;<span class="tok-tag">Icon</span> <span class="tok-attr">name</span>=<span class="tok-str">"wallet"</span> <span class="tok-attr">variant</span>=<span class="tok-str">"light"</span> /&gt;
+&lt;<span class="tok-tag">Icon</span> <span class="tok-attr">name</span>=<span class="tok-str">"github"</span> <span class="tok-attr">variant</span>=<span class="tok-str">"brands"</span> /&gt;
+
+<span class="tok-cmt">// Size + color</span>
+&lt;<span class="tok-tag">Icon</span> <span class="tok-attr">name</span>=<span class="tok-str">"bolt"</span> <span class="tok-attr">size</span>=<span class="tok-str">"2x"</span> <span class="tok-attr">color</span>=<span class="tok-str">"var(--hz-horizon-primary)"</span> /&gt;
+
+<span class="tok-cmt">// Fixed-width (align icons in nav lists)</span>
+&lt;<span class="tok-tag">Icon</span> <span class="tok-attr">name</span>=<span class="tok-str">"home"</span> <span class="tok-attr">fw</span> /&gt;
+
+<span class="tok-cmt">// Loading state</span>
+&lt;<span class="tok-tag">Icon</span> <span class="tok-attr">name</span>=<span class="tok-str">"spinner"</span> <span class="tok-attr">spin</span> /&gt;
+
+<span class="tok-cmt">// Accessible (decorative icons need no label)</span>
+&lt;<span class="tok-tag">Icon</span> <span class="tok-attr">name</span>=<span class="tok-str">"download"</span> <span class="tok-attr">aria-label</span>=<span class="tok-str">"Download file"</span> /&gt;</pre>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

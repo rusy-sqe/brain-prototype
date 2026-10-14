@@ -1,0 +1,31 @@
+<!-- @dsCard group="Components" name="Activity timeline" subtitle="grouped by day · status dots" viewport="900x620" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Activity timeline</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Activity timeline</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="hz-timeline">
+<div class="hz-timeline__group-label">Today</div>
+<div class="hz-timeline__item"><span class="hz-timeline__dot hz-timeline__dot--success"><i class="far fa-check"></i></span><div class="hz-timeline__content"><div class="hz-timeline__text"><b>Andini Rahman</b> approved the diligence checklist</div><div class="hz-timeline__time">10:24 AM</div></div></div>
+<div class="hz-timeline__item"><span class="hz-timeline__dot"><i class="far fa-comment"></i></span><div class="hz-timeline__content"><div class="hz-timeline__text"><b>M&amp;A Copilot</b> flagged a revenue concentration risk</div><div class="hz-timeline__time">9:02 AM</div></div></div>
+<div class="hz-timeline__group-label">Yesterday</div>
+<div class="hz-timeline__item"><span class="hz-timeline__dot hz-timeline__dot--danger"><i class="far fa-trash-alt"></i></span><div class="hz-timeline__content"><div class="hz-timeline__text"><b>Reza Pratama</b> deleted "Pit 7 draft"</div><div class="hz-timeline__time">4:41 PM</div></div></div>
+<div class="hz-timeline__item"><span class="hz-timeline__dot hz-timeline__dot--neutral"><i class="far fa-upload"></i></span><div class="hz-timeline__content"><div class="hz-timeline__text"><b>System</b> imported 214 rows from CSV</div><div class="hz-timeline__time">11:15 AM</div></div></div>
+</div>
+</section>
+</div>
+</body></html>

@@ -1,0 +1,56 @@
+<!-- @dsCard group="Charts" name="Range bar chart" subtitle="Floating bars between a low and a high value · ranges, spreads, schedules" viewport="1200x1000" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Range bar chart</title>
+<link rel="stylesheet" href="../../../tokens.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="../../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:48px;background:var(--hz-surface-page);color:var(--hz-text-primary);font-family:var(--hz-font-sans)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;gap:24px}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+h1{font-family:var(--hz-font-display);font-size:32px;line-height:1.1;margin:10px 0 8px;letter-spacing:-.01em}
+.sub{font-size:15px;line-height:1.5;color:var(--hz-text-secondary);max-width:600px;margin:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:11px;font-family:var(--hz-font-mono);padding:4px 10px;border-radius:999px;background:var(--hz-neutral-100);color:var(--hz-text-secondary);white-space:nowrap}
+.panel{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:28px 32px}
+.label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tile{border:1px solid var(--hz-border-subtle);border-radius:12px;padding:20px 22px;background:var(--hz-surface-card)}
+.tile .t{font-size:12px;color:var(--hz-text-tertiary);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.tile .v{font-size:26px;font-weight:600;margin:6px 0 12px;letter-spacing:-.01em}
+.delta{font-size:12px;font-weight:600}
+a{color:var(--hz-horizon-primary);text-decoration:none}a:hover{color:var(--hz-horizon-primary-dark)}
+.code{background:var(--hz-neutral-950);border-radius:10px;padding:20px 24px;font-family:var(--hz-font-mono);font-size:12.5px;line-height:1.7;color:#cbd5e1;white-space:pre;overflow-x:auto;margin:0}</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Charts · Range bar chart</div><h1>Range bar chart</h1><p class="sub">Bars that start and end at arbitrary values: min/max spreads, budget bands, or schedule windows. Multiple series sit side by side inside each band.</p></div><div class="chips"><span class="chip">RangeBarChart</span><span class="chip">series</span><span class="chip">layout</span><span class="chip">showEndCaps</span></div></div>
+<section class="panel"><div class="label">01 · Min / max spread · horizontal</div><div id="r1"></div></section>
+<section class="panel"><div class="label">02 · Two series · vertical</div><div id="r2"></div></section>
+<section class="panel"><div class="label">03 · Usage</div><pre class="code">const { RangeBarChart } = window.SQESuiteDesignSystem_2c1e79;
+
+&lt;RangeBarChart
+  data={rows}
+  index="month"
+  series={[{ name: 'Range', low: 'min', high: 'max', color: 'blue' }]}
+  valueFormatter={(v) =&gt; v + '°C'}
+/&gt;</pre></section>
+</div>
+<script>
+const NS = window.SQESuiteDesignSystem_2c1e79;
+const h = React.createElement;
+const mount = (id, el) => ReactDOM.createRoot(document.getElementById(id)).render(el);
+const spread = [
+  {phase:'Discovery',min:0,max:3},{phase:'Design',min:2,max:7},{phase:'Build',min:6,max:16},
+  {phase:'QA',min:14,max:19},{phase:'Beta',min:18,max:22},{phase:'GA',min:21,max:24}];
+const bands = ['Q1','Q2','Q3','Q4'].map((q,i) => ({ q, plo:[180,210,240,260][i], phi:[320,360,410,460][i], alo:[160,230,250,300][i], ahi:[300,380,430,520][i] }));
+mount('r1', h(NS.RangeBarChart, { data:spread, index:'phase', series:[{name:'Weeks',low:'min',high:'max',color:'blue'}], valueFormatter:v => 'W' + v, height:280, showEndCaps:true }));
+mount('r2', h(NS.RangeBarChart, { data:bands, index:'q', series:[{name:'Plan',low:'plo',high:'phi',color:'neutral'},{name:'Actual',low:'alo',high:'ahi',color:'green'}], valueFormatter:v => '$' + v + 'k', layout:'vertical', height:300 }));
+</script>
+</body>
+</html>

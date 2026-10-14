@@ -1,0 +1,125 @@
+<!-- @dsCard group="Foundations" name="Brand" subtitle="SQE Suite mark, wordmark, lockup, voice" viewport="1240x1200" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>SQE Suite — Brand</title>
+
+<link rel="stylesheet" href="../tokens.css" />
+<style>
+  body { padding: 40px 48px; }
+  .wrap { max-width: 1160px; background: var(--hz-surface-card); border: 1px solid var(--hz-border-subtle); border-radius: var(--hz-radius-lg); padding: 36px 40px 40px;}
+  .eyebrow { font-family: var(--hz-font-display); font-weight:600; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color: var(--hz-brand-primary); margin:0 0 6px 0;}
+  h1 { font-family: var(--hz-font-display); font-weight:600; font-size:24px; margin:0 0 4px 0; letter-spacing:-.01em; color: var(--hz-text-primary);}
+  .sub { color: var(--hz-text-secondary); font-size:14px; margin:0 0 28px 0;}
+  .grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 20px;}
+  .tile { border:1px solid var(--hz-border-subtle); border-radius: 12px; overflow: hidden;}
+  .tile .body { padding: 40px; display:flex; align-items:center; justify-content:center; min-height: 160px;}
+  .tile .meta { padding: 10px 16px; background: var(--hz-neutral-50); border-top: 1px solid var(--hz-border-subtle); font-family: var(--hz-font-mono); font-size: 11px; color: var(--hz-text-secondary); display:flex; justify-content:space-between;}
+  .tile.dark .body { background: var(--hz-brand-navy);}
+  .tile.light .body { background: var(--hz-surface-card);}
+  .tile.tonal .body { background: var(--hz-azure-50);}
+
+  /* Logo constructed from CSS */
+  .logo { display:flex; align-items:center; gap: 12px;}
+  .logo .mark { width: 40px; height: 40px; position: relative;}
+  .logo .mark svg { display:block;}
+  .logo .wm { font-family: var(--hz-font-display); font-weight: 600; font-size: 28px; letter-spacing: -0.02em;}
+  .logo.light .wm { color: var(--hz-brand-navy);}
+  .logo.dark .wm { color: #fff;}
+  .logo.tonal .wm { color: var(--hz-brand-primary);}
+
+  .big { transform: scale(1.6); transform-origin: center;}
+
+  .lockup { display:flex; align-items:center; gap: 20px;}
+  .lockup .div { width:1px; height: 36px; background: var(--hz-border-default);}
+  .partner { font-family: var(--hz-font-display); font-weight:600; font-size: 18px; color: var(--hz-neutral-800); letter-spacing: -0.01em;}
+
+  .section-title { font-weight: 600; font-size: 13px; color: var(--hz-text-primary); margin: 28px 0 14px; letter-spacing: .02em;}
+  .voice { display:grid; grid-template-columns: repeat(2, 1fr); gap: 16px;}
+  .voice-card { border: 1px solid var(--hz-border-subtle); border-radius: 10px; padding: 16px 18px;}
+  .voice-card .ok, .voice-card .no { font-family: var(--hz-font-mono); font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;}
+  .ok { color: var(--hz-success-700);}
+  .no { color: var(--hz-danger-700);}
+  .voice-card p { margin: 6px 0 0; font-size: 14px; color: var(--hz-text-primary); line-height: 1.5;}
+
+  .clearspace { display:flex; align-items:center; justify-content:center; padding: 40px; background: repeating-linear-gradient(45deg, var(--hz-neutral-50), var(--hz-neutral-50) 4px, var(--hz-neutral-100) 4px, var(--hz-neutral-100) 8px); border: 1px solid var(--hz-border-subtle); border-radius: 12px;}
+  .clearspace .box { padding: 32px; background: var(--hz-surface-card); box-shadow: var(--hz-shadow-xs); border: 1px dashed var(--hz-border-default); border-radius: 8px;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">Brand</p>
+    <h1>Mark, wordmark & voice</h1>
+    <p class="sub">This design system is SQE Suite's shared UI foundation — the primary lockup is the SQE mark, in the suite's signature blue gradient. Inter SemiBold, lowercase. Nothing else.</p>
+
+    <div class="grid">
+      <div class="tile light">
+        <div class="body">
+          <img src="../assets/suite/sqe.svg" alt="SQE" style="height:36px">
+        </div>
+        <div class="meta"><span>Primary · Navy on light</span><span>SVG · scalable</span></div>
+      </div>
+      <div class="tile dark">
+        <div class="body" style="background-color: #000000">
+          <img src="../assets/suite/sqe-white.svg" alt="SQE" style="height:36px">
+        </div>
+        <div class="meta" style="background: #002F61; color: #C3DDFA; border-top-color: #002F61;"><span>Inverse · White on navy</span><span>for dark UI</span></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="tile tonal">
+        <div class="body" style="padding: 32px;">
+          <div class="lockup">
+            <div class="logo tonal">
+              <span class="mark"><img src="../assets/suite/icon-sqe.svg" width="32" height="32" alt=""></span>
+              <span class="wm" style="font-size: 22px;">sqe suite</span>
+            </div>
+            <div class="div"></div>
+            <div class="partner">Mitra Utama</div>
+          </div>
+        </div>
+        <div class="meta"><span>Co-brand lockup · 1px hairline · 16px gutters</span><span>tenant partner</span></div>
+      </div>
+      <div class="tile light">
+        <div class="body" style="padding: 24px;">
+          <div class="clearspace">
+            <div class="box">
+              <div class="logo light">
+                <span class="mark"><img src="../assets/suite/icon-sqe.svg" width="28" height="28" alt=""></span>
+                <span class="wm" style="font-size:20px;">sqe suite</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="meta"><span>Clear space = height of the "S"</span><span>never less</span></div>
+      </div>
+    </div>
+
+    <div class="section-title">The SQE Suite</div>
+    <div class="tile dark" style="margin-bottom:16px">
+      <div class="body" style="padding: 32px; background-color: #000000"><img src="../assets/suite/sqe-white.svg" alt="SQE" style="height:32px"></div>
+      <div class="meta"><span>Parent brand · master lockup</span><span>SVG · scalable</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px">
+      <div class="tile light"><div class="body" style="padding:24px;flex-direction:column;gap:10px;text-align:center"><img src="../assets/suite/atlas.svg" alt="Atlas" style="height:26px"></div><div class="meta"><span>The SQE Suite</span></div></div>
+      <div class="tile light"><div class="body" style="padding:24px;flex-direction:column;gap:10px;text-align:center"><img src="../assets/suite/brain.svg" alt="Brain" style="height:26px"><div style="font-size:12px;color:var(--hz-text-tertiary)">Enterprise Intelligence</div></div><div class="meta"><span>Deals, automation & procurement, one engine</span></div></div>
+      <div class="tile light"><div class="body" style="padding:24px;flex-direction:column;gap:10px;text-align:center"><img src="../assets/suite/cognifai.svg" alt="CognifAI" style="height:26px"><div style="font-size:12px;color:var(--hz-text-tertiary)">Human Capability Intelligence</div></div><div class="meta"><span>Measure & build your AI workforce</span></div></div>
+      <div class="tile light"><div class="body" style="padding:24px;flex-direction:column;gap:10px;text-align:center"><img src="../assets/suite/cosmos.svg" alt="Cosmos" style="height:26px"><div style="font-size:12px;color:var(--hz-text-tertiary)">Visual Intelligence</div></div><div class="meta"><span>Computer vision across every mining site</span></div></div>
+      <div class="tile light"><div class="body" style="padding:24px;flex-direction:column;gap:10px;text-align:center"><img src="../assets/suite/horizon.svg" alt="Horizon" style="height:26px"><div style="font-size:12px;color:var(--hz-text-tertiary)">Predictive Intelligence</div></div><div class="meta"><span>Operational weather before it hits</span></div></div>
+      <div class="tile light"><div class="body" style="padding:24px;flex-direction:column;gap:10px;text-align:center"><img src="../assets/suite/polaris.svg" alt="Polaris" style="height:26px"><div style="font-size:12px;color:var(--hz-text-tertiary)">Strategic Intelligence</div></div><div class="meta"><span>Executive copilot for live enterprise data</span></div></div>
+    </div>
+
+    <div class="section-title">Voice</div>
+    <div class="voice">
+      <div class="voice-card"><span class="ok">Do</span><p>"3 shifts missing supervisor sign-off. Review now."</p></div>
+      <div class="voice-card"><span class="no">Don't</span><p>"Oh no! Some of your shifts might need your attention!"</p></div>
+      <div class="voice-card"><span class="ok">Do</span><p>"Save draft"</p></div>
+      <div class="voice-card"><span class="no">Don't</span><p>"Would you like to save this as a draft?"</p></div>
+      <div class="voice-card"><span class="ok">Do</span><p>"Couldn't sync. Check your connection, then retry."</p></div>
+      <div class="voice-card"><span class="no">Don't</span><p>"An unknown error occurred. Please try again later."</p></div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!-- @dsCard group="Components" name="Proctoring & Scorecard" subtitle="camera gate · calibration orb · integrity verdicts · dimension scores" viewport="1200x760" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Proctoring &amp; Scorecard</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.grid{display:grid;gap:24px;grid-template-columns:repeat(3,1fr)}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:12px}
+.divider{border-top:1px solid var(--hz-border-subtle);margin:24px 0}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Proctoring &amp; Scorecard</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="label">Camera / permission gate</div>
+<div class="grid">
+<div class="hz-camera-gate"><span class="hz-camera-gate__icon"><i class="far fa-video-slash"></i></span><div class="hz-camera-gate__title">Camera access needed</div><div class="hz-camera-gate__desc">This assessment is proctored — allow camera access to continue.</div><button class="hz-btn hz-btn--primary hz-btn--sm">Allow camera</button></div>
+<div class="hz-camera-gate"><div class="hz-camera-gate__orb">3</div><div class="hz-camera-gate__title" style="margin-top:.25rem">Calibrating…</div></div>
+<div class="hz-camera-gate" style="background:var(--hz-green-950)"><span class="hz-camera-gate__icon" style="background:rgba(255,255,255,.15)"><i class="far fa-check"></i></span><div class="hz-camera-gate__title">Ready to begin</div><div class="hz-camera-gate__desc">Face detected, lighting good.</div></div>
+</div>
+<div class="divider"></div>
+<div class="label">Integrity verdicts</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><span class="hz-verdict hz-verdict--pass"><i class="far fa-check"></i>No flags</span><span class="hz-verdict hz-verdict--flag"><i class="far fa-eye"></i>Gaze off-screen · 2 events</span><span class="hz-verdict hz-verdict--fail"><i class="far fa-triangle-exclamation"></i>Second face detected</span></div>
+<div class="divider"></div>
+<div class="label">5-dimension scorecard</div>
+<div style="display:flex;flex-direction:column;gap:12px;max-width:520px">
+<div class="hz-score-row"><span class="hz-score-row__label">Problem solving</span><div class="hz-score-row__bar"><div class="hz-score-row__fill" style="width:88%"></div></div><span class="hz-score-row__value">88</span></div>
+<div class="hz-score-row"><span class="hz-score-row__label">Communication</span><div class="hz-score-row__bar"><div class="hz-score-row__fill" style="width:74%"></div></div><span class="hz-score-row__value">74</span></div>
+<div class="hz-score-row"><span class="hz-score-row__label">Domain knowledge</span><div class="hz-score-row__bar"><div class="hz-score-row__fill" style="width:91%;background:var(--hz-threshold-high)"></div></div><span class="hz-score-row__value">91</span></div>
+<div class="hz-score-row"><span class="hz-score-row__label">Adaptability</span><div class="hz-score-row__bar"><div class="hz-score-row__fill" style="width:58%;background:var(--hz-threshold-mid)"></div></div><span class="hz-score-row__value">58</span></div>
+<div class="hz-score-row"><span class="hz-score-row__label">Integrity</span><div class="hz-score-row__bar"><div class="hz-score-row__fill" style="width:35%;background:var(--hz-threshold-low)"></div></div><span class="hz-score-row__value">35</span></div>
+</div>
+</section>
+</div>
+</body></html>

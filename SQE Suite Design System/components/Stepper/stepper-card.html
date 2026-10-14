@@ -1,0 +1,76 @@
+<!-- @dsCard group="Components" name="Stepper" subtitle="horizontal · vertical · card, number/icon/complete states" viewport="1200x760" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Stepper</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:16px}
+.cols{display:grid;grid-template-columns:1fr 320px;gap:32px}
+.stack{display:flex;flex-direction:column;gap:8px}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Stepper</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="label">Horizontal — number indicators</div>
+<div class="hz-stepper">
+<div class="hz-stepper__step">
+<div class="hz-stepper__indicator hz-stepper__indicator--complete"><i class="fas fa-check"></i></div>
+<div class="hz-stepper__connector"></div>
+<div class="hz-stepper__body"><span class="hz-stepper__title">Account details</span></div>
+</div>
+<div class="hz-stepper__step">
+<div class="hz-stepper__indicator hz-stepper__indicator--active">2</div>
+<div class="hz-stepper__connector hz-stepper__connector--inactive"></div>
+<div class="hz-stepper__body"><span class="hz-stepper__title">Verification</span></div>
+</div>
+<div class="hz-stepper__step">
+<div class="hz-stepper__indicator">3</div>
+<div class="hz-stepper__connector hz-stepper__connector--inactive"></div>
+<div class="hz-stepper__body"><span class="hz-stepper__title hz-stepper__title--inactive">Confirmation</span></div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="cols">
+<div>
+<div class="label">Vertical — with description &amp; icon</div>
+<div class="hz-stepper hz-stepper--vertical">
+<div class="hz-stepper__step">
+<div class="hz-stepper__connector"></div>
+<div class="hz-stepper__indicator hz-stepper__indicator--complete"><i class="fas fa-check"></i></div>
+<div class="hz-stepper__body"><span class="hz-stepper__title">Order placed</span><span class="hz-stepper__desc">3 Sep 2026, 09:14</span></div>
+</div>
+<div class="hz-stepper__step">
+<div class="hz-stepper__connector hz-stepper__connector--inactive"></div>
+<div class="hz-stepper__indicator hz-stepper__indicator--active"><i class="far fa-wallet"></i></div>
+<div class="hz-stepper__body"><span class="hz-stepper__title">Payment confirmed</span><span class="hz-stepper__desc">Awaiting settlement</span></div>
+</div>
+<div class="hz-stepper__step" style="padding-bottom:0">
+<div class="hz-stepper__indicator">3</div>
+<div class="hz-stepper__body"><span class="hz-stepper__title hz-stepper__title--inactive">Delivered</span></div>
+</div>
+</div>
+</div>
+<div>
+<div class="label">Box card variant</div>
+<div class="stack">
+<div class="hz-stepper__card"><div class="hz-stepper__indicator hz-stepper__indicator--complete" style="width:28px;height:28px;font-size:14px"><i class="fas fa-check"></i></div><span class="hz-stepper__title">Application submitted</span></div>
+<div class="hz-stepper__card"><div class="hz-stepper__indicator hz-stepper__indicator--active" style="width:28px;height:28px;font-size:14px">2</div><span class="hz-stepper__title">Under review</span></div>
+<div class="hz-stepper__card hz-stepper__card--inactive"><div class="hz-stepper__indicator" style="width:28px;height:28px;font-size:14px">3</div><span class="hz-stepper__title hz-stepper__title--inactive">Decision</span></div>
+<div class="hz-stepper__card hz-stepper__card--inactive"><div class="hz-stepper__indicator" style="width:28px;height:28px;font-size:14px">4</div><span class="hz-stepper__title hz-stepper__title--inactive">Disbursed</span></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</body></html>

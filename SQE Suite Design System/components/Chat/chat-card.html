@@ -1,0 +1,52 @@
+<!-- @dsCard group="Components" name="Chat & Composer" subtitle="message bubbles · composer · AI markdown prose · reasoning trace" viewport="1100x900" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Chat &amp; Composer</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:14px}
+.divider{border-top:1px solid var(--hz-border-subtle);margin:24px 0}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Chat &amp; Composer</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="label">Message bubbles + AI markdown prose</div>
+<div class="hz-chat">
+<div class="hz-chat__row hz-chat__row--user"><span class="hz-avatar hz-avatar--sm hz-chat__avatar">AR</span><div><div class="hz-chat__bubble">What's our exposure to Berau Coal if the Q4 forecast misses by 10%?</div><div class="hz-chat__meta" style="text-align:right">10:41 AM</div></div></div>
+<div class="hz-chat__row hz-chat__row--ai"><span class="hz-avatar hz-avatar--sm hz-chat__avatar" style="background:var(--hz-horizon-primary-pale);color:var(--hz-horizon-primary)"><i class="far fa-sparkles"></i></span><div><div class="hz-chat__bubble"><div class="hz-prose"><p>At a 10% miss, exposure rises to <strong>Rp 42.8B</strong> against the current covenant threshold of Rp 50B. Key drivers:</p><ul><li>Pit 4 output delay (largest factor)</li><li>Vessel freight rate assumption</li></ul></div></div><div class="hz-chat__meta">10:41 AM · M&amp;A Brain</div></div></div>
+</div>
+<div class="divider"></div>
+<div class="label">Composer</div>
+<div class="hz-composer" style="max-width:640px">
+<textarea rows="1" placeholder="Ask about a deal, account, or forecast…"></textarea>
+<div class="hz-composer__actions"><button class="hz-composer__btn"><i class="far fa-paperclip"></i></button><button class="hz-composer__btn hz-composer__send"><i class="far fa-arrow-up"></i></button></div>
+</div>
+<div class="divider"></div>
+<div class="label">Reasoning trace · open / collapsed</div>
+<div style="display:flex;gap:20px;flex-wrap:wrap">
+<div class="hz-trace is-open" style="width:340px">
+<div class="hz-trace__header"><i class="far fa-brain-circuit"></i>Reasoning · 4 steps<i class="far fa-chevron-down"></i></div>
+<div class="hz-trace__steps">
+<div class="hz-trace__step is-done"><span class="hz-trace__step-icon"><i class="far fa-check"></i></span>Pulled Q4 forecast for Pit 4</div>
+<div class="hz-trace__step is-done"><span class="hz-trace__step-icon"><i class="far fa-check"></i></span>Cross-referenced covenant threshold</div>
+<div class="hz-trace__step is-active"><span class="hz-trace__step-icon"><i class="far fa-spinner-third fa-spin"></i></span>Modeling 10% miss scenario</div>
+<div class="hz-trace__step"><span class="hz-trace__step-icon">4</span>Draft response</div>
+</div>
+</div>
+<div class="hz-trace" style="width:340px">
+<div class="hz-trace__header"><i class="far fa-brain-circuit"></i>Reasoning · 4 steps · done<i class="far fa-chevron-down"></i></div>
+</div>
+</div>
+</section>
+</div>
+</body></html>

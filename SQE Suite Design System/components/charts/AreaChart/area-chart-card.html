@@ -1,0 +1,62 @@
+<!-- @dsCard group="Charts" name="Area chart" subtitle="Stacked · gradient fill · smooth or linear · hover crosshair" viewport="1200x1000" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Area chart</title>
+<link rel="stylesheet" href="../../../tokens.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="../../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:48px;background:var(--hz-surface-page);color:var(--hz-text-primary);font-family:var(--hz-font-sans)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;gap:24px}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+h1{font-family:var(--hz-font-display);font-size:32px;line-height:1.1;margin:10px 0 8px;letter-spacing:-.01em}
+.sub{font-size:15px;line-height:1.5;color:var(--hz-text-secondary);max-width:600px;margin:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:11px;font-family:var(--hz-font-mono);padding:4px 10px;border-radius:999px;background:var(--hz-neutral-100);color:var(--hz-text-secondary);white-space:nowrap}
+.panel{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:28px 32px}
+.label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tile{border:1px solid var(--hz-border-subtle);border-radius:12px;padding:20px 22px;background:var(--hz-surface-card)}
+.tile .t{font-size:12px;color:var(--hz-text-tertiary);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.tile .v{font-size:26px;font-weight:600;margin:6px 0 12px;letter-spacing:-.01em}
+.delta{font-size:12px;font-weight:600}
+a{color:var(--hz-horizon-primary);text-decoration:none}a:hover{color:var(--hz-horizon-primary-dark)}
+.code{background:var(--hz-neutral-950);border-radius:10px;padding:20px 24px;font-family:var(--hz-font-mono);font-size:12.5px;line-height:1.7;color:#cbd5e1;white-space:pre;overflow-x:auto;margin:0}</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Charts · Area chart</div><h1>Area chart</h1><p class="sub">Trend over a continuous index. Stack for composition of a total, keep it unstacked to compare shapes. Gradient fills use the Horizon series palette at 28% → 2% opacity.</p></div><div class="chips"><span class="chip">AreaChart</span><span class="chip">stack</span><span class="chip">curve</span><span class="chip">fill</span></div></div>
+<section class="panel"><div class="label">01 · Stacked · gradient</div><div id="a1"></div></section>
+<section class="panel"><div class="label">02 · Single series · linear · no legend</div><div class="grid2"><div id="a2"></div><div id="a3"></div></div></section>
+<section class="panel"><div class="label">03 · Usage</div><pre class="code">const { AreaChart } = window.SQESuiteDesignSystem_2c1e79;
+
+&lt;AreaChart
+  data={revenue}
+  index="month"
+  categories={['Subscriptions', 'Services', 'Licenses']}
+  colors={['blue', 'purple', 'teal']}
+  valueFormatter={(v) =&gt; '$' + v.toLocaleString()}
+  stack
+  height={300}
+/&gt;</pre></section>
+</div>
+<script>
+const NS = window.SQESuiteDesignSystem_2c1e79;
+const h = React.createElement;
+const mount = (id, el) => ReactDOM.createRoot(document.getElementById(id)).render(el);
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const usd = v => '$' + (Math.abs(v) >= 1000 ? (v/1000).toFixed(v % 1000 ? 1 : 0) + 'k' : v);
+const revenue = months.map((m, i) => ({ month: m,
+  Subscriptions: [4200,4600,5100,4900,5600,6100,6400,6800,7300,7600,8200,8800][i],
+  Services: [1800,1700,2100,2300,2200,2600,2900,2700,3100,3400,3300,3800][i],
+  Licenses: [900,1100,1000,1300,1500,1400,1700,1900,1800,2100,2300,2500][i] }));
+mount('a1', h(NS.AreaChart, { data:revenue, index:'month', categories:['Subscriptions','Services','Licenses'], colors:['blue','purple','teal'], valueFormatter:usd, stack:true, height:300 }));
+mount('a2', h(NS.AreaChart, { data:revenue, index:'month', categories:['Subscriptions'], colors:['blue'], valueFormatter:usd, height:200, showLegend:false, startEndOnly:true }));
+mount('a3', h(NS.AreaChart, { data:revenue, index:'month', categories:['Services','Licenses'], colors:['teal','orange'], valueFormatter:usd, height:200, curve:'linear', fill:'solid', showLegend:false, startEndOnly:true }));
+</script>
+</body>
+</html>

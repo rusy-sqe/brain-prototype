@@ -1,0 +1,29 @@
+/* Optional bridge for Tailwind/shadcn consumers (e.g. M&A Brain) — maps this DS's hex tokens to
+   shadcn's HSL-triplet variable names (`H S% L%`, consumed as `hsl(var(--x))`), so shadcn components
+   can theme from SQE Suite values instead of carrying their own palette. Load AFTER tokens.css.
+   Toggle dark mode the shadcn way by adding class="dark" to <html> — independent of this DS's own
+   [data-theme] attribute, so either toggle convention works. */
+:root {
+  --background: 220 33% 98%;        --foreground: 214 21% 15%;
+  --card: 0 0% 100%;                --card-foreground: 214 21% 15%;
+  --popover: 0 0% 100%;             --popover-foreground: 214 21% 15%;
+  --primary: 212 100% 46%;          --primary-foreground: 0 0% 100%;
+  --secondary: 218 29% 95%;         --secondary-foreground: 214 21% 15%;
+  --muted: 218 29% 95%;             --muted-foreground: 215 13% 57%;
+  --accent: 214 85% 95%;            --accent-foreground: 212 100% 33%;
+  --destructive: 0 73% 49%;         --destructive-foreground: 0 0% 100%;
+  --border: 218 24% 87%;            --input: 217 20% 77%;
+  --ring: 212 100% 46%;             --radius: .5rem;
+}
+.dark {
+  --background: 213 19% 9%;         --foreground: 0 0% 100%;
+  --card: 214 21% 15%;              --card-foreground: 0 0% 100%;
+  --popover: 214 21% 15%;           --popover-foreground: 0 0% 100%;
+  --primary: 212 100% 46%;          --primary-foreground: 0 0% 100%;
+  --secondary: 213 18% 20%;         --secondary-foreground: 0 0% 100%;
+  --muted: 213 18% 20%;             --muted-foreground: 216 16% 69%;
+  --accent: 213 18% 20%;            --accent-foreground: 0 0% 100%;
+  --destructive: 0 81% 40%;         --destructive-foreground: 0 0% 100%;
+  --border: 214 16% 37%;            --input: 214 16% 37%;
+  --ring: 212 100% 46%;             --radius: .5rem;
+}

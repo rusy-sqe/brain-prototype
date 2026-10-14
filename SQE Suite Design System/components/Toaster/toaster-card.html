@@ -1,0 +1,37 @@
+<!-- @dsCard group="Components" name="Toast" subtitle="default · success · error · stacked queue" viewport="1000x560" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Toast</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.stack{display:flex;flex-direction:column;gap:16px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Toast</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="label">Variants</div>
+<div class="stack">
+<div class="hz-toast"><span class="hz-toast__message">Perubahan berhasil disimpan.</span><button class="hz-toast__action">Lihat</button></div>
+<div class="hz-toast hz-toast--success"><span class="hz-toast__message">Transaksi berhasil diproses.</span><button class="hz-toast__action">Lihat</button></div>
+<div class="hz-toast hz-toast--error"><span class="hz-toast__message">Terjadi kesalahan saat memuat data.</span><button class="hz-toast__action">Lihat</button></div>
+</div>
+<div class="label" style="margin-top:24px">Stacked queue · newest on top, each auto-dismisses independently</div>
+<div class="hz-toast-stack" style="position:relative;bottom:auto;right:auto;width:360px">
+<div class="hz-toast hz-toast--success"><span class="hz-toast__message">Report exported.</span><button class="hz-toast__action">Undo</button></div>
+<div class="hz-toast"><span class="hz-toast__message">Draft saved.</span></div>
+<div class="hz-toast hz-toast--error"><span class="hz-toast__message">Upload failed — file too large.</span><button class="hz-toast__action">Retry</button></div>
+</div>
+</section>
+</div>
+</body></html>

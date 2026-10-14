@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>SQE Suite DS — Master Gap Analysis</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:var(--hz-surface-page);color:var(--hz-text-primary);font-family:var(--hz-font-sans)}
+a{color:var(--hz-horizon-primary);text-decoration:none}a:hover{color:var(--hz-horizon-primary-dark);text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:64px 48px 120px}
+.eyebrow{font:var(--hz-fw-semibold) var(--hz-text-body-s-size)/1.2 var(--hz-font-mono,var(--hz-font-sans));letter-spacing:.12em;text-transform:uppercase;color:var(--hz-horizon-primary)}
+.lede{max-width:76ch;color:var(--hz-text-secondary);margin:16px 0 0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:40px 0 8px}
+.stat{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle,var(--hz-neutral-200));border-radius:var(--hz-radius-lg);padding:20px}
+.stat b{display:block;font:var(--hz-fw-bold) 34px/1.1 var(--hz-font-sans);letter-spacing:-.02em}
+.stat span{display:block;margin-top:6px;font-size:13px;color:var(--hz-text-secondary)}
+section{margin-top:64px}
+h2{font:var(--hz-fw-bold) 26px/1.2 var(--hz-font-sans);letter-spacing:-.01em;margin:0 0 6px}
+h2 .n{color:var(--hz-neutral-400);font-weight:var(--hz-fw-regular);margin-right:12px}
+h3{font-size:17px;margin:32px 0 6px}
+.sub{color:var(--hz-text-secondary);font-size:14px;margin:0 0 22px;max-width:86ch}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-weight:var(--hz-fw-semibold);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--hz-text-secondary);padding:0 12px 10px;border-bottom:1px solid var(--hz-neutral-300)}
+td{padding:13px 12px;border-bottom:1px solid var(--hz-neutral-200);vertical-align:top}
+td:first-child,th:first-child{padding-left:0}td:last-child,th:last-child{padding-right:0}
+.name{font-weight:var(--hz-fw-semibold);white-space:nowrap}
+.why{color:var(--hz-text-secondary)}
+.src{font-family:var(--hz-font-mono,ui-monospace,monospace);font-size:11.5px;color:var(--hz-neutral-500);line-height:1.5}
+.p{display:inline-block;font-size:11px;font-weight:var(--hz-fw-bold);letter-spacing:.04em;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.p1{background:var(--hz-red-50);color:var(--hz-red-700)}.p2{background:var(--hz-yellow-50);color:var(--hz-yellow-700)}.p3{background:var(--hz-blue-50);color:var(--hz-blue-700)}
+.apps{display:flex;gap:5px;flex-wrap:nowrap}
+.app{display:inline-flex;align-items:center;font-size:10.5px;font-weight:var(--hz-fw-bold);letter-spacing:.02em;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.app.dim{opacity:.28}
+.app-c{background:var(--hz-teal-50);color:var(--hz-teal-700)}
+.app-m{background:var(--hz-purple-50);color:var(--hz-purple-700)}
+.app-h{background:var(--hz-orange-50);color:var(--hz-orange-700)}
+.legend{display:flex;gap:18px;align-items:center;font-size:12.5px;color:var(--hz-text-secondary);margin-bottom:18px}
+.legend .app{padding:4px 10px;font-size:11px}
+.have{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:12.5px;padding:5px 11px;border-radius:999px;background:var(--hz-surface-subtle,var(--hz-neutral-100));border:1px solid var(--hz-neutral-200);color:var(--hz-text-secondary)}
+.chip.ok{border-color:var(--hz-green-200);background:var(--hz-green-50);color:var(--hz-green-700)}
+.note{background:var(--hz-surface-card);border:1px solid var(--hz-neutral-200);border-left:3px solid var(--hz-horizon-primary);border-radius:var(--hz-radius-md);padding:18px 20px;margin-top:20px}
+.note p{margin:0;font-size:14px;color:var(--hz-text-secondary);max-width:90ch}
+.note p+p{margin-top:10px}
+.note b{color:var(--hz-text-primary)}
+.note--warn{border-left-color:var(--hz-red-500)}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:8px}
+.appcard{background:var(--hz-surface-card);border:1px solid var(--hz-neutral-200);border-radius:var(--hz-radius-lg);padding:20px;border-top:3px solid}
+.appcard.c{border-top-color:var(--hz-teal-500)}.appcard.m{border-top-color:var(--hz-purple-500)}.appcard.h{border-top-color:var(--hz-orange-500)}
+.appcard h4{margin:0 0 4px;font-size:15px}
+.appcard .sub2{font-size:12px;color:var(--hz-text-secondary);margin:0 0 14px}
+.appcard ul{margin:0;padding:0 0 0 18px;font-size:13px;color:var(--hz-text-secondary);display:grid;gap:6px}
+.appcard a.more{display:inline-block;margin-top:14px;font-size:12.5px;font-weight:var(--hz-fw-semibold)}
+ol.phases{counter-reset:ph;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+ol.phases li{counter-increment:ph;display:grid;grid-template-columns:44px 1fr;gap:16px;background:var(--hz-surface-card);border:1px solid var(--hz-neutral-200);border-radius:var(--hz-radius-lg);padding:18px 20px}
+ol.phases li::before{content:counter(ph);font:var(--hz-fw-bold) 20px/44px var(--hz-font-sans);text-align:center;background:var(--hz-horizon-primary-pale);color:var(--hz-horizon-primary-dark);border-radius:var(--hz-radius-md);height:44px}
+ol.phases h3{margin:0 0 4px;font-size:15px}
+ol.phases p{margin:0;font-size:13.5px;color:var(--hz-text-secondary)}
+.sources{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.sources a{background:var(--hz-surface-card);border:1px solid var(--hz-neutral-200);border-radius:var(--hz-radius-md);padding:12px 16px;font-size:13px;font-weight:var(--hz-fw-semibold);color:var(--hz-text-primary)}
+.sources a:hover{text-decoration:none;border-color:var(--hz-horizon-primary)}
+.sources a i{display:block;font-style:normal;font-weight:var(--hz-fw-regular);color:var(--hz-text-secondary);font-size:12px;margin-top:2px}
+</style></head><body>
+<template id="__bundler_thumbnail" data-bg-color="#0E7C66">
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#0E7C66"/><g transform="translate(360,240)"><rect x="0" y="0" width="480" height="56" rx="10" fill="#FFFFFF" opacity=".95"/><rect x="0" y="88" width="480" height="36" rx="8" fill="#FFFFFF" opacity=".5"/><rect x="0" y="152" width="300" height="36" rx="8" fill="#FFFFFF" opacity=".5"/><rect x="0" y="216" width="392" height="36" rx="8" fill="#FFFFFF" opacity=".5"/><circle cx="440" cy="170" r="26" fill="#F5A524"/><circle cx="440" cy="234" r="26" fill="#F5A524" opacity=".55"/></g></svg>
+</template>
+<div class="wrap">
+
+<p class="eyebrow">Redesign readiness audit · Master synthesis · Sept 2026</p>
+<h1 class="hz-h1" style="margin:8px 0 0;max-width:30ch">SQE Suite DS — Master Gap Analysis</h1>
+<p class="lede">A single view across the three redesign audits run against this design system this cycle — CognifAI, M&amp;A Brain and SQE Horizon 2.0. Individually, each names what its app needs and the DS lacks. Compiled together, the value is different: the same handful of components recur across all three unrelated products, which means building them once in the DS unblocks three roadmaps at once, rather than three teams each re-solving dialog, table and form primitives on their own.</p>
+
+<div class="stats">
+<div class="stat"><b>3</b><span>Apps audited against the DS this cycle</span></div>
+<div class="stat"><b>166</b><span>Total gap findings across the three reports (46 + 58 + 62)</span></div>
+<div class="stat"><b>14</b><span>Components every one of the three apps independently needed</span></div>
+<div class="stat"><b>27</b><span>Additional components two of the three needed</span></div>
+</div>
+
+
+<section>
+<h2><span class="n">01</span>Tier 1 — needed by all three apps</h2>
+<p class="sub">Build these first. Three unrelated codebases — an HR/assessment product, a finance AI copilot, and a mining ops console — each independently built their own version of every row below. That is the strongest possible signal for what belongs in the DS core, not in app code.</p>
+<div class="legend"><span class="app app-c">CognifAI</span><span class="app app-m">M&amp;A Brain</span><span class="app app-h">Horizon 2.0</span></div>
+<table><thead><tr><th style="width:20%">Component</th><th style="width:10%">Priority</th><th style="width:52%">Why it's suite-wide</th><th style="width:18%">Needed by</th></tr></thead><tbody>
+<tr><td class="name">Dialog / Modal</td><td><span class="p p1">P1</span></td><td class="why">Sized modal with header/body/footer actions — every create/edit flow in all three apps routes through some version of this.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Confirm dialog</td><td><span class="p p1">P1</span></td><td class="why">Destructive-action confirmation with its own copy/button rules. Horizon's delete fires with no confirm at all today — the clearest evidence this is missing, not skipped.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Popover</td><td><span class="p p1">P1</span></td><td class="why">The anchored-panel primitive under filters, comboboxes and menus. Horizon hand-rolled the same scrim-plus-absolute-panel pattern six separate times for lack of it.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Select</td><td><span class="p p1">P1</span></td><td class="why">Styled trigger + listbox for short option sets. The DS form-controls card stops at input/check/radio/switch in all three audits.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Combobox / Command</td><td><span class="p p1">P1</span></td><td class="why">Searchable select with keyboard nav and empty state. M&amp;A alone has six bespoke variants that one DS component should replace.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Text input &amp; form field</td><td><span class="p p1">P1</span></td><td class="why">Label-above input with error/required states, usable outside a floating-label card. The DS's only field is a floating-label single shape — Horizon patched around it with <span class="src">.app-input</span> everywhere.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Textarea</td><td><span class="p p1">P1</span></td><td class="why">Multiline input — deck-builder fields, chat composers, notes. Zero DS coverage in any audit.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Skeleton / loading placeholder</td><td><span class="p p1">P1</span></td><td class="why">Text/row/card placeholders for the async streams every one of these apps has (report generation, chat, map init, table fetch).</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Empty / error / not-found state</td><td><span class="p p1">P1</span></td><td class="why">No DS pattern exists in any of the three. Needed per table, per panel, plus 404/expired/offline screens.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">DataTable + cell vocabulary</td><td><span class="p p1">P1</span></td><td class="why">Sort, select, per-row actions, plus a documented cell set (status, numeric, identity, distribution/heat). The DS table is static in all three; each app built its own logic on top.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Table toolbar (search + filters)</td><td><span class="p p1">P1</span></td><td class="why">Search box, filter chips/selects, result count, primary action — reproduced above every table in every app, each with slightly different spacing.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">KPI / metric card (value + delta)</td><td><span class="p p1">P1</span></td><td class="why">The DS card has a metric variant but no shared trend-arrow/comparison-period convention — every dashboard header row in all three needs exactly this.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">App shell</td><td><span class="p p1">P1</span></td><td class="why">Sidebar + topbar + main frame every screen inherits. The DS documents a sidebar's look, not the shell it lives in, in all three audits.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Toast queue / container</td><td><span class="p p2">P2</span></td><td class="why">DS toast visuals exist but no stacking container or auto-dismiss logic in any app — each has one notification call with nowhere to render a second message.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+</tbody></table>
+</section>
+
+<section>
+<h2><span class="n">02</span>Tier 2 — needed by two of three apps</h2>
+<p class="sub">Still strong signal, just not universal — usually because one app's information architecture doesn't call for it (e.g. Horizon has no chat surface).</p>
+<table><thead><tr><th style="width:20%">Component</th><th style="width:10%">Priority</th><th style="width:52%">Why the redesign needs it</th><th style="width:18%">Needed by</th></tr></thead><tbody>
+<tr><td class="name">Sheet / Drawer</td><td><span class="p p1">P1</span></td><td class="why">Right-side edit panel. Horizon's drawer is its primary editing surface across 8 screens; M&amp;A uses it for detail panes and mobile.</td><td class="apps"><span class="app app-c dim">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Dropdown menu</td><td><span class="p p1">P1</span></td><td class="why">Item/group/separator/destructive semantics for row actions and account menus, currently hand-assembled from cards.</td><td class="apps"><span class="app app-c dim">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">File dropzone + upload row</td><td><span class="p p1">P1</span></td><td class="why">Drag-drop target, progress, per-file status. Both hand-rolled independently for CSV/document upload.</td><td class="apps"><span class="app app-c dim">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Bulk selection toolbar</td><td><span class="p p1">P1</span></td><td class="why">Floating "n selected" bar with export/delete/promote actions once table rows are checked.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h dim">H</span></td></tr>
+<tr><td class="name">Collapsible / Accordion</td><td><span class="p p2">P2</span></td><td class="why">Expandable detail sections — insight panels, sidebar groups, reasoning blocks.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h dim">H</span></td></tr>
+<tr><td class="name">Date &amp; range picker</td><td><span class="p p2">P2</span></td><td class="why">DS covers single dates only; both need range + presets for filters and commitment dates.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m">M</span><span class="app app-h dim">H</span></td></tr>
+<tr><td class="name">Breadcrumb</td><td><span class="p p2">P2</span></td><td class="why">Multi-level drill (tenant → org → package; workspace → pipeline → deal) with no DS wayfinding.</td><td class="apps"><span class="app app-c dim">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Language switcher</td><td><span class="p p2">P2</span></td><td class="why">Both are bilingual ID/EN at runtime; the DS has no locale story so labels and the switch are both app-side.</td><td class="apps"><span class="app app-c">C</span><span class="app app-m dim">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Auth template</td><td><span class="p p2">P2</span></td><td class="why">Login/reset with brand mark and hero — a first impression worth owning centrally rather than per-app.</td><td class="apps"><span class="app app-c dim">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Activity / event timeline</td><td><span class="p p2">P2</span></td><td class="why">Actor + verb + target, grouped by day — audit logs and dashboard feeds in both.</td><td class="apps"><span class="app app-c dim">C</span><span class="app app-m">M</span><span class="app app-h">H</span></td></tr>
+</tbody></table>
+</section>
+
+<section>
+<h2><span class="n">03</span>What's unique to each app — and worth designing suite-wide anyway</h2>
+<p class="sub">These didn't recur because each app's domain is genuinely distinct — but two of the three domains (AI-mediated assessment, AI agent/copilot) are directions the rest of the suite is visibly heading, so the source audits flag them as primitives to design once, not one-off features.</p>
+<div class="cols3">
+<div class="appcard c"><h4>CognifAI</h4><p class="sub2">Proctored AI-assessment for candidates</p>
+<ul><li>Camera/permission gate + calibration orb</li><li>Phase stepper with live countdown</li><li>Case brief panel + deck-builder field set</li><li>Integrity flag &amp; verdict badges</li><li>5-dimension scorecard</li></ul>
+</div>
+<div class="appcard m"><h4>M&amp;A Brain</h4><p class="sub2">AI copilot for deal sourcing &amp; fund management</p>
+<ul><li>Chat bubble, composer &amp; AI markdown prose</li><li>Reasoning / step-trace panel</li><li>Agent action card (approve/reject proposal)</li><li>AI opinion/confidence display</li><li>Relationship graph &amp; flow canvas</li></ul>
+</div>
+<div class="appcard h"><h4>SQE Horizon 2.0</h4><p class="sub2">Mining ops forecasting &amp; admin console</p>
+<ul><li>Forecast-vs-actual chart with crosshair/pick</li><li>Map marker/pin, geocode &amp; coordinate picker</li><li>Dark basemap tiles</li><li>Product tour / coachmark</li><li>Appearance (theme) picker</li></ul>
+</div>
+</div>
+<div class="note"><p><b>The chat/agent overlap is the one to watch.</b> CognifAI's AI-chat and M&amp;A's copilot are independently-arrived-at versions of the same thing: a message bubble, a composer, and a structured "AI proposes, human decides" card. That's two of three apps converging on a pattern language the DS doesn't have yet — treat it as a Tier-1 candidate for the <em>next</em> audit cycle, not a one-off per product.</p></div>
+</section>
+
+<section>
+<h2><span class="n">04</span>Foundation issues — fix before component work</h2>
+<p class="sub">Cross-cutting problems that no new component resolves on its own, and that every new component would otherwise inherit.</p>
+<table><thead><tr><th style="width:20%">Issue</th><th style="width:10%">Priority</th><th style="width:52%">What's wrong</th><th style="width:18%">Evidenced by</th></tr></thead><tbody>
+<tr><td class="name">Dark mode is media-query only</td><td><span class="p p1">P1</span></td><td class="why">Several components pin light ramp stops directly instead of using surface roles. Any app with a user-facing theme toggle has to re-skin the DS — Horizon carries ~45 override rules to compensate.</td><td class="apps"><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Token model mismatch (Tailwind/shadcn)</td><td><span class="p p1">P1</span></td><td class="why">M&amp;A Brain is Tailwind + shadcn, themed through HSL triplets with a <span class="src">.dark</span> class toggle; the DS ships hex tokens keyed to <span class="src">prefers-color-scheme</span>. Needs a bridge layer before any component lands there.</td><td class="apps"><span class="app app-m">M</span></td></tr>
+<tr><td class="name">Off-system literals leaking in</td><td><span class="p p2">P2</span></td><td class="why">Missing roles get hand-picked hex instead: an off-system orange chart series, a raw rgba scrim, color-mix threshold bands. Needs a scrim token, a categorical chart-series role, and a semantic threshold scale.</td><td class="apps"><span class="app app-h">H</span></td></tr>
+<tr><td class="name">Display font not reachable</td><td><span class="p p2">P2</span></td><td class="why">Heading classes hardcode the sans face, so the DS's own display typeface is unusable through them — apps override all six heading selectors to get it back.</td><td class="apps"><span class="app app-h">H</span></td></tr>
+<tr><td class="name">No layout primitives beyond stack/row</td><td><span class="p p2">P2</span></td><td class="why">Every screen re-declares its own flex/grid and gap values. A page-header and 2/3-column grid primitive would remove most apps' inline layout code.</td><td class="apps"><span class="app app-h">H</span></td></tr>
+</tbody></table>
+</section>
+
+<section>
+<h2><span class="n">05</span>Unified build order</h2>
+<p class="sub">One sequence, merged from all three roadmaps, so a single DS team effort clears the ground for all three redesigns rather than optimizing for one.</p>
+<ol class="phases">
+<li><div><h3>Foundations</h3><p>Move dark mode to a class/attribute scope, purge pinned ramp stops, add the scrim/chart-series/threshold tokens, unpin the display font, ship the Tailwind/shadcn token bridge for M&amp;A. Nothing below should start before this.</p></div></li>
+<li><div><h3>Form &amp; input family</h3><p>Text input, form field wrapper, textarea, select, combobox, search input, file dropzone. Retires the largest source of per-app "app-input"-style patching and unblocks every overlay that contains a form.</p></div></li>
+<li><div><h3>Overlay layer</h3><p>Popover, dropdown menu, dialog/modal, confirm dialog, sheet/drawer, toast queue, skeleton, collapsible. This is the single largest recurring gap across all three audits.</p></div></li>
+<li><div><h3>Table &amp; app shell</h3><p>DataTable with cell vocabulary, table toolbar, bulk-selection bar, pagination, empty states, KPI card, app shell, behavioural sidebar, account menu, breadcrumb. Validate on each app's densest screen.</p></div></li>
+<li><div><h3>AI &amp; agent primitives</h3><p>Chat message bubble, composer, AI markdown prose, reasoning trace, agent action card, confidence/opinion display, job/run status. Design as suite-wide assessment/copilot primitives — CognifAI and M&amp;A both need this shape now, and it's the direction the rest of the suite is heading.</p></div></li>
+<li><div><h3>Domain specialty tracks</h3><p>Assessment/proctoring shell (CognifAI), map/forecast + relationship graph (Horizon, M&amp;A), document/file review surfaces (M&amp;A). Run in parallel once Phase 4 primitives exist to build on.</p></div></li>
+<li><div><h3>Templates &amp; long tail</h3><p>Auth template, settings template, product tour, theme picker, mobile shell, marketing/landing sections. Publish as <span class="src">templates/</span> starting points so the next suite product begins ahead of where these three started.</p></div></li>
+</ol>
+</section>
+
+</div></body></html>

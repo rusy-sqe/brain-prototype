@@ -1,0 +1,59 @@
+<!-- @dsCard group="Charts" name="Bar chart" subtitle="Grouped · stacked · 100% · horizontal layout" viewport="1200x1240" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Bar chart</title>
+<link rel="stylesheet" href="../../../tokens.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="../../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:48px;background:var(--hz-surface-page);color:var(--hz-text-primary);font-family:var(--hz-font-sans)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;gap:24px}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+h1{font-family:var(--hz-font-display);font-size:32px;line-height:1.1;margin:10px 0 8px;letter-spacing:-.01em}
+.sub{font-size:15px;line-height:1.5;color:var(--hz-text-secondary);max-width:600px;margin:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:11px;font-family:var(--hz-font-mono);padding:4px 10px;border-radius:999px;background:var(--hz-neutral-100);color:var(--hz-text-secondary);white-space:nowrap}
+.panel{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:28px 32px}
+.label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tile{border:1px solid var(--hz-border-subtle);border-radius:12px;padding:20px 22px;background:var(--hz-surface-card)}
+.tile .t{font-size:12px;color:var(--hz-text-tertiary);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.tile .v{font-size:26px;font-weight:600;margin:6px 0 12px;letter-spacing:-.01em}
+.delta{font-size:12px;font-weight:600}
+a{color:var(--hz-horizon-primary);text-decoration:none}a:hover{color:var(--hz-horizon-primary-dark)}
+.code{background:var(--hz-neutral-950);border-radius:10px;padding:20px 24px;font-family:var(--hz-font-mono);font-size:12.5px;line-height:1.7;color:#cbd5e1;white-space:pre;overflow-x:auto;margin:0}</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Charts · Bar chart</div><h1>Bar chart</h1><p class="sub">Compare discrete categories. Grouped for side-by-side comparison, stacked for totals, percent for composition, horizontal when labels are long.</p></div><div class="chips"><span class="chip">BarChart</span><span class="chip">type</span><span class="chip">layout</span><span class="chip">barRadius</span></div></div>
+<section class="panel"><div class="label">01 · Grouped</div><div id="b1"></div></section>
+<section class="panel"><div class="label">02 · Stacked · 100% stacked</div><div class="grid2"><div id="b2"></div><div id="b3"></div></div></section>
+<section class="panel"><div class="label">03 · Horizontal</div><div id="b4"></div></section>
+<section class="panel"><div class="label">04 · Usage</div><pre class="code">const { BarChart } = window.SQESuiteDesignSystem_2c1e79;
+
+&lt;BarChart data={revenue} index="month" categories={['Subscriptions','Services']} type="stacked" /&gt;
+&lt;BarChart data={rows} index="team" categories={['Score']} layout="horizontal" colors={['teal']} /&gt;</pre></section>
+</div>
+<script>
+const NS = window.SQESuiteDesignSystem_2c1e79;
+const h = React.createElement;
+const mount = (id, el) => ReactDOM.createRoot(document.getElementById(id)).render(el);
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const usd = v => '$' + (Math.abs(v) >= 1000 ? (v/1000).toFixed(v % 1000 ? 1 : 0) + 'k' : v);
+const revenue = months.map((m, i) => ({ month: m,
+  Subscriptions: [4200,4600,5100,4900,5600,6100,6400,6800,7300,7600,8200,8800][i],
+  Services: [1800,1700,2100,2300,2200,2600,2900,2700,3100,3400,3300,3800][i],
+  Licenses: [900,1100,1000,1300,1500,1400,1700,1900,1800,2100,2300,2500][i] }));
+const q = revenue.slice(0, 6);
+const teams = [{team:'Platform',Score:92},{team:'Data & AI',Score:87},{team:'Mobile',Score:78},{team:'Growth',Score:71},{team:'Infrastructure',Score:64}];
+mount('b1', h(NS.BarChart, { data:q, index:'month', categories:['Subscriptions','Services','Licenses'], colors:['blue','purple','teal'], valueFormatter:usd, height:280 }));
+mount('b2', h(NS.BarChart, { data:q, index:'month', categories:['Subscriptions','Services','Licenses'], colors:['blue','purple','teal'], valueFormatter:usd, type:'stacked', height:240, yAxisWidth:46 }));
+mount('b3', h(NS.BarChart, { data:q, index:'month', categories:['Subscriptions','Services','Licenses'], colors:['blue','purple','teal'], type:'percent', height:240, yAxisWidth:40 }));
+mount('b4', h(NS.BarChart, { data:teams, index:'team', categories:['Score'], colors:['teal'], layout:'horizontal', height:230, showLegend:false }));
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!-- @dsCard group="Components" name="Agent action & Run status" subtitle="AI proposes/human decides · confidence · job status" viewport="1200x700" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Agent action &amp; Run status</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(2,1fr)}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:12px}
+.divider{border-top:1px solid var(--hz-border-subtle);margin:24px 0}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Agent action &amp; Run status</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="label">Agent action card · pending → resolved</div>
+<div class="grid">
+<div class="hz-agent-card">
+<div class="hz-agent-card__header"><span class="hz-agent-card__icon"><i class="far fa-sparkles"></i></span><div><div class="hz-agent-card__title">Reclassify 3 transactions</div><div class="hz-agent-card__sub">Suggested by M&amp;A Brain · 2 min ago</div></div></div>
+<div class="hz-agent-card__body">These match your "Operational — BCA" pattern with 94% confidence. Apply the reclassification?</div>
+<div class="hz-confidence"><div class="hz-confidence__bar"><div class="hz-confidence__fill hz-confidence__fill--high" style="width:94%"></div></div><span class="hz-confidence__label">94% confident</span></div>
+<div class="hz-agent-card__actions"><button class="hz-btn hz-btn--secondary hz-btn--sm">Reject</button><button class="hz-btn hz-btn--primary hz-btn--sm">Approve</button></div>
+</div>
+<div class="hz-agent-card hz-agent-card--resolved">
+<div class="hz-agent-card__header"><span class="hz-agent-card__icon"><i class="far fa-sparkles"></i></span><div><div class="hz-agent-card__title">Flag Pit 4 vessel delay as risk</div><div class="hz-agent-card__sub">Suggested by M&amp;A Brain · 1 hour ago</div></div></div>
+<div class="hz-agent-card__body">Vessel ETA slipped 6 days past the freight schedule.</div>
+<div class="hz-confidence"><div class="hz-confidence__bar"><div class="hz-confidence__fill hz-confidence__fill--mid" style="width:61%"></div></div><span class="hz-confidence__label">61% confident</span></div>
+<span class="hz-agent-card__resolved-tag hz-agent-card__resolved-tag--approved"><i class="far fa-check-circle"></i>Approved by Andini Rahman</span>
+</div>
+</div>
+<div class="divider"></div>
+<div class="label">Confidence / opinion display</div>
+<div class="grid" style="max-width:640px">
+<div class="hz-confidence"><div class="hz-confidence__bar"><div class="hz-confidence__fill hz-confidence__fill--high" style="width:88%"></div></div><span class="hz-confidence__label">88% high</span></div>
+<div class="hz-confidence"><div class="hz-confidence__bar"><div class="hz-confidence__fill hz-confidence__fill--mid" style="width:54%"></div></div><span class="hz-confidence__label">54% medium</span></div>
+<div class="hz-confidence"><div class="hz-confidence__bar"><div class="hz-confidence__fill hz-confidence__fill--low" style="width:22%"></div></div><span class="hz-confidence__label">22% low</span></div>
+</div>
+<div class="divider"></div>
+<div class="label">Job / run status</div>
+<div class="row">
+<span class="hz-run-status hz-run-status--queued"><span class="hz-run-status__dot"></span>Queued</span>
+<span class="hz-run-status hz-run-status--running"><span class="hz-run-status__dot"></span>Running</span>
+<span class="hz-run-status hz-run-status--success"><span class="hz-run-status__dot"></span>Succeeded</span>
+<span class="hz-run-status hz-run-status--failed"><span class="hz-run-status__dot"></span>Failed</span>
+</div>
+</section>
+</div>
+</body></html>

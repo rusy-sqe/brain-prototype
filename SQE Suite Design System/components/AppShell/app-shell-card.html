@@ -1,0 +1,56 @@
+<!-- @dsCard group="Components" name="App Shell" subtitle="sidebar + topbar + content frame" viewport="1240x720" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — App Shell</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1140px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:10px}
+.frame{border:1px solid var(--hz-border-subtle);border-radius:14px;overflow:hidden;height:560px}
+.hz-shell{height:100%}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">App Shell</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<div class="label">Sidebar + topbar + content — the frame every screen inherits</div>
+<div class="frame"><div class="hz-shell">
+<div class="hz-sidebar">
+<div style="padding:14px 16px;border-bottom:1px solid var(--hz-border-subtle);display:flex;align-items:center;gap:10px;">
+<span class="hz-avatar hz-avatar--sm" style="border-radius:8px;background:var(--hz-horizon-primary);color:#fff;flex:none"><i class="far fa-gem" style="font-size:14px"></i></span>
+<div><div style="font-weight:700;font-size:14px;line-height:1.2">SQE Suite</div><div style="font-size:11px;color:var(--hz-text-tertiary)">berau · mining</div></div>
+</div>
+<div style="padding:8px 6px;flex:1">
+<div class="hz-sidebar__item is-active"><i class="hz-sidebar__icon far fa-home" style="font-size:18px"></i><span class="hz-sidebar__label">Overview</span></div>
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-chart-line" style="font-size:18px"></i><span class="hz-sidebar__label">Forecast</span></div>
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-map" style="font-size:18px"></i><span class="hz-sidebar__label">Sites</span></div>
+</div>
+<div style="padding:12px 16px;border-top:1px solid var(--hz-border-subtle);display:flex;align-items:center;gap:10px;">
+<button class="hz-btn hz-btn--text hz-btn--sm" style="position:relative"><i class="far fa-bell"></i><span style="position:absolute;top:4px;right:4px;width:6px;height:6px;border-radius:999px;background:var(--hz-red-500)"></span></button>
+<div><div style="font-weight:600;font-size:13px;line-height:1.2">Andini Rahman</div><div style="font-size:11px;color:var(--hz-text-tertiary)">Admin</div></div>
+</div>
+</div>
+<div class="hz-shell__main">
+<div class="hz-page-header" style="padding:20px 24px 16px;border-bottom:none;padding-top:14px;padding-bottom:8px">
+<div>
+<nav class="hz-breadcrumb" style="margin-bottom:6px"><span class="hz-breadcrumb__item">Mining Ops</span><i class="far fa-chevron-right hz-breadcrumb__sep"></i><span class="hz-breadcrumb__item is-current">Overview</span></nav>
+<div class="hz-page-header__title">Overview</div>
+</div>
+</div>
+<div class="hz-shell__content">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+<div class="hz-card"><div class="hz-card__body"><span class="hz-body-s hz-muted">Total output</span><div class="hz-h3">142,800t</div><span class="hz-kpi__delta hz-kpi__delta--up"><i class="far fa-arrow-up"></i>4.2%</span></div></div>
+<div class="hz-card"><div class="hz-card__body"><span class="hz-body-s hz-muted">Active sites</span><div class="hz-h3">6</div><span class="hz-body-s hz-muted">of 8 total</span></div></div>
+<div class="hz-card"><div class="hz-card__body"><span class="hz-body-s hz-muted">Forecast accuracy</span><div class="hz-h3">93%</div><span class="hz-kpi__delta hz-kpi__delta--down"><i class="far fa-arrow-down"></i>1.1%</span></div></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</body></html>

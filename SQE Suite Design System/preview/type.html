@@ -1,0 +1,59 @@
+<!-- @dsCard group="Foundations" name="Typography" subtitle="Inter + IBM Plex Sans, scale & Tailwind vocabulary" viewport="1280x900" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Type</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body{ padding: 48px; }
+  .wrap{ max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 260px 1fr; gap: 48px; }
+  .eyebrow{ font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--hz-text-tertiary); font-weight: 600; }
+  .meta{ color: var(--hz-text-tertiary); font-size: 13px; font-family: ui-monospace, monospace; margin-top: 4px; }
+  .row{ display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--hz-border-subtle); }
+  .row:last-child{ border: 0; }
+  .tag{ font-family: ui-monospace, monospace; color: var(--hz-text-tertiary); font-size: 12px; }
+  .aside{ position: sticky; top: 48px; align-self: start; }
+  .sample-wt{ display: flex; gap: 20px; color: var(--hz-text-secondary); font-size: 15px; margin-top: 24px;}
+  .sample-wt span{ display:block; color: var(--hz-text-tertiary); font-size: 11px; margin-top: 4px; letter-spacing:.08em; text-transform: uppercase;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <aside class="aside">
+    <div class="eyebrow">Type · 01</div>
+    <h1 class="hz-h2" style="margin-top:12px">Inter</h1>
+    <div class="meta">Variable · 100–900</div>
+    <p class="hz-body-r hz-muted" style="margin-top:20px;line-height:1.55">
+      One typeface, three weights in use. Inter's geometry balances legibility at 12 px with presence at 36 px, which is what the scale needs to cover — from dense tables to hero numerals.
+    </p>
+    <div class="sample-wt">
+      <div style="font-weight:400">Ag<span>Regular · 400</span></div>
+      <div style="font-weight:600">Ag<span>Semibold · 600</span></div>
+      <div style="font-weight:700">Ag<span>Bold · 700</span></div>
+    </div>
+  </aside>
+
+  <section>
+    <div class="eyebrow" style="margin-bottom:24px">Heading scale</div>
+    <div class="row"><span class="hz-h1">Your headline here</span><span class="tag">heading-1 · 36 / 44 · 700</span></div>
+    <div class="row"><span class="hz-h2">Your headline here</span><span class="tag">heading-2 · 32 / 40 · 700</span></div>
+    <div class="row"><span class="hz-h3">Your headline here</span><span class="tag">heading-3 · 28 / 34 · 700</span></div>
+    <div class="row"><span class="hz-h4">Your headline here</span><span class="tag">heading-4 · 24 / 28 · 700</span></div>
+    <div class="row"><span class="hz-h5">Your headline here</span><span class="tag">heading-5 · 20 / 24 · 700</span></div>
+    <div class="row"><span class="hz-h6">Your headline here</span><span class="tag">heading-6 · 18 / 22 · 700</span></div>
+
+    <div class="eyebrow" style="margin:40px 0 16px">Body scale</div>
+    <div class="row"><span class="hz-body-xl">Account statements are ready for review.</span><span class="tag">body-xl · 18 / 26</span></div>
+    <div class="row"><span class="hz-body-l">Account statements are ready for review.</span><span class="tag">body-l · 16 / 24</span></div>
+    <div class="row"><span class="hz-body-r">Account statements are ready for review.</span><span class="tag">body-r · 14 / 20</span></div>
+    <div class="row"><span class="hz-body-s">Account statements are ready for review.</span><span class="tag">body-s · 12 / 16</span></div>
+
+    <div class="eyebrow" style="margin:40px 0 16px">Tailwind vocabulary — fonts stay Inter &amp; IBM Plex Sans</div>
+    <div class="row"><span class="hz-body-r">fw-light / medium / semibold / bold / extrabold</span><span class="tag">300/500/600/700/800</span></div>
+    <div class="row"><span class="hz-body-r">tracking-tighter → wider</span><span class="tag">-0.05em → 0.05em</span></div>
+    <div class="row"><span class="hz-body-r">leading-none → relaxed</span><span class="tag">1 → 1.625</span></div>
+    <p class="hz-body-r hz-muted" style="margin-top:16px;line-height:1.55">Sizes/line-heights/letter-spacing per heading are brand-specific, not Tailwind's default scale. What's borrowed is the vocabulary (tracking-*, leading-*, font-weight-*) so a spec like "tracking-tight, leading-snug" maps straight to a class.</p>
+  </section>
+</div>
+</body></html>

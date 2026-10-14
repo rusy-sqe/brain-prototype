@@ -1,0 +1,38 @@
+<!-- @dsCard group="Components" name="Empty & Error State" subtitle="empty · error · not found, with action" viewport="1200x460" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Empty &amp; Error State</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.grid{display:grid;gap:0;grid-template-columns:repeat(3,1fr)}
+.cell{border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column}
+.cell:last-child{border-right:0}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;padding:0 24px}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Empty &amp; Error State</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section" style="padding:24px 0">
+<div class="grid">
+<div class="cell"><div class="label">Empty</div>
+<div class="hz-empty"><span class="hz-empty__icon"><i class="far fa-inbox"></i></span><div class="hz-empty__title">No deals yet</div><div class="hz-empty__desc">Deals you add to this pipeline will show up here.</div><div class="hz-empty__actions"><button class="hz-btn hz-btn--primary hz-btn--sm">Add deal</button></div></div>
+</div>
+<div class="cell"><div class="label">No results (filtered)</div>
+<div class="hz-empty"><span class="hz-empty__icon"><i class="far fa-search"></i></span><div class="hz-empty__title">No matches</div><div class="hz-empty__desc">Try a different search term or clear filters.</div><div class="hz-empty__actions"><button class="hz-btn hz-btn--text hz-btn--sm">Clear filters</button></div></div>
+</div>
+<div class="cell"><div class="label">Error</div>
+<div class="hz-empty hz-empty--error"><span class="hz-empty__icon"><i class="far fa-exclamation-triangle"></i></span><div class="hz-empty__title">Couldn't load this page</div><div class="hz-empty__desc">Something went wrong on our end. Try again.</div><div class="hz-empty__actions"><button class="hz-btn hz-btn--secondary hz-btn--sm">Retry</button></div></div>
+</div>
+</div>
+</section>
+</div>
+</body></html>

@@ -1,0 +1,70 @@
+<!-- @dsCard group="Components" name="Select & Combobox" subtitle="trigger states · error · disabled · searchable" viewport="1200x640" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Select &amp; Combobox</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.grid{display:grid;gap:28px;grid-template-columns:repeat(3,1fr)}
+.cell{display:flex;flex-direction:column;gap:8px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.divider{border-top:1px solid var(--hz-border-subtle);margin:28px 0}
+.hz-popover{position:static;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Select &amp; Combobox</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="grid">
+<div class="cell"><div class="label">Select · rest</div>
+<div class="hz-select"><span class="hz-select__label">Category</span><div class="hz-select__trigger"><span class="hz-select__placeholder">Choose category</span><i class="far fa-chevron-down hz-select__chevron"></i></div></div>
+</div>
+<div class="cell"><div class="label">Select · open</div>
+<div class="hz-select is-open"><span class="hz-select__label">Category</span><div class="hz-select__trigger is-open"><span>Operational</span><i class="far fa-chevron-down hz-select__chevron"></i></div>
+<div class="hz-popover" style="width:100%"><div class="hz-menu">
+<button class="hz-menu__item is-selected">Operational<i class="far fa-check hz-menu__check"></i></button>
+<button class="hz-menu__item">Reserve<i class="far fa-check hz-menu__check"></i></button>
+<button class="hz-menu__item">Escrow<i class="far fa-check hz-menu__check"></i></button>
+</div></div>
+</div>
+</div>
+<div class="cell"><div class="label">Select · error / disabled</div>
+<div class="hz-select hz-select--error"><span class="hz-select__label">Currency</span><div class="hz-select__trigger"><span class="hz-select__placeholder">Required</span><i class="far fa-chevron-down hz-select__chevron"></i></div><span class="hz-select__help">Pick a currency to continue.</span></div>
+<div class="hz-select hz-select--disabled" style="margin-top:12px"><span class="hz-select__label">Region</span><div class="hz-select__trigger"><span>Asia Pacific</span><i class="far fa-chevron-down hz-select__chevron"></i></div></div>
+</div>
+</div>
+<div class="divider"></div>
+<div class="grid">
+<div class="cell" style="grid-column:span 2">
+<div class="label">Combobox · searchable, with results</div>
+<div class="hz-select is-open"><span class="hz-select__label">Assignee</span><div class="hz-select__trigger is-open"><span class="hz-select__placeholder">Search people…</span><i class="far fa-chevron-down hz-select__chevron"></i></div>
+<div class="hz-popover" style="width:100%">
+<div class="hz-combobox__search"><i class="far fa-search"></i><input placeholder="Search people…" value="and"></div>
+<div class="hz-menu">
+<button class="hz-menu__item is-selected"><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px">AR</span>Andini Rahman<i class="far fa-check hz-menu__check"></i></button>
+<button class="hz-menu__item"><span class="hz-avatar hz-avatar--sm" style="width:22px;height:22px;font-size:10px;background:var(--hz-green-100);color:var(--hz-green-800)">AS</span>Andra Saputra<i class="far fa-check hz-menu__check"></i></button>
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="label">Combobox · no matches</div>
+<div class="hz-select is-open"><span class="hz-select__label">Assignee</span><div class="hz-select__trigger is-open"><span class="hz-select__placeholder">Search people…</span><i class="far fa-chevron-down hz-select__chevron"></i></div>
+<div class="hz-popover" style="width:100%">
+<div class="hz-combobox__search"><i class="far fa-search"></i><input placeholder="Search people…" value="zzz"></div>
+<div class="hz-menu__empty">No people found</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</body></html>

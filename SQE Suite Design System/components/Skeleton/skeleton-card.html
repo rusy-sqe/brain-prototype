@@ -1,0 +1,50 @@
+<!-- @dsCard group="Components" name="Skeleton" subtitle="text · row · card · avatar placeholders" viewport="1200x520" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Skeleton</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.grid{display:grid;gap:28px;grid-template-columns:repeat(3,1fr)}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:12px}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Skeleton</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="grid">
+<div><div class="label">Text lines</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div class="hz-skeleton hz-skeleton--text" style="width:70%"></div>
+<div class="hz-skeleton hz-skeleton--text" style="width:100%"></div>
+<div class="hz-skeleton hz-skeleton--text" style="width:85%"></div>
+</div>
+</div>
+<div><div class="label">List row</div>
+<div style="display:flex;align-items:center;gap:12px">
+<div class="hz-skeleton hz-skeleton--circle" style="width:40px;height:40px"></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px">
+<div class="hz-skeleton hz-skeleton--text" style="width:60%"></div>
+<div class="hz-skeleton hz-skeleton--text" style="width:40%"></div>
+</div>
+</div>
+</div>
+<div><div class="label">Card</div>
+<div class="hz-card"><div class="hz-card__body">
+<div class="hz-skeleton hz-skeleton--text" style="width:40%"></div>
+<div class="hz-skeleton" style="height:28px;width:60%"></div>
+<div class="hz-skeleton hz-skeleton--text" style="width:80%"></div>
+</div></div>
+</div>
+</div>
+</section>
+</div>
+</body></html>

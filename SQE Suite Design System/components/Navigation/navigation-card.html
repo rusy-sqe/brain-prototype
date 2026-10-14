@@ -1,0 +1,120 @@
+<!-- @dsCard group="Components" name="Navigation" subtitle="sidebar · tabs · table" viewport="1200x520" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Navigation</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.cell{display:flex;flex-direction:column;gap:8px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.hz-popover.is-open{display:block!important}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Navigation</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="grid" style="display:grid;grid-template-columns:auto auto 1fr;gap:32px;align-items:flex-start">
+<div>
+<div class="label" style="margin-bottom:10px">Sidebar · expanded</div>
+<div class="hz-sidebar" style="border-radius:12px;border:1px solid var(--hz-border-subtle);height:auto;width:250px;">
+<div style="padding:14px 12px;border-bottom:1px solid var(--hz-border-subtle);display:flex;align-items:center;justify-content:space-between;gap:8px;">
+<img src="../../assets/suite/sqe.svg" alt="SQE Suite" style="height:20px;flex:none;object-fit:contain;object-position:left">
+<button class="hz-sidebar__collapse-btn" title="Minimize sidebar" onclick="this.closest('.hz-sidebar').classList.add('hz-sidebar--collapsed')"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
+</div>
+<div style="padding:2px 6px 8px;flex:1;overflow-y:auto">
+<div style="padding:10px 6px 4px"><button class="hz-btn hz-btn--secondary hz-btn--sm hz-btn--full"><i class="far fa-plus" style="font-size:12px"></i>New report</button></div>
+<div class="hz-sidebar__group">
+<div class="hz-sidebar__group-label">Mining ops</div>
+<div class="hz-sidebar__group-items">
+<div class="hz-sidebar__item is-active"><i class="hz-sidebar__icon far fa-home" style="font-size:18px"></i><span class="hz-sidebar__label">Overview</span></div>
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-chart-line" style="font-size:18px"></i><span class="hz-sidebar__label">Forecast</span></div>
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-map" style="font-size:18px"></i><span class="hz-sidebar__label">Sites</span></div>
+</div>
+</div>
+<div class="hz-sidebar__group is-collapsed">
+<div class="hz-sidebar__group-toggle" onclick="this.closest('.hz-sidebar__group').classList.toggle('is-collapsed')"><span class="hz-sidebar__group-label" style="padding:0">Customization</span><i class="far fa-chevron-down"></i></div>
+<div class="hz-sidebar__group-items">
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder" style="font-size:18px"></i><span class="hz-sidebar__label">Files/Library</span></div>
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-robot" style="font-size:18px"></i><span class="hz-sidebar__label">AI Agents</span></div>
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-sitemap" style="font-size:18px"></i><span class="hz-sidebar__label">Company List/Graph</span></div>
+</div>
+</div>
+<div class="hz-sidebar__group is-collapsed">
+<div class="hz-sidebar__group-toggle" onclick="this.closest('.hz-sidebar__group').classList.toggle('is-collapsed')"><span class="hz-sidebar__group-label" style="padding:0">Chat history</span><i class="far fa-chevron-down"></i></div>
+<div class="hz-sidebar__group-items">
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-message" style="font-size:18px"></i><span class="hz-sidebar__label">Forecast Q3 review</span></div>
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-message" style="font-size:18px"></i><span class="hz-sidebar__label">Site inspection notes</span></div>
+</div>
+</div>
+</div>
+<div style="padding:6px;border-top:1px solid var(--hz-border-subtle);position:relative">
+<button class="hz-account-trigger" style="border:0;width:100%;padding:.5rem .75rem" onclick="this.nextElementSibling.classList.toggle('is-open')">
+<span style="position:relative"><span class="hz-avatar hz-avatar--sm">AR</span><span class="hz-badge badge" style="position:absolute;top:-4px;right:-4px;min-width:16px;height:16px;padding:0 4px;font-size:10px;line-height:16px;border-radius:999px;border:2px solid var(--hz-surface-card)">2</span></span><span><span class="hz-account-trigger__name" style="display:block">Andini Rahman</span><span class="hz-account-trigger__role">Admin</span></span><i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+</button>
+<div class="hz-popover" style="position:absolute;bottom:calc(100% + 6px);left:10px;right:10px;width:auto;display:none" onclick="event.currentTarget.classList.toggle('is-open')" id="sbmenu">
+<div class="hz-menu">
+<button class="hz-menu__item"><i class="far fa-bell" style="width:16px"></i>Notifications<span class="hz-badge badge" style="margin-left:auto">2</span></button>
+<button class="hz-menu__item"><i class="far fa-gear" style="width:16px"></i>Settings</button>
+<div class="hz-menu__item" style="cursor:default"><i class="far fa-language" style="width:16px"></i>Language<span style="margin-left:auto"><span class="hz-lang-switch"><button class="hz-lang-switch__opt is-active">EN</button><button class="hz-lang-switch__opt">ID</button></span></span></div>
+<div class="hz-menu__separator"></div>
+<button class="hz-menu__item hz-menu__item--danger"><i class="far fa-arrow-right-from-bracket" style="width:16px"></i>Sign out</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="label" style="margin-bottom:10px">Sidebar · collapsed</div>
+<div class="hz-sidebar hz-sidebar--collapsed" style="border-radius:12px;border:1px solid var(--hz-border-subtle);height:auto;">
+<div style="padding:14px 0;border-bottom:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;align-items:center;gap:8px;">
+<button class="hz-sidebar__collapse-btn" title="Expand sidebar" onclick="this.closest('.hz-sidebar').classList.remove('hz-sidebar--collapsed')"><i class="far fa-angle-double-right" style="font-size:12px"></i></button>
+</div>
+<div style="padding:8px 6px;">
+<div class="hz-sidebar__item is-active"><i class="hz-sidebar__icon far fa-home" style="font-size:18px"></i></div>
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-chart-line" style="font-size:18px"></i></div>
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-map" style="font-size:18px"></i></div>
+</div>
+<div style="padding:10px 0;border-top:1px solid var(--hz-border-subtle);display:flex;justify-content:center;"><span class="hz-avatar hz-avatar--sm">AR</span></div>
+</div>
+</div>
+<div class="cell">
+<div class="label">Tabs</div>
+<nav class="hz-tabs"><button class="hz-tab is-active">All · 284</button><button class="hz-tab">Incoming · 118</button><button class="hz-tab">Outgoing · 163</button><button class="hz-tab">Flagged · 3</button></nav>
+<div class="label" style="margin-top:20px">Tabs · pill</div>
+<nav class="hz-tabs--pill"><button class="hz-tab--pill is-active">Meeting notes</button><button class="hz-tab--pill">Prospectuses</button><button class="hz-tab--pill">Fund updates</button><button class="hz-tab--pill">Other</button></nav>
+<div class="label" style="margin-top:20px">Table</div>
+<table class="hz-table">
+<thead><tr><th>Date</th><th>Recipient</th><th>Amount</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Oct 22</td><td>Andini Rahman</td><td>Rp 2,500,000</td><td><span class="hz-chip hz-chip--success">Settled</span></td></tr>
+<tr><td>Oct 20</td><td>PLN · Electricity</td><td>Rp 817,540</td><td><span class="hz-chip hz-chip--success">Settled</span></td></tr>
+<tr><td>Oct 18</td><td>Daniel Putra</td><td>Rp 1,200,000</td><td><span class="hz-chip hz-chip--warn">Pending</span></td></tr>
+<tr><td>Oct 17</td><td>Tokopedia — order #8112</td><td>Rp 498,000</td><td><span class="hz-chip hz-chip--danger">Failed</span></td></tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="label">Account menu · trigger + popover</div>
+<div style="width:240px;position:relative">
+<button class="hz-account-trigger" style="border:1px solid var(--hz-border-subtle)"><span class="hz-avatar hz-avatar--sm">AR</span><span><span class="hz-account-trigger__name" style="display:block">Andini Rahman</span><span class="hz-account-trigger__role">Admin</span></span><i class="far fa-ellipsis-h hz-account-trigger__chevron"></i></button>
+<div class="hz-popover" style="position:static;margin-top:6px;width:100%">
+<div class="hz-menu">
+<button class="hz-menu__item"><i class="far fa-user" style="width:16px"></i>Profile</button>
+<button class="hz-menu__item"><i class="far fa-gear" style="width:16px"></i>Settings</button>
+<div class="hz-menu__separator"></div>
+<button class="hz-menu__item hz-menu__item--danger"><i class="far fa-arrow-right-from-bracket" style="width:16px"></i>Sign out</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</body></html>

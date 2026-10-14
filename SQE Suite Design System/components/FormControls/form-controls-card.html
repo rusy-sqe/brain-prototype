@@ -1,0 +1,82 @@
+<!-- @dsCard group="Components" name="Form controls" subtitle="field · textarea · search · check · radio · switch" viewport="1200x700" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Form controls</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.grid{display:grid;gap:24px}
+.g-3{grid-template-columns:repeat(3,1fr)}
+.cell{display:flex;flex-direction:column;gap:8px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.divider{border-top:1px solid var(--hz-border-subtle);margin:24px 0}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Form controls</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="grid g-3">
+<div class="cell"><div class="label">Text field · rest</div>
+<div class="hz-field"><div class="hz-field__control"><input class="hz-field__input" placeholder="e.g. Andini Rahman"><label class="hz-field__label">Full name</label></div></div>
+</div>
+<div class="cell"><div class="label">Text field · filled</div>
+<div class="hz-field"><div class="hz-field__control"><input class="hz-field__input" value="andini@sinarmas.co.id"><label class="hz-field__label">Email</label></div><div class="hz-field__help">We'll send a verification link.</div></div>
+</div>
+<div class="cell"><div class="label">Text field · error</div>
+<div class="hz-field hz-field--error"><div class="hz-field__control"><input class="hz-field__input" type="password" value="abc123"><label class="hz-field__label">Password</label></div><div class="hz-field__help">At least 8 characters, one number.</div></div>
+</div>
+</div>
+<div class="divider"></div>
+<div class="grid g-3">
+<div class="cell"><div class="label">Text field · stacked label (non-floating)</div>
+<div class="hz-field hz-field--stacked"><label class="hz-field__label">Full name<span class="hz-field__required">*</span></label><div class="hz-field__control"><input class="hz-field__input" placeholder="e.g. Andini Rahman"></div></div>
+</div>
+<div class="cell"><div class="label">Textarea · rest</div>
+<div class="hz-field hz-field--stacked"><label class="hz-field__label">Notes</label><div class="hz-field__control hz-field__control--textarea"><textarea class="hz-field__textarea" placeholder="Add context for this record…"></textarea></div></div>
+</div>
+<div class="cell"><div class="label">Textarea · error / disabled</div>
+<div class="hz-field hz-field--stacked hz-field--error"><label class="hz-field__label">Reason</label><div class="hz-field__control hz-field__control--textarea"><textarea class="hz-field__textarea"></textarea></div><div class="hz-field__help">This field is required.</div></div>
+<div class="hz-field hz-field--stacked hz-field--disabled" style="margin-top:12px"><label class="hz-field__label">Locked field</label><div class="hz-field__control hz-field__control--textarea"><textarea class="hz-field__textarea" disabled>Read-only content</textarea></div></div>
+</div>
+</div>
+<div class="divider"></div>
+<div class="grid g-3">
+<div class="cell"><div class="label">Search · rest</div>
+<div class="hz-search"><i class="far fa-search"></i><input placeholder="Search records…"></div>
+</div>
+<div class="cell"><div class="label">Search · filled, clearable</div>
+<div class="hz-search"><i class="far fa-search"></i><input value="berau coal"><button class="hz-search__clear"><i class="far fa-times"></i></button></div>
+</div>
+<div class="cell"><div class="label">Search · disabled</div>
+<div class="hz-search hz-search--disabled"><i class="far fa-search"></i><input placeholder="Search records…" disabled></div>
+</div>
+</div>
+<div class="divider"></div>
+<div class="grid g-3">
+<div class="cell"><div class="label">Checkbox</div>
+<label class="row"><input class="hz-check" type="checkbox" checked><span>I agree to the terms</span></label>
+<label class="row"><input class="hz-check" type="checkbox"><span>Send me updates</span></label>
+<label class="row"><input class="hz-check" type="checkbox" disabled><span class="hz-muted">Disabled</span></label>
+</div>
+<div class="cell"><div class="label">Radio</div>
+<label class="row"><input class="hz-radio" type="radio" name="freq" checked><span>Monthly</span></label>
+<label class="row"><input class="hz-radio" type="radio" name="freq"><span>Quarterly</span></label>
+<label class="row"><input class="hz-radio" type="radio" name="freq"><span>Annually</span></label>
+</div>
+<div class="cell"><div class="label">Switch</div>
+<label class="row"><span class="hz-switch"><input type="checkbox" checked><span class="hz-switch__slider"></span></span><span>Auto-save</span></label>
+<label class="row"><span class="hz-switch"><input type="checkbox"><span class="hz-switch__slider"></span></span><span>Dark mode</span></label>
+</div>
+</div>
+</section>
+</div>
+</body></html>

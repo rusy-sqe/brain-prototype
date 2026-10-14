@@ -1,0 +1,63 @@
+<!-- @dsCard group="Charts" name="Gauge" subtitle="Single value on an arc · threshold bands · configurable sweep" viewport="1200x1000" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Gauge</title>
+<link rel="stylesheet" href="../../../tokens.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="../../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:48px;background:var(--hz-surface-page);color:var(--hz-text-primary);font-family:var(--hz-font-sans)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;gap:24px}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+h1{font-family:var(--hz-font-display);font-size:32px;line-height:1.1;margin:10px 0 8px;letter-spacing:-.01em}
+.sub{font-size:15px;line-height:1.5;color:var(--hz-text-secondary);max-width:600px;margin:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:11px;font-family:var(--hz-font-mono);padding:4px 10px;border-radius:999px;background:var(--hz-neutral-100);color:var(--hz-text-secondary);white-space:nowrap}
+.panel{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:28px 32px}
+.label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tile{border:1px solid var(--hz-border-subtle);border-radius:12px;padding:20px 22px;background:var(--hz-surface-card)}
+.tile .t{font-size:12px;color:var(--hz-text-tertiary);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.tile .v{font-size:26px;font-weight:600;margin:6px 0 12px;letter-spacing:-.01em}
+.row{display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start}
+a{color:var(--hz-horizon-primary);text-decoration:none}a:hover{color:var(--hz-horizon-primary-dark)}
+.code{background:var(--hz-neutral-950);border-radius:10px;padding:20px 24px;font-family:var(--hz-font-mono);font-size:12.5px;line-height:1.7;color:#cbd5e1;white-space:pre;overflow-x:auto;margin:0}</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Charts · Gauge</div><h1>Gauge</h1><p class="sub">One number against a range: SLA attainment, capacity, budget burn. Threshold bands tint the arc by the zone the value lands in, so the color carries the verdict.</p></div><div class="chips"><span class="chip">GaugeChart</span><span class="chip">thresholds</span><span class="chip">sweep</span><span class="chip">thickness</span></div></div>
+<section class="panel"><div class="label">01 · Threshold bands</div><div class="row"><div id="g1"></div><div id="g2"></div><div id="g3"></div></div></section>
+<section class="panel"><div class="label">02 · Sweep and thickness</div><div class="row"><div id="g4"></div><div id="g5"></div><div id="g6"></div></div></section>
+<section class="panel"><div class="label">03 · Usage</div><pre class="code">const { GaugeChart } = window.SQESuiteDesignSystem_2c1e79;
+
+&lt;GaugeChart
+  value={94.2}
+  min={80} max={100}
+  label="SLA"
+  valueFormatter={(v) =&gt; v + '%'}
+  thresholds={[
+    { from: 80, to: 95, color: 'red' },
+    { from: 95, to: 99, color: 'yellow' },
+    { from: 99, to: 100, color: 'green' },
+  ]}
+/&gt;</pre></section>
+</div>
+<script>
+const NS = window.SQESuiteDesignSystem_2c1e79;
+const h = React.createElement;
+const mount = (id, el) => ReactDOM.createRoot(document.getElementById(id)).render(el);
+const pct = v => v + '%';
+const bands = [{from:0,to:60,color:'red'},{from:60,to:85,color:'yellow'},{from:85,to:100,color:'green'}];
+mount('g1', h(NS.GaugeChart, { value:42, label:'Capacity', valueFormatter:pct, thresholds:bands }));
+mount('g2', h(NS.GaugeChart, { value:73, label:'Utilization', valueFormatter:pct, thresholds:bands }));
+mount('g3', h(NS.GaugeChart, { value:96, label:'SLA', valueFormatter:pct, thresholds:bands }));
+mount('g4', h(NS.GaugeChart, { value:68, label:'Budget burn', valueFormatter:pct, color:'blue', sweep:180, size:200 }));
+mount('g5', h(NS.GaugeChart, { value:2.4, min:0, max:5, label:'CSAT', valueFormatter:v => v.toFixed(1), color:'purple', thickness:26, size:190 }));
+mount('g6', h(NS.GaugeChart, { value:311, min:0, max:400, label:'Requests / s', valueFormatter:v => v + '', color:'teal', sweep:300, size:190, showTicks:false }));
+</script>
+</body>
+</html>

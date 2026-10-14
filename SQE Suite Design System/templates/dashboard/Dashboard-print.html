@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="omelette-print-source" content="v1788935226118131 templates/dashboard/Dashboard.dc.html">
+<link rel="stylesheet" href="../../tokens.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+*{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}
+doc-page:not(:defined){visibility:hidden}
+</style>
+<script src="./doc-page.js"></script>
+</head>
+<body>
+<doc-page size="letter" orientation="landscape" content-width="1440px" content-height="900px" margin="0">
+<div style="width:1440px;height:900px;background:var(--hz-surface-page);font-family:var(--hz-font-sans);overflow:hidden">
+<div class="hz-shell" style="height:100%">
+<div class="hz-sidebar">
+<div style="padding:14px 12px;border-bottom:1px solid var(--hz-border-subtle);display:flex;align-items:center;justify-content:space-between;gap:8px">
+<img src="../../assets/suite/sqe.svg" alt="SQE Suite" style="height:20px;object-fit:contain">
+<button class="hz-sidebar__collapse-btn" title="Minimize sidebar"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
+</div>
+<div style="padding:2px 6px 8px;flex:1;overflow-y:auto">
+<div class="hz-sidebar__group">
+<div class="hz-sidebar__group-label">Overview</div>
+<div class="hz-sidebar__group-items">
+<div class="hz-sidebar__item is-active"><i class="hz-sidebar__icon far fa-home" style="font-size:18px"></i><span class="hz-sidebar__label">Dashboard</span></div>
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-chart-line" style="font-size:18px"></i><span class="hz-sidebar__label">Analytics</span></div>
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-chart-pie" style="font-size:18px"></i><span class="hz-sidebar__label">Reports</span></div>
+</div>
+</div>
+<div class="hz-sidebar__group">
+<div class="hz-sidebar__group-toggle"><span class="hz-sidebar__group-label" style="padding:0">Money</span><i class="far fa-chevron-down"></i></div>
+<div class="hz-sidebar__group-items">
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-wallet" style="font-size:18px"></i><span class="hz-sidebar__label">Accounts</span></div>
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-credit-card" style="font-size:18px"></i><span class="hz-sidebar__label">Cards</span></div>
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-file-invoice" style="font-size:18px"></i><span class="hz-sidebar__label">Invoices</span></div>
+<div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-receipt" style="font-size:18px"></i><span class="hz-sidebar__label">Expenses</span></div>
+</div>
+</div>
+</div>
+<div style="padding:6px;border-top:1px solid var(--hz-border-subtle);position:relative">
+<button class="hz-account-trigger" style="width:100%">
+<span style="position:relative"><span class="hz-avatar hz-avatar--sm">AR</span><span class="hz-badge" style="position:absolute;top:-4px;right:-4px;min-width:16px;height:16px;padding:0 4px;font-size:10px;line-height:16px;border-radius:999px;border:2px solid var(--hz-surface-card)">2</span></span>
+<span><span class="hz-account-trigger__name" style="display:block">Andini Rahman</span><span class="hz-account-trigger__role">Treasury ops · Admin</span></span>
+<i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+</button>
+</div>
+</div>
+<div class="hz-shell__main">
+<div class="hz-topbar" style="background:transparent;border-bottom:none">
+<nav class="hz-breadcrumb"><span class="hz-breadcrumb__item">Treasury</span><i class="far fa-chevron-right hz-breadcrumb__sep"></i><span class="hz-breadcrumb__item is-current">Dashboard</span></nav>
+<div class="hz-search" style="flex:1;max-width:420px;margin-left:24px"><i class="far fa-search"></i><input placeholder="Search transactions, accounts, people…"><span class="hz-kbd">⌘K</span></div>
+<span style="flex:1"></span>
+<button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-download"></i>Export</button>
+<button class="hz-btn hz-btn--primary hz-btn--sm">New transfer</button>
+</div>
+<div class="hz-shell__content" style="gap:20px">
+<div class="hz-page-header" style="padding-bottom:0">
+<div>
+<div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600">October 2025</div>
+<div class="hz-page-header__title" style="margin-top:6px">Good afternoon, Andini</div>
+<div class="hz-page-header__desc">Showing consolidated view across 4 accounts · last updated 2 min ago</div>
+</div>
+<div class="hz-row hz-gap-2">
+<span class="hz-chip hz-chip--clickable">Today</span>
+<span class="hz-chip hz-chip--clickable">7d</span>
+<span class="hz-chip hz-chip--active">30d</span>
+<span class="hz-chip hz-chip--clickable">90d</span>
+<span class="hz-chip hz-chip--clickable">Custom</span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+<div class="hz-card"><div class="hz-card__body">
+<div style="display:flex;justify-content:space-between;align-items:center"><span class="hz-body-s hz-muted">Total balance</span><span style="width:28px;height:28px;border-radius:8px;background:var(--hz-horizon-primary-pale);color:var(--hz-horizon-primary);display:flex;align-items:center;justify-content:center"><i class="far fa-wallet" style="font-size:15px"></i></span></div>
+<div class="hz-h3">Rp 1,248,920,500</div>
+<span class="hz-kpi__delta hz-kpi__delta--up"><i class="far fa-arrow-up"></i>4.2% vs last 30 days</span>
+</div></div>
+<div class="hz-card"><div class="hz-card__body">
+<div style="display:flex;justify-content:space-between;align-items:center"><span class="hz-body-s hz-muted">Net cash flow</span><span style="width:28px;height:28px;border-radius:8px;background:var(--hz-green-50);color:var(--hz-green-700);display:flex;align-items:center;justify-content:center"><i class="far fa-chart-bar" style="font-size:15px"></i></span></div>
+<div class="hz-h3">Rp 148,300,000</div>
+<span class="hz-kpi__delta hz-kpi__delta--up"><i class="far fa-arrow-up"></i>11.8% · 284 transactions</span>
+</div></div>
+<div class="hz-card"><div class="hz-card__body">
+<div style="display:flex;justify-content:space-between;align-items:center"><span class="hz-body-s hz-muted">Expenses</span><span style="width:28px;height:28px;border-radius:8px;background:var(--hz-orange-50);color:var(--hz-orange-700);display:flex;align-items:center;justify-content:center"><i class="far fa-receipt" style="font-size:15px"></i></span></div>
+<div class="hz-h3">Rp 72,450,200</div>
+<span class="hz-kpi__delta hz-kpi__delta--down"><i class="far fa-arrow-down"></i>over budget by Rp 2.4M</span>
+</div></div>
+<div class="hz-card"><div class="hz-card__body">
+<div style="display:flex;justify-content:space-between;align-items:center"><span class="hz-body-s hz-muted">Active cards</span><span style="width:28px;height:28px;border-radius:8px;background:var(--hz-purple-50);color:var(--hz-purple-700);display:flex;align-items:center;justify-content:center"><i class="far fa-credit-card" style="font-size:15px"></i></span></div>
+<div class="hz-h3">24 / 30</div>
+<span class="hz-chip hz-chip--success">All healthy</span>
+</div></div>
+</div>
+<div style="display:grid;grid-template-columns:2fr 1fr;gap:16px">
+<div class="hz-card">
+<div class="hz-card__header">
+<div>
+<div class="hz-h6" style="margin:0">Cash flow</div>
+<div style="display:flex;gap:14px;font-size:12px;color:var(--hz-text-secondary);margin-top:4px"><span><span style="display:inline-block;width:8px;height:8px;border-radius:999px;margin-right:6px;background:var(--hz-horizon-primary)"></span>Incoming</span><span><span style="display:inline-block;width:8px;height:8px;border-radius:999px;margin-right:6px;background:var(--hz-neutral-400)"></span>Outgoing</span></div>
+</div>
+<nav class="hz-tabs--pill"><button class="hz-tab--pill is-active">Daily</button><button class="hz-tab--pill">Weekly</button><button class="hz-tab--pill">Monthly</button></nav>
+</div>
+<div class="hz-card__body" style="padding-top:20px">
+<div id="cashflow-chart" style="height:260px"></div>
+</div>
+</div>
+<div class="hz-card">
+<div class="hz-card__header"><div class="hz-h6" style="margin:0">Top categories</div><button class="hz-btn hz-btn--text hz-btn--sm">View all</button></div>
+<div class="hz-card__body" style="gap:16px">
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:grid;grid-template-columns:32px 1fr auto;gap:12px;align-items:center">
+<div style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--hz-horizon-primary-pale);color:var(--hz-horizon-primary)"><i class="far fa-user-chart" style="font-size:16px"></i></div>
+<div><div style="font-weight:600;font-size:14px">Payroll</div><div class="hz-body-s hz-muted">24 employees</div></div>
+<div style="font-weight:600;font-size:14px">Rp 48.2M</div>
+</div>
+<div style="height:6px;background:var(--hz-neutral-100);border-radius:999px;overflow:hidden"><span style="display:block;height:100%;width:82%;background:var(--hz-horizon-primary)"></span></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:grid;grid-template-columns:32px 1fr auto;gap:12px;align-items:center">
+<div style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--hz-orange-50);color:var(--hz-orange-700)"><i class="far fa-folder" style="font-size:16px"></i></div>
+<div><div style="font-weight:600;font-size:14px">Vendors</div><div class="hz-body-s hz-muted">12 suppliers</div></div>
+<div style="font-weight:600;font-size:14px">Rp 18.6M</div>
+</div>
+<div style="height:6px;background:var(--hz-neutral-100);border-radius:999px;overflow:hidden"><span style="display:block;height:100%;width:56%;background:var(--hz-orange-500)"></span></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:grid;grid-template-columns:32px 1fr auto;gap:12px;align-items:center">
+<div style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--hz-green-50);color:var(--hz-green-700)"><i class="far fa-shield-check" style="font-size:16px"></i></div>
+<div><div style="font-weight:600;font-size:14px">Insurance</div><div class="hz-body-s hz-muted">3 policies</div></div>
+<div style="font-weight:600;font-size:14px">Rp 9.4M</div>
+</div>
+<div style="height:6px;background:var(--hz-neutral-100);border-radius:999px;overflow:hidden"><span style="display:block;height:100%;width:38%;background:var(--hz-green-500)"></span></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:grid;grid-template-columns:32px 1fr auto;gap:12px;align-items:center">
+<div style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--hz-teal-50);color:var(--hz-teal-700)"><i class="far fa-money-bill" style="font-size:16px"></i></div>
+<div><div style="font-weight:600;font-size:14px">Utilities</div><div class="hz-body-s hz-muted">PLN · Telkom</div></div>
+<div style="font-weight:600;font-size:14px">Rp 4.1M</div>
+</div>
+<div style="height:6px;background:var(--hz-neutral-100);border-radius:999px;overflow:hidden"><span style="display:block;height:100%;width:22%;background:var(--hz-teal-500)"></span></div>
+</div>
+</div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:2fr 1fr;gap:16px">
+<div class="hz-card">
+<div class="hz-card__header">
+<div>
+<div class="hz-h6" style="margin:0 0 10px">Recent transactions</div>
+<nav class="hz-tabs"><button class="hz-tab is-active">All · 284</button><button class="hz-tab">Incoming · 118</button><button class="hz-tab">Outgoing · 163</button><button class="hz-tab">Flagged · 3</button></nav>
+</div>
+<button class="hz-btn hz-btn--secondary hz-btn--sm">Open ledger <i class="far fa-chevron-right" style="font-size:13px"></i></button>
+</div>
+<table class="hz-table">
+<thead><tr><th>Date</th><th>Recipient</th><th>Reference</th><th class="is-numeric">Amount</th><th>Status</th></tr></thead>
+<tbody>
+<tr>
+<td>Oct 22, 14:02</td>
+<td><div class="hz-table__identity"><span class="hz-avatar hz-avatar--sm">AR</span><div><div class="hz-table__identity-name">Andini Rahman</div><div class="hz-table__identity-sub">BCA · **** 4521</div></div></div></td>
+<td class="hz-muted">PO-10948</td>
+<td class="is-numeric" style="font-weight:600">Rp 2,500,000</td>
+<td><span class="hz-chip hz-chip--success">Settled</span></td>
+</tr>
+<tr>
+<td>Oct 22, 09:15</td>
+<td><div class="hz-table__identity"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-green-100);color:var(--hz-green-800)">PT</span><div><div class="hz-table__identity-name">PT Telkom Indonesia</div><div class="hz-table__identity-sub">Invoice incoming</div></div></div></td>
+<td class="hz-muted">INV-8841</td>
+<td class="is-numeric" style="color:var(--hz-green-700);font-weight:600">+ Rp 18,400,000</td>
+<td><span class="hz-chip hz-chip--success">Settled</span></td>
+</tr>
+<tr>
+<td>Oct 21, 18:48</td>
+<td><div class="hz-table__identity"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-orange-100);color:var(--hz-orange-800)">PL</span><div><div class="hz-table__identity-name">PLN · Electricity</div><div class="hz-table__identity-sub">Auto-debit</div></div></div></td>
+<td class="hz-muted">—</td>
+<td class="is-numeric" style="font-weight:600">Rp 817,540</td>
+<td><span class="hz-chip hz-chip--success">Settled</span></td>
+</tr>
+<tr>
+<td>Oct 20, 11:30</td>
+<td><div class="hz-table__identity"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-purple-100);color:var(--hz-purple-800)">DP</span><div><div class="hz-table__identity-name">Daniel Putra</div><div class="hz-table__identity-sub">Mandiri · **** 1109</div></div></div></td>
+<td class="hz-muted">Reimburse</td>
+<td class="is-numeric" style="font-weight:600">Rp 1,200,000</td>
+<td><span class="hz-chip hz-chip--warn">Pending</span></td>
+</tr>
+<tr>
+<td>Oct 19, 16:22</td>
+<td><div class="hz-table__identity"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-magenta-100);color:var(--hz-magenta-800)">TK</span><div><div class="hz-table__identity-name">Tokopedia Seller</div><div class="hz-table__identity-sub">Order #8112</div></div></div></td>
+<td class="hz-muted">ORD-8112</td>
+<td class="is-numeric" style="font-weight:600">Rp 498,000</td>
+<td><span class="hz-chip hz-chip--danger">Failed</span></td>
+</tr>
+<tr>
+<td>Oct 18, 08:05</td>
+<td><div class="hz-table__identity"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-teal-100);color:var(--hz-teal-800)">SA</span><div><div class="hz-table__identity-name">Siti Anggraini</div><div class="hz-table__identity-sub">Payroll batch #10</div></div></div></td>
+<td class="hz-muted">PAY-3391</td>
+<td class="is-numeric" style="font-weight:600">Rp 6,150,000</td>
+<td><span class="hz-chip hz-chip--success">Settled</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div class="hz-card">
+<div class="hz-card__header"><div class="hz-h6" style="margin:0">Quick actions</div></div>
+<div class="hz-card__body" style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px">
+<button style="font-family:inherit;background:var(--hz-surface-subtle);border:1px solid var(--hz-border-subtle);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;color:var(--hz-text-primary);text-align:left"><i class="far fa-wallet" style="color:var(--hz-horizon-primary);font-size:18px"></i><span style="font-weight:600;font-size:14px">Transfer</span><span class="hz-body-s hz-muted">Between accounts</span></button>
+<button style="font-family:inherit;background:var(--hz-surface-subtle);border:1px solid var(--hz-border-subtle);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;color:var(--hz-text-primary);text-align:left"><i class="far fa-credit-card" style="color:var(--hz-horizon-primary);font-size:18px"></i><span style="font-weight:600;font-size:14px">Pay bill</span><span class="hz-body-s hz-muted">Utilities · vendors</span></button>
+<button style="font-family:inherit;background:var(--hz-surface-subtle);border:1px solid var(--hz-border-subtle);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;color:var(--hz-text-primary);text-align:left"><i class="far fa-file-invoice" style="color:var(--hz-horizon-primary);font-size:18px"></i><span style="font-weight:600;font-size:14px">New invoice</span><span class="hz-body-s hz-muted">Send to a client</span></button>
+<button style="font-family:inherit;background:var(--hz-surface-subtle);border:1px solid var(--hz-border-subtle);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;color:var(--hz-text-primary);text-align:left"><i class="far fa-users" style="color:var(--hz-horizon-primary);font-size:18px"></i><span style="font-weight:600;font-size:14px">Add payee</span><span class="hz-body-s hz-muted">Save a recipient</span></button>
+</div>
+</div>
+<div class="hz-card">
+<div class="hz-card__header"><div class="hz-h6" style="margin:0">What needs you</div><span class="hz-badge" style="background:var(--hz-red-500)">3</span></div>
+<div class="hz-card__body" style="gap:12px">
+<div class="hz-alert hz-alert--warn" style="align-items:center;gap:12px">
+<i class="far fa-file-invoice" style="font-size:18px"></i>
+<div style="flex:1"><div class="hz-body-l hz-bold" style="line-height:1.3">Approve payroll batch #11</div><div class="hz-body-s" style="opacity:.8">Rp 148.3M · 24 recipients · due in 6h</div></div>
+<button class="hz-btn hz-btn--primary hz-btn--sm" style="background:var(--hz-yellow-600)">Review</button>
+</div>
+<div class="hz-alert hz-alert--info" style="align-items:center;gap:12px">
+<i class="far fa-question-circle" style="font-size:18px"></i>
+<div style="flex:1"><div class="hz-body-l hz-bold" style="line-height:1.3">KYC renewal · 3 vendors</div><div class="hz-body-s" style="opacity:.8">Docs expire in 14 days</div></div>
+<button class="hz-btn hz-btn--secondary hz-btn--sm">Open</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</doc-page>
+<script>
+const NS = window.SQESuiteDesignSystem_2c1e79;
+const h = React.createElement;
+const idr = v => 'Rp ' + (v/1e6).toFixed(1) + 'M';
+const flow = [
+  { day:'Oct 1', Incoming: 7.2e6, Outgoing: 5.4e6 },
+  { day:'Oct 4', Incoming: 7.8e6, Outgoing: 5.6e6 },
+  { day:'Oct 7', Incoming: 7.0e6, Outgoing: 5.1e6 },
+  { day:'Oct 10', Incoming: 8.9e6, Outgoing: 5.9e6 },
+  { day:'Oct 14', Incoming: 7.6e6, Outgoing: 5.3e6 },
+  { day:'Oct 17', Incoming: 9.8e6, Outgoing: 6.2e6 },
+  { day:'Oct 21', Incoming: 8.6e6, Outgoing: 6.7e6 },
+  { day:'Oct 24', Incoming: 11.2e6, Outgoing: 6.1e6 },
+  { day:'Oct 28', Incoming: 12.4e6, Outgoing: 6.5e6 },
+];
+ReactDOM.createRoot(document.getElementById('cashflow-chart')).render(
+  h(NS.AreaChart, { data: flow, index:'day', categories:['Incoming','Outgoing'], colors:['blue','neutral'], valueFormatter: idr, height:260, showLegend:false, startEndOnly:false })
+);
+</script>
+</body>
+</html>

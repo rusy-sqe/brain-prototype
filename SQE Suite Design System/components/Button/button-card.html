@@ -1,0 +1,42 @@
+<!-- @dsCard group="Components" name="Button" subtitle="primary · secondary · text · danger · size · state" viewport="1200x520" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Button</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.grid{display:grid;gap:24px}
+.g-3{grid-template-columns:repeat(3,1fr)}
+.cell{display:flex;flex-direction:column;gap:8px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Button</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="grid g-3">
+<div class="cell"><div class="label">Primary</div>
+<div class="row"><button class="hz-btn hz-btn--primary hz-btn--sm">Small</button><button class="hz-btn hz-btn--primary">Medium</button><button class="hz-btn hz-btn--primary hz-btn--lg">Large</button></div>
+<div class="row" style="margin-top:8px"><button class="hz-btn hz-btn--primary"><i class="far fa-download" style="font-size:20px"></i>Download</button><button class="hz-btn hz-btn--primary">Continue<i class="far fa-chevron-right" style="font-size:20px"></i></button><button class="hz-btn hz-btn--primary" disabled>Disabled</button></div>
+</div>
+<div class="cell"><div class="label">Secondary</div>
+<div class="row"><button class="hz-btn hz-btn--secondary hz-btn--sm">Small</button><button class="hz-btn hz-btn--secondary">Medium</button><button class="hz-btn hz-btn--secondary hz-btn--lg">Large</button></div>
+<div class="row" style="margin-top:8px"><button class="hz-btn hz-btn--secondary"><i class="far fa-download" style="font-size:20px"></i>Export</button><button class="hz-btn hz-btn--secondary">View all<i class="far fa-chevron-right" style="font-size:20px"></i></button><button class="hz-btn hz-btn--secondary" disabled>Disabled</button></div>
+</div>
+<div class="cell"><div class="label">Text &amp; Danger</div>
+<div class="row"><button class="hz-btn hz-btn--text hz-btn--sm">Small</button><button class="hz-btn hz-btn--text">Medium</button><button class="hz-btn hz-btn--text hz-btn--lg">Large</button></div>
+<div class="row" style="margin-top:8px"><button class="hz-btn hz-btn--text">Learn more<i class="far fa-chevron-right" style="font-size:20px"></i></button><button class="hz-btn hz-btn--danger hz-btn--sm">Remove</button></div>
+</div>
+</div>
+</section>
+</div>
+</body></html>

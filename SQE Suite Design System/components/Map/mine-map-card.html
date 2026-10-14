@@ -1,0 +1,81 @@
+<!-- @dsCard group="Maps" name="Mine Map" subtitle="Site boundary · haul & vessel routes · stockpiles and assets on ESRI basemaps" viewport="1200x1180" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Mine Map</title>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:48px;background:var(--hz-surface-page);color:var(--hz-text-primary);font-family:var(--hz-font-sans)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;gap:24px}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+h1{font-family:var(--hz-font-display);font-size:32px;line-height:1.1;margin:10px 0 8px;letter-spacing:-.01em}
+.sub{font-size:15px;line-height:1.5;color:var(--hz-text-secondary);max-width:640px;margin:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:11px;font-family:var(--hz-font-mono);padding:4px 10px;border-radius:999px;background:var(--hz-neutral-100);color:var(--hz-text-secondary);white-space:nowrap}
+.panel{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:28px 32px}
+.label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+a{color:var(--hz-horizon-primary);text-decoration:none}a:hover{color:var(--hz-horizon-primary-dark)}
+.code{background:var(--hz-neutral-950);border-radius:10px;padding:20px 24px;font-family:var(--hz-font-mono);font-size:12.5px;line-height:1.7;color:#cbd5e1;white-space:pre;overflow-x:auto;margin:0}</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Maps · Mine Map</div><h1>Mine Map</h1><p class="sub">Site boundary, haul routes, vessel/port routes, coal stockpiles and asset locations on a real ESRI basemap (satellite, streets, or topo). Built on Leaflet — no proprietary map UI, just Horizon-tinted overlays.</p></div><div class="chips"><span class="chip">MineMap</span><span class="chip">ESRI basemap</span><span class="chip">routes</span><span class="chip">markers</span></div></div>
+<section class="panel"><div class="label">01 · Full site — satellite</div><div id="m1"></div></section>
+<div class="grid2">
+<section class="panel"><div class="label">02 · Port &amp; vessel routes — topo</div><div id="m2"></div></section>
+<section class="panel"><div class="label">03 · Streets basemap</div><div id="m3"></div></section>
+</div>
+<section class="panel"><div class="label">04 · Usage</div><pre class="code">const { MineMap } = window.SQESuiteDesignSystem_2c1e79;
+
+&lt;MineMap
+  center={[-3.42, 115.62]}
+  zoom={12}
+  basemap="satellite"
+  boundary={{ positions: [...], label: 'Site boundary' }}
+  routes={[
+    { type: 'haul', positions: [...], label: 'Pit \u2192 stockpile' },
+    { type: 'vessel', positions: [...], label: 'Vessel route' },
+  ]}
+  markers={[
+    { type: 'stockpile', position: [...], label: 'ROM Stockpile', value: '184kt' },
+    { type: 'vessel', position: [...], label: 'MV Borneo Star' },
+    { type: 'port', position: [...], label: 'Loading jetty' },
+  ]}
+/&gt;</pre></section>
+</div>
+<script>
+const NS = window.SQESuiteDesignSystem_2c1e79;
+const h = React.createElement;
+const mount = (id, el) => ReactDOM.createRoot(document.getElementById(id)).render(el);
+
+const boundary = { label:'Concession boundary', positions:[[-3.36,115.55],[-3.35,115.68],[-3.42,115.72],[-3.50,115.66],[-3.48,115.53],[-3.40,115.50]] };
+const pit = [-3.44,115.60], stockpile = [-3.395,115.615], plant = [-3.41,115.605], jetty = [-3.47,115.68], anchorage = [-3.52,115.79], vessel = [-3.50,115.74];
+
+const haul1 = { type:'haul', label:'Pit \u2192 stockpile', positions:[pit,[-3.415,115.607],stockpile] };
+const haul2 = { type:'haul', label:'Stockpile \u2192 jetty', positions:[stockpile,[-3.43,115.64],[-3.45,115.66],jetty] };
+const vesselRoute = { type:'vessel', label:'Barge route to anchorage', positions:[jetty,[-3.49,115.72],anchorage] };
+
+const markers = [
+  { type:'plant', position:plant, label:'Crusher plant' },
+  { type:'stockpile', position:stockpile, label:'ROM stockpile', value:'184kt' },
+  { type:'stockpile', position:[-3.405,115.63], label:'Product stockpile', value:'96kt' },
+  { type:'port', position:jetty, label:'Loading jetty' },
+  { type:'vessel', position:vessel, label:'MV Borneo Star' },
+  { type:'vessel', position:anchorage, label:'MV Kalimantan Pride' },
+  { type:'asset', position:[-3.445,115.615], label:'Excavator EX-04' },
+  { type:'asset', position:[-3.42,115.625], label:'Haul truck HT-11' },
+];
+
+mount('m1', h(NS.MineMap, { center:[-3.44,115.63], zoom:12, height:480, basemap:'satellite', boundary, routes:[haul1,haul2,vesselRoute], markers }));
+mount('m2', h(NS.MineMap, { center:[-3.49,115.73], zoom:12, height:340, basemap:'topo', routes:[vesselRoute], markers:markers.filter(m => m.type==='vessel'||m.type==='port') }));
+mount('m3', h(NS.MineMap, { center:[-3.42,115.61], zoom:13, height:340, basemap:'streets', boundary, markers:markers.filter(m => m.type!=='vessel') }));
+</script>
+</body>
+</html>

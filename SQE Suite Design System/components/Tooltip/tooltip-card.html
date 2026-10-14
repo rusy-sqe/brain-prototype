@@ -1,0 +1,41 @@
+<!-- @dsCard group="Components" name="Tooltip" subtitle="top · bottom · left · right, dismissible" viewport="1100x560" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Tooltip</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:56px 40px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:64px 48px}
+.cell{display:flex;flex-direction:column;align-items:center;gap:20px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.anchor{width:10px;height:10px;border-radius:999px;background:var(--hz-horizon-primary)}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Tooltip</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="grid" style="position:relative">
+<div class="cell">
+<div class="hz-tooltip hz-tooltip--top" style="position: relative"><div class="hz-tooltip__row"><span class="hz-tooltip__text">Pesan ini akan otomatis muncul ketika pertama kali Agen menjawab panggilan chat</span><button class="hz-tooltip__close" aria-label="Close"><i class="far fa-times"></i></button></div><span class="hz-tooltip__arrow" style="left: 193px; top: 103px; position: absolute"></span></div>
+</div>
+<div class="cell">
+<div class="hz-tooltip hz-tooltip--bottom" style="position:relative"><span class="hz-tooltip__arrow" style="left: 165px; top: -10px; position: absolute"></span><div class="hz-tooltip__row"><span class="hz-tooltip__text">Pesan ini akan otomatis muncul ketika pertama kali Agen menjawab panggilan chat</span><button class="hz-tooltip__close" aria-label="Close"><i class="far fa-times"></i></button></div></div>
+</div>
+<div class="cell" style="flex-direction:row;justify-content:center">
+<div class="hz-tooltip hz-tooltip--right" style="position:relative;margin-left:20px"><span class="hz-tooltip__arrow" style="left: -16px; top: 52px"></span><div class="hz-tooltip__row"><span class="hz-tooltip__text">Pesan ini akan otomatis muncul ketika pertama kali Agen menjawab panggilan chat</span><button class="hz-tooltip__close" aria-label="Close"><i class="far fa-times"></i></button></div></div>
+</div>
+<div class="cell" style="flex-direction:row;justify-content:center">
+<div class="hz-tooltip hz-tooltip--left" style="position:relative;margin-right:20px"><span class="hz-tooltip__arrow" style="left: 322px"></span><div class="hz-tooltip__row"><span class="hz-tooltip__text">Pesan ini akan otomatis muncul ketika pertama kali Agen menjawab panggilan chat</span><button class="hz-tooltip__close" aria-label="Close"><i class="far fa-times"></i></button></div></div>
+</div>
+</div>
+</section>
+</div>
+</body></html>

@@ -1,0 +1,65 @@
+<!-- @dsCard group="Components" name="Cards" subtitle="composition · header · body · footer · KPI" viewport="1200x480" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Cards</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.grid{display:grid;gap:24px}
+.g-3{grid-template-columns:repeat(3,1fr)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Cards</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="grid g-3">
+<div class="hz-card">
+<div class="hz-card__body">
+<div class="row" style="justify-content:space-between"><span class="hz-body-s hz-muted">Total assets</span><i class="far fa-chart-pie" style="color:var(--hz-horizon-primary);font-size:18px"></i></div>
+<div class="hz-h3">Rp 1,248M</div>
+<div class="row hz-gap-2"><span class="hz-chip hz-chip--success">+4.2% MoM</span><span class="hz-body-s hz-muted">vs Sep 1.197B</span></div>
+</div>
+</div>
+<div class="hz-card">
+<div class="hz-card__body">
+<div class="row" style="justify-content:space-between"><span class="hz-body-s hz-muted">Active customers</span><i class="far fa-users" style="color:var(--hz-horizon-primary);font-size:18px"></i></div>
+<div class="hz-h3">28,914</div>
+<div class="row hz-gap-2"><span class="hz-chip hz-chip--warn">−0.3% WoW</span><span class="hz-body-s hz-muted">28,998 last week</span></div>
+</div>
+</div>
+<div class="hz-card">
+<div class="hz-card__header">
+<div class="hz-stack"><span class="hz-body-s hz-muted">New deposits</span><span class="hz-h5">Rp 48.2M</span></div>
+<span class="hz-chip hz-chip--info">7 days</span>
+</div>
+<div class="hz-card__footer row" style="justify-content:space-between">
+<span class="hz-body-r hz-muted">132 transactions</span>
+<button class="hz-btn hz-btn--text hz-btn--sm">Open <i class="far fa-chevron-right" style="font-size:14px"></i></button>
+</div>
+</div>
+</div>
+<div style="border-top:1px solid var(--hz-border-subtle);margin:24px 0"></div>
+<div class="label" style="font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:10px">KPI card · trend up / down / flat</div>
+<div class="grid g-3">
+<div class="hz-card"><div class="hz-card__body">
+<span class="hz-body-s hz-muted">Total output</span><div class="hz-h3">142,800t</div><span class="hz-kpi__delta hz-kpi__delta--up"><i class="far fa-arrow-up"></i>4.2% MoM</span>
+</div></div>
+<div class="hz-card"><div class="hz-card__body">
+<span class="hz-body-s hz-muted">Forecast accuracy</span><div class="hz-h3">93%</div><span class="hz-kpi__delta hz-kpi__delta--down"><i class="far fa-arrow-down"></i>1.1% MoM</span>
+</div></div>
+<div class="hz-card"><div class="hz-card__body">
+<span class="hz-body-s hz-muted">Active sites</span><div class="hz-h3">6</div><span class="hz-body-s hz-muted">No change vs last month</span>
+</div></div>
+</div>
+</section>
+</div>
+</body></html>

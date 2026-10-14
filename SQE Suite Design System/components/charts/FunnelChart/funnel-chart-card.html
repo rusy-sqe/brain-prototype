@@ -1,0 +1,54 @@
+<!-- @dsCard group="Charts" name="Funnel chart" subtitle="Tapering trapezoids or centered bars · per-stage conversion" viewport="1200x1000" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Funnel chart</title>
+<link rel="stylesheet" href="../../../tokens.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="../../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:48px;background:var(--hz-surface-page);color:var(--hz-text-primary);font-family:var(--hz-font-sans)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;gap:24px}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+h1{font-family:var(--hz-font-display);font-size:32px;line-height:1.1;margin:10px 0 8px;letter-spacing:-.01em}
+.sub{font-size:15px;line-height:1.5;color:var(--hz-text-secondary);max-width:600px;margin:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:11px;font-family:var(--hz-font-mono);padding:4px 10px;border-radius:999px;background:var(--hz-neutral-100);color:var(--hz-text-secondary);white-space:nowrap}
+.panel{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:28px 32px}
+.label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tile{border:1px solid var(--hz-border-subtle);border-radius:12px;padding:20px 22px;background:var(--hz-surface-card)}
+.tile .t{font-size:12px;color:var(--hz-text-tertiary);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.tile .v{font-size:26px;font-weight:600;margin:6px 0 12px;letter-spacing:-.01em}
+.delta{font-size:12px;font-weight:600}
+a{color:var(--hz-horizon-primary);text-decoration:none}a:hover{color:var(--hz-horizon-primary-dark)}
+.code{background:var(--hz-neutral-950);border-radius:10px;padding:20px 24px;font-family:var(--hz-font-mono);font-size:12.5px;line-height:1.7;color:#cbd5e1;white-space:pre;overflow-x:auto;margin:0}</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Charts · Funnel chart</div><h1>Funnel chart</h1><p class="sub">Stage-to-stage drop-off. The tint ramp is derived from one base color so stages read as one sequence; conversion can compare against the previous stage or the top of the funnel.</p></div><div class="chips"><span class="chip">FunnelChart</span><span class="chip">variant</span><span class="chip">conversionMode</span><span class="chip">color</span></div></div>
+<section class="panel"><div class="label">01 · Trapezoid · vs previous stage</div><div id="f1"></div></section>
+<section class="panel"><div class="label">02 · Bars · vs first stage</div><div id="f2"></div></section>
+<section class="panel"><div class="label">03 · Usage</div><pre class="code">const { FunnelChart } = window.SQESuiteDesignSystem_2c1e79;
+
+&lt;FunnelChart
+  data={[{ stage: 'Visits', value: 24800 }, …]}
+  index="stage" category="value"
+  color="blue"
+  conversionMode="previous"
+/&gt;</pre></section>
+</div>
+<script>
+const NS = window.SQESuiteDesignSystem_2c1e79;
+const h = React.createElement;
+const mount = (id, el) => ReactDOM.createRoot(document.getElementById(id)).render(el);
+const num = v => v.toLocaleString('en-US');
+const funnel = [{stage:'Site visits',value:24800},{stage:'Signed up',value:9120},{stage:'Activated',value:5240},{stage:'Trial → paid',value:1980},{stage:'Renewed',value:1420}];
+mount('f1', h(NS.FunnelChart, { data:funnel, index:'stage', category:'value', valueFormatter:num, color:'blue', height:320 }));
+mount('f2', h(NS.FunnelChart, { data:funnel, index:'stage', category:'value', valueFormatter:num, variant:'bars', color:'purple', conversionMode:'first', height:300 }));
+</script>
+</body>
+</html>

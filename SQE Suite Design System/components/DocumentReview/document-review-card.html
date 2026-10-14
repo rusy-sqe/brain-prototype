@@ -1,0 +1,33 @@
+<!-- @dsCard group="Components" name="Document review" subtitle="file preview · annotation / comment thread" viewport="1200x600" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Document review</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:14px}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Document review</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="label">Preview + comment thread</div>
+<div class="hz-doc-review">
+<div class="hz-doc-review__preview"><i class="far fa-file-pdf" style="font-size:2rem"></i><span class="hz-body-s">SPA_draft_v3.pdf · page 4 of 22</span></div>
+<div class="hz-doc-review__panel">
+<div class="hz-doc-review__comment"><span class="hz-avatar hz-avatar--sm" style="width:26px;height:26px;font-size:11px">AR</span><div class="hz-doc-review__comment-body"><span class="hz-doc-review__comment-name">Andini Rahman</span><span class="hz-doc-review__comment-time">2h ago</span><div class="hz-body-s" style="margin-top:2px">Indemnity cap looks low relative to deal size — flag for legal.</div></div></div>
+<div class="hz-doc-review__comment"><span class="hz-avatar hz-avatar--sm" style="width:26px;height:26px;font-size:11px;background:var(--hz-horizon-primary-pale);color:var(--hz-horizon-primary)"><i class="far fa-sparkles" style="font-size:11px"></i></span><div class="hz-doc-review__comment-body"><span class="hz-doc-review__comment-name">M&amp;A Brain</span><span class="hz-doc-review__comment-time">1h ago</span><div class="hz-body-s" style="margin-top:2px">Similar clauses in 3 prior deals capped at 15% of purchase price — this draft is at 8%.</div></div></div>
+<div class="hz-composer" style="margin-top:auto"><textarea rows="1" placeholder="Add a comment…"></textarea><div class="hz-composer__actions"><button class="hz-composer__btn hz-composer__send"><i class="far fa-arrow-up"></i></button></div></div>
+</div>
+</div>
+</section>
+</div>
+</body></html>

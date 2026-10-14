@@ -1,0 +1,89 @@
+<!-- @dsCard group="Components" name="Date & Time Picker" subtitle="desktop calendar + time · mobile wheel picker · range + presets" viewport="1200x620" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Date &amp; Time Picker</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.row{display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:16px}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Date &amp; Time Picker</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="label">Desktop — calendar + time</div>
+<div class="row">
+<div class="hz-datepicker">
+<div class="hz-datepicker__calendar">
+<div class="hz-datepicker__nav">
+<div class="hz-datepicker__nav-group"><button class="hz-datepicker__nav-btn"><i class="far fa-angle-double-left"></i></button><button class="hz-datepicker__nav-btn"><i class="far fa-chevron-left" style="font-size:13px"></i></button></div>
+<span class="hz-datepicker__nav-label"><span>Feb</span><span>2023</span></span>
+<div class="hz-datepicker__nav-group"><button class="hz-datepicker__nav-btn"><i class="far fa-chevron-right" style="font-size:13px"></i></button><button class="hz-datepicker__nav-btn"><i class="far fa-angle-double-right"></i></button></div>
+</div>
+<div class="hz-datepicker__grid">
+<span class="hz-datepicker__weekday">S</span><span class="hz-datepicker__weekday">M</span><span class="hz-datepicker__weekday">T</span><span class="hz-datepicker__weekday">W</span><span class="hz-datepicker__weekday">T</span><span class="hz-datepicker__weekday">F</span><span class="hz-datepicker__weekday">S</span>
+<button class="hz-datepicker__day is-muted" disabled>29</button><button class="hz-datepicker__day is-muted" disabled>30</button><button class="hz-datepicker__day">1</button><button class="hz-datepicker__day">2</button><button class="hz-datepicker__day">3</button><button class="hz-datepicker__day">4</button><button class="hz-datepicker__day">5</button>
+<button class="hz-datepicker__day">6</button><button class="hz-datepicker__day">7</button><button class="hz-datepicker__day">8</button><button class="hz-datepicker__day">9</button><button class="hz-datepicker__day">10</button><button class="hz-datepicker__day">11</button><button class="hz-datepicker__day">12</button>
+<button class="hz-datepicker__day">13</button><button class="hz-datepicker__day">14</button><button class="hz-datepicker__day is-selected">15</button><button class="hz-datepicker__day">16</button><button class="hz-datepicker__day">17</button><button class="hz-datepicker__day">18</button><button class="hz-datepicker__day">19</button>
+<button class="hz-datepicker__day">20</button><button class="hz-datepicker__day">21</button><button class="hz-datepicker__day">22</button><button class="hz-datepicker__day">23</button><button class="hz-datepicker__day">24</button><button class="hz-datepicker__day">25</button><button class="hz-datepicker__day">26</button>
+<button class="hz-datepicker__day">27</button><button class="hz-datepicker__day">28</button><button class="hz-datepicker__day is-muted" disabled>1</button><button class="hz-datepicker__day is-muted" disabled>2</button><button class="hz-datepicker__day is-muted" disabled>3</button><button class="hz-datepicker__day is-muted" disabled>4</button><button class="hz-datepicker__day is-muted" disabled>5</button>
+</div>
+<div class="hz-datepicker__footer"><button class="hz-datepicker__today">Today</button><button class="hz-btn hz-btn--primary hz-btn--sm">Done</button></div>
+</div>
+<div class="hz-timepicker">
+<div class="hz-timepicker__nav">Waktu</div>
+<div class="hz-timepicker__cols">
+<div class="hz-timepicker__col"><button class="hz-timepicker__cell">05</button><button class="hz-timepicker__cell is-selected">06</button><button class="hz-timepicker__cell">07</button><button class="hz-timepicker__cell">08</button></div>
+<div class="hz-timepicker__col"><button class="hz-timepicker__cell">12</button><button class="hz-timepicker__cell is-selected">13</button><button class="hz-timepicker__cell">14</button><button class="hz-timepicker__cell">15</button></div>
+</div>
+</div>
+</div>
+<div style="max-width:260px">
+<div class="hz-datepicker-mobile">
+<div class="hz-datepicker-mobile__tabs"><span class="hz-datepicker-mobile__tab">Tanggal</span><span class="hz-datepicker-mobile__tab is-active">Bulan</span><span class="hz-datepicker-mobile__tab">Tahun</span></div>
+<div class="hz-datepicker-mobile__wheel">
+<div class="hz-datepicker-mobile__col"><span class="hz-datepicker-mobile__row">Mei</span><span class="hz-datepicker-mobile__row is-selected">Juni</span><span class="hz-datepicker-mobile__row">Juli</span></div>
+<div class="hz-datepicker-mobile__col"><span class="hz-datepicker-mobile__row">1997</span><span class="hz-datepicker-mobile__row is-selected">1998</span><span class="hz-datepicker-mobile__row">1999</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="label">Range — with presets</div>
+<div class="row">
+<div class="hz-datepicker" style="display:flex;flex-direction:row">
+<div class="hz-datepicker__presets">
+<button class="hz-datepicker__preset is-active">Last 7 days</button>
+<button class="hz-datepicker__preset">Last 30 days</button>
+<button class="hz-datepicker__preset">This quarter</button>
+<button class="hz-datepicker__preset">Custom</button>
+</div>
+<div class="hz-datepicker__calendar">
+<div class="hz-datepicker__nav">
+<div class="hz-datepicker__nav-group"><button class="hz-datepicker__nav-btn"><i class="far fa-chevron-left" style="font-size:13px"></i></button></div>
+<span class="hz-datepicker__nav-label"><span>Feb</span><span>2023</span></span>
+<div class="hz-datepicker__nav-group"><button class="hz-datepicker__nav-btn"><i class="far fa-chevron-right" style="font-size:13px"></i></button></div>
+</div>
+<div class="hz-datepicker__grid">
+<span class="hz-datepicker__weekday">S</span><span class="hz-datepicker__weekday">M</span><span class="hz-datepicker__weekday">T</span><span class="hz-datepicker__weekday">W</span><span class="hz-datepicker__weekday">T</span><span class="hz-datepicker__weekday">F</span><span class="hz-datepicker__weekday">S</span>
+<button class="hz-datepicker__day is-muted" disabled>29</button><button class="hz-datepicker__day is-muted" disabled>30</button><button class="hz-datepicker__day">1</button><button class="hz-datepicker__day">2</button><button class="hz-datepicker__day">3</button><button class="hz-datepicker__day">4</button><button class="hz-datepicker__day">5</button>
+<button class="hz-datepicker__day">6</button><button class="hz-datepicker__day">7</button><button class="hz-datepicker__day">8</button><button class="hz-datepicker__day">9</button><button class="hz-datepicker__day is-range-start">10</button><button class="hz-datepicker__day is-in-range">11</button><button class="hz-datepicker__day is-in-range">12</button>
+<button class="hz-datepicker__day is-in-range">13</button><button class="hz-datepicker__day is-range-end">14</button><button class="hz-datepicker__day">15</button><button class="hz-datepicker__day">16</button><button class="hz-datepicker__day">17</button><button class="hz-datepicker__day">18</button><button class="hz-datepicker__day">19</button>
+</div>
+<div class="hz-datepicker__footer"><button class="hz-datepicker__today">Today</button><button class="hz-btn hz-btn--primary hz-btn--sm">Apply</button></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</body></html>

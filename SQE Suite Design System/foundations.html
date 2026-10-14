@@ -1,0 +1,124 @@
+<!-- @dsCard group="Foundations" name="Spacing, Sizing & Elevation" subtitle="Spacing · sizes · radius · elevation · borders · z-index · breakpoints · effects" viewport="1240x2500" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>SQE Suite — Foundations</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+body{padding:48px;background:var(--hz-surface-page)}
+h1{font:700 32px/1.1 var(--hz-font-display);letter-spacing:-.02em;margin:0 0 6px}
+.lede{color:var(--hz-text-tertiary);font-size:14px;margin:0 0 40px;font-family:var(--hz-font-mono)}
+h2{font:700 13px/1 var(--hz-font-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);margin:0 0 16px}
+section{margin-bottom:44px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.box{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:var(--hz-radius-lg);padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.k{font:600 13px/1 var(--hz-font-mono);color:var(--hz-text-primary)}
+.v{font:400 12px/1 var(--hz-font-mono);color:var(--hz-text-tertiary)}
+.bar{height:10px;background:var(--hz-horizon-primary);border-radius:2px}
+table{width:100%;border-collapse:separate;border-spacing:0;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:var(--hz-radius-lg);overflow:hidden;font-size:13px}
+th,td{text-align:left;padding:10px 16px;border-bottom:1px solid var(--hz-border-subtle);font-family:var(--hz-font-mono)}
+th{font:600 11px/1 var(--hz-font-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--hz-text-tertiary);background:var(--hz-surface-subtle)}
+tr:last-child td{border-bottom:0}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.swatch{width:104px;height:76px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font:400 11px/1 var(--hz-font-mono);color:var(--hz-text-tertiary)}
+.grid12{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.col{height:56px;background:var(--hz-horizon-primary-pale);border:1px solid var(--hz-horizon-primary-soft);border-radius:4px}
+a{color:var(--hz-horizon-primary)}a:hover{color:var(--hz-horizon-primary-dark)}
+</style></head><body>
+<h1>Foundations</h1>
+<p class="lede">every non-color, non-type token in the system · 4px grid · Tailwind-numbered</p>
+
+<section><h2>Spacing — <code>--hz-space-N</code> · 1:1 with Tailwind <code>p-N / m-N / gap-N</code></h2>
+<table><tr><th>Token</th><th>Value</th><th>px</th><th>Scale</th></tr>
+<tr><td>space-0.5</td><td>.125rem</td><td>2</td><td><div class="bar" style="width:2px"></div></td></tr>
+<tr><td>space-1</td><td>.25rem</td><td>4</td><td><div class="bar" style="width:4px"></div></td></tr>
+<tr><td>space-1.5</td><td>.375rem</td><td>6</td><td><div class="bar" style="width:6px"></div></td></tr>
+<tr><td>space-2</td><td>.5rem</td><td>8</td><td><div class="bar" style="width:8px"></div></td></tr>
+<tr><td>space-2.5</td><td>.625rem</td><td>10</td><td><div class="bar" style="width:10px"></div></td></tr>
+<tr><td>space-3</td><td>.75rem</td><td>12</td><td><div class="bar" style="width:12px"></div></td></tr>
+<tr><td>space-3.5</td><td>.875rem</td><td>14</td><td><div class="bar" style="width:14px"></div></td></tr>
+<tr><td>space-4</td><td>1rem</td><td>16</td><td><div class="bar" style="width:16px"></div></td></tr>
+<tr><td>space-5</td><td>1.25rem</td><td>20</td><td><div class="bar" style="width:20px"></div></td></tr>
+<tr><td>space-6</td><td>1.5rem</td><td>24</td><td><div class="bar" style="width:24px"></div></td></tr>
+<tr><td>space-8</td><td>2rem</td><td>32</td><td><div class="bar" style="width:32px"></div></td></tr>
+<tr><td>space-10</td><td>2.5rem</td><td>40</td><td><div class="bar" style="width:40px"></div></td></tr>
+<tr><td>space-12</td><td>3rem</td><td>48</td><td><div class="bar" style="width:48px"></div></td></tr>
+<tr><td>space-16</td><td>4rem</td><td>64</td><td><div class="bar" style="width:64px"></div></td></tr></table></section>
+
+<section><h2>Component heights &amp; radius</h2>
+<div class="grid">
+<div class="box"><div class="k">--hz-size-sm</div><div class="v">2rem / 32px — dense rows, chips</div><div style="height:32px;background:var(--hz-horizon-primary);border-radius:var(--hz-radius-lg)"></div></div>
+<div class="box"><div class="k">--hz-size-md</div><div class="v">2.5rem / 40px — default control</div><div style="height:40px;background:var(--hz-horizon-primary);border-radius:var(--hz-radius-lg)"></div></div>
+<div class="box"><div class="k">--hz-size-lg</div><div class="v">3rem / 48px — primary CTA</div><div style="height:48px;background:var(--hz-horizon-primary);border-radius:var(--hz-radius-lg)"></div></div>
+</div>
+<div class="row" style="margin-top:12px">
+<div class="swatch" style="border-radius:var(--hz-radius-sm)">sm · 4</div>
+<div class="swatch" style="border-radius:var(--hz-radius-md)">md · 6</div>
+<div class="swatch" style="border-radius:var(--hz-radius-lg);border-color:var(--hz-horizon-primary)">lg · 8 ★</div>
+<div class="swatch" style="border-radius:var(--hz-radius-xl)">xl · 12</div>
+<div class="swatch" style="border-radius:var(--hz-radius-full)">full</div>
+</div></section>
+
+<section><h2>Elevation — borders before shadows</h2>
+<div class="row">
+<div class="swatch" style="box-shadow:var(--hz-shadow-sm);border-radius:8px">shadow-sm</div>
+<div class="swatch" style="box-shadow:var(--hz-shadow-md);border-radius:8px">shadow-md</div>
+<div class="swatch" style="box-shadow:var(--hz-shadow-lg);border-radius:8px">shadow-lg</div>
+<div class="swatch" style="box-shadow:var(--hz-shadow-xl);border-radius:8px">shadow-xl</div>
+<div class="swatch" style="box-shadow:var(--hz-shadow-focus);border-radius:8px">shadow-focus</div>
+</div></section>
+
+<section><h2>Borders, outline &amp; effects</h2>
+<div class="grid">
+<div class="box"><div class="k">border widths</div><div class="v">1 · 2 · 4 · 8 px</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="border-top:var(--hz-border-1) solid var(--hz-neutral-800)"></div>
+<div style="border-top:var(--hz-border-2) solid var(--hz-neutral-800)"></div>
+<div style="border-top:var(--hz-border-4) solid var(--hz-neutral-800)"></div>
+<div style="border-top:var(--hz-border-8) solid var(--hz-neutral-800)"></div></div></div>
+<div class="box"><div class="k">border styles</div><div class="v">solid · dashed · dotted</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="border-top:2px solid var(--hz-neutral-800)"></div>
+<div style="border-top:2px dashed var(--hz-neutral-800)"></div>
+<div style="border-top:2px dotted var(--hz-neutral-800)"></div></div></div>
+<div class="box"><div class="k">outline · focus</div><div class="v">2px solid primary, offset 2</div>
+<div style="height:32px;border-radius:6px;background:var(--hz-surface-card);outline:var(--hz-outline-width-2) solid var(--hz-outline-color-focus);outline-offset:var(--hz-outline-offset-2)"></div></div>
+<div class="box"><div class="k">opacity</div><div class="v">0 · 40 · 50 · 60 · 80 · 100</div>
+<div style="display:flex;gap:4px">
+<div style="flex:1;height:24px;background:var(--hz-neutral-900);opacity:.4"></div>
+<div style="flex:1;height:24px;background:var(--hz-neutral-900);opacity:.5"></div>
+<div style="flex:1;height:24px;background:var(--hz-neutral-900);opacity:.6"></div>
+<div style="flex:1;height:24px;background:var(--hz-neutral-900);opacity:.8"></div>
+<div style="flex:1;height:24px;background:var(--hz-neutral-900)"></div></div></div>
+<div class="box"><div class="k">text-shadow</div><div class="v">sm · md — on imagery only</div>
+<div style="font:700 20px/1.2 var(--hz-font-display);text-shadow:var(--hz-text-shadow-md)">Aa specimen</div></div>
+<div class="box"><div class="k">aspect ratios</div><div class="v">square 1/1 · video 16/9 · portrait 3/4</div>
+<div style="display:flex;gap:6px;align-items:flex-start">
+<div style="width:40px;aspect-ratio:var(--hz-aspect-square);background:var(--hz-horizon-primary-soft)"></div>
+<div style="width:64px;aspect-ratio:var(--hz-aspect-video);background:var(--hz-horizon-primary-soft)"></div>
+<div style="width:32px;aspect-ratio:var(--hz-aspect-portrait);background:var(--hz-horizon-primary-soft)"></div></div></div>
+</div></section>
+
+<section><h2>Z-index</h2>
+<table><tr><th>Token</th><th>Value</th><th>Use</th></tr>
+<tr><td>z-0 … z-50</td><td>0 · 10 · 20 · 30 · 40 · 50</td><td>raw steps, mirror Tailwind</td></tr>
+<tr><td>z-dropdown</td><td>20</td><td>menus, popovers, select lists</td></tr>
+<tr><td>z-sticky</td><td>30</td><td>sticky topbar, table header</td></tr>
+<tr><td>z-overlay</td><td>40</td><td>scrim behind a modal</td></tr>
+<tr><td>z-modal</td><td>50</td><td>dialogs, drawers</td></tr>
+<tr><td>z-toast</td><td>60</td><td>always on top</td></tr></table></section>
+
+<section><h2>Breakpoints &amp; containers — Tailwind defaults 1:1</h2>
+<table><tr><th>Step</th><th>Breakpoint</th><th>Container max-width</th></tr>
+<tr><td>sm</td><td>40rem / 640px</td><td>40rem</td></tr>
+<tr><td>md</td><td>48rem / 768px</td><td>48rem</td></tr>
+<tr><td>lg</td><td>64rem / 1024px</td><td>64rem</td></tr>
+<tr><td>xl</td><td>80rem / 1280px</td><td>80rem</td></tr>
+<tr><td>2xl</td><td>96rem / 1536px</td><td>96rem</td></tr></table>
+<p class="v" style="margin-top:10px">Custom properties can't be used in <code>@media</code> conditions — these are for JS/docs; Tailwind's config is the source of truth.</p></section>
+
+<section><h2>Layout — 12 columns, 24px gutter</h2>
+<div class="grid12">
+<div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
+<div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
+</div>
+<p class="v" style="margin-top:10px">Page padding 40px desktop / 16px mobile · content max-width <code>--hz-container-xl</code> · sidebar 268px, collapsed 68px · topbar 56px</p></section>
+</body></html>

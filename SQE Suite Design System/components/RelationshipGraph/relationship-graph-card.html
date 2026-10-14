@@ -1,0 +1,40 @@
+<!-- @dsCard group="Components" name="Relationship graph" subtitle="node-link flow · hover-isolated connections" viewport="1200x620" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Relationship graph</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:14px}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Relationship graph</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="label">Deal network · one hop from a fund</div>
+<div class="hz-graph" style="height:420px">
+<svg width="100%" height="100%" style="position:absolute;inset:0">
+<line x1="50%" y1="50%" x2="20%" y2="18%" stroke="var(--hz-border-default)"></line>
+<line x1="50%" y1="50%" x2="78%" y2="16%" stroke="var(--hz-border-default)"></line>
+<line x1="50%" y1="50%" x2="15%" y2="72%" stroke="var(--hz-border-default)"></line>
+<line x1="50%" y1="50%" x2="82%" y2="66%" stroke="var(--hz-border-default)"></line>
+<line x1="50%" y1="50%" x2="50%" y2="88%" stroke="var(--hz-border-default)"></line>
+</svg>
+<div class="hz-graph__node" style="left:50%;top:50%"><span class="hz-graph__node-dot hz-graph__node-dot--center"><i class="far fa-building"></i></span><span class="hz-graph__node-label">Sinarmas Fund II</span></div>
+<div class="hz-graph__node" style="left:20%;top:18%"><span class="hz-graph__node-dot">BC</span><span class="hz-graph__node-label">Berau Coal</span></div>
+<div class="hz-graph__node" style="left:78%;top:16%"><span class="hz-graph__node-dot">AR</span><span class="hz-graph__node-label">Andini Rahman</span></div>
+<div class="hz-graph__node" style="left:15%;top:72%"><span class="hz-graph__node-dot">PT</span><span class="hz-graph__node-label">PT Nusantara Logistik</span></div>
+<div class="hz-graph__node" style="left:82%;top:66%"><span class="hz-graph__node-dot">DP</span><span class="hz-graph__node-label">Daniel Putra</span></div>
+<div class="hz-graph__node" style="left:50%;top:88%"><span class="hz-graph__node-dot">MP</span><span class="hz-graph__node-label">Mahakam Ports</span></div>
+</div>
+</section>
+</div>
+</body></html>

@@ -1,0 +1,81 @@
+<!-- @dsCard group="Foundations" name="Theming & Dark Mode" subtitle="explicit theme scope · off-system token roles · shadcn HSL bridge" viewport="1200x900" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Foundations fixes</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:14px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.sw{width:64px;height:64px;border-radius:10px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:10px;color:#fff;font-weight:700;box-shadow:inset 0 0 0 1px rgb(0 0 0/.06)}
+.code{font-family:var(--hz-font-mono);font-size:12.5px;background:var(--hz-neutral-100);border-radius:8px;padding:14px 16px;color:var(--hz-text-secondary);white-space:pre-wrap;line-height:1.6}
+.darkdemo{background:var(--hz-neutral-1000);color:var(--hz-neutral-0);border-radius:10px;padding:24px}
+p.note{font-size:13px;color:var(--hz-text-tertiary);margin:0 0 16px;max-width:70ch}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Foundations</div><h1 class="hz-h3" style="margin:4px 0 0">Dark mode &amp; Tailwind/shadcn bridge</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+
+<section class="section">
+<div class="label">01 · Explicit dark-mode scope</div>
+<p class="note">Surface roles now resolve under <code>[data-theme="dark"]</code> / <code>[data-theme="light"]</code> in addition to the OS media query — apps with their own theme toggle set the attribute on any ancestor instead of re-skinning components.</p>
+<div class="row">
+<div data-theme="light" class="darkdemo" style="background:var(--hz-surface-page);color:var(--hz-text-primary);flex:1;min-width:220px"><div class="hz-h6">data-theme="light"</div><div class="hz-body-s" style="color:var(--hz-text-tertiary);margin-top:4px">Surface roles resolve to the light ramp regardless of OS setting.</div></div>
+<div data-theme="dark" class="darkdemo" style="background:var(--hz-surface-page);color:var(--hz-text-primary);flex:1;min-width:220px"><div class="hz-h6">data-theme="dark"</div><div class="hz-body-s" style="color:var(--hz-text-tertiary);margin-top:4px">Surface roles resolve to the dark ramp regardless of OS setting.</div></div>
+</div>
+</section>
+
+<section class="section">
+<div class="label">02 · Off-system token roles</div>
+<p class="note">Named roles for the three patterns audits found hand-picked per app: a modal/drawer backdrop, a categorical chart palette, and semantic low/mid/high threshold bands.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+<div><div class="hz-body-s hz-semi" style="margin-bottom:8px">--hz-scrim</div><div style="background:var(--hz-neutral-200);border-radius:8px;height:64px;display:flex;align-items:center;justify-content:center"><div style="width:80%;height:70%;border-radius:6px;background:var(--hz-scrim)"></div></div></div>
+<div><div class="hz-body-s hz-semi" style="margin-bottom:8px">--hz-chart-1…8</div><div class="row">
+<div class="sw" style="background:var(--hz-chart-1)">1</div><div class="sw" style="background:var(--hz-chart-2)">2</div><div class="sw" style="background:var(--hz-chart-3)">3</div><div class="sw" style="background:var(--hz-chart-4)">4</div>
+</div></div>
+<div><div class="hz-body-s hz-semi" style="margin-bottom:8px">--hz-threshold-low/mid/high</div><div class="row">
+<div class="sw" style="background:var(--hz-threshold-low)">Low</div><div class="sw" style="background:var(--hz-threshold-mid);color:#3B2E00">Mid</div><div class="sw" style="background:var(--hz-threshold-high)">High</div>
+</div></div>
+</div>
+</section>
+
+<section class="section">
+<div class="label">03 · Display font reachable</div>
+<p class="note">Headings resolve through <code>--hz-heading-font</code> (defaults to the sans face). Add <code>.hz-font-display</code> to any ancestor to switch headings to the display typeface — no more overriding all six h1–h6 selectors per app.</p>
+<div class="row" style="gap:32px">
+<div class="hz-h3">Default heading font</div>
+<div class="hz-font-display"><div class="hz-h3">hz-font-display heading</div></div>
+</div>
+</section>
+
+<section class="section">
+<div class="label">04 · Layout primitives</div>
+<p class="note">A page header and 2/3-column grid, so screens stop re-declaring their own flex/grid + gap.</p>
+<div class="hz-page-header" style="border-bottom:1px solid var(--hz-border-subtle);margin-bottom:20px">
+<div><div class="hz-page-header__title">Portfolio overview</div><div class="hz-page-header__desc">12 active deals · updated 2 minutes ago</div></div>
+<div class="hz-page-header__actions"><button class="hz-btn hz-btn--secondary hz-btn--sm">Export</button><button class="hz-btn hz-btn--primary hz-btn--sm">New deal</button></div>
+</div>
+<div class="hz-layout-2col">
+<div style="background:var(--hz-neutral-50);border-radius:8px;padding:16px;font-size:13px;color:var(--hz-text-tertiary)">hz-layout-2col · main (2fr)</div>
+<div style="background:var(--hz-neutral-50);border-radius:8px;padding:16px;font-size:13px;color:var(--hz-text-tertiary)">side (1fr)</div>
+</div>
+</section>
+
+<section class="section">
+<div class="label">05 · Tailwind/shadcn token bridge</div>
+<p class="note">M&amp;A Brain runs Tailwind + shadcn, themed via HSL-triplet variables and a <code>.dark</code> class — a different convention from this DS's hex tokens and <code>[data-theme]</code> attribute. <code>tokens-shadcn-bridge.css</code> maps this DS's exact colors into shadcn's variable names so shadcn components stay on-brand without a rewrite.</p>
+<div class="code">&lt;link rel="stylesheet" href="tokens.css"&gt;
+&lt;link rel="stylesheet" href="tokens-shadcn-bridge.css"&gt;
+&lt;html class="dark"&gt; &lt;!-- shadcn's own toggle convention, kept independent of [data-theme] --&gt;</div>
+</section>
+
+</div>
+</body></html>

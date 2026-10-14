@@ -1,0 +1,49 @@
+<!-- @dsCard group="Components" name="File dropzone & Upload row" subtitle="drag target · dragover · error · disabled · progress · success" viewport="1200x760" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — File dropzone &amp; Upload row</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.grid{display:grid;gap:24px;grid-template-columns:repeat(3,1fr)}
+.cell{display:flex;flex-direction:column;gap:10px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.divider{border-top:1px solid var(--hz-border-subtle);margin:24px 0}
+.stack{display:flex;flex-direction:column;gap:10px}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">File dropzone &amp; Upload row</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="grid">
+<div class="cell"><div class="label">Dropzone · rest</div>
+<div class="hz-dropzone"><span class="hz-dropzone__icon"><i class="far fa-cloud-upload"></i></span><div class="hz-dropzone__title">Drag files here, or click to browse</div><div class="hz-dropzone__hint">CSV, XLSX up to 10MB</div></div>
+</div>
+<div class="cell"><div class="label">Dropzone · dragover</div>
+<div class="hz-dropzone is-dragover"><span class="hz-dropzone__icon"><i class="far fa-cloud-upload"></i></span><div class="hz-dropzone__title">Drop to upload</div><div class="hz-dropzone__hint">CSV, XLSX up to 10MB</div></div>
+</div>
+<div class="cell"><div class="label">Dropzone · error</div>
+<div class="hz-dropzone hz-dropzone--error"><span class="hz-dropzone__icon" style="background:var(--hz-red-50);color:var(--hz-red-600)"><i class="far fa-exclamation-triangle"></i></span><div class="hz-dropzone__title" style="color:var(--hz-red-700)">File type not supported</div><div class="hz-dropzone__hint">Only CSV, XLSX accepted</div></div>
+</div>
+<div class="cell"><div class="label">Dropzone · disabled</div>
+<div class="hz-dropzone hz-dropzone--disabled"><span class="hz-dropzone__icon"><i class="far fa-cloud-upload"></i></span><div class="hz-dropzone__title">Upload disabled</div><div class="hz-dropzone__hint">Complete the previous step first</div></div>
+</div>
+</div>
+<div class="divider"></div>
+<div class="label">Upload row · progress, success, error states</div>
+<div class="stack" style="max-width:460px">
+<div class="hz-upload-row"><span class="hz-upload-row__icon"><i class="far fa-file-csv"></i></span><div class="hz-upload-row__meta"><div class="hz-upload-row__name">Q3_deal_pipeline.csv</div><div class="hz-upload-row__size">1.8MB · Uploading…</div><div class="hz-upload-row__progress"><div class="hz-upload-row__progress-bar" style="width:62%"></div></div></div><button class="hz-upload-row__remove"><i class="far fa-times"></i></button></div>
+<div class="hz-upload-row hz-upload-row--success"><span class="hz-upload-row__icon"><i class="far fa-file-csv"></i></span><div class="hz-upload-row__meta"><div class="hz-upload-row__name">production_ledger.xlsx</div><div class="hz-upload-row__size">3.2MB · Uploaded</div></div><span class="hz-upload-row__status"><i class="far fa-check-circle"></i></span></div>
+<div class="hz-upload-row hz-upload-row--error"><span class="hz-upload-row__icon"><i class="far fa-file-csv"></i></span><div class="hz-upload-row__meta"><div class="hz-upload-row__name">assay_results.zip</div><div class="hz-upload-row__size">Upload failed — file type not allowed</div></div><span class="hz-upload-row__status"><i class="far fa-exclamation-circle"></i></span><button class="hz-upload-row__remove"><i class="far fa-times"></i></button></div>
+</div>
+</section>
+</div>
+</body></html>

@@ -1,0 +1,98 @@
+<!-- @dsCard group="Components" name="UI Kit" subtitle="Overview & index · live theme picker" viewport="1280x760" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — UI Kit</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+body{background:var(--hz-surface-page);padding:0 0 80px}
+.page{max-width:1200px;margin:0 auto;padding:48px 40px}
+.ph{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:40px}
+.ph .brand{display:flex;align-items:center;gap:14px}
+.ph .mark{width:44px;height:44px;display:flex;align-items:center;justify-content:center}
+.ph .mark img{width:44px;height:44px;display:block}
+.ph .tiny{color:var(--hz-text-tertiary);font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.04em}
+.theme-picker{display:flex;gap:6px}
+.theme-picker button{width:28px;height:28px;border-radius:8px;border:2px solid transparent;cursor:pointer;padding:0}
+.theme-picker button.active{border-color:var(--hz-neutral-1000)}
+.section-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600;margin:32px 0 16px}
+.index{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tile{display:block;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:24px;text-decoration:none;color:var(--hz-text-primary);transition:border-color .15s,box-shadow .15s}
+.tile:hover{border-color:var(--hz-horizon-primary-soft);box-shadow:var(--hz-shadow-sm)}
+.tile .n{font-size:16px;font-weight:700;margin-bottom:6px}
+.tile .d{font-size:13px;color:var(--hz-text-tertiary)}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="ph">
+<div class="brand">
+<div class="mark"><img src="assets/suite/icon-sqe.svg" alt=""></div>
+<div>
+<div style="font-size:22px;font-weight:700;letter-spacing:-.01em">SQE Suite · UI Kit</div>
+<div class="tiny">tokens.css · prefix <b>hz-</b></div>
+</div>
+</div>
+<div class="theme-picker" id="tp">
+<button class="active" data-theme="" style="background:#006CEB" title="blue"></button>
+<button data-theme="teal" style="background:#2CA7E4"></button>
+<button data-theme="green" style="background:#159367"></button>
+<button data-theme="yellow" style="background:#E5AC00"></button>
+<button data-theme="orange" style="background:#E45A18"></button>
+<button data-theme="red" style="background:#D92222"></button>
+<button data-theme="magenta" style="background:#E437AE"></button>
+<button data-theme="purple" style="background:#7C48E4"></button>
+<button data-theme="neutral" style="background:#8490A1"></button>
+<button data-theme="azure" style="background:#0F47E0" title="SQE Suite"></button>
+</div>
+</div>
+
+<div class="section-label">Foundations</div>
+<div class="index">
+<a class="tile" href="preview/colors.html"><div class="n">Colors</div><div class="d">Azure + Neutral + Semantic ramps</div></a>
+<a class="tile" href="preview/type.html"><div class="n">Type</div><div class="d">Inter + IBM Plex Sans, scale &amp; Tailwind vocabulary</div></a>
+<a class="tile" href="foundations.html"><div class="n">Foundations</div><div class="d">Spacing · radius · elevation · z-index · breakpoints</div></a>
+</div>
+
+<div class="section-label">Components</div>
+<div class="index">
+<a class="tile" href="components/Icon/icon-card.html"><div class="n">Icon</div><div class="d">FA Pro 5 wrapper · solid · regular · light · brands · duotone</div></a>
+<a class="tile" href="components/Button/button-card.html"><div class="n">Button</div><div class="d">Primary · secondary · text · danger · size · state</div></a>
+<a class="tile" href="components/FormControls/form-controls-card.html"><div class="n">Form controls</div><div class="d">Field · check · radio · switch</div></a>
+<a class="tile" href="components/StatusIdentity/status-identity-card.html"><div class="n">Status &amp; identity</div><div class="d">Chip · alert · avatar · badge · progress</div></a>
+<a class="tile" href="components/Navigation/navigation-card.html"><div class="n">Navigation</div><div class="d">Sidebar · tabs · table</div></a>
+<a class="tile" href="components/Cards/cards-card.html"><div class="n">Cards</div><div class="d">Header · body · footer composition</div></a>
+</div>
+
+<div class="section-label">Charts &amp; maps</div>
+<div class="index">
+<a class="tile" href="components/charts/BarChart/bar-chart-card.html"><div class="n">Charts</div><div class="d">15 chart types — bar, line, area, donut, sankey, funnel &amp; more</div></a>
+<a class="tile" href="components/Map/mine-map-card.html"><div class="n">Mine Map</div><div class="d">Site boundary · haul &amp; vessel routes · ESRI basemaps</div></a>
+</div>
+
+<div class="section-label">Example</div>
+<div class="index">
+<a class="tile" href="dashboard.html"><div class="n">Dashboard example</div><div class="d">Treasury console using the system end to end</div></a>
+</div>
+
+</div>
+<script>
+document.getElementById('tp').addEventListener('click', (e) => {
+const b = e.target.closest('button'); if (!b) return;
+document.querySelectorAll('#tp button').forEach(x => x.classList.remove('active'));
+b.classList.add('active');
+const themes = ['teal','green','yellow','orange','red','magenta','purple','neutral','azure'];
+themes.forEach(t => document.body.classList.remove('theme-hz-' + t));
+const t = b.dataset.theme;
+if (t) document.body.classList.add('theme-hz-' + t);
+localStorage.setItem('hz-ui-theme', t || '');
+});
+const saved = localStorage.getItem('hz-ui-theme');
+if (saved) {
+document.body.classList.add('theme-hz-' + saved);
+document.querySelector('#tp .active')?.classList.remove('active');
+document.querySelector(`#tp button[data-theme="${saved}"]`)?.classList.add('active');
+}
+</script>
+</body></html>

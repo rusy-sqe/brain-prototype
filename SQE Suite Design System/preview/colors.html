@@ -1,0 +1,131 @@
+<!-- @dsCard group="Foundations" name="Color" subtitle="Azure + Neutral + Semantic ramps" viewport="1240x1100" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>SQE Suite — Colors</title>
+<link rel="stylesheet" href="../tokens.css" />
+<style>
+  body { padding: 40px 48px; }
+  .card {
+    max-width: 1160px;
+    background: var(--hz-surface-card);
+    border: 1px solid var(--hz-border-subtle);
+    border-radius: var(--hz-radius-lg);
+    padding: 36px 40px 40px;
+  }
+  .eyebrow { font-family: var(--hz-font-display); font-weight:600; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color: var(--hz-brand-primary); margin:0 0 6px 0;}
+  h1 { font-family: var(--hz-font-display); font-weight:600; font-size:24px; margin:0 0 4px 0; letter-spacing:-.01em; color: var(--hz-text-primary);}
+  .sub { color: var(--hz-text-secondary); font-size:14px; margin:0 0 28px 0;}
+
+  .section { margin-top: 28px; }
+  .section-title { font-family: var(--hz-font-sans); font-weight:600; font-size:13px; color: var(--hz-text-primary); margin: 0 0 12px; display:flex; align-items:baseline; gap:12px; }
+  .section-title span { font-weight:400; color: var(--hz-text-secondary); font-size:12px; }
+
+  .ramp { display: grid; grid-template-columns: repeat(10, 1fr); gap:6px; }
+  .swatch { border-radius: 6px; padding: 12px 12px; height: 72px; display:flex; flex-direction:column; justify-content:space-between; border:1px solid rgba(0,0,0,.04); }
+  .swatch .step { font-size:11px; font-weight:600; font-family: var(--hz-font-mono); }
+  .swatch .hex { font-size:10px; font-family: var(--hz-font-mono); opacity:.85;}
+
+  .semantic-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .sem-card { border:1px solid var(--hz-border-subtle); border-radius: 8px; overflow:hidden; }
+  .sem-main { padding: 14px 16px; color:#fff; font-weight:600; font-size:13px; display:flex; justify-content:space-between; align-items:center;}
+  .sem-main .hex { font-family: var(--hz-font-mono); font-weight: 500; font-size:11px; opacity:.9;}
+  .sem-sub { display:flex; }
+  .sem-sub > div { flex:1; padding:10px 12px; font-size:11px; font-family: var(--hz-font-mono); display:flex; justify-content:space-between;}
+  .sem-sub .a { background: var(--bg); color: var(--tx); }
+  .sem-sub .b { background:var(--hz-surface-card); color: var(--hz-text-secondary); border-left:1px solid var(--hz-border-subtle); }
+
+  .aliases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; font-size:12px; }
+  .alias-row { display:flex; align-items:center; gap:12px; padding: 8px 12px; border:1px solid var(--hz-border-subtle); border-radius: 8px; background: var(--hz-surface-card);}
+  .chip { width: 24px; height: 24px; border-radius: 6px; border:1px solid rgba(0,0,0,.06); flex-shrink:0; }
+  .alias-name { font-family: var(--hz-font-mono); font-size:11px; color: var(--hz-text-primary); flex:1;}
+  .alias-val { font-family: var(--hz-font-mono); font-size:11px; color: var(--hz-text-tertiary);}
+</style>
+</head>
+<body>
+  <div class="card">
+    <p class="eyebrow">Foundations</p>
+    <h1>Color</h1>
+    <p class="sub">Brand (Azure + Navy), Neutral, and four Semantic families. Always reference the CSS variable — never the hex.</p>
+
+    <div class="section">
+      <div class="section-title">Azure <span>Primary — actions, links, selected states</span></div>
+      <div class="ramp">
+        <div class="swatch" style="background:var(--hz-azure-50); color: var(--hz-azure-900)"><span class="step">50</span><span class="hex">#EBF3FD</span></div>
+        <div class="swatch" style="background:var(--hz-azure-100); color: var(--hz-azure-900)"><span class="step">100</span><span class="hex">#C3DDFA</span></div>
+        <div class="swatch" style="background:var(--hz-azure-200); color: var(--hz-azure-900)"><span class="step">200</span><span class="hex">#9BC7F7</span></div>
+        <div class="swatch" style="background:var(--hz-azure-300); color: var(--hz-azure-900)"><span class="step">300</span><span class="hex">#73B0F4</span></div>
+        <div class="swatch" style="background:var(--hz-azure-400); color: #fff"><span class="step">400</span><span class="hex">#4A9AEF</span></div>
+        <div class="swatch" style="background:var(--hz-azure-500); color: #fff; box-shadow: inset 0 0 0 2px rgba(255,255,255,.2)"><span class="step">500 ★</span><span class="hex">#006CEB</span></div>
+        <div class="swatch" style="background:var(--hz-azure-600); color: #fff"><span class="step">600</span><span class="hex">#005CC8</span></div>
+        <div class="swatch" style="background:var(--hz-azure-700); color: #fff"><span class="step">700</span><span class="hex">#00489D</span></div>
+        <div class="swatch" style="background:var(--hz-azure-800); color: #fff"><span class="step">800</span><span class="hex">#003372</span></div>
+        <div class="swatch" style="background:var(--hz-azure-900); color: #fff"><span class="step">900</span><span class="hex">#00234D</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Neutral <span>Surfaces, borders, and text</span></div>
+      <div class="ramp">
+        <div class="swatch" style="background:var(--hz-neutral-0); color: var(--hz-neutral-900); border:1px solid var(--hz-border-subtle)"><span class="step">0</span><span class="hex">#FFFFFF</span></div>
+        <div class="swatch" style="background:var(--hz-neutral-50); color: var(--hz-neutral-900); border:1px solid var(--hz-border-subtle)"><span class="step">50</span><span class="hex">#F9FAFC</span></div>
+        <div class="swatch" style="background:var(--hz-neutral-100); color: var(--hz-neutral-900); border:1px solid var(--hz-border-subtle)"><span class="step">100</span><span class="hex">#F2F3F5</span></div>
+        <div class="swatch" style="background:var(--hz-neutral-200); color: var(--hz-neutral-900)"><span class="step">200</span><span class="hex">#EDF0F5</span></div>
+        <div class="swatch" style="background:var(--hz-neutral-300); color: var(--hz-neutral-900)"><span class="step">300</span><span class="hex">#D2D7DE</span></div>
+        <div class="swatch" style="background:var(--hz-neutral-400); color: #fff"><span class="step">400</span><span class="hex">#BAC3D1</span></div>
+        <div class="swatch" style="background:var(--hz-neutral-500); color: #fff"><span class="step">500</span><span class="hex">#8A95A5</span></div>
+        <div class="swatch" style="background:var(--hz-neutral-600); color: #fff"><span class="step">600</span><span class="hex">#677485</span></div>
+        <div class="swatch" style="background:var(--hz-neutral-800); color: #fff"><span class="step">800</span><span class="hex">#323A46</span></div>
+        <div class="swatch" style="background:var(--hz-neutral-900); color: #fff"><span class="step">900 ★</span><span class="hex">#1E252E</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Semantic <span>Always pair 50 bg + 700 text — never cross families</span></div>
+      <div class="semantic-grid">
+        <div class="sem-card">
+          <div class="sem-main" style="background: var(--hz-success-500)">Success<span class="hex">#12A56F</span></div>
+          <div class="sem-sub" style="--bg: var(--hz-success-50); --tx: var(--hz-success-700)">
+            <div class="a"><span>50</span><span>#DCEFE9</span></div>
+            <div class="b"><span>700</span><span>#0B7A52</span></div>
+          </div>
+        </div>
+        <div class="sem-card">
+          <div class="sem-main" style="background: var(--hz-warning-500)">Warning<span class="hex">#E9A300</span></div>
+          <div class="sem-sub" style="--bg: var(--hz-warning-50); --tx: var(--hz-warning-700)">
+            <div class="a"><span>50</span><span>#FFF4DB</span></div>
+            <div class="b"><span>700</span><span>#A37100</span></div>
+          </div>
+        </div>
+        <div class="sem-card">
+          <div class="sem-main" style="background: var(--hz-danger-500)">Danger<span class="hex">#D92D20</span></div>
+          <div class="sem-sub" style="--bg: var(--hz-danger-50); --tx: var(--hz-danger-700)">
+            <div class="a"><span>50</span><span>#FCE5E5</span></div>
+            <div class="b"><span>700</span><span>#992018</span></div>
+          </div>
+        </div>
+        <div class="sem-card">
+          <div class="sem-main" style="background: var(--hz-info-500)">Info<span class="hex">#0EA5E9</span></div>
+          <div class="sem-sub" style="--bg: var(--hz-info-50); --tx: var(--hz-info-700)">
+            <div class="a"><span>50</span><span>#D2F0F9</span></div>
+            <div class="b"><span>700</span><span>#0369A1</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Aliases <span>Use these in components — they resolve to the scales above</span></div>
+      <div class="aliases">
+        <div class="alias-row"><div class="chip" style="background:var(--hz-surface-app)"></div><div class="alias-name">--hz-surface-app</div><div class="alias-val">neutral-50</div></div>
+        <div class="alias-row"><div class="chip" style="background:var(--hz-surface-card)"></div><div class="alias-name">--hz-surface-card</div><div class="alias-val">neutral-0</div></div>
+        <div class="alias-row"><div class="chip" style="background:var(--hz-text-primary)"></div><div class="alias-name">--hz-text-primary</div><div class="alias-val">neutral-900</div></div>
+        <div class="alias-row"><div class="chip" style="background:var(--hz-text-secondary)"></div><div class="alias-name">--hz-text-secondary</div><div class="alias-val">neutral-600</div></div>
+        <div class="alias-row"><div class="chip" style="background:var(--hz-border-subtle)"></div><div class="alias-name">--hz-border-subtle</div><div class="alias-val">neutral-200</div></div>
+        <div class="alias-row"><div class="chip" style="background:var(--hz-brand-primary)"></div><div class="alias-name">--hz-brand-primary</div><div class="alias-val">azure-500</div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

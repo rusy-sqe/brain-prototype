@@ -1,0 +1,62 @@
+<!-- @dsCard group="Charts" name="Waterfall chart" subtitle="Cumulative contributions with connectors and total bars" viewport="1200x1000" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Waterfall chart</title>
+<link rel="stylesheet" href="../../../tokens.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="../../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:48px;background:var(--hz-surface-page);color:var(--hz-text-primary);font-family:var(--hz-font-sans)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;gap:24px}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+h1{font-family:var(--hz-font-display);font-size:32px;line-height:1.1;margin:10px 0 8px;letter-spacing:-.01em}
+.sub{font-size:15px;line-height:1.5;color:var(--hz-text-secondary);max-width:600px;margin:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:11px;font-family:var(--hz-font-mono);padding:4px 10px;border-radius:999px;background:var(--hz-neutral-100);color:var(--hz-text-secondary);white-space:nowrap}
+.panel{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:28px 32px}
+.label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tile{border:1px solid var(--hz-border-subtle);border-radius:12px;padding:20px 22px;background:var(--hz-surface-card)}
+.tile .t{font-size:12px;color:var(--hz-text-tertiary);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.tile .v{font-size:26px;font-weight:600;margin:6px 0 12px;letter-spacing:-.01em}
+.row{display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start}
+a{color:var(--hz-horizon-primary);text-decoration:none}a:hover{color:var(--hz-horizon-primary-dark)}
+.code{background:var(--hz-neutral-950);border-radius:10px;padding:20px 24px;font-family:var(--hz-font-mono);font-size:12.5px;line-height:1.7;color:#cbd5e1;white-space:pre;overflow-x:auto;margin:0}</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Charts · Waterfall chart</div><h1>Waterfall chart</h1><p class="sub">How a start value becomes an end value: bridge charts for revenue, headcount, or variance. Positive steps read green, negative red, and `type: "total"` bars anchor from zero.</p></div><div class="chips"><span class="chip">WaterfallChart</span><span class="chip">type: total</span><span class="chip">showConnectors</span><span class="chip">increaseColor</span></div></div>
+<section class="panel"><div class="label">01 · ARR bridge</div><div id="w1"></div></section>
+<section class="panel"><div class="label">02 · Budget variance · custom colors</div><div id="w2"></div></section>
+<section class="panel"><div class="label">03 · Usage</div><pre class="code">const { WaterfallChart } = window.SQESuiteDesignSystem_2c1e79;
+
+&lt;WaterfallChart
+  data={[
+    { name: 'FY24', value: 8200, type: 'total' },
+    { name: 'New', value: 2100 },
+    { name: 'Churn', value: -740 },
+    { name: 'FY25', value: 0, type: 'total' },
+  ]}
+  valueFormatter={usd}
+/&gt;</pre></section>
+</div>
+<script>
+const NS = window.SQESuiteDesignSystem_2c1e79;
+const h = React.createElement;
+const mount = (id, el) => ReactDOM.createRoot(document.getElementById(id)).render(el);
+const usd = v => (v < 0 ? '-' : '') + '$' + (Math.abs(v) >= 1000 ? (Math.abs(v)/1000).toFixed(1) + 'k' : Math.abs(v));
+const bridge = [
+  {name:'FY24 ARR',value:8200,type:'total'},{name:'New',value:2100},{name:'Expansion',value:1240},
+  {name:'Downgrade',value:-520},{name:'Churn',value:-740},{name:'FY25 ARR',value:10280,type:'total'}];
+const variance = [
+  {name:'Plan',value:4800,type:'total'},{name:'Headcount',value:-620},{name:'Cloud',value:-310},
+  {name:'Marketing',value:180},{name:'Travel',value:95},{name:'Actual',value:4145,type:'total'}];
+mount('w1', h(NS.WaterfallChart, { data:bridge, valueFormatter:usd, height:300 }));
+mount('w2', h(NS.WaterfallChart, { data:variance, valueFormatter:usd, height:280, increaseColor:'teal', decreaseColor:'orange', totalColor:'neutral' }));
+</script>
+</body>
+</html>

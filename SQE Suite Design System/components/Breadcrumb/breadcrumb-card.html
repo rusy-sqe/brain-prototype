@@ -1,0 +1,30 @@
+<!-- @dsCard group="Components" name="Breadcrumb" subtitle="multi-level drill-down · current step" viewport="900x220" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Breadcrumb</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px;display:flex;flex-direction:column;gap:20px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Breadcrumb</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div><div class="label">3 levels</div>
+<nav class="hz-breadcrumb"><button class="hz-breadcrumb__item">Sinarmas</button><i class="far fa-chevron-right hz-breadcrumb__sep"></i><button class="hz-breadcrumb__item">Treasury</button><i class="far fa-chevron-right hz-breadcrumb__sep"></i><span class="hz-breadcrumb__item is-current">Operational — SQE</span></nav>
+</div>
+<div><div class="label">4 levels, deep drill</div>
+<nav class="hz-breadcrumb"><button class="hz-breadcrumb__item">Workspace</button><i class="far fa-chevron-right hz-breadcrumb__sep"></i><button class="hz-breadcrumb__item">Pipeline</button><i class="far fa-chevron-right hz-breadcrumb__sep"></i><button class="hz-breadcrumb__item">Berau Coal</button><i class="far fa-chevron-right hz-breadcrumb__sep"></i><span class="hz-breadcrumb__item is-current">Pit 4 Expansion</span></nav>
+</div>
+</section>
+</div>
+</body></html>

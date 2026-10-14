@@ -1,0 +1,80 @@
+<!-- @dsCard group="Components" name="Data Table" subtitle="toolbar · sort · select · bulk actions · cell types" viewport="1240x760" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Data Table</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1140px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:32px 36px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:10px}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Data Table</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="label">Toolbar · search + filters + count + primary action</div>
+<div class="hz-table-toolbar">
+<div class="hz-table-toolbar__search"><i class="far fa-search"></i><input placeholder="Search deals…"></div>
+<span class="hz-chip hz-chip--active">All stages</span>
+<span class="hz-chip hz-chip--clickable">Sector<i class="far fa-chevron-down" style="font-size:12px"></i></span>
+<span class="hz-table-toolbar__count">18 deals</span>
+<div class="hz-table-toolbar__spacer"><button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-download"></i>Export</button><button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-plus"></i>New deal</button></div>
+</div>
+<div class="hz-table__bulkbar"><span>3 selected</span><div class="hz-table__bulkbar-actions"><button class="hz-btn hz-btn--secondary hz-btn--sm">Export</button><button class="hz-btn hz-btn--danger hz-btn--sm">Delete</button></div></div>
+<table class="hz-table">
+<thead><tr>
+<th class="hz-table__rowcheck"><input class="hz-check" type="checkbox"></th>
+<th>Deal</th>
+<th class="is-sortable">Sector<i class="far fa-sort"></i></th>
+<th class="is-sortable">Stage<i class="far fa-arrow-down"></i></th>
+<th class="is-numeric">Value</th>
+<th>Fit score</th>
+<th></th>
+</tr></thead>
+<tbody>
+<tr class="is-selected">
+<td><input class="hz-check" type="checkbox" checked></td>
+<td><div class="hz-table__identity"><span class="hz-avatar hz-avatar--sm">BC</span><div><div class="hz-table__identity-name">Berau Coal — Pit 4</div><div class="hz-table__identity-sub">berau-coal.co.id</div></div></div></td>
+<td>Mining</td>
+<td><span class="hz-chip hz-chip--success">Diligence</span></td>
+<td class="is-numeric">Rp 480M</td>
+<td><span class="hz-table__heat" style="background:var(--hz-green-500)"></span>92</td>
+<td><button class="hz-btn hz-btn--text hz-btn--sm"><i class="far fa-ellipsis-h"></i></button></td>
+</tr>
+<tr>
+<td><input class="hz-check" type="checkbox"></td>
+<td><div class="hz-table__identity"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-orange-100);color:var(--hz-orange-800)">SM</span><div><div class="hz-table__identity-name">Sinar Mas Agri</div><div class="hz-table__identity-sub">sinarmas-agri.com</div></div></div></td>
+<td>Agriculture</td>
+<td><span class="hz-chip hz-chip--warn">Sourcing</span></td>
+<td class="is-numeric">Rp 210M</td>
+<td><span class="hz-table__heat" style="background:var(--hz-yellow-500)"></span>64</td>
+<td><button class="hz-btn hz-btn--text hz-btn--sm"><i class="far fa-ellipsis-h"></i></button></td>
+</tr>
+<tr>
+<td><input class="hz-check" type="checkbox" disabled></td>
+<td><div class="hz-table__identity"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-red-100);color:var(--hz-red-800)">TX</span><div><div class="hz-table__identity-name">TransJava Logistics</div><div class="hz-table__identity-sub">transjava.id</div></div></div></td>
+<td>Logistics</td>
+<td><span class="hz-chip hz-chip--danger">Passed</span></td>
+<td class="is-numeric">Rp 95M</td>
+<td><span class="hz-table__heat" style="background:var(--hz-red-500)"></span>28</td>
+<td><button class="hz-btn hz-btn--text hz-btn--sm" disabled><i class="far fa-ellipsis-h"></i></button></td>
+</tr>
+</tbody>
+</table>
+<div style="display:flex;justify-content:flex-end;margin-top:16px">
+<nav class="hz-pagination">
+<button class="hz-pagination__item hz-pagination__nav" aria-label="Previous"><i class="far fa-chevron-left" style="font-size:14px"></i></button>
+<button class="hz-pagination__item is-active">1</button><button class="hz-pagination__item">2</button><button class="hz-pagination__item">3</button>
+<button class="hz-pagination__item hz-pagination__nav" aria-label="Next"><i class="far fa-chevron-right" style="font-size:14px"></i></button>
+</nav>
+</div>
+</section>
+</div>
+</body></html>

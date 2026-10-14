@@ -1,0 +1,57 @@
+<!-- @dsCard group="Charts" name="Sankey diagram" subtitle="Weighted flows between nodes · hover isolates a path" viewport="1200x1000" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Sankey diagram</title>
+<link rel="stylesheet" href="../../../tokens.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="../../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:48px;background:var(--hz-surface-page);color:var(--hz-text-primary);font-family:var(--hz-font-sans)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;gap:24px}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+h1{font-family:var(--hz-font-display);font-size:32px;line-height:1.1;margin:10px 0 8px;letter-spacing:-.01em}
+.sub{font-size:15px;line-height:1.5;color:var(--hz-text-secondary);max-width:600px;margin:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:11px;font-family:var(--hz-font-mono);padding:4px 10px;border-radius:999px;background:var(--hz-neutral-100);color:var(--hz-text-secondary);white-space:nowrap}
+.panel{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:28px 32px}
+.label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tile{border:1px solid var(--hz-border-subtle);border-radius:12px;padding:20px 22px;background:var(--hz-surface-card)}
+.tile .t{font-size:12px;color:var(--hz-text-tertiary);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.tile .v{font-size:26px;font-weight:600;margin:6px 0 12px;letter-spacing:-.01em}
+.delta{font-size:12px;font-weight:600}
+a{color:var(--hz-horizon-primary);text-decoration:none}a:hover{color:var(--hz-horizon-primary-dark)}
+.code{background:var(--hz-neutral-950);border-radius:10px;padding:20px 24px;font-family:var(--hz-font-mono);font-size:12.5px;line-height:1.7;color:#cbd5e1;white-space:pre;overflow-x:auto;margin:0}</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Charts · Sankey diagram</div><h1>Sankey diagram</h1><p class="sub">Where volume moves between stages or states. Nodes are laid out in columns by depth; ribbon thickness is the flow weight. Hovering a node dims everything it does not touch.</p></div><div class="chips"><span class="chip">SankeyChart</span><span class="chip">links</span><span class="chip">nodes</span><span class="chip">linkColorMode</span></div></div>
+<section class="panel"><div class="label">01 · Acquisition → activation → outcome</div><div id="k1"></div></section>
+<section class="panel"><div class="label">02 · Tinted by target</div><div id="k2"></div></section>
+<section class="panel"><div class="label">03 · Usage</div><pre class="code">const { SankeyChart } = window.SQESuiteDesignSystem_2c1e79;
+
+&lt;SankeyChart
+  links={[{ source: 'Paid ads', target: 'Signup', value: 3200 }, …]}
+  nodes={[{ id: 'Paid ads', color: 'blue' }, …]}
+  valueFormatter={(v) =&gt; v.toLocaleString()}
+/&gt;</pre></section>
+</div>
+<script>
+const NS = window.SQESuiteDesignSystem_2c1e79;
+const h = React.createElement;
+const mount = (id, el) => ReactDOM.createRoot(document.getElementById(id)).render(el);
+const num = v => v.toLocaleString('en-US');
+const links = [
+  {source:'Paid ads',target:'Signup',value:3200},{source:'Organic',target:'Signup',value:4100},{source:'Referral',target:'Signup',value:1500},
+  {source:'Signup',target:'Activated',value:5300},{source:'Signup',target:'Dormant',value:3500},
+  {source:'Activated',target:'Paid',value:2100},{source:'Activated',target:'Free',value:3200}];
+const nodes = [{id:'Paid ads',color:'blue'},{id:'Organic',color:'teal'},{id:'Referral',color:'purple'},{id:'Signup',color:'neutral'},{id:'Activated',color:'green'},{id:'Dormant',color:'red'},{id:'Paid',color:'green'},{id:'Free',color:'yellow'}];
+mount('k1', h(NS.SankeyChart, { links, nodes, valueFormatter:num, height:380 }));
+mount('k2', h(NS.SankeyChart, { links, nodes, valueFormatter:num, height:320, linkColorMode:'target', linkOpacity:.24, nodePadding:14 }));
+</script>
+</body>
+</html>

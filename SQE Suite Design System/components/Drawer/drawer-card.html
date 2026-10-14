@@ -1,0 +1,53 @@
+<!-- @dsCard group="Components" name="Drawer / Sheet" subtitle="right-edge panel · sizes · loading · form" viewport="1200x760" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Drawer / Sheet</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.grid{display:grid;gap:32px;grid-template-columns:repeat(2,1fr)}
+.cell{display:flex;flex-direction:column;gap:10px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.stagebg{background:var(--hz-neutral-100);border-radius:10px;padding:0;display:flex;justify-content:flex-end;min-height:360px;overflow:hidden}
+.hz-drawer-overlay{position:static;background:none;width:100%}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Drawer / Sheet</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="grid">
+<div class="cell">
+<div class="label">Default</div>
+<div class="stagebg"><div class="hz-drawer-overlay"><div class="hz-drawer">
+<div class="hz-drawer__header"><div><div class="hz-drawer__title">Edit deal</div><div class="hz-drawer__desc">Berau Coal — Pit 4 Expansion</div></div><button class="hz-drawer__close"><i class="far fa-times"></i></button></div>
+<div class="hz-drawer__body">
+<div class="hz-field hz-field--stacked"><label class="hz-field__label">Deal name</label><div class="hz-field__control"><input class="hz-field__input" value="Berau Coal — Pit 4 Expansion"></div></div>
+<div class="hz-field hz-field--stacked"><label class="hz-field__label">Stage</label><div class="hz-select"><div class="hz-select__trigger"><span>Diligence</span><i class="far fa-chevron-down hz-select__chevron"></i></div></div></div>
+<div class="hz-field hz-field--stacked"><label class="hz-field__label">Notes</label><div class="hz-field__control hz-field__control--textarea"><textarea class="hz-field__textarea" placeholder="Add notes…"></textarea></div></div>
+</div>
+<div class="hz-drawer__footer"><button class="hz-btn hz-btn--secondary">Cancel</button><button class="hz-btn hz-btn--primary">Save</button></div>
+</div></div></div>
+</div>
+<div class="cell">
+<div class="label">Loading · small width</div>
+<div class="stagebg"><div class="hz-drawer-overlay"><div class="hz-drawer hz-drawer--sm hz-drawer--loading">
+<div class="hz-drawer__header"><div class="hz-drawer__title">Loading…</div><button class="hz-drawer__close"><i class="far fa-times"></i></button></div>
+<div class="hz-drawer__body">
+<div class="hz-skeleton hz-skeleton--text" style="width:80%"></div>
+<div class="hz-skeleton hz-skeleton--text" style="width:60%"></div>
+<div class="hz-skeleton" style="height:80px;border-radius:8px"></div>
+</div>
+</div></div></div>
+</div>
+</div>
+</section>
+</div>
+</body></html>

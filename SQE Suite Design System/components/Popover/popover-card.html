@@ -1,0 +1,59 @@
+<!-- @dsCard group="Components" name="Popover & Menu" subtitle="anchored panel · menu items · danger · disabled" viewport="1200x620" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Popover &amp; Menu</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.grid{display:grid;gap:32px;grid-template-columns:repeat(3,1fr)}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:10px}
+.hz-popover{position:static;display:inline-block}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Popover &amp; Menu</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="grid">
+<div>
+<div class="label">Dropdown menu · row actions</div>
+<div class="hz-popover" style="width:200px">
+<div class="hz-menu">
+<button class="hz-menu__item"><i class="far fa-eye" style="width:16px"></i>View details</button>
+<button class="hz-menu__item"><i class="far fa-pen" style="width:16px"></i>Edit</button>
+<button class="hz-menu__item"><i class="far fa-copy" style="width:16px"></i>Duplicate</button>
+<div class="hz-menu__separator"></div>
+<button class="hz-menu__item hz-menu__item--danger"><i class="far fa-trash-alt" style="width:16px"></i>Delete</button>
+<button class="hz-menu__item is-disabled"><i class="far fa-archive" style="width:16px"></i>Archive (locked)</button>
+</div>
+</div>
+</div>
+<div>
+<div class="label">Selectable menu · grouped, with check</div>
+<div class="hz-popover" style="width:220px">
+<div class="hz-menu">
+<div class="hz-menu__label">Status</div>
+<button class="hz-menu__item is-selected">All statuses<i class="far fa-check hz-menu__check"></i></button>
+<button class="hz-menu__item">Active<i class="far fa-check hz-menu__check"></i></button>
+<button class="hz-menu__item">Archived<i class="far fa-check hz-menu__check"></i></button>
+</div>
+</div>
+</div>
+<div>
+<div class="label">Popover · with header, empty content</div>
+<div class="hz-popover" style="width:260px">
+<div class="hz-popover__header">Filters</div>
+<div class="hz-popover__body hz-body-r hz-muted">No filters applied to this view yet.</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</body></html>

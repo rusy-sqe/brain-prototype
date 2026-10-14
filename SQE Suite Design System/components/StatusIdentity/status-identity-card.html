@@ -1,0 +1,107 @@
+<!-- @dsCard group="Components" name="Status & identity" subtitle="chip · alert · avatar · badge · progress" viewport="1200x900" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SQE Suite — Status &amp; identity</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+body{padding:48px;background:var(--hz-neutral-50);color:var(--hz-text-primary)}
+.page{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
+.head a{font-size:12px;color:var(--hz-text-tertiary);text-decoration:none}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hz-text-tertiary);font-weight:600}
+.section{background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:14px;padding:36px 40px}
+.grid{display:grid;gap:24px}
+.g-2{grid-template-columns:repeat(2,1fr)}
+.cell{display:flex;flex-direction:column;gap:8px}
+.label{font-size:11px;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.divider{border-top:1px solid var(--hz-border-subtle);margin:24px 0}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="head"><div><div class="eyebrow">Component</div><h1 class="hz-h3" style="margin:4px 0 0">Status &amp; identity</h1></div><a href="../../ui-kit.html">← UI Kit</a></div>
+<section class="section">
+<div class="grid g-2">
+<div class="cell">
+<div class="label">Chips · rest / active / disabled</div>
+<div class="row"><span class="hz-chip">All</span><span class="hz-chip hz-chip--active">Transfers</span><span class="hz-chip hz-chip--clickable">Payments</span><span class="hz-chip hz-chip--clickable">Bills</span><span class="hz-chip hz-chip--disabled">Archive</span></div>
+<div class="label" style="margin-top:14px">Chips · with leading icon</div>
+<div class="row">
+<span class="hz-chip"><i class="far fa-filter" style="font-size:14px"></i>Filter</span>
+<span class="hz-chip hz-chip--active"><i class="far fa-check" style="font-size:14px"></i>Selected</span>
+<span class="hz-chip hz-chip--clickable"><i class="far fa-calendar" style="font-size:14px"></i>This month</span>
+<span class="hz-chip hz-chip--clickable"><i class="far fa-tag" style="font-size:14px"></i>VIP</span>
+</div>
+<div class="label" style="margin-top:14px">Chips · trailing icon / closable</div>
+<div class="row">
+<span class="hz-chip hz-chip--clickable">Sort<i class="far fa-chevron-down" style="font-size:14px"></i></span>
+<span class="hz-chip hz-chip--active">Andini Rahman<button class="hz-chip__close" aria-label="Remove"><i class="far fa-times" style="font-size:12px"></i></button></span>
+<span class="hz-chip">Rp 1–5M<button class="hz-chip__close" aria-label="Remove"><i class="far fa-times" style="font-size:12px"></i></button></span>
+<span class="hz-chip hz-chip--info">Processing<button class="hz-chip__close" aria-label="Remove"><i class="far fa-times" style="font-size:12px"></i></button></span>
+</div>
+<div class="label" style="margin-top:14px">Chips · with avatar</div>
+<div class="row">
+<span class="hz-chip hz-chip--with-avatar"><span class="hz-avatar hz-avatar--sm">AR</span>Andini Rahman<button class="hz-chip__close" aria-label="Remove"><i class="far fa-times" style="font-size:12px"></i></button></span>
+<span class="hz-chip hz-chip--with-avatar"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-green-100);color:var(--hz-green-800)">DP</span>Daniel Putra</span>
+<span class="hz-chip hz-chip--with-avatar"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-orange-100);color:var(--hz-orange-800)">TS</span>Tania Suryadi</span>
+</div>
+<div class="label" style="margin-top:14px">Chips · large</div>
+<div class="row">
+<span class="hz-chip hz-chip--lg"><i class="far fa-wallet" style="font-size:16px"></i>All accounts</span>
+<span class="hz-chip hz-chip--lg hz-chip--active"><i class="far fa-check" style="font-size:16px"></i>Active</span>
+<span class="hz-chip hz-chip--lg hz-chip--clickable">Recipients<i class="far fa-chevron-down" style="font-size:16px"></i></span>
+</div>
+</div>
+<div class="cell">
+<div class="label">Avatars</div>
+<div class="row">
+<span class="hz-avatar hz-avatar--sm">SA</span>
+<span class="hz-avatar">RK</span>
+<span class="hz-avatar hz-avatar--lg">MW</span>
+<span class="hz-avatar" style="background:var(--hz-green-100);color:var(--hz-green-800)">DP</span>
+<span class="hz-avatar" style="background:var(--hz-orange-100);color:var(--hz-orange-800)">TS</span>
+</div>
+<div class="label" style="margin-top:14px">Badges · count</div>
+<div class="row" style="gap:22px;align-items:center">
+<span style="position:relative;display:inline-block;color:var(--hz-neutral-700)"><i class="far fa-bell" style="font-size:22px"></i><span class="hz-badge" style="position:absolute;top:-6px;right:-8px">3</span></span>
+<span style="position:relative;display:inline-block;color:var(--hz-neutral-700)"><i class="far fa-envelope" style="font-size:22px"></i><span class="hz-badge" style="position:absolute;top:-6px;right:-10px">12</span></span>
+<span style="position:relative;display:inline-block;color:var(--hz-neutral-700)"><i class="far fa-message" style="font-size:22px"></i><span class="hz-badge" style="position:absolute;top:-6px;right:-12px">99+</span></span>
+<span style="position:relative;display:inline-block;color:var(--hz-neutral-700)"><i class="far fa-user" style="font-size:22px"></i><span class="hz-badge hz-badge--dot" style="position:absolute;top:0;right:-2px;background:var(--hz-red-500)"></span></span>
+</div>
+<div class="label" style="margin-top:14px">Labels · with icon / icon hidden</div>
+<div class="row">
+<span class="hz-chip hz-chip--success"><i class="far fa-check-circle" style="font-size:14px"></i>Settled</span>
+<span class="hz-chip hz-chip--warn"><i class="far fa-clock" style="font-size:14px"></i>Pending</span>
+<span class="hz-chip hz-chip--danger"><i class="far fa-times-circle" style="font-size:14px"></i>Failed</span>
+<span class="hz-chip hz-chip--info"><i class="far fa-sync" style="font-size:14px"></i>Processing</span>
+</div>
+<div class="row" style="margin-top:6px">
+<span class="hz-chip hz-chip--success">Settled</span>
+<span class="hz-chip hz-chip--warn">Pending</span>
+<span class="hz-chip hz-chip--danger">Failed</span>
+<span class="hz-chip hz-chip--info">Processing</span>
+</div>
+</div>
+</div>
+<div class="divider"></div>
+<div class="grid g-2">
+<div class="cell">
+<div class="label">Alerts</div>
+<div class="hz-alert hz-alert--info hz-body-l"><b>Statement ready.</b> October e-statement available for download.</div>
+<div class="hz-alert hz-alert--success hz-body-l"><b>Transfer complete.</b> Rp 2,500,000 sent to Andini Rahman.</div>
+<div class="hz-alert hz-alert--warn hz-body-l"><b>Session ends in 2:00.</b> Save work before it expires.</div>
+<div class="hz-alert hz-alert--danger hz-body-l"><b>Card declined.</b> Check the CVV and try again.</div>
+</div>
+<div class="cell">
+<div class="label">Progress</div>
+<div><div class="row" style="justify-content:space-between"><span class="hz-body-r">Funding goal</span><span class="hz-body-s hz-muted">Rp 340M / 500M</span></div><div class="hz-progress" style="margin-top:8px"><div class="hz-progress__bar" style="width:68%"></div></div></div>
+<div><div class="row" style="justify-content:space-between"><span class="hz-body-r">Portfolio health</span><span class="hz-body-s hz-muted">93%</span></div><div class="hz-progress" style="margin-top:8px"><div class="hz-progress__bar" style="width:93%;background:var(--hz-green-500)"></div></div></div>
+<div><div class="row" style="justify-content:space-between"><span class="hz-body-r">Onboarding</span><span class="hz-body-s hz-muted">40%</span></div><div class="hz-progress" style="margin-top:8px"><div class="hz-progress__bar" style="width:40%;background:var(--hz-yellow-500)"></div></div></div>
+</div>
+</div>
+</section>
+</div>
+</body></html>
