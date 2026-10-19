@@ -14,8 +14,8 @@
 <style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)} .hz-table--compact td{padding:8px 10px !important}
 .source-preview__bubble{opacity:0;visibility:hidden;transition:opacity .12s}
 .source-preview:hover .source-preview__bubble{opacity:1;visibility:visible}
-.cite-preview__bubble{opacity:0;visibility:hidden;transition:opacity .12s}
-.cite-preview:hover .cite-preview__bubble{opacity:1;visibility:visible}
+.cite-preview__bubble{display:none}
+.cite-preview:hover .cite-preview__bubble{display:block}
 .cite-preview__bubble a:hover{text-decoration:underline}</style>
 </helmet>
 <div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:{{ sidebarGridCols }}">
@@ -75,7 +75,7 @@
   </div>
   <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
     <button class="hz-account-trigger" style="width:100%;justify-content:{{ accountJustify }}">
-      <span class="hz-avatar hz-avatar--sm">TU</span>
+      
       <sc-if value="{{ !sidebarCollapsed }}" hint-placeholder-val="{{ true }}">
         <span><span class="hz-account-trigger__name" style="display:block">Test User</span></span>
         <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
@@ -370,14 +370,17 @@
                 </sc-if>
                 <sc-if value="{{ msg.isDone }}" hint-placeholder-val="{{ false }}">
                   <sc-if value="{{ msg.isPlainDone }}" hint-placeholder-val="{{ true }}">
-                    <div style="font-size:14px;color:var(--hz-text-primary);line-height:1.5">{{ msg.text }}<span class="cite-preview" style="position:relative;display:inline-flex;vertical-align:middle">
-                      <span style="display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;margin-left:4px;background:#fff;color:var(--hz-text-secondary);border-radius:999px;font-size:10px;font-weight:700;cursor:pointer">1</span>
-                      <span class="hz-tooltip hz-tooltip--bottom cite-preview__bubble" style="position:absolute;top:calc(100% + 10px);left:0;z-index:60;width:260px">
-                        <span class="hz-tooltip__arrow" style="left:10px"></span>
-                        <span class="hz-tooltip__row" style="flex-direction:column;align-items:flex-start;gap:4px">
-                          <span class="hz-tooltip__text" style="font-size:12px;font-weight:700">{{ msg.plainSources.0.label }}</span>
-                          <span class="hz-tooltip__text" style="font-size:12px;line-height:1.4;color:rgba(255,255,255,.72)">{{ msg.plainCitePreview }}</span>
-                          <a href="{{ msg.plainSourceUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:#fff;font-size:12px;font-weight:700;margin-top:2px">Open source<i class="far fa-external-link" style="font-size:10px"></i></a>
+                    <div style="font-size:14px;color:var(--hz-text-primary);line-height:1.5">{{ msg.text }}<span class="cite-preview" onMouseEnter="{{ msg.plainCite.enter }}" style="position:relative;display:inline-flex;vertical-align:middle;margin-left:6px">
+                      <span style="display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 8px 0 3px;background:var(--hz-neutral-100);color:var(--hz-text-secondary);border-radius:999px;font-size:11px;font-weight:600;line-height:1;cursor:pointer;white-space:nowrap;transition:background .12s,color .12s" style-hover="background:var(--hz-neutral-200);color:var(--hz-text-primary)"><span style="width:16px;height:16px;border-radius:999px;background:var(--hz-surface-card);color:var(--hz-horizon-primary);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700">{{ msg.plainCite.initial }}</span>{{ msg.plainCite.pill }}<span style="font-weight:400;color:var(--hz-text-tertiary, var(--hz-neutral-500))">{{ msg.plainCite.more }}</span></span>
+                      <span class="cite-preview__bubble" style="position:fixed;top:0;left:0;z-index:200;padding-top:8px;width:360px;max-width:calc(100vw - 32px)">
+                        <span style="display:flex;flex-direction:column;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:16px;box-shadow:var(--hz-shadow-lg);padding:6px 0;text-align:left;max-height:min(360px, calc(100vh - 48px));overflow-y:auto">
+                          <sc-for list="{{ msg.plainCite.items }}" as="src" hint-placeholder-count="2">
+                            <a href="{{ src.url }}" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:6px;margin:0 6px;padding:12px 12px;border-radius:10px;border-top:{{ src.divider }};color:inherit;text-decoration:none" style-hover="background:var(--hz-neutral-50)">
+                              <span style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--hz-text-secondary)"><span style="width:16px;height:16px;border-radius:4px;background:var(--hz-horizon-primary-pale);color:var(--hz-horizon-primary);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;flex-shrink:0">{{ src.initial }}</span>{{ src.publisher }}</span>
+                              <span style="font-size:14px;font-weight:600;line-height:1.35;color:var(--hz-text-primary);text-wrap:pretty">{{ src.title }}</span>
+                              <span style="font-size:12px;color:var(--hz-text-secondary)">{{ src.date }}</span>
+                            </a>
+                          </sc-for>
                         </span>
                       </span>
                     </span></div>
@@ -386,7 +389,7 @@
                       <div style="display:flex;flex-wrap:wrap;gap:8px">
                         <sc-for list="{{ msg.plainSources }}" as="src" hint-placeholder-count="3">
                           <span class="source-preview" style="position:relative;display:inline-flex">
-                            <span class="hz-chip" style="font-size:12px;padding:5px 10px;background:var(--hz-blue-50);color:var(--hz-horizon-primary);border:none;cursor:pointer;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span style="font-weight:700;margin-right:4px">{{ src.num }}.</span>{{ src.label }}<i class="far fa-external-link" style="font-size:10px;margin-left:6px"></i></span>
+                            <span class="hz-chip" style="font-size:12px;padding:5px 10px;background:transparent;color:var(--hz-horizon-primary);border:1px solid var(--hz-border-subtle);cursor:pointer;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span style="font-weight:700;margin-right:4px">{{ src.num }}.</span>{{ src.label }}<i class="far fa-external-link" style="font-size:10px;margin-left:6px"></i></span>
                             <span class="hz-tooltip hz-tooltip--bottom source-preview__bubble" style="position:absolute;top:calc(100% + 10px);left:0;z-index:60;width:260px">
                               <span class="hz-tooltip__arrow" style="left:16px"></span>
                               <span class="hz-tooltip__row"><span class="hz-tooltip__text" style="font-size:12px;line-height:1.4">{{ src.label }}</span></span>
@@ -397,7 +400,7 @@
                       <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--hz-text-secondary);margin-top:4px"><i class="far fa-file"></i>Files</div>
                       <div style="display:flex;flex-wrap:wrap;gap:8px">
                         <sc-for list="{{ msg.plainFiles }}" as="file" hint-placeholder-count="1">
-                          <span class="hz-chip" style="font-size:12px;padding:5px 10px;background:var(--hz-orange-50, #fff4e5);color:var(--hz-orange-600, #b5540a);border:none;cursor:pointer"><i class="far fa-file-excel" style="margin-right:6px"></i>{{ file.name }}</span>
+                          <span class="hz-chip" style="font-size:12px;padding:5px 10px;background:transparent;color:var(--hz-orange-600, #b5540a);border:1px solid var(--hz-border-subtle);cursor:pointer"><i class="far fa-file-excel" style="margin-right:6px"></i>{{ file.name }}</span>
                         </sc-for>
                       </div>
                     </div>
@@ -408,17 +411,20 @@
                       <div style="display:flex;flex-direction:column;gap:10px">
                         <sc-for list="{{ msg.richItems }}" as="it" hint-placeholder-count="3">
                           <div style="font-size:14px;line-height:1.5;color:var(--hz-text-primary)">
-                            <span style="font-weight:700">{{ it.title }}</span> {{ it.desc }}<span class="cite-preview" style="position:relative;display:inline-flex;vertical-align:middle">
-                              <span style="display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;margin-left:4px;background:#fff;color:var(--hz-text-secondary);border-radius:999px;font-size:10px;font-weight:700;cursor:pointer">{{ it.num }}</span>
-                              <span class="hz-tooltip hz-tooltip--bottom cite-preview__bubble" style="position:absolute;top:calc(100% + 10px);left:0;z-index:60;width:260px">
-                                <span class="hz-tooltip__arrow" style="left:10px"></span>
-                                <span class="hz-tooltip__row" style="flex-direction:column;align-items:flex-start;gap:4px">
-                                  <span class="hz-tooltip__text" style="font-size:12px;font-weight:700">{{ it.citeSource }}</span>
-                                  <span class="hz-tooltip__text" style="font-size:12px;line-height:1.4;color:rgba(255,255,255,.72)">{{ it.citePreview }}</span>
-                                  <a href="{{ it.citeUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:#fff;font-size:12px;font-weight:700;margin-top:2px">Open source<i class="far fa-external-link" style="font-size:10px"></i></a>
-                                </span>
-                              </span>
-                            </span>
+                            <span style="font-weight:700">{{ it.title }}</span> {{ it.desc }}<span class="cite-preview" onMouseEnter="{{ it.cite.enter }}" style="position:relative;display:inline-flex;vertical-align:middle;margin-left:6px">
+                      <span style="display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 8px 0 3px;background:var(--hz-neutral-100);color:var(--hz-text-secondary);border-radius:999px;font-size:11px;font-weight:600;line-height:1;cursor:pointer;white-space:nowrap;transition:background .12s,color .12s" style-hover="background:var(--hz-neutral-200);color:var(--hz-text-primary)"><span style="width:16px;height:16px;border-radius:999px;background:var(--hz-surface-card);color:var(--hz-horizon-primary);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700">{{ it.cite.initial }}</span>{{ it.cite.pill }}<span style="font-weight:400;color:var(--hz-text-tertiary, var(--hz-neutral-500))">{{ it.cite.more }}</span></span>
+                      <span class="cite-preview__bubble" style="position:fixed;top:0;left:0;z-index:200;padding-top:8px;width:360px;max-width:calc(100vw - 32px)">
+                        <span style="display:flex;flex-direction:column;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:16px;box-shadow:var(--hz-shadow-lg);padding:6px 0;text-align:left;max-height:min(360px, calc(100vh - 48px));overflow-y:auto">
+                          <sc-for list="{{ it.cite.items }}" as="src" hint-placeholder-count="2">
+                            <a href="{{ src.url }}" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:6px;margin:0 6px;padding:12px 12px;border-radius:10px;border-top:{{ src.divider }};color:inherit;text-decoration:none" style-hover="background:var(--hz-neutral-50)">
+                              <span style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--hz-text-secondary)"><span style="width:16px;height:16px;border-radius:4px;background:var(--hz-horizon-primary-pale);color:var(--hz-horizon-primary);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;flex-shrink:0">{{ src.initial }}</span>{{ src.publisher }}</span>
+                              <span style="font-size:14px;font-weight:600;line-height:1.35;color:var(--hz-text-primary);text-wrap:pretty">{{ src.title }}</span>
+                              <span style="font-size:12px;color:var(--hz-text-secondary)">{{ src.date }}</span>
+                            </a>
+                          </sc-for>
+                        </span>
+                      </span>
+                    </span>
                           </div>
                         </sc-for>
                       </div>
@@ -428,7 +434,7 @@
                         <div style="display:flex;flex-wrap:wrap;gap:8px">
                           <sc-for list="{{ msg.richSources }}" as="src" hint-placeholder-count="4">
                             <span class="source-preview" style="position:relative;display:inline-flex">
-                              <span class="hz-chip" style="font-size:12px;padding:5px 10px;background:var(--hz-blue-50);color:var(--hz-horizon-primary);border:none;cursor:pointer;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ src.label }}<i class="far fa-external-link" style="font-size:10px;margin-left:6px"></i></span>
+                              <span class="hz-chip" style="font-size:12px;padding:5px 10px;background:transparent;color:var(--hz-horizon-primary);border:1px solid var(--hz-border-subtle);cursor:pointer;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ src.label }}<i class="far fa-external-link" style="font-size:10px;margin-left:6px"></i></span>
                               <span class="hz-tooltip hz-tooltip--bottom source-preview__bubble" style="position:absolute;top:calc(100% + 10px);left:0;z-index:60;width:260px">
                                 <span class="hz-tooltip__arrow" style="left:16px"></span>
                                 <span class="hz-tooltip__row"><span class="hz-tooltip__text" style="font-size:12px;line-height:1.4">{{ src.label }}</span></span>
@@ -439,7 +445,7 @@
                         <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--hz-text-secondary);margin-top:4px"><i class="far fa-file"></i>Files</div>
                         <div style="display:flex;flex-wrap:wrap;gap:8px">
                           <sc-for list="{{ msg.richFiles }}" as="file" hint-placeholder-count="2">
-                            <span class="hz-chip" style="font-size:12px;padding:5px 10px;background:var(--hz-orange-50, #fff4e5);color:var(--hz-orange-600, #b5540a);border:none;cursor:pointer"><i class="far fa-file-powerpoint" style="margin-right:6px"></i>{{ file.name }}</span>
+                            <span class="hz-chip" style="font-size:12px;padding:5px 10px;background:transparent;color:var(--hz-orange-600, #b5540a);border:1px solid var(--hz-border-subtle);cursor:pointer"><i class="far fa-file-powerpoint" style="margin-right:6px"></i>{{ file.name }}</span>
                           </sc-for>
                         </div>
                       </div>
@@ -583,6 +589,27 @@ class Component extends DCLogic {
     "Let me check the pipeline and recent activity on this first.",
     "Looking into the records now to get you an accurate answer."
   ];
+  citePublishers = ['Motley Fool', 'Yahoo Finance', 'Investopedia', 'Reuters', 'Barron\'s', 'Bloomberg'];
+  citeDates = ['Oct 14, 2026', 'Oct 9, 2026', 'Sep 30, 2026', 'Sep 22, 2026'];
+  citeEnter = (e) => {
+    const pill = e.currentTarget, b = pill.querySelector('.cite-preview__bubble'); if (!b) return;
+    const r = pill.getBoundingClientRect(), w = Math.min(360, window.innerWidth - 32);
+    const box = pill.closest('[style*="overflow"]')?.getBoundingClientRect() || { left: 16, right: window.innerWidth - 16 };
+    let left = Math.min(r.left, Math.min(box.right, window.innerWidth - 16) - w);
+    left = Math.max(left, Math.max(box.left, 16));
+    b.style.left = left + 'px';
+    const bh = b.offsetHeight || 0, below = window.innerHeight - r.bottom - 16, above = r.top - 16;
+    if (bh > below && above > below) { b.style.paddingTop = '0'; b.style.paddingBottom = '8px'; b.style.top = Math.max(16, r.top - bh) + 'px'; }
+    else { b.style.paddingTop = '8px'; b.style.paddingBottom = '0'; b.style.top = r.bottom + 'px'; }
+  };
+  buildCite(key, list) {
+    const n = list.length, idx = ((this.state.citeIdx || {})[key] || 0) % n, s = list[idx];
+    const go = (d) => (e) => { e.preventDefault(); e.stopPropagation(); this.setState(st => ({ citeIdx: { ...(st.citeIdx || {}), [key]: (idx + d + n) % n } })); };
+    const items = list.map((x, j) => ({ publisher: x.publisher, initial: (x.publisher || '?').charAt(0).toUpperCase(), title: (x.title || '').replace(/\.\.\.$/, '…'), date: this.citeDates[j % this.citeDates.length], url: 'https://www.google.com/search?q=' + encodeURIComponent(x.title || ''), divider: j ? '1px solid var(--hz-border-subtle)' : 'none' }));
+    return { items, pill: list[0].publisher, more: n > 1 ? '+' + (n - 1) : '', page: (idx + 1) + '/' + n, publisher: s.publisher, initial: (list[0].publisher || '?').charAt(0).toUpperCase(),
+      title: (s.title || '').replace(/\.\.\.$/, '…'), date: this.citeDates[idx % this.citeDates.length], snippet: 'Excerpt of the cited passage from ' + s.publisher + ' that supports this point in the answer.',
+      url: 'https://www.google.com/search?q=' + encodeURIComponent(s.title || ''), prev: go(-1), next: go(1), enter: this.citeEnter };
+  }
   plainReplySources = ["Q3 2026 Pipeline Export.csv", "Internal Deal Notes — Sourcing Team", "SEA Market Activity Tracker"];
   plainReplyFiles = ["pipeline_export_q3.xlsx"];
   copilotReplies = [
@@ -1410,10 +1437,11 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
         isPlainDone: m.role === 'assistant' && m.status === 'done' && !m.isRich,
         plainSources: m.role === 'assistant' && m.status === 'done' && !m.isRich ? this.plainReplySources.map((s, i) => ({ label: s, num: i + 1 })) : [],
         plainFiles: m.role === 'assistant' && m.status === 'done' && !m.isRich ? this.plainReplyFiles.map(f => ({ name: f })) : [],
+        plainCite: this.buildCite(m.id + '-p', this.plainReplySources.map(s => ({ title: s, publisher: s.includes('—') ? s.split('—')[1].trim() : (s.includes('.') ? 'Uploaded file' : 'Internal tracker') }))),
         plainCitePreview: 'Pulled from ' + this.plainReplySources[0] + ' — a short preview excerpt of the cited passage would appear here.',
         plainSourceUrl: 'https://www.google.com/search?q=' + encodeURIComponent(this.plainReplySources[0] || ''),
         richHeading: m.rich ? m.rich.heading : '',
-        richItems: m.rich ? m.rich.items.map((it, i) => ({ num: i + 1, title: it.title, desc: it.desc, citeSource: m.rich.sources[i % m.rich.sources.length], citePreview: (m.rich.sources[i % m.rich.sources.length] || '') + ' — full article text would appear here as a short preview excerpt.', citeUrl: 'https://www.google.com/search?q=' + encodeURIComponent(m.rich.sources[i % m.rich.sources.length] || '') })) : [],
+        richItems: m.rich ? m.rich.items.map((it, i) => ({ cite: this.buildCite(m.id + '-r' + i, [0, 1].map(o => ({ title: m.rich.sources[(i + o) % m.rich.sources.length], publisher: this.citePublishers[(i + o) % this.citePublishers.length] }))), num: i + 1, title: it.title, desc: it.desc, citeSource: m.rich.sources[i % m.rich.sources.length], citePreview: (m.rich.sources[i % m.rich.sources.length] || '') + ' — full article text would appear here as a short preview excerpt.', citeUrl: 'https://www.google.com/search?q=' + encodeURIComponent(m.rich.sources[i % m.rich.sources.length] || '') })) : [],
         richFooter: m.rich ? m.rich.footer : '',
         richSources: m.rich ? m.rich.sources.map(s => ({ label: s })) : [],
         richFiles: m.rich ? m.rich.files.map(f => ({ name: f })) : [],

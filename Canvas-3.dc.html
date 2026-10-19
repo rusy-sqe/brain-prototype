@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:220px minmax(0,1fr) minmax(300px,30vw);color:var(--hz-text-primary)">
+
+<div class="hz-sidebar" style="width:220px;height:100vh;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+  <div style="padding:14px 14px 12px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <img src="uploads/logo-brain-light.svg" alt="Brain" style="height:22px;width:auto">
+      <button class="hz-sidebar__collapse-btn" title="Collapse sidebar"><i class="far fa-columns" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:10px;padding:6px 8px">
+      <span style="min-width:0"><span class="hz-account-trigger__name" style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Combined (M&amp;A + Investment)</span></span>
+      <i class="far fa-sort hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+  </div>
+  <div style="padding:8px 6px;flex:1;min-height:0;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label" style="display:flex;align-items:center;gap:2px">
+        <span style="flex:1">Bots</span>
+        <button title="New bot" style="border:none;background:none;cursor:pointer;color:var(--hz-text-tertiary);width:22px;height:22px;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;padding:0" style-hover="background:var(--hz-neutral-100);color:var(--hz-horizon-primary)"><i class="far fa-plus" style="font-size:12px"></i></button>
+        <button title="Manage bots" style="border:none;background:none;cursor:pointer;color:var(--hz-horizon-primary);height:22px;border-radius:4px;display:inline-flex;align-items:center;gap:4px;padding:0 6px;font-family:inherit;font-size:11px;font-weight:600;text-transform:none;letter-spacing:0" style-hover="background:var(--hz-neutral-100)"><i class="far fa-sliders-h" style="font-size:11px"></i>Manage</button>
+      </div>
+      <div class="hz-sidebar__group-items">
+        <sc-for list="{{ sidebarBots }}" as="b" hint-placeholder-count="5">
+          <div class="hz-sidebar__item {{ b.activeClass }}" style="cursor:pointer" onClick="{{ b.select }}">
+            <span style="width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><dc-import name="RoboAvatar" size="{{ 18 }}" color="{{ b.color }}" hint-size="18px,18px"></dc-import></span>
+            <span class="hz-sidebar__label">{{ b.name }}</span>
+          </div>
+        </sc-for>
+        <sc-if value="{{ hasMoreBots }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ toggleMoreBots }}" style="border:none;background:none;cursor:pointer;font-family:inherit;text-align:left;padding:4px 10px;font-size:12px;color:var(--hz-text-tertiary)" style-hover="color:var(--hz-horizon-primary)">{{ moreBotsLabel }}</button>
+        </sc-if>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-th-large" style="font-size:15px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-bullseye" style="font-size:15px"></i><span class="hz-sidebar__label">Sourcing</span><span class="hz-badge" style="margin-left:auto;background:var(--hz-red-600);color:var(--hz-neutral-0)">14</span></a>
+        <a href="Pipeline v2.3.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-code-branch" style="font-size:15px"></i><span class="hz-sidebar__label">Pipeline</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:15px"></i><span class="hz-sidebar__label">Master Data</span></div>
+        <a href="CRM v2.3.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-user-friends" style="font-size:15px"></i><span class="hz-sidebar__label">CRM</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-university" style="font-size:15px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-file-invoice-dollar" style="font-size:15px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-file-search" style="font-size:15px"></i><span class="hz-sidebar__label">Insights</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-copy" style="font-size:15px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-circle" style="font-size:15px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-presentation" style="font-size:15px"></i><span class="hz-sidebar__label">Presentation</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:10px 14px;border-top:1px solid var(--hz-border-subtle);display:flex;align-items:center;gap:12px">
+    <span style="font-size:14px;flex:1">Test User</span>
+    <i class="far fa-tasks" style="font-size:14px;color:var(--hz-text-secondary)"></i>
+    <span style="position:relative;display:inline-flex"><i class="far fa-bell" style="font-size:14px;color:var(--hz-text-secondary)"></i><span style="position:absolute;top:-2px;right:-3px;width:6px;height:6px;border-radius:50%;background:var(--hz-horizon-primary)"></span></span>
+    <i class="far fa-ellipsis-h" style="font-size:14px;color:var(--hz-text-secondary)"></i>
+  </div>
+</div>
+
+<div style="min-width:0;overflow-y:auto;display:flex;flex-direction:column">
+  <div style="height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:flex-end;padding:0 20px;border-bottom:1px solid var(--hz-border-subtle);background:var(--hz-surface-card)">
+    <button class="hz-btn hz-btn--text hz-btn--sm"><i class="far fa-expand-alt"></i>Expand</button>
+  </div>
+  <div style="height:28px;flex-shrink:0;background:var(--hz-horizon-primary-pale)"></div>
+  <div style="padding:24px 24px 32px;display:flex;flex-direction:column;gap:32px">
+    <sc-for list="{{ groups }}" as="g" hint-placeholder-count="2">
+      <section style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+          <span class="hz-h6" style="margin:0;font-size:15px">{{ g.title }}</span>
+          <span style="font-size:13px;color:var(--hz-text-tertiary)">{{ g.count }}</span>
+          <span style="font-size:13px;color:var(--hz-text-secondary)">{{ g.desc }}</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px">
+          <sc-for list="{{ g.bots }}" as="b" hint-placeholder-count="3">
+            <div class="hz-card" style="padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0">
+              <div style="display:flex;align-items:flex-start;gap:12px">
+                <span style="width:40px;height:40px;flex-shrink:0;display:flex;align-items:center;justify-content:center"><dc-import name="RoboAvatar" size="{{ 40 }}" color="{{ b.color }}" hint-size="40px,40px"></dc-import></span>
+                <div style="flex:1;min-width:0">
+                  <div style="font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ b.name }}</div>
+                  <div style="font-size:12px;color:var(--hz-text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ b.workspace }}</div>
+                </div>
+                <span class="hz-badge hz-badge--soft" style="flex-shrink:0;background:var(--hz-neutral-100);color:var(--hz-text-secondary);gap:4px;font-weight:600"><i class="far fa-{{ b.badgeIcon }}" style="font-size:10px"></i>{{ b.badge }}</span>
+              </div>
+              <div style="font-size:13px;line-height:1.45;color:var(--hz-text-secondary);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:38px">{{ b.instructions }}</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <sc-for list="{{ b.tools }}" as="t" hint-placeholder-count="2">
+                  <span class="hz-badge hz-badge--outline" style="color:var(--hz-text-primary);font-weight:400">{{ t }}</span>
+                </sc-for>
+              </div>
+              <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin-top:auto">
+                <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ b.chat }}"><i class="far fa-comment-alt"></i>Chat</button>
+                <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far fa-pen"></i>Edit</button>
+                <button class="hz-btn hz-btn--text hz-btn--sm" title="Schedule routine" style="padding:0 6px;margin-left:auto"><i class="far fa-calendar-alt"></i></button>
+                <button class="hz-btn hz-btn--text hz-btn--sm" title="Tasks" style="padding:0 6px"><i class="far fa-tasks"></i></button>
+                <sc-if value="{{ b.deletable }}" hint-placeholder-val="{{ true }}">
+                  <button class="hz-btn hz-btn--text hz-btn--sm" title="Delete" style="padding:0 6px"><i class="far fa-trash-alt"></i></button>
+                </sc-if>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </sc-for>
+  </div>
+</div>
+
+<div style="height:100vh;border-left:1px solid var(--hz-border-subtle);background:var(--hz-surface-card);display:flex;flex-direction:column;min-width:0">
+  <div style="display:flex;align-items:center;gap:4px;padding:10px 12px;border-bottom:1px solid var(--hz-border-subtle)">
+    <sc-for list="{{ chatTabs }}" as="t" hint-placeholder-count="4">
+      <button onClick="{{ t.select }}" style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 8px;border-radius:8px;border:1px solid {{ t.border }};background:{{ t.bg }};cursor:pointer;font-family:inherit;min-width:56px">
+        <span style="position:relative;width:28px;height:28px;border-radius:50%;background:var(--hz-neutral-100);display:flex;align-items:center;justify-content:center;color:var(--hz-text-secondary)"><i class="far fa-{{ t.icon }}" style="font-size:13px"></i>
+          <sc-if value="{{ t.hasCount }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;bottom:-3px;right:-6px;font-size:9px;font-weight:700;background:var(--hz-neutral-900);color:var(--hz-neutral-0);border-radius:999px;padding:1px 4px">{{ t.count }}</span></sc-if>
+        </span>
+        <span style="font-size:11px;color:{{ t.color }};font-weight:{{ t.weight }}">{{ t.label }}</span>
+      </button>
+    </sc-for>
+    
+    <button class="hz-btn hz-btn--text hz-btn--sm" title="Expand chat" style="padding:0 8px"><i class="far fa-expand-alt"></i></button>
+  </div>
+  <div style="flex:1;min-height:0;overflow-y:auto;padding:16px 20px;font-size:14px;line-height:1.55;display:flex;flex-direction:column;gap:12px">
+    <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px">
+      <li><strong>Reviewed Shopping List Co</strong> (Indonesia retail, L1): revenue $37.8M, EBITDA $6.0M. The financials and geography fit, but the segment is off-thesis.</li>
+      <li><strong>Blue Harbor Logistics</strong> (Indonesia freight forwarding, L1): revenue $134.5M, EBITDA $18.1M, EV $410M. It is well above the seed $10–50M revenue range.</li>
+      <li><strong>Ember Renewables</strong> (Vietnam clean energy, L1): revenue $74.3M, EBITDA $12.4M. Also above the range.</li>
+      <li><strong>Project Atlas</strong> (industrial automation) is US-based and <strong>Project Delphi</strong> (AI/SaaS) is India-based, so both fail the Southeast Asia screen.</li>
+      <li><strong>Cinder Foods</strong> has no EBITDA on file.</li>
+    </ul>
+    <p style="margin:0">I can run deeper freshness checks on Reviewed Shopping List Co and Blue Harbor Logistics, or review which L0s should be promoted or dropped. Which would you prefer?</p>
+    <div style="display:flex;flex-wrap:wrap;gap:6px">
+      <sc-for list="{{ links }}" as="l" hint-placeholder-count="4">
+        <a href="#" class="hz-chip hz-chip--clickable" style="text-decoration:none;color:var(--hz-horizon-primary);border-color:var(--hz-horizon-primary-soft);background:var(--hz-horizon-primary-pale);font-size:12px;gap:4px">{{ l }}<i class="far fa-external-link" style="font-size:10px"></i></a>
+      </sc-for>
+    </div>
+  </div>
+  <div style="padding:12px;border-top:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;gap:8px;border:1px solid var(--hz-border-default);border-radius:12px;padding:8px 8px 8px 12px">
+      <i class="far fa-paperclip" style="color:var(--hz-text-tertiary);font-size:14px"></i>
+      <input placeholder="Ask anything..." style="flex:1;min-width:0;border:none;outline:none;font-family:inherit;font-size:14px;background:transparent;color:var(--hz-text-primary)">
+      <button class="hz-btn hz-btn--primary hz-btn--sm" title="Send" style="width:36px;padding:0;justify-content:center"><i class="far fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { activeBot: 'Copilot', chatTab: 'Copilot', showAllBots: false };
+  bots = [
+    { name: 'CRM Concierge', color: '#f97316', workspace: 'M&A / Acquisitions', badge: 'Yours', badgeIcon: 'user-friends', group: 'shared', instructions: '## Focus You look after relationships. When asked about a firm or banker, pull the latest interactions and owners.', tools: ['CRM', 'Email'] },
+    { name: 'Copilot', color: '#3b82f6', workspace: 'M&A / Acquisitions', badge: 'Default', badgeIcon: 'user-friends', group: 'shared', instructions: 'No extra instructions.', tools: ['Bot builder', 'Routines'], fixed: true },
+    { name: 'Deal Scout', color: '#14b8a6', workspace: 'M&A / Acquisitions', badge: 'Yours', badgeIcon: 'user-friends', group: 'shared', instructions: '## Focus You hunt for new deals. Lead with what changed in the market this week, then list matches.', tools: ['Pipeline', 'Web research'] },
+    { name: 'Market Watch', color: '#8b5cf6', workspace: 'M&A / Acquisitions', badge: 'Yours', badgeIcon: 'user-friends', group: 'shared', instructions: '## Focus You track sectors and comparables. Answer with the numbers first, then the context.', tools: ['Web research', 'Insights'] },
+    { name: 'Deal Pipeline Scanner', color: '#10b981', workspace: 'Combined (M&A + Investment)', badge: 'Private', badgeIcon: 'lock', group: 'private', instructions: '# Deal Pipeline Scanner You scan the deal pipeline for what needs attention and why, ranked by urgency.', tools: ['Pipeline', 'Web research', 'Relationships', 'Insights'] },
+    { name: 'Project Manager', color: '#0ea5e9', workspace: 'Combined (M&A + Investment)', badge: 'Private', badgeIcon: 'lock', group: 'private', instructions: '# Project Manager You keep deal workstreams moving. You work over the open tasks and flag blockers.', tools: ['Pipeline', 'CRM', 'Email', 'Routines'] }
+  ];
+  renderVals() {
+    const mk = (b) => ({ ...b, deletable: !b.fixed, chat: () => this.setState({ activeBot: b.name, chatTab: 'Copilot' }) });
+    const shared = this.bots.filter(b => b.group === 'shared').map(mk);
+    const priv = this.bots.filter(b => b.group === 'private').map(mk);
+    const pinned = ['CRM Concierge', 'Copilot', 'Deal Pipeline Scanner', 'Deal Scout', 'Market Watch'];
+    const extra = this.bots.map(b => b.name).filter(n => !pinned.includes(n));
+    const sideNames = this.state.showAllBots ? pinned.concat(extra) : pinned;
+    const tabs = [
+      { label: 'Copilot', icon: 'robot' }, { label: 'All bots', icon: 'th-large', count: '+5' },
+      { label: 'New bot', icon: 'plus' }, { label: 'Manage', icon: 'sliders-h' }
+    ];
+    return {
+      sidebarBots: sideNames.map(n => { const b = this.bots.find(x => x.name === n); return { name: n, color: b.color, activeClass: this.state.activeBot === n ? 'is-active' : '', select: () => this.setState({ activeBot: n }) }; }),
+      hasMoreBots: extra.length > 0,
+      moreBotsLabel: this.state.showAllBots ? 'Show less' : 'Show more (+' + extra.length + ')',
+      toggleMoreBots: () => this.setState(s => ({ showAllBots: !s.showAllBots })),
+      groups: [
+        { title: 'Shared', count: shared.length, desc: 'Everyone in the workspace can chat with and edit these bots.', bots: shared },
+        { title: 'Private', count: priv.length, desc: 'Only you can see these bots.', bots: priv }
+      ],
+      chatTabs: tabs.map(t => { const on = this.state.chatTab === t.label; return { ...t, hasCount: !!t.count, border: on ? 'var(--hz-border-subtle)' : 'transparent', bg: on ? 'var(--hz-neutral-50)' : 'transparent', color: on ? 'var(--hz-text-primary)' : 'var(--hz-text-tertiary)', weight: on ? 600 : 400, select: () => this.setState({ chatTab: t.label }) }; }),
+      links: ['Open Blue Harbor Logistics', 'Open Reviewed Shopping List Co', 'Open Reviewed Teaser Co', 'Open Ember Renewables', 'Open Project Atlas', 'Open Project Delphi', 'Open Cinder Foods']
+    };
+  }
+}
+</script>
+</body>
+</html>
