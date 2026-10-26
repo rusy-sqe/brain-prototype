@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:220px minmax(0,1fr)">
+
+<div class="hz-sidebar" style="width:220px;height:100vh;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <img src="uploads/logo-brain-light-d6a97625.svg" alt="Investment Brain" style="height:24px;width:auto">
+      <button class="hz-sidebar__collapse-btn" title="Toggle sidebar"><i class="far fa-angle-double-left" style="font-size:12px"></i></button>
+    </div>
+    <button class="hz-account-trigger" style="width:100%;margin-top:12px;padding:6px 2px;justify-content:space-between">
+      <span style="font-weight:600;color:var(--hz-text-secondary)">M&amp;A Team</span>
+      <i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i>
+    </button>
+    
+  </div>
+  <div style="padding:8px 6px;flex:1;min-height:0;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding-right:6px">
+        <div style="display:flex;align-items:center;gap:4px"><div class="hz-sidebar__group-label" style="padding-right:0;margin-right:0;flex:none;width:auto">Bots</div><span style="font-size:9px;line-height:12px;height:14px;padding:0 5px;border-radius:999px;background:var(--hz-horizon-primary-pale);border:1px solid var(--hz-horizon-primary-light);color:var(--hz-horizon-primary-dark);font-weight:700;letter-spacing:.04em;box-sizing:border-box">BETA</span></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <button title="New bot" style="border:none;background:transparent;padding:2px;cursor:pointer;color:var(--hz-text-secondary);font-size:12px"><i class="far fa-plus"></i></button>
+          <a href="Bots.dc.html" style="text-decoration:none;padding:2px;display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--hz-horizon-primary)"><i class="far fa-sliders-h" style="font-size:11px"></i>Manage</a>
+        </div>
+      </div>
+      <div class="hz-sidebar__group-items">
+        <div class="hz-sidebar__item" style="cursor:pointer"><span style="position:relative;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><dc-import name="RoboAvatar" size="{{ 20 }}" color="#1f2937" hint-size="20px,20px"></dc-import><span style="position:absolute;right:-4px;bottom:-4px;width:12px;height:12px;border-radius:999px;background:var(--hz-orange-500);color:#fff;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--hz-surface-card)"><i class="fas fa-star" style="font-size:6px"></i></span></span><span class="hz-sidebar__label" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Nur's bot</span></div>
+        <div class="hz-sidebar__item" style="cursor:pointer"><span style="width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><dc-import name="RoboAvatar" size="{{ 20 }}" color="#8b5cf6" hint-size="20px,20px"></dc-import></span><span class="hz-sidebar__label" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">CIO Agent</span></div>
+        <div class="hz-sidebar__item" style="cursor:pointer"><span style="width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><dc-import name="RoboAvatar" size="{{ 20 }}" color="#3b82f6" hint-size="20px,20px"></dc-import></span><span class="hz-sidebar__label" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Deal Pipeline Agent</span></div>
+        <div class="hz-sidebar__item" style="cursor:pointer"><span style="width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><dc-import name="RoboAvatar" size="{{ 20 }}" color="#f97316" hint-size="20px,20px"></dc-import></span><span class="hz-sidebar__label" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Due Diligence Specialist</span></div>
+        <div class="hz-sidebar__item" style="cursor:pointer"><span style="width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><dc-import name="RoboAvatar" size="{{ 20 }}" color="#ec4899" hint-size="20px,20px"></dc-import></span><span class="hz-sidebar__label" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Research Agent</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Deal Flow</div>
+      <div class="hz-sidebar__group-items">
+        <a href="For You - Tasks.dc.html" class="hz-sidebar__item is-active" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-tasks" style="font-size:17px"></i><span class="hz-sidebar__label">For You</span><span class="hz-badge" style="margin-left:auto;background:var(--hz-horizon-primary);color:#fff">{{ assignedCount }}</span></a>
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-th-large" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-search-location" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span><span class="hz-badge hz-badge--secondary" style="margin-left:auto;background:var(--hz-neutral-300);color:var(--hz-text-primary)">2</span></a>
+        <a href="Pipeline v2.4 - Auto Assigned.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-project-diagram" style="font-size:17px"></i><span class="hz-sidebar__label">Pipeline</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Company List</span></div>
+        <a href="CRM.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM &amp; Email</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-university" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <div class="hz-sidebar__group-label">Intelligence</div>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb" style="font-size:17px"></i><span class="hz-sidebar__label">Insight</span></a>
+        <a href="AI Agent.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-robot" style="font-size:17px"></i><span class="hz-sidebar__label">AI Agent</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-desktop" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-magic" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-alt" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%;justify-content:flex-start">
+      <span><span class="hz-account-trigger__name" style="display:block">Dessi Sari</span></span>
+      <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+      <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+    </button>
+  </div>
+</div>
+
+<div style="min-width:0;overflow-y:auto">
+  <div style="max-width:1200px;margin:0 auto;padding:28px 32px 48px;display:flex;flex-direction:column;gap:20px">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <div class="hz-h2" style="margin:0">For You</div>
+        <div class="hz-body-r hz-muted">Your sourcing and pipeline tasks, in one place</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <a href="Chat Interaction v1.1.dc.html?q=Help%20me%20prioritise%20my%20tasks%20for%20this%20week" class="hz-btn hz-btn--secondary hz-btn--md" style="text-decoration:none;color:var(--hz-horizon-primary);border-color:var(--hz-horizon-primary-soft);background:var(--hz-horizon-primary-pale)" style-hover="background:var(--hz-surface-card);color:var(--hz-horizon-primary-dark)"><i class="fas fa-sparkles"></i>Get my tasks done with AI</a>
+        <button class="hz-btn hz-btn--primary hz-btn--md"><i class="far fa-plus"></i>New task</button>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+      <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+        <div class="hz-card" style="padding:14px 16px;display:flex;flex-direction:row;align-items:center;gap:12px">
+          <span style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:{{ k.bg }};color:{{ k.fg }}"><i class="{{ k.icon }}" style="font-size:14px"></i></span>
+          <div style="display:flex;align-items:baseline;gap:8px;min-width:0;white-space:nowrap;overflow:hidden">
+            <span style="font-size:22px;font-weight:700;line-height:1;color:var(--hz-text-primary)">{{ k.value }}</span>
+            <span style="font-size:13px;font-weight:600;color:var(--hz-text-secondary)">{{ k.label }}</span>
+            <span style="font-size:12px;color:var(--hz-text-tertiary);overflow:hidden;text-overflow:ellipsis">· {{ k.sub }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ showGmailBanner }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:10px;border:1px solid var(--hz-horizon-primary-soft);background:var(--hz-horizon-primary-pale);flex-wrap:wrap">
+      <span style="width:36px;height:36px;border-radius:8px;background:var(--hz-surface-card);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--hz-red-600)"><i class="fab fa-google" style="font-size:16px"></i></span>
+      <div style="flex:1;min-width:240px;display:flex;flex-direction:column;gap:2px">
+        <span style="font-size:14px;font-weight:700;color:var(--hz-text-primary)">Do more with your Gmail connected</span>
+        <span style="font-size:13px;line-height:1.5;color:var(--hz-text-secondary);text-wrap:pretty">Brain turns founder and banker emails into tasks, logs every touchpoint to the right company, and flags threads that need your reply before a deal goes cold.</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-plug"></i>Connect now</button>
+        <button onClick="{{ dismissGmailBanner }}" class="hz-btn hz-btn--text hz-btn--sm" title="Dismiss" style="width:32px;padding:0;justify-content:center;color:var(--hz-text-secondary)"><i class="far fa-times"></i></button>
+      </div>
+    </div>
+    </sc-if>
+
+    <div class="hz-tabs">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+        <button class="hz-tab {{ t.cls }}" onClick="{{ t.pick }}" style="display:inline-flex;align-items:center;gap:6px">{{ t.label }}<span style="min-width:20px;height:20px;padding:0 6px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:{{ t.badgeBg }};color:{{ t.badgeFg }}">{{ t.count }}</span></button>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ tasks }}" as="task" hint-placeholder-count="4">
+        <div class="hz-card" style="padding:20px;display:flex;flex-direction:row;gap:16px;align-items:flex-start">
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+              <span style="width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:{{ task.tileBg }};color:{{ task.tileFg }}"><i class="{{ task.statusIcon }}" style="font-size:12px"></i></span>
+              <span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:600;background:{{ task.tileBg }};color:{{ task.tileFg }}"><span style="width:6px;height:6px;border-radius:999px;background:currentColor"></span>{{ task.status }}</span>
+              <span style="font-size:12px;color:var(--hz-text-tertiary)">{{ task.requested }}</span>
+              <sc-if value="{{ task.isBrain }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--hz-horizon-primary)"><i class="fas fa-sparkles" style="font-size:9px"></i>Auto-created</span></sc-if>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px">
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+                <span class="hz-h6" style="margin:0">{{ task.title }}</span>
+                <span style="font-size:14px;line-height:1.5;color:var(--hz-text-secondary);text-wrap:pretty">{{ task.desc }}</span>
+              </div>
+            </div>
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:8px">
+              <div style="display:flex;align-items:stretch;gap:24px;flex-wrap:wrap">
+                <sc-for list="{{ task.metrics }}" as="m" hint-placeholder-count="2">
+                  <div style="display:flex;flex-direction:column;gap:4px">
+                    <span style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--hz-text-tertiary)">{{ m.label }}</span>
+                    <span style="font-size:15px;font-weight:700;color:var(--hz-text-primary)">{{ m.value }}</span>
+                  </div>
+                </sc-for>
+                <div style="width:1px;background:var(--hz-border-subtle)"></div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <span style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--hz-text-tertiary)">Due</span>
+                  <span style="font-size:15px;font-weight:700;color:{{ task.dueColor }}">{{ task.due }}</span>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;margin-left:auto">
+                <div style="position:relative;display:flex;align-items:flex-end">
+                  <button onClick="{{ task.toggleMenu }}" class="hz-btn hz-btn--secondary hz-btn--sm">Take action<i class="far fa-chevron-down" style="font-size:10px"></i></button>
+                  <sc-if value="{{ task.menuOpen }}" hint-placeholder-val="{{ false }}">
+                    <div onClick="{{ closeMenu }}" style="position:fixed;inset:0;z-index:20"></div>
+                    <div style="position:absolute;top:100%;right:0;margin-top:4px;z-index:21;min-width:200px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:8px;box-shadow:0 8px 24px rgba(16,24,40,.12);padding:4px;display:flex;flex-direction:column">
+                      <a href="{{ task.ctaHref }}" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 10px;border-radius:6px;font-size:13px;color:var(--hz-text-primary);text-decoration:none" style-hover="background:var(--hz-neutral-50)"><i class="far fa-arrow-right" style="width:14px;font-size:12px;color:var(--hz-text-tertiary)"></i>{{ task.cta }}</a>
+                      <sc-if value="{{ task.canComplete }}" hint-placeholder-val="{{ true }}">
+                        <button onClick="{{ task.complete }}" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 10px;border:none;border-radius:6px;background:transparent;font-family:inherit;font-size:13px;color:var(--hz-text-primary);text-align:left;cursor:pointer" style-hover="background:var(--hz-neutral-50)"><i class="far fa-check" style="width:14px;font-size:12px;color:var(--hz-text-tertiary)"></i>Mark as complete</button>
+                      </sc-if>
+                      <div style="height:1px;background:var(--hz-border-subtle);margin:4px 0"></div>
+                      <button onClick="{{ task.archive }}" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 10px;border:none;border-radius:6px;background:transparent;font-family:inherit;font-size:13px;color:var(--hz-red-700);text-align:left;cursor:pointer" style-hover="background:var(--hz-red-50)"><i class="far fa-archive" style="width:14px;font-size:12px"></i>Archive task</button>
+                    </div>
+                  </sc-if>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+      <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+        <div class="hz-card" style="padding:40px;text-align:center;font-size:14px;color:var(--hz-text-tertiary)">Nothing here yet.</div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 'assigned', open: {}, done: {}, subs: { t2: { a: true } } };
+  status = {
+    new: { label: 'New', icon: 'far fa-circle', bg: 'var(--hz-blue-50)', fg: 'var(--hz-blue-700)' },
+    progress: { label: 'In progress', icon: 'far fa-spinner-third', bg: 'var(--hz-azure-50)', fg: 'var(--hz-azure-700)' },
+    delayed: { label: 'Delayed', icon: 'far fa-hourglass-half', bg: 'var(--hz-red-50)', fg: 'var(--hz-red-700)' },
+    ack: { label: 'Awaiting your response', icon: 'far fa-dot-circle', bg: 'var(--hz-yellow-50)', fg: 'var(--hz-yellow-800)' },
+    waiting: { label: 'Waiting on others', icon: 'far fa-user-clock', bg: 'var(--hz-purple-50)', fg: 'var(--hz-purple-700)' },
+    done: { label: 'Completed', icon: 'far fa-check', bg: 'var(--hz-green-50)', fg: 'var(--hz-green-700)' }
+  };
+  data = [
+    { id: 't1', tab: 'assigned', st: 'new', brain: true, requested: 'Requested by Brain', title: 'Confirm deal sponsorship: Kirana Retail Group', desc: 'Brain auto-assigned you as deal sponsor based on your Indonesia coverage and Consumer Retail focus. Accept or reject so the lead can move to L0 or be reassigned.', metrics: [['Sector', 'Consumer Retail'], ['Geography', 'Indonesia'], ['Stage', 'Pending Confirmation']], due: 'Oct 27, 2026', cta: 'Respond in Pipeline', href: 'Pipeline v2.4 - Auto Assigned.dc.html', owner: 'You', ini: 'DS' },
+    { id: 't1b', tab: 'assigned', st: 'new', brain: true, requested: 'Requested by Brain', title: 'Confirm deal sponsorship: Lumbung Agritech', desc: 'Brain auto-assigned you as deal sponsor based on your Indonesia coverage and Agritech focus. Accept or reject so the lead can move to L0 or be reassigned.', metrics: [['Sector', 'Agritech'], ['Geography', 'Indonesia'], ['Stage', 'Pending Confirmation']], due: 'Oct 27, 2026', cta: 'Respond in Pipeline', href: 'Pipeline v2.4 - Auto Assigned.dc.html', owner: 'You', ini: 'DS' },
+    { id: 't1c', tab: 'assigned', st: 'new', brain: true, requested: 'Requested by Brain', title: 'Confirm deal sponsorship: Selaras Health', desc: 'Brain auto-assigned you as deal sponsor based on your Malaysia coverage and Healthcare Services focus. Accept or reject so the lead can move to L0 or be reassigned.', metrics: [['Sector', 'Healthcare Services'], ['Geography', 'Malaysia'], ['Stage', 'Pending Confirmation']], due: 'Oct 28, 2026', cta: 'Respond in Pipeline', href: 'Pipeline v2.4 - Auto Assigned.dc.html', owner: 'You', ini: 'DS' },
+    { id: 't1d', tab: 'assigned', st: 'delayed', brain: true, requested: 'Requested by Brain', title: 'Confirm deal sponsorship: Halcyon Foods', desc: 'No response 3 days past the deadline. Brain will reassign this lead to the next best-matched sponsor if you don\'t respond by Oct 25.', metrics: [['Sector', 'Food & Beverage'], ['Geography', 'Philippines'], ['Stage', 'Pending Confirmation']], due: 'Oct 20, 2026', overdue: true, cta: 'Respond in Pipeline', href: 'Pipeline v2.4 - Auto Assigned.dc.html', owner: 'You', ini: 'DS' },
+    { id: 't2', tab: 'assigned', st: 'progress', requested: 'Added by you', title: 'Complete preliminary review: Kirana Retail Group', desc: 'Screen financials and fit against the consumer retail thesis before moving to L2 Deep Dive.', metrics: [['Stage', 'L1 · Preliminary Review'], ['Est. revenue', 'IDR 850B']], due: 'Oct 30, 2026', subs: [['a', 'Request management accounts'], ['b', 'Draft one-page screening memo'], ['c', 'Book intro call with founder']], cta: 'Open company', href: 'Pipeline v2.4 - Auto Assigned.dc.html', owner: 'You', ini: 'DS' },
+    { id: 't3', tab: 'assigned', st: 'delayed', requested: 'Added by you', title: 'Get NDA signed: Lumbung Agritech', desc: 'Counterparty legal has not returned redlines. Deep dive data room access is blocked until the NDA is executed.', metrics: [['Stage', 'L2 · Deep Dive'], ['Sent', 'Oct 14']], due: 'Oct 21, 2026', overdue: true, cta: 'Open in CRM', href: 'CRM v2.4.dc.html', owner: 'You', ini: 'DS' },
+    { id: 't4', tab: 'assigned', st: 'ack', requested: 'Added by you', title: 'Prepare IC memo: Project Garuda', desc: 'Summarise diligence findings, valuation range and key risks for the investment committee.', metrics: [['Stage', 'L4 · IC Review'], ['IC date', 'Nov 12']], due: 'Nov 7, 2026', subs: [['a', 'Valuation section'], ['b', 'Risk register'], ['c', 'Partner review']], cta: 'Open company', href: 'Pipeline v2.4 - Auto Assigned.dc.html', owner: 'You', ini: 'DS' },
+    { id: 'c1', tab: 'completed', st: 'done', requested: 'Added by you', title: 'Move Driftwood Capital to L1 Preliminary Review', desc: 'Confirmed sponsorship and moved the company into the pipeline.', metrics: [['Stage', 'L1 · Preliminary Review']], due: 'Oct 20, 2026', cta: 'Open company', href: 'Pipeline v2.4 - Auto Assigned.dc.html', owner: 'You', ini: 'DS' }
+  ];
+  renderVals() {
+    const S = this.state;
+    const tabOf = t => ((S.archived || {})[t.id] ? 'archived' : S.done[t.id] ? 'completed' : t.tab);
+    const counts = { assigned: 0, completed: 0, archived: 0 };
+    this.data.forEach(t => counts[tabOf(t)]++);
+    const tabs = [['assigned', 'Assigned to me'], ['completed', 'Completed']].map(([key, label]) => {
+      const on = S.tab === key;
+      return { label, count: counts[key], cls: on ? 'is-active' : '', pick: () => this.setState({ tab: key }), badgeBg: on ? 'var(--hz-horizon-primary)' : 'var(--hz-neutral-100)', badgeFg: on ? '#fff' : 'var(--hz-text-secondary)' };
+    });
+    const tasks = this.data.filter(t => tabOf(t) === S.tab).map(t => {
+      const st = this.status[S.done[t.id] ? 'done' : t.st];
+      const subState = S.subs[t.id] || {};
+      const subs = (t.subs || []).map(([k, label]) => {
+        const d = !!subState[k];
+        return { label, done: d, deco: d ? 'line-through' : 'none', color: d ? 'var(--hz-text-tertiary)' : 'var(--hz-text-primary)', toggle: () => this.setState(s => ({ subs: { ...s.subs, [t.id]: { ...(s.subs[t.id] || {}), [k]: !d } } })) };
+      });
+      const open = !!S.open[t.id];
+      return {
+        title: t.title, desc: t.desc, requested: t.requested, isBrain: !!t.brain,
+        status: st.label, statusIcon: st.icon, tileBg: st.bg, tileFg: st.fg,
+        metrics: t.metrics.map(([label, value]) => ({ label, value })),
+        due: t.due, dueColor: t.overdue && !S.done[t.id] ? 'var(--hz-red-700)' : 'var(--hz-text-primary)',
+        hasSubs: subs.length > 0, subs, subsLabel: subs.filter(x => x.done).length + '/' + subs.length + ' sub-tasks',
+        owner: t.owner, ownerInitials: t.ini, ownerBg: t.ownerBg || 'var(--hz-horizon-primary)',
+        open, chevron: open ? 'fa-chevron-up' : 'fa-chevron-down',
+        toggle: () => this.setState(s => ({ open: { ...s.open, [t.id]: !s.open[t.id] } })),
+        cta: t.cta, ctaHref: t.href,
+        canComplete: !S.done[t.id] && t.st !== 'done',
+        complete: () => this.setState(s => ({ done: { ...s.done, [t.id]: true }, menuFor: null })),
+        menuOpen: S.menuFor === t.id,
+        toggleMenu: () => this.setState(s => ({ menuFor: s.menuFor === t.id ? null : t.id })),
+        archive: () => this.setState(s => ({ archived: { ...(s.archived || {}), [t.id]: true }, menuFor: null }))
+      };
+    });
+    const openMine = this.data.filter(t => tabOf(t) === 'assigned');
+    return {
+      assignedCount: counts.assigned,
+      showGmailBanner: !S.gmailDismissed,
+      dismissGmailBanner: () => this.setState({ gmailDismissed: true }),
+      kpis: [
+        { label: 'Open', value: openMine.length, sub: 'assigned to you', icon: 'far fa-list-ul', bg: 'var(--hz-blue-50)', fg: 'var(--hz-blue-700)' },
+        { label: 'Needs attention', value: openMine.filter(t => t.st === 'delayed').length, sub: 'overdue or blocked', icon: 'far fa-hourglass-half', bg: 'var(--hz-red-50)', fg: 'var(--hz-red-700)' },
+        { label: 'Awaiting your response', value: openMine.filter(t => t.brain).length, sub: 'auto-assigned companies', icon: 'far fa-user-check', bg: 'var(--hz-yellow-50)', fg: 'var(--hz-yellow-800)' }
+      ],
+      tabs, tasks, empty: tasks.length === 0,
+      closeMenu: () => this.setState({ menuFor: null })
+    };
+  }
+}
+</script>
+</body>
+</html>

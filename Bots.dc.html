@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
+<script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
+<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)}</style>
+</helmet>
+<div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:{{ sidebarGridCols }}">
+
+<div class="hz-sidebar {{ sidebarCollapsedClass }}" style="width:{{ sidebarWidth }}px;height:100vh;border-right:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;min-height:0;overflow:hidden;transition:width .15s">
+  <div style="padding:16px 14px;border-bottom:1px solid var(--hz-border-subtle)">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:center;gap:6px"><img src="uploads/logo-brain-light-d6a97625.svg" alt="Investment Brain" style="height:24px;width:auto"></div>
+      </sc-if>
+      <button class="hz-sidebar__collapse-btn" title="Toggle sidebar" onClick="{{ toggleSidebar }}"><i class="far {{ collapseIcon }}" style="font-size:12px"></i></button>
+    </div>
+    <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}">
+      <button class="hz-account-trigger" style="width:100%;margin-top:12px;padding:6px 2px;justify-content:space-between"><span style="font-weight:600;color:var(--hz-text-secondary)">M&amp;A Team</span><i class="far fa-chevron-down hz-account-trigger__chevron" style="font-size:11px"></i></button>
+      <button class="hz-btn hz-btn--primary hz-btn--full hz-btn--sm" style="margin-top:10px"><i class="far fa-message-plus"></i>New Chat</button>
+    </sc-if>
+    <sc-if value="{{ sidebarCollapsed }}" hint-placeholder-val="{{ false }}">
+      <button class="hz-btn hz-btn--primary hz-btn--sm" style="margin-top:10px;width:100%;justify-content:center;padding:0" title="New Chat"><i class="far fa-message-plus"></i></button>
+    </sc-if>
+  </div>
+  <div style="padding:8px 6px;flex:1;min-height:0;overflow-y:auto">
+    <div class="hz-sidebar__group">
+      <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding-right:6px">
+          <div style="display:flex;align-items:center;gap:4px"><div class="hz-sidebar__group-label" style="padding-right:0;margin-right:0;flex:none;width:auto">Bots</div><span style="font-size:9px;line-height:14px;height:14px;padding:0 5px;border-radius:999px;background:var(--hz-horizon-primary-pale);color:var(--hz-horizon-primary-dark);font-weight:600;letter-spacing:.02em">Beta</span></div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <button title="New bot" style="border:none;background:transparent;padding:2px;cursor:pointer;color:var(--hz-text-secondary);font-size:12px"><i class="far fa-plus"></i></button>
+            <a href="Bots.dc.html" style="text-decoration:none;padding:2px;display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--hz-horizon-primary)"><i class="far fa-sliders-h" style="font-size:11px"></i>Manage</a>
+          </div>
+        </div>
+      </sc-if>
+      <div class="hz-sidebar__group-items">
+        <div class="hz-sidebar__item" style="cursor:pointer"><span style="position:relative;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><dc-import name="RoboAvatar" size="{{ 20 }}" color="#1f2937" hint-size="20px,20px"></dc-import><span style="position:absolute;right:-4px;bottom:-4px;width:12px;height:12px;border-radius:999px;background:var(--hz-orange-500);color:#fff;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--hz-surface-card)"><i class="fas fa-star" style="font-size:6px"></i></span></span><span class="hz-sidebar__label" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Nur's bot</span></div>
+        <div class="hz-sidebar__item" style="cursor:pointer"><span style="width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><dc-import name="RoboAvatar" size="{{ 20 }}" color="#10b981" hint-size="20px,20px"></dc-import></span><span class="hz-sidebar__label" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Sourcing Specialist</span></div>
+        <div class="hz-sidebar__item" style="cursor:pointer"><span style="width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><dc-import name="RoboAvatar" size="{{ 20 }}" color="#8b5cf6" hint-size="20px,20px"></dc-import></span><span class="hz-sidebar__label" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">CIO Agent</span></div>
+        <div class="hz-sidebar__item" style="cursor:pointer"><span style="width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><dc-import name="RoboAvatar" size="{{ 20 }}" color="#3b82f6" hint-size="20px,20px"></dc-import></span><span class="hz-sidebar__label" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Deal Pipeline Agent</span></div>
+        <div class="hz-sidebar__item" style="cursor:pointer"><span style="width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><dc-import name="RoboAvatar" size="{{ 20 }}" color="#f97316" hint-size="20px,20px"></dc-import></span><span class="hz-sidebar__label" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Due Diligence Specialist</span></div>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><div class="hz-sidebar__item" style="cursor:pointer;color:var(--hz-text-tertiary)"><span class="hz-sidebar__label">Show more (+1)</span></div></sc-if>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><div class="hz-sidebar__group-label">Deal Flow</div></sc-if>
+      <div class="hz-sidebar__group-items">
+        <a href="For You - Tasks.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-tasks" style="font-size:17px"></i><span class="hz-sidebar__label">For You</span><span class="hz-badge" style="margin-left:auto;background:var(--hz-horizon-primary);color:#fff">7</span></a>
+        <a href="Investment Brain Dashboard.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-th-large" style="font-size:17px"></i><span class="hz-sidebar__label">Dashboard</span></a>
+        <a href="Sourcing.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-search-location" style="font-size:17px"></i><span class="hz-sidebar__label">Sourcing</span></a>
+        <a href="Pipeline v2.4 - Auto Assigned.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-project-diagram" style="font-size:17px"></i><span class="hz-sidebar__label">Pipeline</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-database" style="font-size:17px"></i><span class="hz-sidebar__label">Company List</span></div>
+        <a href="CRM v2.4-Auto Assign.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-address-book" style="font-size:17px"></i><span class="hz-sidebar__label">CRM &amp; Email</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-university" style="font-size:17px"></i><span class="hz-sidebar__label">Fund Management</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-book" style="font-size:17px"></i><span class="hz-sidebar__label">Ledger</span></div>
+      </div>
+    </div>
+    <div class="hz-sidebar__group">
+      <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><div class="hz-sidebar__group-label">Intelligence</div></sc-if>
+      <div class="hz-sidebar__group-items">
+        <a href="Insight List.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-lightbulb" style="font-size:17px"></i><span class="hz-sidebar__label">Insight</span></a>
+        <a href="AI Agent.dc.html" class="hz-sidebar__item" style="text-decoration:none;color:var(--hz-text-primary)"><i class="hz-sidebar__icon far fa-robot" style="font-size:17px"></i><span class="hz-sidebar__label">AI Agent</span></a>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-folder-open" style="font-size:17px"></i><span class="hz-sidebar__label">Smart Files</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-compass" style="font-size:17px"></i><span class="hz-sidebar__label">Data Navigator</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-desktop" style="font-size:17px"></i><span class="hz-sidebar__label">Presentation</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-magic" style="font-size:17px"></i><span class="hz-sidebar__label">AI Workspace</span></div>
+        <div class="hz-sidebar__item"><i class="hz-sidebar__icon far fa-share-alt" style="font-size:17px"></i><span class="hz-sidebar__label">Company Graph</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:8px;border-top:1px solid var(--hz-border-subtle)">
+    <button class="hz-account-trigger" style="width:100%;justify-content:{{ accountJustify }}">
+      <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}">
+        <span><span class="hz-account-trigger__name" style="display:block">Test User</span></span>
+        <i class="far fa-bell" style="font-size:13px;color:var(--hz-text-tertiary)"></i>
+        <i class="far fa-ellipsis-h hz-account-trigger__chevron"></i>
+      </sc-if>
+    </button>
+  </div>
+</div>
+
+<div style="min-width:0;overflow-y:auto">
+  <div style="background:linear-gradient(135deg,var(--hz-blue-50),var(--hz-neutral-50));padding:24px 28px 28px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px"><div class="hz-h2" style="margin:0">Bots</div><span style="font-size:10px;line-height:16px;height:16px;padding:0 6px;border-radius:999px;background:var(--hz-horizon-primary);color:#fff;font-weight:600">Beta</span></div>
+        <div class="hz-body-r hz-muted" style="margin-top:4px;text-wrap:pretty">Copilots with their own instructions, skills and look. Each bot keeps one ongoing chat per person.</div>
+      </div>
+      <button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-plus"></i>New bot</button>
+    </div>
+  </div>
+
+  <div style="padding:24px 28px 40px;display:flex;flex-direction:column;gap:28px">
+    <sc-for list="{{ groups }}" as="g" hint-placeholder-count="2">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
+        <span class="hz-h6" style="margin:0">{{ g.title }}</span>
+        <span class="hz-body-r" style="color:var(--hz-text-tertiary)">{{ g.count }}</span>
+        <span class="hz-body-r hz-muted" style="margin-left:8px">{{ g.desc }}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">
+        <sc-for list="{{ g.bots }}" as="b" hint-placeholder-count="4">
+        <div class="hz-card" style="padding:18px;border:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;gap:14px;min-width:0">
+          <div style="display:flex;align-items:flex-start;gap:12px">
+            <span style="position:relative;width:40px;height:40px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <dc-import name="RoboAvatar" size="{{ 40 }}" color="{{ b.color }}" hint-size="40px,40px"></dc-import>
+              <sc-if value="{{ b.primary }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;right:-3px;bottom:-3px;width:16px;height:16px;border-radius:999px;background:var(--hz-orange-500);color:#fff;display:flex;align-items:center;justify-content:center;border:2px solid var(--hz-surface-card)"><i class="fas fa-star" style="font-size:7px"></i></span></sc-if>
+            </span>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:15px;font-weight:600;color:var(--hz-text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ b.name }}</div>
+              <div class="hz-body-s hz-muted">{{ b.skills }}</div>
+            </div>
+            <span style="flex-shrink:0;display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 8px;border-radius:999px;background:var(--hz-neutral-100);color:var(--hz-text-secondary);font-size:11px;font-weight:600"><i class="far {{ b.tagIcon }}" style="font-size:10px"></i>{{ b.tag }}</span>
+          </div>
+          <div class="hz-body-r hz-muted" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:40px">{{ b.desc }}</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-comment"></i>Chat</button>
+            <button class="hz-btn hz-btn--secondary hz-btn--sm"><i class="far {{ b.secondIcon }}"></i>{{ b.secondLabel }}</button>
+            <button class="hz-btn hz-btn--text hz-btn--sm" title="Schedules" style="width:32px;padding:0;justify-content:center;color:var(--hz-text-secondary)"><i class="far fa-calendar-alt"></i></button>
+            <button class="hz-btn hz-btn--text hz-btn--sm" title="Tasks" style="width:32px;padding:0;justify-content:center;color:var(--hz-text-secondary)"><i class="far fa-tasks"></i></button>
+          </div>
+        </div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-for>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { collapsed: false };
+  renderVals() {
+    const c = this.state.collapsed;
+    const shared = [
+      ['Sourcing Specialist', '#10b981', '# Sourcing Specialist You find the next deals. You turn our investment theses into a ranked list of targets.'],
+      ['CIO Agent', '#8b5cf6', '# CIO Agent You think like the Chief Investment Officer. You take the facts the team brings and form a view.'],
+      ['Deal Pipeline Agent', '#3b82f6', "# Deal Pipeline Agent You are the team's pipeline operator. You know where every deal sits and what's next."],
+      ['Due Diligence Specialist', '#f97316', "# Due Diligence Specialist You are the team's diligence lead. You find what could break the deal."],
+      ['Research Specialist', '#14b8a6', "# Research Specialist You are the team's research lead. You bring the outside world in."],
+    ].map(([name, color, desc]) => ({ name, color, desc, skills: 'Every skill', tag: 'Shared', tagIcon: 'fa-user-friends', primary: false, secondLabel: 'Edit', secondIcon: 'fa-pen' }));
+    const priv = [{ name: "Nur's bot", color: '#1f2937', desc: 'The master agent. Orchestrates your other bots. Always on.', skills: 'Every skill', tag: 'Primary', tagIcon: 'fa-magic', primary: true, secondLabel: 'About', secondIcon: 'fa-info-circle' }];
+    return {
+      expanded: !c, sidebarCollapsed: c,
+      sidebarCollapsedClass: c ? 'hz-sidebar--collapsed' : '',
+      sidebarWidth: c ? 68 : 220,
+      sidebarGridCols: (c ? '68px' : '220px') + ' minmax(0,1fr)',
+      collapseIcon: c ? 'fa-angle-double-right' : 'fa-angle-double-left',
+      accountJustify: c ? 'center' : 'flex-start',
+      toggleSidebar: () => this.setState(s => ({ collapsed: !s.collapsed })),
+      groups: [
+        { title: 'Shared', count: shared.length, desc: 'Everyone in the workspace can chat with and edit these bots.', bots: shared },
+        { title: 'Private', count: priv.length, desc: 'Only you can see these bots.', bots: priv },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
