@@ -976,6 +976,50 @@
       <button class="hz-sidebar__collapse-btn" title="Toggle full width" onClick="{{ toggleCopilotFullWidth }}" style="margin-left:auto;flex-shrink:0;width:22px;height:22px;margin-bottom:9px"><i class="far {{ copilotExpandIcon }}" style="font-size:12px"></i></button>
       <button class="hz-sidebar__collapse-btn" title="Close" onClick="{{ toggleCopilot }}" style="flex-shrink:0;width:22px;height:22px;margin-bottom:9px"><i class="far fa-times" style="font-size:12px"></i></button>
     </div>
+    <sc-if value="{{ ecPending }}" hint-placeholder-val="{{ true }}">
+      <div style="position:relative;flex-shrink:0;padding:10px 12px;border-bottom:1px solid var(--hz-border-subtle);background:var(--hz-surface-card)">
+        <button onClick="{{ ecToggleStrip }}" style="width:100%;display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;border:1px solid var(--hz-horizon-primary-soft);background:var(--hz-horizon-primary-pale);font-family:inherit;text-align:left;cursor:pointer">
+          <span style="position:relative;width:26px;height:26px;border-radius:50%;background:var(--hz-surface-card);color:var(--hz-horizon-primary);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far fa-envelope" style="font-size:12px"></i><span style="position:absolute;top:-4px;right:-6px;min-width:16px;height:16px;padding:0 4px;box-sizing:border-box;border-radius:999px;background:var(--hz-red-600);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ ecLeft }}</span></span>
+          <span style="display:flex;flex-direction:column;gap:1px;min-width:0;flex:1"><span style="font-size:13px;font-weight:700;color:var(--hz-text-primary)">{{ ecBarTitle }}</span><span style="font-size:12px;color:var(--hz-text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Next: follow-up on {{ ec.deal }} · {{ ec.banker }}</span></span>
+          <i class="far {{ ecStripIcon }}" style="font-size:11px;color:var(--hz-text-secondary)"></i>
+        </button>
+        <sc-if value="{{ ecStripOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;left:12px;right:12px;top:calc(100% - 4px);z-index:5;padding:12px;border-radius:10px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);box-shadow:0 12px 28px rgba(16,24,40,.16);display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span style="font-size:11px;font-weight:700;color:var(--hz-horizon-primary);text-transform:uppercase;letter-spacing:.04em;flex:1">Email {{ ecPos }} of {{ ecTotal }}</span>
+              <div style="display:flex;gap:4px"><sc-for list="{{ ecDots }}" as="dt" hint-placeholder-count="5"><span title="{{ dt.title }}" style="width:8px;height:8px;border-radius:999px;background:{{ dt.color }}"></span></sc-for></div>
+            </div>
+            <sc-if value="{{ ecHasLast }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--hz-text-secondary)"><i class="fas {{ ecLastIcon }}" style="color:{{ ecLastColor }}"></i>{{ ecLastText }}</div>
+            </sc-if>
+            <div style="display:flex;align-items:flex-start;gap:8px">
+              <span style="width:24px;height:24px;border-radius:50%;background:var(--hz-horizon-primary-pale);color:var(--hz-horizon-primary);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fas fa-sparkles" style="font-size:10px"></i></span>
+              <div style="font-size:13px;line-height:1.5;color:var(--hz-text-secondary)">{{ ecStripQuestion }}</div>
+            </div>
+            <sc-if value="{{ ecStripAsk }}" hint-placeholder-val="{{ true }}">
+              <div style="padding:8px 10px;border-radius:8px;background:var(--hz-neutral-50);font-size:12px;line-height:1.5;color:var(--hz-text-secondary)"><strong style="color:var(--hz-text-primary)">{{ ec.title }}</strong><br>{{ ec.short }}</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <button onClick="{{ ecAdd }}" style="padding:6px 12px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--hz-horizon-primary);background:var(--hz-horizon-primary);color:#fff"><i class="far fa-check"></i> Yes, add to Brain</button>
+                <button onClick="{{ ecStripNo }}" style="padding:6px 12px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--hz-border-default);background:var(--hz-surface-card);color:var(--hz-text-primary)" style-hover="background:var(--hz-neutral-50)">No, not relevant</button>
+                <button onClick="{{ ecDetails }}" style="padding:6px 12px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;border:1px solid transparent;background:transparent;color:var(--hz-horizon-primary)">See details</button>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding-top:2px">
+                <button onClick="{{ ecLater }}" class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-text-secondary)">Skip for now</button>
+                <button onClick="{{ ecAddAll }}" class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-horizon-primary)">Add all {{ ecLeft }} to Brain</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ ecStripReasons }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <sc-for list="{{ ecQuickReasons }}" as="q" hint-placeholder-count="4">
+                  <button onClick="{{ q.pick }}" style="padding:6px 12px;border-radius:999px;border:1px solid var(--hz-border-default);background:var(--hz-surface-card);color:var(--hz-text-primary);font-family:inherit;font-size:13px;cursor:pointer" style-hover="border-color:var(--hz-horizon-primary-soft);background:var(--hz-horizon-primary-pale)">{{ q.label }}</button>
+                </sc-for>
+              </div>
+              <button onClick="{{ ecStripBack }}" class="hz-btn hz-btn--text hz-btn--sm" style="align-self:flex-start"><i class="far fa-arrow-left"></i>Back</button>
+            </sc-if>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
     <sc-if value="{{ copilotTabIsCowork }}" hint-placeholder-val="{{ false }}">
       <div style="flex:1;min-height:0;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:16px">
 
@@ -1327,44 +1371,44 @@
 <div onClick="{{ ecCloseModal }}" style="position:fixed;inset:0;z-index:70;background:rgba(16,24,40,.45);display:flex;align-items:center;justify-content:center;padding:16px">
   <div onClick="{{ stopProp }}" style="width:640px;max-width:100%;max-height:88vh;display:flex;flex-direction:column;background:var(--hz-surface-card);border-radius:12px;box-shadow:0 20px 48px rgba(16,24,40,.24);overflow:hidden">
     <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:18px 20px;border-bottom:1px solid var(--hz-border-subtle)">
-      <div style="display:flex;flex-direction:column;gap:2px"><span class="hz-h6" style="margin:0">Add this email to Brain?</span><span style="font-size:13px;color:var(--hz-text-secondary)">Brain thinks this is a follow-up on a deal you're working on</span></div>
+      <div style="display:flex;flex-direction:column;gap:2px"><span class="hz-h6" style="margin:0">Add this email to Brain?</span><span style="font-size:13px;color:var(--hz-text-secondary)">Email {{ ecPos }} of {{ ecTotal }} · Brain thinks this is a follow-up on a deal you're working on</span></div>
       <button onClick="{{ ecCloseModal }}" class="hz-btn hz-btn--text hz-btn--sm" title="Close" style="width:32px;padding:0;justify-content:center;color:var(--hz-text-secondary)"><i class="far fa-times"></i></button>
     </div>
     <div style="padding:18px 20px;overflow-y:auto;display:flex;flex-direction:column;gap:18px">
       <div style="display:flex;flex-direction:column;gap:8px">
         <span style="font-size:12px;font-weight:700;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.04em">Email summary</span>
         <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:8px">
-          <span style="font-size:14px;font-weight:700;color:var(--hz-text-primary)">Q3 results and an updated financial model for Vertex Systems</span>
-          <span style="font-size:12px;color:var(--hz-text-secondary)"><strong>From</strong> Daniel Hartono (Solstice Partners) · Today, 09:42</span>
-          <div style="font-size:13px;line-height:1.55;color:var(--hz-text-secondary);padding-top:6px;border-top:1px solid var(--hz-border-subtle)">The banker followed up on last week’s call and shared Vertex’s Q3 management accounts along with a revised financial model. Revenue grew about 18% year on year, and management raised its FY2026 EBITDA margin guidance. They also offered a follow-up session with management early next week and are waiting for a date.</div>
+          <span style="font-size:14px;font-weight:700;color:var(--hz-text-primary)">{{ ec.title }}</span>
+          <span style="font-size:12px;color:var(--hz-text-secondary)"><strong>From</strong> {{ ec.sender }} ({{ ec.banker }}) · {{ ec.time }}</span>
+          <div style="font-size:13px;line-height:1.55;color:var(--hz-text-secondary);padding-top:6px;border-top:1px solid var(--hz-border-subtle)">{{ ec.summary }}</div>
+          <sc-if value="{{ ecHasFiles }}" hint-placeholder-val="{{ true }}">
           <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:6px;background:var(--hz-neutral-50);border:1px solid var(--hz-border-subtle);font-size:12px"><i class="far fa-file-pdf" style="color:var(--hz-red-600)"></i>Vertex_Q3_Mgmt_Accounts.pdf</span>
-            <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:6px;background:var(--hz-neutral-50);border:1px solid var(--hz-border-subtle);font-size:12px"><i class="far fa-file-excel" style="color:var(--hz-green-600)"></i>Granite_Model_v3.xlsx</span>
+            <sc-for list="{{ ec.files }}" as="fl" hint-placeholder-count="2"><span style="display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:6px;background:var(--hz-neutral-50);border:1px solid var(--hz-border-subtle);font-size:12px"><i class="far {{ fl.icon }}" style="color:{{ fl.color }}"></i>{{ fl.name }}</span></sc-for>
           </div>
+          </sc-if>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px">
         <span style="font-size:12px;font-weight:700;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.04em">Matched deal</span>
         <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
           <select value="{{ ecDeal }}" onChange="{{ ecSetDeal }}" style="flex:1;min-width:220px;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:14px;background:var(--hz-surface-card)">
-            <sc-for list="{{ ecDealOpts }}" as="d" hint-placeholder-count="4"><option value="{{ d }}">{{ d }}</option></sc-for>
+            <sc-for list="{{ ecDealOpts }}" as="d" hint-placeholder-count="5"><option value="{{ d }}">{{ d }}</option></sc-for>
           </select>
-          <span style="font-size:12px;color:var(--hz-text-secondary)"><i class="fas fa-sparkles" style="color:var(--hz-horizon-primary)"></i> Why: same banker (Solstice Partners), project name in subject, reply to an earlier thread on this deal</span>
+          <span style="font-size:12px;color:var(--hz-text-secondary)"><i class="fas fa-sparkles" style="color:var(--hz-horizon-primary)"></i> Why: {{ ec.why }}</span>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px">
         <span style="font-size:12px;font-weight:700;color:var(--hz-text-tertiary);text-transform:uppercase;letter-spacing:.04em">What Brain will save</span>
         <div style="padding:12px 14px;border-radius:10px;background:var(--hz-horizon-primary-pale);border:1px solid var(--hz-horizon-primary-soft);display:flex;flex-direction:column;gap:10px;font-size:13px;line-height:1.6;color:var(--hz-text-secondary);text-wrap:pretty">
-          <p style="margin:0">Brain will add this update to <strong style="color:var(--hz-text-primary)">{{ ecDealShort }}</strong>. Q3 revenue came in at <strong style="color:var(--hz-text-primary)">IDR 212B, up 18% YoY</strong>, and management now guides <strong style="color:var(--hz-text-primary)">FY2026 EBITDA margin at 21%</strong>.</p>
-          <p style="margin:0">The Q3 management accounts (<em>Vertex_Q3_Mgmt_Accounts.pdf</em>) will be added to the deal documents, and <em>Granite_Model_v3.xlsx</em> will be saved as the latest model version.</p>
-          <p style="margin:0"><strong style="color:var(--hz-text-primary)">Next step:</strong> management is available for a follow-up session on <strong style="color:var(--hz-text-primary)">Nov 4 or 5</strong>. Brain will add a task to For You to book it.</p>
+          <p style="margin:0">Brain will add this update to <strong style="color:var(--hz-text-primary)">{{ ecDealShort }}</strong>. {{ ec.save1 }}</p>
+          <sc-for list="{{ ec.saveMore }}" as="sv" hint-placeholder-count="2"><p style="margin:0"><strong style="color:var(--hz-text-primary)">{{ sv.lead }}</strong> {{ sv.text }}</p></sc-for>
         </div>
       </div>
       <div style="display:flex;align-items:flex-start;gap:8px;padding:10px 12px;border-radius:8px;background:var(--hz-neutral-50);font-size:12px;line-height:1.45;color:var(--hz-text-secondary)"><i class="far fa-lock" style="margin-top:2px"></i><span>Brain saves this summary and the attached files, not the original email. They are visible to the {{ ecDealShort }} deal team only, and the email itself stays in your inbox.</span></div>
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:14px 20px;border-top:1px solid var(--hz-border-subtle)">
       <button onClick="{{ ecModalSkip }}" class="hz-btn hz-btn--text hz-btn--md">Not relevant</button>
-      <div style="display:flex;gap:8px"><button onClick="{{ ecCloseModal }}" class="hz-btn hz-btn--secondary hz-btn--md">Cancel</button><button onClick="{{ ecModalAdd }}" disabled="{{ ecAddDisabled }}" class="hz-btn hz-btn--primary hz-btn--md" style="opacity:{{ ecAddOpacity }}"><i class="far fa-plus"></i>Add to Brain</button></div>
+      <div style="display:flex;gap:8px"><button onClick="{{ ecCloseModal }}" class="hz-btn hz-btn--secondary hz-btn--md">Cancel</button><button onClick="{{ ecModalAdd }}" class="hz-btn hz-btn--primary hz-btn--md"><i class="far fa-plus"></i>Add to Brain</button></div>
     </div>
   </div>
 </div>
@@ -1380,19 +1424,23 @@
         <button onClick="{{ dismissBotPreview }}" title="Dismiss" style="border:none;background:transparent;padding:2px;cursor:pointer;color:var(--hz-text-tertiary);font-size:12px"><i class="far fa-times"></i></button>
       </div>
       <sc-if value="{{ ecAsk }}" hint-placeholder-val="{{ true }}">
-        <div style="font-size:13px;line-height:1.5;color:var(--hz-text-secondary);text-wrap:pretty">New email that looks like a follow-up on <strong style="color:var(--hz-text-primary)">Vertex Systems</strong> [Project Granite]. Do you want this information included in Brain?</div>
+        <sc-if value="{{ ecHasLast }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--hz-text-secondary)"><i class="fas {{ ecLastIcon }}" style="color:{{ ecLastColor }}"></i>{{ ecLastText }}</div>
+        </sc-if>
+        <div style="font-size:13px;line-height:1.5;color:var(--hz-text-secondary);text-wrap:pretty">{{ ecIntro }} <strong style="color:var(--hz-text-primary)">{{ ec.deal }}</strong> {{ ec.project }}. Do you want this information included in Brain?</div>
         <div onClick="{{ ecDetails }}" style="display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:8px;background:var(--hz-neutral-50);border:1px solid var(--hz-border-subtle);cursor:pointer" style-hover="border-color:var(--hz-horizon-primary-soft)">
-          <span style="font-size:12px;font-weight:700;color:var(--hz-text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Q3 results and an updated financial model</span>
-          <span style="font-size:11px;color:var(--hz-text-tertiary)">Daniel Hartono, Solstice Partners · Today, 09:42 · 2 attachments</span>
+          <span style="font-size:12px;font-weight:700;color:var(--hz-text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ ec.title }}</span>
+          <span style="font-size:11px;color:var(--hz-text-tertiary)">{{ ec.sender }}, {{ ec.banker }} · {{ ec.time }}{{ ec.fileLabel }}</span>
         </div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
           <button onClick="{{ ecAdd }}" class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-plus"></i>Add to Brain</button>
           <button onClick="{{ ecStartSkip }}" class="hz-btn hz-btn--secondary hz-btn--sm">Not relevant</button>
           <button onClick="{{ ecDetails }}" class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-horizon-primary)">See details</button>
+          <span style="margin-left:auto;font-size:11px;color:var(--hz-text-tertiary)">{{ ecPos }} of {{ ecTotal }}</span>
         </div>
       </sc-if>
       <sc-if value="{{ ecSkip }}" hint-placeholder-val="{{ false }}">
-        <div style="font-size:13px;line-height:1.5;color:var(--hz-text-secondary)">Okay, I won't add it. What's the reason? This helps me match emails better next time.</div>
+        <div style="font-size:13px;line-height:1.5;color:var(--hz-text-secondary)">Okay, I won't add the {{ ec.deal }} email. What's the reason? This helps me match emails better next time.</div>
         <div style="display:flex;flex-direction:column;gap:4px">
           <sc-for list="{{ ecReasons }}" as="r" hint-placeholder-count="4">
             <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;border:1px solid {{ r.border }};background:{{ r.bg }};font-size:13px;color:var(--hz-text-primary);cursor:pointer"><input type="radio" name="ecReason" checked="{{ r.checked }}" onChange="{{ r.pick }}" style="accent-color:var(--hz-horizon-primary)">{{ r.label }}</label>
@@ -1407,7 +1455,7 @@
         </div>
       </sc-if>
       <sc-if value="{{ ecDone }}" hint-placeholder-val="{{ false }}">
-        <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.5;color:var(--hz-text-secondary)"><i class="fas {{ ecDoneIcon }}" style="color:{{ ecDoneColor }};margin-top:3px"></i><span>{{ ecDoneText }}</span></div>
+        <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.5;color:var(--hz-text-secondary)"><i class="fas fa-check-circle" style="color:var(--hz-green-600);margin-top:3px"></i><span>{{ ecDoneText }}</span></div>
         <div style="display:flex;gap:6px">
           <button onClick="{{ openBotChat }}" class="hz-btn hz-btn--secondary hz-btn--sm">Open chat</button>
           <button onClick="{{ dismissBotPreview }}" class="hz-btn hz-btn--text hz-btn--sm">Close</button>
@@ -2441,45 +2489,106 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       botPreviewShown: (this.state.botUnread ?? 2) > 0 && !this.state.botPreviewDismissed,
       dismissBotPreview: () => this.setState({ botPreviewDismissed: true }),
       ...(() => {
+        const PDF = ['fa-file-pdf', 'var(--hz-red-600)'], XLS = ['fa-file-excel', 'var(--hz-green-600)'], PPT = ['fa-file-powerpoint', 'var(--hz-orange-600, #dd6b20)'];
+        const f = (t, name) => ({ icon: t[0], color: t[1], name });
+        const emails = [
+          { id: 'e1', deal: 'Vertex Systems', project: '[Project Granite]', banker: 'Solstice Partners', sender: 'Daniel Hartono', time: 'Today, 09:42',
+            title: 'Q3 results and an updated financial model', short: 'Revenue up about 18% YoY, higher FY2026 margin guidance, and a management follow-up offered for early next week.',
+            summary: 'The banker followed up on last week\u2019s call and shared Vertex\u2019s Q3 management accounts along with a revised financial model. Revenue grew about 18% year on year, and management raised its FY2026 EBITDA margin guidance. They also offered a follow-up session with management early next week and are waiting for a date.',
+            files: [f(PDF, 'Vertex_Q3_Mgmt_Accounts.pdf'), f(XLS, 'Granite_Model_v3.xlsx')],
+            why: 'same banker, project name mentioned, reply to an earlier thread on this deal',
+            save1: 'Q3 revenue came in at IDR 212B, up 18% YoY, and FY2026 EBITDA margin guidance is now 21%.',
+            saveMore: [{ lead: 'Files:', text: 'the Q3 management accounts go to the deal documents, and the revised model is saved as the latest version.' }, { lead: 'Next step:', text: 'management offered a follow-up session on Nov 4 or 5. Brain will add a task to For You to book it.' }] },
+          { id: 'e2', deal: 'Keystone Holdings', project: '[Project Orion]', banker: 'Solstice Partners', sender: 'Maya Lestari', time: 'Today, 08:15',
+            title: 'Revised process timeline for Project Orion', short: 'The data room opens earlier and the management presentation has moved to mid-November.',
+            summary: 'The banker shared an updated process letter. The virtual data room will open earlier than planned, and the management presentation has been pushed back by about a week. First-round bids are still due at the end of November.',
+            files: [f(PDF, 'Orion_Process_Letter_v2.pdf')],
+            why: 'same banker, project name mentioned, process letter for a deal you sponsor',
+            save1: 'The data room opens on Nov 3, the management presentation moves to Nov 12, and first-round bids stay due on Nov 28.',
+            saveMore: [{ lead: 'Files:', text: 'the updated process letter goes to the deal documents.' }, { lead: 'Next step:', text: 'Brain will update the deal timeline with the new dates.' }] },
+          { id: 'e3', deal: 'Halcyon Foods', project: '[Project Halcyon]', banker: 'Varro & Co', sender: 'Rina Santoso', time: 'Yesterday, 17:20',
+            title: 'Answers to the first round of diligence questions', short: 'Most questions are answered; a few on supplier contracts are still open.',
+            summary: 'The banker sent the company\u2019s answers to the diligence questions from last week. Most were answered in full. The remaining ones relate to key supplier contracts, and the company expects to respond by the end of next week.',
+            files: [f(XLS, 'Halcyon_DD_Responses.xlsx')],
+            why: 'same banker, replies to diligence questions you sent',
+            save1: '12 of 15 diligence questions are answered. The 3 open items cover key supplier contracts, expected by Nov 7.',
+            saveMore: [{ lead: 'Files:', text: 'the answers sheet goes to the deal documents.' }, { lead: 'Next step:', text: 'Brain will add a reminder to chase the open items on Nov 7.' }] },
+          { id: 'e4', deal: 'Pinnacle Materials', project: '[Project Cascade]', banker: 'Solstice Partners', sender: 'Kevin Wijaya', time: 'Yesterday, 14:05',
+            title: 'Early read on bidder interest and next-round timing', short: 'Interest is strong, valuations look higher than expected, and second-round bids are due in late November.',
+            summary: 'The banker gave an informal update on the process. Several parties are still interested, and early indications suggest valuations above the initial range. Second-round bids are expected in late November.',
+            files: [],
+            why: 'same banker, project name mentioned in the message',
+            save1: 'Early indications point to around 9\u201310x EBITDA, and second-round bids are due on Nov 20.',
+            saveMore: [{ lead: 'Note:', text: 'this was an informal update, so Brain will tag it as unconfirmed market colour.' }] },
+          { id: 'e5', deal: 'Bluewave Industries', project: '[Project Pioneer]', banker: 'Solstice Partners', sender: 'Andre Kusuma', time: 'Yesterday, 10:30',
+            title: 'New CFO appointment and an intro call', short: 'The company has hired a new CFO and the banker suggests an introduction call.',
+            summary: 'The banker shared that the company has appointed a new CFO and attached a short profile. They suggested an introduction call so the deal team can meet them before the next diligence session.',
+            files: [f(PPT, 'Bluewave_CFO_Profile.pptx')],
+            why: 'same banker, company name mentioned, linked to a deal in your pipeline',
+            save1: 'The company has appointed a new CFO, who joined in October and previously led finance at a regional media group.',
+            saveMore: [{ lead: 'Files:', text: 'the CFO profile goes to the deal documents.' }, { lead: 'Next step:', text: 'Brain will add a task to For You to set up the intro call.' }] }
+        ];
+        const dec = this.state.ecDec || {};
+        const pending = emails.filter(e => !dec[e.id]);
+        const done = emails.length - pending.length;
+        const later = this.state.ecLaterIds || [];
+        const ordered = [...pending.filter(e => !later.includes(e.id)), ...pending.filter(e => later.includes(e.id))];
+        const cur = ordered.find(e => e.id === this.state.ecCur) || ordered[0] || emails[emails.length - 1];
         const st = this.state.ecStep || 'ask';
         const reasons = ['Not about this deal', 'Already in Brain', 'Personal or confidential', 'Other'];
         const r = this.state.ecReason || '';
         const note = this.state.ecNote || '';
         const noteReq = r === 'Other';
         const skipDis = !r || (noteReq && !note.trim());
-        const deals = ['Vertex Systems [Project Granite]', 'Meridian Ventures [Project Beacon]', 'North Group [Project Keystone]', 'Anchor Materials [Project Cedar]'];
-        const deal = this.state.ecDeal || deals[0];
-        const short = deal.replace(/ \[.*\]$/, '');
-        const items = [
-          ['summary', 'Email summary', 'Q3 revenue IDR 212B (+18% YoY); FY2026 EBITDA margin guided at 21%'],
-          ['pdf', 'Attachment: Vertex_Q3_Mgmt_Accounts.pdf', 'Added to the deal documents and indexed for search'],
-          ['xlsx', 'Attachment: Granite_Model_v3.xlsx', 'Saved as the latest model version (v3)'],
-          ['next', 'Next step', 'Follow-up session with management on Nov 4 or 5 (adds a task to For You)']
-        ];
-        const off = this.state.ecOff || {};
-        const picked = items.filter(([k]) => !off[k]).length;
-        const unread = () => this.setState(s => ({ botUnread: Math.max(1, (s.botUnread ?? 2) - 1) }));
-        const add = () => { this.setState({ ecStep: 'added', ecModal: false, botPreviewDismissed: false, successToast: 'Email added to Brain for ' + short }); unread(); };
+        const deals = Array.from(new Set(emails.map(e => e.deal + ' ' + e.project).concat(['Meridian Ventures [Project Beacon]', 'North Group [Project Keystone]'])));
+        const sel = (this.state.ecDealSel || {})[cur.id] || (cur.deal + ' ' + cur.project);
+        const short = sel.replace(/ \[.*\]$/, '');
+        const decide = (id, how, label, extra) => {
+          const nextDec = { ...dec, [id]: how };
+          const left = emails.filter(e => !nextDec[e.id]).length;
+          this.setState(s => ({ ecDec: nextDec, ecCur: null, ecStep: 'ask', ecReason: '', ecNote: '', ecStripStep: 'ask', ecModal: false, ecLast: { how, text: label }, ecStrip: left > 0 ? s.ecStrip : false, botPreviewDismissed: s.ecModal ? false : s.botPreviewDismissed, successToast: label, ...(extra || {}) }));
+        };
+        const add = () => decide(cur.id, 'added', 'Added to Brain: ' + short);
+        const skipWith = (reason) => decide(cur.id, 'skipped', 'Not added: ' + cur.deal + ' (' + reason.toLowerCase() + ')');
+        const last = this.state.ecLast;
+        const addedN = Object.values(dec).filter(v => v === 'added').length, skippedN = Object.values(dec).filter(v => v === 'skipped').length;
+        const left = pending.length;
         return {
-          ecAsk: st === 'ask', ecSkip: st === 'skip', ecDone: st === 'added' || st === 'skipped',
+          ec: { ...cur, fileLabel: cur.files.length ? ' · ' + cur.files.length + ' attachment' + (cur.files.length > 1 ? 's' : '') : '' },
+          ecTotal: emails.length, ecPos: Math.min(done + 1, emails.length), ecLeft: left,
+          ecBarTitle: left === 1 ? '1 email needs your confirmation' : left + ' emails need your confirmation',
+          ecIntro: left === emails.length ? 'I found ' + emails.length + ' emails that look like follow-ups on your deals. First up, an update on' : 'Next, an update on',
+          ecHasFiles: cur.files.length > 0,
+          ecDots: emails.map(e => ({ title: e.deal, color: dec[e.id] === 'added' ? 'var(--hz-green-500)' : dec[e.id] === 'skipped' ? 'var(--hz-neutral-400, #98a2b3)' : e.id === cur.id ? 'var(--hz-horizon-primary)' : 'var(--hz-neutral-200, #e4e7ec)' })),
+          ecHasLast: !!last && left > 0, ecLastText: last ? last.text : '', ecLastIcon: last && last.how === 'added' ? 'fa-check-circle' : 'fa-eye-slash', ecLastColor: last && last.how === 'added' ? 'var(--hz-green-600)' : 'var(--hz-text-tertiary)',
+          ecAsk: left > 0 && st === 'ask', ecSkip: left > 0 && st === 'skip', ecDone: left === 0,
           ecAdd: add,
           ecStartSkip: () => this.setState({ ecStep: 'skip', ecReason: '', ecNote: '' }),
           ecBack: () => this.setState({ ecStep: 'ask' }),
-          ecDetails: () => this.setState({ ecModal: true, botPreviewDismissed: true }),
+          ecDetails: () => this.setState({ ecModal: true, ecStrip: false, ecCur: cur.id, botPreviewDismissed: true }),
           ecReasons: reasons.map(label => ({ label, checked: r === label, border: r === label ? 'var(--hz-horizon-primary)' : 'var(--hz-border-subtle)', bg: r === label ? 'var(--hz-horizon-primary-pale)' : 'transparent', pick: () => this.setState({ ecReason: label }) })),
           ecNoteReq: noteReq, ecNote: note, ecSetNote: e => this.setState({ ecNote: e.target.value }),
           ecSkipDisabled: skipDis, ecSkipOpacity: skipDis ? 0.5 : 1,
-          ecConfirmSkip: () => { if (skipDis) return; this.setState({ ecStep: 'skipped' }); unread(); },
-          ecDoneIcon: st === 'added' ? 'fa-check-circle' : 'fa-eye-slash',
-          ecDoneColor: st === 'added' ? 'var(--hz-green-600)' : 'var(--hz-text-tertiary)',
-          ecDoneText: st === 'added' ? 'Added to ' + short + '. I saved the Q3 numbers and the revised model, and created a task to book the management follow-up.' : (r === 'Not about this deal' ? 'Got it. I won\'t link this email to Vertex Systems. Tip: open See details to pick the right deal instead.' : 'Got it. I won\'t add this email to Brain, and I\'ll use your feedback to improve matching.'),
+          ecConfirmSkip: () => { if (!skipDis) skipWith(r); },
+          ecDoneText: 'All ' + emails.length + ' emails reviewed. ' + addedN + ' added to Brain' + (skippedN ? ', ' + skippedN + ' not added' : '') + '. I\u2019ve updated the deals and added follow-up tasks to For You.',
           ecModalOpen: !!this.state.ecModal,
           ecCloseModal: () => this.setState({ ecModal: false, botPreviewDismissed: false }),
-          ecDeal: deal, ecDealShort: short, ecDealOpts: deals, ecSetDeal: e => this.setState({ ecDeal: e.target.value }),
-          ecItems: items.map(([k, label, detail]) => ({ label, detail, checked: !off[k], toggle: () => this.setState(s => ({ ecOff: { ...(s.ecOff || {}), [k]: !(s.ecOff || {})[k] } })) })),
-          ecAddDisabled: picked === 0, ecAddOpacity: picked === 0 ? 0.5 : 1,
-          ecModalAdd: () => { if (picked) add(); },
-          ecModalSkip: () => this.setState({ ecModal: false, botPreviewDismissed: false, ecStep: 'skip', ecReason: '', ecNote: '' })
+          ecDeal: sel, ecDealShort: short, ecDealOpts: deals, ecSetDeal: e => { const v = e.target.value; this.setState(s => ({ ecDealSel: { ...(s.ecDealSel || {}), [cur.id]: v } })); },
+          ecModalAdd: add,
+          ecModalSkip: () => this.setState({ ecModal: false, botPreviewDismissed: false, ecStep: 'skip', ecReason: '', ecNote: '' }),
+          ecPending: left > 0,
+          ecStripOpen: !!this.state.ecStrip, ecStripIcon: this.state.ecStrip ? 'fa-chevron-up' : 'fa-chevron-down',
+          ecToggleStrip: () => this.setState(s => ({ ecStrip: !s.ecStrip, ecStripStep: 'ask' })),
+          ecStripAsk: (this.state.ecStripStep || 'ask') === 'ask', ecStripReasons: this.state.ecStripStep === 'reasons',
+          ecStripQuestion: this.state.ecStripStep === 'reasons' ? 'Okay, I won\u2019t add the ' + cur.deal + ' email. What\u2019s the reason?' : 'This email looks like a follow-up on ' + cur.deal + ' ' + cur.project + '. Do you want this information included in Brain?',
+          ecStripNo: () => this.setState({ ecStripStep: 'reasons' }),
+          ecStripBack: () => this.setState({ ecStripStep: 'ask' }),
+          ecQuickReasons: reasons.map(label => ({ label, pick: () => skipWith(label) })),
+          ecLater: () => this.setState(s => ({ ecLaterIds: [...(s.ecLaterIds || []).filter(x => x !== cur.id), cur.id], ecCur: null, ecLast: null })),
+          ecAddAll: () => { const all = { ...dec }; pending.forEach(e => { all[e.id] = 'added'; }); this.setState({ ecDec: all, ecStrip: false, ecLast: null, botPreviewDismissed: false, successToast: left + ' emails added to Brain' }); },
+          botUnread: left, botNoUnread: left === 0 && !!this.state.botPreviewDismissed, botHasUnread: left > 0 || !this.state.botPreviewDismissed,
+          botUnreadLabel: left === 0 ? 'all done' : left + ' email' + (left === 1 ? '' : 's') + ' to confirm',
+          botPreviewShown: !this.state.botPreviewDismissed
         };
       })(),
       openBotChat: () => { this.sidebarState.copilotOpen = true; this.setState({ botUnread: 0, botPreviewDismissed: true }); },
