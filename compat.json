@@ -1,0 +1,275 @@
+{
+  "v": 1,
+  "mode": "omelette",
+  "root": "project/",
+  "title": "UI UX revamp planning",
+  "entry": "For-You-Tasks.dc.html",
+  "pages": [
+    {
+      "path": "For-You-Tasks.dc.html",
+      "title": "For You - Tasks",
+      "kind": "page"
+    },
+    {
+      "path": "Pipeline v2.5.dc.html",
+      "title": "Pipeline v2.5",
+      "kind": "page"
+    },
+    {
+      "path": "Pipeline-v2.5.dc.html",
+      "title": "Pipeline v2.5 (Deal Assignee)",
+      "kind": "page"
+    },
+    {
+      "path": "Pipeline-v2.5-Email.dc.html",
+      "title": "Pipeline v2.5 (Email to Brain)",
+      "kind": "page"
+    },
+    {
+      "path": "Pipeline-v2.6.dc.html",
+      "title": "Pipeline v2.6",
+      "kind": "page"
+    },
+    {
+      "path": "CRM v2.4-Auto Assign.dc.html",
+      "title": "CRM v2.4-Auto Assign",
+      "kind": "page"
+    },
+    {
+      "path": "Bots.dc.html",
+      "title": "Bots",
+      "kind": "page"
+    },
+    {
+      "path": "For You.dc.html",
+      "title": "For You",
+      "kind": "page"
+    },
+    {
+      "path": "CRM v2.4.dc.html",
+      "title": "CRM v2.4",
+      "kind": "page"
+    },
+    {
+      "path": "CRM v2.3.dc.html",
+      "title": "CRM v2.3",
+      "kind": "page"
+    },
+    {
+      "path": "Chat Interaction v1.1.dc.html",
+      "title": "Chat Interaction v1.1",
+      "kind": "page"
+    },
+    {
+      "path": "Canvas-3.dc.html",
+      "title": "Canvas-3",
+      "kind": "page"
+    },
+    {
+      "path": "CRM v2.2.dc.html",
+      "title": "CRM v2.2",
+      "kind": "page"
+    },
+    {
+      "path": "AI Agent-Sidebar.dc.html",
+      "title": "AI Agent-Sidebar",
+      "kind": "page"
+    },
+    {
+      "path": "Robot Head Avatar.dc.html",
+      "title": "Robot Head Avatar",
+      "kind": "page"
+    },
+    {
+      "path": "RoboAvatar.dc.html",
+      "title": "RoboAvatar",
+      "kind": "component"
+    },
+    {
+      "path": "AI Agent-Disabled Default agent (backup).dc.html",
+      "title": "AI Agent-Disabled Default agent (backup)",
+      "kind": "page"
+    },
+    {
+      "path": "AI Agent-Exploratif.dc.html",
+      "title": "AI Agent-Exploratif",
+      "kind": "page"
+    },
+    {
+      "path": "Deal Timeline 1.1.dc.html",
+      "title": "Deal Timeline 1.1",
+      "kind": "page"
+    },
+    {
+      "path": "Deal Timeline.dc.html",
+      "title": "Deal Timeline",
+      "kind": "page"
+    },
+    {
+      "path": "Canvas-2.dc.html",
+      "title": "Canvas-2",
+      "kind": "page"
+    },
+    {
+      "path": "Profile.dc.html",
+      "title": "Profile",
+      "kind": "page"
+    },
+    {
+      "path": "AI Agent.dc.html",
+      "title": "AI Agent",
+      "kind": "page"
+    },
+    {
+      "path": "Chat Interaction.dc.html",
+      "title": "Chat Interaction",
+      "kind": "page"
+    },
+    {
+      "path": "Pipeline v2.3.dc.html",
+      "title": "Pipeline v2.3",
+      "kind": "page"
+    },
+    {
+      "path": "Settings.dc.html",
+      "title": "Settings",
+      "kind": "page"
+    },
+    {
+      "path": "CRM v2.1.dc.html",
+      "title": "CRM v2.1",
+      "kind": "page"
+    },
+    {
+      "path": "Pipeline v2.2.dc.html",
+      "title": "Pipeline v2.2",
+      "kind": "page"
+    },
+    {
+      "path": "Pipeline v2.1.dc.html",
+      "title": "Pipeline v2.1",
+      "kind": "page"
+    },
+    {
+      "path": "Sourcing.dc.html",
+      "title": "Sourcing",
+      "kind": "page"
+    },
+    {
+      "path": "Insight.dc.html",
+      "title": "Insight",
+      "kind": "page"
+    },
+    {
+      "path": "Insight Generation Failed.html",
+      "title": "Bundled Page",
+      "kind": "plain"
+    },
+    {
+      "path": "Insight Generation Failed.dc.html",
+      "title": "Insight Generation Failed",
+      "kind": "page"
+    },
+    {
+      "path": "Upload Insight File.dc.html",
+      "title": "Upload Insight File",
+      "kind": "page"
+    },
+    {
+      "path": "Insight List.dc.html",
+      "title": "Insight List",
+      "kind": "page"
+    },
+    {
+      "path": "CRM.dc.html",
+      "title": "CRM",
+      "kind": "page"
+    },
+    {
+      "path": "Insight Chat with Agent Selector.dc.html",
+      "title": "Insight Chat with Agent Selector",
+      "kind": "page"
+    },
+    {
+      "path": "Insight Chat.dc.html",
+      "title": "Insight Chat",
+      "kind": "page"
+    },
+    {
+      "path": "Chat Default.dc.html",
+      "title": "Chat Default",
+      "kind": "page"
+    },
+    {
+      "path": "Pipeline v2.dc.html",
+      "title": "Pipeline v2",
+      "kind": "page"
+    },
+    {
+      "path": "Pipeline.dc.html",
+      "title": "Pipeline",
+      "kind": "page"
+    },
+    {
+      "path": "Investment Brain Dashboard.dc.html",
+      "title": "Investment Brain Dashboard",
+      "kind": "page"
+    },
+    {
+      "path": "Configure Agent.dc.html",
+      "title": "Configure Agent",
+      "kind": "page"
+    },
+    {
+      "path": "Insight Chat with Agent Selector - Standalone.html",
+      "title": "Bundled Page",
+      "kind": "plain"
+    },
+    {
+      "path": "Canvas.dc.html",
+      "title": "Canvas",
+      "kind": "page"
+    }
+  ],
+  "migratorVersion": "artifact-migrator (claude-design-backend d3fe323ed7c4)",
+  "createdAt": "2026-10-27T04:05:28.161Z",
+  "source": {
+    "v": 1,
+    "app": "claude-design",
+    "url": "https://claude.ai/design/p/309baa24-04c9-425d-9710-e28a70aaf1ec",
+    "projectId": "309baa24-04c9-425d-9710-e28a70aaf1ec",
+    "exportedAt": "2026-10-27T04:05:28.161Z"
+  },
+  "report": {
+    "itemsVersion": 2,
+    "pages": {
+      "total": 42,
+      "ok": 38,
+      "partial": 4,
+      "notMigrated": 0
+    },
+    "items": [
+      {
+        "kind": "external_blocked",
+        "path": "CRM v2.2.dc.html",
+        "text": "https://www.google.com/search?q="
+      },
+      {
+        "kind": "external_blocked",
+        "path": "CRM v2.3.dc.html",
+        "text": "https://www.google.com/search?q="
+      },
+      {
+        "kind": "external_blocked",
+        "path": "CRM v2.4-Auto Assign.dc.html",
+        "text": "https://www.google.com/search?q="
+      },
+      {
+        "kind": "external_blocked",
+        "path": "CRM v2.4.dc.html",
+        "text": "https://www.google.com/search?q="
+      }
+    ],
+    "truncated": 0
+  }
+}

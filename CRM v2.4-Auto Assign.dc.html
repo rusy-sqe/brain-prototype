@@ -141,6 +141,20 @@
     </div>
   </div>
 
+  <sc-if value="{{ showGmailBanner }}" hint-placeholder-val="{{ true }}">
+  <div style="display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:10px;border:1px solid var(--hz-horizon-primary-soft);background:var(--hz-horizon-primary-pale);flex-wrap:wrap">
+    <span style="width:36px;height:36px;border-radius:8px;background:var(--hz-surface-card);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--hz-red-600)"><i class="fab fa-google" style="font-size:16px"></i></span>
+    <div style="flex:1;min-width:240px;display:flex;flex-direction:column;gap:2px">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-size:14px;font-weight:700;color:var(--hz-text-primary)">Do more with your Gmail connected</span><span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--hz-green-700);background:var(--hz-surface-card);border:1px solid var(--hz-green-200);border-radius:999px;padding:1px 8px"><i class="fas fa-shield-check" style="font-size:9px"></i>Private &amp; Secure</span></div>
+      <span style="font-size:13px;line-height:1.5;color:var(--hz-text-secondary);text-wrap:pretty">Give Brain Bot access to your work inbox and it works the way you do. Ask it to read and summarise threads, draft replies in your tone, and alert you when a founder or banker is waiting on you.</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-plug"></i>Connect now</button>
+      <button onClick="{{ dismissGmailBanner }}" class="hz-btn hz-btn--text hz-btn--sm" title="Dismiss" style="width:32px;padding:0;justify-content:center;color:var(--hz-text-secondary)"><i class="far fa-times"></i></button>
+    </div>
+  </div>
+  </sc-if>
+
   <div class="hz-card" style="padding:20px">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
     <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:220px;flex-wrap:wrap">
@@ -1319,9 +1333,10 @@
       </div>
       <div style="background:var(--hz-horizon-primary-pale);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:8px">
         <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--hz-horizon-primary)"><i class="fas fa-sparkles" style="font-size:10px"></i>Why Brain assigned you</div>
-        <sc-for list="{{ sqDeal.reasons }}" as="a" hint-placeholder-count="3">
+        <sc-for list="{{ sqDeal.reasons }}" as="a" hint-placeholder-count="2">
           <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.45;color:var(--hz-text-primary)"><i class="fas fa-check-circle" style="font-size:12px;margin-top:3px;color:var(--hz-horizon-primary)"></i><span style="text-wrap:pretty"><strong>{{ a.title }}</strong> — {{ a.detail }}</span></div>
         </sc-for>
+        <div style="display:flex;align-items:flex-start;gap:8px;padding-top:8px;border-top:1px solid var(--hz-horizon-primary-soft);font-size:12px;line-height:1.45;color:var(--hz-text-secondary)"><i class="far fa-clock" style="font-size:11px;margin-top:3px"></i><span style="text-wrap:pretty">Drop it or push it to L1 voting within 2 weeks, or it is reassigned. Reassigned deals are flagged in the weekly review.</span></div>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px">
         <span style="font-size:12px;font-weight:600;color:var(--hz-text-primary)">Your response <span style="color:var(--hz-red-600)">*</span></span>
@@ -1569,10 +1584,10 @@ class Component extends DCLogic {
     window.location.href = 'Chat Interaction v1.1.dc.html' + (t ? '?q=' + encodeURIComponent(t) : '');
   }
   sqDeals = [
-    { id: 'k', name: 'Kirana Retail Group', sector: 'Consumer Retail', geo: 'Indonesia', due: 'Due Oct 27' },
-    { id: 'l', name: 'Lumbung Agritech', sector: 'Agritech', geo: 'Indonesia', due: 'Due Oct 27' },
-    { id: 's', name: 'Selaras Health', sector: 'Healthcare Services', geo: 'Malaysia', due: 'Due Oct 28' },
-    { id: 'h', name: 'Halcyon Foods', sector: 'Food & Beverage', geo: 'Philippines', due: 'Overdue · Oct 20', overdue: true }
+    { id: 'k', name: 'Kirana Retail Group', sector: 'Consumer Retail', geo: 'Indonesia', due: 'Due Oct 27', received: 'Oct 13', from: 'andi@kiranaretail.co.id' },
+    { id: 'l', name: 'Lumbung Agritech', sector: 'Agritech', geo: 'Indonesia', due: 'Due Oct 27', received: 'Oct 13', from: 'Mandiri Sekuritas' },
+    { id: 's', name: 'Selaras Health', sector: 'Healthcare Services', geo: 'Malaysia', due: 'Due Oct 28', reassigned: 'capacity', prev: 'Hendric Gondokusumo', received: 'Oct 14' },
+    { id: 'h', name: 'Halcyon Foods', sector: 'Food & Beverage', geo: 'Philippines', due: 'Overdue · Oct 20', overdue: true, reassigned: 'time', prev: 'Jien Lit', received: 'Oct 6' }
   ];
   sqReasonOptions = ['Outside my geographic focus', 'Outside my industry focus', 'At full capacity with current deals', 'Other'];
   sqVals() {
@@ -1614,11 +1629,17 @@ class Component extends DCLogic {
       }),
       sqShowDeal: !summary, sqShowSummary: summary,
       sqDeal: { ...deal, initials: deal.name.split(' ').map(w => w[0]).slice(0, 2).join(''), dueColor: deal.overdue ? 'var(--hz-red-700)' : 'var(--hz-text-tertiary)',
-        reasons: [
-          { title: 'Area focus match', detail: 'You cover ' + deal.geo + ', where this company operates.' },
-          { title: 'Industry focus match', detail: deal.sector + ' is one of your focus industries.' },
-          { title: 'Available capacity', detail: 'You have 3 active deals, below the team average of 5.' }
-        ] },
+        reasons: deal.reassigned === 'capacity' ? [
+          { title: 'Reassigned for capacity', detail: deal.prev + ' hit the 10-deal cap. As the newest deal in their queue, it moved first (last in, first out).' },
+          { title: 'You are under the cap', detail: 'You hold 6 of 10 active deals.' }
+        ] : deal.reassigned === 'time' ? [
+          { title: 'Reassigned after time cap', detail: deal.prev + ' took no action for 2 weeks (no drop, no push to L1 voting).' },
+          { title: 'You are under the cap', detail: 'You hold 6 of 10 active deals.' }
+        ] : [
+          { title: 'You received the email', detail: 'Sent to you by ' + deal.from + ' on ' + deal.received + '.' },
+          { title: 'You are under the cap', detail: 'You hold 6 of 10 active deals.' }
+        ],
+        isReassigned: !!deal.reassigned },
       sqChoices: [choice('accepted', 'Accept', 'Become deal sponsor', 'fas fa-check', 'green'), choice('rejected', 'Reject', 'Send for reassignment', 'fas fa-times', 'red')],
       sqIsReject: draft.choice === 'rejected',
       sqReasons: this.sqReasonOptions.map(label => ({ label, checked: draft.sel.includes(label), toggle: () => setDraft({ sel: draft.sel.includes(label) ? draft.sel.filter(x => x !== label) : [...draft.sel, label] }) })),
@@ -1682,6 +1703,8 @@ class Component extends DCLogic {
       convoMembers: members.map(m => { const on = (this.state.convoFilter || 'All') === m; return { label: m, bg: on ? 'var(--hz-horizon-primary-pale)' : 'transparent', color: on ? 'var(--hz-horizon-primary-dark)' : 'var(--hz-text-secondary)', border: on ? 'var(--hz-horizon-primary-light)' : 'var(--hz-border-subtle)', select: () => this.setState({ convoFilter: m }) }; }),
       convoNotes: cc ? cc.notes.filter(n => (this.state.convoFilter || 'All') === 'All' || n.member === this.state.convoFilter).map(n => ({ ...n, hasPoints: n.points.length > 0, nextBg: tone[n.nextTone][0], nextColor: tone[n.nextTone][1], nextIcon: tone[n.nextTone][2] })) : [],
       contactsMainTab: this.state.contactsMainTab,
+      showGmailBanner: !this.state.gmailDismissed,
+      dismissGmailBanner: () => this.setState({ gmailDismissed: true }),
       isSharedTab: this.state.contactsMainTab === 'shared',
       isPrivateTab: this.state.contactsMainTab === 'private',
       sharedTabColor: this.state.contactsMainTab === 'shared' ? 'var(--hz-text-primary)' : 'var(--hz-text-tertiary)',

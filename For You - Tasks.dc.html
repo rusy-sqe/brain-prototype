@@ -110,8 +110,8 @@
     <div style="display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:10px;border:1px solid var(--hz-horizon-primary-soft);background:var(--hz-horizon-primary-pale);flex-wrap:wrap">
       <span style="width:36px;height:36px;border-radius:8px;background:var(--hz-surface-card);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--hz-red-600)"><i class="fab fa-google" style="font-size:16px"></i></span>
       <div style="flex:1;min-width:240px;display:flex;flex-direction:column;gap:2px">
-        <span style="font-size:14px;font-weight:700;color:var(--hz-text-primary)">Do more with your Gmail connected</span>
-        <span style="font-size:13px;line-height:1.5;color:var(--hz-text-secondary);text-wrap:pretty">Brain turns founder and banker emails into tasks, logs every touchpoint to the right company, and flags threads that need your reply before a deal goes cold.</span>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-size:14px;font-weight:700;color:var(--hz-text-primary)">Do more with your Gmail connected</span><span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--hz-green-700);background:var(--hz-surface-card);border:1px solid var(--hz-green-200);border-radius:999px;padding:1px 8px"><i class="fas fa-shield-check" style="font-size:9px"></i>Private &amp; Secure</span></div>
+        <span style="font-size:13px;line-height:1.5;color:var(--hz-text-secondary);text-wrap:pretty">Give Brain Bot access to your work inbox and it works the way you do. Ask it to read and summarise threads, draft replies in your tone, and alert you when a founder or banker is waiting on you.</span>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
         <button class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-plug"></i>Connect now</button>
@@ -120,12 +120,68 @@
     </div>
     </sc-if>
 
-    <div class="hz-tabs">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--hz-border-subtle)">
+    <div class="hz-tabs" style="border-bottom:none">
       <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
         <button class="hz-tab {{ t.cls }}" onClick="{{ t.pick }}" style="display:inline-flex;align-items:center;gap:6px">{{ t.label }}<span style="min-width:20px;height:20px;padding:0 6px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:{{ t.badgeBg }};color:{{ t.badgeFg }}">{{ t.count }}</span></button>
       </sc-for>
     </div>
+      <div role="group" aria-label="View" style="display:flex;align-items:center;gap:2px;padding:2px;margin-bottom:8px;border:1px solid var(--hz-border-default);border-radius:8px;background:var(--hz-surface-card)">
+        <sc-for list="{{ viewOpts }}" as="v" hint-placeholder-count="2">
+          <button onClick="{{ v.pick }}" title="{{ v.label }} view" style="display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:none;border-radius:6px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;background:{{ v.bg }};color:{{ v.fg }}"><i class="far {{ v.icon }}" style="font-size:12px"></i>{{ v.label }}</button>
+        </sc-for>
+      </div>
+    </div>
 
+    <sc-if value="{{ isTableView }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-card" style="padding:0;overflow:visible">
+      <div>
+      <div style="font-size:13px">
+        <div style="display:grid;grid-template-columns:minmax(240px,2fr) minmax(150px,1fr) minmax(140px,1fr) minmax(110px,.8fr) minmax(100px,.7fr) 130px;background:var(--hz-neutral-50);border-bottom:1px solid var(--hz-border-subtle);border-radius:8px 8px 0 0">
+          <div style="padding:10px 12px;display:flex;align-items:center;min-width:0;padding-left:16px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--hz-text-tertiary)">Task</div>
+          <div style="padding:10px 12px;display:flex;align-items:center;min-width:0;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--hz-text-tertiary)">Status</div>
+          <div style="padding:10px 12px;display:flex;align-items:center;min-width:0;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--hz-text-tertiary)">Stage</div>
+          <div style="padding:10px 12px;display:flex;align-items:center;min-width:0;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--hz-text-tertiary)">Requested by</div>
+          <div style="padding:10px 12px;display:flex;align-items:center;min-width:0;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--hz-text-tertiary)">Due</div>
+          <div style="padding:10px 12px;display:flex;align-items:center;min-width:0"></div>
+        </div>
+        <sc-for list="{{ tasks }}" as="task" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:minmax(240px,2fr) minmax(150px,1fr) minmax(140px,1fr) minmax(110px,.8fr) minmax(100px,.7fr) 130px;border-bottom:1px solid var(--hz-border-subtle)" style-hover="background:var(--hz-neutral-50)">
+          <div style="padding:10px 12px;display:flex;align-items:center;min-width:0;padding-left:16px;gap:6px">
+            <span style="font-weight:600;color:var(--hz-text-primary);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="{{ task.title }}">{{ task.title }}</span>
+            <sc-if value="{{ task.isBrain }}" hint-placeholder-val="{{ false }}"><i class="fas fa-sparkles" title="Auto-created" style="font-size:10px;color:var(--hz-horizon-primary);flex-shrink:0"></i></sc-if>
+          </div>
+          <div style="padding:10px 12px;display:flex;align-items:center;min-width:0"><span style="display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap;background:{{ task.tileBg }};color:{{ task.tileFg }}"><span style="width:6px;height:6px;border-radius:999px;background:currentColor"></span>{{ task.status }}</span></div>
+          <div style="padding:10px 12px;display:flex;align-items:center;min-width:0;color:var(--hz-text-secondary)">{{ task.stage }}</div>
+          <div style="padding:10px 12px;display:flex;align-items:center;min-width:0;color:var(--hz-text-secondary)">{{ task.requestedBy }}</div>
+          <div style="padding:10px 12px;display:flex;align-items:center;min-width:0;font-weight:600;color:{{ task.dueColor }};white-space:nowrap">{{ task.due }}</div>
+          <div style="padding:10px 12px;display:flex;align-items:center;min-width:0;justify-content:flex-end;padding-right:16px;padding-top:6px;padding-bottom:6px">
+            <div style="position:relative;display:inline-flex">
+              <button onClick="{{ task.toggleMenu }}" class="hz-btn hz-btn--secondary hz-btn--sm">Take action<i class="far fa-chevron-down" style="font-size:10px"></i></button>
+              <sc-if value="{{ task.menuOpen }}" hint-placeholder-val="{{ false }}">
+                    <div onClick="{{ closeMenu }}" style="position:fixed;inset:0;z-index:20"></div>
+                    <div style="position:absolute;top:100%;right:0;margin-top:4px;z-index:21;min-width:200px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);border-radius:8px;box-shadow:0 8px 24px rgba(16,24,40,.12);padding:4px;display:flex;flex-direction:column">
+                      <a href="{{ task.ctaHref }}" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 10px;border-radius:6px;font-size:13px;color:var(--hz-text-primary);text-decoration:none" style-hover="background:var(--hz-neutral-50)"><i class="far fa-arrow-right" style="width:14px;font-size:12px;color:var(--hz-text-tertiary)"></i>{{ task.cta }}</a>
+                      <sc-if value="{{ task.canComplete }}" hint-placeholder-val="{{ true }}">
+                        <button onClick="{{ task.complete }}" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 10px;border:none;border-radius:6px;background:transparent;font-family:inherit;font-size:13px;color:var(--hz-text-primary);text-align:left;cursor:pointer" style-hover="background:var(--hz-neutral-50)"><i class="far fa-check" style="width:14px;font-size:12px;color:var(--hz-text-tertiary)"></i>Mark as complete</button>
+                      </sc-if>
+                      <div style="height:1px;background:var(--hz-border-subtle);margin:4px 0"></div>
+                      <button onClick="{{ task.archive }}" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 10px;border:none;border-radius:6px;background:transparent;font-family:inherit;font-size:13px;color:var(--hz-red-700);text-align:left;cursor:pointer" style-hover="background:var(--hz-red-50)"><i class="far fa-archive" style="width:14px;font-size:12px"></i>Archive task</button>
+                    </div>
+                  </sc-if>
+            </div>
+          </div>
+        </div>
+        </sc-for>
+      </div>
+      </div>
+    </div>
+    <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+      <div class="hz-card" style="padding:40px;text-align:center;font-size:14px;color:var(--hz-text-tertiary)">Nothing here yet.</div>
+    </sc-if>
+    </sc-if>
+
+    <sc-if value="{{ isCardView }}" hint-placeholder-val="{{ true }}">
     <div style="display:flex;flex-direction:column;gap:12px">
       <sc-for list="{{ tasks }}" as="task" hint-placeholder-count="4">
         <div class="hz-card" style="padding:20px;display:flex;flex-direction:row;gap:16px;align-items:flex-start">
@@ -180,6 +236,7 @@
         <div class="hz-card" style="padding:40px;text-align:center;font-size:14px;color:var(--hz-text-tertiary)">Nothing here yet.</div>
       </sc-if>
     </div>
+    </sc-if>
   </div>
 </div>
 </div>
@@ -205,8 +262,13 @@ class Component extends DCLogic {
     { id: 't4', tab: 'assigned', st: 'ack', requested: 'Added by you', title: 'Prepare IC memo: Project Garuda', desc: 'Summarise diligence findings, valuation range and key risks for the investment committee.', metrics: [['Stage', 'L4 · IC Review'], ['IC date', 'Nov 12']], due: 'Nov 7, 2026', subs: [['a', 'Valuation section'], ['b', 'Risk register'], ['c', 'Partner review']], cta: 'Open company', href: 'Pipeline v2.4 - Auto Assigned.dc.html', owner: 'You', ini: 'DS' },
     { id: 'c1', tab: 'completed', st: 'done', requested: 'Added by you', title: 'Move Driftwood Capital to L1 Preliminary Review', desc: 'Confirmed sponsorship and moved the company into the pipeline.', metrics: [['Stage', 'L1 · Preliminary Review']], due: 'Oct 20, 2026', cta: 'Open company', href: 'Pipeline v2.4 - Auto Assigned.dc.html', owner: 'You', ini: 'DS' }
   ];
+  componentDidMount() {
+    try { const v = localStorage.getItem('forYouTaskView'); if (v === 'table' || v === 'card') this.setState({ view: v }); } catch (e) {}
+  }
+  setView(v) { try { localStorage.setItem('forYouTaskView', v); } catch (e) {} this.setState({ view: v, menuFor: null }); }
   renderVals() {
     const S = this.state;
+    const view = S.view || 'card';
     const tabOf = t => ((S.archived || {})[t.id] ? 'archived' : S.done[t.id] ? 'completed' : t.tab);
     const counts = { assigned: 0, completed: 0, archived: 0 };
     this.data.forEach(t => counts[tabOf(t)]++);
@@ -224,6 +286,8 @@ class Component extends DCLogic {
       const open = !!S.open[t.id];
       return {
         title: t.title, desc: t.desc, requested: t.requested, isBrain: !!t.brain,
+        stage: ((t.metrics.find(m => m[0] === 'Stage') || [])[1]) || '—',
+        requestedBy: t.requested.replace(/^(Requested|Added) by /, '').replace(/^you$/, 'You'),
         status: st.label, statusIcon: st.icon, tileBg: st.bg, tileFg: st.fg,
         metrics: t.metrics.map(([label, value]) => ({ label, value })),
         due: t.due, dueColor: t.overdue && !S.done[t.id] ? 'var(--hz-red-700)' : 'var(--hz-text-primary)',
@@ -242,6 +306,8 @@ class Component extends DCLogic {
     const openMine = this.data.filter(t => tabOf(t) === 'assigned');
     return {
       assignedCount: counts.assigned,
+      isTableView: view === 'table', isCardView: view === 'card',
+      viewOpts: [['card', 'Card', 'fa-th-list'], ['table', 'Compact', 'fa-list']].map(([k, label, icon]) => ({ label, icon, pick: () => this.setView(k), bg: view === k ? 'var(--hz-horizon-primary-pale)' : 'transparent', fg: view === k ? 'var(--hz-horizon-primary-dark)' : 'var(--hz-text-secondary)' })),
       showGmailBanner: !S.gmailDismissed,
       dismissGmailBanner: () => this.setState({ gmailDismissed: true }),
       kpis: [
