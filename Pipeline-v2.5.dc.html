@@ -245,11 +245,6 @@
             <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeAssignLog }}"><i class="far fa-times" style="font-size:18px"></i></button>
           </div>
           <div style="padding:14px 24px;border-bottom:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;gap:12px">
-            <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px">
-              <sc-for list="{{ assignLogStats }}" as="st" hint-placeholder-count="4">
-                <div style="padding:8px 10px;border-radius:8px;background:var(--hz-neutral-50);display:flex;flex-direction:column;gap:2px"><span style="font-size:18px;font-weight:700;color:{{ st.color }}">{{ st.value }}</span><span style="font-size:12px;color:var(--hz-text-secondary)">{{ st.label }}</span></div>
-              </sc-for>
-            </div>
             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
             <div style="display:flex;gap:6px;flex-wrap:wrap">
               <sc-for list="{{ assignLogFilters }}" as="fl" hint-placeholder-count="5">
@@ -796,8 +791,8 @@
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px">
-        <sc-for list="{{ odCards }}" as="k" hint-placeholder-count="4">
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+        <sc-for list="{{ odCards }}" as="k" hint-placeholder-count="3">
         <button onClick="{{ k.go }}" title="{{ k.tip }}" style="text-align:left;border:1px solid var(--hz-border-subtle);background:var(--hz-surface-card);border-radius:10px;padding:14px 16px;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;gap:4px" style-hover="border-color:var(--hz-horizon-primary)">
           <span style="font-size:13px;color:var(--hz-text-secondary);display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:999px;background:{{ k.dot }}"></span>{{ k.label }}</span>
           <span style="display:flex;align-items:baseline;gap:6px"><span style="font-size:26px;font-weight:700;color:{{ k.color }};line-height:1.2">{{ k.value }}</span><span style="font-size:13px;color:var(--hz-text-tertiary)">{{ k.unit }}</span></span>
@@ -820,21 +815,21 @@
 
       <sc-if value="{{ odHasRows }}" hint-placeholder-val="{{ true }}">
       <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;overflow-x:auto">
-        <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:1120px">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;table-layout:auto">
           <thead><tr style="background:var(--hz-neutral-50)">
-            <sc-for list="{{ odHeads }}" as="h" hint-placeholder-count="7"><th style="text-align:left;padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--hz-text-tertiary);white-space:nowrap;border-bottom:1px solid var(--hz-border-subtle)">{{ h }}</th></sc-for>
+            <sc-for list="{{ odHeads }}" as="h" hint-placeholder-count="7"><th style="text-align:left;padding:8px 10px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--hz-text-tertiary);white-space:nowrap;border-bottom:1px solid var(--hz-border-subtle)">{{ h }}</th></sc-for>
           </tr></thead>
           <tbody>
             <sc-for list="{{ odRows }}" as="r" hint-placeholder-count="5">
             <tr onClick="{{ r.open }}" style="cursor:pointer;border-bottom:1px solid var(--hz-border-subtle);background:{{ r.rowBg }}" style-hover="background:var(--hz-neutral-50)">
-              <td style="padding:12px 14px"><div style="font-weight:700;color:var(--hz-text-primary)">{{ r.company }}</div><div style="font-size:12px;color:var(--hz-text-tertiary)">{{ r.project }}</div></td>
-              <td style="padding:12px 14px"><div style="display:flex;align-items:center;gap:8px"><div><div style="font-weight:600;color:var(--hz-text-primary);white-space:nowrap">{{ r.who }}</div><sc-if value="{{ r.hasWhoSub }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:var(--hz-text-tertiary);white-space:nowrap">{{ r.whoSub }}</div></sc-if></div></div></td>
-              <td style="padding:12px 14px"><span style="display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap;background:{{ r.pillBg }};color:{{ r.pillColor }}"><i class="fas {{ r.pillIcon }}" style="font-size:9px"></i>{{ r.pill }}</span></td>
-              <td style="padding:12px 14px;white-space:nowrap"><button onClick="{{ r.open }}" title="See why" style="border:none;background:none;padding:0;font-family:inherit;cursor:pointer;text-align:left"><div style="font-weight:700;color:{{ r.daysColor }};text-decoration:underline dotted;text-underline-offset:3px">{{ r.days }}</div><sc-if value="{{ r.hasDaysSub }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:var(--hz-text-tertiary)">{{ r.daysSub }}</div></sc-if></button></td>
-              <td style="padding:12px 14px;white-space:nowrap;color:var(--hz-text-secondary)">{{ r.deadline }}</td>
-              <td style="padding:12px 14px;color:var(--hz-text-secondary)">{{ r.reason }}</td>
-              <td style="padding:12px 14px" onClick="{{ r.stop }}"><div style="display:flex;align-items:center;gap:4px;white-space:nowrap">
-                <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ r.act }}">Act now</button>
+              <td style="padding:10px;white-space:nowrap;width:1%"><a href="#" onClick="{{ r.openCompany }}" title="Open company" style="display:block;font-weight:700;color:var(--hz-text-primary);text-decoration:none" style-hover="color:var(--hz-horizon-primary);text-decoration:underline">{{ r.company }}</a><a href="#" onClick="{{ r.openProject }}" title="Open project" style="display:inline-block;font-size:12px;color:var(--hz-text-tertiary);text-decoration:none" style-hover="color:var(--hz-horizon-primary);text-decoration:underline">{{ r.project }}</a></td>
+              <td style="padding:10px"><div style="display:flex;align-items:center;gap:8px"><div><div style="font-weight:600;color:var(--hz-text-primary);white-space:nowrap">{{ r.who }}</div><sc-if value="{{ r.hasWhoSub }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:var(--hz-text-tertiary);white-space:nowrap">{{ r.whoSubPre }}<strong style="font-weight:700;color:var(--hz-text-secondary)">{{ r.whoSubName }}</strong></div></sc-if></div></div></td>
+              <td style="padding:10px"><span style="display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap;background:{{ r.pillBg }};color:{{ r.pillColor }}"><sc-if value="{{ r.pillIcon }}" hint-placeholder-val="{{ true }}"><i class="fas {{ r.pillIcon }}" style="font-size:9px"></i></sc-if>{{ r.pill }}</span></td>
+              <td style="padding:10px;white-space:nowrap"><button onClick="{{ r.open }}" title="See why" style="border:none;background:none;padding:0;font-family:inherit;cursor:pointer;text-align:left"><div style="font-weight:700;color:{{ r.daysColor }};text-decoration:underline dotted;text-underline-offset:3px">{{ r.days }}</div><sc-if value="{{ r.hasDaysSub }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:var(--hz-text-tertiary)">{{ r.daysSub }}</div></sc-if></button></td>
+              <td style="padding:10px;color:var(--hz-text-secondary)"><strong style="font-weight:700;color:var(--hz-text-primary)">{{ r.country }}</strong>{{ r.reasonRest }}</td>
+              <td style="padding:10px" onClick="{{ r.stop }}"><div style="display:flex;align-items:center;gap:4px;white-space:nowrap">
+                <button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-horizon-primary);font-weight:600" onClick="{{ r.act }}">Act now</button>
+                <button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-text-tertiary)" style-hover="color:var(--hz-text-secondary)" onClick="{{ r.open }}"><i class="far fa-info-circle" style="color:var(--hz-text-tertiary)"></i>Detail</button>
               </div></td>
             </tr>
             </sc-for>
@@ -880,8 +875,8 @@
     </div>
 
     <sc-if value="{{ odDrawerOpen }}" hint-placeholder-val="{{ false }}">
-    <div onClick="{{ odCloseDrawer }}" style="position:fixed;inset:0;background:rgba(16,24,40,.28);z-index:60"></div>
-    <div style="position:fixed;top:0;right:0;height:100vh;width:460px;max-width:100vw;background:var(--hz-surface-card);z-index:61;box-shadow:-8px 0 24px rgba(16,24,40,.12);display:flex;flex-direction:column">
+    <div onClick="{{ odCloseDrawer }}" style="position:fixed;inset:0;background:rgba(16,24,40,.4);z-index:60"></div>
+    <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:560px;max-width:calc(100vw - 32px);max-height:86vh;background:var(--hz-surface-card);z-index:61;border-radius:14px;overflow:hidden;box-shadow:0 20px 48px rgba(16,24,40,.2);display:flex;flex-direction:column">
       <div style="padding:20px 22px;border-bottom:1px solid var(--hz-border-subtle);display:flex;align-items:flex-start;gap:12px">
         <div style="flex:1;min-width:0">
           <div style="font-size:12px;color:var(--hz-text-tertiary)">{{ odD.company }} · {{ odD.project }}</div>
@@ -1494,34 +1489,7 @@
               <span style="font-size:12px;color:var(--hz-text-tertiary)">Sent to the current assignee.</span>
             </div>
           </div>
-          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
-            <span style="font-size:13px;font-weight:600;color:var(--hz-text-primary)">What counts as action</span>
-            <div style="display:flex;gap:16px;flex-wrap:wrap">
-              <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--hz-text-secondary);cursor:pointer"><input type="checkbox" checked="{{ rtActNext }}" onChange="{{ rtToggleActNext }}">Move to the next stage</label>
-              <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--hz-text-secondary);cursor:pointer"><input type="checkbox" checked="{{ rtActDrop }}" onChange="{{ rtToggleActDrop }}">Drop the deal</label>
-            </div>
-          </div>
-          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
-            <span style="font-size:13px;font-weight:600;color:var(--hz-text-primary)">If no action is taken</span>
-            <sc-for list="{{ rtReassignOpts }}" as="o" hint-placeholder-count="2">
-            <label style="display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.5;color:var(--hz-text-secondary);cursor:pointer"><input type="radio" name="rt-reassign" checked="{{ o.checked }}" onChange="{{ o.pick }}" style="margin-top:4px">{{ o.label }}</label>
-            </sc-for>
-            <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--hz-text-secondary);cursor:pointer;padding-top:8px;border-top:1px solid var(--hz-border-subtle)"><span class="hz-switch"><input type="checkbox" checked="{{ rtRedFlag }}" onChange="{{ rtToggleRedFlag }}"><span class="hz-switch__slider"></span></span>Flag the deal red when it’s reassigned</label>
-          </div>
-          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
-            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-              <span style="font-size:13px;font-weight:600;color:var(--hz-text-primary)">Max reassignments</span>
-              <input type="number" min="0" value="{{ rtMaxRe }}" onChange="{{ rtSetMaxRe }}" style="width:72px;padding:6px 8px;border:1px solid var(--hz-border-default);border-radius:6px;font-family:inherit;font-size:14px;font-weight:600;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-              <span style="font-size:12px;color:var(--hz-text-tertiary)">per deal</span>
-            </div>
-            <span style="font-size:13px;color:var(--hz-text-secondary)">When the limit is reached:</span>
-            <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--hz-text-secondary);cursor:pointer;flex-wrap:wrap"><input type="radio" name="rt-end" checked="{{ rtEndEscalate }}" onChange="{{ rtPickEscalate }}">Escalate to
-              <select value="{{ rtEscalateTo }}" onChange="{{ rtSetEscalateTo }}" style="padding:5px 8px;border:1px solid var(--hz-border-default);border-radius:6px;font-family:inherit;font-size:13px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
-                <sc-for list="{{ rtPersonOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o }}">{{ o }}</option></sc-for>
-              </select>
-            </label>
-            <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--hz-text-secondary);cursor:pointer"><input type="radio" name="rt-end" checked="{{ rtEndTriage }}" onChange="{{ rtPickTriage }}">Move to the triage queue</label>
-          </div>
+          
         </div>
         </sc-if>
 
@@ -2814,11 +2782,11 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
   odPeople = { 'Hendric Gondokusumo': 'HG', 'Jien Lit': 'JL', 'Dessi Sari': 'DS', 'Kar Siong': 'KS', 'Samuel Nathaniel': 'SN', 'Chandra Limi': 'CL', 'Andrew': 'AN' };
   odCover = { Taiwan: ['Hendric Gondokusumo'], Indonesia: ['Jien Lit', 'Kar Siong'], Australia: ['Hendric Gondokusumo', 'Samuel Nathaniel'], Chile: ['Chandra Limi'], Malaysia: ['Dessi Sari', 'Kar Siong'] };
   odSeed = [
-    { id: 'k', company: 'North Group', project: 'Project Keystone', who: 'Hendric Gondokusumo', country: 'Taiwan', status: 'escalated', over: 6, deadline: '4 Nov', email: '20 Oct', assigned: '21 Oct', reminder: '1 Nov', flagged: '4 Nov', moved: { to: 'Andrew', from: 'Hendric Gondokusumo', date: '5 Nov', why: 'no other leader covers Taiwan' }, pauses: [] },
-    { id: 't', company: 'Bluewave Industries', project: 'Project Tide', who: 'Chandra Limi', country: 'Chile', status: 'overdue', over: 4, deadline: '6 Nov', email: '22 Oct', assigned: '23 Oct', reminder: '3 Nov', flagged: '6 Nov', pauses: [] },
-    { id: 'h', company: 'Summit Partners', project: 'Project Harbor', who: 'Jien Lit', country: 'Indonesia', status: 'overdue', over: 3, deadline: '7 Nov', email: '23 Oct', assigned: '24 Oct', reminder: '4 Nov', flagged: '7 Nov', pauses: [] },
-    { id: 'a', company: 'Orion Foods', project: 'Project Atlas', who: 'Samuel Nathaniel', country: 'Australia', status: 'overdue', over: 2, deadline: '8 Nov', email: '21 Oct', assigned: '22 Oct', reminder: '5 Nov', flagged: '8 Nov', pauses: [{ dates: '28–30 Oct (2 days)', by: 'Samuel Nathaniel', reason: 'Waiting for the NDA to be countersigned' }] },
-    { id: 'l', company: 'Cascade Dynamics', project: 'Project Lumen', who: 'Dessi Sari', country: 'Malaysia', status: 'overdue', over: 1, deadline: '9 Nov', email: '25 Oct', assigned: '26 Oct', reminder: '6 Nov', flagged: '9 Nov', pauses: [] },
+    { id: 'k', company: 'North Group', project: 'Project Keystone', who: 'Hendric Gondokusumo', country: 'Taiwan', status: 'escalated', over: 6, deadline: '4 Nov', email: '20 Oct', assigned: '21 Oct', reminder: '1 Nov', flagged: '4 Nov', moved: { to: 'Andrew', from: 'Hendric Gondokusumo', date: '5 Nov', why: 'all overdue deals go to Andrew' }, pauses: [] },
+    { id: 't', company: 'Bluewave Industries', project: 'Project Tide', who: 'Chandra Limi', country: 'Chile', status: 'escalated', over: 4, deadline: '6 Nov', email: '22 Oct', assigned: '23 Oct', reminder: '3 Nov', flagged: '6 Nov', moved: { to: 'Andrew', from: 'Chandra Limi', date: '7 Nov', why: 'all overdue deals go to Andrew' }, pauses: [] },
+    { id: 'h', company: 'Summit Partners', project: 'Project Harbor', who: 'Jien Lit', country: 'Indonesia', status: 'escalated', over: 3, deadline: '7 Nov', email: '23 Oct', assigned: '24 Oct', reminder: '4 Nov', flagged: '7 Nov', moved: { to: 'Andrew', from: 'Jien Lit', date: '8 Nov', why: 'all overdue deals go to Andrew' }, pauses: [] },
+    { id: 'a', company: 'Orion Foods', project: 'Project Atlas', who: 'Samuel Nathaniel', country: 'Australia', status: 'escalated', over: 2, deadline: '8 Nov', email: '21 Oct', assigned: '22 Oct', reminder: '5 Nov', flagged: '8 Nov', moved: { to: 'Andrew', from: 'Samuel Nathaniel', date: '9 Nov', why: 'all overdue deals go to Andrew' }, pauses: [{ dates: '28–30 Oct (2 days)', by: 'Samuel Nathaniel', reason: 'Waiting for the NDA to be countersigned' }] },
+    { id: 'l', company: 'Cascade Dynamics', project: 'Project Lumen', who: 'Dessi Sari', country: 'Malaysia', status: 'escalated', over: 1, deadline: '9 Nov', email: '25 Oct', assigned: '26 Oct', reminder: '6 Nov', flagged: '9 Nov', moved: { to: 'Andrew', from: 'Dessi Sari', date: '10 Nov', why: 'all overdue deals go to Andrew' }, pauses: [] },
     { id: 'g', company: 'Vertex Systems', project: 'Project Granite', who: 'Kar Siong', country: 'Indonesia', status: 'reassigned', left: 6, deadline: '16 Nov', email: '18 Oct', assigned: '19 Oct', reminder: '30 Oct', flagged: '2 Nov', moved: { to: 'Kar Siong', from: 'Jien Lit', date: '2 Nov', why: 'the next leader covering Indonesia' }, pauses: [] },
     { id: 'o', company: 'Kestrel Logistics', project: 'Project Orbit', who: 'Chandra Limi', country: 'Chile', status: 'due', left: 1, deadline: '11 Nov', email: '27 Oct', assigned: '28 Oct', reminder: '8 Nov', pauses: [] },
     { id: 'b', company: 'Meridian Labs', project: 'Project Beacon', who: 'Jien Lit', country: 'Indonesia', status: 'due', left: 2, deadline: '12 Nov', email: '28 Oct', assigned: '29 Oct', reminder: '9 Nov', pauses: [] },
@@ -2851,7 +2819,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
     const rank = r => isOver(r) ? 1000 + r.over : r.status === 'reassigned' ? 500 : r.status === 'due' ? 100 - r.left : 0;
     const shown = groups[filter].filter(r => !who || r.who === who || (r.moved && r.moved.from === who)).sort((a, b) => rank(b) - rank(a));
     const toast = msg => { this.setState({ successToast: msg }); setTimeout(() => this.setState(s => s.successToast === msg ? { successToast: null } : null), 3000); };
-    const pill = r => r.status === 'escalated' ? ['Reassigned to Andrew', 'var(--hz-red-50)', 'var(--hz-red-700)', 'fa-arrow-up']
+    const pill = r => r.status === 'escalated' ? ['Reassigned', 'var(--hz-red-50)', 'var(--hz-red-700)', '']
       : r.status === 'overdue' ? ['Overdue', 'var(--hz-red-50)', 'var(--hz-red-700)', 'fa-circle']
       : r.status === 'reassigned' ? ['Reassigned', 'var(--hz-horizon-primary-pale)', 'var(--hz-horizon-primary-dark)', 'fa-exchange-alt']
       : r.status === 'due' ? ['Due soon', 'var(--hz-orange-50)', 'var(--hz-orange-700)', 'fa-clock']
@@ -2900,25 +2868,26 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       odCards: [
         { label: 'Overdue now', value: cnt('overdue'), unit: cnt('overdue') === 1 ? 'deal' : 'deals', dot: 'var(--hz-red-500)', color: cnt('overdue') ? 'var(--hz-red-600)' : 'var(--hz-text-primary)', cta: 'See deals', tip: 'Deals past their 2-week deadline with no stage move, drop or note.', go: () => this.setState({ odFilter: 'overdue', odWho: '' }) },
         { label: 'Due in 3 days or less', value: cnt('due'), unit: cnt('due') === 1 ? 'deal' : 'deals', dot: 'var(--hz-orange-500)', color: 'var(--hz-orange-700)', cta: 'See deals', tip: 'Reminders have gone out. Nothing is late yet.', go: () => this.setState({ odFilter: 'due', odWho: '' }) },
-        { label: 'Reassigned this month', value: cnt('reassigned'), unit: '', dot: 'var(--hz-horizon-primary)', color: 'var(--hz-text-primary)', cta: 'See deals', tip: 'Deals moved to another leader or Andrew in November.', go: () => this.setState({ odFilter: 'reassigned', odWho: '' }) },
         { label: 'Median days to first action', value: 8, unit: 'days', dot: 'var(--hz-neutral-400)', color: 'var(--hz-text-primary)', cta: '', tip: 'Middle value across all assignments in the last 90 days, from assignment to the first stage move, drop or note.', go: () => {} }
       ],
-      odFilters: [['overdue', 'Overdue'], ['due', 'Due soon'], ['reassigned', 'Reassigned'], ['all', 'All']].map(([k, label]) => ({ label, count: cnt(k), pick: () => this.setState({ odFilter: k }),
+      odFilters: [['overdue', 'Overdue'], ['due', 'Due soon'], ['all', 'All']].map(([k, label]) => ({ label, count: cnt(k), pick: () => this.setState({ odFilter: k }),
         bg: filter === k ? 'var(--hz-horizon-primary)' : 'var(--hz-surface-card)', color: filter === k ? '#fff' : 'var(--hz-text-secondary)', border: filter === k ? 'var(--hz-horizon-primary)' : 'var(--hz-border-default)' })),
       odHasWho: !!who, odWho: you(who), odClearWho: () => this.setState({ odWho: '' }),
       odOpenHow: () => this.setState({ odModal: { mode: 'how' } }),
-      odHeads: ['Company', 'Assignee', 'Status', 'Days overdue', 'Deadline', 'Assignment reason', 'Actions'],
+      odHeads: ['Company', 'Assignee', 'Status', 'Overdue / Deadline', 'Assignment reason', 'Actions'],
       odHasRows: shown.length > 0, odEmpty: shown.length === 0,
       odEmptyTitle: filter === 'overdue' && !who ? 'Nothing overdue. All deals are on track.' : 'No deals here right now.',
       odEmptySub: filter === 'overdue' && !who ? 'Deals show up here only after their deadline passes.' : 'Try another filter.',
       odRows: shown.map(r => { const p = pill(r), d = days(r), paused = r.status === 'paused', used = r.pauses.length > 0;
         return { company: r.company, project: r.project, who: you(r.who), ini: ini(r.who),
-          whoSub: r.status === 'escalated' ? 'Now with Andrew' : r.moved ? 'From ' + you(r.moved.from) : '', hasWhoSub: !!r.moved,
-          days: d[0], daysColor: d[1], daysSub: d[2], hasDaysSub: !!d[2], deadline: r.deadline,
-          reason: r.country + ' deal, Geography focus' + (r.status === 'reassigned' ? ' (backup)' : ''),
+          whoSubPre: r.status === 'escalated' ? 'Reassigned to ' : r.moved ? 'From ' : '', whoSubName: r.status === 'escalated' ? 'Andrew' : r.moved ? you(r.moved.from) : '', hasWhoSub: !!r.moved,
+          days: d[0], daysColor: d[1], daysSub: (r.status === 'paused' ? 'Until ' + r.until + ' · ' : '') + 'Deadline ' + r.deadline, hasDaysSub: true, deadline: r.deadline,
+          country: r.country, reasonRest: ' deal, Geography focus' + (r.status === 'reassigned' ? ' (backup)' : ''),
           pill: p[0], pillBg: p[1], pillColor: p[2], pillIcon: p[3], rowBg: S.odDrawer === r.id ? 'var(--hz-horizon-primary-pale)' : 'transparent',
           open: () => this.setState({ odDrawer: r.id, odDisputeOpen: false, odDisputeText: '' }),
           stop: e => e.stopPropagation(),
+          openCompany: e => { e.preventDefault(); e.stopPropagation(); toast('Opening ' + r.company + '…'); },
+          openProject: e => { e.preventDefault(); e.stopPropagation(); toast('Opening ' + r.project + '…'); },
           act: () => openModal('act', r.id), reassign: () => openModal('reassign', r.id), pause: () => openModal('pause', r.id),
           pauseDisabled: paused || used, pauseLabel: paused ? 'Paused' : 'Pause',
           pauseTip: paused ? 'Already paused until ' + r.until : used ? 'This deal has used its one pause' : 'Pause for up to 7 days' }; }),
@@ -2935,7 +2904,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       odD: dRow ? (() => { const p = pill(dRow), fl = isOver(dRow) || dRow.status === 'reassigned';
         return { company: dRow.company, project: dRow.project, drawerTitle: fl ? 'Why this was flagged' : 'Deal status', pill: p[0], pillBg: p[1], pillColor: p[2], pillIcon: p[3],
           summary: summary(dRow), steps: steps(dRow), pauses: dRow.pauses, hasPauses: dRow.pauses.length > 0, noPauses: dRow.pauses.length === 0,
-          disputed: !!dRow.disputed, canDispute: fl && !dRow.disputed && !S.odDisputeOpen, act: () => openModal('act', dRow.id) }; })() : {},
+          disputed: !!dRow.disputed, canDispute: false, act: () => openModal('act', dRow.id) }; })() : {},
       odDisputeOpen: !!S.odDisputeOpen, odDisputeText: S.odDisputeText || '', odDisputeEmpty: !(S.odDisputeText || '').trim(),
       odToggleDispute: () => this.setState({ odDisputeOpen: !S.odDisputeOpen }),
       odSetDispute: e => this.setState({ odDisputeText: e.target.value }),
@@ -2947,15 +2916,11 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       odModalSub: mode === 'how' ? 'The same rules apply to everyone. Nothing here is a performance rating.' : mode === 'act' ? 'Any of these clears the flag right away.' : mode === 'reassign' ? 'Leaders who cover ' + (mRow || {}).country + ', plus the fallback owner.' : mode === 'pause' ? 'Use when the next step is waiting on someone outside the team.' : '',
       odHowItems: [
         { icon: 'fa-calendar', title: 'Deadline', text: 'Every assigned deal has 2 weeks for a first action. A reminder goes out 3 days before the deadline.' },
-        { icon: 'fa-check-circle', title: 'What counts as action', text: 'Moving the deal to another stage, dropping it, or logging a note. Any one of these clears the flag.' },
-        { icon: 'fa-pause-circle', title: 'Pausing', text: 'One pause per deal, for up to 7 days. A reason is required and is visible to everyone. The deadline moves by the paused days, and paused time is never counted as late.' },
-        { icon: 'fa-exchange-alt', title: 'Reassignment', text: 'If the deadline passes, the deal is flagged and moved to the next leader covering that country, or to Andrew. It counts once as late for the original assignee only; the new assignee starts a fresh 2 weeks.' },
-        { icon: 'fa-chart-line', title: '90-day window', text: 'Team numbers cover the last 90 days and use on-time rate, not total counts, so people with more deals aren’t penalised. Rates show only after 5 assignments.' },
-        { icon: 'fa-balance-scale', title: 'Disputes', text: 'Anyone can dispute a flag from its details. Andrew reviews it within 2 working days. If upheld, the late count is removed and the history notes why.' }
+        { icon: 'fa-check-circle', title: 'What counts as action', text: 'Moving the deal to another stage or dropping it. Either one clears the flag.' },
+        { icon: 'fa-exchange-alt', title: 'Reassignment', text: 'If the deadline passes, the deal is flagged and reassigned to Andrew. It counts once as late for the original assignee only; the new assignee starts a fresh 2 weeks.' }
       ],
       odActOpts: mRow ? [
         { icon: 'fa-arrow-right', label: 'Move to next stage', sub: 'Advance the deal in the pipeline', pick: () => actDone(mRow, 'Stage moved') },
-        { icon: 'fa-sticky-note', label: 'Log a note', sub: 'Record a call, email or update', pick: () => actDone(mRow, 'Note logged') },
         { icon: 'fa-times-circle', label: 'Drop the deal', sub: 'Not a fit. You’ll pick a reason next', pick: () => actDone(mRow, 'Deal dropped') }
       ] : [],
       odReassignOpts: mRow ? [...(this.odCover[mRow.country] || []), 'Andrew'].filter(n => n !== mRow.who).map(n => ({ name: you(n), ini: ini(n),
@@ -3016,7 +2981,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
     ],
     fallback: 'Andrew',
     window: 14, reminder: 3, actNext: true, actDrop: true,
-    reassign: 'next', redFlag: true, maxRe: 2, endState: 'escalate', escalateTo: 'Andrew',
+    reassign: 'next', redFlag: true, maxRe: 0, endState: 'escalate', escalateTo: 'Andrew',
     ch: { app: true, email: true, slack: false },
     notify: { newA: true, prevA: true, fb: true }
   };
@@ -3236,7 +3201,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       ['criteria', 'Routing criteria', 'fa-route', enabled.length ? enabled.map(c => T[c.type].label).join(' → ') : 'None active'],
       ['people', 'Team Leaders', 'fa-users', onCount + ' of ' + people.length + ' eligible'],
       ['fallback', 'Fallback owner', 'fa-user-shield', fb],
-      ['deadlines', 'Deadlines & escalation', 'fa-stopwatch', d.window + ' days · max ' + d.maxRe + ' reassignments']
+      ['deadlines', 'Deadlines & escalation', 'fa-stopwatch', d.window + ' days to act']
     ];
     return {
       rtOn: d.on, rtOnLabel: d.on ? 'On' : 'Off', rtToggleOn: () => set({ on: !d.on }),
@@ -3701,7 +3666,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
         const grp = this.state.assignLogGroup || 'day';
         const iniOf = n => n.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
         const byPerson = [];
-        byDay.forEach(d => d.events.forEach(e => { let g = byPerson.find(x => x.who === e.who); if (!g) { g = { who: e.who, events: [] }; byPerson.push(g); } g.events.push({ ...e, time: d.label + ' · ' + e.time }); }));
+        byDay.forEach(d => d.events.forEach(e => { let g = byPerson.find(x => x.who === e.who); if (!g) { g = { who: e.who, events: [] }; byPerson.push(g); } g.events.push({ ...e, time: d.label + ' \u00b7 ' + e.time }); }));
         byPerson.sort((a, b) => a.who.localeCompare(b.who));
         const filtered = grp === 'person'
           ? byPerson.map(g => ({ label: g.who + (g.who === this.currentUser ? ' (You)' : ''), ini: iniOf(g.who), count: g.events.length + ' event' + (g.events.length === 1 ? '' : 's'), isPerson: true, isDay: false, events: g.events }))
