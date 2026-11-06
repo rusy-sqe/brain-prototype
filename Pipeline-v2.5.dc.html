@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/vendor/fontawesome/css/all.min.css">
 <link rel="stylesheet" href="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/tokens.css">
 <script src="_ds/sqe-suite-design-system-2c1e794f-70f8-4aa1-bcdc-25d3a356aad5/_ds_bundle.js"></script>
-<style>html,body{height:100%;margin:0} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)} .hz-table--compact td{padding:8px 10px !important} @property --bot-a{syntax:'<angle>';inherits:false;initial-value:0deg} @keyframes botBorder{to{--bot-a:360deg}} @keyframes botRing{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.35,1.6);opacity:0}} @keyframes botNudge{0%,84%,100%{transform:translateY(0)}88%{transform:translateY(-6px)}92%{transform:translateY(0)}96%{transform:translateY(-3px)}} @keyframes botWave{0%,80%,100%{transform:rotate(0)}84%{transform:rotate(-14deg)}88%{transform:rotate(12deg)}92%{transform:rotate(-8deg)}96%{transform:rotate(4deg)}} @keyframes botBadge{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}} @media (prefers-reduced-motion:reduce){.bot-anim,.bot-anim *{animation:none !important}}</style>
+<style>html,body{height:100%;margin:0} .pl-table th{cursor:pointer;transition:color .12s,box-shadow .12s} .pl-table th:hover{color:var(--hz-horizon-primary) !important;box-shadow:inset 0 0 0 1px var(--hz-horizon-primary) !important} a{color:var(--hz-horizon-primary)} a:hover{color:var(--hz-horizon-primary-dark)} .hz-table--compact td{padding:8px 10px !important} @property --bot-a{syntax:'<angle>';inherits:false;initial-value:0deg} @keyframes botBorder{to{--bot-a:360deg}} @keyframes botRing{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.35,1.6);opacity:0}} @keyframes botNudge{0%,84%,100%{transform:translateY(0)}88%{transform:translateY(-6px)}92%{transform:translateY(0)}96%{transform:translateY(-3px)}} @keyframes botWave{0%,80%,100%{transform:rotate(0)}84%{transform:rotate(-14deg)}88%{transform:rotate(12deg)}92%{transform:rotate(-8deg)}96%{transform:rotate(4deg)}} @keyframes botBadge{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}} @media (prefers-reduced-motion:reduce){.bot-anim,.bot-anim *{animation:none !important}}</style>
 </helmet>
 <div class="theme-hz-azure" style="height:100vh;background:var(--hz-surface-page);font-family:var(--hz-font-sans);display:grid;grid-template-columns:{{ sidebarGridCols }} {{ copilotColWidth }}">
 
@@ -123,6 +123,7 @@
     <div class="hz-tabs">
       <button class="hz-tab {{ viewTabClass.companies }}" onClick="{{ selectCompaniesView }}">Pipeline Companies</button>
       <button class="hz-tab {{ viewTabClass.screening }}" onClick="{{ selectScreeningView }}"><i class="far fa-sparkles" style="margin-right:6px"></i>AI Screening Progress<span class="hz-badge hz-badge--soft" style="margin-left: 6px; background-color: var(--hz-red-500); color: #fff">4</span></button>
+      <button class="hz-tab {{ viewTabClass.overdue }}" onClick="{{ selectOverdueView }}"><i class="far fa-clock" style="margin-right:6px"></i>Overdue Actions<sc-if value="{{ odHasOverdue }}" hint-placeholder-val="{{ true }}"><span class="hz-badge hz-badge--soft" style="margin-left: 6px; background-color: var(--hz-red-500); color: #fff">{{ odOverdueCount }}</span></sc-if></button>
     </div>
 
     <sc-if value="{{ isCompaniesView }}" hint-placeholder-val="{{ true }}">
@@ -133,6 +134,7 @@
           <div class="hz-body-s hz-muted" style="margin-top:2px">Manage your deal in pipelines</div>
         </div>
         <div style="display:flex;align-items:center;gap:10px">
+          <button class="hz-btn hz-btn--secondary hz-btn--sm" style="background:var(--hz-surface-card)" onClick="{{ openAssignLog }}"><i class="far fa-history"></i>Assignment log</button>
           <div style="position:relative;display:inline-block">
             <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ toggleAddCompanyMenu }}"><i class="far fa-plus"></i>Add Company</button>
             <sc-if value="{{ addCompanyMenuOpen }}" hint-placeholder-val="{{ false }}">
@@ -145,6 +147,157 @@
           </div>
         </div>
       </div>
+
+      <sc-if value="{{ detailOpen }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ closeDetail }}" style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1250;padding:16px">
+        <div onClick="{{ stopProp }}" style="background:var(--hz-surface-card);border-radius:14px;width:min(1240px,100%);height:min(860px,94vh);display:flex;flex-direction:column;overflow:hidden">
+          <div style="display:flex;gap:18px;padding:22px 24px 16px;position:relative">
+            <div style="width:64px;height:64px;border-radius:50%;flex-shrink:0;background:var(--hz-horizon-primary-pale);display:flex;align-items:center;justify-content:center"><span style="width:40px;height:40px;border-radius:10px;transform:rotate(45deg);background:linear-gradient(135deg,var(--hz-horizon-primary),var(--hz-purple-600, #7c3aed));display:flex;align-items:center;justify-content:center"><span style="transform:rotate(-45deg);color:#fff;font-weight:700;font-size:15px">{{ dt.ini }}</span></span></div>
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px;padding-right:110px">
+              <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                <span style="font-size:22px;font-weight:700;color:var(--hz-text-primary)">{{ dt.name }}</span>
+                <span style="padding:3px 12px;border:1px solid var(--hz-border-default);border-radius:999px;font-size:13px;font-weight:600;color:var(--hz-text-primary)">{{ dt.sector }}</span>
+                <span style="padding:3px 12px;border:1px solid var(--hz-border-default);border-radius:999px;font-size:13px;font-weight:600;color:var(--hz-text-primary)">{{ dt.stage }}</span>
+              </div>
+              <div style="font-size:14px;line-height:1.5;color:var(--hz-text-secondary)">{{ dt.desc }}</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:2px">
+                <button style="display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:8px;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--hz-border-default);background:var(--hz-surface-card);color:var(--hz-text-primary)"><i class="far fa-presentation"></i>Generate Slides</button>
+                <button style="display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:8px;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--hz-blue-700, #1d39c4);background:var(--hz-blue-700, #1d39c4);color:#fff"><i class="far fa-sparkles"></i>Regenerate AI Card</button>
+                <button style="display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:8px;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--hz-blue-200, #c7dbff);background:var(--hz-surface-card);color:var(--hz-blue-700, #1d39c4)"><i class="far fa-sparkles"></i>Analyze using AI</button>
+                <button style="display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:8px;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--hz-red-200, #fbcaca);background:var(--hz-surface-card);color:var(--hz-red-600)"><i class="far fa-times-circle"></i>Drop Deal</button>
+              </div>
+            </div>
+            <div style="position:absolute;top:18px;right:20px;display:flex;gap:4px">
+              <button class="hz-btn hz-btn--text hz-btn--sm" title="Open in new tab" style="width:32px;padding:0;justify-content:center;color:var(--hz-text-secondary)"><i class="far fa-external-link"></i></button>
+              <button class="hz-btn hz-btn--text hz-btn--sm" title="Expand" style="width:32px;padding:0;justify-content:center;color:var(--hz-text-secondary)"><i class="far fa-expand"></i></button>
+              <button onClick="{{ closeDetail }}" class="hz-btn hz-btn--text hz-btn--sm" title="Close" style="width:32px;padding:0;justify-content:center;color:var(--hz-text-secondary)"><i class="far fa-times" style="font-size:16px"></i></button>
+            </div>
+          </div>
+          <div style="display:flex;border-bottom:1px solid var(--hz-border-subtle);overflow-x:auto">
+            <sc-for list="{{ detailTabs }}" as="tb" hint-placeholder-count="6"><button onClick="{{ tb.pick }}" style="flex:1;padding:14px 8px;border:none;border-bottom:3px solid {{ tb.border }};background:transparent;font-family:inherit;font-size:15px;font-weight:{{ tb.weight }};color:{{ tb.color }};cursor:pointer;white-space:nowrap">{{ tb.label }}</button></sc-for>
+          </div>
+          <sc-if value="{{ detailIsTimeline }}" hint-placeholder-val="{{ true }}">
+          <div style="flex:1;min-height:0;display:flex;gap:20px;padding:20px 24px 24px">
+            <div style="width:300px;flex-shrink:0;border:1px solid var(--hz-border-subtle);border-radius:12px;display:flex;flex-direction:column;min-height:0">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px 8px">
+                <span style="font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--hz-text-secondary)">{{ detailCountLabel }}</span>
+                <button class="hz-btn hz-btn--text hz-btn--sm" title="Add entry" style="width:28px;padding:0;justify-content:center;color:var(--hz-text-primary)"><i class="far fa-plus" style="font-size:15px"></i></button>
+              </div>
+              <div style="display:flex;gap:6px;padding:0 18px 10px;flex-wrap:wrap">
+                <sc-for list="{{ detailFilters }}" as="df" hint-placeholder-count="3"><button onClick="{{ df.pick }}" style="padding:3px 10px;border-radius:999px;border:1px solid {{ df.border }};background:{{ df.bg }};color:{{ df.color }};font-family:inherit;font-size:12px;font-weight:600;cursor:pointer">{{ df.label }}</button></sc-for>
+              </div>
+              <div style="flex:1;overflow-y:auto;padding:4px 10px 14px">
+                <sc-for list="{{ detailEvents }}" as="ev" hint-placeholder-count="4">
+                  <button onClick="{{ ev.pick }}" style="width:100%;display:flex;gap:12px;padding:8px 8px 0;border:none;border-radius:8px;background:{{ ev.bg }};font-family:inherit;text-align:left;cursor:pointer" style-hover="background:var(--hz-neutral-50)">
+                    <span style="display:flex;flex-direction:column;align-items:center;width:10px;flex-shrink:0;padding-top:5px"><span style="width:8px;height:8px;border-radius:50%;background:{{ ev.dot }}"></span><span style="flex:1;width:2px;min-height:30px;margin-top:4px;background:var(--hz-border-subtle)"></span></span>
+                    <span style="display:flex;flex-direction:column;gap:4px;min-width:0;padding-bottom:12px">
+                      <span style="display:flex;align-items:center;gap:8px;font-size:13px"><span style="font-weight:700;color:{{ ev.dot }}">{{ ev.kind }}</span><span style="color:var(--hz-text-tertiary)">{{ ev.date }}</span><i class="far {{ ev.icon }}" style="font-size:12px;color:var(--hz-text-tertiary)"></i></span>
+                      <span style="font-size:14px;line-height:1.4;color:var(--hz-text-primary)">{{ ev.title }}</span>
+                    </span>
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="flex:1;min-width:0;border:1px solid var(--hz-border-subtle);border-radius:12px;overflow-y:auto">
+              <sc-if value="{{ detailNoSel }}" hint-placeholder-val="{{ true }}">
+                <div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:32px;text-align:center">
+                  <i class="far fa-history" style="font-size:32px;color:var(--hz-text-secondary)"></i>
+                  <div style="font-size:20px;font-weight:700;color:var(--hz-text-primary)">No entry selected</div>
+                  <div style="max-width:380px;font-size:15px;line-height:1.5;color:var(--hz-text-secondary)">Use + to add a new entry, or select an existing one from the timeline on the left to view its details.</div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ detailHasSel }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:24px 28px;display:flex;flex-direction:column;gap:18px">
+                  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                    <span style="padding:3px 10px;border-radius:999px;background:{{ se.pillBg }};color:{{ se.dot }};font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em"><i class="far {{ se.icon }}"></i> {{ se.kind }}</span>
+                    <span style="font-size:13px;color:var(--hz-text-tertiary)">{{ se.date }} · {{ se.time }} · by {{ se.actor }}</span>
+                  </div>
+                  <div style="font-size:20px;font-weight:700;color:var(--hz-text-primary)">{{ se.title }}</div>
+                  <sc-if value="{{ se.isAssign }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 16px;border-radius:10px;background:var(--hz-neutral-50)">
+                      <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--hz-text-tertiary)">From</span><span style="font-size:14px;font-weight:600;color:var(--hz-text-primary)">{{ se.from }}</span></div>
+                      <i class="far fa-arrow-right" style="color:var(--hz-text-tertiary)"></i>
+                      <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--hz-text-tertiary)">To</span><span style="font-size:14px;font-weight:600;color:var(--hz-text-primary)">{{ se.to }}</span></div>
+                      <span style="margin-left:auto;padding:3px 10px;border-radius:999px;border:1px solid var(--hz-border-default);font-size:12px;font-weight:600;color:var(--hz-text-secondary)">Rule: {{ se.rule }}</span>
+                    </div>
+                  </sc-if>
+                  <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--hz-text-tertiary)">{{ se.bodyLabel }}</span><div style="font-size:14px;line-height:1.6;color:var(--hz-text-secondary);text-wrap:pretty">{{ se.body }}</div></div>
+                  <sc-if value="{{ se.hasFile }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--hz-border-subtle);border-radius:8px;font-size:13px;color:var(--hz-text-primary)"><i class="far fa-file-word" style="color:var(--hz-blue-600)"></i>{{ se.file }}</div>
+                  </sc-if>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+          </sc-if>
+          <sc-if value="{{ detailIsOther }}" hint-placeholder-val="{{ false }}">
+            <div style="flex:1;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--hz-text-tertiary)">{{ detailTabName }} content is not part of this design.</div>
+          </sc-if>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ assignLogOpen }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ closeAssignLog }}" style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1300;padding:16px">
+        <div onClick="{{ stopProp }}" style="background:var(--hz-surface-card);border-radius:12px;width:min(680px,100%);max-height:88vh;display:flex;flex-direction:column;overflow:hidden">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:18px 24px;border-bottom:1px solid var(--hz-border-subtle)">
+            <div style="display:flex;flex-direction:column;gap:2px"><div class="hz-h4" style="margin:0">Assignment log</div><div class="hz-body-s hz-muted">Every assignment, reassignment and response on Pending Confirmation deals</div></div>
+            <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeAssignLog }}"><i class="far fa-times" style="font-size:18px"></i></button>
+          </div>
+          <div style="padding:14px 24px;border-bottom:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;gap:12px">
+            <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px">
+              <sc-for list="{{ assignLogStats }}" as="st" hint-placeholder-count="4">
+                <div style="padding:8px 10px;border-radius:8px;background:var(--hz-neutral-50);display:flex;flex-direction:column;gap:2px"><span style="font-size:18px;font-weight:700;color:{{ st.color }}">{{ st.value }}</span><span style="font-size:12px;color:var(--hz-text-secondary)">{{ st.label }}</span></div>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <sc-for list="{{ assignLogFilters }}" as="fl" hint-placeholder-count="5">
+                <button onClick="{{ fl.pick }}" style="padding:4px 12px;border-radius:999px;border:1px solid {{ fl.border }};background:{{ fl.bg }};color:{{ fl.color }};font-family:inherit;font-size:13px;font-weight:600;cursor:pointer">{{ fl.label }}</button>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span style="font-size:12px;font-weight:600;color:var(--hz-text-tertiary)">Group by</span>
+              <div style="display:inline-flex;border:1px solid var(--hz-border-default);border-radius:8px;padding:2px;gap:2px">
+                <sc-for list="{{ assignLogGroups }}" as="gb" hint-placeholder-count="2">
+                  <button onClick="{{ gb.pick }}" style="border:none;border-radius:6px;padding:4px 10px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;background:{{ gb.bg }};color:{{ gb.color }}">{{ gb.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div style="padding:16px 24px 24px;overflow-y:auto;display:flex;flex-direction:column;gap:18px">
+            <sc-for list="{{ assignLogDays }}" as="day" hint-placeholder-count="2">
+              <div style="display:flex;flex-direction:column;gap:0">
+                <sc-if value="{{ day.isPerson }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-200);color:var(--hz-neutral-700);font-size:10px">{{ day.ini }}</span><span style="font-size:13px;font-weight:700;color:var(--hz-text-primary)">{{ day.label }}</span><span style="font-size:12px;color:var(--hz-text-tertiary)">{{ day.count }}</span></div>
+                </sc-if>
+                <sc-if value="{{ day.isDay }}" hint-placeholder-val="{{ true }}">
+                <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--hz-text-tertiary);margin-bottom:10px">{{ day.label }}</div>
+                </sc-if>
+                <sc-for list="{{ day.events }}" as="ev" hint-placeholder-count="3">
+                  <div style="display:flex;gap:12px">
+                    <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:28px">
+                      <span style="width:28px;height:28px;border-radius:50%;background:{{ ev.bg }};color:{{ ev.color }};display:flex;align-items:center;justify-content:center"><i class="{{ ev.icon }}" style="font-size:12px"></i></span>
+                      <span style="flex:1;width:2px;min-height:14px;background:var(--hz-border-subtle);opacity:{{ ev.lineOpacity }}"></span>
+                    </div>
+                    <div style="flex:1;min-width:0;padding-bottom:16px;display:flex;flex-direction:column;gap:4px">
+                      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"><span style="font-size:14px;font-weight:600;color:var(--hz-text-primary)">{{ ev.title }}</span><span style="font-size:12px;color:var(--hz-text-tertiary);white-space:nowrap">{{ ev.time }}</span></div>
+                      <div style="font-size:13px;line-height:1.5;color:var(--hz-text-secondary);text-wrap:pretty">{{ ev.detail }}</div>
+                      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+                        <span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:6px;background:var(--hz-neutral-100);font-size:12px;color:var(--hz-text-primary)"><i class="far fa-building" style="font-size:10px;color:var(--hz-text-tertiary)"></i>{{ ev.deal }}</span>
+                        <span style="font-size:12px;color:var(--hz-text-tertiary)">by {{ ev.actor }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-for>
+            <sc-if value="{{ assignLogEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:24px;text-align:center;font-size:13px;color:var(--hz-text-tertiary)">No events of this type yet.</div></sc-if>
+          </div>
+        </div>
+      </div>
+      </sc-if>
 
       <sc-if value="{{ addCompanyModalOpen }}" hint-placeholder-val="{{ false }}">
       <div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1300">
@@ -334,10 +487,18 @@
                 <a href="{{ askBrainAssignHref }}" target="_blank" style="display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;margin-top:4px;border-radius:6px;font-size:12px;font-weight:600;color:var(--hz-horizon-primary);text-decoration:none;background:var(--hz-surface-card);border:1px solid var(--hz-horizon-primary-soft)" style-hover="background:var(--hz-horizon-primary-pale);color:var(--hz-horizon-primary-dark)"><i class="fas fa-sparkles" style="font-size:10px"></i>Ask Brain why I was matched<i class="far fa-arrow-right" style="font-size:10px"></i></a>
               </div>
             </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--hz-orange-200, #fed7aa);background:var(--hz-orange-50);border-radius:8px">
+              <span style="width:32px;height:32px;border-radius:8px;background:var(--hz-surface-card);color:var(--hz-orange-700);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far fa-calendar-times"></i></span>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:12px;font-weight:600;color:var(--hz-text-secondary)">Drop deadline</div>
+                <div style="font-size:14px;font-weight:700;color:var(--hz-text-primary)">{{ dropDeadline }}</div>
+              </div>
+              <span style="font-size:12px;color:var(--hz-text-tertiary);text-align:right;max-width:220px;text-wrap:pretty">Drop the deal or move it to the next stage by then, or it’s reassigned.</span>
+            </div>
             <div style="display:flex;flex-direction:column;gap:8px">
               <span style="font-size:12px;font-weight:600;color:var(--hz-text-primary)">Your response <span style="color:var(--hz-red-600)">*</span></span>
               <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
-                <sc-for list="{{ respondChoices }}" as="c" hint-placeholder-count="2">
+                <sc-for list="{{ respondChoices }}" as="c" hint-placeholder-count="3">
                   <button onClick="{{ c.pick }}" style="display:flex;align-items:center;gap:10px;padding:12px;border-radius:8px;border:1px solid {{ c.border }};background:{{ c.bg }};font-family:inherit;text-align:left;cursor:pointer">
                     <span style="width:28px;height:28px;border-radius:999px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:{{ c.iconBg }};color:{{ c.iconColor }};font-size:12px"><i class="{{ c.icon }}"></i></span>
                     <span style="display:flex;flex-direction:column;gap:1px;min-width:0"><span style="font-size:13px;font-weight:600;color:var(--hz-text-primary)">{{ c.label }}</span><span style="font-size:11px;color:var(--hz-text-tertiary)">{{ c.sub }}</span></span>
@@ -365,7 +526,10 @@
             <sc-if value="{{ respondIsReject }}" hint-placeholder-val="{{ false }}">
               <button onClick="{{ confirmReject }}" disabled="{{ rejectDisabled }}" class="hz-btn hz-btn--danger hz-btn--md" style="opacity:{{ rejectBtnOpacity }}">Reject assignment</button>
             </sc-if>
-            <sc-if value="{{ respondNotReject }}" hint-placeholder-val="{{ true }}">
+            <sc-if value="{{ respondIsDrop }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ confirmDrop }}" class="hz-btn hz-btn--danger hz-btn--md">Drop the deal</button>
+            </sc-if>
+            <sc-if value="{{ respondShowAccept }}" hint-placeholder-val="{{ true }}">
               <button onClick="{{ confirmAccept }}" disabled="{{ acceptDisabled }}" class="hz-btn hz-btn--primary hz-btn--md" style="opacity:{{ acceptBtnOpacity }}">Accept assignment</button>
             </sc-if>
           </div>
@@ -433,7 +597,7 @@
       </div>
 
       <div style="overflow-x:auto;margin-top:14px">
-        <table class="hz-table hz-table--compact" style="font-size:13px;min-width:2400px">
+        <table class="hz-table hz-table--compact pl-table" style="font-size:13px;min-width:2400px">
           <thead>
             <tr>
               <th style="padding:8px 10px;position:sticky;left:0;z-index:3;background:var(--hz-surface-card);width:170px;min-width:170px;max-width:170px;box-sizing:border-box">Company <i class="far fa-arrow-up-arrow-down" style="font-size:10px"></i></th>
@@ -462,8 +626,8 @@
           <tbody>
             <sc-for list="{{ filteredCompanies }}" as="row" hint-placeholder-count="8">
             <tr>
-              <td style="position:sticky;left:0;z-index:1;background:var(--hz-surface-card);width:170px;min-width:170px;max-width:170px;box-sizing:border-box"><span style="cursor:pointer;color:var(--hz-text-primary)" style-hover="color:var(--hz-blue-600)">{{ row.title }}</span><sc-if value="{{ row.subtitle }}" hint-placeholder-val="{{ false }}"><div class="hz-body-s hz-muted" style="cursor:pointer" style-hover="color:var(--hz-blue-600)">{{ row.subtitle }}</div></sc-if></td>
-              <td style="position:sticky;left:170px;z-index:1;background:var(--hz-surface-card);box-shadow:1px 0 0 var(--hz-border-subtle);min-width:150px">
+              <td style="position:sticky;left:0;z-index:1;background:var(--hz-surface-card);width:170px;min-width:170px;max-width:170px;box-sizing:border-box"><span onClick="{{ row.openDetail }}" style="cursor:pointer;color:var(--hz-text-primary)" style-hover="color:var(--hz-blue-600)">{{ row.title }}</span><sc-if value="{{ row.subtitle }}" hint-placeholder-val="{{ false }}"><div onClick="{{ row.openDetail }}" class="hz-body-s hz-muted" style="cursor:pointer" style-hover="color:var(--hz-blue-600)">{{ row.subtitle }}</div></sc-if></td>
+              <td style="position:sticky;left:170px;z-index:1;background:var(--hz-surface-card);box-shadow:1px 0 0 var(--hz-border-subtle);min-width:150px;cursor:pointer;transition:background .12s,box-shadow .12s" style-hover="box-shadow:inset 0 0 0 1px var(--hz-horizon-primary),1px 0 0 var(--hz-border-subtle)">
                 <div style="display:flex;align-items:center;gap:6px;white-space:nowrap">
                   <sc-if value="{{ row.sponsorRejected }}" hint-placeholder-val="{{ false }}">
                     <span title="{{ row.sponsorRejectNote }}" style="display:inline-flex;align-items:center;gap:6px;color:var(--hz-text-tertiary)"><span style="text-decoration:line-through">{{ row.dealSponsor }}</span><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;border-radius:4px;font-size:10px;font-weight:700;background:var(--hz-neutral-100);color:var(--hz-text-secondary)">Rejected</span></span>
@@ -526,7 +690,8 @@
         
       </div>
     </td></tr></sc-for></tbody></table></div>
-    
+    </div>
+    </sc-if>
 
     <sc-if value="{{ isScreeningView }}" hint-placeholder-val="{{ false }}">
     <div class="hz-card" style="padding:20px;border:1px solid var(--hz-border-subtle)">
@@ -622,8 +787,205 @@
     </div>
     </sc-if>
 
+    <sc-if value="{{ isOverdueView }}" hint-placeholder-val="{{ false }}">
+    <div class="hz-card" style="padding:20px;border:1px solid var(--hz-border-subtle);display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div>
+          <div class="hz-h5" style="margin:0">Overdue Actions</div>
+          <div class="hz-body-s hz-muted" style="margin-top:2px">Deals that need a next step. Act, reassign or pause so nothing gets stuck. As of Tue, 10 Nov.</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px">
+        <sc-for list="{{ odCards }}" as="k" hint-placeholder-count="4">
+        <button onClick="{{ k.go }}" title="{{ k.tip }}" style="text-align:left;border:1px solid var(--hz-border-subtle);background:var(--hz-surface-card);border-radius:10px;padding:14px 16px;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;gap:4px" style-hover="border-color:var(--hz-horizon-primary)">
+          <span style="font-size:13px;color:var(--hz-text-secondary);display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:999px;background:{{ k.dot }}"></span>{{ k.label }}</span>
+          <span style="display:flex;align-items:baseline;gap:6px"><span style="font-size:26px;font-weight:700;color:{{ k.color }};line-height:1.2">{{ k.value }}</span><span style="font-size:13px;color:var(--hz-text-tertiary)">{{ k.unit }}</span></span>
+          <sc-if value="{{ k.cta }}" hint-placeholder-val="{{ true }}"><span style="font-size:12px;color:var(--hz-horizon-primary);font-weight:600">{{ k.cta }} <i class="far fa-arrow-right" style="font-size:10px"></i></span></sc-if>
+        </button>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+          <sc-for list="{{ odFilters }}" as="fl" hint-placeholder-count="5">
+          <button onClick="{{ fl.pick }}" style="padding:5px 12px;border-radius:999px;border:1px solid {{ fl.border }};background:{{ fl.bg }};color:{{ fl.color }};font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px">{{ fl.label }}<span style="font-size:12px;font-weight:600;opacity:.75">{{ fl.count }}</span></button>
+          </sc-for>
+          <sc-if value="{{ odHasWho }}" hint-placeholder-val="{{ false }}">
+          <span style="display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 6px 0 12px;border-radius:999px;background:var(--hz-neutral-100);font-size:13px;color:var(--hz-text-primary)">Assignee: {{ odWho }}<button title="Clear" onClick="{{ odClearWho }}" style="width:20px;height:20px;border:none;background:none;border-radius:999px;cursor:pointer;color:var(--hz-text-tertiary)"><i class="far fa-times" style="font-size:11px"></i></button></span>
+          </sc-if>
+        </div>
+        <button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-horizon-primary)" onClick="{{ odOpenHow }}"><i class="far fa-circle-question"></i>How flags work</button>
+      </div>
+
+      <sc-if value="{{ odHasRows }}" hint-placeholder-val="{{ true }}">
+      <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:1120px">
+          <thead><tr style="background:var(--hz-neutral-50)">
+            <sc-for list="{{ odHeads }}" as="h" hint-placeholder-count="7"><th style="text-align:left;padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--hz-text-tertiary);white-space:nowrap;border-bottom:1px solid var(--hz-border-subtle)">{{ h }}</th></sc-for>
+          </tr></thead>
+          <tbody>
+            <sc-for list="{{ odRows }}" as="r" hint-placeholder-count="5">
+            <tr onClick="{{ r.open }}" style="cursor:pointer;border-bottom:1px solid var(--hz-border-subtle);background:{{ r.rowBg }}" style-hover="background:var(--hz-neutral-50)">
+              <td style="padding:12px 14px"><div style="font-weight:700;color:var(--hz-text-primary)">{{ r.company }}</div><div style="font-size:12px;color:var(--hz-text-tertiary)">{{ r.project }}</div></td>
+              <td style="padding:12px 14px"><div style="display:flex;align-items:center;gap:8px"><div><div style="font-weight:600;color:var(--hz-text-primary);white-space:nowrap">{{ r.who }}</div><sc-if value="{{ r.hasWhoSub }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:var(--hz-text-tertiary);white-space:nowrap">{{ r.whoSub }}</div></sc-if></div></div></td>
+              <td style="padding:12px 14px"><span style="display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap;background:{{ r.pillBg }};color:{{ r.pillColor }}"><i class="fas {{ r.pillIcon }}" style="font-size:9px"></i>{{ r.pill }}</span></td>
+              <td style="padding:12px 14px;white-space:nowrap"><button onClick="{{ r.open }}" title="See why" style="border:none;background:none;padding:0;font-family:inherit;cursor:pointer;text-align:left"><div style="font-weight:700;color:{{ r.daysColor }};text-decoration:underline dotted;text-underline-offset:3px">{{ r.days }}</div><sc-if value="{{ r.hasDaysSub }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:var(--hz-text-tertiary)">{{ r.daysSub }}</div></sc-if></button></td>
+              <td style="padding:12px 14px;white-space:nowrap;color:var(--hz-text-secondary)">{{ r.deadline }}</td>
+              <td style="padding:12px 14px;color:var(--hz-text-secondary)">{{ r.reason }}</td>
+              <td style="padding:12px 14px" onClick="{{ r.stop }}"><div style="display:flex;align-items:center;gap:4px;white-space:nowrap">
+                <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ r.act }}">Act now</button>
+              </div></td>
+            </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+      </sc-if>
+      <sc-if value="{{ odEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="border:1px dashed var(--hz-border-default);border-radius:12px;padding:36px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px">
+        <span style="width:44px;height:44px;border-radius:999px;background:var(--hz-green-50);color:var(--hz-green-600);display:inline-flex;align-items:center;justify-content:center;font-size:18px"><i class="far fa-check"></i></span>
+        <div style="font-size:15px;font-weight:700;color:var(--hz-text-primary);margin-top:6px">{{ odEmptyTitle }}</div>
+        <div class="hz-body-s hz-muted">{{ odEmptySub }}</div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ odTeamOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;overflow:hidden">
+        <div style="padding:14px 16px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--hz-border-subtle)">
+          <div>
+            <div style="font-size:14px;font-weight:700;color:var(--hz-text-primary)">Team view</div>
+            <div style="font-size:12px;color:var(--hz-text-tertiary);margin-top:2px">Rolling 90 days. Based on on-time rate, not total count. Rates need 5 or more assignments. Click any number to see the deals behind it.</div>
+          </div>
+        </div>
+        <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:900px">
+          <thead><tr style="background:var(--hz-neutral-50)">
+            <sc-for list="{{ odTeamHeads }}" as="h" hint-placeholder-count="7"><th style="text-align:left;padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--hz-text-tertiary);white-space:nowrap">{{ h }}</th></sc-for>
+          </tr></thead>
+          <tbody>
+            <sc-for list="{{ odTeam }}" as="t" hint-placeholder-count="6">
+            <tr style="border-top:1px solid var(--hz-border-subtle)">
+              <td style="padding:10px 14px"><div style="display:flex;align-items:center;gap:8px"><span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-200);color:var(--hz-neutral-700);font-size:10px">{{ t.ini }}</span><span style="font-weight:600;color:var(--hz-text-primary);white-space:nowrap">{{ t.name }}</span></div></td>
+              <sc-for list="{{ t.cells }}" as="c" hint-placeholder-count="6">
+              <td style="padding:10px 14px;white-space:nowrap"><button onClick="{{ c.go }}" title="{{ c.tip }}" style="border:none;background:none;padding:0;font-family:inherit;font-size:13px;cursor:pointer;color:{{ c.color }};font-weight:{{ c.weight }};text-decoration:underline dotted;text-underline-offset:3px">{{ c.text }}</button></td>
+              </sc-for>
+            </tr>
+            </sc-for>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ odDrawerOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ odCloseDrawer }}" style="position:fixed;inset:0;background:rgba(16,24,40,.28);z-index:60"></div>
+    <div style="position:fixed;top:0;right:0;height:100vh;width:460px;max-width:100vw;background:var(--hz-surface-card);z-index:61;box-shadow:-8px 0 24px rgba(16,24,40,.12);display:flex;flex-direction:column">
+      <div style="padding:20px 22px;border-bottom:1px solid var(--hz-border-subtle);display:flex;align-items:flex-start;gap:12px">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:12px;color:var(--hz-text-tertiary)">{{ odD.company }} · {{ odD.project }}</div>
+          <div class="hz-h5" style="margin:2px 0 0">{{ odD.drawerTitle }}</div>
+          <span style="display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:600;margin-top:8px;background:{{ odD.pillBg }};color:{{ odD.pillColor }}"><i class="fas {{ odD.pillIcon }}" style="font-size:9px"></i>{{ odD.pill }}</span>
+        </div>
+        <button class="hz-btn hz-btn--text hz-btn--sm" title="Close" onClick="{{ odCloseDrawer }}" style="width:32px;padding:0;justify-content:center"><i class="far fa-times"></i></button>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:20px 22px;display:flex;flex-direction:column;gap:20px">
+        <div style="padding:14px 16px;border-radius:10px;background:var(--hz-neutral-50);font-size:14px;line-height:1.6;color:var(--hz-text-secondary);text-wrap:pretty">{{ odD.summary }}</div>
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--hz-text-tertiary);margin-bottom:10px">Timeline</div>
+          <sc-for list="{{ odD.steps }}" as="s" hint-placeholder-count="6">
+          <div style="display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px">
+            <div style="display:flex;flex-direction:column;align-items:center">
+              <span style="width:14px;height:14px;border-radius:999px;margin-top:3px;background:{{ s.dot }};border:2px solid {{ s.ring }};box-sizing:border-box"></span>
+              <span style="flex:1;width:2px;background:var(--hz-border-subtle);min-height:14px"></span>
+            </div>
+            <div style="padding-bottom:14px">
+              <div style="display:flex;justify-content:space-between;gap:8px"><span style="font-size:13px;font-weight:700;color:{{ s.color }}">{{ s.label }}</span><span style="font-size:12px;color:var(--hz-text-tertiary);white-space:nowrap">{{ s.date }}</span></div>
+              <div style="font-size:12px;line-height:1.5;color:var(--hz-text-tertiary);margin-top:2px">{{ s.note }}</div>
+            </div>
+          </div>
+          </sc-for>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--hz-text-tertiary);margin-bottom:8px">Pause history</div>
+          <sc-if value="{{ odD.hasPauses }}" hint-placeholder-val="{{ false }}">
+          <sc-for list="{{ odD.pauses }}" as="p" hint-placeholder-count="1">
+          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:10px 14px;display:flex;flex-direction:column;gap:2px">
+            <span style="font-size:13px;font-weight:600;color:var(--hz-text-primary)"><i class="far fa-pause-circle" style="color:var(--hz-neutral-500);margin-right:6px"></i>{{ p.dates }} · by {{ p.by }}</span>
+            <span style="font-size:13px;color:var(--hz-text-secondary)">“{{ p.reason }}”</span>
+          </div>
+          </sc-for>
+          </sc-if>
+          <sc-if value="{{ odD.noPauses }}" hint-placeholder-val="{{ true }}"><div style="font-size:13px;color:var(--hz-text-tertiary)">No pauses on this deal.</div></sc-if>
+        </div>
+        <sc-if value="{{ odDisputeOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:13px;font-weight:600;color:var(--hz-text-primary)">Why should this flag be reviewed?</span>
+          <textarea value="{{ odDisputeText }}" onChange="{{ odSetDispute }}" rows="3" placeholder="e.g. I logged a call with the CEO on 3 Nov but forgot to add the note." style="padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:13px;resize:vertical;background:var(--hz-surface-page);color:var(--hz-text-primary)"></textarea>
+          <span style="font-size:12px;color:var(--hz-text-tertiary)">Andrew reviews disputes within 2 working days. The flag stays visible until then.</span>
+          <div style="display:flex;justify-content:flex-end;gap:8px"><button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ odToggleDispute }}">Cancel</button><button class="hz-btn hz-btn--primary hz-btn--sm" disabled="{{ odDisputeEmpty }}" onClick="{{ odSendDispute }}">Send for review</button></div>
+        </div>
+        </sc-if>
+        <sc-if value="{{ odD.disputed }}" hint-placeholder-val="{{ false }}">
+        <div style="border-radius:10px;padding:12px 14px;background:var(--hz-neutral-50);font-size:13px;color:var(--hz-text-secondary)"><i class="far fa-hourglass-half" style="margin-right:6px"></i>Dispute sent for review. You’ll be notified of the outcome.</div>
+        </sc-if>
+      </div>
+      <div style="padding:14px 22px;border-top:1px solid var(--hz-border-subtle);display:flex;justify-content:flex-end;gap:8px">
+        <sc-if value="{{ odD.canDispute }}" hint-placeholder-val="{{ true }}"><button class="hz-btn hz-btn--secondary hz-btn--sm" onClick="{{ odToggleDispute }}">Dispute flag</button></sc-if>
+        <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ odD.act }}">Act now</button>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ odModalOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ odCloseModal }}" style="position:fixed;inset:0;background:rgba(16,24,40,.4);z-index:70"></div>
+    <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:{{ odModalWidth }};max-width:calc(100vw - 32px);max-height:86vh;overflow-y:auto;background:var(--hz-surface-card);border-radius:14px;z-index:71;box-shadow:0 20px 48px rgba(16,24,40,.2)">
+      <div style="padding:18px 22px;border-bottom:1px solid var(--hz-border-subtle);display:flex;align-items:flex-start;gap:12px">
+        <div style="flex:1"><div class="hz-h5" style="margin:0">{{ odModalTitle }}</div><div class="hz-body-s hz-muted" style="margin-top:2px">{{ odModalSub }}</div></div>
+        <button class="hz-btn hz-btn--text hz-btn--sm" title="Close" onClick="{{ odCloseModal }}" style="width:32px;padding:0;justify-content:center"><i class="far fa-times"></i></button>
+      </div>
+      <div style="padding:18px 22px;display:flex;flex-direction:column;gap:12px">
+        <sc-if value="{{ odModalHow }}" hint-placeholder-val="{{ false }}">
+        <sc-for list="{{ odHowItems }}" as="hw" hint-placeholder-count="6">
+        <div style="display:flex;gap:12px">
+          <span style="width:32px;height:32px;border-radius:8px;background:var(--hz-horizon-primary-pale);color:var(--hz-horizon-primary);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far {{ hw.icon }}"></i></span>
+          <div><div style="font-size:14px;font-weight:700;color:var(--hz-text-primary)">{{ hw.title }}</div><div style="font-size:13px;line-height:1.55;color:var(--hz-text-secondary);margin-top:2px;text-wrap:pretty">{{ hw.text }}</div></div>
+        </div>
+        </sc-for>
+        </sc-if>
+        <sc-if value="{{ odModalAct }}" hint-placeholder-val="{{ false }}">
+        <sc-for list="{{ odActOpts }}" as="o" hint-placeholder-count="3">
+        <button onClick="{{ o.pick }}" style="text-align:left;border:1px solid var(--hz-border-subtle);background:var(--hz-surface-card);border-radius:10px;padding:12px 14px;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:12px" style-hover="border-color:var(--hz-horizon-primary)">
+          <i class="far {{ o.icon }}" style="width:18px;color:var(--hz-horizon-primary)"></i><span style="flex:1"><span style="display:block;font-size:14px;font-weight:700;color:var(--hz-text-primary)">{{ o.label }}</span><span style="display:block;font-size:12px;color:var(--hz-text-tertiary)">{{ o.sub }}</span></span>
+        </button>
+        </sc-for>
+        </sc-if>
+        <sc-if value="{{ odModalReassign }}" hint-placeholder-val="{{ false }}">
+        <sc-for list="{{ odReassignOpts }}" as="o" hint-placeholder-count="3">
+        <button onClick="{{ o.pick }}" style="text-align:left;border:1px solid var(--hz-border-subtle);background:var(--hz-surface-card);border-radius:10px;padding:10px 14px;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:10px" style-hover="border-color:var(--hz-horizon-primary)">
+          <span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-200);color:var(--hz-neutral-700);font-size:10px">{{ o.ini }}</span><span style="flex:1"><span style="display:block;font-size:14px;font-weight:600;color:var(--hz-text-primary)">{{ o.name }}</span><span style="display:block;font-size:12px;color:var(--hz-text-tertiary)">{{ o.sub }}</span></span>
+        </button>
+        </sc-for>
+        </sc-if>
+        <sc-if value="{{ odModalPause }}" hint-placeholder-val="{{ false }}">
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:var(--hz-text-primary)">Reason (visible to everyone)
+          <textarea value="{{ odPauseReason }}" onChange="{{ odSetPauseReason }}" rows="3" placeholder="e.g. Waiting for management accounts from the company" style="padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:13px;font-weight:400;resize:vertical;background:var(--hz-surface-page);color:var(--hz-text-primary)"></textarea>
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--hz-text-primary)">Pause for
+          <select value="{{ odPauseDays }}" onChange="{{ odSetPauseDays }}" style="padding:6px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:13px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+            <sc-for list="{{ odPauseDayOpts }}" as="o" hint-placeholder-count="7"><option value="{{ o.v }}">{{ o.l }}</option></sc-for>
+          </select>
+        </label>
+        <div style="font-size:12px;color:var(--hz-text-tertiary)">One pause per deal, up to 7 days. The deadline moves by the same number of days.</div>
+        <div style="display:flex;justify-content:flex-end;gap:8px"><button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ odCloseModal }}">Cancel</button><button class="hz-btn hz-btn--primary hz-btn--sm" disabled="{{ odPauseEmpty }}" onClick="{{ odConfirmPause }}">Pause deal</button></div>
+        </sc-if>
+      </div>
+    </div>
+    </sc-if>
+    </sc-if>
+
   </div>
-</sc-if></div>
 
 <sc-if value="{{ stageHelpOpen }}" hint-placeholder-val="{{ false }}">
 <div style="position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:1000">
@@ -717,7 +1079,7 @@
     <div style="display:flex;align-items:flex-start;justify-content:space-between;padding:24px 28px;border-bottom:1px solid var(--hz-border-subtle)">
       <div>
         <div class="hz-h3" style="margin:0">Configuration</div>
-        <div class="hz-body-r hz-muted" style="margin-top:4px">Manage the investment theses used to auto-match inbound and outbound deals.</div>
+        <div class="hz-body-r hz-muted" style="margin-top:4px">{{ configSubtitle }}</div>
       </div>
       <button class="hz-btn hz-btn--text hz-btn--sm" style="width:32px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ closeConfigure }}"><i class="far fa-times" style="font-size:18px"></i></button>
     </div>
@@ -826,6 +1188,391 @@
     </sc-if>
 
     <sc-if value="{{ isModalCrmTab }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:248px minmax(0,1fr);flex:1;min-height:0">
+      <div style="border-right:1px solid var(--hz-border-subtle);padding:16px 12px;overflow-y:auto;display:flex;flex-direction:column;gap:4px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 8px 8px">
+          <span class="hz-body-s" style="font-weight:700;letter-spacing:.06em;color:var(--hz-text-tertiary)">AUTO-ASSIGN</span>
+          <label title="Turn auto-assign on or off" style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--hz-text-secondary);white-space:nowrap;cursor:pointer">{{ rtOnLabel }}<span class="hz-switch"><input type="checkbox" checked="{{ rtOn }}" onChange="{{ rtToggleOn }}"><span class="hz-switch__slider"></span></span></label>
+        </div>
+        <sc-for list="{{ rtNav }}" as="n" hint-placeholder-count="6">
+        <button onClick="{{ n.select }}" style="text-align:left;border:none;background:{{ n.bg }};border-radius:8px;padding:10px 12px;cursor:pointer;font-family:inherit;display:flex;align-items:flex-start;gap:10px">
+          <i class="far {{ n.icon }}" style="width:16px;margin-top:3px;font-size:13px;color:{{ n.iconColor }}"></i>
+          <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+            <span style="font-size:14px;font-weight:700;color:{{ n.color }}">{{ n.label }}</span>
+            <span style="font-size:12px;color:var(--hz-text-tertiary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.sub }}</span>
+          </span>
+        </button>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;flex-direction:column;min-height:0">
+      <div style="flex:1;min-height:0;overflow-y:auto;padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+
+        <sc-if value="{{ rtSecHow }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div>
+            <div class="hz-h5" style="margin:0">How Brain assigns</div>
+            <div class="hz-body-s hz-muted" style="margin-top:2px">A plain-language summary of the active configuration. Change the other sections to update it.</div>
+          </div>
+          <div style="padding:14px 16px;border:1px solid var(--hz-border-subtle);border-radius:10px;font-size:14px;line-height:1.65;color:var(--hz-text-secondary);background:var(--hz-neutral-50);text-wrap:pretty">{{ rtSummary }}</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--hz-text-tertiary);margin-top:-12px"><i class="far fa-lock"></i>Read only. Applies to new deals only; deals already assigned keep their assignee and deadline.</div>
+
+          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;overflow:hidden">
+            <div style="padding:14px 16px;background:var(--hz-neutral-50);display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--hz-border-subtle)">
+              <div style="flex:1;min-width:180px">
+                <div style="font-size:14px;font-weight:700;color:var(--hz-text-primary);display:flex;align-items:center;gap:8px"><i class="far fa-vial" style="color:var(--hz-horizon-primary)"></i>Test routing</div>
+                <div class="hz-body-s hz-muted" style="margin-top:2px">Run a sample deal through the current settings, including unsaved changes.</div>
+              </div>
+              <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;color:var(--hz-text-secondary)">Target country
+                <select value="{{ rtSimCountry }}" onChange="{{ rtSetSimCountry }}" style="min-width:170px;padding:7px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:13px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+                  <sc-for list="{{ rtSimCountryOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.l }}</option></sc-for>
+                </select>
+              </label>
+            </div>
+            <div style="padding:14px 16px;display:flex;flex-direction:column;gap:0">
+              <sc-for list="{{ rtSimSteps }}" as="s" hint-placeholder-count="3">
+              <div style="display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px">
+                <div style="display:flex;flex-direction:column;align-items:center">
+                  <span style="width:24px;height:24px;border-radius:999px;background:var(--hz-neutral-100);color:var(--hz-text-secondary);display:inline-flex;align-items:center;justify-content:center;font-size:11px"><i class="far {{ s.icon }}"></i></span>
+                  <span style="flex:1;width:1px;background:var(--hz-border-subtle);min-height:10px"></span>
+                </div>
+                <div style="padding-bottom:14px;display:flex;flex-direction:column;gap:6px">
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                    <span style="font-size:13px;font-weight:700;color:var(--hz-text-primary)">{{ s.title }}</span>
+                    <sc-if value="{{ s.hasMode }}" hint-placeholder-val="{{ true }}"><span style="height:20px;padding:0 8px;border-radius:999px;display:inline-flex;align-items:center;font-size:11px;font-weight:600;background:{{ s.modeBg }};color:{{ s.modeColor }}">{{ s.mode }}</span></sc-if>
+                  </div>
+                  <span style="font-size:13px;line-height:1.5;color:var(--hz-text-secondary);text-wrap:pretty">{{ s.text }}</span>
+                  <div style="display:flex;flex-wrap:wrap;gap:6px">
+                    <sc-for list="{{ s.kept }}" as="k" hint-placeholder-count="2">
+                    <span style="display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px 0 3px;border-radius:999px;background:var(--hz-horizon-primary-pale);font-size:12px;font-weight:600;color:var(--hz-text-primary)"><span class="hz-avatar hz-avatar--sm" style="width:20px;height:20px;background:var(--hz-neutral-200);color:var(--hz-neutral-700);font-size:9px">{{ k.ini }}</span>{{ k.name }}<sc-if value="{{ k.hasSub }}" hint-placeholder-val="{{ false }}"><span style="font-weight:500;color:var(--hz-text-tertiary)">· {{ k.sub }}</span></sc-if></span>
+                    </sc-for>
+                    <sc-for list="{{ s.removed }}" as="k" hint-placeholder-count="1">
+                    <span style="display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:999px;border:1px dashed var(--hz-border-default);font-size:12px;color:var(--hz-text-tertiary)"><span style="text-decoration:line-through">{{ k.name }}</span><sc-if value="{{ k.hasSub }}" hint-placeholder-val="{{ false }}"><span>· {{ k.sub }}</span></sc-if></span>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+              </sc-for>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;background:{{ rtSimResultBg }};border:1px solid {{ rtSimResultBorder }}">
+                <span class="hz-avatar hz-avatar--sm" style="background:var(--hz-surface-card);color:var(--hz-text-primary);font-size:10px;flex-shrink:0">{{ rtSimAssigneeIni }}</span>
+                <div style="flex:1;min-width:0">
+                  <div style="font-size:14px;font-weight:700;color:var(--hz-text-primary)">Assigned to {{ rtSimAssignee }}</div>
+                  <div style="font-size:12px;line-height:1.5;color:var(--hz-text-secondary);margin-top:2px">{{ rtSimWhy }}</div>
+                  <div style="font-size:12px;line-height:1.5;color:var(--hz-text-tertiary);margin-top:2px">{{ rtSimChain }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ rtSecCriteria }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+            <div>
+              <div class="hz-h5" style="margin:0">Routing criteria</div>
+              <div class="hz-body-s hz-muted" style="margin-top:2px">Evaluated top to bottom. <strong>Must match</strong> removes people who don’t qualify; <strong>Prefer</strong> ranks whoever is left. Drag to reorder.</div>
+            </div>
+            <div style="display:flex;gap:8px">
+              <button class="hz-btn hz-btn--text hz-btn--sm" style="white-space:nowrap" onClick="{{ rtGoTest }}"><i class="far fa-vial"></i>Test routing</button>
+              <button class="hz-btn hz-btn--secondary hz-btn--sm" style="white-space:nowrap" onClick="{{ rtTogglePicker }}"><i class="far fa-plus"></i>Add criterion</button>
+            </div>
+          </div>
+
+          <sc-if value="{{ rtNoCriteria }}" hint-placeholder-val="{{ false }}">
+          <div style="border:1px dashed var(--hz-border-default);border-radius:12px;padding:28px 20px 6px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px">
+            <span style="width:44px;height:44px;border-radius:999px;background:var(--hz-horizon-primary-pale);color:var(--hz-horizon-primary);display:inline-flex;align-items:center;justify-content:center;font-size:18px"><i class="far fa-route"></i></span>
+            <div style="font-size:15px;font-weight:700;color:var(--hz-text-primary);margin-top:6px">No routing criteria yet</div>
+            <div class="hz-body-s hz-muted" style="max-width:420px;text-wrap:pretty">Without criteria, every new deal goes to the fallback owner, {{ rtFallback }}. Pick a criterion type to start.</div>
+          </div>
+          </sc-if>
+
+          <sc-if value="{{ rtPickerOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:12px;background:var(--hz-neutral-50);display:flex;flex-direction:column;gap:8px">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--hz-text-tertiary);padding:0 4px">Choose a criterion type</span>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px">
+              <sc-for list="{{ rtTypePicker }}" as="tp" hint-placeholder-count="5">
+              <button onClick="{{ tp.add }}" disabled="{{ tp.disabled }}" style="text-align:left;border:1px solid var(--hz-border-subtle);background:var(--hz-surface-card);border-radius:10px;padding:12px;font-family:inherit;cursor:{{ tp.cursor }};opacity:{{ tp.opacity }};display:flex;gap:10px" style-hover="border-color:var(--hz-horizon-primary)">
+                <span style="width:30px;height:30px;border-radius:8px;background:var(--hz-horizon-primary-pale);color:var(--hz-horizon-primary);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far {{ tp.icon }}"></i></span>
+                <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                  <span style="display:flex;align-items:center;gap:6px;flex-wrap:wrap"><span style="font-size:13px;font-weight:700;color:var(--hz-text-primary)">{{ tp.name }}</span><sc-if value="{{ tp.hasStatus }}" hint-placeholder-val="{{ false }}"><span style="height:18px;padding:0 6px;border-radius:999px;display:inline-flex;align-items:center;font-size:10px;font-weight:600;background:var(--hz-neutral-100);color:var(--hz-text-tertiary)">{{ tp.status }}</span></sc-if></span>
+                  <span style="font-size:12px;line-height:1.4;color:var(--hz-text-tertiary)">{{ tp.desc }}</span>
+                </span>
+              </button>
+              </sc-for>
+            </div>
+          </div>
+          </sc-if>
+
+          <sc-for list="{{ rtCriteria }}" as="c" hint-placeholder-count="2">
+          <div onDragOver="{{ c.dragOver }}" onDrop="{{ c.drop }}" style="border:1px solid {{ c.border }};border-radius:10px;overflow:hidden;opacity:{{ c.opacity }};background:var(--hz-surface-card)">
+            <div draggable="true" onDragStart="{{ c.dragStart }}" onDragEnd="{{ c.dragEnd }}" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--hz-neutral-50);flex-wrap:wrap;cursor:grab">
+              <i class="fas fa-grip-vertical" title="Drag to reorder" style="color:var(--hz-text-tertiary);font-size:12px"></i>
+              <span style="width:22px;height:22px;border-radius:999px;background:var(--hz-surface-card);border:1px solid var(--hz-border-default);font-size:11px;font-weight:700;color:var(--hz-text-secondary);display:inline-flex;align-items:center;justify-content:center">{{ c.num }}</span>
+              <button onClick="{{ c.toggleOpen }}" style="flex:1;min-width:160px;display:flex;align-items:center;gap:10px;border:none;background:none;padding:0;font-family:inherit;cursor:pointer;text-align:left">
+                <span style="width:30px;height:30px;border-radius:8px;background:var(--hz-horizon-primary-pale);color:var(--hz-horizon-primary);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far {{ c.icon }}"></i></span>
+                <span style="display:flex;flex-direction:column;gap:1px;min-width:0">
+                  <span style="display:flex;align-items:center;gap:8px"><span style="font-size:14px;font-weight:700;color:var(--hz-text-primary)">{{ c.name }}</span><sc-if value="{{ c.hasIssue }}" hint-placeholder-val="{{ false }}"><span style="height:20px;padding:0 8px;border-radius:999px;display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;background:{{ c.issueBg }};color:{{ c.issueColor }}"><i class="fas fa-exclamation-circle" style="font-size:9px"></i>{{ c.issueText }}</span></sc-if></span>
+                  <span style="font-size:12px;color:var(--hz-text-tertiary)">{{ c.summary }}</span>
+                </span>
+              </button>
+              <div style="display:inline-flex;border:1px solid var(--hz-border-default);border-radius:8px;padding:2px;gap:2px;background:var(--hz-surface-card)">
+                <button onClick="{{ c.setMust }}" title="Hard filter: people who don’t match are removed" style="border:none;border-radius:6px;padding:4px 10px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;background:{{ c.mustBg }};color:{{ c.mustColor }}">Must match</button>
+                <button onClick="{{ c.setPrefer }}" title="Ranking: people who match move to the front" style="border:none;border-radius:6px;padding:4px 10px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;background:{{ c.preferBg }};color:{{ c.preferColor }}">Prefer</button>
+              </div>
+              <label title="Enable or disable this criterion" style="display:flex;align-items:center;cursor:pointer"><span class="hz-switch"><input type="checkbox" checked="{{ c.on }}" onChange="{{ c.toggle }}"><span class="hz-switch__slider"></span></span></label>
+              <div style="display:flex;gap:2px">
+                <button class="hz-btn hz-btn--text hz-btn--sm" title="Move up" disabled="{{ c.isFirst }}" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ c.moveUp }}"><i class="far fa-arrow-up" style="font-size:12px"></i></button>
+                <button class="hz-btn hz-btn--text hz-btn--sm" title="Move down" disabled="{{ c.isLast }}" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ c.moveDown }}"><i class="far fa-arrow-down" style="font-size:12px"></i></button>
+                <button class="hz-btn hz-btn--text hz-btn--sm" title="Remove criterion" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" style-hover="color:var(--hz-red-600)" onClick="{{ c.remove }}"><i class="far fa-trash-alt" style="font-size:12px"></i></button>
+                <button class="hz-btn hz-btn--text hz-btn--sm" title="Show settings" style="width:28px;padding:0;justify-content:center;color:var(--hz-neutral-500)" onClick="{{ c.toggleOpen }}"><i class="far {{ c.chevron }}" style="font-size:12px"></i></button>
+              </div>
+            </div>
+
+            <sc-if value="{{ c.open }}" hint-placeholder-val="{{ true }}">
+            <div style="padding:16px;display:flex;flex-direction:column;gap:14px;border-top:1px solid var(--hz-border-subtle)">
+              <div style="font-size:13px;line-height:1.5;color:var(--hz-text-secondary);text-wrap:pretty">{{ c.help }}</div>
+
+              <sc-if value="{{ c.hasMap }}" hint-placeholder-val="{{ true }}">
+              <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;overflow:hidden">
+                <div style="display:grid;grid-template-columns:200px minmax(0,1fr) 32px;gap:12px;padding:8px 14px;background:var(--hz-neutral-50);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--hz-text-tertiary)">
+                  <span>{{ c.dimLabel }}</span><span>Team Leaders, in order</span><span></span>
+                </div>
+                <sc-for list="{{ c.rows }}" as="r" hint-placeholder-count="4">
+                <div style="display:grid;grid-template-columns:200px minmax(0,1fr) 32px;gap:12px;align-items:center;padding:10px 14px;border-top:1px solid var(--hz-border-subtle)">
+                  <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px">
+                    <span style="font-size:13px;font-weight:700;color:var(--hz-text-primary)">{{ r.value }}</span>
+                    <sc-if value="{{ r.hasBadge }}" hint-placeholder-val="{{ false }}"><span style="height:20px;padding:0 8px;border-radius:999px;display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;background:{{ r.badgeBg }};color:{{ r.badgeColor }}"><i class="fas {{ r.badgeIcon }}" style="font-size:9px"></i>{{ r.badgeText }}</span></sc-if>
+                  </div>
+                  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px">
+                    <sc-for list="{{ r.people }}" as="p" hint-placeholder-count="2">
+                    <span style="display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 4px 0 3px;border-radius:999px;border:1px solid var(--hz-border-subtle);background:var(--hz-surface-card);opacity:{{ p.opacity }}">
+                      <span class="hz-avatar hz-avatar--sm" style="width:24px;height:24px;background:var(--hz-neutral-200);color:var(--hz-neutral-700);font-size:9px">{{ p.ini }}</span>
+                      <span style="font-size:12px;font-weight:600;color:var(--hz-text-primary);white-space:nowrap">{{ p.name }}</span>
+                      <span style="font-size:11px;color:{{ p.rankColor }};white-space:nowrap">{{ p.rank }}</span>
+                      <sc-if value="{{ p.canUp }}" hint-placeholder-val="{{ false }}"><button title="Move earlier" onClick="{{ p.up }}" style="width:20px;height:20px;border:none;background:none;border-radius:999px;cursor:pointer;color:var(--hz-text-tertiary);padding:0" style-hover="background:var(--hz-neutral-100)"><i class="far fa-arrow-left" style="font-size:10px"></i></button></sc-if>
+                      <button title="Remove" onClick="{{ p.remove }}" style="width:20px;height:20px;border:none;background:none;border-radius:999px;cursor:pointer;color:var(--hz-text-tertiary);padding:0" style-hover="background:var(--hz-neutral-100);color:var(--hz-red-600)"><i class="far fa-times" style="font-size:10px"></i></button>
+                    </span>
+                    </sc-for>
+                    <select value="" onChange="{{ r.addPerson }}" style="height:30px;padding:0 8px;border:1px dashed var(--hz-border-default);border-radius:999px;font-family:inherit;font-size:12px;font-weight:600;background:transparent;color:var(--hz-horizon-primary);cursor:pointer">
+                      <option value="">+ Add</option>
+                      <sc-for list="{{ r.addOptions }}" as="o" hint-placeholder-count="2"><option value="{{ o }}">{{ o }}</option></sc-for>
+                    </select>
+                  </div>
+                  <button title="Remove row" onClick="{{ r.remove }}" class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-text-tertiary)" style-hover="color:var(--hz-red-600)"><i class="far fa-trash-alt" style="font-size:12px"></i></button>
+                </div>
+                </sc-for>
+                <div style="display:flex;gap:8px;padding:10px 14px;border-top:1px solid var(--hz-border-subtle)">
+                  <input value="{{ c.newValue }}" onChange="{{ c.setNewValue }}" placeholder="{{ c.addPlaceholder }}" style="width:200px;padding:6px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:13px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+                  <button class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-horizon-primary)" onClick="{{ c.addValue }}"><i class="far fa-plus"></i>{{ c.addLabel }}</button>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+                <sc-for list="{{ c.rules }}" as="ru" hint-placeholder-count="2">
+                <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:var(--hz-text-primary)">{{ ru.label }}
+                  <select value="{{ ru.value }}" onChange="{{ ru.set }}" style="padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:13px;font-weight:400;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+                    <sc-for list="{{ ru.options }}" as="o" hint-placeholder-count="3"><option value="{{ o.v }}">{{ o.l }}</option></sc-for>
+                  </select>
+                </label>
+                </sc-for>
+              </div>
+              </sc-if>
+
+              <sc-if value="{{ c.isWorkload }}" hint-placeholder-val="{{ false }}">
+              <sc-if value="{{ c.isMust }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                <span style="font-size:13px;font-weight:600;color:var(--hz-text-primary)">Max active deals per person</span>
+                <input type="number" min="1" value="{{ rtCap }}" onChange="{{ rtSetCap }}" style="width:72px;padding:6px 8px;border:1px solid var(--hz-border-default);border-radius:6px;font-family:inherit;font-size:14px;font-weight:600;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+                <span style="font-size:12px;color:var(--hz-text-tertiary)">People at or above the cap are skipped.</span>
+              </div>
+              </sc-if>
+              <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;overflow:hidden">
+                <sc-for list="{{ rtLoads }}" as="l" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;gap:12px;padding:9px 14px;border-top:{{ l.border }};opacity:{{ l.opacity }}">
+                  <span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-200);color:var(--hz-neutral-700);font-size:10px;flex-shrink:0">{{ l.ini }}</span>
+                  <span style="flex:1;min-width:0;font-size:13px;font-weight:600;color:var(--hz-text-primary)">{{ l.name }}</span>
+                  <span style="width:140px;height:6px;border-radius:999px;background:var(--hz-neutral-200);overflow:hidden;display:block"><span style="display:block;height:100%;width:{{ l.pct }};background:{{ l.barColor }};border-radius:999px"></span></span>
+                  <span style="width:84px;text-align:right;font-size:12px;font-weight:600;color:{{ l.textColor }};white-space:nowrap">{{ l.load }}</span>
+                </div>
+                </sc-for>
+              </div>
+              </sc-if>
+            </div>
+            </sc-if>
+          </div>
+          </sc-for>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ rtSecPeople }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+            <div>
+              <div class="hz-h5" style="margin:0">Team Leaders</div>
+              <div class="hz-body-s hz-muted" style="margin-top:2px">{{ rtPeopleSummary }}</div>
+            </div>
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="white-space:nowrap"><i class="far fa-user-plus"></i>Add person</button>
+          </div>
+          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;overflow:hidden">
+            <sc-for list="{{ rtPeople }}" as="m" hint-placeholder-count="6">
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:{{ m.border }};opacity:{{ m.opacity }};flex-wrap:wrap">
+              <span class="hz-avatar hz-avatar--sm" style="background:var(--hz-neutral-200);color:var(--hz-neutral-700);font-size:10px;flex-shrink:0">{{ m.ini }}</span>
+              <div style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:5px">
+                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                  <span style="font-size:13px;font-weight:700;color:var(--hz-text-primary)">{{ m.name }}</span>
+                  <span style="height:20px;padding:0 8px;border-radius:999px;display:inline-flex;align-items:center;font-size:11px;font-weight:600;background:var(--hz-neutral-100);color:var(--hz-text-secondary)">{{ m.role }}</span>
+                  <sc-if value="{{ m.isFallback }}" hint-placeholder-val="{{ false }}"><span style="height:20px;padding:0 8px;border-radius:999px;display:inline-flex;align-items:center;font-size:11px;font-weight:600;background:var(--hz-horizon-primary-pale);color:var(--hz-horizon-primary-dark)">Fallback owner</span></sc-if>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:4px">
+                  <sc-for list="{{ m.covers }}" as="cv" hint-placeholder-count="2">
+                  <span style="height:22px;padding:0 8px;border-radius:6px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;background:{{ cv.bg }};color:{{ cv.color }}"><i class="far {{ cv.icon }}" style="font-size:10px"></i>{{ cv.label }}</span>
+                  </sc-for>
+                  <sc-if value="{{ m.noCovers }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:var(--hz-text-tertiary)">No criteria values covered</span></sc-if>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="width:110px;height:6px;border-radius:999px;background:var(--hz-neutral-200);overflow:hidden;display:block"><span style="display:block;height:100%;width:{{ m.pct }};background:{{ m.barColor }};border-radius:999px"></span></span>
+                <span style="width:76px;font-size:12px;font-weight:600;color:var(--hz-text-secondary);white-space:nowrap">{{ m.load }}</span>
+              </div>
+              <label title="Turn off during leave or absence" style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--hz-text-secondary);cursor:pointer;white-space:nowrap"><span class="hz-switch"><input type="checkbox" checked="{{ m.on }}" onChange="{{ m.toggle }}"><span class="hz-switch__slider"></span></span>Eligible</label>
+            </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--hz-text-tertiary)"><i class="far fa-info-circle"></i>One roster for every criterion. Turning someone off skips them everywhere until they’re back.</div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ rtSecFallback }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div class="hz-h5" style="margin:0">Fallback owner</div>
+            <div class="hz-body-s hz-muted" style="margin-top:2px">Receives a deal when no candidate survives the routing criteria.</div>
+          </div>
+          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <span class="hz-avatar" style="background:var(--hz-neutral-200);color:var(--hz-neutral-700);font-size:12px;flex-shrink:0">{{ rtFallbackIni }}</span>
+            <div style="flex:1;min-width:160px">
+              <div style="font-size:14px;font-weight:700;color:var(--hz-text-primary)">{{ rtFallback }}</div>
+              <div style="font-size:12px;color:var(--hz-text-tertiary);margin-top:2px">{{ rtFallbackMeta }}</div>
+            </div>
+            <select value="{{ rtFallback }}" onChange="{{ rtSetFallback }}" style="min-width:200px;padding:8px 10px;border:1px solid var(--hz-border-default);border-radius:8px;font-family:inherit;font-size:13px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+              <sc-for list="{{ rtPersonOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o }}">{{ o }}</option></sc-for>
+            </select>
+          </div>
+          <sc-if value="{{ rtFallbackIneligible }}" hint-placeholder-val="{{ false }}">
+          <div style="border:1px solid var(--hz-red-200);background:var(--hz-red-50);border-radius:10px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px">
+            <i class="fas fa-exclamation-circle" style="color:var(--hz-red-600);margin-top:3px"></i>
+            <div style="flex:1;font-size:13px;line-height:1.5;color:var(--hz-red-700);text-wrap:pretty">{{ rtFallback }} is marked not eligible. Deals with no match will wait in the triage queue until you pick an eligible fallback owner or turn {{ rtFallback }} back on.</div>
+            <button class="hz-btn hz-btn--secondary hz-btn--sm" style="white-space:nowrap" onClick="{{ rtMakeFallbackEligible }}">Mark eligible</button>
+          </div>
+          </sc-if>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--hz-text-primary);margin-bottom:8px">When the fallback owner is used</div>
+            <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;overflow:hidden">
+              <sc-for list="{{ rtFallbackCases }}" as="fc" hint-placeholder-count="3">
+              <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-top:{{ fc.border }};font-size:13px;line-height:1.5;color:var(--hz-text-secondary)"><i class="far {{ fc.icon }}" style="margin-top:4px;width:14px;color:var(--hz-text-tertiary)"></i><span style="text-wrap:pretty">{{ fc.text }}</span></div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ rtSecDeadlines }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div class="hz-h5" style="margin:0">Deadlines &amp; escalation</div>
+            <div class="hz-body-s hz-muted" style="margin-top:2px">How long an assignee has to act, and what happens when they don’t.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+            <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:8px">
+              <span style="font-size:13px;font-weight:600;color:var(--hz-text-primary)">Action window</span>
+              <div style="display:flex;align-items:center;gap:8px"><input type="number" min="1" value="{{ rtWindow }}" onChange="{{ rtSetWindow }}" style="width:72px;padding:6px 8px;border:1px solid var(--hz-border-default);border-radius:6px;font-family:inherit;font-size:14px;font-weight:600;background:var(--hz-surface-page);color:var(--hz-text-primary)"><span style="font-size:13px;color:var(--hz-text-secondary)">{{ rtWindowUnit }}</span></div>
+              <span style="font-size:12px;color:var(--hz-text-tertiary)">Starts when the deal is assigned.</span>
+            </div>
+            <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:8px">
+              <span style="font-size:13px;font-weight:600;color:var(--hz-text-primary)">Reminder</span>
+              <div style="display:flex;align-items:center;gap:8px"><input type="number" min="1" value="{{ rtReminder }}" onChange="{{ rtSetReminder }}" style="width:72px;padding:6px 8px;border:1px solid var(--hz-border-default);border-radius:6px;font-family:inherit;font-size:14px;font-weight:600;background:var(--hz-surface-page);color:var(--hz-text-primary)"><span style="font-size:13px;color:var(--hz-text-secondary)">days before the deadline</span></div>
+              <span style="font-size:12px;color:var(--hz-text-tertiary)">Sent to the current assignee.</span>
+            </div>
+          </div>
+          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:13px;font-weight:600;color:var(--hz-text-primary)">What counts as action</span>
+            <div style="display:flex;gap:16px;flex-wrap:wrap">
+              <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--hz-text-secondary);cursor:pointer"><input type="checkbox" checked="{{ rtActNext }}" onChange="{{ rtToggleActNext }}">Move to the next stage</label>
+              <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--hz-text-secondary);cursor:pointer"><input type="checkbox" checked="{{ rtActDrop }}" onChange="{{ rtToggleActDrop }}">Drop the deal</label>
+            </div>
+          </div>
+          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:13px;font-weight:600;color:var(--hz-text-primary)">If no action is taken</span>
+            <sc-for list="{{ rtReassignOpts }}" as="o" hint-placeholder-count="2">
+            <label style="display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.5;color:var(--hz-text-secondary);cursor:pointer"><input type="radio" name="rt-reassign" checked="{{ o.checked }}" onChange="{{ o.pick }}" style="margin-top:4px">{{ o.label }}</label>
+            </sc-for>
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--hz-text-secondary);cursor:pointer;padding-top:8px;border-top:1px solid var(--hz-border-subtle)"><span class="hz-switch"><input type="checkbox" checked="{{ rtRedFlag }}" onChange="{{ rtToggleRedFlag }}"><span class="hz-switch__slider"></span></span>Flag the deal red when it’s reassigned</label>
+          </div>
+          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+              <span style="font-size:13px;font-weight:600;color:var(--hz-text-primary)">Max reassignments</span>
+              <input type="number" min="0" value="{{ rtMaxRe }}" onChange="{{ rtSetMaxRe }}" style="width:72px;padding:6px 8px;border:1px solid var(--hz-border-default);border-radius:6px;font-family:inherit;font-size:14px;font-weight:600;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+              <span style="font-size:12px;color:var(--hz-text-tertiary)">per deal</span>
+            </div>
+            <span style="font-size:13px;color:var(--hz-text-secondary)">When the limit is reached:</span>
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--hz-text-secondary);cursor:pointer;flex-wrap:wrap"><input type="radio" name="rt-end" checked="{{ rtEndEscalate }}" onChange="{{ rtPickEscalate }}">Escalate to
+              <select value="{{ rtEscalateTo }}" onChange="{{ rtSetEscalateTo }}" style="padding:5px 8px;border:1px solid var(--hz-border-default);border-radius:6px;font-family:inherit;font-size:13px;background:var(--hz-surface-page);color:var(--hz-text-primary)">
+                <sc-for list="{{ rtPersonOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o }}">{{ o }}</option></sc-for>
+              </select>
+            </label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--hz-text-secondary);cursor:pointer"><input type="radio" name="rt-end" checked="{{ rtEndTriage }}" onChange="{{ rtPickTriage }}">Move to the triage queue</label>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ rtSecNotify }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div class="hz-h5" style="margin:0">Notifications</div>
+            <div class="hz-body-s hz-muted" style="margin-top:2px">Who hears about assignments, and where every decision is recorded.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+            <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;overflow:hidden">
+              <div style="padding:10px 14px;background:var(--hz-neutral-50);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--hz-text-tertiary)">Channels</div>
+              <sc-for list="{{ rtChannels }}" as="o" hint-placeholder-count="3">
+              <label style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--hz-border-subtle);font-size:13px;color:var(--hz-text-primary);cursor:pointer"><i class="far {{ o.icon }}" style="width:16px;color:var(--hz-text-tertiary)"></i><span style="flex:1">{{ o.label }}</span><span class="hz-switch"><input type="checkbox" checked="{{ o.on }}" onChange="{{ o.toggle }}"><span class="hz-switch__slider"></span></span></label>
+              </sc-for>
+            </div>
+            <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;overflow:hidden">
+              <div style="padding:10px 14px;background:var(--hz-neutral-50);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--hz-text-tertiary)">Who is notified</div>
+              <sc-for list="{{ rtRecipients }}" as="o" hint-placeholder-count="3">
+              <label style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--hz-border-subtle);font-size:13px;color:var(--hz-text-primary);cursor:pointer"><span style="flex:1;display:flex;flex-direction:column;gap:1px"><span style="font-weight:600">{{ o.label }}</span><span style="font-size:12px;color:var(--hz-text-tertiary)">{{ o.sub }}</span></span><span class="hz-switch"><input type="checkbox" checked="{{ o.on }}" onChange="{{ o.toggle }}"><span class="hz-switch__slider"></span></span></label>
+              </sc-for>
+            </div>
+          </div>
+          <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+            <span style="width:34px;height:34px;border-radius:8px;background:var(--hz-neutral-100);color:var(--hz-text-secondary);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><i class="far fa-clipboard-list"></i></span>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:13px;font-weight:700;color:var(--hz-text-primary)">Audit log</div>
+              <div style="font-size:12px;line-height:1.5;color:var(--hz-text-tertiary)">Every assignment, reassignment and escalation is recorded with the criteria that decided it. Always on.</div>
+            </div>
+            <a href="#" style="font-size:13px;font-weight:600;white-space:nowrap;text-decoration:none">Open audit log <i class="far fa-arrow-right" style="font-size:11px"></i></a>
+          </div>
+        </div>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{ rtDirty }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 28px;border-top:1px solid var(--hz-border-subtle);background:var(--hz-surface-card);box-shadow:0 -4px 12px rgba(16,24,40,.06);flex-wrap:wrap">
+        <span style="width:8px;height:8px;border-radius:999px;background:var(--hz-orange-500);flex-shrink:0"></span>
+        <div style="flex:1;min-width:220px">
+          <div style="font-size:13px;font-weight:700;color:var(--hz-text-primary)">Unsaved changes</div>
+          <div style="font-size:12px;color:var(--hz-text-tertiary)">Changes apply only to new deals. Deals already assigned keep their assignee and deadline.</div>
+        </div>
+        <button class="hz-btn hz-btn--text hz-btn--sm" onClick="{{ rtDiscard }}">Discard</button>
+        <button class="hz-btn hz-btn--primary hz-btn--sm" onClick="{{ rtSave }}">Save changes</button>
+      </div>
+      </sc-if>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ legacyCrmTab }}" hint-placeholder-val="{{ false }}">
     <div style="display:grid;grid-template-columns:240px minmax(0,1fr);flex:1;min-height:0">
       <div style="border-right:1px solid var(--hz-border-subtle);padding:16px 12px;overflow-y:auto;display:flex;flex-direction:column;gap:4px">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 8px">
@@ -851,22 +1598,10 @@
       <div style="display:flex;flex-direction:column;gap:10px">
         <div>
           <div style="font-size:14px;font-weight:700;color:var(--hz-text-primary)">How Brain assigns</div>
-          <div class="hz-body-s hz-muted" style="margin-top:2px">L0 rules, applied to every new Pending Confirmation deal.</div>
+          <div class="hz-body-s hz-muted" style="margin-top:2px">The instructions Brain follows for every new Pending Confirmation deal.</div>
         </div>
-        <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;overflow:hidden">
-          <sc-for list="{{ crmRuleList }}" as="r" hint-placeholder-count="6">
-            <div style="display:flex;align-items:flex-start;gap:8px;padding:8px 10px 8px 8px;border-top:{{ r.border }}">
-              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:0">
-                <input value="{{ r.title }}" onChange="{{ r.setTitle }}" placeholder="Rule name" style="width:100%;box-sizing:border-box;padding:4px 8px;border:1px solid transparent;border-radius:6px;font-family:inherit;font-size:13px;font-weight:600;color:var(--hz-text-primary);background:transparent" style-hover="border-color:var(--hz-border-default);background:var(--hz-surface-page)" style-focus="border-color:var(--hz-horizon-primary);background:var(--hz-surface-page);outline:none">
-                <textarea value="{{ r.detail }}" onChange="{{ r.setDetail }}" placeholder="Describe the rule" rows="1" style="width:100%;box-sizing:border-box;padding:4px 8px;border:1px solid transparent;border-radius:6px;font-family:inherit;font-size:13px;line-height:1.45;color:var(--hz-text-secondary);background:transparent;resize:none;field-sizing:content;min-height:28px" style-hover="border-color:var(--hz-border-default);background:var(--hz-surface-page)" style-focus="border-color:var(--hz-horizon-primary);background:var(--hz-surface-page);outline:none"></textarea>
-              </div>
-              <button onClick="{{ r.remove }}" title="Remove rule" class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-text-tertiary);flex-shrink:0;margin-top:2px" style-hover="color:var(--hz-red-600)"><i class="far fa-trash-alt" style="font-size:12px"></i></button>
-            </div>
-          </sc-for>
-          <div style="padding:8px 16px;border-top:1px solid var(--hz-border-subtle)">
-            <button onClick="{{ addCrmRule }}" class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-horizon-primary);padding-left:0"><i class="far fa-plus"></i>Add rule</button>
-          </div>
-        </div>
+        <div style="padding:12px 14px;border:1px solid var(--hz-border-subtle);border-radius:10px;font-size:13px;line-height:1.6;color:var(--hz-text-secondary);background:var(--hz-neutral-50);text-wrap:pretty">{{ crmAssignPrompt }}</div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--hz-text-tertiary)"><i class="far fa-lock"></i>Managed by Brain. Updates automatically when you change Limits or Deal Principal teams.</div>
       </div>
       </sc-if>
 
@@ -1997,6 +2732,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
     const setRules = next => set({ ruleList: next });
     const full = dpTeams.filter(t => t.members.reduce((a, m) => a + m.active, 0) >= tm).length;
     return {
+      crmAssignPrompt: 'When a new deal enters Pending Confirmation, assign it to the person who received the email. If they take no action within ' + tc + ' week' + (tc === 1 ? '' : 's') + ' (no drop and no push to L1 voting), reassign the deal. Each person can hold up to ' + pc + ' active deals; when someone is at the cap, give the next deal to an eligible teammate who is under ' + pc + '. Each Deal Principal team can hold up to ' + tm + ' deals; when a team is full, move the next deal to another team that is under ' + tm + '. Always reassign the newest deal first (last in, first out), never a hand-picked one, and skip anyone marked as not eligible. Flag every reassigned deal in the weekly review.',
       crmRuleList: rules.map((ru, i) => ({ title: ru.title, detail: ru.detail, border: i ? '1px solid var(--hz-border-subtle)' : 'none',
         setTitle: e => setRules(rules.map((x, j) => j === i ? { ...x, title: e.target.value } : x)),
         setDetail: e => setRules(rules.map((x, j) => j === i ? { ...x, detail: e.target.value } : x)),
@@ -2007,7 +2743,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
         { label: 'Capacity per person', value: pc, unit: 'deals', help: 'Above this, the newest deal goes to a teammate.', set: num('personCap') },
         { label: 'Capacity per team', value: tm, unit: 'deals', help: 'Above this, the newest deal goes to another team.', set: num('teamCap') }
       ],
-      ...(() => { const sec = this.state.crmSec || 'rules'; const items = [['rules', 'How Brain assigns', rules.length + ' rules'], ['limits', 'Limits', tc + ' wk · ' + pc + ' / person · ' + tm + ' / team'], ['teams', 'Deal Principal teams', dpTeams.length + ' teams']];
+      ...(() => { const sec = this.state.crmSec || 'rules'; const items = [['rules', 'How Brain assigns', 'Read only'], ['limits', 'Limits', tc + ' wk · ' + pc + ' / person · ' + tm + ' / team'], ['teams', 'Deal Principal teams', dpTeams.length + ' teams']];
         return { crmSecRules: sec === 'rules', crmSecLimits: sec === 'limits', crmSecTeams: sec === 'teams',
           crmNav: items.map(([k, label, sub]) => ({ label, sub, bg: sec === k ? 'var(--hz-horizon-primary-pale)' : 'transparent', color: sec === k ? 'var(--hz-horizon-primary-dark)' : 'var(--hz-text-primary)', select: () => this.setState({ crmSec: k }) })) }; })(),
       crmTeamSummary: dpTeams.length + ' teams · ' + (full ? full + ' at team cap' : 'all under cap'),
@@ -2073,6 +2809,505 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       crmDirty: !!this.state.crmDraft,
       cancelCrm: () => this.setState({ crmDraft: null }),
       saveCrm: () => this.setState({ crmSaved: d, crmDraft: null, successToast: 'CRM settings saved' })
+    };
+  }
+  odPeople = { 'Hendric Gondokusumo': 'HG', 'Jien Lit': 'JL', 'Dessi Sari': 'DS', 'Kar Siong': 'KS', 'Samuel Nathaniel': 'SN', 'Chandra Limi': 'CL', 'Andrew': 'AN' };
+  odCover = { Taiwan: ['Hendric Gondokusumo'], Indonesia: ['Jien Lit', 'Kar Siong'], Australia: ['Hendric Gondokusumo', 'Samuel Nathaniel'], Chile: ['Chandra Limi'], Malaysia: ['Dessi Sari', 'Kar Siong'] };
+  odSeed = [
+    { id: 'k', company: 'North Group', project: 'Project Keystone', who: 'Hendric Gondokusumo', country: 'Taiwan', status: 'escalated', over: 6, deadline: '4 Nov', email: '20 Oct', assigned: '21 Oct', reminder: '1 Nov', flagged: '4 Nov', moved: { to: 'Andrew', from: 'Hendric Gondokusumo', date: '5 Nov', why: 'no other leader covers Taiwan' }, pauses: [] },
+    { id: 't', company: 'Bluewave Industries', project: 'Project Tide', who: 'Chandra Limi', country: 'Chile', status: 'overdue', over: 4, deadline: '6 Nov', email: '22 Oct', assigned: '23 Oct', reminder: '3 Nov', flagged: '6 Nov', pauses: [] },
+    { id: 'h', company: 'Summit Partners', project: 'Project Harbor', who: 'Jien Lit', country: 'Indonesia', status: 'overdue', over: 3, deadline: '7 Nov', email: '23 Oct', assigned: '24 Oct', reminder: '4 Nov', flagged: '7 Nov', pauses: [] },
+    { id: 'a', company: 'Orion Foods', project: 'Project Atlas', who: 'Samuel Nathaniel', country: 'Australia', status: 'overdue', over: 2, deadline: '8 Nov', email: '21 Oct', assigned: '22 Oct', reminder: '5 Nov', flagged: '8 Nov', pauses: [{ dates: '28–30 Oct (2 days)', by: 'Samuel Nathaniel', reason: 'Waiting for the NDA to be countersigned' }] },
+    { id: 'l', company: 'Cascade Dynamics', project: 'Project Lumen', who: 'Dessi Sari', country: 'Malaysia', status: 'overdue', over: 1, deadline: '9 Nov', email: '25 Oct', assigned: '26 Oct', reminder: '6 Nov', flagged: '9 Nov', pauses: [] },
+    { id: 'g', company: 'Vertex Systems', project: 'Project Granite', who: 'Kar Siong', country: 'Indonesia', status: 'reassigned', left: 6, deadline: '16 Nov', email: '18 Oct', assigned: '19 Oct', reminder: '30 Oct', flagged: '2 Nov', moved: { to: 'Kar Siong', from: 'Jien Lit', date: '2 Nov', why: 'the next leader covering Indonesia' }, pauses: [] },
+    { id: 'o', company: 'Kestrel Logistics', project: 'Project Orbit', who: 'Chandra Limi', country: 'Chile', status: 'due', left: 1, deadline: '11 Nov', email: '27 Oct', assigned: '28 Oct', reminder: '8 Nov', pauses: [] },
+    { id: 'b', company: 'Meridian Labs', project: 'Project Beacon', who: 'Jien Lit', country: 'Indonesia', status: 'due', left: 2, deadline: '12 Nov', email: '28 Oct', assigned: '29 Oct', reminder: '9 Nov', pauses: [] },
+    { id: 'w', company: 'Aster Health', project: 'Project Willow', who: 'Hendric Gondokusumo', country: 'Australia', status: 'due', left: 3, deadline: '13 Nov', email: '29 Oct', assigned: '30 Oct', reminder: '10 Nov', pauses: [] },
+    { id: 'q', company: 'Lotus Retail', project: 'Project Quartz', who: 'Kar Siong', country: 'Indonesia', status: 'paused', until: '12 Nov', deadline: '19 Nov', email: '24 Oct', assigned: '25 Oct', pauses: [{ dates: '5–12 Nov (7 days)', by: 'Kar Siong', reason: 'Waiting for management accounts from the company' }] }
+  ];
+  odTeamSeed = [
+    { name: 'Hendric Gondokusumo', n: 14, ontime: 86, med: 9, open: 5, paused: 0 },
+    { name: 'Jien Lit', n: 11, ontime: 91, med: 6, open: 4, paused: 0 },
+    { name: 'Dessi Sari', n: 9, ontime: 89, med: 8, open: 3, paused: 0 },
+    { name: 'Kar Siong', n: 8, ontime: 88, med: 7, open: 4, paused: 1 },
+    { name: 'Samuel Nathaniel', n: 7, ontime: 86, med: 10, open: 3, paused: 0 },
+    { name: 'Chandra Limi', n: 4, ontime: 75, med: 9, open: 2, paused: 0 },
+    { name: 'Andrew', n: 3, ontime: 100, med: 4, open: 1, paused: 0 }
+  ];
+  overdueVals() {
+    const S = this.state, me = this.currentUser;
+    const rows = S.odRows || this.odSeed;
+    const setRows = (id, patch) => this.setState({ odRows: rows.map(r => r.id === id ? { ...r, ...patch } : r) });
+    const ini = n => this.odPeople[n] || n.slice(0, 2).toUpperCase();
+    const you = n => n + (n === me ? ' (You)' : '');
+    const first = n => n.split(' ')[0];
+    const isOver = r => r.status === 'overdue' || r.status === 'escalated';
+    const filter = S.odFilter || 'overdue', who = S.odWho || '';
+    const groups = {
+      overdue: rows.filter(isOver), due: rows.filter(r => r.status === 'due'),
+      reassigned: rows.filter(r => r.moved && r.status !== 'done'), paused: rows.filter(r => r.status === 'paused'),
+      all: rows.filter(r => r.status !== 'done')
+    };
+    const rank = r => isOver(r) ? 1000 + r.over : r.status === 'reassigned' ? 500 : r.status === 'due' ? 100 - r.left : 0;
+    const shown = groups[filter].filter(r => !who || r.who === who || (r.moved && r.moved.from === who)).sort((a, b) => rank(b) - rank(a));
+    const toast = msg => { this.setState({ successToast: msg }); setTimeout(() => this.setState(s => s.successToast === msg ? { successToast: null } : null), 3000); };
+    const pill = r => r.status === 'escalated' ? ['Reassigned to Andrew', 'var(--hz-red-50)', 'var(--hz-red-700)', 'fa-arrow-up']
+      : r.status === 'overdue' ? ['Overdue', 'var(--hz-red-50)', 'var(--hz-red-700)', 'fa-circle']
+      : r.status === 'reassigned' ? ['Reassigned', 'var(--hz-horizon-primary-pale)', 'var(--hz-horizon-primary-dark)', 'fa-exchange-alt']
+      : r.status === 'due' ? ['Due soon', 'var(--hz-orange-50)', 'var(--hz-orange-700)', 'fa-clock']
+      : r.status === 'paused' ? ['Paused', 'var(--hz-neutral-100)', 'var(--hz-text-secondary)', 'fa-pause'] : ['Done', 'var(--hz-green-50)', 'var(--hz-green-700)', 'fa-check'];
+    const days = r => isOver(r) ? [r.over + (r.over === 1 ? ' day' : ' days'), 'var(--hz-red-600)', 'Needs action']
+      : r.status === 'due' ? ['Due in ' + r.left + (r.left === 1 ? ' day' : ' days'), 'var(--hz-orange-700)', '']
+      : r.status === 'reassigned' ? [r.left + ' days left', 'var(--hz-text-primary)', 'new deadline after reassign']
+      : r.status === 'paused' ? ['Paused', 'var(--hz-text-secondary)', 'until ' + r.until] : ['—', 'var(--hz-text-tertiary)', ''];
+    const openModal = (mode, id) => this.setState({ odModal: { mode, id }, odPauseReason: '', odPauseDays: '7' });
+    const summary = r => {
+      const base = 'Assigned ' + r.assigned + ' (' + r.country + ', Geography focus)' + (r.moved ? ' to ' + r.moved.from : '') + '. ';
+      if (r.status === 'escalated') return base + 'Reminder sent ' + r.reminder + '. No stage move, drop or note by ' + r.deadline + '. Flagged. Reassigned to Andrew ' + r.moved.date + ', because ' + r.moved.why + '. Counted as 1 late for ' + first(r.moved.from) + '.';
+      if (r.status === 'overdue') return base + 'Reminder sent ' + r.reminder + '. No stage move, drop or note by ' + r.deadline + '. Flagged ' + r.flagged + '. If there’s still no action, Brain reassigns it to the next leader covering ' + r.country + ', or to Andrew.' + (r.pauses.length ? ' The deadline already includes a ' + r.pauses[0].dates.split('(')[1].replace(')', '') + ' pause.' : '');
+      if (r.status === 'reassigned') return base + 'Reminder sent ' + r.reminder + '. No action by ' + r.flagged + '. Flagged and reassigned to ' + you(r.moved.to) + ', ' + r.moved.why + ', on ' + r.moved.date + '. Counted as 1 late for ' + first(r.moved.from) + '. ' + first(r.moved.to) + ' has until ' + r.deadline + '.';
+      if (r.status === 'due') return base + (r.left <= 3 ? 'Reminder sent ' + r.reminder + '. ' : '') + 'Deadline ' + r.deadline + ', in ' + r.left + (r.left === 1 ? ' day' : ' days') + '. Nothing is late yet.';
+      if (r.status === 'paused') return base + 'Paused by ' + r.pauses[0].by + ' on ' + r.pauses[0].dates.split('–')[0] + ' Nov: “' + r.pauses[0].reason + '”. The clock restarts ' + r.until + ' and the deadline moves to ' + r.deadline + '. Not counted as late.';
+      return base + 'Action taken. Flag cleared.';
+    };
+    const steps = r => {
+      const done = (label, date, note) => ({ label, date, note, dot: 'var(--hz-horizon-primary)', ring: 'var(--hz-horizon-primary)', color: 'var(--hz-text-primary)' });
+      const flag = (label, date, note) => ({ label, date, note, dot: 'var(--hz-red-500)', ring: 'var(--hz-red-500)', color: 'var(--hz-red-700)' });
+      const todo = (label, date, note) => ({ label, date, note, dot: 'var(--hz-surface-card)', ring: 'var(--hz-border-default)', color: 'var(--hz-text-tertiary)' });
+      const owner = r.moved ? r.moved.from : r.who;
+      const out = [done('Email received', r.email, 'Inbound deal email reached Brain.'), done('Assigned', r.assigned, 'Routed to ' + you(owner) + ' (' + r.country + ', Geography focus).'), done('Notification sent', r.assigned, 'In-app and email to ' + first(owner) + '.')];
+      if (r.status === 'paused') { out.push(done('Paused', r.pauses[0].dates.split(' (')[0], '“' + r.pauses[0].reason + '”')); out.push(todo('Reminder', '—', 'Scheduled 3 days before the new deadline (' + r.deadline + ').')); return out; }
+      if (r.status === 'due' && r.left > 3) out.push(todo('Reminder sent', r.reminder, 'Scheduled 3 days before the deadline.')); else out.push(done('Reminder sent', r.reminder, '3 days before the deadline.'));
+      if (r.status === 'due') { out.push(todo('Deadline', r.deadline, 'Any stage move, drop or note clears it.')); return out; }
+      out.push(flag('Flagged', r.flagged, 'No stage move, drop or note by the deadline.'));
+      if (r.moved) out.push(done('Reassigned', r.moved.date, 'To ' + you(r.moved.to) + ', ' + r.moved.why + '.'));
+      else out.push(todo('Reassigned', 'Pending', 'Next leader covering ' + r.country + ', or Andrew.'));
+      return out;
+    };
+    const dRow = rows.find(r => r.id === S.odDrawer);
+    const mRow = S.odModal && S.odModal.id ? rows.find(r => r.id === S.odModal.id) : null;
+    const mode = S.odModal ? S.odModal.mode : '';
+    const cnt = k => groups[k].length;
+    const team = this.odTeamSeed;
+    const goWho = n => () => this.setState({ odFilter: 'all', odWho: n });
+    const cell = (text, tip, go, color, weight) => ({ text, tip, go, color: color || 'var(--hz-text-primary)', weight: weight || 500 });
+    const nd = 'Not enough data';
+    const actDone = (r, what) => { setRows(r.id, { status: 'done' }); this.setState({ odModal: null, odDrawer: null }); toast(what + ' on ' + r.company + '. Flag cleared.'); };
+    return {
+      odOverdueCount: cnt('overdue'), odHasOverdue: cnt('overdue') > 0,
+      odTeamOpen: !!S.odTeam, odTeamLabel: S.odTeam ? 'Hide team view' : 'Show team view',
+      odToggleTeam: () => this.setState({ odTeam: !S.odTeam }),
+      odCards: [
+        { label: 'Overdue now', value: cnt('overdue'), unit: cnt('overdue') === 1 ? 'deal' : 'deals', dot: 'var(--hz-red-500)', color: cnt('overdue') ? 'var(--hz-red-600)' : 'var(--hz-text-primary)', cta: 'See deals', tip: 'Deals past their 2-week deadline with no stage move, drop or note.', go: () => this.setState({ odFilter: 'overdue', odWho: '' }) },
+        { label: 'Due in 3 days or less', value: cnt('due'), unit: cnt('due') === 1 ? 'deal' : 'deals', dot: 'var(--hz-orange-500)', color: 'var(--hz-orange-700)', cta: 'See deals', tip: 'Reminders have gone out. Nothing is late yet.', go: () => this.setState({ odFilter: 'due', odWho: '' }) },
+        { label: 'Reassigned this month', value: cnt('reassigned'), unit: '', dot: 'var(--hz-horizon-primary)', color: 'var(--hz-text-primary)', cta: 'See deals', tip: 'Deals moved to another leader or Andrew in November.', go: () => this.setState({ odFilter: 'reassigned', odWho: '' }) },
+        { label: 'Median days to first action', value: 8, unit: 'days', dot: 'var(--hz-neutral-400)', color: 'var(--hz-text-primary)', cta: '', tip: 'Middle value across all assignments in the last 90 days, from assignment to the first stage move, drop or note.', go: () => {} }
+      ],
+      odFilters: [['overdue', 'Overdue'], ['due', 'Due soon'], ['reassigned', 'Reassigned'], ['all', 'All']].map(([k, label]) => ({ label, count: cnt(k), pick: () => this.setState({ odFilter: k }),
+        bg: filter === k ? 'var(--hz-horizon-primary)' : 'var(--hz-surface-card)', color: filter === k ? '#fff' : 'var(--hz-text-secondary)', border: filter === k ? 'var(--hz-horizon-primary)' : 'var(--hz-border-default)' })),
+      odHasWho: !!who, odWho: you(who), odClearWho: () => this.setState({ odWho: '' }),
+      odOpenHow: () => this.setState({ odModal: { mode: 'how' } }),
+      odHeads: ['Company', 'Assignee', 'Status', 'Days overdue', 'Deadline', 'Assignment reason', 'Actions'],
+      odHasRows: shown.length > 0, odEmpty: shown.length === 0,
+      odEmptyTitle: filter === 'overdue' && !who ? 'Nothing overdue. All deals are on track.' : 'No deals here right now.',
+      odEmptySub: filter === 'overdue' && !who ? 'Deals show up here only after their deadline passes.' : 'Try another filter.',
+      odRows: shown.map(r => { const p = pill(r), d = days(r), paused = r.status === 'paused', used = r.pauses.length > 0;
+        return { company: r.company, project: r.project, who: you(r.who), ini: ini(r.who),
+          whoSub: r.status === 'escalated' ? 'Now with Andrew' : r.moved ? 'From ' + you(r.moved.from) : '', hasWhoSub: !!r.moved,
+          days: d[0], daysColor: d[1], daysSub: d[2], hasDaysSub: !!d[2], deadline: r.deadline,
+          reason: r.country + ' deal, Geography focus' + (r.status === 'reassigned' ? ' (backup)' : ''),
+          pill: p[0], pillBg: p[1], pillColor: p[2], pillIcon: p[3], rowBg: S.odDrawer === r.id ? 'var(--hz-horizon-primary-pale)' : 'transparent',
+          open: () => this.setState({ odDrawer: r.id, odDisputeOpen: false, odDisputeText: '' }),
+          stop: e => e.stopPropagation(),
+          act: () => openModal('act', r.id), reassign: () => openModal('reassign', r.id), pause: () => openModal('pause', r.id),
+          pauseDisabled: paused || used, pauseLabel: paused ? 'Paused' : 'Pause',
+          pauseTip: paused ? 'Already paused until ' + r.until : used ? 'This deal has used its one pause' : 'Pause for up to 7 days' }; }),
+      odTeamHeads: ['Assignee', 'On-time %', 'Overdue now', 'Median response', 'Open workload'],
+      odTeam: team.map(t => { const few = t.n < 5, over = rows.filter(r => isOver(r) && (r.moved ? r.moved.from : r.who) === t.name).length;
+        return { name: you(t.name), ini: ini(t.name), cells: [
+          few ? cell(nd, 'Shown once someone has 5 or more assignments in 90 days.', goWho(t.name), 'var(--hz-text-tertiary)') : cell(t.ontime + '%', Math.round(t.n * t.ontime / 100) + ' of ' + t.n + ' assignments had a first action before the deadline.', goWho(t.name)),
+          cell(String(over), over ? 'Click to see the overdue deal' + (over > 1 ? 's' : '') + '.' : 'Nothing overdue.', () => this.setState({ odFilter: 'overdue', odWho: t.name }), over ? 'var(--hz-red-600)' : 'var(--hz-text-primary)', over ? 700 : 500),
+          few ? cell(nd, 'Shown once someone has 5 or more assignments in 90 days.', goWho(t.name), 'var(--hz-text-tertiary)') : cell(t.med + ' days', 'Middle value from assignment to first stage move, drop or note.', goWho(t.name)),
+          cell(t.open + ' open', 'Deals ' + first(t.name) + ' currently holds at any stage.', goWho(t.name))
+        ] }; }),
+      odDrawerOpen: !!dRow,
+      odCloseDrawer: () => this.setState({ odDrawer: null }),
+      odD: dRow ? (() => { const p = pill(dRow), fl = isOver(dRow) || dRow.status === 'reassigned';
+        return { company: dRow.company, project: dRow.project, drawerTitle: fl ? 'Why this was flagged' : 'Deal status', pill: p[0], pillBg: p[1], pillColor: p[2], pillIcon: p[3],
+          summary: summary(dRow), steps: steps(dRow), pauses: dRow.pauses, hasPauses: dRow.pauses.length > 0, noPauses: dRow.pauses.length === 0,
+          disputed: !!dRow.disputed, canDispute: fl && !dRow.disputed && !S.odDisputeOpen, act: () => openModal('act', dRow.id) }; })() : {},
+      odDisputeOpen: !!S.odDisputeOpen, odDisputeText: S.odDisputeText || '', odDisputeEmpty: !(S.odDisputeText || '').trim(),
+      odToggleDispute: () => this.setState({ odDisputeOpen: !S.odDisputeOpen }),
+      odSetDispute: e => this.setState({ odDisputeText: e.target.value }),
+      odSendDispute: () => { if (!dRow) return; setRows(dRow.id, { disputed: true }); this.setState({ odDisputeOpen: false, odDisputeText: '' }); toast('Dispute sent to Andrew for review.'); },
+      odModalOpen: !!S.odModal, odCloseModal: () => this.setState({ odModal: null }),
+      odModalHow: mode === 'how', odModalAct: mode === 'act', odModalReassign: mode === 'reassign', odModalPause: mode === 'pause',
+      odModalWidth: mode === 'how' ? '600px' : '440px',
+      odModalTitle: mode === 'how' ? 'How flags work' : mode === 'act' ? 'Act on ' + (mRow || {}).company : mode === 'reassign' ? 'Reassign ' + (mRow || {}).company : mode === 'pause' ? 'Pause ' + (mRow || {}).company : '',
+      odModalSub: mode === 'how' ? 'The same rules apply to everyone. Nothing here is a performance rating.' : mode === 'act' ? 'Any of these clears the flag right away.' : mode === 'reassign' ? 'Leaders who cover ' + (mRow || {}).country + ', plus the fallback owner.' : mode === 'pause' ? 'Use when the next step is waiting on someone outside the team.' : '',
+      odHowItems: [
+        { icon: 'fa-calendar', title: 'Deadline', text: 'Every assigned deal has 2 weeks for a first action. A reminder goes out 3 days before the deadline.' },
+        { icon: 'fa-check-circle', title: 'What counts as action', text: 'Moving the deal to another stage, dropping it, or logging a note. Any one of these clears the flag.' },
+        { icon: 'fa-pause-circle', title: 'Pausing', text: 'One pause per deal, for up to 7 days. A reason is required and is visible to everyone. The deadline moves by the paused days, and paused time is never counted as late.' },
+        { icon: 'fa-exchange-alt', title: 'Reassignment', text: 'If the deadline passes, the deal is flagged and moved to the next leader covering that country, or to Andrew. It counts once as late for the original assignee only; the new assignee starts a fresh 2 weeks.' },
+        { icon: 'fa-chart-line', title: '90-day window', text: 'Team numbers cover the last 90 days and use on-time rate, not total counts, so people with more deals aren’t penalised. Rates show only after 5 assignments.' },
+        { icon: 'fa-balance-scale', title: 'Disputes', text: 'Anyone can dispute a flag from its details. Andrew reviews it within 2 working days. If upheld, the late count is removed and the history notes why.' }
+      ],
+      odActOpts: mRow ? [
+        { icon: 'fa-arrow-right', label: 'Move to next stage', sub: 'Advance the deal in the pipeline', pick: () => actDone(mRow, 'Stage moved') },
+        { icon: 'fa-sticky-note', label: 'Log a note', sub: 'Record a call, email or update', pick: () => actDone(mRow, 'Note logged') },
+        { icon: 'fa-times-circle', label: 'Drop the deal', sub: 'Not a fit. You’ll pick a reason next', pick: () => actDone(mRow, 'Deal dropped') }
+      ] : [],
+      odReassignOpts: mRow ? [...(this.odCover[mRow.country] || []), 'Andrew'].filter(n => n !== mRow.who).map(n => ({ name: you(n), ini: ini(n),
+        sub: n === 'Andrew' ? 'Fallback owner' : 'Covers ' + mRow.country,
+        pick: () => { setRows(mRow.id, { who: n, status: 'reassigned', left: 14, deadline: '24 Nov', moved: { to: n, from: mRow.who, date: '10 Nov', why: n === 'Andrew' ? 'the fallback owner' : 'who also covers ' + mRow.country } }); this.setState({ odModal: null }); toast(mRow.company + ' reassigned to ' + you(n) + '.'); } })) : [],
+      odPauseReason: S.odPauseReason || '', odSetPauseReason: e => this.setState({ odPauseReason: e.target.value }),
+      odPauseDays: S.odPauseDays || '7', odSetPauseDays: e => this.setState({ odPauseDays: e.target.value }),
+      odPauseDayOpts: [1, 2, 3, 4, 5, 6, 7].map(n => ({ v: String(n), l: n + (n === 1 ? ' day' : ' days') })),
+      odPauseEmpty: !(S.odPauseReason || '').trim(),
+      odConfirmPause: () => { if (!mRow) return; const n = parseInt(S.odPauseDays || '7', 10), until = (10 + n) + ' Nov';
+        setRows(mRow.id, { status: 'paused', until, pauses: [{ dates: '10–' + until + ' (' + n + (n === 1 ? ' day' : ' days') + ')', by: you(me), reason: S.odPauseReason.trim() }] });
+        this.setState({ odModal: null }); toast(mRow.company + ' paused until ' + until + '.'); }
+    };
+  }
+  rtTypes = {
+    geo: { label: 'Geography', icon: 'fa-globe-asia', dim: 'Country', desc: 'Route by the target company’s country.', map: true },
+    workload: { label: 'Workload', icon: 'fa-tachometer-alt', desc: 'Cap or balance active deals per person.' },
+    industry: { label: 'Industry focus', icon: 'fa-industry', dim: 'Industry', desc: 'Route by the target’s industry.', map: true },
+    size: { label: 'Deal size', icon: 'fa-coins', desc: 'Route by enterprise value band.', soon: true },
+    rel: { label: 'Relationship owner', icon: 'fa-handshake', desc: 'Send to whoever owns the relationship.', soon: true }
+  };
+  rtDefaults = {
+    on: true,
+    criteria: [
+      { id: 'c1', type: 'geo', mode: 'must', on: true },
+      { id: 'c2', type: 'workload', mode: 'prefer', on: false }
+    ],
+    maps: {
+      geo: [
+        { v: 'Indonesia', p: ['Kar Siong'] },
+        { v: 'Australia', p: ['Samuel Nathaniel'] },
+        { v: 'Chile', p: ['Chandra Limi'] },
+        { v: 'US', p: ['Dessi Sari'] },
+        { v: 'Korea', p: ['Hendric Gondokusumo'] },
+        { v: 'Taiwan', p: ['Jien Lit'] },
+        { v: 'Malaysia', p: ['Jien Lit'] },
+        { v: 'Mongolia', p: [] }
+      ],
+      industry: [
+        { v: 'Healthcare', p: ['Hendric Gondokusumo', 'Chandra Limi'] },
+        { v: 'Consumer & F&B', p: ['Jien Lit', 'Fikha'] },
+        { v: 'Technology', p: ['Samuel Nathaniel', 'Kar Siong'] }
+      ]
+    },
+    rules: { geoUnknown: 'fallback', geoMulti: 'hq', industryUnknown: 'skip' },
+    cap: 10,
+    people: [
+      { name: 'Jien Lit', ini: 'JL', role: 'Team Leader', load: 3, on: true },
+      { name: 'Dessi Sari', ini: 'DS', role: 'Team Leader', load: 3, on: true },
+      { name: 'Kar Siong', ini: 'KS', role: 'Team Leader', load: 2, on: false },
+      { name: 'Hendric Gondokusumo', ini: 'HG', role: 'Team Leader', load: 4, on: true },
+      { name: 'Samuel Nathaniel', ini: 'SN', role: 'Team Leader', load: 3, on: false },
+      { name: 'Chandra Limi', ini: 'CL', role: 'Team Leader', load: 2, on: false },
+      { name: 'Fikha', ini: 'FK', role: 'Legal', load: 1, on: false },
+      { name: 'CP', ini: 'CP', role: 'Team Leader', load: 0, on: false },
+      { name: 'Sidharta Oetama', ini: 'SO', role: 'Deal Principal', load: 0, on: false },
+      { name: 'Andrew', ini: 'AN', role: 'Deal Principal', load: 2, on: true }
+    ],
+    fallback: 'Andrew',
+    window: 14, reminder: 3, actNext: true, actDrop: true,
+    reassign: 'next', redFlag: true, maxRe: 2, endState: 'escalate', escalateTo: 'Andrew',
+    ch: { app: true, email: true, slack: false },
+    notify: { newA: true, prevA: true, fb: true }
+  };
+  routingVals() {
+    const S = this.state, T = this.rtTypes;
+    const saved = S.rtSaved || this.rtDefaults;
+    const d = S.rtDraft || saved;
+    const set = patch => this.setState({ rtDraft: { ...d, ...patch } });
+    const people = d.people, fb = d.fallback, cap = d.cap;
+    const P = n => people.find(x => x.name === n) || { name: n, ini: '?', load: 0, on: false, role: '' };
+    const fbP = P(fb);
+    const enabled = d.criteria.filter(c => c.on);
+    const active = t => enabled.find(c => c.type === t);
+    const list = a => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1];
+    const plural = (n, w) => n + ' ' + w + (n === 1 ? '' : 's');
+    const sec = S.rtSec || 'how';
+    const go = k => () => this.setState({ rtSec: k });
+    const setMap = (k, rows) => set({ maps: { ...d.maps, [k]: rows } });
+
+    // ----- Validation -----
+    const issues = [];
+    ['geo', 'industry'].forEach(k => {
+      const c = active(k); if (!c) return;
+      d.maps[k].forEach(r => {
+        const el = r.p.filter(n => P(n).on);
+        if (!r.p.length) issues.push({ sev: 'warn', sec: 'criteria', text: r.v + ' has no Team Leader for ' + T[k].label + '. Its deals go straight to ' + fb + '.' });
+        else if (!el.length && c.mode === 'must') issues.push({ sev: 'error', sec: 'criteria', text: T[k].label + ' eliminates every candidate for ' + r.v + ': ' + list(r.p) + (r.p.length > 1 ? ' are' : ' is') + ' not eligible, so all ' + r.v + ' deals fall to ' + fb + '.' });
+      });
+    });
+    const pool = people.filter(x => x.on && x.name !== fb);
+    const wl = active('workload');
+    if (wl && wl.mode === 'must' && pool.length && pool.every(x => x.load >= cap)) issues.push({ sev: 'error', sec: 'criteria', text: 'The workload cap of ' + cap + ' eliminates every candidate, so all deals fall to ' + fb + '.' });
+    const g = active('geo'), ind = active('industry');
+    if (g && ind && g.mode === 'must' && ind.mode === 'must') {
+      const bad = [];
+      d.maps.geo.forEach(a => { if (a.p.length) d.maps.industry.forEach(b => { if (b.p.length && !a.p.some(n => b.p.includes(n) && P(n).on)) bad.push(a.v + ' + ' + b.v); }); });
+      if (bad.length) issues.push({ sev: 'error', sec: 'criteria', text: 'Geography and Industry focus together eliminate every candidate for ' + list(bad.slice(0, 2)) + (bad.length > 2 ? ' (+' + (bad.length - 2) + ' more)' : '') + '. Those deals fall to ' + fb + '.' });
+    }
+    if (!pool.length) issues.push({ sev: 'error', sec: 'people', text: 'No Team Leader is eligible, so every deal goes to ' + fb + '.' });
+    if (!fbP.on) issues.push({ sev: 'error', sec: 'fallback', text: fb + ', the fallback owner, is not eligible. Deals with no match will wait in the triage queue.' });
+    const loops = [];
+    if (d.reassign === 'next') {
+      ['geo', 'industry'].forEach(k => { const c = active(k); if (!c || c.mode !== 'must') return;
+        d.maps[k].forEach(r => { const el = r.p.filter(n => P(n).on && n !== fb); if (el.length && d.maxRe > el.length) loops.push({ v: r.v, chain: [...el, fb], n: el.length }); }); });
+    } else if (d.maxRe > 1) loops.push({ v: 'every deal', chain: [fb], n: 1 });
+    if (loops.length) { const L = loops[0]; issues.push({ sev: 'warn', sec: 'deadlines', text: 'Circular reassignment risk: ' + L.v + ' has ' + plural(L.chain.length, 'person') .replace('persons', 'people') + ' in its chain (' + L.chain.join(' → ') + ') but allows ' + plural(d.maxRe, 'reassignment') + ', so a deal would return to someone who already missed the deadline. Set max reassignments to ' + L.n + ' or add a backup.' + (loops.length > 1 ? ' ' + (loops.length - 1) + ' more affected.' : '') }); }
+    if (!d.actNext && !d.actDrop) issues.push({ sev: 'error', sec: 'deadlines', text: 'Choose at least one action that stops the clock.' });
+    if (d.reminder >= d.window) issues.push({ sev: 'warn', sec: 'deadlines', text: 'The reminder (' + plural(d.reminder, 'day') + ' before) is longer than the action window.' });
+    const secIssues = k => issues.filter(i => i.sec === k);
+    const shown = sec === 'how' ? issues : secIssues(sec);
+    const hasErr = shown.some(i => i.sev === 'error');
+
+    // ----- Simulator -----
+    const simC = S.rtSimC || 'Indonesia', simI = S.rtSimI || 'Healthcare';
+    const chip = (n, sub) => ({ name: n, ini: P(n).ini, sub: sub || '', hasSub: !!sub });
+    const resolve = k => {
+      if (k === 'geo') {
+        if (simC !== '__none' && simC !== '__multi') return { val: simC };
+        const none = simC === '__none', rule = none ? d.rules.geoUnknown : d.rules.geoMulti;
+        const lead = none ? 'Country not stated' : 'Deal spans Indonesia and Australia';
+        if (rule === 'fallback') return { fb: lead + ', so the rule sends it to the fallback owner.' };
+        const val = rule === 'hq' ? 'Indonesia' : (none ? 'Chile' : 'Australia');
+        return { val, note: lead + '; Brain used the ' + (rule === 'hq' ? 'HQ country' : 'asset location') + ', ' + val + '.' };
+      }
+      if (simI !== '__none') return { val: simI };
+      return d.rules.industryUnknown === 'fallback' ? { fb: 'Industry not stated, so the rule sends it to the fallback owner.' } : { skip: 'Industry not stated, so this criterion is skipped.' };
+    };
+    let cand = pool.map(x => x.name);
+    const inelig = people.filter(x => !x.on && x.name !== fb).map(x => x.name);
+    const keys = {}; cand.forEach(n => { keys[n] = []; });
+    const steps = [{ title: 'Eligible Team Leaders', icon: 'fa-users', mode: '', text: plural(cand.length, 'person') .replace('persons', 'people') + ' can receive deals.', kept: cand.map(n => chip(n)), removed: inelig.map(n => chip(n, 'not eligible')) }];
+    let fbWhy = enabled.length ? '' : 'no routing criteria are active';
+    for (const c of enabled) {
+      if (fbWhy) break;
+      const t = T[c.type], must = c.mode === 'must', base = { title: t.label, icon: t.icon, mode: must ? 'Must match' : 'Prefer' };
+      if (c.type === 'workload') {
+        if (must) {
+          const rem = cand.filter(n => P(n).load >= cap); cand = cand.filter(n => P(n).load < cap);
+          steps.push({ ...base, text: rem.length ? 'Removed anyone at ' + cap + ' or more active deals.' : 'Everyone is under the cap of ' + cap + ' active deals.', kept: cand.map(n => chip(n, P(n).load + ' / ' + cap)), removed: rem.map(n => chip(n, 'at cap')) });
+          if (!cand.length) fbWhy = 'everyone is at the workload cap';
+        } else {
+          cand.forEach(n => keys[n].push(P(n).load));
+          steps.push({ ...base, text: 'Ranked by lowest current load.', kept: [...cand].sort((a, b) => P(a).load - P(b).load).map(n => chip(n, P(n).load + ' deals')), removed: [] });
+        }
+        continue;
+      }
+      if (!t.map) continue;
+      const r = resolve(c.type);
+      if (r.fb) { steps.push({ ...base, text: r.fb, kept: [], removed: [] }); fbWhy = 'the ' + T[c.type].dim.toLowerCase() + ' rule sends it there'; break; }
+      if (r.skip) { steps.push({ ...base, text: r.skip, kept: [], removed: [] }); continue; }
+      const row = d.maps[c.type].find(x => x.v === r.val), cov = row ? row.p : [], pre = r.note ? r.note + ' ' : '';
+      if (must) {
+        const rem = cand.filter(n => !cov.includes(n)); cand = cand.filter(n => cov.includes(n));
+        cand.forEach(n => keys[n].push(cov.indexOf(n)));
+        steps.push({ ...base, text: pre + (cov.length ? 'Kept the people covering ' + r.val + ', in coverage order.' : 'No Team Leader covers ' + r.val + '.'), kept: [...cand].sort((a, b) => cov.indexOf(a) - cov.indexOf(b)).map(n => chip(n, cov.indexOf(n) ? 'backup ' + cov.indexOf(n) : 'primary')), removed: rem.map(n => chip(n)) });
+        if (!cand.length) fbWhy = cov.length ? 'no eligible Team Leader covers ' + r.val : r.val + ' has no coverage';
+      } else {
+        cand.forEach(n => keys[n].push(cov.includes(n) ? cov.indexOf(n) : 99));
+        steps.push({ ...base, text: pre + (cov.length ? 'Moved people covering ' + r.val + ' to the front.' : 'No one covers ' + r.val + ', so the order is unchanged.'), kept: [...cand].sort((a, b) => (cov.includes(a) ? cov.indexOf(a) : 99) - (cov.includes(b) ? cov.indexOf(b) : 99)).map(n => chip(n, cov.includes(n) ? 'covers ' + r.val : '')), removed: [] });
+      }
+    }
+    if (!fbWhy && !cand.length) fbWhy = 'no candidates are left';
+    cand.sort((a, b) => { for (let i = 0; i < Math.max(keys[a].length, keys[b].length); i++) { const x = (keys[a][i] ?? 99) - (keys[b][i] ?? 99); if (x) return x; } return 0; });
+    const endLabel = d.endState === 'escalate' ? 'escalate to ' + d.escalateTo : 'triage queue';
+    let simName, simIni, simWhy, simChain, simTone;
+    if (fbWhy) {
+      if (fbP.on) { simName = fb; simIni = fbP.ini; simWhy = 'Fallback owner, because ' + fbWhy + '.'; simTone = 'fb'; }
+      else { simName = 'triage queue'; simIni = '—'; simWhy = 'The fallback owner, ' + fb + ', is not eligible, so the deal waits in the triage queue.'; simTone = 'err'; }
+    } else { simName = cand[0]; simIni = P(cand[0]).ini; simWhy = 'Ranked first after ' + plural(enabled.length, 'active criterion').replace('criterions', 'criteria') + '.'; simTone = 'ok'; }
+    if (simTone === 'err') simChain = '';
+    else {
+      const next = (simTone === 'ok' && d.reassign === 'next' ? cand.slice(1) : []).concat(fbP.on && simName !== fb ? [fb] : []);
+      const seq = next.slice(0, d.maxRe);
+      simChain = 'If no action: ' + [...seq, endLabel].join(' → ') + (seq.length < d.maxRe && d.maxRe > 0 ? ' (chain shorter than max reassignments)' : '');
+    }
+    const geoVals = d.maps.geo.map(r => r.v), indVals = d.maps.industry.map(r => r.v);
+
+    // ----- Summary -----
+    const mustMap = enabled.filter(c => T[c.type].map && c.mode === 'must').map(c => c.type);
+    const prefMap = enabled.filter(c => T[c.type].map && c.mode === 'prefer').map(c => c.type);
+    const word = k => k === 'geo' ? 'country' : 'industry';
+    const ident = enabled.filter(c => T[c.type].map).map(c => c.type === 'geo' ? 'target country' : 'industry');
+    let first;
+    if (!d.on) first = 'Auto-assign is off. New Pending Confirmation deals stay unassigned until someone picks them up.';
+    else if (!enabled.length) first = 'For every new Pending Confirmation deal, Brain assigns it to ' + fb + '.';
+    else {
+      first = 'For every new Pending Confirmation deal, Brain ' + (ident.length ? 'identifies the ' + list(ident) + ' and ' : '');
+      first += mustMap.length ? 'assigns it to the Team Leader covering that ' + list(mustMap.map(word)) : 'assigns it to an eligible Team Leader';
+      if (wl && wl.mode === 'must') first += ' who has fewer than ' + cap + ' active deals';
+      if (prefMap.length) first += (mustMap.length ? ', preferring those who also cover that ' : ', preferring those who cover that ') + list(prefMap.map(word));
+      if (wl && wl.mode === 'prefer') first += ', choosing whoever has the fewest active deals';
+      first += ', or to ' + fb + ' if ' + (mustMap.length === 1 ? 'the ' + word(mustMap[0]) + ' is not covered' : 'no one matches') + '.';
+    }
+    const acts = [d.actNext && 'move the deal to the next stage', d.actDrop && 'drop it'].filter(Boolean);
+    const parts = [first];
+    if (d.on) {
+      parts.push('The assignee has ' + plural(d.window, 'day') + ' to ' + (acts.length ? acts.join(' or ') : 'act') + ', with a reminder ' + plural(d.reminder, 'day') + ' before the deadline.');
+      const forWhat = mustMap.length ? ' for that ' + list(mustMap.map(word)) : '';
+      parts.push('If no action is taken, the deal is ' + (d.redFlag ? 'flagged red and ' : '') + (d.reassign === 'next' ? 'reassigned to the next eligible Team Leader' + forWhat + ', or to ' + fb + ' if none remains.' : 'reassigned to ' + fb + '.'));
+      if (d.maxRe > 0) parts.push('After ' + plural(d.maxRe, 'reassignment') + ', it is ' + (d.endState === 'escalate' ? 'escalated to ' + d.escalateTo : 'moved to the triage queue') + '.');
+      const anyCh = d.ch.app || d.ch.email || d.ch.slack;
+      parts.push(anyCh ? 'Every assignment is notified and recorded in the audit log.' : 'Every assignment is recorded in the audit log.');
+    }
+
+    // ----- Criteria list -----
+    const moveCrit = (from, to) => { if (to < 0 || to >= d.criteria.length || from === to) return; const a = [...d.criteria]; const [x] = a.splice(from, 1); a.splice(to, 0, x); set({ criteria: a }); };
+    const ruleOpts = [{ v: 'hq', l: 'Use HQ country' }, { v: 'asset', l: 'Use asset location' }, { v: 'fallback', l: 'Send to fallback owner' }];
+    const crit = d.criteria.map((c, i) => {
+      const t = T[c.type], open = S.rtOpen === c.id, must = c.mode === 'must';
+      const upd = patch => set({ criteria: d.criteria.map(x => x.id === c.id ? { ...x, ...patch } : x) });
+      const rows = t.map ? d.maps[c.type] : [];
+      const noCov = rows.filter(r => !r.p.length).length;
+      const deadRows = rows.filter(r => r.p.length && !r.p.some(n => P(n).on)).length;
+      let summary = '';
+      if (t.map) summary = plural(rows.length, t.dim === 'Country' ? 'country' : 'industry').replace('countrys', 'countries').replace('industrys', 'industries') + (noCov ? ' · ' + noCov + ' without coverage' : ' · all covered');
+      else if (c.type === 'workload') summary = must ? 'Max ' + cap + ' active deals per person' : 'Lowest current load first';
+      if (!c.on) summary += ' · disabled';
+      const issueText = deadRows ? 'Eliminates all' : noCov ? 'Coverage gap' : '';
+      const k = c.type;
+      return {
+        num: i + 1, name: t.label, icon: t.icon, summary, open, on: c.on, opacity: c.on ? 1 : 0.6,
+        border: S.rtDrag && S.rtDrag !== c.id ? 'var(--hz-horizon-primary-soft)' : 'var(--hz-border-subtle)',
+        hasIssue: c.on && !!issueText, issueText, issueBg: deadRows ? 'var(--hz-red-50)' : 'var(--hz-orange-50)', issueColor: deadRows ? 'var(--hz-red-700)' : 'var(--hz-orange-700)',
+        chevron: open ? 'fa-chevron-up' : 'fa-chevron-down',
+        toggleOpen: () => this.setState({ rtOpen: open ? null : c.id }),
+        mustBg: must ? 'var(--hz-horizon-primary)' : 'transparent', mustColor: must ? '#fff' : 'var(--hz-text-secondary)',
+        preferBg: must ? 'transparent' : 'var(--hz-horizon-primary)', preferColor: must ? 'var(--hz-text-secondary)' : '#fff',
+        setMust: () => upd({ mode: 'must' }), setPrefer: () => upd({ mode: 'prefer' }), toggle: () => upd({ on: !c.on }),
+        isFirst: i === 0, isLast: i === d.criteria.length - 1, moveUp: () => moveCrit(i, i - 1), moveDown: () => moveCrit(i, i + 1),
+        remove: () => set({ criteria: d.criteria.filter(x => x.id !== c.id) }),
+        dragStart: e => { try { e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', c.id); } catch (_) {} this.setState({ rtDrag: c.id }); },
+        dragEnd: () => this.setState({ rtDrag: null }),
+        dragOver: e => { if (S.rtDrag) e.preventDefault(); },
+        drop: e => { e.preventDefault(); const from = d.criteria.findIndex(x => x.id === S.rtDrag); this.setState({ rtDrag: null }); if (from >= 0) moveCrit(from, i); },
+        help: c.type === 'geo' ? (must ? 'Only Team Leaders covering the deal’s country stay in the running. The first person listed is primary; the rest are backups, in order.' : 'Team Leaders covering the deal’s country move to the front, in the order listed. Nobody is removed.')
+          : c.type === 'industry' ? (must ? 'Only people covering the deal’s industry stay in the running, primary first, then backups.' : 'People covering the deal’s industry move to the front. Nobody is removed.')
+          : must ? 'Hard cap: anyone at or above the limit is skipped for new deals.' : 'Ranks remaining candidates by lowest current load. Ties keep the order from earlier criteria.',
+        hasMap: !!t.map, isWorkload: c.type === 'workload', isMust: must, dimLabel: t.dim || '',
+        addPlaceholder: t.dim === 'Country' ? 'Add a country…' : 'Add an industry…', addLabel: 'Add ' + (t.dim || '').toLowerCase(),
+        newValue: (S.rtNewVal || {})[k] || '',
+        setNewValue: e => this.setState({ rtNewVal: { ...(S.rtNewVal || {}), [k]: e.target.value } }),
+        addValue: () => { const v = ((S.rtNewVal || {})[k] || '').trim(); if (!v || rows.some(r => r.v.toLowerCase() === v.toLowerCase())) return; setMap(k, [...rows, { v, p: [] }]); this.setState({ rtNewVal: { ...(S.rtNewVal || {}), [k]: '' } }); },
+        rows: rows.map((r, ri) => {
+          const el = r.p.filter(n => P(n).on);
+          const badge = !r.p.length ? ['No coverage', 'var(--hz-red-50)', 'var(--hz-red-700)', 'fa-exclamation-circle']
+            : !el.length ? ['No eligible leader', 'var(--hz-red-50)', 'var(--hz-red-700)', 'fa-exclamation-circle']
+            : el.length === 1 ? ['Only 1 leader', 'var(--hz-orange-50)', 'var(--hz-orange-700)', 'fa-exclamation-triangle'] : null;
+          const updRow = p => setMap(k, rows.map((x, j) => j === ri ? { ...x, p } : x));
+          return {
+            value: r.v, hasBadge: !!badge, badgeText: badge ? badge[0] : '', badgeBg: badge ? badge[1] : '', badgeColor: badge ? badge[2] : '', badgeIcon: badge ? badge[3] : '',
+            people: r.p.map((n, pi) => ({ name: n, ini: P(n).ini, opacity: P(n).on ? 1 : 0.5,
+              rank: P(n).on ? (pi ? 'Backup ' + pi : 'Primary') : 'Not eligible', rankColor: pi || !P(n).on ? 'var(--hz-text-tertiary)' : 'var(--hz-horizon-primary-dark)',
+              canUp: pi > 0, up: () => { const a = [...r.p]; [a[pi - 1], a[pi]] = [a[pi], a[pi - 1]]; updRow(a); },
+              remove: () => updRow(r.p.filter((_, j) => j !== pi)) })),
+            addOptions: people.map(x => x.name).filter(n => !r.p.includes(n)),
+            addPerson: e => { const v = e.target.value; if (v) updRow([...r.p, v]); },
+            remove: () => setMap(k, rows.filter((_, j) => j !== ri))
+          };
+        }),
+        rules: c.type === 'geo' ? [
+          { label: 'When the country is unknown', key: 'geoUnknown', options: ruleOpts },
+          { label: 'When a deal spans multiple countries', key: 'geoMulti', options: ruleOpts }
+        ].map(x => ({ ...x, value: d.rules[x.key], set: e => set({ rules: { ...d.rules, [x.key]: e.target.value } }) }))
+          : c.type === 'industry' ? [{ label: 'When the industry is unknown', key: 'industryUnknown', options: [{ v: 'skip', l: 'Skip this criterion' }, { v: 'fallback', l: 'Send to fallback owner' }] }]
+            .map(x => ({ ...x, value: d.rules[x.key], set: e => set({ rules: { ...d.rules, [x.key]: e.target.value } }) })) : []
+      };
+    });
+    const pickerOpen = !!S.rtPicker || !d.criteria.length;
+    const loadRow = (x, i) => { const pct = Math.min(100, Math.round(x.load / cap * 100)); const atCap = x.load >= cap;
+      return { name: x.name, ini: x.ini, border: i ? '1px solid var(--hz-border-subtle)' : 'none', opacity: x.on ? 1 : 0.5, pct: pct + '%', load: x.load + ' / ' + cap + ' deals',
+        barColor: atCap ? 'var(--hz-red-500)' : x.load / cap >= 0.8 ? 'var(--hz-orange-500)' : 'var(--hz-horizon-primary)', textColor: atCap ? 'var(--hz-red-700)' : 'var(--hz-text-secondary)' }; };
+    const num = (k, min) => e => set({ [k]: Math.max(min, parseInt(e.target.value, 10) || min) });
+    const onCount = people.filter(x => x.on).length;
+    const chLabels = [['app', 'In-app', 'fa-bell'], ['email', 'Email', 'fa-envelope'], ['slack', 'Slack', 'fa-hashtag']];
+    const navItems = [
+      ['how', 'How Brain assigns', 'fa-book-open', 'Read only'],
+      ['criteria', 'Routing criteria', 'fa-route', enabled.length ? enabled.map(c => T[c.type].label).join(' → ') : 'None active'],
+      ['people', 'Team Leaders', 'fa-users', onCount + ' of ' + people.length + ' eligible'],
+      ['fallback', 'Fallback owner', 'fa-user-shield', fb],
+      ['deadlines', 'Deadlines & escalation', 'fa-stopwatch', d.window + ' days · max ' + d.maxRe + ' reassignments']
+    ];
+    return {
+      rtOn: d.on, rtOnLabel: d.on ? 'On' : 'Off', rtToggleOn: () => set({ on: !d.on }),
+      rtNav: navItems.map(([k, label, icon, sub]) => { const n = secIssues(k), err = n.some(i => i.sev === 'error');
+        return { label, sub, icon, bg: sec === k ? 'var(--hz-horizon-primary-pale)' : 'transparent', color: sec === k ? 'var(--hz-horizon-primary-dark)' : 'var(--hz-text-primary)', iconColor: sec === k ? 'var(--hz-horizon-primary)' : 'var(--hz-text-tertiary)',
+          hasIssue: n.length > 0, issueCount: n.length, issueBg: err ? 'var(--hz-red-50)' : 'var(--hz-orange-50)', issueColor: err ? 'var(--hz-red-700)' : 'var(--hz-orange-700)', select: go(k) }; }),
+      rtSecHow: sec === 'how', rtSecCriteria: sec === 'criteria', rtSecPeople: sec === 'people', rtSecFallback: sec === 'fallback', rtSecDeadlines: sec === 'deadlines', rtSecNotify: sec === 'notify',
+      rtShowIssues: shown.length > 0,
+      rtIssueTitle: plural(shown.length, 'issue') + ' to review',
+      rtIssueBg: hasErr ? 'var(--hz-red-50)' : 'var(--hz-orange-50)', rtIssueBorder: hasErr ? 'var(--hz-red-200, #fecaca)' : 'var(--hz-orange-200, #fed7aa)', rtIssueColor: hasErr ? 'var(--hz-red-700)' : 'var(--hz-orange-700)',
+      rtIssues: shown.map(i => ({ text: i.text, icon: i.sev === 'error' ? 'fa-times-circle' : 'fa-exclamation-triangle', color: i.sev === 'error' ? 'var(--hz-red-600)' : 'var(--hz-orange-600)', canGo: i.sec !== sec, go: go(i.sec) })),
+      rtSummary: parts.join(' '),
+      rtPipeline: [
+        { num: 1, title: 'Routing criteria', detail: enabled.length ? enabled.map(c => T[c.type].label + ' (' + (c.mode === 'must' ? 'must match' : 'prefer') + ')').join(', ') : 'None active', go: go('criteria') },
+        { num: 2, title: 'Fallback owner', detail: fb + (fbP.on ? '' : ' · not eligible'), go: go('fallback') },
+        { num: 3, title: 'Deadlines & escalation', detail: plural(d.window, 'day') + ' to act · max ' + plural(d.maxRe, 'reassignment'), go: go('deadlines') },
+        { num: 4, title: 'Notifications & audit', detail: (chLabels.filter(([k]) => d.ch[k]).map(x => x[1]).join(', ') || 'No channels') + ' · audit log', go: go('notify') }
+      ],
+      rtSimCountry: simC, rtSimIndustry: simI,
+      rtSetSimCountry: e => this.setState({ rtSimC: e.target.value }), rtSetSimIndustry: e => this.setState({ rtSimI: e.target.value }),
+      rtSimCountryOpts: [...geoVals.map(v => ({ v, l: v })), ...(geoVals.includes('Vietnam') ? [] : [{ v: 'Vietnam', l: 'Vietnam' }]), { v: '__multi', l: 'Multiple countries' }, { v: '__none', l: 'Not stated' }],
+      rtSimIndustryOpts: [...indVals.map(v => ({ v, l: v })), ...(indVals.includes('Mining') ? [] : [{ v: 'Mining', l: 'Mining' }]), { v: '__none', l: 'Not stated' }],
+      rtSimSteps: steps.map(s => ({ ...s, hasMode: !!s.mode, modeBg: s.mode === 'Must match' ? 'var(--hz-horizon-primary-pale)' : 'var(--hz-neutral-100)', modeColor: s.mode === 'Must match' ? 'var(--hz-horizon-primary-dark)' : 'var(--hz-text-secondary)' })),
+      rtSimAssignee: simName, rtSimAssigneeIni: simIni, rtSimWhy: simWhy, rtSimChain: simChain,
+      rtSimResultBg: simTone === 'ok' ? 'var(--hz-green-50)' : simTone === 'fb' ? 'var(--hz-orange-50)' : 'var(--hz-red-50)',
+      rtSimResultBorder: simTone === 'ok' ? 'var(--hz-green-200, #bbf7d0)' : simTone === 'fb' ? 'var(--hz-orange-200, #fed7aa)' : 'var(--hz-red-200, #fecaca)',
+      rtGoTest: go('how'),
+      rtTogglePicker: () => this.setState({ rtPicker: !S.rtPicker }),
+      rtNoCriteria: !d.criteria.length, rtPickerOpen: pickerOpen,
+      rtTypePicker: Object.keys(T).map(k => { const t = T[k], used = d.criteria.some(c => c.type === k), dis = used || !!t.soon;
+        return { name: t.label, icon: t.icon, desc: t.desc, disabled: dis, cursor: dis ? 'default' : 'pointer', opacity: dis ? 0.55 : 1, hasStatus: dis, status: used ? 'Added' : 'Coming soon',
+          add: () => { if (dis) return; const id = 'c' + Date.now(); set({ criteria: [...d.criteria, { id, type: k, mode: k === 'workload' ? 'prefer' : 'must', on: true }] }); this.setState({ rtPicker: false, rtOpen: id }); } }; }),
+      rtCriteria: crit,
+      rtCap: cap, rtSetCap: num('cap', 1),
+      rtLoads: people.filter(x => x.name !== fb).map(loadRow),
+      rtPeopleSummary: onCount + ' of ' + people.length + ' eligible · one roster shared by every criterion',
+      rtPeople: people.map((x, i) => { const L = loadRow(x, i); const covers = [];
+        ['geo', 'industry'].forEach(k => d.maps[k].forEach(r => { const idx = r.p.indexOf(x.name); if (idx >= 0) covers.push({ label: r.v + (idx ? ' · backup' : ''), icon: T[k].icon, bg: idx ? 'var(--hz-neutral-100)' : 'var(--hz-horizon-primary-pale)', color: idx ? 'var(--hz-text-secondary)' : 'var(--hz-horizon-primary-dark)' }); }));
+        return { ...L, on: x.on, role: x.role || 'Team member', isFallback: x.name === fb, covers, noCovers: !covers.length,
+          toggle: () => set({ people: people.map((y, j) => j === i ? { ...y, on: !y.on } : y) }) }; }),
+      rtFallback: fb, rtFallbackIni: fbP.ini, rtFallbackMeta: (fbP.role || 'Team member') + ' · ' + fbP.load + ' active deals · ' + (fbP.on ? 'eligible' : 'not eligible'),
+      rtFallbackIneligible: !fbP.on,
+      rtMakeFallbackEligible: () => set({ people: people.map(y => y.name === fb ? { ...y, on: true } : y) }),
+      rtSetFallback: e => set({ fallback: e.target.value }),
+      rtPersonOpts: people.map(x => x.name),
+      rtFallbackCases: [
+        ['fa-map-marker-question', 'The deal’s ' + (mustMap.length ? list(mustMap.map(word)) : 'criteria value') + ' has no coverage' + (d.maps.geo.filter(r => !r.p.length).length ? ' (today: ' + d.maps.geo.filter(r => !r.p.length).map(r => r.v).join(', ') + ')' : '') + '.'],
+        ['fa-user-slash', 'Everyone who matches is marked not eligible or at their workload cap.'],
+        ['fa-redo', d.reassign === 'next' ? 'A reassignment runs out of backups for the same criteria.' : 'Any deal is reassigned after a missed deadline.']
+      ].map(([icon, text], i) => ({ icon, text, border: i ? '1px solid var(--hz-border-subtle)' : 'none' })),
+      rtWindow: d.window, rtWindowUnit: d.window === 1 ? 'day' : 'days', rtSetWindow: num('window', 1),
+      rtReminder: d.reminder, rtSetReminder: num('reminder', 1),
+      rtActNext: d.actNext, rtActDrop: d.actDrop, rtToggleActNext: () => set({ actNext: !d.actNext }), rtToggleActDrop: () => set({ actDrop: !d.actDrop }),
+      rtReassignOpts: [
+        ['next', 'Reassign to the next eligible candidate for the same criteria, then the fallback owner'],
+        ['fallback', 'Reassign straight to the fallback owner']
+      ].map(([v, label]) => ({ label, checked: d.reassign === v, pick: () => set({ reassign: v }) })),
+      rtRedFlag: d.redFlag, rtToggleRedFlag: () => set({ redFlag: !d.redFlag }),
+      rtMaxRe: d.maxRe, rtSetMaxRe: e => set({ maxRe: Math.max(0, parseInt(e.target.value, 10) || 0) }),
+      rtEndEscalate: d.endState === 'escalate', rtEndTriage: d.endState === 'triage',
+      rtPickEscalate: () => set({ endState: 'escalate' }), rtPickTriage: () => set({ endState: 'triage' }),
+      rtEscalateTo: d.escalateTo, rtSetEscalateTo: e => set({ escalateTo: e.target.value, endState: 'escalate' }),
+      rtChannels: chLabels.map(([k, label, icon]) => ({ label, icon, on: d.ch[k], toggle: () => set({ ch: { ...d.ch, [k]: !d.ch[k] } }) })),
+      rtRecipients: [
+        ['newA', 'New assignee', 'On every assignment and reminder'],
+        ['prevA', 'Previous assignee', 'When a deal is reassigned away from them'],
+        ['fb', 'Fallback owner', 'When a deal falls back or escalates to them']
+      ].map(([k, label, sub]) => ({ label, sub, on: d.notify[k], toggle: () => set({ notify: { ...d.notify, [k]: !d.notify[k] } }) })),
+      rtDirty: !!S.rtDraft,
+      rtDiscard: () => this.setState({ rtDraft: null }),
+      rtSave: () => { const msg = 'Routing saved. Applies to new deals only.'; this.setState({ rtSaved: d, rtDraft: null, successToast: msg }); setTimeout(() => this.setState(s => s.successToast === msg ? { successToast: null } : null), 3000); }
     };
   }
   rejectReasonOptions = ['Outside my geographic focus', 'Outside my industry focus', 'At full capacity with current deals', 'Other'];
@@ -2142,7 +3377,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
           dealSponsor: (c.dealSponsors && c.dealSponsors.length) ? c.dealSponsors.join(', ') : this.dealSponsorOptions[c.id % this.dealSponsorOptions.length],
           ...(() => {
             const sp = (c.dealSponsors && c.dealSponsors.length) ? c.dealSponsors.join(', ') : this.dealSponsorOptions[c.id % this.dealSponsorOptions.length];
-            const auto = !(c.dealSponsors && c.dealSponsors.length) && c.stage === 'pending';
+            const auto = !(c.dealSponsors && c.dealSponsors.length) && (c.stage === 'pending' || (c.stage === 'l0' && [2, 3, 6, 9, 10].includes(c.id)));
             const mine = sp === this.currentUser;
             const d = (this.state.sponsorDecisions || {})[c.id];
             const rejected = !!(d && d.status === 'rejected');
@@ -2160,6 +3395,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
               respondSponsor: () => this.setState({ rejectFor: { id: c.id, title: c.name || c.project, sector: c.sector, geography: c.geo || c.geography || c.country || c.region }, respondChoice: '', rateOpen: false, rateHover: 0, rejectReasonSel: [], rejectNote: '' })
             };
           })(),
+          openDetail: () => this.setState({ detailId: c.id, detailTab: 'timeline', detailSel: null, detailFilter: 'all' }),
           sector: c.sector,
           geo: c.geo,
           tracks: c.tracks,
@@ -2302,7 +3538,10 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
         iconColor: on ? '#fff' : 'var(--hz-text-secondary)' };
     };
     return {
-      respondChoices: [choice('accept', 'Accept', 'Become deal assignee', 'fas fa-check', 'green'), choice('reject', 'Reject', 'Send for reassignment', 'fas fa-times', 'red')],
+      respondChoices: [choice('accept', 'Proceed to Review', 'Become deal assignee', 'fas fa-check', 'green'), choice('reject', 'Drop the Deal', 'Brain picks the next leader', 'fas fa-exchange-alt', 'red')],
+      respondIsDrop: rc === 'drop',
+      respondShowAccept: rc !== 'reject' && rc !== 'drop',
+      confirmDrop: () => { if (rf) this.decideSponsor(rf.id, { status: 'dropped' }, 'Deal dropped — "' + rf.title + '" moved out of the pipeline'); },
       respondIsReject: rc === 'reject',
       respondNotReject: rc !== 'reject',
       acceptDisabled,
@@ -2310,13 +3549,14 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       confirmAccept: () => { if (acceptDisabled) return; this.decideSponsor(rf.id, { status: 'accepted' }, 'Accepted deal assignee for "' + rf.title + '"'); },
       assignReasons: rf ? (() => {
         const cd = this.state.crmDraft || {};
-        const tc = cd.timeCap ?? 2, pc = cd.personCap ?? 10;
-        const h = [...String(rf.id || rf.title)].reduce((a, c) => a + c.charCodeAt(0), 0) % 3;
-        const cap = { title: 'You are under the cap', detail: 'You hold 6 of ' + pc + ' active deals, and your team is below its team cap.' };
-        if (h === 1) return [{ title: 'Reassigned for capacity', detail: 'Hendric Gondokusumo reached the ' + pc + '-deal cap. As the newest deal in his queue, it moved to you (last in, first out).' }, cap];
-        if (h === 2) return [{ title: 'Reassigned after time cap', detail: 'Jien Lit took no action for ' + tc + ' week' + (tc === 1 ? '' : 's') + ' (no drop, no push to L1 voting).' }, cap];
-        return [{ title: 'You received the email', detail: 'This deal came into your inbox, so you are the default assignee.' }, cap];
+        const tc = cd.timeCap ?? 2, pc = cd.personCap ?? 10, tm = cd.teamCap ?? 10;
+        const h = rf.id === 902 ? 3 : [...String(rf.id || rf.title)].reduce((a, c) => a + c.charCodeAt(0), 0) % 4;
+        if (h === 3) return [{ title: 'Reassigned: other team at full capacity', detail: 'Team Hendric already holds ' + tm + ' of ' + tm + ' deals, its team cap. As the newest deal in their queue, it moved to Team Dessi, which has room (7 of ' + tm + ') (last in, first out).' }, { title: 'Picked within your team', detail: 'You hold 3 of ' + pc + ' active deals, the fewest among eligible Team Dessi members' + (rf.sector ? ' who cover ' + rf.sector : '') + '.' }];
+        if (h === 1) return [{ title: 'Reassigned for capacity', detail: 'Hendric Gondokusumo reached the ' + pc + '-deal cap. As the newest deal in his queue, it moved to you (last in, first out).' }];
+        if (h === 2) return [{ title: 'Reassigned after time cap', detail: 'Jien Lit took no action for ' + tc + ' week' + (tc === 1 ? '' : 's') + ' (no drop, no push to L1 voting).' }];
+        return [{ title: 'You received the email', detail: 'This deal came into your inbox, so you are the default assignee.' }];
       })() : [],
+      dropDeadline: (() => { const w = ((this.state.crmDraft || {}).timeCap ?? 2); return (10 + w * 7 > 30 ? (10 + w * 7 - 30) + ' Dec' : (10 + w * 7) + ' Nov') + ' 2026 · ' + (w * 7) + ' days left'; })(),
       assignFooter: 'Drop it or push it to L1 voting within ' + ((this.state.crmDraft || {}).timeCap ?? 2) + ' weeks, or it is reassigned. Reassigned deals are flagged in the weekly review.',
       askBrainAssignHref: rf ? 'Chat Interaction v1.1.dc.html?q=' + encodeURIComponent('Why was I auto-assigned as deal assignee for ' + rf.title + '? Show the full matching details.') : '#',
       ...(() => {
@@ -2389,6 +3629,102 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       botUnreadLabel: (this.state.botUnread ?? 2) + ' new message' + ((this.state.botUnread ?? 2) === 1 ? '' : 's'),
       botPreviewShown: (this.state.botUnread ?? 2) > 0 && !this.state.botPreviewDismissed,
       dismissBotPreview: () => this.setState({ botPreviewDismissed: true }),
+      ...(() => {
+        const c = this.state.detailId != null ? this.companies.find(x => x.id === this.state.detailId) : null;
+        if (!c) return { detailOpen: false, closeDetail: () => {}, dt: {}, detailTabs: [], detailIsTimeline: false, detailIsOther: false, detailEvents: [], detailFilters: [], detailCountLabel: '', detailNoSel: true, detailHasSel: false, se: {}, detailTabName: '' };
+        const cd = this.state.crmDraft || {}; const tc = cd.timeCap ?? 2, pc = cd.personCap ?? 10, tm = cd.teamCap ?? 10;
+        const name = c.name || c.project;
+        const stageMap = { pending: 'Pending Confirmation', l0: 'L0 \u00b7 Company Sourcing', l1: 'L1 \u00b7 Preliminary Review', l2: 'L2 \u00b7 Deep Dive', l3: 'L3 \u00b7 Due Diligence', l4: 'L4 \u00b7 IC Review', l5: 'L5 \u00b7 Closing' };
+        const sp = (c.dealSponsors && c.dealSponsors.length) ? c.dealSponsors.join(', ') : this.dealSponsorOptions[c.id % this.dealSponsorOptions.length];
+        const auto = !(c.dealSponsors && c.dealSponsors.length) && (c.stage === 'pending' || (c.stage === 'l0' && [2, 3, 6, 9, 10].includes(c.id)));
+        const d = (this.state.sponsorDecisions || {})[c.id];
+        const h = c.id === 902 ? 3 : [...String(c.id || name)].reduce((a, ch) => a + ch.charCodeAt(0), 0) % 4;
+        const fmt = dd => dd.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit' });
+        const base = new Date(2026, 9, 12 - (c.id % 10));
+        const at = n => { const x = new Date(base); x.setDate(x.getDate() + n); return x; };
+        const ev = [];
+        ev.push({ type: 'file', date: at(-2), time: '10:14', actor: 'Kar Siong', title: '20261018 - Opportunities to be uploaded to BRAIN.docx', bodyLabel: 'Summary', body: 'Opportunity list shared by ' + (c.banker || 'the banker') + ' and uploaded to Brain. ' + name + ' was extracted from it as a new lead.', file: '20261018 - Opportunities to be uploaded to BRAIN.docx' });
+        const first = h === 0 ? sp : (h === 3 ? 'Samuel Nathaniel' : h === 1 ? 'Hendric Gondokusumo' : 'Jien Lit');
+        ev.push({ type: 'assign', date: at(-1), time: '08:05', actor: 'Brain', title: 'Auto-assigned to ' + first, from: 'Unassigned', to: first, rule: 'Received the email', bodyLabel: 'Why', body: first + ' received the email that introduced this deal, so Brain made them the default deal assignee.' });
+        if (h === 3) ev.push({ type: 'assign', date: at(0), time: '09:12', actor: 'Brain', title: 'Reassigned to ' + sp + (sp === this.currentUser ? ' (You)' : ''), from: 'Samuel Nathaniel \u00b7 Team Hendric', to: sp + ' \u00b7 Team Dessi', rule: 'Team cap', bodyLabel: 'Why', body: 'Team Hendric already held ' + tm + ' of ' + tm + ' deals, its team cap. As the newest deal in their queue, it moved to Team Dessi (last in, first out), and ' + sp + ' had the fewest active deals among eligible members.' });
+        if (h === 1) ev.push({ type: 'assign', date: at(0), time: '16:20', actor: 'Brain', title: 'Reassigned to ' + sp + (sp === this.currentUser ? ' (You)' : ''), from: 'Hendric Gondokusumo', to: sp, rule: 'Person cap', bodyLabel: 'Why', body: 'Hendric Gondokusumo reached the ' + pc + '-deal person cap. As the newest deal in his queue, it moved to a teammate with room (last in, first out).' });
+        if (h === 2) ev.push({ type: 'assign', date: at(0), time: '14:00', actor: 'Brain', title: 'Reassigned to ' + sp + (sp === this.currentUser ? ' (You)' : ''), from: 'Jien Lit', to: sp, rule: 'Time cap', bodyLabel: 'Why', body: 'Jien Lit took no action for ' + tc + ' week' + (tc === 1 ? '' : 's') + ' (no drop, no push to L1 voting), so the deal was reassigned.' });
+        if (d && d.status === 'accepted') ev.push({ type: 'assign', date: new Date(2026, 10, 4), time: 'Just now', actor: this.currentUser, title: 'Assignment accepted by You', from: sp, to: sp + ' (confirmed)', rule: 'Accepted', bodyLabel: 'Next step', body: 'You are now the deal assignee. Drop it or push it to L1 voting within ' + tc + ' week' + (tc === 1 ? '' : 's') + '.' });
+        if (d && d.status === 'rejected') ev.push({ type: 'assign', date: new Date(2026, 10, 4), time: 'Just now', actor: this.currentUser, title: 'Assignment rejected by You', from: sp, to: 'Reassignment queue', rule: 'Rejected', bodyLabel: 'Reason', body: (d.reason || 'No reason given') + (d.note ? ' \u2014 ' + d.note : '') + '. Brain will pick the next eligible assignee.' });
+        if (!auto && !d) ev.push({ type: 'assign', date: at(0), time: '11:30', actor: sp, title: 'Assignment confirmed by ' + sp, from: sp, to: sp + ' (confirmed)', rule: 'Accepted', bodyLabel: 'Note', body: sp + ' confirmed the assignment and moved the deal into the pipeline.' });
+        const K = { file: ['File', 'var(--hz-orange-600, #dd6b20)', 'fa-paperclip', 'var(--hz-orange-50, #fff4e5)'], assign: ['Assignment', 'var(--hz-horizon-primary)', 'fa-user-check', 'var(--hz-horizon-primary-pale)'] };
+        const f = this.state.detailFilter || 'all';
+        const list = ev.map((e, i) => ({ ...e, i })).sort((a, b) => b.date - a.date || b.i - a.i).filter(e => f === 'all' || e.type === f);
+        const selI = this.state.detailSel;
+        const sel = ev[selI];
+        const deco = e => ({ ...e, kind: K[e.type][0], dot: K[e.type][1], icon: K[e.type][2], pillBg: K[e.type][3], date: fmt(e.date) });
+        const tabsDef = [['overview', 'Overview'], ['context', 'Additional Context'], ['timeline', 'Timeline'], ['details', 'Details'], ['filters', 'Pre-pipeline Filters'], ['voting', 'Voting']];
+        const tab = this.state.detailTab || 'timeline';
+        return {
+          detailOpen: true, closeDetail: () => this.setState({ detailId: null }),
+          dt: { name, ini: name.replace(/[^A-Za-z ]/g, '').split(' ').filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase(), sector: c.sector || 'Sector not set', stage: stageMap[c.stage] || String(c.stage).toUpperCase(), desc: name + ' is a ' + (c.sector || '').toLowerCase() + ' company' + (c.geo ? ' based in ' + c.geo : '') + ', introduced by ' + (c.banker || 'an inbound source') + '. ' + (c.project ? 'Tracked as ' + c.project + '.' : '') },
+          detailTabs: tabsDef.map(([k, label]) => ({ label, pick: () => this.setState({ detailTab: k }), border: tab === k ? 'var(--hz-blue-700, #1d39c4)' : 'transparent', color: tab === k ? 'var(--hz-blue-700, #1d39c4)' : 'var(--hz-text-secondary)', weight: tab === k ? 600 : 500 })),
+          detailIsTimeline: tab === 'timeline', detailIsOther: tab !== 'timeline', detailTabName: (tabsDef.find(x => x[0] === tab) || [])[1] || '',
+          detailCountLabel: list.length + ' EVENT' + (list.length === 1 ? '' : 'S'),
+          detailFilters: [['all', 'All'], ['assign', 'Assignment history'], ['file', 'Files']].map(([k, label]) => ({ label, border: f === k ? 'var(--hz-horizon-primary)' : 'var(--hz-border-default)', bg: f === k ? 'var(--hz-horizon-primary-pale)' : 'var(--hz-surface-card)', color: f === k ? 'var(--hz-horizon-primary)' : 'var(--hz-text-secondary)', pick: () => this.setState({ detailFilter: k }) })),
+          detailEvents: list.map(e => ({ ...deco(e), bg: e.i === selI ? 'var(--hz-neutral-50)' : 'transparent', pick: () => this.setState({ detailSel: e.i }) })),
+          detailNoSel: !sel, detailHasSel: !!sel,
+          se: sel ? { ...deco(sel), isAssign: sel.type === 'assign', hasFile: !!sel.file } : {}
+        };
+      })(),
+      ...(() => {
+        const T = {
+          assigned: ['fas fa-sparkles', 'var(--hz-horizon-primary-pale)', 'var(--hz-horizon-primary)'],
+          reassigned: ['fas fa-exchange-alt', 'var(--hz-orange-50, #fff4e5)', 'var(--hz-orange-700, #b45309)'],
+          accepted: ['fas fa-check', 'var(--hz-green-50, #e7f6ee)', 'var(--hz-green-700, #1f7a4d)'],
+          rejected: ['fas fa-times', 'var(--hz-red-50, #fdecec)', 'var(--hz-red-700, #b42318)'],
+          review: ['fas fa-flag', 'var(--hz-neutral-100)', 'var(--hz-text-secondary)']
+        };
+        const cd = this.state.crmDraft || {}; const tc = cd.timeCap ?? 2, pc = cd.personCap ?? 10, tm = cd.teamCap ?? 10;
+        const days = [
+          { label: 'Today', events: [
+            { type: 'reassigned', time: '09:12', title: 'Reassigned to Dessi Sari (You)', detail: 'Team Hendric reached its team cap (' + tm + ' of ' + tm + ' deals). As the newest deal in their queue, it moved to Team Dessi, and you had the fewest active deals in the team.', deal: 'Halcyon Foods', actor: 'Brain', who: 'Dessi Sari' },
+            { type: 'accepted', time: '08:40', title: 'Kar Siong accepted the assignment', detail: 'Now deal assignee for Vertex Systems. The ' + tc + '-week clock to drop or push to L1 voting has started.', deal: 'Vertex Systems', actor: 'Kar Siong', who: 'Kar Siong' },
+            { type: 'assigned', time: '08:05', title: 'Auto-assigned to Jien Lit', detail: 'Jien Lit received the inbound teaser email, so Brain made him the default assignee.', deal: 'Lumina Health', actor: 'Brain', who: 'Jien Lit' }
+          ] },
+          { label: 'Yesterday', events: [
+            { type: 'reassigned', time: '17:31', title: 'Reassigned to Chandra Limi', detail: 'After Samuel\u2019s rejection, Brain picked the eligible Team Hendric member with the most room.', deal: 'Pinnacle Materials', actor: 'Brain', who: 'Chandra Limi' },
+            { type: 'rejected', time: '17:30', title: 'Samuel Nathaniel rejected the assignment', detail: 'Reason: outside industry focus.', deal: 'Pinnacle Materials', actor: 'Samuel Nathaniel', who: 'Samuel Nathaniel' },
+            { type: 'reassigned', time: '14:00', title: 'Reassigned to Kar Siong', detail: 'Jien Lit took no action for ' + tc + ' weeks (no drop, no push to L1 voting), so the time cap applied.', deal: 'Keystone Holdings', actor: 'Brain', who: 'Kar Siong' }
+          ] },
+          { label: 'Fri, Oct 30', events: [
+            { type: 'reassigned', time: '16:20', title: 'Reassigned to Samuel Nathaniel', detail: 'Hendric Gondokusumo reached the ' + pc + '-deal person cap. The newest deal in his queue moved to a teammate (last in, first out).', deal: 'Bluewave Industries', actor: 'Brain', who: 'Samuel Nathaniel' }
+          ] }
+        ];
+        const f = this.state.assignLogFilter || 'all';
+        const byDay = days.map(d => ({ label: d.label, events: d.events.filter(e => f === 'all' || e.type === f) })).filter(d => d.events.length);
+        const grp = this.state.assignLogGroup || 'day';
+        const iniOf = n => n.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
+        const byPerson = [];
+        byDay.forEach(d => d.events.forEach(e => { let g = byPerson.find(x => x.who === e.who); if (!g) { g = { who: e.who, events: [] }; byPerson.push(g); } g.events.push({ ...e, time: d.label + ' · ' + e.time }); }));
+        byPerson.sort((a, b) => a.who.localeCompare(b.who));
+        const filtered = grp === 'person'
+          ? byPerson.map(g => ({ label: g.who + (g.who === this.currentUser ? ' (You)' : ''), ini: iniOf(g.who), count: g.events.length + ' event' + (g.events.length === 1 ? '' : 's'), isPerson: true, isDay: false, events: g.events }))
+          : byDay.map(d => ({ ...d, isPerson: false, isDay: true }));
+        const all = days.flatMap(d => d.events);
+        const count = t => all.filter(e => e.type === t).length;
+        const fl = [['all', 'All'], ['assigned', 'Assigned'], ['reassigned', 'Reassigned'], ['accepted', 'Accepted'], ['rejected', 'Rejected']];
+        return {
+          assignLogOpen: !!this.state.assignLogOpen,
+          openAssignLog: () => this.setState({ assignLogOpen: true }),
+          closeAssignLog: () => this.setState({ assignLogOpen: false }),
+          assignLogStats: [
+            { value: count('assigned'), label: 'Auto-assigned', color: 'var(--hz-horizon-primary)' },
+            { value: count('reassigned'), label: 'Reassigned', color: 'var(--hz-orange-700, #b45309)' },
+            { value: count('accepted'), label: 'Accepted', color: 'var(--hz-green-700, #1f7a4d)' },
+            { value: count('rejected'), label: 'Rejected', color: 'var(--hz-red-700, #b42318)' }
+          ],
+          assignLogFilters: fl.map(([k, label]) => ({ label: label + (k === 'all' ? '' : ' (' + count(k) + ')'), border: f === k ? 'var(--hz-horizon-primary)' : 'var(--hz-border-default)', bg: f === k ? 'var(--hz-horizon-primary-pale)' : 'var(--hz-surface-card)', color: f === k ? 'var(--hz-horizon-primary)' : 'var(--hz-text-primary)', pick: () => this.setState({ assignLogFilter: k }) })),
+          assignLogGroups: [['day', 'Day'], ['person', 'Team Leader']].map(([k, label]) => ({ label, bg: grp === k ? 'var(--hz-horizon-primary)' : 'transparent', color: grp === k ? '#fff' : 'var(--hz-text-secondary)', pick: () => this.setState({ assignLogGroup: k }) })),
+          assignLogDays: filtered.map(d => ({ ...d, events: d.events.map((e, i) => ({ ...e, icon: T[e.type][0], bg: T[e.type][1], color: T[e.type][2], lineOpacity: i === d.events.length - 1 ? 0 : 1 })) })),
+          assignLogEmpty: filtered.length === 0
+        };
+      })(),
       ...(() => {
         const st = this.state.bpStep || 'ask';
         const sel = this.state.bpSel || [];
@@ -2537,6 +3873,8 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
         crm: this.state.modalTab === 'crm' ? 'is-active' : ''
       },
       ...this.crmVals(),
+      ...this.routingVals(),
+      configSubtitle: this.state.modalTab === 'crm' ? 'Manage how Brain routes and escalates incoming deals.' : 'Manage the investment theses used to auto-match inbound and outbound deals.',
       isModalTrackTab: this.state.modalTab === 'track',
       isModalSettingsTab: this.state.modalTab === 'settings',
       selectModalTrackTab: () => this.setState({ modalTab: 'track' }),
@@ -2555,12 +3893,16 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
       stageOptions,
       isCompaniesView: this.state.view === 'companies',
       isScreeningView: this.state.view === 'screening',
+      isOverdueView: this.state.view === 'overdue',
       viewTabClass: {
         companies: this.state.view === 'companies' ? 'is-active' : '',
-        screening: this.state.view === 'screening' ? 'is-active' : ''
+        screening: this.state.view === 'screening' ? 'is-active' : '',
+        overdue: this.state.view === 'overdue' ? 'is-active' : ''
       },
       selectCompaniesView: () => this.setState({ view: 'companies' }),
       selectScreeningView: () => this.setState({ view: 'screening' }),
+      selectOverdueView: () => this.setState({ view: 'overdue' }),
+      ...this.overdueVals(),
       discoveredLabel: this.state.discoveredShown ? 'Hide' : 'Show',
       discoveredIcon: this.state.discoveredShown ? 'far fa-chevron-up' : 'far fa-chevron-down',
       toggleDiscovered: () => this.setState(s => ({ discoveredShown: !s.discoveredShown })),

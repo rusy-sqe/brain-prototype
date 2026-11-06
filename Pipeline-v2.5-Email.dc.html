@@ -851,22 +851,10 @@
       <div style="display:flex;flex-direction:column;gap:10px">
         <div>
           <div style="font-size:14px;font-weight:700;color:var(--hz-text-primary)">How Brain assigns</div>
-          <div class="hz-body-s hz-muted" style="margin-top:2px">L0 rules, applied to every new Pending Confirmation deal.</div>
+          <div class="hz-body-s hz-muted" style="margin-top:2px">The instructions Brain follows for every new Pending Confirmation deal.</div>
         </div>
-        <div style="border:1px solid var(--hz-border-subtle);border-radius:10px;overflow:hidden">
-          <sc-for list="{{ crmRuleList }}" as="r" hint-placeholder-count="6">
-            <div style="display:flex;align-items:flex-start;gap:8px;padding:8px 10px 8px 8px;border-top:{{ r.border }}">
-              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:0">
-                <input value="{{ r.title }}" onChange="{{ r.setTitle }}" placeholder="Rule name" style="width:100%;box-sizing:border-box;padding:4px 8px;border:1px solid transparent;border-radius:6px;font-family:inherit;font-size:13px;font-weight:600;color:var(--hz-text-primary);background:transparent" style-hover="border-color:var(--hz-border-default);background:var(--hz-surface-page)" style-focus="border-color:var(--hz-horizon-primary);background:var(--hz-surface-page);outline:none">
-                <textarea value="{{ r.detail }}" onChange="{{ r.setDetail }}" placeholder="Describe the rule" rows="1" style="width:100%;box-sizing:border-box;padding:4px 8px;border:1px solid transparent;border-radius:6px;font-family:inherit;font-size:13px;line-height:1.45;color:var(--hz-text-secondary);background:transparent;resize:none;field-sizing:content;min-height:28px" style-hover="border-color:var(--hz-border-default);background:var(--hz-surface-page)" style-focus="border-color:var(--hz-horizon-primary);background:var(--hz-surface-page);outline:none"></textarea>
-              </div>
-              <button onClick="{{ r.remove }}" title="Remove rule" class="hz-btn hz-btn--text hz-btn--sm" style="width:28px;padding:0;justify-content:center;color:var(--hz-text-tertiary);flex-shrink:0;margin-top:2px" style-hover="color:var(--hz-red-600)"><i class="far fa-trash-alt" style="font-size:12px"></i></button>
-            </div>
-          </sc-for>
-          <div style="padding:8px 16px;border-top:1px solid var(--hz-border-subtle)">
-            <button onClick="{{ addCrmRule }}" class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-horizon-primary);padding-left:0"><i class="far fa-plus"></i>Add rule</button>
-          </div>
-        </div>
+        <div style="padding:12px 14px;border:1px solid var(--hz-border-subtle);border-radius:10px;font-size:13px;line-height:1.6;color:var(--hz-text-secondary);background:var(--hz-neutral-50);text-wrap:pretty">{{ crmAssignPrompt }}</div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--hz-text-tertiary)"><i class="far fa-lock"></i>Managed by Brain. Updates automatically when you change Limits or Deal Principal teams.</div>
       </div>
       </sc-if>
 
@@ -999,7 +987,7 @@
             <sc-if value="{{ ecStripAsk }}" hint-placeholder-val="{{ true }}">
               <div style="padding:8px 10px;border-radius:8px;background:var(--hz-neutral-50);font-size:12px;line-height:1.5;color:var(--hz-text-secondary)"><strong style="color:var(--hz-text-primary)">{{ ec.title }}</strong><br>{{ ec.short }}</div>
               <div style="display:flex;flex-wrap:wrap;gap:6px">
-                <button onClick="{{ ecAdd }}" style="padding:6px 12px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--hz-horizon-primary);background:var(--hz-horizon-primary);color:#fff"><i class="far fa-check"></i> {{ ec.yes }}</button>
+                <span style="position:relative;display:inline-flex"><button onClick="{{ ecYesToggle }}" style="padding:6px 12px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--hz-horizon-primary);background:var(--hz-horizon-primary);color:#fff"><i class="far fa-check"></i> {{ ec.yes }} <i class="far {{ ecYesCaret }}" style="font-size:10px;margin-left:2px"></i></button><sc-if value="{{ ecYesMenuOpen }}" hint-placeholder-val="{{ false }}"><div onClick="{{ ecYesClose }}" style="position:fixed;inset:0;z-index:80"></div><div style="position:absolute;top:100%;padding-top:6px;left:0;z-index:81;width:280px"><div style="padding:6px;border-radius:10px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);box-shadow:0 12px 28px rgba(16,24,40,.18);display:flex;flex-direction:column;gap:2px;text-align:left"><sc-for list="{{ ecYesOpts }}" as="yo" hint-placeholder-count="2"><button onClick="{{ yo.pick }}" style="display:flex;align-items:flex-start;gap:10px;width:100%;padding:8px 10px;border:none;border-radius:6px;background:transparent;font-family:inherit;text-align:left;cursor:pointer" style-hover="background:var(--hz-neutral-50)"><i class="far {{ yo.icon }}" style="margin-top:3px;color:{{ yo.color }}"></i><span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:13px;font-weight:700;color:var(--hz-text-primary)">{{ yo.label }}</span><span style="font-size:12px;font-weight:400;color:var(--hz-text-secondary)">{{ yo.sub }}</span></span></button></sc-for></div></div></sc-if></span>
                 <button onClick="{{ ecStripNo }}" style="padding:6px 12px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--hz-border-default);background:var(--hz-surface-card);color:var(--hz-text-primary)" style-hover="background:var(--hz-neutral-50)">{{ ec.no }}</button>
                 <button onClick="{{ ecDetails }}" style="padding:6px 12px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;border:1px solid transparent;background:transparent;color:var(--hz-horizon-primary)">See details</button>
               </div>
@@ -1322,6 +1310,52 @@
                     </div>
                   </sc-if>
                 </sc-if>
+                <sc-if value="{{ msg.approvals }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px">
+                    <sc-for list="{{ ecCards }}" as="cd" hint-placeholder-count="3">
+                      <div style="border:1px solid {{ cd.border }};border-top:4px solid {{ cd.accent }};border-radius:12px;background:{{ cd.bg }};padding:16px;display:flex;flex-direction:column;gap:12px">
+                        <div style="display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:{{ cd.accent }}"><i class="far {{ cd.icon }}"></i>Approval needed · {{ cd.action }}</div>
+                        <div style="display:flex;flex-direction:column;gap:4px">
+                          <div style="font-size:16px;font-weight:700;color:var(--hz-text-primary)">{{ cd.title }}</div>
+                          <div style="font-size:13px;line-height:1.5;color:var(--hz-text-secondary)">{{ cd.desc }}</div>
+                        </div>
+                        <sc-for list="{{ cd.items }}" as="it" hint-placeholder-count="2">
+                          <div onClick="{{ it.toggle }}" style="display:flex;align-items:flex-start;gap:10px;padding:12px;border:1px solid var(--hz-border-subtle);border-radius:10px;background:var(--hz-surface-card);cursor:{{ it.cursor }};opacity:{{ it.opacity }}">
+                            <span style="width:20px;height:20px;border-radius:50%;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;background:{{ it.checkBg }};border:1.5px solid {{ it.checkBorder }};color:#fff"><i class="fas {{ it.checkIcon }}" style="font-size:10px"></i></span>
+                            <div style="display:flex;flex-direction:column;gap:6px;min-width:0;flex:1">
+                              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px">
+                                <span style="font-size:14px;font-weight:700;color:var(--hz-text-primary)">{{ it.name }}</span>
+                                <i class="far fa-external-link-alt" style="font-size:10px;color:var(--hz-horizon-primary)"></i>
+                                <sc-for list="{{ it.tags }}" as="tg" hint-placeholder-count="1"><span style="padding:2px 8px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;background:{{ tg.bg }};color:{{ tg.color }}">{{ tg.label }}</span></sc-for>
+                                <sc-if value="{{ it.decided }}" hint-placeholder-val="{{ false }}"><span style="padding:2px 8px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;background:{{ it.statusBg }};color:{{ it.statusColor }}">{{ it.statusLabel }}</span></sc-if>
+                              </div>
+                              <div style="font-size:13px;line-height:1.5;color:var(--hz-text-primary)">{{ it.pre }}<span style="color:{{ cd.accent }};font-weight:600">{{ it.hl }}</span>{{ it.post }}</div>
+                              <sc-if value="{{ it.hasMetrics }}" hint-placeholder-val="{{ false }}">
+                                <div style="display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px"><sc-for list="{{ it.metrics }}" as="mt" hint-placeholder-count="3"><span><span style="color:var(--hz-text-tertiary)">{{ mt.k }}</span> <span style="font-weight:600;color:{{ mt.color }}">{{ mt.v }}</span></span></sc-for></div>
+                              </sc-if>
+                              <div style="font-size:12px;color:var(--hz-text-tertiary)">{{ it.meta }}</div>
+                            </div>
+                          </div>
+                        </sc-for>
+                        <sc-if value="{{ cd.open }}" hint-placeholder-val="{{ true }}">
+                          <div style="display:flex;flex-direction:column;align-items:stretch;gap:8px">
+                            <span style="font-size:13px;color:var(--hz-text-secondary)"><strong style="color:var(--hz-text-primary)">{{ cd.selN }}</strong> of {{ cd.pendN }} selected</span>
+                            <div style="display:flex;gap:8px;align-items:stretch;min-width:0">
+                              <span style="position:relative;display:flex;flex:1 1 0;min-width:0">
+                                <button onClick="{{ cd.primary }}" disabled="{{ cd.primaryDisabled }}" style="padding:8px 12px;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;width:100%;justify-content:center;display:inline-flex;align-items:center;gap:4px;box-sizing:border-box;border:1px solid {{ cd.accent }};background:{{ cd.accent }};color:#fff;opacity:{{ cd.primaryOpacity }}">{{ cd.primaryLabel }} <i class="far {{ cd.caret }}" style="font-size:10px;margin-left:2px"></i></button>
+                                <sc-if value="{{ cd.menuOpen }}" hint-placeholder-val="{{ false }}"><div onClick="{{ cd.closeMenu }}" style="position:fixed;inset:0;z-index:80"></div><div style="position:absolute;left:0;bottom:100%;padding-bottom:6px;z-index:81;width:min(280px, 100%);min-width:240px"><div style="padding:6px;border-radius:10px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);box-shadow:0 12px 28px rgba(16,24,40,.18);display:flex;flex-direction:column;gap:2px"><sc-for list="{{ cd.opts }}" as="yo" hint-placeholder-count="2"><button onClick="{{ yo.pick }}" style="display:flex;align-items:flex-start;gap:10px;width:100%;padding:8px 10px;border:none;border-radius:6px;background:transparent;font-family:inherit;text-align:left;cursor:pointer" style-hover="background:var(--hz-neutral-50)"><i class="far {{ yo.icon }}" style="margin-top:3px;color:{{ yo.color }}"></i><span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:13px;font-weight:700;color:var(--hz-text-primary)">{{ yo.label }}</span><span style="font-size:12px;color:var(--hz-text-secondary)">{{ yo.sub }}</span></span></button></sc-for></div></div></sc-if>
+                              </span>
+                              <button onClick="{{ cd.secondary }}" style="padding:8px 12px;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;width:100%;justify-content:center;display:inline-flex;align-items:center;gap:4px;box-sizing:border-box;flex:0 1 auto;width:auto;border:1px solid var(--hz-border-default);background:var(--hz-surface-card);color:var(--hz-text-primary)">{{ cd.secondaryLabel }}</button>
+                            </div>
+                          </div>
+                        </sc-if>
+                        <sc-if value="{{ cd.resolved }}" hint-placeholder-val="{{ false }}">
+                          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--hz-text-secondary)"><i class="fas fa-check-circle" style="color:{{ cd.accent }}"></i>{{ cd.resolvedText }}</div>
+                        </sc-if>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
               </div>
             </sc-if>
           </sc-for>
@@ -1410,7 +1444,7 @@
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:14px 20px;border-top:1px solid var(--hz-border-subtle)">
       <button onClick="{{ ecModalSkip }}" class="hz-btn hz-btn--text hz-btn--md">{{ ec.no }}</button>
-      <div style="display:flex;gap:8px"><button onClick="{{ ecCloseModal }}" class="hz-btn hz-btn--secondary hz-btn--md">Cancel</button><button onClick="{{ ecModalAdd }}" class="hz-btn hz-btn--primary hz-btn--md"><i class="far fa-check"></i>{{ ec.yes }}</button></div>
+      <div style="display:flex;gap:8px"><button onClick="{{ ecCloseModal }}" class="hz-btn hz-btn--secondary hz-btn--md">Cancel</button><span style="position:relative;display:inline-flex"><button onClick="{{ ecYesToggle }}" class="hz-btn hz-btn--primary hz-btn--md"><i class="far fa-check"></i>{{ ec.yes }} <i class="far {{ ecYesCaret }}" style="font-size:10px;margin-left:2px"></i></button><sc-if value="{{ ecYesMenuOpen }}" hint-placeholder-val="{{ false }}"><div onClick="{{ ecYesClose }}" style="position:fixed;inset:0;z-index:80"></div><div style="position:absolute;bottom:100%;padding-bottom:6px;right:0;z-index:81;width:280px"><div style="padding:6px;border-radius:10px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);box-shadow:0 12px 28px rgba(16,24,40,.18);display:flex;flex-direction:column;gap:2px;text-align:left"><sc-for list="{{ ecYesOpts }}" as="yo" hint-placeholder-count="2"><button onClick="{{ yo.pick }}" style="display:flex;align-items:flex-start;gap:10px;width:100%;padding:8px 10px;border:none;border-radius:6px;background:transparent;font-family:inherit;text-align:left;cursor:pointer" style-hover="background:var(--hz-neutral-50)"><i class="far {{ yo.icon }}" style="margin-top:3px;color:{{ yo.color }}"></i><span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:13px;font-weight:700;color:var(--hz-text-primary)">{{ yo.label }}</span><span style="font-size:12px;font-weight:400;color:var(--hz-text-secondary)">{{ yo.sub }}</span></span></button></sc-for></div></div></sc-if></span></div>
     </div>
   </div>
 </div>
@@ -1435,7 +1469,7 @@
           <span style="font-size:11px;color:var(--hz-text-tertiary)">{{ ec.meta }}{{ ec.fileLabel }}</span>
         </div>
         <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
-          <button onClick="{{ ecAdd }}" class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-check"></i>{{ ec.yes }}</button>
+          <span style="position:relative;display:inline-flex"><button onClick="{{ ecYesToggle }}" class="hz-btn hz-btn--primary hz-btn--sm"><i class="far fa-check"></i>{{ ec.yes }} <i class="far {{ ecYesCaret }}" style="font-size:10px;margin-left:2px"></i></button><sc-if value="{{ ecYesMenuOpen }}" hint-placeholder-val="{{ false }}"><div onClick="{{ ecYesClose }}" style="position:fixed;inset:0;z-index:80"></div><div style="position:absolute;top:100%;padding-top:6px;left:0;z-index:81;width:280px"><div style="padding:6px;border-radius:10px;background:var(--hz-surface-card);border:1px solid var(--hz-border-subtle);box-shadow:0 12px 28px rgba(16,24,40,.18);display:flex;flex-direction:column;gap:2px;text-align:left"><sc-for list="{{ ecYesOpts }}" as="yo" hint-placeholder-count="2"><button onClick="{{ yo.pick }}" style="display:flex;align-items:flex-start;gap:10px;width:100%;padding:8px 10px;border:none;border-radius:6px;background:transparent;font-family:inherit;text-align:left;cursor:pointer" style-hover="background:var(--hz-neutral-50)"><i class="far {{ yo.icon }}" style="margin-top:3px;color:{{ yo.color }}"></i><span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:13px;font-weight:700;color:var(--hz-text-primary)">{{ yo.label }}</span><span style="font-size:12px;font-weight:400;color:var(--hz-text-secondary)">{{ yo.sub }}</span></span></button></sc-for></div></div></sc-if></span>
           <button onClick="{{ ecStartSkip }}" class="hz-btn hz-btn--secondary hz-btn--sm">{{ ec.no }}</button>
           <button onClick="{{ ecDetails }}" class="hz-btn hz-btn--text hz-btn--sm" style="color:var(--hz-horizon-primary)">See details</button>
           <span style="margin-left:auto;font-size:11px;color:var(--hz-text-tertiary)">{{ ecPos }} of {{ ecTotal }}</span>
@@ -1498,7 +1532,12 @@ class Component extends DCLogic {
   };
   state = { segmentMenuOpen: false, successToast: null, thesisTagMenuOpen: false, dealSponsorMenuOpen: false, addCompanyModalOpen: false, newCompany: { ...this.newCompanyDefaults }, newCompanySubmitAttempted: false, droppedIds: [5, 18, 33], sortOrder: 'newest', addCompanyMenuOpen: false, discoveredShown: false, subTab: 'inbound', view: 'companies', stageMenuOpen: false, selectedStages: ['l0'], companySearch: '', moveMenuOpenId: null, configureOpen: false, activeTrackKey: 'semicon', configTab: 'thesis', moveMenuOpenIndex: null, modalTab: 'track', trackDirty: false, dirtyStages: {}, stageInfoExpanded: false, stageHelpOpen: false, stageOrder: null, settingsMenuOpenKey: null, newStageModalOpen: false, newStageCode: '', newStageName: '', newStageDescription: '', newStagePositionAfter: '', confirmAction: null, confirmMoveTarget: '' };
   stages = ['l0','l1','l2','l3','l4','l5'];
-  sidebarState = { sidebarCollapsed: false, copilotOpen: false, copilotInput: '', copilotMessages: [], copilotFullWidth: false, agentMenuOpen: false, selectedAgentId: 'general', feedbackRating: 0, feedbackTagIds: [], feedbackDismissed: false, copilotActiveTab: 'copilot', cowork: this.buildInitialCowork() };
+  sidebarState = { sidebarCollapsed: false, copilotOpen: false, copilotInput: '', copilotMessages: [
+    { id: 1, role: 'user', text: 'What do I need to look at this morning?' },
+    { id: 2, role: 'assistant', status: 'done', tools: ['Searched your inbox', 'Checked the Pipeline', 'Read your call notes'], toolsOpen: false, thought: 'Collecting items that need the user\u2019s confirmation', thoughtOpen: false, intro: '', text: 'You have 7 items waiting for your OK: 3 deal emails (Vertex Systems, Keystone Holdings and Halcyon Foods), 2 possible new deals (Lumina Health and Sentosa Logistics), and 2 research jobs I can run before upcoming milestones. I\u2019ve grouped them into approval cards below. Untick anything you want to leave for later.' },
+    { id: 3, role: 'user', text: 'Which ones are most urgent?' },
+    { id: 4, role: 'assistant', status: 'done', approvals: true, tools: ['Checked deal timelines'], toolsOpen: false, thought: 'Ranking by nearest deadline', thoughtOpen: false, intro: '', text: 'Start with Keystone Holdings: the management presentation moved to Nov 12 and the data room is already open, so the competitor scan is worth running today. Next is Vertex Systems, because management offered a follow-up on Nov 4 or 5 and is waiting for a date. Lumina Health can wait a little, since the banker wants initial interest by Nov 13.' }
+  ], copilotFullWidth: false, agentMenuOpen: false, selectedAgentId: 'general', feedbackRating: 0, feedbackTagIds: [], feedbackDismissed: false, copilotActiveTab: 'copilot', cowork: this.buildInitialCowork() };
   feedbackTagDefs = ['Not what I asked for', 'Broken layout', 'Poor graphics', "It's slop", 'Bad writing'];
   agentOptionsData = [
     { id: 'general', name: 'General Copilot', help: 'Answers broad questions across the workspace.' },
@@ -2098,6 +2137,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
     const setRules = next => set({ ruleList: next });
     const full = dpTeams.filter(t => t.members.reduce((a, m) => a + m.active, 0) >= tm).length;
     return {
+      crmAssignPrompt: 'When a new deal enters Pending Confirmation, assign it to the person who received the email. If they take no action within ' + tc + ' week' + (tc === 1 ? '' : 's') + ' (no drop and no push to L1 voting), reassign the deal. Each person can hold up to ' + pc + ' active deals; when someone is at the cap, give the next deal to an eligible teammate who is under ' + pc + '. Each Deal Principal team can hold up to ' + tm + ' deals; when a team is full, move the next deal to another team that is under ' + tm + '. Always reassign the newest deal first (last in, first out), never a hand-picked one, and skip anyone marked as not eligible. Flag every reassigned deal in the weekly review.',
       crmRuleList: rules.map((ru, i) => ({ title: ru.title, detail: ru.detail, border: i ? '1px solid var(--hz-border-subtle)' : 'none',
         setTitle: e => setRules(rules.map((x, j) => j === i ? { ...x, title: e.target.value } : x)),
         setDetail: e => setRules(rules.map((x, j) => j === i ? { ...x, detail: e.target.value } : x)),
@@ -2108,7 +2148,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
         { label: 'Capacity per person', value: pc, unit: 'deals', help: 'Above this, the newest deal goes to a teammate.', set: num('personCap') },
         { label: 'Capacity per team', value: tm, unit: 'deals', help: 'Above this, the newest deal goes to another team.', set: num('teamCap') }
       ],
-      ...(() => { const sec = this.state.crmSec || 'rules'; const items = [['rules', 'How Brain assigns', rules.length + ' rules'], ['limits', 'Limits', tc + ' wk · ' + pc + ' / person · ' + tm + ' / team'], ['teams', 'Deal Principal teams', dpTeams.length + ' teams']];
+      ...(() => { const sec = this.state.crmSec || 'rules'; const items = [['rules', 'How Brain assigns', 'Read only'], ['limits', 'Limits', tc + ' wk · ' + pc + ' / person · ' + tm + ' / team'], ['teams', 'Deal Principal teams', dpTeams.length + ' teams']];
         return { crmSecRules: sec === 'rules', crmSecLimits: sec === 'limits', crmSecTeams: sec === 'teams',
           crmNav: items.map(([k, label, sub]) => ({ label, sub, bg: sec === k ? 'var(--hz-horizon-primary-pale)' : 'transparent', color: sec === k ? 'var(--hz-horizon-primary-dark)' : 'var(--hz-text-primary)', select: () => this.setState({ crmSec: k }) })) }; })(),
       crmTeamSummary: dpTeams.length + ' teams · ' + (full ? full + ' at team cap' : 'all under cap'),
@@ -2558,9 +2598,10 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
         const decide = (how, label) => {
           const nextDec = { ...dec, [cur.id]: how };
           const left = items.filter(e => !nextDec[e.id]).length;
-          this.setState(s => ({ ecDec: nextDec, ecCur: null, ecStep: 'ask', ecReason: '', ecNote: '', ecStripStep: 'ask', ecModal: false, ecLast: { how, text: label }, ecStrip: left > 0 ? s.ecStrip : false, botPreviewDismissed: s.ecModal ? false : s.botPreviewDismissed, successToast: label }));
+          this.setState(s => ({ ecDec: nextDec, ecYesMenu: false, ecCur: null, ecStep: 'ask', ecReason: '', ecNote: '', ecStripStep: 'ask', ecModal: false, ecLast: { how, text: label }, ecStrip: left > 0 ? s.ecStrip : false, botPreviewDismissed: s.ecModal ? false : s.botPreviewDismissed, successToast: label }));
         };
-        const approve = () => decide('yes', cur.kind === 'email' ? 'Added to Brain: ' + short : cur.yesToast);
+        const approve = (stage) => decide('yes', cur.kind === 'email' ? 'Added to Brain: ' + short : cur.kind === 'deal' ? cur.name + (stage === 'l0' ? ' moved to L0 Pipeline' : ' added to Pending Confirmation') : cur.yesToast);
+        const yes = () => approve(cur.kind === 'deal' ? 'pending' : undefined);
         const reject = (reason) => decide('no', cur.no + ': ' + cur.name + ' (' + reason.toLowerCase() + ')');
         const last = this.state.ecLast;
         const vals = Object.values(dec);
@@ -2576,7 +2617,77 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
           ecDots: items.map(e => ({ title: e.kindLabel + ': ' + e.name, color: dec[e.id] === 'yes' ? 'var(--hz-green-500)' : dec[e.id] === 'no' ? 'var(--hz-neutral-400, #98a2b3)' : e.id === cur.id ? 'var(--hz-horizon-primary)' : 'var(--hz-neutral-200, #e4e7ec)' })),
           ecHasLast: !!last && left > 0, ecLastText: last ? last.text : '', ecLastIcon: last && last.how === 'yes' ? 'fa-check-circle' : 'fa-eye-slash', ecLastColor: last && last.how === 'yes' ? 'var(--hz-green-600)' : 'var(--hz-text-tertiary)',
           ecAsk: left > 0 && st === 'ask', ecSkip: left > 0 && st === 'skip', ecDone: left === 0,
-          ecAdd: approve,
+          ecAdd: yes,
+          ecIsDeal: cur.kind === 'deal', ecNotDeal: cur.kind !== 'deal',
+          ...(() => {
+            const cc = {
+              e1: { tags: [['Q3 update', 'var(--hz-horizon-primary-pale)', 'var(--hz-horizon-primary)'], ['2 files', 'var(--hz-neutral-100)', 'var(--hz-text-secondary)']], pre: 'Q3 management accounts and a revised model. ', hl: 'Revenue up about 18% YoY to IDR 212B', post: ', and FY2026 EBITDA margin guidance raised to 21%.', meta: 'Project Granite \u00b7 From Solstice Partners \u00b7 Today, 09:42' },
+              e2: { tags: [['Timeline change', 'var(--hz-orange-50, #fff4e5)', 'var(--hz-orange-700, #b45309)']], pre: 'Updated process letter: ', hl: 'management presentation moves to Nov 12', post: ', the data room opens Nov 3, and first-round bids stay due Nov 28.', meta: 'Project Orion \u00b7 From Solstice Partners \u00b7 Today, 08:15' },
+              e3: { tags: [['Diligence', 'var(--hz-neutral-100)', 'var(--hz-text-secondary)']], pre: '', hl: '12 of 15 diligence questions answered', post: '. The 3 open items cover key supplier contracts, expected by Nov 7.', meta: 'Project Halcyon \u00b7 From Varro & Co \u00b7 Yesterday, 17:20' },
+              d1: { tags: [['Matches thesis 3/4', 'var(--hz-green-50, #e7f6ee)', 'var(--hz-green-700, #1f7a4d)'], ['New', 'var(--hz-blue-50, #e8f1ff)', 'var(--hz-blue-700, #1d4ed8)']], pre: 'Clinic management software for private hospital groups, ', hl: 'raising a minority growth round', post: ', with plans to expand into Indonesia.', metrics: [['Sector', 'Healthtech', 'var(--hz-text-primary)'], ['Geography', 'Vietnam', 'var(--hz-text-primary)'], ['Source', 'Inbound teaser (Aldira)', 'var(--hz-text-primary)'], ['Profitability', 'Not verified', 'var(--hz-orange-700, #b45309)']], meta: 'Banker wants initial interest by Nov 13' },
+              d2: { tags: [['Logistics add-on', 'var(--hz-blue-50, #e8f1ff)', 'var(--hz-blue-700, #1d4ed8)']], pre: 'Cold-chain warehousing and last-mile delivery for food and pharma clients. ', hl: 'The founder is open to a full sale', post: '; a teaser is expected in the coming weeks.', metrics: [['Sector', 'Cold-chain logistics', 'var(--hz-text-primary)'], ['Geography', 'Malaysia', 'var(--hz-text-primary)'], ['Source', 'Call notes with Varro & Co', 'var(--hz-text-primary)'], ['Financials', 'Not available', 'var(--hz-orange-700, #b45309)']], meta: 'Mentioned in yesterday\u2019s call notes' },
+              r1: { tags: [['About 15 min', 'var(--hz-neutral-100)', 'var(--hz-text-secondary)']], pre: 'Competitors in Southeast Asia, ', hl: 'recent specialty-chemicals deals and multiples', post: ', company news from the last 12 months, and questions to ask management.', meta: 'For the management presentation on Nov 12 \u00b7 Saves a 2-page brief to Project Orion' },
+              r2: { tags: [['About 20 min', 'var(--hz-neutral-100)', 'var(--hz-text-secondary)']], pre: 'Comparable transactions and listed peers from the last 3 years, ', hl: 'benchmarked against Pinnacle\u2019s latest numbers', post: ' to sanity-check your bid.', meta: 'For the second-round bid due Nov 20 \u00b7 Saves a benchmark table to Project Cascade' }
+            };
+            const chatSel = this.state.ecChatSel || {};
+            const toastFor = (kind, n, stage) => kind === 'email' ? n + ' email update' + (n > 1 ? 's' : '') + ' added to Brain' : kind === 'deal' ? n + ' compan' + (n > 1 ? 'ies' : 'y') + (stage === 'l0' ? ' moved to L0 Pipeline' : ' added to Pending Confirmation') : n + ' research job' + (n > 1 ? 's' : '') + ' started';
+            const many = (ids, how, toast) => { if (!ids.length) return; const nd = { ...dec }; ids.forEach(id => { nd[id] = how; }); this.setState({ ecDec: nd, ecCardMenu: null, ecLast: null, successToast: toast }); };
+            const groups = [
+              { kind: 'email', action: 'Add to Brain', icon: 'fa-envelope', accent: 'var(--hz-horizon-primary)', bg: 'linear-gradient(180deg, var(--hz-horizon-primary-pale), var(--hz-surface-card) 120px)', border: 'var(--hz-horizon-primary-soft)', title: n => 'Add ' + n + ' email update' + (n > 1 ? 's' : '') + ' to Brain?', desc: 'Brain saves a summary and the attached files to each matched deal, not the original email. Untick any you want to leave out.', yes: n => 'Add ' + n + ' to Brain', no: 'Skip all', noReason: 'Skipped from chat', doneYes: 'added to Brain', doneNo: 'skipped' },
+              { kind: 'deal', action: 'Add to Pipeline', icon: 'fa-building', accent: 'var(--hz-green-600, #2f8f63)', bg: 'linear-gradient(180deg, var(--hz-green-50, #e7f6ee), var(--hz-surface-card) 120px)', border: 'var(--hz-green-200, #bfe5d0)', title: n => 'Add ' + n + ' new compan' + (n > 1 ? 'ies' : 'y') + ' to the Pipeline?', desc: 'Both match one of your theses but have no verified financials yet. Choose Pending Confirmation to let the deal assignee confirm first, or move them straight to L0.', yes: n => 'Add ' + n + ' to Pipeline', no: 'Not interested', noReason: 'Not interested', doneYes: 'added to the Pipeline', doneNo: 'declined' },
+              { kind: 'research', action: 'Background research', icon: 'fa-flask', accent: 'var(--hz-blue-600, #2563eb)', bg: 'linear-gradient(180deg, var(--hz-blue-50, #e8f1ff), var(--hz-surface-card) 120px)', border: 'var(--hz-blue-200, #c7dbff)', title: n => 'Run ' + n + ' research job' + (n > 1 ? 's' : '') + ' in the background?', desc: 'Brain uses web sources, licensed databases and your deal notes. You can keep working, and you\u2019ll get a notification when each one is ready.', yes: n => 'Start ' + n + ' research', no: 'Not now', noReason: 'Not now', doneYes: 'started', doneNo: 'postponed' }
+            ];
+            return { ecCards: groups.map(g => {
+              const gi = items.filter(e => e.kind === g.kind);
+              const pend = gi.filter(e => !dec[e.id]);
+              const selIds = pend.filter(e => chatSel[e.id] !== false).map(e => e.id);
+              const n = selIds.length;
+              const yN = gi.filter(e => dec[e.id] === 'yes').length, nN = gi.filter(e => dec[e.id] === 'no').length;
+              const menuOpen = this.state.ecCardMenu === g.kind;
+              return {
+                action: g.action, icon: g.icon, accent: g.accent, bg: g.bg, border: g.border,
+                title: g.title(Math.max(pend.length, 1) && (pend.length || gi.length)), desc: g.desc,
+                open: pend.length > 0, resolved: pend.length === 0,
+                resolvedText: 'Done: ' + yN + ' ' + g.doneYes + (nN ? ', ' + nN + ' ' + g.doneNo : '') + '.',
+                selN: n, pendN: pend.length,
+                primaryLabel: g.yes(n || pend.length), primaryDisabled: n === 0, primaryOpacity: n === 0 ? 0.5 : 1,
+                caret: g.kind === 'deal' ? (menuOpen ? 'fa-chevron-up' : 'fa-chevron-down') : '',
+                primary: () => { if (!n) return; if (g.kind === 'deal') this.setState(s => ({ ecCardMenu: s.ecCardMenu === 'deal' ? null : 'deal' })); else many(selIds, 'yes', toastFor(g.kind, n)); },
+                menuOpen, closeMenu: () => this.setState({ ecCardMenu: null }),
+                opts: [
+                  { icon: 'fa-hourglass-half', color: 'var(--hz-orange-600, #dd6b20)', label: 'Add to Pending Confirmation', sub: 'The deal assignee confirms before they enter the pipeline', pick: () => many(selIds, 'yes', toastFor('deal', n, 'pending')) },
+                  { icon: 'fa-arrow-right', color: 'var(--hz-horizon-primary)', label: 'Move to L0 Pipeline', sub: 'Skip confirmation and start sourcing now, with you as assignee', pick: () => many(selIds, 'yes', toastFor('deal', n, 'l0')) }
+                ],
+                secondaryLabel: g.no, secondary: () => many(pend.map(e => e.id), 'no', g.no + ': ' + pend.length + ' item' + (pend.length > 1 ? 's' : '')),
+                items: gi.map(e => {
+                  const c = cc[e.id] || {}; const st = dec[e.id]; const on = !st && chatSel[e.id] !== false;
+                  return {
+                    name: e.kind === 'email' ? e.deal : e.name, pre: c.pre || '', hl: c.hl || '', post: c.post || '', meta: c.meta || '',
+                    tags: (c.tags || []).map(([label, bg, color]) => ({ label, bg, color })),
+                    hasMetrics: !!(c.metrics && c.metrics.length), metrics: (c.metrics || []).map(([k, v, color]) => ({ k, v, color })),
+                    decided: !!st, statusLabel: st === 'yes' ? 'Approved' : 'Declined', statusBg: st === 'yes' ? 'var(--hz-green-50, #e7f6ee)' : 'var(--hz-neutral-100)', statusColor: st === 'yes' ? 'var(--hz-green-700, #1f7a4d)' : 'var(--hz-text-secondary)',
+                    checkBg: st === 'yes' || on ? g.accent : (st === 'no' ? 'var(--hz-neutral-300, #d0d5dd)' : 'var(--hz-surface-card)'), checkBorder: st === 'yes' || on ? g.accent : 'var(--hz-border-default)',
+                    checkIcon: st === 'no' ? 'fa-minus' : 'fa-check',
+                    cursor: st ? 'default' : 'pointer', opacity: st === 'no' ? 0.6 : 1,
+                    toggle: () => { if (st) return; this.setState(s => ({ ecChatSel: { ...(s.ecChatSel || {}), [e.id]: (s.ecChatSel || {})[e.id] === false } })); }
+                  };
+                })
+              };
+            }) };
+          })(),
+          ecYesMenuOpen: !!this.state.ecYesMenu, ecYesClose: () => this.setState({ ecYesMenu: false }), ecYesToggle: () => this.setState(s => ({ ecYesMenu: !s.ecYesMenu })),
+          ecYesCaret: this.state.ecYesMenu ? 'fa-chevron-up' : 'fa-chevron-down',
+          ecYesOpts: cur.kind === 'deal' ? [
+            { icon: 'fa-hourglass-half', color: 'var(--hz-orange-600, #dd6b20)', label: 'Add to Pending Confirmation', sub: 'The deal assignee confirms it before it enters the pipeline', pick: () => approve('pending') },
+            { icon: 'fa-arrow-right', color: 'var(--hz-horizon-primary)', label: 'Move to L0 Pipeline', sub: 'Skip confirmation and start sourcing now, with you as assignee', pick: () => approve('l0') }
+          ] : cur.kind === 'email' ? [
+            { icon: 'fa-link', color: 'var(--hz-horizon-primary)', label: 'Add to ' + short, sub: 'Save it to the deal Brain matched', pick: () => approve() },
+            { icon: 'fa-exchange-alt', color: 'var(--hz-text-secondary)', label: 'Add to a different deal', sub: 'Pick the right deal before saving', pick: () => this.setState({ ecYesMenu: false, ecModal: true, ecStrip: false, ecCur: cur.id, botPreviewDismissed: true }) }
+          ] : [
+            { icon: 'fa-play', color: 'var(--hz-horizon-primary)', label: 'Start now', sub: 'Run it in the background and notify me when ready', pick: () => approve() },
+            { icon: 'fa-calendar', color: 'var(--hz-text-secondary)', label: 'Run before the milestone', sub: 'Schedule it for the day before, so the data is fresh', pick: () => decide('yes', 'Research scheduled: ' + cur.name) }
+          ],
+          ecYesPending: () => approve('pending'), ecYesL0: () => approve('l0'),
           ecStartSkip: () => this.setState({ ecStep: 'skip', ecReason: '', ecNote: '' }),
           ecBack: () => this.setState({ ecStep: 'ask' }),
           ecDetails: () => this.setState({ ecModal: true, ecStrip: false, ecCur: cur.id, botPreviewDismissed: true }),
@@ -2588,7 +2699,7 @@ Semiconductor process materials: front-end process chemicals, electronic chemica
           ecModalOpen: !!this.state.ecModal,
           ecCloseModal: () => this.setState({ ecModal: false, botPreviewDismissed: false }),
           ecDeal: sel, ecDealShort: short, ecDealOpts: deals, ecSetDeal: e => { const v = e.target.value; this.setState(s => ({ ecDealSel: { ...(s.ecDealSel || {}), [cur.id]: v } })); },
-          ecModalAdd: approve,
+          ecModalAdd: yes,
           ecModalSkip: () => this.setState({ ecModal: false, botPreviewDismissed: false, ecStep: 'skip', ecReason: '', ecNote: '' }),
           ecPending: left > 0,
           ecStripOpen: !!this.state.ecStrip, ecStripIcon: this.state.ecStrip ? 'fa-chevron-up' : 'fa-chevron-down',
